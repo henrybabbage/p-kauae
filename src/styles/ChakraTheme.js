@@ -6,9 +6,9 @@ const theme = extendTheme({
     background: '#A45036',
   },
   fonts: {
-    heading: "Open Sans",
-    subHeading: "Times New Roman",
-    body: "Arial",
+    heading: `"UntitledSans_Regular", sans-serif`,
+    subHeading: `"UntitledSerif_Regular", serif`,
+    body: `"UntitledSans_Regular", sans-serif`,
   },
   textStyles: {
     h1: {
@@ -23,4 +23,4 @@ const theme = extendTheme({
   }
 });
 
-export default theme;
+export default theme
