@@ -1,8 +1,8 @@
-import { Global } from '@emotion/react'
+import { Global } from "@emotion/react"
 
 const Fonts = () => (
-  <Global
-	styles={`
+    <Global
+        styles={`
 		@font-face {
 			font-family: 'UntitledSans_Regular';
 			src: url('fonts/UntitledSans/UntitledSans_Regular.woff2') format('woff2'),
@@ -35,7 +35,7 @@ const Fonts = () => (
             font-weight: 700;
         }
 	`}
-  	/>
+    />
 )
 
 export default Fonts

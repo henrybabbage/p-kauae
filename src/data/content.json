@@ -3,38 +3,38 @@
     "about": "Tū Tama Wāhine o Taranaki is a kaupapa Māori organisation underpin by values of tikanga Māori. This foundation informs all our work and is central to the way we encourage active participation and the crafting of relationships and connections to promote reciprocal benefits for whānau. To empower and inspire whānau, hapū and iwi is at the core of our work. Our initiatives are designed to facilitate opportunities for whānau to gain a healthier understanding about development and liberation, as a tool to assist in the healing from the overwhelming consequences of colonial oppression and historical trauma, in the context of their lives today. The desired outcome is the empowerment of all peoples; creating informed and knowledgeable communities who are in control of their own futures.",
     "quote": "The exhibition captures the images of wahine Maori of Taranaki who have in some manner held the front line in fulfilling the instructions left by Te Whiti o Rongomai.",
     "photographer": "Visit Tania’s website at www.tanianiwa.com",
-	"credits": [
-		{
-			"id": 1,
-			"name": "Mako Jones"
-		},
-		{
-			"id": 2,
-			"name": "Mera Penehira"
-		},
-		{
-			"id": 3,
-			"name": "Marnie Reinfelds"
-		},
-		{
-			"id": 4,
-			"name": "Moewai Aterea"
-		},
-		{
-			"id": 5,
-			"name": "Ngamata Skipper"
-		},
-		{
-			"id": 6,
-			"name": "Rawinia Leatherby"
-		},
-		{
-			"id": 7,
-			"name": "Ria Waikerepuru"
-		},
-		{
-			"id": 8,
-			"name": "Te Aorangi Mako"
-		}
-	]
+    "credits": [
+        {
+            "id": 1,
+            "name": "Mako Jones"
+        },
+        {
+            "id": 2,
+            "name": "Mera Penehira"
+        },
+        {
+            "id": 3,
+            "name": "Marnie Reinfelds"
+        },
+        {
+            "id": 4,
+            "name": "Moewai Aterea"
+        },
+        {
+            "id": 5,
+            "name": "Ngamata Skipper"
+        },
+        {
+            "id": 6,
+            "name": "Rawinia Leatherby"
+        },
+        {
+            "id": 7,
+            "name": "Ria Waikerepuru"
+        },
+        {
+            "id": 8,
+            "name": "Te Aorangi Mako"
+        }
+    ]
 }
