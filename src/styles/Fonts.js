@@ -9,11 +9,15 @@ const Fonts = () => (
 			url('fonts/UntitledSans/UntitledSans_Regular.woff') format('woff');
 			font-style: normal;
 			font-weight: 400;
-			-webkit-font-smoothing: antialiased;
-			-moz-font-smoothing: antialiased;
-					-ms-font-smoothing: antialiased;
-					-o-font-smoothing: antialiased;
-			}
+        }
+		
+        @font-face {
+			font-family: 'UntitledSans_Bold';
+			src: url('fonts/UntitledSans/UntitledSans_Bold.woff2') format('woff2'),
+			url('fonts/UntitledSans/UntitledSans_Bold.woff') format('woff');
+			font-style: normal;
+			font-weight: 700;
+        }
 
         @font-face {
             font-family: "UntitledSerif_Regular";
@@ -21,13 +25,16 @@ const Fonts = () => (
             url("fonts/UntitledSerif/UntitledSerif_Regular.woff") format("woff");
             font-style: normal;
             font-weight: 400;
-            -webkit-font-smoothing: antialiased;
-			-moz-font-smoothing: antialiased;
-					-ms-font-smoothing: antialiased;
-					-o-font-smoothing: antialiased;
-            }
-
-		`}
+        }
+        
+        @font-face {
+            font-family: "UntitledSerif_Bold";
+            src: url("fonts/UntitledSerif/UntitledSerif_Bold.woff2") format("woff2"),
+            url("fonts/UntitledSerif/UntitledSerif_Bold.woff") format("woff");
+            font-style: normal;
+            font-weight: 700;
+        }
+	`}
   	/>
 )
 

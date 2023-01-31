@@ -1,16 +1,28 @@
-import { Flex, Heading } from '@chakra-ui/react'
-import React from 'react'
+import { Box, Flex, Heading, Link } from '@chakra-ui/react'
+import NextLink from 'next/link'
 
 export default function Header() {
-  return (
-    <div>
-        <Flex as="nav" align="center" justify="space-between" wrap="wrap" p="4" bg="white">
-            <Flex align="center">
-                <Heading as="h1" size="md" color="black">
-                    Tū Tama Wāhine o Taranaki
-                </Heading>
-            </Flex>
-        </Flex>
-    </div>
-  )
+	return (
+		<div>
+			<Flex as='nav' align='center' justify='space-between' wrap='wrap' p='4' bg='white'>
+				<Box>
+					<Heading textStyle='primary' as='h1' size='md' color='black' fontWeight='bold'>
+						Tū Tama Wāhine o Taranaki
+					</Heading>
+				</Box>
+				<Flex align='center' justify='end'>
+					<Link variant="menu" as={NextLink} href='#about'>
+						<Heading as='h2' size='md' fontWeight='bold'>
+							About
+						</Heading>
+					</Link>
+					<Link variant="menu" as={NextLink} href='/map'>
+						<Heading as='h2' size='md' fontWeight='bold'>
+							Map
+						</Heading>
+					</Link>
+				</Flex>
+			</Flex>
+		</div>
+	)
 }
