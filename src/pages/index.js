@@ -21,7 +21,7 @@ export default function Home() {
 			<main>
 				<Layout>
 					<Header />
-					<Box p='4' id='about'>
+					<Box p='6' id='about'>
 						<Grid templateColumns='repeat(12, 1fr)'>
 							<GridItem colSpan={12}>
 								<Container maxWidth='80vw'>
