@@ -5,6 +5,13 @@
 /.pnp
 .pnp.js
 
+# backend strapi 
+backend/node_modules/
+backend/.env
+backend/build
+backend/.cache
+backend/.tmp
+
 # testing
 /coverage
 

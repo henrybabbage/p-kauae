@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "tas",
+  "info": {
+    "singularName": "ta",
+    "pluralName": "tas",
+    "displayName": "Tā"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ingoa": {
+      "type": "string"
+    }
+  }
+}
