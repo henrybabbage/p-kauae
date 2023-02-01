@@ -1,6 +1,6 @@
 ## Tū Tama Wāhine o Taranaki
 
-This is a website for the digitized Pūkauae Photographic exhibition: Tu Tama Wahine o Taranaki 30 Years of Liberation Work.
+This is a website for the digitized Pūkauae photographic exhibition: Tu Tama Wahine o Taranaki 30 Years of Liberation Work.
 
 This project is built with [Next.js](https://nextjs.org/) bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
