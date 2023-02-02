@@ -9,7 +9,7 @@
     "build": "strapi build",
     "strapi": "strapi",
     "export": "strapi export --no-encrypt --file pukauae-backend-data && node src/upload-db.js",
-    "import": "strapi import --file pukauae-backend-data.tar.gz && node src/upload-db.js"
+    "import": "node src/get-db.js && strapi import --file pukauae-backend-data.tar.gz"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.262.0",
