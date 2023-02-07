@@ -1,5 +1,5 @@
-import { Box, Flex, HStack, Heading, Link } from "@chakra-ui/react"
-import NextLink from "next/link"
+import { Box, Flex, HStack, Heading, Link } from '@chakra-ui/react'
+import NextLink from 'next/link'
 
 export default function Header() {
     return (
