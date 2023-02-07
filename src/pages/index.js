@@ -1,12 +1,34 @@
-import Header from "@/components/Header"
-import Layout from "@/components/Layout"
-import content from "@/data/content.json"
-import { Box, Container, Grid, GridItem, Text } from "@chakra-ui/react"
-import Head from "next/head"
+import Header from '@/components/Header'
+import Layout from '@/components/Layout'
+import { Box, Flex, Grid, GridItem, Text } from '@chakra-ui/react'
+import Head from 'next/head'
 
-export const siteTitle = "Tū Tama Wāhine o Taranaki"
+import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
+import ReactMarkdown from 'react-markdown'
+import remarkBreaks from 'remark-breaks'
 
-export default function Home() {
+export const siteTitle = 'Tū Tama Wāhine o Taranaki'
+
+export default function Home({ korero }) {
+    const markdownTheme = {
+        p: (props) => {
+            const { children } = props
+            return (
+                <Text fontSize={'36px'} lineHeight={'1.36'}>
+                    {children}
+                </Text>
+            )
+        },
+        blockquote: (props) => {
+            const { children } = props
+            return (
+                <Box as="blockquote" color="#C3918F" my="78px">
+                    {children}
+                </Box>
+            )
+        }
+    }
+
     return (
         <>
             <Head>
@@ -35,20 +57,86 @@ export default function Home() {
                     <Header />
                     <Box p="6" id="about">
                         <Grid templateColumns="repeat(12, 1fr)">
-                            <GridItem colSpan={12}>
-                                <Container maxWidth="80vw">
+                            <GridItem colStart={2} colEnd={12}>
+                                <Flex
+                                    justify="center"
+                                    flexDirection={'column'}
+                                    height={
+                                        'calc(100vh - var(--chakra-sizes-12))'
+                                    }
+                                >
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkBreaks]}
+                                        components={ChakraUIRenderer(
+                                            markdownTheme
+                                        )}
+                                        children={
+                                            korero.attributes.tuhinga_timatanga
+                                        }
+                                        skipHtml
+                                    />
+                                </Flex>
+                            </GridItem>
+                            <GridItem colStart={2} colEnd={12} pt="6" pb="6">
+                                <Flex
+                                    justify="center"
+                                    flexDirection={'column'}
+                                    height={
+                                        'calc(100vh - var(--chakra-sizes-12))'
+                                    }
+                                >
                                     <Text
-                                        color="black"
-                                        textStyle="secondary"
-                                        fontSize={{
-                                            base: "14px",
-                                            sm: "16px",
-                                            md: "18px",
-                                        }}
+                                        fontSize={'36px'}
+                                        lineHeight={'1.36'}
+                                        align="left"
                                     >
-                                        {content.about}
+                                        Acknowledgements
                                     </Text>
-                                </Container>
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkBreaks]}
+                                        components={ChakraUIRenderer(
+                                            markdownTheme
+                                        )}
+                                        children={korero.attributes.mihi}
+                                        skipHtml
+                                    />
+                                </Flex>
+                            </GridItem>
+                            <GridItem colStart={2} colEnd={12} pt="6" pb="6">
+                                <Flex
+                                    justify="center"
+                                    flexDirection={'column'}
+                                    height={'calc(100vh)'}
+                                >
+                                    <Text
+                                        fontSize={'36px'}
+                                        lineHeight={'1.36'}
+                                        align="left"
+                                    >
+                                        A special thanks to
+                                    </Text>
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkBreaks]}
+                                        components={ChakraUIRenderer(
+                                            markdownTheme
+                                        )}
+                                        children={
+                                            korero.attributes.tangata_mihia
+                                        }
+                                        skipHtml
+                                    />
+                                </Flex>
+                            </GridItem>
+                            <GridItem colStart={2} colEnd={12} pt="16">
+                                <ReactMarkdown
+                                    remarkPlugins={[remarkBreaks]}
+                                    components={ChakraUIRenderer(markdownTheme)}
+                                    children={korero.attributes.tuhinga_matua.replace(
+                                        /\n/gi,
+                                        '&nbsp; \n \n'
+                                    )}
+                                    skipHtml
+                                />
                             </GridItem>
                         </Grid>
                     </Box>
@@ -56,4 +144,16 @@ export default function Home() {
             </main>
         </>
     )
+}
+
+export async function getStaticProps() {
+    const koreroResponse = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/tu-tama-korero`
+    )
+    const result = await koreroResponse.json()
+    return {
+        props: {
+            korero: result.data
+        }
+    }
 }

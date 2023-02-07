@@ -9,6 +9,7 @@
 	"rules": {
 		"prettier/prettier": "error",
 		"no-console": "warn",
+        "react/no-children-prop": "off",
 		"indent": [
 			"warn",
 			4

@@ -2,8 +2,11 @@
 const nextConfig = {
     reactStrictMode: true,
     compiler: {
-        styledComponents: true,
+        styledComponents: true
     },
+    images: {
+        domains: ['localhost']
+    }
 }
 
 module.exports = nextConfig
