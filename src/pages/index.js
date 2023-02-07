@@ -1,13 +1,34 @@
+import Head from 'next/head'
 import Header from '@/components/Header'
 import Layout from '@/components/Layout'
 import { Box, Grid, GridItem, Text } from '@chakra-ui/react'
-import Head from 'next/head'
+
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import ReactMarkdown from 'react-markdown'
+import remarkBreaks from 'remark-breaks'
 
 export const siteTitle = 'Tū Tama Wāhine o Taranaki'
 
 export default function Home({ korero }) {
+    const markdownTheme = {
+        p: (props) => {
+            const { children } = props
+            return (
+                <Text fontSize={'36px'} lineHeight={'1.36'}>
+                    {children}
+                </Text>
+            )
+        },
+        blockquote: (props) => {
+            const { children } = props
+            return (
+                <Box as="blockquote" color="#C3918F" my="78px">
+                    {children}
+                </Box>
+            )
+        }
+    }
+
     return (
         <>
             <Head>
@@ -38,8 +59,12 @@ export default function Home({ korero }) {
                         <Grid templateColumns="repeat(12, 1fr)">
                             <GridItem colStart={2} colEnd={12}>
                                 <ReactMarkdown
-                                    components={ChakraUIRenderer()}
-                                    children={korero.attributes.tuhinga_matua}
+                                    remarkPlugins={[remarkBreaks]}
+                                    components={ChakraUIRenderer(markdownTheme)}
+                                    children={korero.attributes.tuhinga_matua.replace(
+                                        /\n/gi,
+                                        '&nbsp; \n \n'
+                                    )}
                                     skipHtml
                                 />
                             </GridItem>

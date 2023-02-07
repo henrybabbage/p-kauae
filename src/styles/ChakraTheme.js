@@ -1,7 +1,8 @@
-import { extendTheme } from '@chakra-ui/react'
 import { linkTheme } from '@/theme/components/Link'
+import { extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
+    global: {},
     colors: {
         pink: '#C3918F',
         grey: '#404041',
@@ -9,7 +10,8 @@ const theme = extendTheme({
     },
     fonts: {
         primary: `"UntitledSans_Regular", sans-serif`,
-        secondary: `"UntitledSerif_Regular", serif`
+        secondary: `"UntitledSerif_Regular", serif`,
+        special: `"GTZirkon", sans-serif`
     },
     fontSizes: {
         sm: '18px',
@@ -37,7 +39,7 @@ const theme = extendTheme({
         },
         p: {
             fontFamily: 'var(--chakra-fonts-secondary)',
-            fontSize: ['18px', '20px'],
+            fontSize: ['26px', '36px'],
             fontWeight: '700',
             lineHeight: '90%'
         }
