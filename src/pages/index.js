@@ -1,8 +1,9 @@
 import Header from '@/components/Header'
 import Layout from '@/components/Layout'
-import content from '@/data/content.json'
 import { Box, Grid, GridItem, Text } from '@chakra-ui/react'
 import Head from 'next/head'
+import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
+import ReactMarkdown from 'react-markdown'
 
 export const siteTitle = 'Tū Tama Wāhine o Taranaki'
 
@@ -36,18 +37,11 @@ export default function Home({ korero }) {
                     <Box p="6" id="about">
                         <Grid templateColumns="repeat(12, 1fr)">
                             <GridItem colStart={2} colEnd={12}>
-                                <Text
-                                    color="black"
-                                    textStyle="secondary"
-                                    fontSize={{
-                                        base: '18px',
-                                        sm: '20px',
-                                        md: '22px'
-                                    }}
-                                >
-                                    {content.about}
-                                    {korero.attributes.tuhinga_matua}
-                                </Text>
+                                <ReactMarkdown
+                                    components={ChakraUIRenderer()}
+                                    children={korero.attributes.tuhinga_matua}
+                                    skipHtml
+                                />
                             </GridItem>
                         </Grid>
                     </Box>
