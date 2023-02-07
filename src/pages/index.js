@@ -1,12 +1,12 @@
-import Header from "@/components/Header"
-import Layout from "@/components/Layout"
-import content from "@/data/content.json"
-import { Box, Container, Grid, GridItem, Text } from "@chakra-ui/react"
-import Head from "next/head"
+import Header from '@/components/Header'
+import Layout from '@/components/Layout'
+import content from '@/data/content.json'
+import { Box, Grid, GridItem, Text } from '@chakra-ui/react'
+import Head from 'next/head'
 
-export const siteTitle = "Tū Tama Wāhine o Taranaki"
+export const siteTitle = 'Tū Tama Wāhine o Taranaki'
 
-export default function Home() {
+export default function Home({ korero }) {
     return (
         <>
             <Head>
@@ -35,20 +35,19 @@ export default function Home() {
                     <Header />
                     <Box p="6" id="about">
                         <Grid templateColumns="repeat(12, 1fr)">
-                            <GridItem colSpan={12}>
-                                <Container maxWidth="80vw">
-                                    <Text
-                                        color="black"
-                                        textStyle="secondary"
-                                        fontSize={{
-                                            base: "14px",
-                                            sm: "16px",
-                                            md: "18px",
-                                        }}
-                                    >
-                                        {content.about}
-                                    </Text>
-                                </Container>
+                            <GridItem colStart={2} colEnd={12}>
+                                <Text
+                                    color="black"
+                                    textStyle="secondary"
+                                    fontSize={{
+                                        base: '18px',
+                                        sm: '20px',
+                                        md: '22px'
+                                    }}
+                                >
+                                    {content.about}
+                                    {korero.attributes.tuhinga_matua}
+                                </Text>
                             </GridItem>
                         </Grid>
                     </Box>
@@ -56,4 +55,16 @@ export default function Home() {
             </main>
         </>
     )
+}
+
+export async function getStaticProps() {
+    const koreroResponse = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/tu-tama-korero`
+    )
+    const result = await koreroResponse.json()
+    return {
+        props: {
+            korero: result.data
+        }
+    }
 }
