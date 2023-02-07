@@ -1,7 +1,7 @@
-import Head from 'next/head'
 import Header from '@/components/Header'
 import Layout from '@/components/Layout'
-import { Box, Grid, GridItem, Text } from '@chakra-ui/react'
+import { Box, Flex, Grid, GridItem, Text } from '@chakra-ui/react'
+import Head from 'next/head'
 
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import ReactMarkdown from 'react-markdown'
@@ -58,6 +58,76 @@ export default function Home({ korero }) {
                     <Box p="6" id="about">
                         <Grid templateColumns="repeat(12, 1fr)">
                             <GridItem colStart={2} colEnd={12}>
+                                <Flex
+                                    justify="center"
+                                    flexDirection={'column'}
+                                    height={
+                                        'calc(100vh - var(--chakra-sizes-12))'
+                                    }
+                                >
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkBreaks]}
+                                        components={ChakraUIRenderer(
+                                            markdownTheme
+                                        )}
+                                        children={
+                                            korero.attributes.tuhinga_timatanga
+                                        }
+                                        skipHtml
+                                    />
+                                </Flex>
+                            </GridItem>
+                            <GridItem colStart={2} colEnd={12} pt="6" pb="6">
+                                <Flex
+                                    justify="center"
+                                    flexDirection={'column'}
+                                    height={
+                                        'calc(100vh - var(--chakra-sizes-12))'
+                                    }
+                                >
+                                    <Text
+                                        fontSize={'36px'}
+                                        lineHeight={'1.36'}
+                                        align="left"
+                                    >
+                                        Acknowledgements
+                                    </Text>
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkBreaks]}
+                                        components={ChakraUIRenderer(
+                                            markdownTheme
+                                        )}
+                                        children={korero.attributes.mihi}
+                                        skipHtml
+                                    />
+                                </Flex>
+                            </GridItem>
+                            <GridItem colStart={2} colEnd={12} pt="6" pb="6">
+                                <Flex
+                                    justify="center"
+                                    flexDirection={'column'}
+                                    height={'calc(100vh)'}
+                                >
+                                    <Text
+                                        fontSize={'36px'}
+                                        lineHeight={'1.36'}
+                                        align="left"
+                                    >
+                                        A special thanks to
+                                    </Text>
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkBreaks]}
+                                        components={ChakraUIRenderer(
+                                            markdownTheme
+                                        )}
+                                        children={
+                                            korero.attributes.tangata_mihia
+                                        }
+                                        skipHtml
+                                    />
+                                </Flex>
+                            </GridItem>
+                            <GridItem colStart={2} colEnd={12} pt="16">
                                 <ReactMarkdown
                                     remarkPlugins={[remarkBreaks]}
                                     components={ChakraUIRenderer(markdownTheme)}
