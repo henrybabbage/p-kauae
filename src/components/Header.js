@@ -1,4 +1,4 @@
-import { Box, Flex, HStack, Heading, Link } from '@chakra-ui/react'
+import { Flex, HStack, Heading, Link } from '@chakra-ui/react'
 import NextLink from 'next/link'
 
 export default function Header() {
@@ -6,13 +6,16 @@ export default function Header() {
         <div>
             <Flex
                 as="nav"
+                backgroundColor="rgba(255, 255, 255, 0.8)"
+                backdropFilter="saturate(180%) blur(4px)"
+                position="fixed"
+                w="100%"
                 align="center"
                 justify="space-between"
                 wrap="wrap"
                 p="6"
-                bg="white"
             >
-                <Box>
+                <Flex align="end" justify="flex-end">
                     <Heading
                         textStyle="primary"
                         as="h1"
@@ -22,7 +25,7 @@ export default function Header() {
                     >
                         Tū Tama Wāhine o Taranaki
                     </Heading>
-                </Box>
+                </Flex>
                 <Flex align="center" justify="end">
                     <HStack spacing="6">
                         <Link variant="menu" as={NextLink} href="#about">
