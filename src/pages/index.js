@@ -1,6 +1,13 @@
 import Header from '@/components/Header'
 import Layout from '@/components/Layout'
-import { Box, Flex, Grid, GridItem, Text } from '@chakra-ui/react'
+import {
+    Box,
+    Flex,
+    Grid,
+    GridItem,
+    Text,
+    VisuallyHidden
+} from '@chakra-ui/react'
 import Head from 'next/head'
 
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
@@ -28,6 +35,11 @@ export default function Home({ korero }) {
             )
         }
     }
+
+    const totalList = korero.attributes.tangata_mihia
+    const lines = totalList.split(/\r\n|\r|\n/)
+    const leftColumn = lines.slice(0, 8)
+    const rightColumn = lines.slice(8, 16)
 
     return (
         <>
@@ -102,7 +114,7 @@ export default function Home({ korero }) {
                                     />
                                 </Flex>
                             </GridItem>
-                            <GridItem colStart={2} colEnd={12} pt="6" pb="6">
+                            <GridItem colStart={2} colEnd={6} pt="6" pb="6">
                                 <Flex
                                     justify="center"
                                     flexDirection={'column'}
@@ -115,16 +127,42 @@ export default function Home({ korero }) {
                                     >
                                         A special thanks to
                                     </Text>
-                                    <ReactMarkdown
-                                        remarkPlugins={[remarkBreaks]}
-                                        components={ChakraUIRenderer(
-                                            markdownTheme
-                                        )}
-                                        children={
-                                            korero.attributes.tangata_mihia
-                                        }
-                                        skipHtml
-                                    />
+                                    {leftColumn.map((name, index) => (
+                                        <Text
+                                            fontSize={'36px'}
+                                            lineHeight={'1.36'}
+                                            align="left"
+                                            key={index}
+                                        >
+                                            {name}
+                                        </Text>
+                                    ))}
+                                </Flex>
+                            </GridItem>
+                            <GridItem colStart={7} colEnd={11} pt="6" pb="6">
+                                <Flex
+                                    justify="center"
+                                    flexDirection={'column'}
+                                    height={'calc(100vh)'}
+                                >
+                                    <Text
+                                        fontSize={'36px'}
+                                        lineHeight={'1.36'}
+                                        align="left"
+                                        visibility="hidden"
+                                    >
+                                        Heading space
+                                    </Text>
+                                    {rightColumn.map((name, index) => (
+                                        <Text
+                                            fontSize={'36px'}
+                                            lineHeight={'1.36'}
+                                            align="left"
+                                            key={index}
+                                        >
+                                            {name}
+                                        </Text>
+                                    ))}
                                 </Flex>
                             </GridItem>
                             <GridItem colStart={2} colEnd={12} pt="16">
