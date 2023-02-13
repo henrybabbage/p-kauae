@@ -1,4 +1,4 @@
-import Map from 'react-map-gl'
+import Map, { Source, Layer } from 'react-map-gl'
 
 const geojson = {
     type: 'FeatureCollection',
@@ -24,7 +24,7 @@ const layerStyle = {
 
 // for handlers see the following: https://visgl.github.io/react-map-gl/docs/api-reference/map#onclick
 
-export default function Map() {
+export default function FullMap() {
     return (
         <div>
             <Map
