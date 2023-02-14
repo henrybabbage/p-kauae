@@ -1,22 +1,16 @@
 import Header from '@/components/Header'
 import Layout from '@/components/Layout'
-import {
-    Box,
-    Flex,
-    Grid,
-    GridItem,
-    Text,
-    VisuallyHidden
-} from '@chakra-ui/react'
+import { Box, Flex, Grid, GridItem, Text } from '@chakra-ui/react'
 import Head from 'next/head'
 
+import { ChakraNextImage } from '@/components/ChakraNextImage'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import ReactMarkdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
 
 export const siteTitle = 'Tū Tama Wāhine o Taranaki'
 
-export default function Home({ korero }) {
+export default function Home({ korero, kaiwhakaahua }) {
     const markdownTheme = {
         p: (props) => {
             const { children } = props
@@ -118,7 +112,7 @@ export default function Home({ korero }) {
                                 <Flex
                                     justify="center"
                                     flexDirection={'column'}
-                                    height={'calc(100vh)'}
+                                    height={'100vh'}
                                 >
                                     <Text
                                         fontSize={'36px'}
@@ -143,7 +137,7 @@ export default function Home({ korero }) {
                                 <Flex
                                     justify="center"
                                     flexDirection={'column'}
-                                    height={'calc(100vh)'}
+                                    height={'100vh'}
                                 >
                                     <Text
                                         fontSize={'36px'}
@@ -178,6 +172,60 @@ export default function Home({ korero }) {
                             </GridItem>
                         </Grid>
                     </Box>
+                    <Box p="6" id="photographer">
+                        <Grid
+                            templateColumns="repeat(12, 1fr)"
+                            h={'calc(100vh - var(--chakra-sizes-12))'}
+                        >
+                            <GridItem colStart={2} colEnd={7}>
+                                <Box pt={32}>
+                                    <ChakraNextImage
+                                        src={
+                                            kaiwhakaahua.attributes.whakaahua
+                                                .data.attributes.url
+                                        }
+                                        alt={
+                                            kaiwhakaahua.attributes.whakaahua
+                                                .data.attributes.alternativeText
+                                        }
+                                        width={
+                                            kaiwhakaahua.attributes.whakaahua
+                                                .data.attributes.width
+                                        }
+                                        height={
+                                            kaiwhakaahua.attributes.whakaahua
+                                                .data.attributes.height
+                                        }
+                                        blurhash={
+                                            'LMJ7:n?bXTbd9[ITD%xv~q^+M{X9'
+                                        }
+                                        sizes={
+                                            '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
+                                        }
+                                    />
+                                </Box>
+                            </GridItem>
+                            <GridItem colStart={8} colEnd={13}>
+                                <Box
+                                    pt={32}
+                                    fontSize={'36px'}
+                                    lineHeight={'1.36'}
+                                    align="left"
+                                >
+                                    <Text>{kaiwhakaahua.attributes.ingoa}</Text>
+                                    <Text>
+                                        {kaiwhakaahua.attributes.korero}
+                                    </Text>
+                                    <Text>
+                                        {kaiwhakaahua.attributes.whakapapa}
+                                    </Text>
+                                    <Text>
+                                        {kaiwhakaahua.attributes.paetukutuku}
+                                    </Text>
+                                </Box>
+                            </GridItem>
+                        </Grid>
+                    </Box>
                 </Layout>
             </main>
         </>
@@ -188,10 +236,16 @@ export async function getStaticProps() {
     const koreroResponse = await fetch(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/tu-tama-korero`
     )
-    const result = await koreroResponse.json()
+    const kaiwhakaahuaResponse = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/kaiwhakaahua?populate=whakaahua.*`
+    )
+    const korero = await koreroResponse.json()
+    const kaiwhakaahua = await kaiwhakaahuaResponse.json()
+
     return {
         props: {
-            korero: result.data
+            korero: korero.data,
+            kaiwhakaahua: kaiwhakaahua.data
         }
     }
 }
