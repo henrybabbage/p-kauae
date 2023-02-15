@@ -3050,7 +3050,7 @@
     "@strapi/utils" "4.6.0"
     "fs-extra" "10.0.0"
 
-"@strapi/strapi@^4.0.2", "@strapi/strapi@^4.3.4", "@strapi/strapi@4.6.0":
+"@strapi/strapi@^4.0.0", "@strapi/strapi@^4.0.2", "@strapi/strapi@^4.1.5", "@strapi/strapi@^4.3.4", "@strapi/strapi@4.6.0":
   "integrity" "sha512-RVHCwtdP5GVPcaNrUr5/Y863UjnKmKXDnnIiPr0GWPMZdwno4IZxIz1R4XgP8no9XpCbVJK1HsEmzrLcavAOMg=="
   "resolved" "https://registry.npmjs.org/@strapi/strapi/-/strapi-4.6.0.tgz"
   "version" "4.6.0"
@@ -4142,6 +4142,11 @@
     "inherits" "^2.0.4"
     "readable-stream" "^3.4.0"
 
+"blurhash@1.1.5":
+  "integrity" "sha512-a+LO3A2DfxTaTztsmkbLYmUzUeApi0LZuKalwbNmqAHR6HhJGMt1qSV/R3wc+w4DL28holjqO3Bg74aUGavGjg=="
+  "resolved" "https://registry.npmjs.org/blurhash/-/blurhash-1.1.5.tgz"
+  "version" "1.1.5"
+
 "bn.js@^4.0.0", "bn.js@^4.1.0", "bn.js@^4.11.9":
   "integrity" "sha512-c98Bf3tPniI+scsdk237ku1Dc3ujXQTSgyiPUDEOe7tRkhrqridvh8klBv0HCEso1OLOYcHuCv/cS6DNxKH+ZA=="
   "resolved" "https://registry.npmjs.org/bn.js/-/bn.js-4.12.0.tgz"
@@ -4734,6 +4739,11 @@
   "integrity" "sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg=="
   "resolved" "https://registry.npmjs.org/clone/-/clone-1.0.4.tgz"
   "version" "1.0.4"
+
+"clone@2.x":
+  "integrity" "sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w=="
+  "resolved" "https://registry.npmjs.org/clone/-/clone-2.1.2.tgz"
+  "version" "2.1.2"
 
 "co-body@^5.1.1":
   "integrity" "sha512-sX/LQ7LqUhgyaxzbe7IqwPeTr2yfpfUIQ/dgpKo6ZI4y4lpQA0YxAomWIY+7I7rHWcG02PG+OuPREzMW/5tszQ=="
@@ -5603,6 +5613,13 @@
   "integrity" "sha512-TPJXq8JqFaVYm2CWmPvnP2Iyo4ZSM7/QKcSmuMLDObfpH5fi7RUGmd/rTDf+rut/saiDiQEeVTNgAmJEdAOx0w=="
   "resolved" "https://registry.npmjs.org/encodeurl/-/encodeurl-1.0.2.tgz"
   "version" "1.0.2"
+
+"encoding@^0.1.0", "encoding@0.1.13":
+  "integrity" "sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A=="
+  "resolved" "https://registry.npmjs.org/encoding/-/encoding-0.1.13.tgz"
+  "version" "0.1.13"
+  dependencies:
+    "iconv-lite" "^0.6.2"
 
 "end-of-stream@^1.1.0", "end-of-stream@^1.4.1":
   "integrity" "sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q=="
@@ -6843,6 +6860,13 @@
   dependencies:
     "safer-buffer" ">= 2.1.2 < 3"
 
+"iconv-lite@^0.6.2":
+  "integrity" "sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw=="
+  "resolved" "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz"
+  "version" "0.6.3"
+  dependencies:
+    "safer-buffer" ">= 2.1.2 < 3.0.0"
+
 "iconv-lite@0.4.13":
   "integrity" "sha512-QwVuTNQv7tXC5mMWFX5N5wGjmybjNBBD8P3BReTkPmipoxTUFgWM2gXNvldHQr6T14DH0Dh6qBVg98iJt7u4mQ=="
   "resolved" "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.13.tgz"
@@ -6872,6 +6896,13 @@
   "integrity" "sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ=="
   "resolved" "https://registry.npmjs.org/ignore/-/ignore-5.2.4.tgz"
   "version" "5.2.4"
+
+"image-size@1.0.2":
+  "integrity" "sha512-xfOoWjceHntRb3qFCrh5ZFORYH8XCdYpASltMhZ/Q0KZiOwjdE/Yl2QCiWdwD+lygV5bMCvauzgu5PxBX/Yerg=="
+  "resolved" "https://registry.npmjs.org/image-size/-/image-size-1.0.2.tgz"
+  "version" "1.0.2"
+  dependencies:
+    "queue" "6.0.2"
 
 "immer@9.0.15":
   "integrity" "sha512-2eB/sswms9AEUSkOm4SbV5Y7Vmt/bKRwByd52jfLkW4OLYeaTP3EEiJ9agqU0O/tq6Dk62Zfj+TJSqfm1rLVGQ=="
@@ -8462,6 +8493,13 @@
   "resolved" "https://registry.npmjs.org/node-addon-api/-/node-addon-api-5.1.0.tgz"
   "version" "5.1.0"
 
+"node-cache@5.1.2":
+  "integrity" "sha512-t1QzWwnk4sjLWaQAS8CHgOJ+RAfmHpxFWmc36IWTiWHQfs0w5JDMBS1b1ZxQteo0vVVuWJvIUKHDkkeK7vIGCg=="
+  "resolved" "https://registry.npmjs.org/node-cache/-/node-cache-5.1.2.tgz"
+  "version" "5.1.2"
+  dependencies:
+    "clone" "2.x"
+
 "node-fetch@^2.6.1", "node-fetch@^2.6.7":
   "integrity" "sha512-RZ6dBYuj8dRSfxpUSu+NsdF1dpPpluJxwOp+6IoDp/sH2QNDSvurYsAa+F1WxY2RjA1iP93xhcsUoYbF2XBqVg=="
   "resolved" "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.8.tgz"
@@ -9084,6 +9122,17 @@
   dependencies:
     "find-up" "^4.0.0"
 
+"plaiceholder@^2.3.0", "plaiceholder@^2.5.0":
+  "integrity" "sha512-rygdNSWuYzs1GxxGjq2FiJdJB1AUaKhUHP/M7PIrSjAAGuoJC5ACiJx+cZZ+hDmMalxsxOMw0Sbbx3LF8jemGg=="
+  "resolved" "https://registry.npmjs.org/plaiceholder/-/plaiceholder-2.5.0.tgz"
+  "version" "2.5.0"
+  dependencies:
+    "blurhash" "1.1.5"
+    "encoding" "0.1.13"
+    "image-size" "1.0.2"
+    "node-cache" "5.1.2"
+    "node-fetch" "2.6.7"
+
 "plop@2.7.6":
   "integrity" "sha512-IgnYAsC3Ni7t1cDU7wH2151CD22YhMxH8PFh+iPzCf+WuGEWXslJ5t1Tpr0N/gjL23CAV/HbLAWug2IPM2YrHg=="
   "resolved" "https://registry.npmjs.org/plop/-/plop-2.7.6.tgz"
@@ -9315,6 +9364,13 @@
   "integrity" "sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A=="
   "resolved" "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
   "version" "1.2.3"
+
+"queue@6.0.2":
+  "integrity" "sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA=="
+  "resolved" "https://registry.npmjs.org/queue/-/queue-6.0.2.tgz"
+  "version" "6.0.2"
+  dependencies:
+    "inherits" "~2.0.3"
 
 "quick-lru@^5.1.1":
   "integrity" "sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA=="
@@ -10045,7 +10101,7 @@
   "resolved" "https://registry.npmjs.org/safe-stable-stringify/-/safe-stable-stringify-2.4.2.tgz"
   "version" "2.4.2"
 
-"safer-buffer@^2.0.2", "safer-buffer@^2.1.0", "safer-buffer@>= 2.1.2 < 3", "safer-buffer@~2.1.0":
+"safer-buffer@^2.0.2", "safer-buffer@^2.1.0", "safer-buffer@>= 2.1.2 < 3", "safer-buffer@>= 2.1.2 < 3.0.0", "safer-buffer@~2.1.0":
   "integrity" "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="
   "resolved" "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz"
   "version" "2.1.2"
@@ -10150,7 +10206,7 @@
   "resolved" "https://registry.npmjs.org/semver/-/semver-6.3.0.tgz"
   "version" "6.3.0"
 
-"semver@^7.3.5", "semver@^7.3.8", "semver@7.3.8":
+"semver@^7.3.5", "semver@^7.3.7", "semver@^7.3.8", "semver@7.3.8":
   "integrity" "sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A=="
   "resolved" "https://registry.npmjs.org/semver/-/semver-7.3.8.tgz"
   "version" "7.3.8"
@@ -10271,6 +10327,20 @@
   "integrity" "sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ=="
   "resolved" "https://registry.npmjs.org/shallowequal/-/shallowequal-1.1.0.tgz"
   "version" "1.1.0"
+
+"sharp@^0.30.1", "sharp@>= 0.30.6":
+  "integrity" "sha512-G+MY2YW33jgflKPTXXptVO28HvNOo9G3j0MybYAHeEmby+QuD2U98dT6ueht9cv/XDqZspSpIhoSW+BAKJ7Hig=="
+  "resolved" "https://registry.npmjs.org/sharp/-/sharp-0.30.7.tgz"
+  "version" "0.30.7"
+  dependencies:
+    "color" "^4.2.3"
+    "detect-libc" "^2.0.1"
+    "node-addon-api" "^5.0.0"
+    "prebuild-install" "^7.1.1"
+    "semver" "^7.3.7"
+    "simple-get" "^4.0.1"
+    "tar-fs" "^2.1.1"
+    "tunnel-agent" "^0.6.0"
 
 "sharp@0.31.2":
   "integrity" "sha512-DUdNVEXgS5A97cTagSLIIp8dUZ/lZtk78iNVZgHdHbx1qnQR7JAHY0BnXnwwH39Iw+VKhO08CTYhIg0p98vQ5Q=="
@@ -10553,6 +10623,13 @@
   "resolved" "https://registry.npmjs.org/std-env/-/std-env-3.3.1.tgz"
   "version" "3.3.1"
 
+"strapi-blurhash@^1.0.2":
+  "integrity" "sha512-Ve+W8FMj14edtqmjO9x8WW+bhPFOEhvLMFNpDHH90YwZv05jqRaSzJajbVYvov0VHYgXEeLvXx5XvvCO64q/Xw=="
+  "resolved" "https://registry.npmjs.org/strapi-blurhash/-/strapi-blurhash-1.0.2.tgz"
+  "version" "1.0.2"
+  dependencies:
+    "plaiceholder" "^2.5.0"
+
 "strapi-plugin-entity-relationship-chart@^4.1.0":
   "integrity" "sha512-aKF980NMnU2mXuielP/MBM8Y1fZ2uduMbhYiia//4ZovzPAX9nsmWhC1q4Hp1KjlMWS7zYj6wMhnQ3YvaIlGIw=="
   "resolved" "https://registry.npmjs.org/strapi-plugin-entity-relationship-chart/-/strapi-plugin-entity-relationship-chart-4.1.0.tgz"
@@ -10561,6 +10638,13 @@
     "@strapi/helper-plugin" "4.0.2"
     "dagre" "^0.8.5"
     "lodash" "^4.17.21"
+
+"strapi-plugin-placeholder@^4.3.6":
+  "integrity" "sha512-p2b+ExwyI+2c2WqJtG3tOD3CSx4/LTJIUwS/jZXIWoafi0AHquDHk+tVpw1JSTLp/BroO7gYcHoNUbkXqr/7Lg=="
+  "resolved" "https://registry.npmjs.org/strapi-plugin-placeholder/-/strapi-plugin-placeholder-4.3.6.tgz"
+  "version" "4.3.6"
+  dependencies:
+    "plaiceholder" "^2.3.0"
 
 "stream-browserify@^3.0.0":
   "integrity" "sha512-H73RAHsVBapbim0tU2JwwOiXUj+fikfiaoYAKHF3VJfA0pe2BCzkhAHBlLG6REzE+2WNZcxOXjK7lkso+9euLA=="
