@@ -5,12 +5,13 @@ import Head from 'next/head'
 
 import { ChakraNextImage } from '@/components/ChakraNextImage'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
+import { getPlaiceholder } from 'plaiceholder'
 import ReactMarkdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
 
 export const siteTitle = 'Tū Tama Wāhine o Taranaki'
 
-export default function Home({ korero, kaiwhakaahua }) {
+export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
     const markdownTheme = {
         p: (props) => {
             const { children } = props
@@ -180,6 +181,7 @@ export default function Home({ korero, kaiwhakaahua }) {
                             <GridItem colStart={2} colEnd={7}>
                                 <Box pt={32}>
                                     <ChakraNextImage
+                                        {...img}
                                         src={
                                             kaiwhakaahua.attributes.whakaahua
                                                 .data.attributes.url
@@ -196,9 +198,7 @@ export default function Home({ korero, kaiwhakaahua }) {
                                             kaiwhakaahua.attributes.whakaahua
                                                 .data.attributes.height
                                         }
-                                        blurhash={
-                                            'LMJ7:n?bXTbd9[ITD%xv~q^+M{X9'
-                                        }
+                                        blurhash={blurhash}
                                         sizes={
                                             '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
                                         }
@@ -233,19 +233,25 @@ export default function Home({ korero, kaiwhakaahua }) {
 }
 
 export async function getStaticProps() {
-    const koreroResponse = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/tu-tama-korero`
-    )
-    const kaiwhakaahuaResponse = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/kaiwhakaahua?populate=whakaahua.*`
-    )
+    const [koreroResponse, kaiwhakaahuaResponse] = await Promise.all([
+        fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/tu-tama-korero`),
+        fetch(
+            `${process.env.NEXT_PUBLIC_STRAPI_URL}/kaiwhakaahua?populate=whakaahua.*`
+        )
+    ])
+
     const korero = await koreroResponse.json()
     const kaiwhakaahua = await kaiwhakaahuaResponse.json()
+
+    const imageUrl = kaiwhakaahua.data.attributes.whakaahua.data.attributes.url
+    const { blurhash, img } = await getPlaiceholder(imageUrl)
 
     return {
         props: {
             korero: korero.data,
-            kaiwhakaahua: kaiwhakaahua.data
+            kaiwhakaahua: kaiwhakaahua.data,
+            img,
+            blurhash
         }
     }
 }
