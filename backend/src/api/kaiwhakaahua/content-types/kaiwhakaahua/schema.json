@@ -23,6 +23,14 @@
     },
     "paetukutuku": {
       "type": "string"
+    },
+    "whakaahua": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
