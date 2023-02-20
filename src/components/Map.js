@@ -12,7 +12,7 @@ export default function Map() {
     })
 
     return (
-        <Box h="100vh" w="100vw">
+        <Box h="100%" w="100%">
             <ReactMapGL
                 width="100%"
                 height="100%"
