@@ -1,7 +1,7 @@
-// Refer to the following documentation to get started here: https://visgl.github.io/react-map-gl/docs/get-started/get-started
-
 import Header from '@/components/Header'
 import Layout from '@/components/Layout'
+import MapBox from '@/components/Map'
+import React from 'react'
 import { Box } from '@chakra-ui/react'
 
 export default function Map() {
@@ -9,7 +9,11 @@ export default function Map() {
         <main>
             <Layout>
                 <Header />
-                <Box p="6" id="map"></Box>
+                <Box p="6" id="map">
+                    <Box w="100%" h="100%">
+                        <MapBox />
+                    </Box>
+                </Box>
             </Layout>
         </main>
     )
