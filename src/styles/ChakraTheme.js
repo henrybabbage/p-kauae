@@ -1,4 +1,6 @@
 import { linkTheme } from '@/theme/components/Link'
+import { modalTheme } from '@/theme/components/Modal'
+import { buttonTheme } from '@/theme/components/Button'
 import { extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
@@ -56,7 +58,9 @@ const theme = extendTheme({
         }
     },
     components: {
-        Link: linkTheme
+        Link: linkTheme,
+        Modal: modalTheme,
+        Button: buttonTheme
     }
 })
 
