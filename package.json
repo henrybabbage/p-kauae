@@ -16,6 +16,7 @@
     "@next/font": "13.1.4",
     "@plaiceholder/next": "^2.5.0",
     "chakra-ui-markdown-renderer": "^4.1.0",
+    "date-fns": "^2.29.3",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.4",
     "eslint-config-prettier": "^8.6.0",

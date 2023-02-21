@@ -13,10 +13,12 @@ import {
     ModalOverlay,
     Text
 } from '@chakra-ui/react'
+import { format, parseISO } from 'date-fns'
 import { ChakraNextImage } from './ChakraNextImage'
 
 const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
-    console.log('images', images)
+    const captureDate = wahines[0].attributes.wa_tiki_whakaahua
+    const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
     return (
         <>
             <Modal
@@ -139,7 +141,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
                                     lineHeight={'1.36'}
                                     color={'white'}
                                 >
-                                    {wahines[0].attributes.wa_tiki_whakaahua}
+                                    {formattedDate}
                                 </Text>
                             </GridItem>
                         </Grid>
