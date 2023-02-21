@@ -14,7 +14,7 @@ import {
     Text
 } from '@chakra-ui/react'
 
-const WahineModal = ({ onOpen, onClose, isOpen, wahines, kamera, ta }) => {
+const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
     return (
         <>
             <Modal isOpen={isOpen} onClose={onClose} size={'full'}>
@@ -37,120 +37,115 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, kamera, ta }) => {
                             Back to map
                         </Button>
                     </Flex>
-                    <Flex direction={'column'}>
-                        {wahines.map((wahine, index) => {
-                            return (
-                                <Box key={index}>
-                                    <ModalHeader p={0}>
-                                        <Heading
-                                            fontSize={'36px'}
+                    <Flex direction={'column'} maxW="100vw">
+                        <Box>
+                            <ModalHeader p={0}>
+                                <Heading
+                                    fontSize={'36px'}
+                                    color={'white'}
+                                    fontWeight="regular"
+                                >
+                                    {wahines[0].attributes.ingoa}
+                                </Heading>
+                                <Heading
+                                    fontSize={'36px'}
+                                    color={'white'}
+                                    fontWeight="regular"
+                                >
+                                    {wahines[0].attributes.whakapapa}
+                                </Heading>
+                            </ModalHeader>
+                            <ModalBody p={0}>
+                                <Grid
+                                    templateColumns="repeat(12, 1fr)"
+                                    maxW="100vw"
+                                >
+                                    <GridItem colStart={7} colEnd={13} pt={6}>
+                                        <Text
+                                            fontSize={'18px'}
+                                            lineHeight={'1.36'}
                                             color={'white'}
-                                            fontWeight="regular"
                                         >
-                                            {wahine.attributes.ingoa}
-                                        </Heading>
-                                        <Heading
-                                            fontSize={'36px'}
+                                            {
+                                                wahines[0].attributes
+                                                    .korero_pukauae
+                                            }
+                                        </Text>
+                                        <Text
+                                            fontSize={'18px'}
+                                            lineHeight={'1.36'}
                                             color={'white'}
-                                            fontWeight="regular"
                                         >
-                                            {wahine.attributes.whakapapa}
-                                        </Heading>
-                                    </ModalHeader>
-                                    <ModalBody p={0}>
-                                        <Grid
-                                            templateColumns="repeat(12, 1fr)"
-                                            maxW="100vw"
+                                            {wahines[0].attributes.korero_wahi}
+                                        </Text>
+                                    </GridItem>
+                                    <GridItem colStart={7} colEnd={13} pt={6}>
+                                        <Text
+                                            fontSize={'18px'}
+                                            lineHeight={'1.36'}
+                                            color={'white'}
                                         >
-                                            <GridItem
-                                                colStart={7}
-                                                colEnd={13}
-                                                pt={6}
-                                            >
-                                                <Text
-                                                    fontSize={'18px'}
-                                                    lineHeight={'1.36'}
-                                                    color={'white'}
-                                                >
-                                                    {
-                                                        wahine.attributes
-                                                            .korero_pukauae
-                                                    }
-                                                </Text>
-                                                <Text
-                                                    fontSize={'18px'}
-                                                    lineHeight={'1.36'}
-                                                    color={'white'}
-                                                >
-                                                    {
-                                                        wahine.attributes
-                                                            .korero_wahi
-                                                    }
-                                                </Text>
-                                            </GridItem>
-                                            <GridItem
-                                                colStart={7}
-                                                colEnd={13}
-                                                pt={6}
-                                            >
-                                                <Text
-                                                    fontSize={'18px'}
-                                                    lineHeight={'1.36'}
-                                                    color={'white'}
-                                                >
-                                                    {
-                                                        wahine.attributes
-                                                            .tohunga_ta_moko
-                                                    }
-                                                </Text>
-                                            </GridItem>
-                                            <GridItem
-                                                colStart={7}
-                                                colEnd={13}
-                                                pt={6}
-                                            >
-                                                <Text
-                                                    fontSize={'18px'}
-                                                    lineHeight={'1.36'}
-                                                    color={'white'}
-                                                >
-                                                    {
-                                                        wahine.attributes
-                                                            .wa_tiki_whakaahua
-                                                    }
-                                                </Text>
-                                            </GridItem>
-                                        </Grid>
-                                    </ModalBody>
-                                </Box>
-                            )
-                        })}
+                                            Tohunga ta moko
+                                        </Text>
+                                        <Text
+                                            fontSize={'18px'}
+                                            lineHeight={'1.36'}
+                                            color={'white'}
+                                        >
+                                            {
+                                                wahines[0].attributes
+                                                    .tohunga_ta_moko
+                                            }
+                                        </Text>
+                                    </GridItem>
+                                    <GridItem colStart={7} colEnd={13} pt={6}>
+                                        <Text
+                                            fontSize={'18px'}
+                                            lineHeight={'1.36'}
+                                            color={'white'}
+                                        >
+                                            Capture date
+                                        </Text>
+                                        <Text
+                                            fontSize={'18px'}
+                                            lineHeight={'1.36'}
+                                            color={'white'}
+                                        >
+                                            {
+                                                wahines[0].attributes
+                                                    .wa_tiki_whakaahua
+                                            }
+                                        </Text>
+                                    </GridItem>
+                                </Grid>
+                            </ModalBody>
+                        </Box>
                     </Flex>
-                    <ModalFooter p={0}>
-                        <Grid
-                            templateColumns="repeat(12, 1fr)"
-                            w="100vw"
+                    <ModalFooter p={0} mt={'auto'}>
+                        <Flex
+                            justifyContent={'space-between'}
                             maxW="100vw"
+                            w="100vw"
                         >
-                            <GridItem colStart={7} colEnd={13} pt={6}>
+                            <Box>
                                 <Text
                                     fontSize={'18px'}
                                     lineHeight={'1.36'}
                                     color={'white'}
                                 >
-                                    {kamera.attributes.ingoa}
+                                    Previous wahine
                                 </Text>
-                            </GridItem>
-                            <GridItem colStart={7} colEnd={13} pt={6}>
+                            </Box>
+                            <Box>
                                 <Text
                                     fontSize={'18px'}
                                     lineHeight={'1.36'}
                                     color={'white'}
                                 >
-                                    {ta.attributes.ingoa}
+                                    Next wahine
                                 </Text>
-                            </GridItem>
-                        </Grid>
+                            </Box>
+                        </Flex>
                     </ModalFooter>
                 </ModalContent>
             </Modal>
