@@ -13,8 +13,10 @@ import {
     ModalOverlay,
     Text
 } from '@chakra-ui/react'
+import { ChakraNextImage } from './ChakraNextImage'
 
 const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
+    console.log('images', images)
     return (
         <>
             <Modal isOpen={isOpen} onClose={onClose} size={'full'}>
@@ -59,7 +61,23 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
                                 <Grid
                                     templateColumns="repeat(12, 1fr)"
                                     maxW="100vw"
+                                    gap="10px"
                                 >
+                                    <GridItem colStart={1} colEnd={7} pt={6}>
+                                        <Box>
+                                            <ChakraNextImage
+                                                {...images[0]}
+                                                src={images[0]?.src}
+                                                alt={images[0]?.alternativeText}
+                                                width={images[0]?.width}
+                                                height={images[0]?.height}
+                                                blurhash={images[0]?.blurhash}
+                                                sizes={
+                                                    '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
+                                                }
+                                            />
+                                        </Box>
+                                    </GridItem>
                                     <GridItem colStart={7} colEnd={13} pt={6}>
                                         <Text
                                             fontSize={'18px'}

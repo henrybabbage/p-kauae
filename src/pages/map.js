@@ -28,6 +28,7 @@ export default function Map({ wahines, images }) {
                         onOpen={onOpen}
                         onClose={onClose}
                         wahines={wahines}
+                        images={images}
                     />
                     <Flex justifyContent="center" alignContent="center">
                         <Box w="84vw" h="84vh">
@@ -51,7 +52,7 @@ export async function getStaticProps() {
     const wahines = await wahinesResponse.json()
     const wahinesImages = await wahinesImagesResponse.json()
 
-    const urls = wahinesImages.data.map(
+    const urls = wahinesImages?.data.map(
         (wahinesImages) =>
             wahinesImages?.attributes?.whakaahua?.data?.attributes?.url
     )
@@ -61,7 +62,8 @@ export async function getStaticProps() {
             const { blurhash, img } = await getPlaiceholder(src)
             return {
                 ...img,
-                blurhash
+                blurhash,
+                alernativeText: 'Wahine portrait'
             }
         })
     ).then((values) => values)
