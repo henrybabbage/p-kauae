@@ -4,8 +4,14 @@ import MapBox from '@/components/Map'
 import WahineModal from '@/components/WahineModal'
 import { Box, Button, Flex, useDisclosure } from '@chakra-ui/react'
 
-export default function Map({ wahines, kamera, ta }) {
+export default function Map({ wahines, wahinesImages }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const urls = wahinesImages.map(
+        (wahinesImages) =>
+            wahinesImages?.attributes?.whakaahua?.data?.attributes?.url
+    )
+
     return (
         <main>
             <Layout>
@@ -27,8 +33,6 @@ export default function Map({ wahines, kamera, ta }) {
                         onOpen={onOpen}
                         onClose={onClose}
                         wahines={wahines}
-                        kamera={kamera}
-                        ta={ta}
                     />
                     <Flex justifyContent="center" alignContent="center">
                         <Box w="84vw" h="84vh">
@@ -42,15 +46,31 @@ export default function Map({ wahines, kamera, ta }) {
 }
 
 export async function getStaticProps() {
-    const [wahinesResponse, kameraResponse, taResponse] = await Promise.all([
-        fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/wahines?populate=*`),
-        fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/kamera`),
-        fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/ta`)
+    const [wahinesResponse, wahinesImagesResponse] = await Promise.all([
+        fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/wahines`),
+        fetch(
+            `${process.env.NEXT_PUBLIC_STRAPI_URL}/wahines?populate=whakaahua.*`
+        )
     ])
 
     const wahines = await wahinesResponse.json()
-    const kamera = await kameraResponse.json()
-    const ta = await taResponse.json()
+    const wahinesImages = await wahinesImagesResponse.json()
+
+    const urls = wahinesImages.map(
+        (wahinesImages) =>
+            wahinesImages?.attributes?.whakaahua?.data?.attributes?.url
+    )
+
+    // urls
+    //     .map(async (src) => {
+    //         const { blurhash, img } = await getPlaiceholder(src)
+    //         return {
+    //             ...img,
+    //             alt: 'Wahine portrait',
+    //             blurhash
+    //         }
+    //     })
+    //     .then((values) => values)
 
     if (!wahines) {
         return {
@@ -61,8 +81,7 @@ export async function getStaticProps() {
     return {
         props: {
             wahines: wahines.data,
-            kamera: kamera.data,
-            ta: ta.data
+            wahinesImages: wahinesImages.data
         }
     }
 }
