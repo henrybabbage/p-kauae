@@ -10,6 +10,7 @@ const baseStyle = definePartsStyle({
         bg: 'blackAlpha.200' // change the background
     },
     dialog: {
+        fontFamily: 'var(--chakra-fonts-primary)',
         borderRadius: '4px',
         bg: `grey`
     }

@@ -11,9 +11,9 @@ const theme = extendTheme({
         charcoal: '#231F20'
     },
     fonts: {
-        primary: `"UntitledSans_Regular", sans-serif`,
+        special: `"UntitledSans_Regular", sans-serif`,
         secondary: `"UntitledSerif_Regular", serif`,
-        special: `"GTZirkon", sans-serif`
+        primary: `"GTZirkon_Regular", sans-serif`
     },
     fontSizes: {
         sm: '18px',
@@ -40,7 +40,7 @@ const theme = extendTheme({
             lineHeight: '90%'
         },
         p: {
-            fontFamily: 'var(--chakra-fonts-secondary)',
+            fontFamily: 'var(--chakra-fonts-primary)',
             fontSize: ['26px', '36px'],
             fontWeight: '700',
             lineHeight: '90%'

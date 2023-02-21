@@ -19,17 +19,17 @@ export default function Map({ wahines, images }) {
                         bottom={6}
                         onClick={onOpen}
                     >
-                        Open
+                        Modal
                     </Button>
                 </Flex>
+                <WahineModal
+                    isOpen={isOpen}
+                    onOpen={onOpen}
+                    onClose={onClose}
+                    wahines={wahines}
+                    images={images}
+                />
                 <Box pt="14" pb="12" id="map" w="100vw" h="100vh">
-                    <WahineModal
-                        isOpen={isOpen}
-                        onOpen={onOpen}
-                        onClose={onClose}
-                        wahines={wahines}
-                        images={images}
-                    />
                     <Flex justifyContent="center" alignContent="center">
                         <Box w="84vw" h="84vh">
                             <MapBox />

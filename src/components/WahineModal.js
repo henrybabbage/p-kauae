@@ -19,9 +19,15 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
     console.log('images', images)
     return (
         <>
-            <Modal isOpen={isOpen} onClose={onClose} size={'full'}>
+            <Modal
+                isOpen={isOpen}
+                onClose={onClose}
+                size={'full'}
+                scrollBehavior={'inside'}
+                motionPreset="slideInBottom"
+            >
                 <ModalOverlay />
-                <ModalContent maxW="100vw" maxH="100vh" p={6}>
+                <ModalContent maxW="100vw" p={6}>
                     <Flex
                         justifyContent={'space-between'}
                         alignContent={'start'}
@@ -39,106 +45,105 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
                             Back to map
                         </Button>
                     </Flex>
-                    <Flex direction={'column'} maxW="100vw">
-                        <Box>
-                            <ModalHeader p={0}>
-                                <Heading
-                                    fontSize={'36px'}
+                    <ModalHeader p={0}>
+                        <Heading
+                            fontSize={'36px'}
+                            color={'white'}
+                            fontWeight="regular"
+                        >
+                            {wahines[0].attributes.ingoa}
+                        </Heading>
+                        <Heading
+                            fontSize={'36px'}
+                            color={'white'}
+                            fontWeight="regular"
+                        >
+                            {wahines[0].attributes.whakapapa}
+                        </Heading>
+                    </ModalHeader>
+                    <ModalBody
+                        p={0}
+                        overflow="scroll"
+                        sx={{
+                            '-webkit-scrollbar': {
+                                display: 'none'
+                            },
+                            '::-ms-overflow-style': {
+                                display: 'none'
+                            },
+                            'scrollbar-width': 'none'
+                        }}
+                    >
+                        <Grid
+                            templateColumns="repeat(12, 1fr)"
+                            maxW="100vw"
+                            columnGap="40px"
+                        >
+                            <GridItem colStart={1} colEnd={7} pt={6}>
+                                <Box>
+                                    <ChakraNextImage
+                                        {...images[0]}
+                                        src={images[0]?.src}
+                                        alt={images[0]?.alternativeText}
+                                        width={images[0]?.width}
+                                        height={images[0]?.height}
+                                        blurhash={images[0]?.blurhash}
+                                        sizes={
+                                            '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
+                                        }
+                                    />
+                                </Box>
+                            </GridItem>
+                            <GridItem colStart={7} colEnd={13} pt={6}>
+                                <Text
+                                    fontSize={'18px'}
+                                    lineHeight={'1.36'}
                                     color={'white'}
-                                    fontWeight="regular"
                                 >
-                                    {wahines[0].attributes.ingoa}
-                                </Heading>
-                                <Heading
-                                    fontSize={'36px'}
+                                    {wahines[0].attributes.korero_pukauae}
+                                </Text>
+                                <Text
+                                    fontSize={'18px'}
+                                    lineHeight={'1.36'}
                                     color={'white'}
-                                    fontWeight="regular"
                                 >
-                                    {wahines[0].attributes.whakapapa}
-                                </Heading>
-                            </ModalHeader>
-                            <ModalBody p={0}>
-                                <Grid
-                                    templateColumns="repeat(12, 1fr)"
-                                    maxW="100vw"
-                                    gap="10px"
+                                    {wahines[0].attributes.korero_wahi}
+                                </Text>
+                            </GridItem>
+                            <GridItem colStart={7} colEnd={13} pt={6}>
+                                <Text
+                                    fontSize={'18px'}
+                                    lineHeight={'1.36'}
+                                    color={'white'}
                                 >
-                                    <GridItem colStart={1} colEnd={7} pt={6}>
-                                        <Box>
-                                            <ChakraNextImage
-                                                {...images[0]}
-                                                src={images[0]?.src}
-                                                alt={images[0]?.alternativeText}
-                                                width={images[0]?.width}
-                                                height={images[0]?.height}
-                                                blurhash={images[0]?.blurhash}
-                                                sizes={
-                                                    '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
-                                                }
-                                            />
-                                        </Box>
-                                    </GridItem>
-                                    <GridItem colStart={7} colEnd={13} pt={6}>
-                                        <Text
-                                            fontSize={'18px'}
-                                            lineHeight={'1.36'}
-                                            color={'white'}
-                                        >
-                                            {
-                                                wahines[0].attributes
-                                                    .korero_pukauae
-                                            }
-                                        </Text>
-                                        <Text
-                                            fontSize={'18px'}
-                                            lineHeight={'1.36'}
-                                            color={'white'}
-                                        >
-                                            {wahines[0].attributes.korero_wahi}
-                                        </Text>
-                                    </GridItem>
-                                    <GridItem colStart={7} colEnd={13} pt={6}>
-                                        <Text
-                                            fontSize={'18px'}
-                                            lineHeight={'1.36'}
-                                            color={'white'}
-                                        >
-                                            Tohunga ta moko
-                                        </Text>
-                                        <Text
-                                            fontSize={'18px'}
-                                            lineHeight={'1.36'}
-                                            color={'white'}
-                                        >
-                                            {
-                                                wahines[0].attributes
-                                                    .tohunga_ta_moko
-                                            }
-                                        </Text>
-                                    </GridItem>
-                                    <GridItem colStart={7} colEnd={13} pt={6}>
-                                        <Text
-                                            fontSize={'18px'}
-                                            lineHeight={'1.36'}
-                                            color={'white'}
-                                        >
-                                            Capture date
-                                        </Text>
-                                        <Text
-                                            fontSize={'18px'}
-                                            lineHeight={'1.36'}
-                                            color={'white'}
-                                        >
-                                            {
-                                                wahines[0].attributes
-                                                    .wa_tiki_whakaahua
-                                            }
-                                        </Text>
-                                    </GridItem>
-                                </Grid>
-                            </ModalBody>
-                        </Box>
-                    </Flex>
+                                    Tohunga ta moko
+                                </Text>
+                                <Text
+                                    fontSize={'18px'}
+                                    lineHeight={'1.36'}
+                                    color={'white'}
+                                >
+                                    {wahines[0].attributes.tohunga_ta_moko}
+                                </Text>
+                            </GridItem>
+                            <GridItem colStart={7} colEnd={13} pt={6}>
+                                <Text
+                                    fontSize={'18px'}
+                                    lineHeight={'1.36'}
+                                    color={'white'}
+                                >
+                                    Capture date
+                                </Text>
+                                <Text
+                                    fontSize={'18px'}
+                                    lineHeight={'1.36'}
+                                    color={'white'}
+                                >
+                                    {wahines[0].attributes.wa_tiki_whakaahua}
+                                </Text>
+                            </GridItem>
+                        </Grid>
+                    </ModalBody>
                     <ModalFooter p={0} mt={'auto'}>
                         <Flex
                             justifyContent={'space-between'}
@@ -146,22 +151,14 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
                             w="100vw"
                         >
                             <Box>
-                                <Text
-                                    fontSize={'18px'}
-                                    lineHeight={'1.36'}
-                                    color={'white'}
-                                >
-                                    Previous wahine
-                                </Text>
+                                <Button variant={'callToAction'}>
+                                    {'←'} {'Previous wahine'}
+                                </Button>
                             </Box>
                             <Box>
-                                <Text
-                                    fontSize={'18px'}
-                                    lineHeight={'1.36'}
-                                    color={'white'}
-                                >
-                                    Next wahine
-                                </Text>
+                                <Button variant={'callToAction'}>
+                                    {'Next wahine'} {'→'}
+                                </Button>
                             </Box>
                         </Flex>
                     </ModalFooter>
