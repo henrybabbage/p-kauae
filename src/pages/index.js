@@ -1,15 +1,12 @@
 import Header from '@/components/Header'
 import Layout from '@/components/Layout'
 import { Box, Flex, Grid, GridItem, Text } from '@chakra-ui/react'
-import Head from 'next/head'
 
 import { ChakraNextImage } from '@/components/ChakraNextImage'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import { getPlaiceholder } from 'plaiceholder'
 import ReactMarkdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
-
-export const siteTitle = 'Tū Tama Wāhine o Taranaki'
 
 export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
     const markdownTheme = {
@@ -38,27 +35,6 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
 
     return (
         <>
-            <Head>
-                <title>{siteTitle}</title>
-                <meta
-                    name="description"
-                    content="Website for the Pūkauae Photographic exhibition"
-                />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link rel="icon" href="data:," />
-                <meta
-                    name="description"
-                    content="Tū Tama Wāhine o Taranaki is a tangata whenua development and liberation organisation."
-                />
-                <meta
-                    name="author"
-                    content="Henry Babbage, Luke Enoka, Rere-No-A-Rangi, Blaine Western"
-                />
-                <meta name="keywords" content="art" />
-            </Head>
             <main>
                 <Layout>
                     <Header />
