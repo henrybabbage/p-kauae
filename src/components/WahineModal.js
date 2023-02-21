@@ -104,45 +104,60 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
                                 >
                                     {wahines[0].attributes.korero_pukauae}
                                 </Text>
-                                <Text
-                                    fontSize={'18px'}
-                                    lineHeight={'1.36'}
-                                    color={'white'}
-                                >
-                                    {wahines[0].attributes.korero_wahi}
-                                </Text>
-                            </GridItem>
-                            <GridItem colStart={7} colEnd={13} pt={6}>
-                                <Text
-                                    fontSize={'18px'}
-                                    lineHeight={'1.36'}
-                                    color={'white'}
-                                >
-                                    Tohunga ta moko
-                                </Text>
-                                <Text
-                                    fontSize={'18px'}
-                                    lineHeight={'1.36'}
-                                    color={'white'}
-                                >
-                                    {wahines[0].attributes.tohunga_ta_moko}
-                                </Text>
-                            </GridItem>
-                            <GridItem colStart={7} colEnd={13} pt={6}>
-                                <Text
-                                    fontSize={'18px'}
-                                    lineHeight={'1.36'}
-                                    color={'white'}
-                                >
-                                    Capture date
-                                </Text>
-                                <Text
-                                    fontSize={'18px'}
-                                    lineHeight={'1.36'}
-                                    color={'white'}
-                                >
-                                    {formattedDate}
-                                </Text>
+                                <Box pt={6}>
+                                    <Text
+                                        fontSize={'18px'}
+                                        lineHeight={'1.36'}
+                                        color={'white'}
+                                    >
+                                        Photograph location:{' '}
+                                        {
+                                            wahines[0].attributes.wahi.data
+                                                .attributes.ingoa
+                                        }
+                                    </Text>
+                                </Box>
+                                <Box pt={6}>
+                                    <Text
+                                        fontSize={'18px'}
+                                        lineHeight={'1.36'}
+                                        color={'white'}
+                                    >
+                                        {wahines[0].attributes.korero_wahi}
+                                    </Text>
+                                </Box>
+                                <Box pt={6}>
+                                    <Text
+                                        fontSize={'18px'}
+                                        lineHeight={'1.36'}
+                                        color={'white'}
+                                    >
+                                        Tohunga ta moko
+                                    </Text>
+                                    <Text
+                                        fontSize={'18px'}
+                                        lineHeight={'1.36'}
+                                        color={'white'}
+                                    >
+                                        {wahines[0].attributes.tohunga_ta_moko}
+                                    </Text>
+                                </Box>
+                                <Box pt={6}>
+                                    <Text
+                                        fontSize={'18px'}
+                                        lineHeight={'1.36'}
+                                        color={'white'}
+                                    >
+                                        Capture date
+                                    </Text>
+                                    <Text
+                                        fontSize={'18px'}
+                                        lineHeight={'1.36'}
+                                        color={'white'}
+                                    >
+                                        {formattedDate}
+                                    </Text>
+                                </Box>
                             </GridItem>
                         </Grid>
                     </ModalBody>

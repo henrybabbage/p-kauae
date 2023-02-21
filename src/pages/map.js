@@ -43,9 +43,11 @@ export default function Map({ wahines, images }) {
 
 export async function getStaticProps() {
     const [wahinesResponse, wahinesImagesResponse] = await Promise.all([
-        fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/wahines`),
         fetch(
-            `${process.env.NEXT_PUBLIC_STRAPI_URL}/wahines?populate=whakaahua.*`
+            `${process.env.NEXT_PUBLIC_STRAPI_URL}/wahines?populate[0]=kiriata&populate[1]=wahi`
+        ),
+        fetch(
+            `${process.env.NEXT_PUBLIC_STRAPI_URL}/wahines?populate[0]=whakaahua`
         )
     ])
 
