@@ -3,15 +3,10 @@ import Layout from '@/components/Layout'
 import MapBox from '@/components/Map'
 import WahineModal from '@/components/WahineModal'
 import { Box, Button, Flex, useDisclosure } from '@chakra-ui/react'
+import { getPlaiceholder } from 'plaiceholder'
 
-export default function Map({ wahines, wahinesImages }) {
+export default function Map({ wahines, images }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
-
-    const urls = wahinesImages.map(
-        (wahinesImages) =>
-            wahinesImages?.attributes?.whakaahua?.data?.attributes?.url
-    )
-
     return (
         <main>
             <Layout>
@@ -56,21 +51,20 @@ export async function getStaticProps() {
     const wahines = await wahinesResponse.json()
     const wahinesImages = await wahinesImagesResponse.json()
 
-    const urls = wahinesImages.map(
+    const urls = wahinesImages.data.map(
         (wahinesImages) =>
             wahinesImages?.attributes?.whakaahua?.data?.attributes?.url
     )
 
-    // urls
-    //     .map(async (src) => {
-    //         const { blurhash, img } = await getPlaiceholder(src)
-    //         return {
-    //             ...img,
-    //             alt: 'Wahine portrait',
-    //             blurhash
-    //         }
-    //     })
-    //     .then((values) => values)
+    const images = await Promise.all(
+        urls.map(async (src) => {
+            const { blurhash, img } = await getPlaiceholder(src)
+            return {
+                ...img,
+                blurhash
+            }
+        })
+    ).then((values) => values)
 
     if (!wahines) {
         return {
@@ -81,7 +75,7 @@ export async function getStaticProps() {
     return {
         props: {
             wahines: wahines.data,
-            wahinesImages: wahinesImages.data
+            images
         }
     }
 }

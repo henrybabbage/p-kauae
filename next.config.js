@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const { withPlaiceholder } = require('@plaiceholder/next')
+
 const nextConfig = {
     i18n: {
         locales: ['en'],
@@ -28,4 +30,4 @@ const nextConfig = {
     }
 }
 
-module.exports = nextConfig
+module.exports = withPlaiceholder({ ...nextConfig })
