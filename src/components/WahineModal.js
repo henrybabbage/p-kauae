@@ -15,6 +15,7 @@ import {
 } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
 import { ChakraNextImage } from './ChakraNextImage'
+import VideoPlayer from './VideoPlayer'
 
 const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
     const captureDate = wahines[0].attributes.wa_tiki_whakaahua
@@ -48,20 +49,23 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
                         </Button>
                     </Flex>
                     <ModalHeader p={0}>
-                        <Heading
-                            fontSize={'36px'}
-                            color={'white'}
-                            fontWeight="regular"
-                        >
-                            {wahines[0].attributes.ingoa}
-                        </Heading>
-                        <Heading
-                            fontSize={'36px'}
-                            color={'white'}
-                            fontWeight="regular"
-                        >
-                            {wahines[0].attributes.whakapapa}
-                        </Heading>
+                        <Flex alignItems={'baseline'}>
+                            <Heading
+                                fontSize={'36px'}
+                                color={'white'}
+                                fontWeight="regular"
+                            >
+                                {wahines[0].attributes.ingoa}
+                            </Heading>
+                            <Heading
+                                fontSize={'16px'}
+                                color={'white'}
+                                fontWeight="regular"
+                                ml={2}
+                            >
+                                {wahines[0].attributes.whakapapa}
+                            </Heading>
+                        </Flex>
                     </ModalHeader>
                     <ModalBody
                         p={0}
@@ -81,6 +85,18 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
                             maxW="100vw"
                             columnGap="40px"
                         >
+                            <GridItem colStart={1} colEnd={13} pt={6}>
+                                <VideoPlayer
+                                    src={
+                                        wahines[0].attributes.kiriata.data[0]
+                                            .attributes.url
+                                    }
+                                    alt={
+                                        wahines[0].attributes.kiriata.data[0]
+                                            .attributes.alternativeText
+                                    }
+                                />
+                            </GridItem>
                             <GridItem colStart={1} colEnd={7} pt={6}>
                                 <Box>
                                     <ChakraNextImage
