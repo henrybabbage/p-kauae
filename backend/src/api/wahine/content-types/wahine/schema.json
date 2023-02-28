@@ -57,6 +57,16 @@
       "relation": "manyToOne",
       "target": "api::wahi.wahi",
       "inversedBy": "wahines"
+    },
+    "kiriata_whakaahua": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

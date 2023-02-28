@@ -17,7 +17,7 @@ import { format, parseISO } from 'date-fns'
 import { ChakraNextImage } from './ChakraNextImage'
 import VideoPlayer from './VideoPlayer'
 
-const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
+const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
     const captureDate = wahines[0].attributes.wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
     return (
@@ -48,25 +48,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
                             Back to map
                         </Button>
                     </Flex>
-                    <ModalHeader p={0}>
-                        <Flex alignItems={'baseline'}>
-                            <Heading
-                                fontSize={'36px'}
-                                color={'white'}
-                                fontWeight="regular"
-                            >
-                                {wahines[0].attributes.ingoa}
-                            </Heading>
-                            <Heading
-                                fontSize={'16px'}
-                                color={'white'}
-                                fontWeight="regular"
-                                ml={2}
-                            >
-                                {wahines[0].attributes.whakapapa}
-                            </Heading>
-                        </Flex>
-                    </ModalHeader>
+                    <ModalHeader p={0}></ModalHeader>
                     <ModalBody
                         p={0}
                         overflow="scroll"
@@ -77,7 +59,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
                             '::-ms-overflow-style': {
                                 display: 'none'
                             },
-                            'scrollbar-width': 'none'
+                            scrollbarWidth: 'none'
                         }}
                     >
                         <Grid
@@ -95,7 +77,25 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images }) => {
                                         wahines[0].attributes.kiriata.data[0]
                                             .attributes.alternativeText
                                     }
+                                    poster={null}
                                 />
+                                <Flex alignItems={'baseline'} pt={6}>
+                                    <Heading
+                                        fontSize={'36px'}
+                                        color={'white'}
+                                        fontWeight="regular"
+                                    >
+                                        {wahines[0].attributes.ingoa}
+                                    </Heading>
+                                    <Heading
+                                        fontSize={'16px'}
+                                        color={'white'}
+                                        fontWeight="regular"
+                                        ml={2}
+                                    >
+                                        {wahines[0].attributes.whakapapa}
+                                    </Heading>
+                                </Flex>
                             </GridItem>
                             <GridItem colStart={1} colEnd={7} pt={6}>
                                 <Box>

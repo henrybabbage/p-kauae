@@ -4,10 +4,12 @@ export default function VideoPlayer({ src, alt, poster }) {
     return (
         <AspectRatio maxW="100vw" ratio={16 / 9}>
             <Box
+                cursor={'crosshair'}
                 as="video"
-                autoplay
+                controls
+                autoPlay
                 src={src}
-                // poster={poster}
+                poster={poster}
                 alt={alt}
                 objectFit="contain"
                 sx={{
