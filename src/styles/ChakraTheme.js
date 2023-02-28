@@ -1,19 +1,27 @@
+import { buttonTheme } from '@/theme/components/Button'
 import { linkTheme } from '@/theme/components/Link'
 import { modalTheme } from '@/theme/components/Modal'
-import { buttonTheme } from '@/theme/components/Button'
-import { extendTheme } from '@chakra-ui/react'
+import { theme as base, extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
-    global: {},
+    global: {
+        body: {
+            bg: 'var(--chakra-colors-theme-grey)',
+            color: 'white'
+        }
+    },
     colors: {
-        pink: '#C3918F',
-        grey: '#404041',
-        charcoal: '#231F20'
+        pink: {
+            200: '#C3918F'
+        },
+        grey: {
+            600: '#404041',
+            800: '#231F20'
+        }
     },
     fonts: {
-        special: `"UntitledSans_Regular", sans-serif`,
-        secondary: `"UntitledSerif_Regular", serif`,
-        primary: `"GTZirkon_Regular", sans-serif`
+        body: `"GTPlanar_Regular", ${base.fonts.body}, sans-serif`,
+        heading: `"GTZirkon_Bold", ${base.fonts.heading}, sans-serif`
     },
     fontSizes: {
         sm: '18px',
@@ -22,25 +30,25 @@ const theme = extendTheme({
     },
     textStyles: {
         primary: {
-            fontFamily: 'var(--chakra-fonts-primary)'
+            fontFamily: 'var(--chakra-fonts-body)'
         },
         secondary: {
-            fontFamily: 'var(--chakra-fonts-secondary)'
+            fontFamily: 'var(--chakra-fonts-heading)'
         },
         h1: {
-            fontFamily: 'var(--chakra-fonts-secondary)',
-            fontSize: ['18px', '20px'],
+            fontFamily: 'var(--chakra-fonts-heading)',
+            fontSize: ['30px', '72px'],
             fontWeight: '700',
             lineHeight: '90%'
         },
         h2: {
-            fontFamily: 'var(--chakra-fonts-secondary)',
-            fontSize: ['18px', '20px'],
+            fontFamily: 'var(--chakra-fonts-heading)',
+            fontSize: ['30px', '72px'],
             fontWeight: '700',
             lineHeight: '90%'
         },
         p: {
-            fontFamily: 'var(--chakra-fonts-primary)',
+            fontFamily: 'var(--chakra-fonts-body)',
             fontSize: ['26px', '36px'],
             fontWeight: '700',
             lineHeight: '90%'

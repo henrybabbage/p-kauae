@@ -1,6 +1,6 @@
 import Header from '@/components/Header'
 import Layout from '@/components/Layout'
-import { Box, Flex, Grid, GridItem, Text } from '@chakra-ui/react'
+import { Box, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react'
 
 import { ChakraNextImage } from '@/components/ChakraNextImage'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
@@ -13,7 +13,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
         p: (props) => {
             const { children } = props
             return (
-                <Text fontSize={'36px'} lineHeight={'1.36'}>
+                <Text fontSize={'36px'} lineHeight={'1.36'} color="white">
                     {children}
                 </Text>
             )
@@ -21,7 +21,15 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
         blockquote: (props) => {
             const { children } = props
             return (
-                <Box as="blockquote" color="#C3918F" my="78px">
+                <Box
+                    as="blockquote"
+                    color="pink.200"
+                    my="78px"
+                    fontSize={'72px'}
+                    fontFamily={'heading'}
+                    lineHeight={'1'}
+                    textAlign={'center'}
+                >
                     {children}
                 </Box>
             )
@@ -38,7 +46,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
             <main>
                 <Layout>
                     <Header />
-                    <Box p="6" id="about">
+                    <Box p="6" id="about" bg="grey.600">
                         <Grid templateColumns="repeat(12, 1fr)">
                             <GridItem colStart={2} colEnd={12}>
                                 <Flex
@@ -48,16 +56,14 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         'calc(100vh - var(--chakra-sizes-12))'
                                     }
                                 >
-                                    <ReactMarkdown
-                                        remarkPlugins={[remarkBreaks]}
-                                        components={ChakraUIRenderer(
-                                            markdownTheme
-                                        )}
-                                        children={
-                                            korero.attributes.tuhinga_timatanga
-                                        }
-                                        skipHtml
-                                    />
+                                    <Heading
+                                        fontSize={'84px'}
+                                        lineHeight={'1'}
+                                        textAlign={'center'}
+                                        color="white"
+                                    >
+                                        {korero.attributes.tuhinga_timatanga}
+                                    </Heading>
                                 </Flex>
                             </GridItem>
                             <GridItem colStart={2} colEnd={12} pt="6" pb="6">
@@ -71,7 +77,8 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                     <Text
                                         fontSize={'36px'}
                                         lineHeight={'1.36'}
-                                        align="left"
+                                        textAlign="left"
+                                        color="white"
                                     >
                                         Acknowledgements
                                     </Text>
@@ -94,7 +101,8 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                     <Text
                                         fontSize={'36px'}
                                         lineHeight={'1.36'}
-                                        align="left"
+                                        textAlign="left"
+                                        color="white"
                                     >
                                         A special thanks to
                                     </Text>
@@ -102,7 +110,8 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         <Text
                                             fontSize={'36px'}
                                             lineHeight={'1.36'}
-                                            align="left"
+                                            textAlign="left"
+                                            color="white"
                                             key={index}
                                         >
                                             {name}
@@ -119,7 +128,8 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                     <Text
                                         fontSize={'36px'}
                                         lineHeight={'1.36'}
-                                        align="left"
+                                        textAlign="left"
+                                        color="white"
                                         visibility="hidden"
                                     >
                                         Heading space
@@ -128,7 +138,8 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         <Text
                                             fontSize={'36px'}
                                             lineHeight={'1.36'}
-                                            align="left"
+                                            textAlign="left"
+                                            color="white"
                                             key={index}
                                         >
                                             {name}
@@ -149,7 +160,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                             </GridItem>
                         </Grid>
                     </Box>
-                    <Box p="6" id="photographer">
+                    <Box p="6" id="photographer" bg="grey.600">
                         <Grid
                             templateColumns="repeat(12, 1fr)"
                             h={'calc(100vh - var(--chakra-sizes-12))'}
@@ -186,7 +197,8 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                     pt={32}
                                     fontSize={'36px'}
                                     lineHeight={'1.36'}
-                                    align="left"
+                                    textAlign="left"
+                                    color="white"
                                 >
                                     <Text>{kaiwhakaahua.attributes.ingoa}</Text>
                                     <Text>
