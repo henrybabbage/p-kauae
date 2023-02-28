@@ -24,3 +24,9 @@ a {
   text-decoration: none;
   appearance: none;
 }
+
+blockquote > p {
+    font-size: 72px !important;
+    line-height: 1 !important;
+    color: #C3918F !important;
+}

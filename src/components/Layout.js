@@ -23,17 +23,11 @@ const Layout = ({ children }) => {
                 />
                 <meta
                     name="author"
-                    content="Henry Babbage, Luke Enoka, Rere-No-A-Rangi, Blaine Western"
+                    content="Henry Babbage, Luke Enoka, Rere-No-A-Rangi Pope, Blaine Western"
                 />
                 <meta name="keywords" content="art" />
             </Head>
-            <Box
-                bg="white"
-                w="100vw"
-                h="100vh"
-                display="flex"
-                flexDirection="column"
-            >
+            <Box w="100vw" h="100vh" display="flex" flexDirection="column">
                 {children}
             </Box>
         </>
