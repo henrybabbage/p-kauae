@@ -10,7 +10,7 @@ const callToAction = defineStyle({
     width: 'inherit',
     fontWeight: 'regular',
     fontSize: 'xl',
-    fontFamily: 'primary',
+    fontFamily: 'body',
     color: 'white',
     transition: 'transform 0.15s ease-out',
     _hover: {

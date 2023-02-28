@@ -50,6 +50,22 @@ const Fonts = () => (
             font-style: normal;
             font-weight: 700;
         }
+
+        @font-face {
+            font-family: "GTPlanar_Regular";
+            src: url("fonts/GTPlanar/GTPlanar_Regular.woff2") format("woff2"),
+            url("fonts/GTPlanar/GTPlanar_Regular.woff") format("woff");
+            font-style: normal;
+            font-weight: 400;
+        }
+        
+        @font-face {
+            font-family: "GTPlanar_Bold";
+            src: url("fonts/GTPlanar/GTPlanar_Bold.woff2") format("woff2"),
+            url("fonts/GTPlanar/GTPlanar_Bold.woff") format("woff");
+            font-style: normal;
+            font-weight: 700;
+        }
 	`}
     />
 )

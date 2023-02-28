@@ -6,7 +6,7 @@ export default function Header() {
         <div>
             <Flex
                 as="nav"
-                backgroundColor="rgba(255, 255, 255, 0.8)"
+                backgroundColor="CC404041"
                 backdropFilter="saturate(180%) blur(4px)"
                 position="fixed"
                 w="100%"

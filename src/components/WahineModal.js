@@ -4,6 +4,7 @@ import {
     Flex,
     Grid,
     GridItem,
+    HStack,
     Heading,
     Modal,
     ModalBody,
@@ -30,7 +31,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                 motionPreset="slideInBottom"
             >
                 <ModalOverlay />
-                <ModalContent maxW="100vw" p={6}>
+                <ModalContent maxW="100vw" p={6} bg="grey.600">
                     <Flex
                         justifyContent={'space-between'}
                         alignContent={'start'}
@@ -82,15 +83,17 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                 <Flex alignItems={'baseline'} pt={6}>
                                     <Heading
                                         fontSize={'36px'}
-                                        color={'white'}
+                                        color={'pink.200'}
                                         fontWeight="regular"
+                                        fontFamily={'heading'}
                                     >
                                         {wahines[0].attributes.ingoa}
                                     </Heading>
                                     <Heading
                                         fontSize={'16px'}
-                                        color={'white'}
+                                        color={'pink.200'}
                                         fontWeight="regular"
+                                        fontFamily={'heading'}
                                         ml={2}
                                     >
                                         {wahines[0].attributes.whakapapa}
@@ -98,7 +101,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                 </Flex>
                             </GridItem>
                             <GridItem colStart={1} colEnd={7} pt={6}>
-                                <Box>
+                                <Flex direction={'column'}>
                                     <ChakraNextImage
                                         {...images[0]}
                                         src={images[0]?.src}
@@ -110,7 +113,14 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                             '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
                                         }
                                     />
-                                </Box>
+                                    <Flex justifyContent={'end'}>
+                                        <Box pt={'2'}>
+                                            <Button variant={'callToAction'}>
+                                                {'Enlarge'} {'+'}
+                                            </Button>
+                                        </Box>
+                                    </Flex>
+                                </Flex>
                             </GridItem>
                             <GridItem colStart={7} colEnd={13} pt={6}>
                                 <Text
@@ -121,17 +131,25 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                     {wahines[0].attributes.korero_pukauae}
                                 </Text>
                                 <Box pt={6}>
-                                    <Text
-                                        fontSize={'18px'}
-                                        lineHeight={'1.36'}
-                                        color={'white'}
-                                    >
-                                        Photograph location:{' '}
-                                        {
-                                            wahines[0].attributes.wahi.data
-                                                .attributes.ingoa
-                                        }
-                                    </Text>
+                                    <HStack>
+                                        <Text
+                                            fontSize={'18px'}
+                                            lineHeight={'1.36'}
+                                            color={'pink.200'}
+                                        >
+                                            Photograph location:{' '}
+                                        </Text>
+                                        <Text
+                                            fontSize={'18px'}
+                                            lineHeight={'1.36'}
+                                            color={'white'}
+                                        >
+                                            {
+                                                wahines[0].attributes.wahi.data
+                                                    .attributes.ingoa
+                                            }
+                                        </Text>
+                                    </HStack>
                                 </Box>
                                 <Box pt={6}>
                                     <Text
@@ -146,7 +164,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                     <Text
                                         fontSize={'18px'}
                                         lineHeight={'1.36'}
-                                        color={'white'}
+                                        color={'pink.200'}
                                     >
                                         Tohunga ta moko
                                     </Text>
@@ -162,7 +180,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                     <Text
                                         fontSize={'18px'}
                                         lineHeight={'1.36'}
-                                        color={'white'}
+                                        color={'pink.200'}
                                     >
                                         Capture date
                                     </Text>
