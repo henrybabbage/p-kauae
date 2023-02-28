@@ -15,12 +15,24 @@ import {
     Text
 } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
+import { useState } from 'react'
 import { ChakraNextImage } from './ChakraNextImage'
 import VideoPlayer from './VideoPlayer'
 
 const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
     const captureDate = wahines[0].attributes.wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
+
+    const [index, setIndex] = useState(0)
+
+    function handleNextClick() {
+        setIndex((index) => (index + 1) % wahines.length)
+    }
+
+    function handlePreviousClick() {
+        setIndex((index) => (index - 1) % wahines.length)
+    }
+
     return (
         <>
             <Modal
@@ -69,46 +81,52 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                             columnGap="40px"
                         >
                             <GridItem colStart={1} colEnd={13} pt={6}>
-                                <VideoPlayer
-                                    src={
-                                        wahines[0].attributes.kiriata.data[0]
-                                            .attributes.url
-                                    }
-                                    alt={
-                                        wahines[0].attributes.kiriata.data[0]
-                                            .attributes.alternativeText
-                                    }
-                                    poster={null}
-                                />
-                                <Flex alignItems={'baseline'} pt={6}>
-                                    <Heading
-                                        fontSize={'36px'}
-                                        color={'pink.200'}
-                                        fontWeight="regular"
-                                        fontFamily={'heading'}
-                                    >
-                                        {wahines[0].attributes.ingoa}
-                                    </Heading>
-                                    <Heading
-                                        fontSize={'16px'}
-                                        color={'pink.200'}
-                                        fontWeight="regular"
-                                        fontFamily={'heading'}
-                                        ml={2}
-                                    >
-                                        {wahines[0].attributes.whakapapa}
-                                    </Heading>
-                                </Flex>
+                                <Box h={'100%'}>
+                                    <VideoPlayer
+                                        src={
+                                            wahines[0].attributes.kiriata
+                                                .data[0].attributes.url
+                                        }
+                                        alt={
+                                            wahines[0].attributes.kiriata
+                                                .data[0].attributes
+                                                .alternativeText
+                                        }
+                                        poster={null}
+                                    />
+                                    <Flex alignItems={'baseline'} pt={6}>
+                                        <Heading
+                                            fontSize={'36px'}
+                                            color={'pink.200'}
+                                            fontWeight="regular"
+                                            fontFamily={'heading'}
+                                        >
+                                            {wahines[index].attributes.ingoa}
+                                        </Heading>
+                                        <Heading
+                                            fontSize={'16px'}
+                                            color={'pink.200'}
+                                            fontWeight="regular"
+                                            fontFamily={'heading'}
+                                            ml={2}
+                                        >
+                                            {
+                                                wahines[index].attributes
+                                                    .whakapapa
+                                            }
+                                        </Heading>
+                                    </Flex>
+                                </Box>
                             </GridItem>
                             <GridItem colStart={1} colEnd={7} pt={6}>
                                 <Flex direction={'column'}>
                                     <ChakraNextImage
-                                        {...images[0]}
-                                        src={images[0]?.src}
-                                        alt={images[0]?.alternativeText}
-                                        width={images[0]?.width}
-                                        height={images[0]?.height}
-                                        blurhash={images[0]?.blurhash}
+                                        {...images[index]}
+                                        src={images[index]?.src}
+                                        alt={images[index]?.alternativeText}
+                                        width={images[index]?.width}
+                                        height={images[index]?.height}
+                                        blurhash={images[index]?.blurhash}
                                         sizes={
                                             '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
                                         }
@@ -128,7 +146,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                     lineHeight={'1.36'}
                                     color={'white'}
                                 >
-                                    {wahines[0].attributes.korero_pukauae}
+                                    {wahines[index].attributes.korero_pukauae}
                                 </Text>
                                 <Box pt={6}>
                                     <HStack>
@@ -145,8 +163,8 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                             color={'white'}
                                         >
                                             {
-                                                wahines[0].attributes.wahi.data
-                                                    .attributes.ingoa
+                                                wahines[index].attributes.wahi
+                                                    .data.attributes.ingoa
                                             }
                                         </Text>
                                     </HStack>
@@ -157,7 +175,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                         lineHeight={'1.36'}
                                         color={'white'}
                                     >
-                                        {wahines[0].attributes.korero_wahi}
+                                        {wahines[index].attributes.korero_wahi}
                                     </Text>
                                 </Box>
                                 <Box pt={6}>
@@ -173,7 +191,10 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                         lineHeight={'1.36'}
                                         color={'white'}
                                     >
-                                        {wahines[0].attributes.tohunga_ta_moko}
+                                        {
+                                            wahines[index].attributes
+                                                .tohunga_ta_moko
+                                        }
                                     </Text>
                                 </Box>
                                 <Box pt={6}>
@@ -202,12 +223,18 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                             w="100vw"
                         >
                             <Box>
-                                <Button variant={'callToAction'}>
+                                <Button
+                                    variant={'callToAction'}
+                                    onClick={handlePreviousClick}
+                                >
                                     {'←'} {'Previous wahine'}
                                 </Button>
                             </Box>
                             <Box>
-                                <Button variant={'callToAction'}>
+                                <Button
+                                    variant={'callToAction'}
+                                    onClick={handleNextClick}
+                                >
                                     {'Next wahine'} {'→'}
                                 </Button>
                             </Box>

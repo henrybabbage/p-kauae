@@ -60,7 +60,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         fontSize={'84px'}
                                         lineHeight={'1'}
                                         textAlign={'center'}
-                                        color="white"
+                                        color={'pink.200'}
                                     >
                                         {korero.attributes.tuhinga_timatanga}
                                     </Heading>
