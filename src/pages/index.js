@@ -3,8 +3,8 @@ import Layout from '@/components/Layout'
 import { Box, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react'
 
 import { ChakraNextImage } from '@/components/ChakraNextImage'
-import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import { getPlaiceholder } from 'plaiceholder'
+import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import ReactMarkdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
 
@@ -75,7 +75,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                     }
                                 >
                                     <Text
-                                        fontSize={'36px'}
+                                        fontSize={'md'}
                                         lineHeight={'1.36'}
                                         textAlign="left"
                                         color="white"
@@ -200,7 +200,14 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                     textAlign="left"
                                     color="white"
                                 >
-                                    <Text>{kaiwhakaahua.attributes.ingoa}</Text>
+                                    <Heading
+                                        fontSize={'84px'}
+                                        lineHeight={'1'}
+                                        textAlign={'center'}
+                                        color={'pink.200'}
+                                    >
+                                        {kaiwhakaahua.attributes.ingoa}
+                                    </Heading>
                                     <Text>
                                         {kaiwhakaahua.attributes.korero}
                                     </Text>
