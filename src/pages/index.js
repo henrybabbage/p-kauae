@@ -47,8 +47,20 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                 <Layout>
                     <Header />
                     <Box p="6" id="about" bg="grey.600">
-                        <Grid templateColumns="repeat(12, 1fr)">
-                            <GridItem colStart={2} colEnd={12}>
+                        <Grid
+                            templateColumns="repeat(12, 1fr)"
+                            position={'relative'}
+                            scrollSnapType="y mandatory"
+                            overflowY="scroll"
+                            h={'100vh'}
+                        >
+                            <GridItem
+                                colStart={2}
+                                colEnd={12}
+                                position={'relative'}
+                                scrollSnapAlign="start"
+                                h={'100vh'}
+                            >
                                 <Flex
                                     justify="center"
                                     flexDirection={'column'}
@@ -66,7 +78,15 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                     </Heading>
                                 </Flex>
                             </GridItem>
-                            <GridItem colStart={2} colEnd={12} pt="6" pb="6">
+                            <GridItem
+                                colStart={2}
+                                colEnd={12}
+                                pt="6"
+                                pb="6"
+                                position={'relative'}
+                                scrollSnapAlign="start"
+                                h={'100vh'}
+                            >
                                 <Flex
                                     justify="center"
                                     flexDirection={'column'}
@@ -92,7 +112,15 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                     />
                                 </Flex>
                             </GridItem>
-                            <GridItem colStart={2} colEnd={6} pt="6" pb="6">
+                            <GridItem
+                                colStart={2}
+                                colEnd={6}
+                                pt="6"
+                                pb="6"
+                                position={'relative'}
+                                scrollSnapAlign="start"
+                                h={'100vh'}
+                            >
                                 <Flex
                                     justify="center"
                                     flexDirection={'column'}
@@ -119,7 +147,15 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                     ))}
                                 </Flex>
                             </GridItem>
-                            <GridItem colStart={7} colEnd={11} pt="6" pb="6">
+                            <GridItem
+                                colStart={7}
+                                colEnd={11}
+                                pt="6"
+                                pb="6"
+                                position={'relative'}
+                                scrollSnapAlign="start"
+                                h={'100vh'}
+                            >
                                 <Flex
                                     justify="center"
                                     flexDirection={'column'}
