@@ -31,7 +31,6 @@ export default function Header() {
                         <Heading
                             as="h1"
                             size="md"
-                            color="white"
                             fontWeight="bold"
                             fontFamily="body"
                         >
