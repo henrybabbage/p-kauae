@@ -14,15 +14,17 @@ export default function Header() {
                 zIndex={20}
             >
                 <Flex align="end" justify="flex-end">
-                    <Heading
-                        textStyle="primary"
-                        as="h1"
-                        size="md"
-                        color="white"
-                        fontWeight="bold"
-                    >
-                        Tū Tama Wāhine o Taranaki
-                    </Heading>
+                    <Link variant="menu" as={NextLink} href="/" scroll={false}>
+                        <Heading
+                            textStyle="primary"
+                            as="h1"
+                            size="md"
+                            color="white"
+                            fontWeight="bold"
+                        >
+                            Tū Tama Wāhine o Taranaki
+                        </Heading>
+                    </Link>
                 </Flex>
                 <Flex align="center" justify="end">
                     <HStack spacing="6">
