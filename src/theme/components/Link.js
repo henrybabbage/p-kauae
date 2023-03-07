@@ -2,7 +2,6 @@ import { defineStyle, defineStyleConfig } from '@chakra-ui/styled-system'
 
 const baseStyle = defineStyle({
     fontFamily: 'secondary',
-    textColor: 'black',
     fontWeight: 'normal',
     textDecoration: 'none'
 })
@@ -25,7 +24,7 @@ const menuVariant = defineStyle({
     transition: 'transform 0.15s ease-out',
     _hover: {
         textDecoration: 'none',
-        color: 'pink'
+        textColor: 'pink'
     }
 })
 

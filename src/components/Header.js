@@ -51,7 +51,7 @@ export default function Header() {
                                 size="md"
                                 fontWeight="bold"
                                 fontFamily="body"
-                                color={activeLink('/')}
+                                textColor={activeLink('/')}
                             >
                                 About
                             </Heading>
@@ -67,7 +67,7 @@ export default function Header() {
                                 size="md"
                                 fontWeight="bold"
                                 fontFamily="body"
-                                color={activeLink('/map')}
+                                textColor={activeLink('/map')}
                             >
                                 Map
                             </Heading>
