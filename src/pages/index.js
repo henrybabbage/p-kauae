@@ -1,14 +1,12 @@
-import Header from '@/components/Header'
-import Layout from '@/components/Layout'
+import { ChakraNextImage } from '@/components/ChakraNextImage'
 import { Box, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react'
 
-import { ChakraNextImage } from '@/components/ChakraNextImage'
-import Loading from '@/components/Loading'
+import SmoothScroll from '@/components/SmoothScroll'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import { getPlaiceholder } from 'plaiceholder'
 import ReactMarkdown from 'react-markdown'
-import remarkBreaks from 'remark-breaks'
 import Balancer from 'react-wrap-balancer'
+import remarkBreaks from 'remark-breaks'
 
 export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
     const markdownTheme = {
@@ -46,8 +44,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
     return (
         <>
             <main>
-                <Layout>
-                    <Header />
+                <SmoothScroll>
                     <Box p="6" id="about" bg="grey.600">
                         <Grid templateColumns="repeat(12, 1fr)">
                             <GridItem colStart={2} colEnd={12}>
@@ -234,7 +231,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                             </GridItem>
                         </Grid>
                     </Box>
-                </Layout>
+                </SmoothScroll>
             </main>
         </>
     )

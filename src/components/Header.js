@@ -26,12 +26,22 @@ export default function Header() {
                 </Flex>
                 <Flex align="center" justify="end">
                     <HStack spacing="6">
-                        <Link variant="menu" as={NextLink} href="/">
+                        <Link
+                            variant="menu"
+                            as={NextLink}
+                            href="/"
+                            scroll={false}
+                        >
                             <Heading as="h2" size="md" fontWeight="bold">
                                 About
                             </Heading>
                         </Link>
-                        <Link variant="menu" as={NextLink} href="/map">
+                        <Link
+                            variant="menu"
+                            as={NextLink}
+                            href="/map"
+                            scroll={false}
+                        >
                             <Heading as="h2" size="md" fontWeight="bold">
                                 Map
                             </Heading>
