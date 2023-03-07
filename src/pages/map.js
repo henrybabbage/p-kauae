@@ -1,7 +1,7 @@
-import Header from '@/components/Header'
-import Layout from '@/components/Layout'
 import MapBox from '@/components/Map'
+import SmoothScroll from '@/components/SmoothScroll'
 import WahineModal from '@/components/WahineModal'
+
 import { Box, Button, Flex, useDisclosure } from '@chakra-ui/react'
 import { getPlaiceholder } from 'plaiceholder'
 
@@ -9,8 +9,7 @@ export default function Map({ wahines, portraits, posters }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <main>
-            <Layout>
-                <Header />
+            <SmoothScroll>
                 <Flex justifyContent={'center'}>
                     <Button
                         variant={'callToAction'}
@@ -37,7 +36,7 @@ export default function Map({ wahines, portraits, posters }) {
                         </Box>
                     </Flex>
                 </Box>
-            </Layout>
+            </SmoothScroll>
         </main>
     )
 }

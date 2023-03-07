@@ -25,8 +25,8 @@ const theme = extendTheme({
     },
     fontSizes: {
         sm: '18px',
-        md: '18px',
-        lg: '18px'
+        md: '36px',
+        lg: '72px'
     },
     textStyles: {
         primary: {
