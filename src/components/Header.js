@@ -16,11 +16,11 @@ export default function Header() {
                 <Flex align="end" justify="flex-end">
                     <Link variant="menu" as={NextLink} href="/" scroll={false}>
                         <Heading
-                            textStyle="primary"
                             as="h1"
                             size="md"
                             color="white"
                             fontWeight="bold"
+                            fontFamily="body"
                         >
                             Tū Tama Wāhine o Taranaki
                         </Heading>
@@ -34,7 +34,12 @@ export default function Header() {
                             href="/"
                             scroll={false}
                         >
-                            <Heading as="h2" size="md" fontWeight="bold">
+                            <Heading
+                                as="h2"
+                                size="md"
+                                fontWeight="bold"
+                                fontFamily="body"
+                            >
                                 About
                             </Heading>
                         </Link>
@@ -44,7 +49,12 @@ export default function Header() {
                             href="/map"
                             scroll={false}
                         >
-                            <Heading as="h2" size="md" fontWeight="bold">
+                            <Heading
+                                as="h2"
+                                size="md"
+                                fontWeight="bold"
+                                fontFamily="body"
+                            >
                                 Map
                             </Heading>
                         </Link>
