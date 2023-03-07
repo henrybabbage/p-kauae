@@ -1,7 +1,20 @@
 import { Box, Flex, HStack, Heading, Link } from '@chakra-ui/react'
 import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 
 export default function Header() {
+    const router = useRouter()
+
+    const activeLink = (value) => {
+        let color
+        if (value === router.pathname) {
+            color = 'pink.200'
+        } else {
+            color = 'white'
+        }
+        return color
+    }
+
     return (
         <div>
             <Flex
@@ -39,6 +52,7 @@ export default function Header() {
                                 size="md"
                                 fontWeight="bold"
                                 fontFamily="body"
+                                color={activeLink('/')}
                             >
                                 About
                             </Heading>
@@ -54,6 +68,7 @@ export default function Header() {
                                 size="md"
                                 fontWeight="bold"
                                 fontFamily="body"
+                                color={activeLink('/map')}
                             >
                                 Map
                             </Heading>
