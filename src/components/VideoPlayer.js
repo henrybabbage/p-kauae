@@ -8,6 +8,7 @@ export default function VideoPlayer({ src, alt, poster }) {
                 as="video"
                 controls
                 autoPlay
+                loop
                 src={src}
                 poster={poster}
                 alt={alt}
