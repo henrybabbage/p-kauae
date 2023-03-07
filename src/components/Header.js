@@ -41,7 +41,7 @@ export default function Header() {
             </Flex>
             <Box
                 backgroundColor="CC404041"
-                backdropFilter="saturate(180%) blur(4px)"
+                backdropFilter="saturate(200%) blur(4px)"
                 position="fixed"
                 w="100%"
                 h="20%"
