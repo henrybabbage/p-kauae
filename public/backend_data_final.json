@@ -6,7 +6,7 @@
    "korero_wahi": "I chose to have my photo taken at Ōrangituapeka because for the people of Ngāruahinerangi, this is the place where the kīwai wairua began between ourselves and the iwi of Waikato. The focus of my moko kauae is not about me, it is about this enduring connection between Taranaki and Waikato.",
    "whakapapa": "Ngāruahinerangi, Ngāti Haua",
    "id": 1,
-   "tohunga_ta_moko": "Joni Brooking (Pūkauae),  Rangi Kipa (Ngutu Purua)",
+   "tohunga_ta_moko": "Joni Brooking (Pūkauae), Rangi Kipa (Ngutu Purua)",
    "wa_tiki_whakaahua": "2019-06-19",
    "whakaahua": {
     "small": "https://pukauae.s3.ap-southeast-2.amazonaws.com/small_6_Te_Aorangi_Mako_FINAL_50_06516a68b4.jpg",
@@ -16,12 +16,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_2023-13-7_Orangituapeka_Manaia.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_2023-13-7_Orangituapeka_Manaia.mov",
     "original": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/2023-13-7_Orangituapeka_Manaia.mp4"
    },
    "wahi": {
-    "ingoa":"Ōrangituapeka","ahuahanga":[174.15676449475075,-39.582078648735035]
+    "ingoa": "Ōrangituapeka",
+    "ahuahanga": [
+     174.15676449475075,
+     -39.582078648735035
+    ]
    }
   },
   {
@@ -40,12 +44,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mov",
     "original": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mp4"
    },
    "wahi": {
-    "ingoa": "Turuturu Mōkai","ahuahanga":[174.29172348541545,-39.565997787590135]
+    "ingoa": "Turuturu Mōkai",
+    "ahuahanga": [
+     174.29172348541545,
+     -39.565997787590135
+    ]
    }
   },
   {
@@ -64,12 +72,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_2023-13-7_Orangituapeka_Manaia.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_2023-13-7_Orangituapeka_Manaia.mov",
     "original": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/2023-13-7_Orangituapeka_Manaia.mp4"
    },
    "wahi": {
-    "ingoa":"Ōrangituapeka","ahuahanga":[174.15676449475075,-39.582078648735035]
+    "ingoa": "Ōrangituapeka",
+    "ahuahanga": [
+     174.15676449475075,
+     -39.582078648735035
+    ]
    }
   },
   {
@@ -88,12 +100,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_2022-90-48_Waitara.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_2022-90-48_Waitara.mov",
     "original": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/2022-90-48_Waitara.MP4"
    },
    "wahi": {
-    "ingoa":"Waitara Beach","ahuahanga":[174.2233916041253,-38.98841455903835]
+    "ingoa": "Waitara Beach",
+    "ahuahanga": [
+     174.2233916041253,
+     -38.98841455903835
+    ]
    }
   },
   {
@@ -112,12 +128,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_2022-90-48_Waitara.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_2022-90-48_Waitara.mov",
     "original": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/2022-90-48_Waitara.MP4"
-   }, 
+   },
    "wahi": {
-    "ingoa":"Pukerangiora Pā","ahuahanga":[174.26466659215401,-39.06782525043155]
+    "ingoa": "Pukerangiora Pā",
+    "ahuahanga": [
+     174.26466659215401,
+     -39.06782525043155
+    ]
    }
   },
   {
@@ -136,12 +156,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mov",
     "original": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mp4"
    },
    "wahi": {
-    "ingoa":"Turuturu Mōkai","ahuahanga":[174.29172348541545,-39.565997787590135]
+    "ingoa": "Turuturu Mōkai",
+    "ahuahanga": [
+     174.29172348541545,
+     -39.565997787590135
+    ]
    }
   },
   {
@@ -160,12 +184,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_2023-13-206_Parihaka_coastline.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_2023-13-206_Parihaka_coastline.mov",
     "original": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/2023-13-206_Parihaka_coastline.MP4"
    },
    "wahi": {
-    "ingoa": "Parihaka","ahuahanga": [173.8397035,-39.2885374]
+    "ingoa": "Parihaka",
+    "ahuahanga": [
+     173.8397035,
+     -39.2885374
+    ]
    }
   },
   {
@@ -184,12 +212,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_2023-5-20_URENUI.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_2023-5-20_URENUI.mov",
     "original": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/2023-5-20_URENUI.mp4"
    },
    "wahi": {
-    "ingoa":"Ruapekapeka Marae","ahuahanga":[174.40478763948636,-38.98954738956933]
+    "ingoa": "Ruapekapeka Marae",
+    "ahuahanga": [
+     174.40478763948636,
+     -38.98954738956933
+    ]
    }
   },
   {
@@ -208,12 +240,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_https://s3.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_https://s3.mov",
     "original": "https://s3.console.aws.amazon.com/s3/object/pukauae?region=ap-southeast-2&prefix=drone_footage/2023-13-71_Hangataahua_Okato.mp4"
    },
    "wahi": {
-    "ingoa":"Hangatahua","ahuahanga":[173.9354912075433,-39.24832985708955]
+    "ingoa": "Hangatahua",
+    "ahuahanga": [
+     173.9354912075433,
+     -39.24832985708955
+    ]
    }
   },
   {
@@ -232,12 +268,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_2023-13-206_Parihaka_coastline.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_2023-13-206_Parihaka_coastline.mov",
     "original": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/2023-13-206_Parihaka_coastline.MP4"
    },
    "wahi": {
-    "ingoa": "Parihaka","ahuahanga": [173.8397035,-39.2885374]
+    "ingoa": "Parihaka",
+    "ahuahanga": [
+     173.8397035,
+     -39.2885374
+    ]
    }
   },
   {
@@ -256,12 +296,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_2023-13-84_Ko%CC%84hanga_Moa_Ingelwood.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_2023-13-84_Ko%CC%84hanga_Moa_Ingelwood.mov",
     "original": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/2023-13-84_Ko%CC%84hanga_Moa_Ingelwood.mp4"
    },
    "wahi": {
-    "ingoa": "Kōhanga Moa","ahuahanga": [174.21095456800253,-39.157052852754376]
+    "ingoa": "Kōhanga Moa",
+    "ahuahanga": [
+     174.21095456800253,
+     -39.157052852754376
+    ]
    }
   },
   {
@@ -280,12 +324,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_2022-91-1_Waiwhakaiho_New_Plymouth.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_2022-91-1_Waiwhakaiho_New_Plymouth.mov",
     "original": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/2022-91-1_Waiwhakaiho_New_Plymouth.MP4"
    },
    "wahi": {
-    "ingoa":"Onuku Taipari","ahuahanga":[174.02025238525744,-39.06191077154044]
+    "ingoa": "Onuku Taipari",
+    "ahuahanga": [
+     174.02025238525744,
+     -39.06191077154044
+    ]
    }
   },
   {
@@ -304,12 +352,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_2023-13-88_Te-rere_o_Ka%CC%84puni.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_2023-13-88_Te-rere_o_Ka%CC%84puni.mov",
     "original": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/2023-13-88_Te-rere_o_Ka%CC%84puni.MOV"
    },
    "wahi": {
-    "ingoa":"Te Rere o Noke","ahuahanga":[174.1073037804627,-39.3252965231007]
+    "ingoa": "Te Rere o Noke",
+    "ahuahanga": [
+     174.1073037804627,
+     -39.3252965231007
+    ]
    }
   },
   {
@@ -328,12 +380,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_https://s3.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_https://s3.mov",
     "original": "https://s3.console.aws.amazon.com/s3/object/pukauae?region=ap-southeast-2&prefix=drone_footage/2023-13-71_Hangataahua_Okato.mp4"
    },
    "wahi": {
-    "ingoa":"Pōtaka Pā","ahuahanga":[173.8095453055592,-39.367594679853745]
+    "ingoa": "Pōtaka Pā",
+    "ahuahanga": [
+     173.8095453055592,
+     -39.367594679853745
+    ]
    }
   },
   {
@@ -352,12 +408,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_2022-91-1_Waiwhakaiho_New_Plymouth.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_2022-91-1_Waiwhakaiho_New_Plymouth.mov",
     "original": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/2022-91-1_Waiwhakaiho_New_Plymouth.MP4"
    },
    "wahi": {
-    "ingoa":"Waiwhakaiho, Te Rewarewa","ahuahanga":[174.11135608585238,-39.03801449196456]
+    "ingoa": "Waiwhakaiho, Te Rewarewa",
+    "ahuahanga": [
+     174.11135608585238,
+     -39.03801449196456
+    ]
    }
   },
   {
@@ -376,12 +436,16 @@
    },
    "kiriata": {
     "small": "",
-    "medium": "",
-    "large": "",
+    "medium": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/720p_2023-13-88_Te-rere_o_Ka%CC%84puni.mov",
+    "large": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/1080p_2023-13-88_Te-rere_o_Ka%CC%84puni.mov",
     "original": "https://pukauae.s3.ap-southeast-2.amazonaws.com/drone_footage/2023-13-88_Te-rere_o_Ka%CC%84puni.MOV"
    },
    "wahi": {
-    "ingoa":"Te Rere o Kāpuni","ahuahanga":[174.099359208252,-39.318496306584905]
+    "ingoa": "Te Rere o Kāpuni",
+    "ahuahanga": [
+     174.099359208252,
+     -39.318496306584905
+    ]
    }
   }
  ],
