@@ -3,10 +3,12 @@ import Layout from '@/components/Layout'
 import { Box, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react'
 
 import { ChakraNextImage } from '@/components/ChakraNextImage'
+import Loading from '@/components/Loading'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import { getPlaiceholder } from 'plaiceholder'
 import ReactMarkdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
+import Balancer from 'react-wrap-balancer'
 
 export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
     const markdownTheme = {
@@ -62,7 +64,12 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         textAlign={'center'}
                                         color={'pink.200'}
                                     >
-                                        {korero.attributes.tuhinga_timatanga}
+                                        <Balancer ratio={1.0}>
+                                            {
+                                                korero.attributes
+                                                    .tuhinga_timatanga
+                                            }
+                                        </Balancer>
                                     </Heading>
                                 </Flex>
                             </GridItem>
