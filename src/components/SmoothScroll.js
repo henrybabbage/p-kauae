@@ -1,21 +1,20 @@
-import React, {
-    useRef,
-    useState,
-    useCallback,
-    useLayoutEffect,
-    useEffect
-} from 'react'
+import { Box, chakra, shouldForwardProp } from '@chakra-ui/react'
 import {
-    useScroll,
-    useTransform,
-    useSpring,
+    isValidMotionProp,
     motion,
-    useWillChange,
-    isValidMotionProp
+    useScroll,
+    useSpring,
+    useTransform,
+    useWillChange
 } from 'framer-motion'
+import React, {
+    useCallback,
+    useEffect,
+    useLayoutEffect,
+    useRef,
+    useState
+} from 'react'
 import ResizeObserver from 'resize-observer-polyfill'
-import { Container, chakra, shouldForwardProp } from '@chakra-ui/react'
-import { Box } from '@chakra-ui/react'
 
 const ChakraBox = chakra(motion.div, {
     /**
@@ -26,6 +25,10 @@ const ChakraBox = chakra(motion.div, {
 })
 
 const SmoothScroll = ({ children }) => {
+    if (typeof document === 'undefined') {
+        React.useLayoutEffect = React.useEffect
+    }
+
     const willChange = useWillChange()
 
     // scroll container
