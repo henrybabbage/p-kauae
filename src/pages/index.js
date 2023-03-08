@@ -1,11 +1,11 @@
-import Header from '@/components/Header'
-import Layout from '@/components/Layout'
+import { ChakraNextImage } from '@/components/ChakraNextImage'
 import { Box, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react'
 
-import { ChakraNextImage } from '@/components/ChakraNextImage'
-import { getPlaiceholder } from 'plaiceholder'
+import SmoothScroll from '@/components/SmoothScroll'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
+import { getPlaiceholder } from 'plaiceholder'
 import ReactMarkdown from 'react-markdown'
+import Balancer from 'react-wrap-balancer'
 import remarkBreaks from 'remark-breaks'
 
 export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
@@ -44,8 +44,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
     return (
         <>
             <main>
-                <Layout>
-                    <Header />
+                <SmoothScroll>
                     <Box p="6" id="about" bg="grey.600">
                         <Grid templateColumns="repeat(12, 1fr)">
                             <GridItem colStart={2} colEnd={12}>
@@ -62,7 +61,12 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         textAlign={'center'}
                                         color={'pink.200'}
                                     >
-                                        {korero.attributes.tuhinga_timatanga}
+                                        <Balancer ratio={1.0}>
+                                            {
+                                                korero.attributes
+                                                    .tuhinga_timatanga
+                                            }
+                                        </Balancer>
                                     </Heading>
                                 </Flex>
                             </GridItem>
@@ -81,6 +85,8 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         color="white"
                                     >
                                         Acknowledgements
+                                        <br />
+                                        <br />
                                     </Text>
                                     <ReactMarkdown
                                         remarkPlugins={[remarkBreaks]}
@@ -94,9 +100,11 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                             </GridItem>
                             <GridItem colStart={2} colEnd={6} pt="6" pb="6">
                                 <Flex
+                                    as="div"
                                     justify="center"
                                     flexDirection={'column'}
                                     height={'100vh'}
+                                    lineHeight="1.36"
                                 >
                                     <Text
                                         fontSize={'36px'}
@@ -105,6 +113,8 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         color="white"
                                     >
                                         A special thanks to
+                                        <br />
+                                        <br />
                                     </Text>
                                     {leftColumn.map((name, index) => (
                                         <Text
@@ -119,7 +129,13 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                     ))}
                                 </Flex>
                             </GridItem>
-                            <GridItem colStart={7} colEnd={11} pt="6" pb="6">
+                            <GridItem
+                                colStart={7}
+                                colEnd={11}
+                                pt="6"
+                                pb="6"
+                                position={'relative'}
+                            >
                                 <Flex
                                     justify="center"
                                     flexDirection={'column'}
@@ -133,6 +149,8 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         visibility="hidden"
                                     >
                                         Heading space
+                                        <br />
+                                        <br />
                                     </Text>
                                     {rightColumn.map((name, index) => (
                                         <Text
@@ -193,35 +211,44 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                 </Box>
                             </GridItem>
                             <GridItem colStart={8} colEnd={13}>
-                                <Box
-                                    pt={32}
-                                    fontSize={'36px'}
-                                    lineHeight={'1.36'}
-                                    textAlign="left"
-                                    color="white"
-                                >
+                                <Box pt={32} textAlign="left" color="white">
                                     <Heading
                                         fontSize={'84px'}
                                         lineHeight={'1'}
-                                        textAlign={'center'}
+                                        textAlign={'left'}
                                         color={'pink.200'}
                                     >
                                         {kaiwhakaahua.attributes.ingoa}
                                     </Heading>
-                                    <Text>
+                                    <Text
+                                        fontSize={'36px'}
+                                        lineHeight={'1.36'}
+                                        textAlign="left"
+                                        color="white"
+                                    >
                                         {kaiwhakaahua.attributes.korero}
                                     </Text>
-                                    <Text>
+                                    <Text
+                                        fontSize={'36px'}
+                                        lineHeight={'1.36'}
+                                        textAlign="left"
+                                        color="white"
+                                    >
                                         {kaiwhakaahua.attributes.whakapapa}
                                     </Text>
-                                    <Text>
+                                    <Text
+                                        fontSize={'36px'}
+                                        lineHeight={'1.36'}
+                                        textAlign="left"
+                                        color="white"
+                                    >
                                         {kaiwhakaahua.attributes.paetukutuku}
                                     </Text>
                                 </Box>
                             </GridItem>
                         </Grid>
                     </Box>
-                </Layout>
+                </SmoothScroll>
             </main>
         </>
     )
