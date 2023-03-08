@@ -36,7 +36,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
         }
     }
 
-    const totalList = korero.attributes.tangata_mihia
+    const totalList = korero.tangata_mihia
     const lines = totalList.split(/\r\n|\r|\n/)
     const leftColumn = lines.slice(0, 8)
     const rightColumn = lines.slice(8, 16)
@@ -62,10 +62,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         color={'pink.200'}
                                     >
                                         <Balancer ratio={1.0}>
-                                            {
-                                                korero.attributes
-                                                    .tuhinga_timatanga
-                                            }
+                                            {korero.tuhinga_timatanga}
                                         </Balancer>
                                     </Heading>
                                 </Flex>
@@ -93,7 +90,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         components={ChakraUIRenderer(
                                             markdownTheme
                                         )}
-                                        children={korero.attributes.mihi}
+                                        children={korero.mihi}
                                         skipHtml
                                     />
                                 </Flex>
@@ -169,7 +166,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                 <ReactMarkdown
                                     remarkPlugins={[remarkBreaks]}
                                     components={ChakraUIRenderer(markdownTheme)}
-                                    children={korero.attributes.tuhinga_matua.replace(
+                                    children={korero.tuhinga_matua.replace(
                                         /\n/gi,
                                         '&nbsp; \n \n'
                                     )}
@@ -184,25 +181,13 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                             h={'calc(100vh - var(--chakra-sizes-12))'}
                         >
                             <GridItem colStart={2} colEnd={7}>
-                                <Box pt={32}>
+                                <Box pt={32} w="100%" h="100%">
                                     <ChakraNextImage
                                         {...img}
-                                        src={
-                                            kaiwhakaahua.attributes.whakaahua
-                                                .data.attributes.url
-                                        }
-                                        alt={
-                                            kaiwhakaahua.attributes.whakaahua
-                                                .data.attributes.alternativeText
-                                        }
-                                        width={
-                                            kaiwhakaahua.attributes.whakaahua
-                                                .data.attributes.width
-                                        }
-                                        height={
-                                            kaiwhakaahua.attributes.whakaahua
-                                                .data.attributes.height
-                                        }
+                                        src={kaiwhakaahua.whakaahua.original}
+                                        alt={'Tania Niwa'}
+                                        width={720}
+                                        height={648}
                                         blurhash={blurhash}
                                         sizes={
                                             '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
@@ -218,7 +203,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         textAlign={'left'}
                                         color={'pink.200'}
                                     >
-                                        {kaiwhakaahua.attributes.ingoa}
+                                        {kaiwhakaahua.ingoa}
                                     </Heading>
                                     <Text
                                         fontSize={'36px'}
@@ -226,7 +211,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         textAlign="left"
                                         color="white"
                                     >
-                                        {kaiwhakaahua.attributes.korero}
+                                        {kaiwhakaahua.korero}
                                     </Text>
                                     <Text
                                         fontSize={'36px'}
@@ -234,7 +219,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         textAlign="left"
                                         color="white"
                                     >
-                                        {kaiwhakaahua.attributes.whakapapa}
+                                        {kaiwhakaahua.whakapapa}
                                     </Text>
                                     <Text
                                         fontSize={'36px'}
@@ -242,7 +227,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         textAlign="left"
                                         color="white"
                                     >
-                                        {kaiwhakaahua.attributes.paetukutuku}
+                                        {kaiwhakaahua.paetukutuku}
                                     </Text>
                                 </Box>
                             </GridItem>
@@ -254,24 +239,20 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
     )
 }
 
+import fsPromises from 'fs/promises'
+import path from 'path'
 export async function getStaticProps() {
-    const [koreroResponse, kaiwhakaahuaResponse] = await Promise.all([
-        fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/tu-tama-korero`),
-        fetch(
-            `${process.env.NEXT_PUBLIC_STRAPI_URL}/kaiwhakaahua?populate=whakaahua.*`
-        )
-    ])
+    const filePath = path.join(process.cwd(), '/public/backend_data_final.json')
+    const jsonData = await fsPromises.readFile(filePath)
+    const objectData = JSON.parse(jsonData)
 
-    const korero = await koreroResponse.json()
-    const kaiwhakaahua = await kaiwhakaahuaResponse.json()
-
-    const imageUrl = kaiwhakaahua.data.attributes.whakaahua.data.attributes.url
+    const imageUrl = objectData.kaiwhakaahua.whakaahua.original
     const { blurhash, img } = await getPlaiceholder(imageUrl)
 
     return {
         props: {
-            korero: korero.data,
-            kaiwhakaahua: kaiwhakaahua.data,
+            korero: objectData.tu_tama_korero,
+            kaiwhakaahua: objectData.kaiwhakaahua,
             img,
             blurhash
         }

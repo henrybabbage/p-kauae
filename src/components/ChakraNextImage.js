@@ -1,6 +1,6 @@
-import { BlurhashCanvas } from 'react-blurhash'
 import { Box } from '@chakra-ui/react'
 import NextImage from 'next/image'
+import { BlurhashCanvas } from 'react-blurhash'
 
 export const ChakraNextImage = (props, ...img) => {
     const { src, alt, width, height, sizes, blurhash, ...rest } = props
@@ -28,7 +28,9 @@ export const ChakraNextImage = (props, ...img) => {
                     height={height}
                     sizes={sizes}
                     style={{
-                        objectFit: 'cover'
+                        objectFit: 'contain',
+                        height: '100%',
+                        width: '100%'
                     }}
                 />
             </Box>
