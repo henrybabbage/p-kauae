@@ -20,7 +20,7 @@ import { ChakraNextImage } from './ChakraNextImage'
 import VideoPlayer from './VideoPlayer'
 
 const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
-    const captureDate = wahines[0].attributes.wa_tiki_whakaahua
+    const captureDate = wahines[0].wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
 
     const [index, setIndex] = useState(0)
@@ -83,15 +83,8 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                             <GridItem colStart={1} colEnd={13} pt={6}>
                                 <Box h={'100%'}>
                                     <VideoPlayer
-                                        src={
-                                            wahines[0].attributes.kiriata
-                                                .data[0].attributes.url
-                                        }
-                                        alt={
-                                            wahines[0].attributes.kiriata
-                                                .data[0].attributes
-                                                .alternativeText
-                                        }
+                                        src={wahines[0].kiriata.original}
+                                        alt={wahines[0].kiriata.alternativeText}
                                         poster={null}
                                     />
                                     <Flex alignItems={'baseline'} pt={6}>
@@ -101,7 +94,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                             fontWeight="regular"
                                             fontFamily={'heading'}
                                         >
-                                            {wahines[index].attributes.ingoa}
+                                            {wahines[index].ingoa}
                                         </Heading>
                                         <Heading
                                             fontSize={'16px'}
@@ -110,10 +103,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                             fontFamily={'heading'}
                                             ml={2}
                                         >
-                                            {
-                                                wahines[index].attributes
-                                                    .whakapapa
-                                            }
+                                            {wahines[index].whakapapa}
                                         </Heading>
                                     </Flex>
                                 </Box>
@@ -124,8 +114,8 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                         {...images[index]}
                                         src={images[index]?.src}
                                         alt={images[index]?.alternativeText}
-                                        width={images[index]?.width}
-                                        height={images[index]?.height}
+                                        width={4200}
+                                        height={2800}
                                         blurhash={images[index]?.blurhash}
                                         sizes={
                                             '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
@@ -146,7 +136,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                     lineHeight={'1.36'}
                                     color={'white'}
                                 >
-                                    {wahines[index].attributes.korero_pukauae}
+                                    {wahines[index].korero_pukauae}
                                 </Text>
                                 <Box pt={6}>
                                     <HStack>
@@ -162,10 +152,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                             lineHeight={'1.36'}
                                             color={'white'}
                                         >
-                                            {
-                                                wahines[index].attributes.wahi
-                                                    .data.attributes.ingoa
-                                            }
+                                            {wahines[index].wahi.ingoa}
                                         </Text>
                                     </HStack>
                                 </Box>
@@ -175,7 +162,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                         lineHeight={'1.36'}
                                         color={'white'}
                                     >
-                                        {wahines[index].attributes.korero_wahi}
+                                        {wahines[index].korero_wahi}
                                     </Text>
                                 </Box>
                                 <Box pt={6}>
@@ -191,10 +178,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                         lineHeight={'1.36'}
                                         color={'white'}
                                     >
-                                        {
-                                            wahines[index].attributes
-                                                .tohunga_ta_moko
-                                        }
+                                        {wahines[index].tohunga_ta_moko}
                                     </Text>
                                 </Box>
                                 <Box pt={6}>

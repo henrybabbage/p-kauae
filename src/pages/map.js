@@ -41,26 +41,21 @@ export default function Map({ wahines, portraits, posters }) {
     )
 }
 
+import fsPromises from 'fs/promises'
+import path from 'path'
 export async function getStaticProps() {
-    const [wahinesResponse, wahinesImagesResponse] = await Promise.all([
-        fetch(
-            `${process.env.NEXT_PUBLIC_STRAPI_URL}/wahines?populate[0]=kiriata&populate[1]=wahi&populate[2]=kiriata_whakaahua`
-        ),
-        fetch(
-            `${process.env.NEXT_PUBLIC_STRAPI_URL}/wahines?populate[0]=whakaahua`
-        )
-    ])
+    const filePath = path.join(process.cwd(), '/public/backend_data_final.json')
+    const jsonData = await fsPromises.readFile(filePath)
+    const objectData = JSON.parse(jsonData)
 
-    const wahines = await wahinesResponse.json()
-    const wahinesImages = await wahinesImagesResponse.json()
+    const wahines = objectData.wahine
 
-    const portraitUrls = wahinesImages?.data.map(
-        (wahinesImages) =>
-            wahinesImages?.attributes?.whakaahua?.data?.attributes?.url
+    const wahinesImages = objectData.wahine.map(
+        (wahinesUrls) => wahinesUrls?.whakaahua?.original
     )
 
     const portraits = await Promise.all(
-        portraitUrls.map(async (src) => {
+        wahinesImages.map(async (src) => {
             const { blurhash, img } = await getPlaiceholder(src)
             return {
                 ...img,
@@ -70,9 +65,8 @@ export async function getStaticProps() {
         })
     ).then((values) => values)
 
-    const posterUrls = wahines?.data.map(
-        (wahinesVideos) =>
-            wahinesVideos?.attributes?.kiriata_whakaahua?.data?.attributes?.url
+    const posterUrls = wahines.map(
+        (wahinesVideos) => wahinesVideos?.kiriata?.poster
     )
 
     const posters = await Promise.all(
@@ -97,7 +91,7 @@ export async function getStaticProps() {
     }
     return {
         props: {
-            wahines: wahines.data,
+            wahines,
             portraits,
             posters
         }

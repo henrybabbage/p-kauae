@@ -84,8 +84,6 @@ export default function Header() {
                 p="6"
                 zIndex={10}
                 sx={{
-                    '-webkit-mask-image':
-                        'linear-gradient(to top, transparent 10%, black)',
                     maskImage: 'linear-gradient(to top, transparent 10%, black)'
                 }}
             ></Box>
