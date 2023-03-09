@@ -8,7 +8,13 @@ import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import ReactMarkdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
 
-export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
+export default function Home({
+    korero,
+    kaiwhakaahua,
+    portrait,
+    img,
+    blurhash
+}) {
     const markdownTheme = {
         p: (props) => {
             const { children } = props
@@ -169,22 +175,10 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                 <Box pt={32}>
                                     <ChakraNextImage
                                         {...img}
-                                        src={
-                                            kaiwhakaahua.attributes.whakaahua
-                                                .data.attributes.url
-                                        }
-                                        alt={
-                                            kaiwhakaahua.attributes.whakaahua
-                                                .data.attributes.alternativeText
-                                        }
-                                        width={
-                                            kaiwhakaahua.attributes.whakaahua
-                                                .data.attributes.width
-                                        }
-                                        height={
-                                            kaiwhakaahua.attributes.whakaahua
-                                                .data.attributes.height
-                                        }
+                                        src={portrait}
+                                        alt={'Tania Niwa'}
+                                        width={720}
+                                        height={648}
                                         blurhash={blurhash}
                                         sizes={
                                             '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
@@ -238,13 +232,17 @@ export async function getStaticProps() {
     const korero = await koreroResponse.json()
     const kaiwhakaahua = await kaiwhakaahuaResponse.json()
 
-    const imageUrl = kaiwhakaahua.data.attributes.whakaahua.data.attributes.url
+    const baseUrl = objectData.whakaahua_s3_bucket
+    const imagePath = objectData.kaiwhakaahua.whakaahua.original
+    const imageUrl = `${baseUrl}${imagePath}`
+
     const { blurhash, img } = await getPlaiceholder(imageUrl)
 
     return {
         props: {
-            korero: korero.data,
-            kaiwhakaahua: kaiwhakaahua.data,
+            korero: objectData.tu_tama_korero,
+            kaiwhakaahua: objectData.kaiwhakaahua,
+            portrait: imageUrl,
             img,
             blurhash
         }
