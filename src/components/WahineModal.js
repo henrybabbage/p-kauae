@@ -19,7 +19,15 @@ import { useState } from 'react'
 import { ChakraNextImage } from './ChakraNextImage'
 import VideoPlayer from './VideoPlayer'
 
-const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
+const WahineModal = ({
+    onOpen,
+    onClose,
+    isOpen,
+    wahines,
+    images,
+    covers,
+    baseUrlVideo
+}) => {
     const captureDate = wahines[0].wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
 
@@ -86,6 +94,7 @@ const WahineModal = ({ onOpen, onClose, isOpen, wahines, images, covers }) => {
                                         src={wahines[0].kiriata.original}
                                         alt={wahines[0].kiriata.alternativeText}
                                         poster={null}
+                                        baseUrlVideo={baseUrlVideo}
                                     />
                                     <Flex alignItems={'baseline'} pt={6}>
                                         <Heading

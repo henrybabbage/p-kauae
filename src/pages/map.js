@@ -5,7 +5,7 @@ import WahineModal from '@/components/WahineModal'
 import { Box, Button, Flex, useDisclosure } from '@chakra-ui/react'
 import { getPlaiceholder } from 'plaiceholder'
 
-export default function Map({ wahines, portraits, posters }) {
+export default function Map({ wahines, portraits, posters, baseUrlVideo }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <main>
@@ -28,6 +28,7 @@ export default function Map({ wahines, portraits, posters }) {
                     wahines={wahines}
                     images={portraits}
                     covers={posters}
+                    baseUrlVideo={baseUrlVideo}
                 />
                 <Box pt="14" pb="12" id="map" w="100vw" h="100vh" bg="grey.600">
                     <Flex justifyContent="center" alignContent="center">
@@ -49,9 +50,11 @@ export async function getStaticProps() {
     const objectData = JSON.parse(jsonData)
 
     const wahines = objectData.wahine
+    const baseUrl = objectData.whakaahua_s3_bucket
+    const baseUrlVideo = objectData.kiriata_cloudfront
 
     const wahinesImages = objectData.wahine.map(
-        (wahinesUrls) => wahinesUrls?.whakaahua?.original
+        (wahinesUrls) => `${baseUrl}${wahinesUrls?.whakaahua?.original}`
     )
 
     const portraits = await Promise.all(
@@ -66,7 +69,7 @@ export async function getStaticProps() {
     ).then((values) => values)
 
     const posterUrls = wahines.map(
-        (wahinesVideos) => wahinesVideos?.kiriata?.poster
+        (wahinesVideos) => `${baseUrl}${wahinesVideos?.kiriata?.poster}`
     )
 
     const posters = await Promise.all(
@@ -93,7 +96,8 @@ export async function getStaticProps() {
         props: {
             wahines,
             portraits,
-            posters
+            posters,
+            baseUrlVideo: baseUrlVideo
         }
     }
 }
