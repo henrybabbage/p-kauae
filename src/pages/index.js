@@ -8,7 +8,13 @@ import ReactMarkdown from 'react-markdown'
 import Balancer from 'react-wrap-balancer'
 import remarkBreaks from 'remark-breaks'
 
-export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
+export default function Home({
+    korero,
+    kaiwhakaahua,
+    portrait,
+    img,
+    blurhash
+}) {
     const markdownTheme = {
         p: (props) => {
             const { children } = props
@@ -184,7 +190,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                 <Box pt={32} w="100%" h="100%">
                                     <ChakraNextImage
                                         {...img}
-                                        src={kaiwhakaahua.whakaahua.original}
+                                        src={portrait}
                                         alt={'Tania Niwa'}
                                         width={720}
                                         height={648}
@@ -246,13 +252,17 @@ export async function getStaticProps() {
     const jsonData = await fsPromises.readFile(filePath)
     const objectData = JSON.parse(jsonData)
 
-    const imageUrl = objectData.kaiwhakaahua.whakaahua.original
+    const baseUrl = objectData.whakaahua_s3_bucket
+    const imagePath = objectData.kaiwhakaahua.whakaahua.original
+    const imageUrl = `${baseUrl}${imagePath}`
+
     const { blurhash, img } = await getPlaiceholder(imageUrl)
 
     return {
         props: {
             korero: objectData.tu_tama_korero,
             kaiwhakaahua: objectData.kaiwhakaahua,
+            portrait: imageUrl,
             img,
             blurhash
         }
