@@ -15,7 +15,7 @@ const nextConfig = {
         NEXT_PUBLIC_IMAGES_DOMAIN: process.env.NEXT_PUBLIC_IMAGES_DOMAIN
     },
     images: {
-        domains: ['localhost', 'pukauae.s3.ap-southeast-2.amazonaws.com'],
+        domains: ['localhost'],
         formats: ['image/avif', 'image/webp'],
         remotePatterns: [
             {

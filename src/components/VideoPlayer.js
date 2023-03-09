@@ -9,16 +9,14 @@ export default function VideoPlayer({ src, alt, poster }) {
                 controls
                 autoPlay
                 loop
-                anonymous
+                src={src}
                 poster={poster}
                 alt={alt}
                 objectFit="contain"
                 sx={{
                     aspectRatio: '16/9'
                 }}
-            >
-                <Box as="source" src={src} type="video/mp4" />
-            </Box>
+            />
         </AspectRatio>
     )
 }

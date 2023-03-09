@@ -1,11 +1,11 @@
-import { ChakraNextImage } from '@/components/ChakraNextImage'
+import Header from '@/components/Header'
+import Layout from '@/components/Layout'
 import { Box, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react'
 
-import SmoothScroll from '@/components/SmoothScroll'
-import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
+import { ChakraNextImage } from '@/components/ChakraNextImage'
 import { getPlaiceholder } from 'plaiceholder'
+import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import ReactMarkdown from 'react-markdown'
-import Balancer from 'react-wrap-balancer'
 import remarkBreaks from 'remark-breaks'
 
 export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
@@ -36,7 +36,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
         }
     }
 
-    const totalList = korero.tangata_mihia
+    const totalList = korero.attributes.tangata_mihia
     const lines = totalList.split(/\r\n|\r|\n/)
     const leftColumn = lines.slice(0, 8)
     const rightColumn = lines.slice(8, 16)
@@ -44,7 +44,8 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
     return (
         <>
             <main>
-                <SmoothScroll>
+                <Layout>
+                    <Header />
                     <Box p="6" id="about" bg="grey.600">
                         <Grid templateColumns="repeat(12, 1fr)">
                             <GridItem colStart={2} colEnd={12}>
@@ -61,9 +62,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         textAlign={'center'}
                                         color={'pink.200'}
                                     >
-                                        <Balancer ratio={1.0}>
-                                            {korero.tuhinga_timatanga}
-                                        </Balancer>
+                                        {korero.attributes.tuhinga_timatanga}
                                     </Heading>
                                 </Flex>
                             </GridItem>
@@ -82,26 +81,22 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         color="white"
                                     >
                                         Acknowledgements
-                                        <br />
-                                        <br />
                                     </Text>
                                     <ReactMarkdown
                                         remarkPlugins={[remarkBreaks]}
                                         components={ChakraUIRenderer(
                                             markdownTheme
                                         )}
-                                        children={korero.mihi}
+                                        children={korero.attributes.mihi}
                                         skipHtml
                                     />
                                 </Flex>
                             </GridItem>
                             <GridItem colStart={2} colEnd={6} pt="6" pb="6">
                                 <Flex
-                                    as="div"
                                     justify="center"
                                     flexDirection={'column'}
                                     height={'100vh'}
-                                    lineHeight="1.36"
                                 >
                                     <Text
                                         fontSize={'36px'}
@@ -110,8 +105,6 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         color="white"
                                     >
                                         A special thanks to
-                                        <br />
-                                        <br />
                                     </Text>
                                     {leftColumn.map((name, index) => (
                                         <Text
@@ -126,13 +119,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                     ))}
                                 </Flex>
                             </GridItem>
-                            <GridItem
-                                colStart={7}
-                                colEnd={11}
-                                pt="6"
-                                pb="6"
-                                position={'relative'}
-                            >
+                            <GridItem colStart={7} colEnd={11} pt="6" pb="6">
                                 <Flex
                                     justify="center"
                                     flexDirection={'column'}
@@ -146,8 +133,6 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                         visibility="hidden"
                                     >
                                         Heading space
-                                        <br />
-                                        <br />
                                     </Text>
                                     {rightColumn.map((name, index) => (
                                         <Text
@@ -166,7 +151,7 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                 <ReactMarkdown
                                     remarkPlugins={[remarkBreaks]}
                                     components={ChakraUIRenderer(markdownTheme)}
-                                    children={korero.tuhinga_matua.replace(
+                                    children={korero.attributes.tuhinga_matua.replace(
                                         /\n/gi,
                                         '&nbsp; \n \n'
                                     )}
@@ -181,13 +166,25 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                             h={'calc(100vh - var(--chakra-sizes-12))'}
                         >
                             <GridItem colStart={2} colEnd={7}>
-                                <Box pt={32} w="100%" h="100%">
+                                <Box pt={32}>
                                     <ChakraNextImage
                                         {...img}
-                                        src={kaiwhakaahua.whakaahua.original}
-                                        alt={'Tania Niwa'}
-                                        width={720}
-                                        height={648}
+                                        src={
+                                            kaiwhakaahua.attributes.whakaahua
+                                                .data.attributes.url
+                                        }
+                                        alt={
+                                            kaiwhakaahua.attributes.whakaahua
+                                                .data.attributes.alternativeText
+                                        }
+                                        width={
+                                            kaiwhakaahua.attributes.whakaahua
+                                                .data.attributes.width
+                                        }
+                                        height={
+                                            kaiwhakaahua.attributes.whakaahua
+                                                .data.attributes.height
+                                        }
                                         blurhash={blurhash}
                                         sizes={
                                             '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
@@ -196,63 +193,58 @@ export default function Home({ korero, kaiwhakaahua, img, blurhash }) {
                                 </Box>
                             </GridItem>
                             <GridItem colStart={8} colEnd={13}>
-                                <Box pt={32} textAlign="left" color="white">
+                                <Box
+                                    pt={32}
+                                    fontSize={'36px'}
+                                    lineHeight={'1.36'}
+                                    textAlign="left"
+                                    color="white"
+                                >
                                     <Heading
                                         fontSize={'84px'}
                                         lineHeight={'1'}
-                                        textAlign={'left'}
+                                        textAlign={'center'}
                                         color={'pink.200'}
                                     >
-                                        {kaiwhakaahua.ingoa}
+                                        {kaiwhakaahua.attributes.ingoa}
                                     </Heading>
-                                    <Text
-                                        fontSize={'36px'}
-                                        lineHeight={'1.36'}
-                                        textAlign="left"
-                                        color="white"
-                                    >
-                                        {kaiwhakaahua.korero}
+                                    <Text>
+                                        {kaiwhakaahua.attributes.korero}
                                     </Text>
-                                    <Text
-                                        fontSize={'36px'}
-                                        lineHeight={'1.36'}
-                                        textAlign="left"
-                                        color="white"
-                                    >
-                                        {kaiwhakaahua.whakapapa}
+                                    <Text>
+                                        {kaiwhakaahua.attributes.whakapapa}
                                     </Text>
-                                    <Text
-                                        fontSize={'36px'}
-                                        lineHeight={'1.36'}
-                                        textAlign="left"
-                                        color="white"
-                                    >
-                                        {kaiwhakaahua.paetukutuku}
+                                    <Text>
+                                        {kaiwhakaahua.attributes.paetukutuku}
                                     </Text>
                                 </Box>
                             </GridItem>
                         </Grid>
                     </Box>
-                </SmoothScroll>
+                </Layout>
             </main>
         </>
     )
 }
 
-import fsPromises from 'fs/promises'
-import path from 'path'
 export async function getStaticProps() {
-    const filePath = path.join(process.cwd(), '/public/backend_data_final.json')
-    const jsonData = await fsPromises.readFile(filePath)
-    const objectData = JSON.parse(jsonData)
+    const [koreroResponse, kaiwhakaahuaResponse] = await Promise.all([
+        fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/tu-tama-korero`),
+        fetch(
+            `${process.env.NEXT_PUBLIC_STRAPI_URL}/kaiwhakaahua?populate=whakaahua.*`
+        )
+    ])
 
-    const imageUrl = objectData.kaiwhakaahua.whakaahua.original
+    const korero = await koreroResponse.json()
+    const kaiwhakaahua = await kaiwhakaahuaResponse.json()
+
+    const imageUrl = kaiwhakaahua.data.attributes.whakaahua.data.attributes.url
     const { blurhash, img } = await getPlaiceholder(imageUrl)
 
     return {
         props: {
-            korero: objectData.tu_tama_korero,
-            kaiwhakaahua: objectData.kaiwhakaahua,
+            korero: korero.data,
+            kaiwhakaahua: kaiwhakaahua.data,
             img,
             blurhash
         }

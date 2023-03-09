@@ -1,7 +1,7 @@
+import Header from '@/components/Header'
+import Layout from '@/components/Layout'
 import MapBox from '@/components/Map'
-import SmoothScroll from '@/components/SmoothScroll'
 import WahineModal from '@/components/WahineModal'
-
 import { Box, Button, Flex, useDisclosure } from '@chakra-ui/react'
 import { getPlaiceholder } from 'plaiceholder'
 
@@ -9,7 +9,8 @@ export default function Map({ wahines, portraits, posters }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <main>
-            <SmoothScroll>
+            <Layout>
+                <Header />
                 <Flex justifyContent={'center'}>
                     <Button
                         variant={'callToAction'}
@@ -36,26 +37,31 @@ export default function Map({ wahines, portraits, posters }) {
                         </Box>
                     </Flex>
                 </Box>
-            </SmoothScroll>
+            </Layout>
         </main>
     )
 }
 
-import fsPromises from 'fs/promises'
-import path from 'path'
 export async function getStaticProps() {
-    const filePath = path.join(process.cwd(), '/public/backend_data_final.json')
-    const jsonData = await fsPromises.readFile(filePath)
-    const objectData = JSON.parse(jsonData)
+    const [wahinesResponse, wahinesImagesResponse] = await Promise.all([
+        fetch(
+            `${process.env.NEXT_PUBLIC_STRAPI_URL}/wahines?populate[0]=kiriata&populate[1]=wahi&populate[2]=kiriata_whakaahua`
+        ),
+        fetch(
+            `${process.env.NEXT_PUBLIC_STRAPI_URL}/wahines?populate[0]=whakaahua`
+        )
+    ])
 
-    const wahines = objectData.wahine
+    const wahines = await wahinesResponse.json()
+    const wahinesImages = await wahinesImagesResponse.json()
 
-    const wahinesImages = objectData.wahine.map(
-        (wahinesUrls) => wahinesUrls?.whakaahua?.original
+    const portraitUrls = wahinesImages?.data.map(
+        (wahinesImages) =>
+            wahinesImages?.attributes?.whakaahua?.data?.attributes?.url
     )
 
     const portraits = await Promise.all(
-        wahinesImages.map(async (src) => {
+        portraitUrls.map(async (src) => {
             const { blurhash, img } = await getPlaiceholder(src)
             return {
                 ...img,
@@ -65,8 +71,9 @@ export async function getStaticProps() {
         })
     ).then((values) => values)
 
-    const posterUrls = wahines.map(
-        (wahinesVideos) => wahinesVideos?.kiriata?.poster
+    const posterUrls = wahines?.data.map(
+        (wahinesVideos) =>
+            wahinesVideos?.attributes?.kiriata_whakaahua?.data?.attributes?.url
     )
 
     const posters = await Promise.all(
@@ -91,7 +98,7 @@ export async function getStaticProps() {
     }
     return {
         props: {
-            wahines,
+            wahines: wahines.data,
             portraits,
             posters
         }

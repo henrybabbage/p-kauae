@@ -1,92 +1,46 @@
-import { Box, Flex, HStack, Heading, Link } from '@chakra-ui/react'
+import { Flex, HStack, Heading, Link } from '@chakra-ui/react'
 import NextLink from 'next/link'
-import { useRouter } from 'next/router'
 
 export default function Header() {
-    const router = useRouter()
-
-    const activeLink = (value) => {
-        let color
-        if (value === router.pathname) {
-            color = 'pink.200'
-        } else {
-            color = 'white'
-        }
-        return color
-    }
-
     return (
         <div>
             <Flex
                 as="nav"
-                align="center"
-                justify="space-between"
+                backgroundColor="CC404041"
+                backdropFilter="saturate(180%) blur(4px)"
                 position="fixed"
                 w="100%"
+                align="center"
+                justify="space-between"
+                wrap="wrap"
                 p="6"
-                zIndex={20}
             >
                 <Flex align="end" justify="flex-end">
-                    <Link variant="menu" as={NextLink} href="/" scroll={false}>
-                        <Heading
-                            as="h1"
-                            size="md"
-                            fontWeight="bold"
-                            fontFamily="body"
-                        >
-                            Tū Tama Wāhine o Taranaki
-                        </Heading>
-                    </Link>
+                    <Heading
+                        textStyle="primary"
+                        as="h1"
+                        size="md"
+                        color="black"
+                        fontWeight="bold"
+                    >
+                        Tū Tama Wāhine o Taranaki
+                    </Heading>
                 </Flex>
                 <Flex align="center" justify="end">
                     <HStack spacing="6">
-                        <Link
-                            variant="menu"
-                            as={NextLink}
-                            href="/"
-                            scroll={false}
-                        >
-                            <Heading
-                                as="h2"
-                                size="md"
-                                fontWeight="bold"
-                                fontFamily="body"
-                                textColor={activeLink('/')}
-                            >
+                        <Link variant="menu" as={NextLink} href="/">
+                            <Heading as="h2" size="md" fontWeight="bold">
                                 About
                             </Heading>
                         </Link>
-                        <Link
-                            variant="menu"
-                            as={NextLink}
-                            href="/map"
-                            scroll={false}
-                        >
-                            <Heading
-                                as="h2"
-                                size="md"
-                                fontWeight="bold"
-                                fontFamily="body"
-                                textColor={activeLink('/map')}
-                            >
+                        <Link variant="menu" as={NextLink} href="/map">
+                            <Heading as="h2" size="md" fontWeight="bold">
                                 Map
                             </Heading>
                         </Link>
                     </HStack>
                 </Flex>
             </Flex>
-            <Box
-                backgroundColor="CC404041"
-                backdropFilter="saturate(200%) blur(4px)"
-                position="fixed"
-                w="100%"
-                h="20%"
-                p="6"
-                zIndex={10}
-                sx={{
-                    maskImage: 'linear-gradient(to top, transparent 10%, black)'
-                }}
-            ></Box>
         </div>
     )
 }
