@@ -63,7 +63,7 @@ export async function getStaticProps() {
             return {
                 ...img,
                 blurhash,
-                alernativeText: 'Wahine portrait'
+                alternativeText: 'Wahine portrait photograph'
             }
         })
     ).then((values) => values)
