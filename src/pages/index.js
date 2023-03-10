@@ -42,8 +42,8 @@ export default function Home({
         }
     }
 
-    const totalList = korero.tangata_mihia
-    const lines = totalList.split(/\r\n|\r|\n/)
+    const acknowledgementsList = korero.tangata_mihia
+    const lines = acknowledgementsList.split(/\r\n|\r|\n/)
     const leftColumn = lines.slice(0, 8)
     const rightColumn = lines.slice(8, 16)
 
