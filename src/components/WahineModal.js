@@ -87,9 +87,10 @@ const WahineModal = ({
                             templateColumns="repeat(12, 1fr)"
                             maxW="100vw"
                             columnGap="40px"
+                            rowGap="40px"
                         >
-                            <GridItem colStart={1} colEnd={13} pt={6}>
-                                <Box h={'100%'}>
+                            <GridItem colStart={1} colEnd={13} pt={6} h="80vh">
+                                <Box h="100%">
                                     <VideoPlayer
                                         src={wahines[0].kiriata.original}
                                         alt={wahines[0].kiriata.alternativeText}
@@ -117,7 +118,12 @@ const WahineModal = ({
                                     </Flex>
                                 </Box>
                             </GridItem>
-                            <GridItem colStart={1} colEnd={7} pt={6}>
+                            <GridItem
+                                colStart={1}
+                                colEnd={7}
+                                pt={6}
+                                minH="84vh"
+                            >
                                 <Flex direction={'column'}>
                                     <ChakraNextImage
                                         {...images[index]}
@@ -139,7 +145,12 @@ const WahineModal = ({
                                     </Flex>
                                 </Flex>
                             </GridItem>
-                            <GridItem colStart={7} colEnd={13} pt={6}>
+                            <GridItem
+                                colStart={7}
+                                colEnd={13}
+                                pt={6}
+                                minH="84vh"
+                            >
                                 <Text
                                     fontSize={'18px'}
                                     lineHeight={'1.36'}

@@ -3,7 +3,7 @@ import { AspectRatio, Box } from '@chakra-ui/react'
 export default function VideoPlayer({ src, alt, poster, baseUrlVideo }) {
     const videoSrc = `${baseUrlVideo}${src}`
     return (
-        <AspectRatio maxW="100vw" ratio={16 / 9}>
+        <AspectRatio maxW="100vw" h="75vh" ratio={16 / 9}>
             <Box
                 cursor={'crosshair'}
                 as="video"
