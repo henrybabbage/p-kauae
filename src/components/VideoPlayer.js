@@ -1,3 +1,5 @@
+'use client'
+
 import { AspectRatio, Box } from '@chakra-ui/react'
 
 export default function VideoPlayer({ src, alt, poster, baseUrlVideo }) {

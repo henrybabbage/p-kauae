@@ -1,20 +1,23 @@
+'use client'
+
 import { ChakraNextImage } from '@/components/ChakraNextImage'
 import { Box, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react'
 
 import SmoothScroll from '@/components/SmoothScroll'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
-import { getPlaiceholder } from 'plaiceholder'
 import ReactMarkdown from 'react-markdown'
 import Balancer from 'react-wrap-balancer'
 import remarkBreaks from 'remark-breaks'
 
 export default function Home({
-    korero,
-    kaiwhakaahua,
-    portrait,
-    img,
-    blurhash
+    // korero,
+    // kaiwhakaahua,
+    // portrait,
+    // img,
+    // blurhash,
+    data
 }) {
+    const { korero, kaiwhakaahua, portrait, img, blurhash } = data
     const markdownTheme = {
         p: (props) => {
             const { children } = props
@@ -41,6 +44,8 @@ export default function Home({
             )
         }
     }
+
+    // console.log('home data', data)
 
     const acknowledgementsList = korero.tangata_mihia
     const lines = acknowledgementsList.split(/\r\n|\r|\n/)
@@ -243,28 +248,4 @@ export default function Home({
             </main>
         </>
     )
-}
-
-import fsPromises from 'fs/promises'
-import path from 'path'
-export async function getStaticProps() {
-    const filePath = path.join(process.cwd(), '/public/backend_data_final.json')
-    const jsonData = await fsPromises.readFile(filePath)
-    const objectData = JSON.parse(jsonData)
-
-    const baseUrl = objectData.whakaahua_s3_bucket
-    const imagePath = objectData.kaiwhakaahua.whakaahua.original
-    const imageUrl = `${baseUrl}${imagePath}`
-
-    const { blurhash, img } = await getPlaiceholder(imageUrl)
-
-    return {
-        props: {
-            korero: objectData.tu_tama_korero,
-            kaiwhakaahua: objectData.kaiwhakaahua,
-            portrait: imageUrl,
-            img,
-            blurhash
-        }
-    }
 }

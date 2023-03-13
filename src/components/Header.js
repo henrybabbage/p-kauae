@@ -1,6 +1,6 @@
 import { Box, Flex, HStack, Heading, Link } from '@chakra-ui/react'
 import NextLink from 'next/link'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 export default function Header() {
     const router = useRouter()

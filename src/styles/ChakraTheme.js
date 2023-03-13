@@ -6,7 +6,7 @@ import { theme as base, extendTheme } from '@chakra-ui/react'
 const theme = extendTheme({
     global: {
         body: {
-            bg: 'var(--chakra-colors-theme-grey)',
+            bg: 'grey.600',
             color: 'white'
         }
     },

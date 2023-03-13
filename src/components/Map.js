@@ -1,3 +1,5 @@
+'use client'
+
 import { useRef, useState } from 'react'
 import ReactMapGL, { Marker, Popup, ViewState } from 'react-map-gl'
 import { Box } from '@chakra-ui/react'
