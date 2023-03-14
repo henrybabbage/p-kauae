@@ -15,8 +15,8 @@ import {
     Text
 } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
-import { useState } from 'react'
-import { ChakraNextImage } from './ChakraNextImage'
+import { useCallback, useState } from 'react'
+import PortraitModal from './PortraitModal'
 import VideoPlayer from './VideoPlayer'
 
 const WahineModal = ({
@@ -40,6 +40,16 @@ const WahineModal = ({
     function handlePreviousClick() {
         setIndex((index) => (index - 1) % wahines.length)
     }
+
+    const [isZoomed, setIsZoomed] = useState(false)
+
+    const didClickEnlarge = () => {
+        setIsZoomed(true)
+    }
+
+    const handleZoomChange = useCallback((shouldZoom) => {
+        setIsZoomed(shouldZoom)
+    }, [])
 
     return (
         <>
@@ -128,20 +138,25 @@ const WahineModal = ({
                                 minH="84vh"
                             >
                                 <Flex direction={'column'}>
-                                    <ChakraNextImage
-                                        {...images[index]}
+                                    <PortraitModal
                                         src={images[index]?.src}
                                         alt={images[index]?.alternativeText}
                                         width={4200}
                                         height={2800}
                                         blurhash={images[index]?.blurhash}
-                                        sizes={
-                                            '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
-                                        }
+                                        caption={wahines[index]?.ingoa}
+                                        isZoomed={isZoomed}
+                                        handleZoomChange={handleZoomChange}
+                                        didClickMinimize={(shouldZoom) => {
+                                            setIsZoomed(shouldZoom)
+                                        }}
                                     />
                                     <Flex justifyContent={'end'}>
                                         <Box pt={'2'}>
-                                            <Button variant={'callToAction'}>
+                                            <Button
+                                                variant={'callToAction'}
+                                                onClick={didClickEnlarge}
+                                            >
                                                 {'Enlarge'} {'+'}
                                             </Button>
                                         </Box>
