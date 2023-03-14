@@ -1,6 +1,5 @@
 import { useCallback } from 'react'
 import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
-import 'react-medium-image-zoom/dist/styles.css'
 import { Box, Flex, Text } from '@chakra-ui/react'
 import { ChakraNextImage } from './ChakraNextImage'
 import CloseButton from './CloseButton'
@@ -19,9 +18,9 @@ export default function PortraitModal(props, didClickMinimize) {
         ...rest
     } = props
 
-    const DynamicCustomZoomContent = useCallback(
+    const DynamicZoomContent = useCallback(
         (props) => {
-            return <CustomZoomContent {...props} caption={caption} />
+            return <ZoomContent {...props} caption={caption} />
         },
         [caption]
     )
@@ -40,7 +39,7 @@ export default function PortraitModal(props, didClickMinimize) {
                     onZoomChange={handleZoomChange}
                     zoomMargin={45}
                     ZoomContent={(zoomProps) => (
-                        <DynamicCustomZoomContent
+                        <DynamicZoomContent
                             {...zoomProps}
                             {...props}
                             buttonUnzoom={
@@ -73,7 +72,7 @@ export default function PortraitModal(props, didClickMinimize) {
     )
 }
 
-const CustomZoomContent = ({ img, caption, buttonUnzoom, IconUnzoom }) => {
+const ZoomContent = ({ img, caption, buttonUnzoom, IconUnzoom }) => {
     return (
         <>
             {buttonUnzoom}
