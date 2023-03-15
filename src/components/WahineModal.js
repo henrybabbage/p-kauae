@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
 import { useState } from 'react'
-import { ChakraNextImage } from './ChakraNextImage'
+import PortraitModal from './PortraitModal'
 import VideoPlayer from './VideoPlayer'
 
 const WahineModal = ({
@@ -128,16 +128,16 @@ const WahineModal = ({
                                 minH="84vh"
                             >
                                 <Flex direction={'column'}>
-                                    <ChakraNextImage
-                                        {...images[index]}
+                                    <PortraitModal
                                         src={images[index]?.src}
                                         alt={images[index]?.alternativeText}
                                         width={4200}
                                         height={2800}
                                         blurhash={images[index]?.blurhash}
-                                        sizes={
-                                            '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
-                                        }
+                                        caption={wahines[index]?.ingoa}
+                                        didClickMinimize={(shouldZoom) => {
+                                            setIsZoomed(shouldZoom)
+                                        }}
                                     />
                                     <Flex justifyContent={'end'}>
                                         <Box pt={'2'}>
