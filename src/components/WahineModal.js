@@ -141,10 +141,7 @@ const WahineModal = ({
                                     />
                                     <Flex justifyContent={'end'}>
                                         <Box pt={'2'}>
-                                            <Button
-                                                variant={'callToAction'}
-                                                onClick={didClickEnlarge}
-                                            >
+                                            <Button variant={'callToAction'}>
                                                 {'Enlarge'} {'+'}
                                             </Button>
                                         </Box>
