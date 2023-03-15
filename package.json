@@ -10,10 +10,12 @@
     "lint:fix": "eslint --fix --ext .js,.jsx ."
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.5.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@plaiceholder/next": "^2.5.0",
+    "@vidstack/react": "^0.4.2",
     "chakra-ui-markdown-renderer": "^4.1.0",
     "date-fns": "^2.29.3",
     "eslint": "8.32.0",
@@ -37,6 +39,7 @@
     "react-wrap-balancer": "^0.4.0",
     "remark-breaks": "^3.0.2",
     "resize-observer-polyfill": "^1.5.1",
-    "sharp": "^0.31.3"
+    "sharp": "^0.31.3",
+    "vidstack": "^0.4.2"
   }
 }

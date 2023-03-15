@@ -71,6 +71,7 @@ const WahineModal = ({
                     </Flex>
                     <ModalHeader p={0}></ModalHeader>
                     <ModalBody
+                        maxW="100vw"
                         p={0}
                         overflow="scroll"
                         sx={{
@@ -90,7 +91,11 @@ const WahineModal = ({
                             rowGap="40px"
                         >
                             <GridItem colStart={1} colEnd={13} pt={6} h="80vh">
-                                <Box h="100%">
+                                <Box
+                                    h="75vh"
+                                    overflow="hidden"
+                                    objectPosition="center"
+                                >
                                     <VideoPlayer
                                         src={wahines[index].kiriata.original}
                                         alt={
@@ -99,27 +104,28 @@ const WahineModal = ({
                                         }
                                         poster={null}
                                         baseUrlVideo={baseUrlVideo}
+                                        location={wahines[index].wahi.ingoa}
                                     />
-                                    <Flex alignItems={'baseline'} pt={6}>
-                                        <Heading
-                                            fontSize={'36px'}
-                                            color={'pink.200'}
-                                            fontWeight="regular"
-                                            fontFamily={'heading'}
-                                        >
-                                            {wahines[index].ingoa}
-                                        </Heading>
-                                        <Heading
-                                            fontSize={'16px'}
-                                            color={'pink.200'}
-                                            fontWeight="regular"
-                                            fontFamily={'heading'}
-                                            ml={2}
-                                        >
-                                            {wahines[index].whakapapa}
-                                        </Heading>
-                                    </Flex>
                                 </Box>
+                                <Flex alignItems={'baseline'} pt={6}>
+                                    <Heading
+                                        fontSize={'36px'}
+                                        color={'pink.200'}
+                                        fontWeight="regular"
+                                        fontFamily={'heading'}
+                                    >
+                                        {wahines[index].ingoa}
+                                    </Heading>
+                                    <Heading
+                                        fontSize={'16px'}
+                                        color={'pink.200'}
+                                        fontWeight="regular"
+                                        fontFamily={'heading'}
+                                        ml={2}
+                                    >
+                                        {wahines[index].whakapapa}
+                                    </Heading>
+                                </Flex>
                             </GridItem>
                             <GridItem
                                 colStart={1}
