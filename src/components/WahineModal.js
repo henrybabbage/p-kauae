@@ -90,12 +90,8 @@ const WahineModal = ({
                             columnGap="40px"
                             rowGap="40px"
                         >
-                            <GridItem colStart={1} colEnd={13} pt={6} h="80vh">
-                                <Box
-                                    h="75vh"
-                                    overflow="hidden"
-                                    objectPosition="center"
-                                >
+                            <GridItem colStart={1} colEnd={13} pt={6}>
+                                <Box>
                                     <VideoPlayer
                                         src={wahines[index].kiriata.original}
                                         alt={

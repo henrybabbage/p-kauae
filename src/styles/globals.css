@@ -43,6 +43,12 @@ blockquote > p {
   }
 }
 
+media-player video {
+  height: 75vh;
+  object-fit: cover;
+  object-position: center;
+}
+
 /* Show buffering indicator while media is not ready, or buffering. */
 media-player:not([data-can-play]) .media-buffering-icon,
 media-player[data-waiting] .media-buffering-icon {
