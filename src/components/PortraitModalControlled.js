@@ -1,6 +1,6 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
 import { useCallback } from 'react'
-import Zoom from 'react-medium-image-zoom'
+import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
 import { ChakraNextImage } from './ChakraNextImage'
 import CloseButton from './CloseButton'
 
@@ -14,6 +14,16 @@ export default function PortraitModal(props, didClickMinimize) {
         [caption]
     )
 
+    const [isZoomed, setIsZoomed] = useState(false)
+
+    const didClickEnlarge = () => {
+        setIsZoomed(true)
+    }
+
+    const handleZoomChange = useCallback((shouldZoom) => {
+        setIsZoomed(shouldZoom)
+    }, [])
+
     return (
         <Flex
             flexDir="column"
@@ -23,7 +33,9 @@ export default function PortraitModal(props, didClickMinimize) {
             w="100%"
         >
             <Box position="relative">
-                <Zoom
+                <ControlledZoom
+                    isZoomed={isZoomed}
+                    onZoomChange={handleZoomChange}
                     zoomMargin={45}
                     ZoomContent={(zoomProps) => (
                         <DynamicZoomContent
@@ -53,13 +65,13 @@ export default function PortraitModal(props, didClickMinimize) {
                         blurhash={blurhash}
                         sizes="100vw"
                     />
-                </Zoom>
+                </ControlledZoom>
             </Box>
         </Flex>
     )
 }
 
-const ZoomContent = ({ img, caption, buttonUnzoom }) => {
+const ZoomContent = ({ img, caption, buttonUnzoom, IconUnzoom }) => {
     return (
         <>
             {buttonUnzoom}
