@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
 import { useState } from 'react'
-import { ChakraNextImage } from './ChakraNextImage'
+import PortraitModal from './PortraitModal'
 import VideoPlayer from './VideoPlayer'
 
 const WahineModal = ({
@@ -28,10 +28,10 @@ const WahineModal = ({
     covers,
     baseUrlVideo
 }) => {
-    const captureDate = wahines[0].wa_tiki_whakaahua
-    const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
-
     const [index, setIndex] = useState(0)
+
+    const captureDate = wahines[index].wa_tiki_whakaahua
+    const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
 
     function handleNextClick() {
         setIndex((index) => (index + 1) % wahines.length)
@@ -92,8 +92,11 @@ const WahineModal = ({
                             <GridItem colStart={1} colEnd={13} pt={6} h="80vh">
                                 <Box h="100%">
                                     <VideoPlayer
-                                        src={wahines[0].kiriata.original}
-                                        alt={wahines[0].kiriata.alternativeText}
+                                        src={wahines[index].kiriata.original}
+                                        alt={
+                                            wahines[index].kiriata
+                                                .alternativeText
+                                        }
                                         poster={null}
                                         baseUrlVideo={baseUrlVideo}
                                     />
@@ -125,16 +128,16 @@ const WahineModal = ({
                                 minH="84vh"
                             >
                                 <Flex direction={'column'}>
-                                    <ChakraNextImage
-                                        {...images[index]}
+                                    <PortraitModal
                                         src={images[index]?.src}
                                         alt={images[index]?.alternativeText}
                                         width={4200}
                                         height={2800}
                                         blurhash={images[index]?.blurhash}
-                                        sizes={
-                                            '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
-                                        }
+                                        caption={wahines[index]?.ingoa}
+                                        didClickMinimize={(shouldZoom) => {
+                                            setIsZoomed(shouldZoom)
+                                        }}
                                     />
                                     <Flex justifyContent={'end'}>
                                         <Box pt={'2'}>
