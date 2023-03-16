@@ -1,25 +1,20 @@
-import { AspectRatio, Box } from '@chakra-ui/react'
+import { MediaOutlet, MediaPlayer, MediaPoster } from '@vidstack/react'
+import 'vidstack/styles/base.css'
 
 export default function VideoPlayer({ src, alt, poster, baseUrlVideo }) {
     const videoSrc = `${baseUrlVideo}${src}`
     return (
-        <AspectRatio maxW="100vw" h="75vh" ratio={16 / 9}>
-            <Box
-                cursor={'crosshair'}
-                as="video"
-                controls
-                autoPlay
-                loop
-                anonymous
-                poster={poster}
-                alt={alt}
-                objectFit="contain"
-                sx={{
-                    aspectRatio: '16/9'
-                }}
-            >
-                <Box as="source" src={videoSrc} type="video/mp4" />
-            </Box>
-        </AspectRatio>
+        <MediaPlayer
+            src={videoSrc}
+            load="eager"
+            poster=""
+            aspect-ratio={16 / 9}
+            autoplay
+            loop
+            muted
+        >
+            <MediaOutlet />
+            <MediaPoster alt={alt} />
+        </MediaPlayer>
     )
 }

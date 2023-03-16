@@ -1,22 +1,12 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
 import { useCallback } from 'react'
-import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 import { ChakraNextImage } from './ChakraNextImage'
 import CloseButton from './CloseButton'
 
 export default function PortraitModal(props, didClickMinimize) {
-    const {
-        isZoomed,
-        handleZoomChange,
-        caption,
-        src,
-        alt,
-        width,
-        height,
-        sizes,
-        blurhash,
-        ...rest
-    } = props
+    const { caption, src, alt, width, height, sizes, blurhash, ...rest } = props
 
     const DynamicZoomContent = useCallback(
         (props) => {
@@ -34,9 +24,7 @@ export default function PortraitModal(props, didClickMinimize) {
             w="100%"
         >
             <Box position="relative">
-                <ControlledZoom
-                    isZoomed={isZoomed}
-                    onZoomChange={handleZoomChange}
+                <Zoom
                     zoomMargin={45}
                     ZoomContent={(zoomProps) => (
                         <DynamicZoomContent
@@ -49,7 +37,7 @@ export default function PortraitModal(props, didClickMinimize) {
                                     type="button"
                                     onClick={() => {
                                         zoomProps.onUnzoom()
-                                        props.didClickMinimize(false)
+                                        didClickMinimize
                                     }}
                                 >
                                     <CloseButton />
@@ -66,7 +54,7 @@ export default function PortraitModal(props, didClickMinimize) {
                         blurhash={blurhash}
                         sizes="100vw"
                     />
-                </ControlledZoom>
+                </Zoom>
             </Box>
         </Flex>
     )
