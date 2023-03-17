@@ -1,4 +1,6 @@
-import { ChakraNextImage } from '@/components/ChakraNextImage'
+import BackgroundImage from '@/components/BackgroundImage'
+import { ChakraBox } from '@/components/ChakraBox'
+import ChakraNextImage from '@/components/ChakraNextImage'
 import { Box, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react'
 
 import SmoothScroll from '@/components/SmoothScroll'
@@ -12,8 +14,8 @@ export default function Home({
     korero,
     kaiwhakaahua,
     portrait,
-    img,
-    blurhash
+    portraitImg,
+    portraitBlurhash
 }) {
     const markdownTheme = {
         p: (props) => {
@@ -47,31 +49,60 @@ export default function Home({
     const leftColumn = lines.slice(0, 8)
     const rightColumn = lines.slice(8, 16)
 
+    const container = {
+        show: {
+            transition: {
+                staggerChildren: 0.35
+            }
+        }
+    }
+
+    const itemMain = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                ease: 'easeIn',
+                duration: 2.5
+            }
+        }
+    }
+
     return (
         <>
             <main>
                 <SmoothScroll>
-                    <Box p="6" id="about" bg="grey.600">
+                    <Box id="about" bg="grey.600">
                         <Grid templateColumns="repeat(12, 1fr)">
-                            <GridItem colStart={2} colEnd={12}>
-                                <Flex
-                                    justify="center"
-                                    flexDirection={'column'}
-                                    height={
-                                        'calc(100vh - var(--chakra-sizes-12))'
-                                    }
-                                >
-                                    <Heading
-                                        fontSize={'84px'}
-                                        lineHeight={'1'}
-                                        textAlign={'center'}
-                                        color={'pink.200'}
+                            <GridItem colStart={1} colEnd={13}>
+                                <ChakraBox initial="hidden" animate="visible">
+                                    <ChakraBox variants={itemMain}>
+                                        <BackgroundImage
+                                            src={'/images/background.jpeg'}
+                                            alt={'Taranaki landscape'}
+                                        />
+                                    </ChakraBox>
+
+                                    <Flex
+                                        position="relative"
+                                        justify="center"
+                                        flexDirection={'column'}
+                                        height={
+                                            'calc(100vh - var(--chakra-sizes-12))'
+                                        }
                                     >
-                                        <Balancer ratio={1.0}>
-                                            {korero.tuhinga_timatanga}
-                                        </Balancer>
-                                    </Heading>
-                                </Flex>
+                                        <Heading
+                                            fontSize={'84px'}
+                                            lineHeight={'1'}
+                                            textAlign={'center'}
+                                            color={'pink.200'}
+                                        >
+                                            <Balancer ratio={1.0}>
+                                                {korero.tuhinga_timatanga}
+                                            </Balancer>
+                                        </Heading>
+                                    </Flex>
+                                </ChakraBox>
                             </GridItem>
                             <GridItem colStart={2} colEnd={12} pt="6" pb="6">
                                 <Flex
@@ -189,12 +220,12 @@ export default function Home({
                             <GridItem colStart={2} colEnd={7}>
                                 <Box pt={32} w="100%" h="100%">
                                     <ChakraNextImage
-                                        {...img}
+                                        {...portraitImg}
                                         src={portrait}
                                         alt={'Tania Niwa'}
                                         width={720}
                                         height={648}
-                                        blurhash={blurhash}
+                                        blurhash={portraitBlurhash}
                                         sizes={
                                             '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
                                         }
@@ -263,8 +294,8 @@ export async function getStaticProps() {
             korero: objectData.tu_tama_korero,
             kaiwhakaahua: objectData.kaiwhakaahua,
             portrait: imageUrl,
-            img,
-            blurhash
+            portraitImg: img,
+            portraitBlurhash: blurhash
         }
     }
 }

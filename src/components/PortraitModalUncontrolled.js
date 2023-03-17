@@ -2,7 +2,7 @@ import { Box, Flex, Text } from '@chakra-ui/react'
 import { useCallback } from 'react'
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
-import { ChakraNextImage } from './ChakraNextImage'
+import ChakraNextImage from './ChakraNextImage'
 import CloseButton from './CloseButton'
 
 export default function PortraitModal(props, didClickMinimize) {
