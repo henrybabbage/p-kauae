@@ -1,22 +1,12 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
 import { useCallback } from 'react'
-import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
+import Zoom from 'react-medium-image-zoom'
+
 import ChakraNextImage from './ChakraNextImage'
 import CloseButton from './CloseButton'
 
-export default function PortraitModal(props, didClickMinimize) {
-    const {
-        isZoomed,
-        handleZoomChange,
-        caption,
-        src,
-        alt,
-        width,
-        height,
-        sizes,
-        blurhash,
-        ...rest
-    } = props
+export default function PortraitModal(props) {
+    const { caption, src, alt, width, height, sizes, blurhash, ...rest } = props
 
     const DynamicZoomContent = useCallback(
         (props) => {
@@ -34,9 +24,7 @@ export default function PortraitModal(props, didClickMinimize) {
             w="100%"
         >
             <Box position="relative">
-                <ControlledZoom
-                    isZoomed={isZoomed}
-                    onZoomChange={handleZoomChange}
+                <Zoom
                     zoomMargin={45}
                     ZoomContent={(zoomProps) => (
                         <DynamicZoomContent
@@ -49,7 +37,6 @@ export default function PortraitModal(props, didClickMinimize) {
                                     type="button"
                                     onClick={() => {
                                         zoomProps.onUnzoom()
-                                        props.didClickMinimize(false)
                                     }}
                                 >
                                     <CloseButton />
@@ -66,13 +53,13 @@ export default function PortraitModal(props, didClickMinimize) {
                         blurhash={blurhash}
                         sizes="100vw"
                     />
-                </ControlledZoom>
+                </Zoom>
             </Box>
         </Flex>
     )
 }
 
-const ZoomContent = ({ img, caption, buttonUnzoom, onUnzoom }) => {
+const ZoomContent = ({ img, caption, buttonUnzoom }) => {
     return (
         <>
             {buttonUnzoom}

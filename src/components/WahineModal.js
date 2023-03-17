@@ -15,7 +15,7 @@ import {
     Text
 } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 import PortraitModal from './PortraitModal'
 import VideoPlayer from './VideoPlayer'
 
@@ -40,16 +40,6 @@ const WahineModal = ({
     function handlePreviousClick() {
         setIndex((index) => (index - 1) % wahines.length)
     }
-
-    const [isZoomed, setIsZoomed] = useState(false)
-
-    const didClickEnlarge = () => {
-        setIsZoomed(true)
-    }
-
-    const handleZoomChange = useCallback((shouldZoom) => {
-        setIsZoomed(shouldZoom)
-    }, [])
 
     return (
         <>
@@ -150,22 +140,7 @@ const WahineModal = ({
                                         height={2800}
                                         blurhash={images[index]?.blurhash}
                                         caption={wahines[index]?.ingoa}
-                                        isZoomed={isZoomed}
-                                        handleZoomChange={handleZoomChange}
-                                        didClickMinimize={(shouldZoom) => {
-                                            setIsZoomed(shouldZoom)
-                                        }}
                                     />
-                                    <Flex justifyContent={'end'}>
-                                        <Box pt={'2'}>
-                                            <Button
-                                                variant={'callToAction'}
-                                                onClick={didClickEnlarge}
-                                            >
-                                                {'Enlarge'} {'+'}
-                                            </Button>
-                                        </Box>
-                                    </Flex>
                                 </Flex>
                             </GridItem>
                             <GridItem

@@ -1,7 +1,15 @@
 import { Flex, Heading, VStack } from '@chakra-ui/react'
-import Balancer from 'react-wrap-balancer'
+import { useEffect } from 'react'
 
-export default function Loading() {
+export default function TransitionBanner() {
+    const banner = {
+        animate: {
+            transition: {
+                delayChildren: 0.4,
+                staggerChildren: 0.1
+            }
+        }
+    }
     return (
         <VStack
             w="100vw"
@@ -35,10 +43,8 @@ export default function Loading() {
                     lineHeight="1"
                     textColor="pink.200"
                 >
-                    <Balancer ratio={1.0}>
-                        Celebrating over 30 years of liberation work throughout
-                        Taranaki.
-                    </Balancer>
+                    Celebrating over 30 years of liberation work throughout
+                    Taranaki.
                 </Heading>
             </Flex>
         </VStack>
