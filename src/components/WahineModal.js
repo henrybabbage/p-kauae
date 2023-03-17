@@ -15,7 +15,7 @@ import {
     Text
 } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import PortraitModal from './PortraitModal'
 import VideoPlayer from './VideoPlayer'
 
@@ -40,6 +40,16 @@ const WahineModal = ({
     function handlePreviousClick() {
         setIndex((index) => (index - 1) % wahines.length)
     }
+
+    const [isZoomed, setIsZoomed] = useState(false)
+
+    const didClickEnlarge = () => {
+        setIsZoomed(true)
+    }
+
+    const handleZoomChange = useCallback((shouldZoom) => {
+        setIsZoomed(shouldZoom)
+    }, [])
 
     return (
         <>
@@ -71,6 +81,7 @@ const WahineModal = ({
                     </Flex>
                     <ModalHeader p={0}></ModalHeader>
                     <ModalBody
+                        maxW="100vw"
                         p={0}
                         overflow="scroll"
                         sx={{
@@ -89,37 +100,41 @@ const WahineModal = ({
                             columnGap="40px"
                             rowGap="40px"
                         >
-                            <GridItem colStart={1} colEnd={13} pt={6} h="80vh">
-                                <Box h="100%">
+                            <GridItem colStart={1} colEnd={13} pt={6}>
+                                <Box className="dronefootage">
                                     <VideoPlayer
-                                        src={wahines[index].kiriata.original}
+                                        src={
+                                            wahines[index]?.kiriata
+                                                ?.clipped_30_sec
+                                        }
                                         alt={
                                             wahines[index].kiriata
                                                 .alternativeText
                                         }
                                         poster={null}
                                         baseUrlVideo={baseUrlVideo}
+                                        location={wahines[index].wahi.ingoa}
                                     />
-                                    <Flex alignItems={'baseline'} pt={6}>
-                                        <Heading
-                                            fontSize={'36px'}
-                                            color={'pink.200'}
-                                            fontWeight="regular"
-                                            fontFamily={'heading'}
-                                        >
-                                            {wahines[index].ingoa}
-                                        </Heading>
-                                        <Heading
-                                            fontSize={'16px'}
-                                            color={'pink.200'}
-                                            fontWeight="regular"
-                                            fontFamily={'heading'}
-                                            ml={2}
-                                        >
-                                            {wahines[index].whakapapa}
-                                        </Heading>
-                                    </Flex>
                                 </Box>
+                                <Flex alignItems={'baseline'} pt={6}>
+                                    <Heading
+                                        fontSize={'36px'}
+                                        color={'pink.200'}
+                                        fontWeight="regular"
+                                        fontFamily={'heading'}
+                                    >
+                                        {wahines[index].ingoa}
+                                    </Heading>
+                                    <Heading
+                                        fontSize={'16px'}
+                                        color={'pink.200'}
+                                        fontWeight="regular"
+                                        fontFamily={'heading'}
+                                        ml={2}
+                                    >
+                                        {wahines[index].whakapapa}
+                                    </Heading>
+                                </Flex>
                             </GridItem>
                             <GridItem
                                 colStart={1}
@@ -135,13 +150,18 @@ const WahineModal = ({
                                         height={2800}
                                         blurhash={images[index]?.blurhash}
                                         caption={wahines[index]?.ingoa}
+                                        isZoomed={isZoomed}
+                                        handleZoomChange={handleZoomChange}
                                         didClickMinimize={(shouldZoom) => {
                                             setIsZoomed(shouldZoom)
                                         }}
                                     />
                                     <Flex justifyContent={'end'}>
                                         <Box pt={'2'}>
-                                            <Button variant={'callToAction'}>
+                                            <Button
+                                                variant={'callToAction'}
+                                                onClick={didClickEnlarge}
+                                            >
                                                 {'Enlarge'} {'+'}
                                             </Button>
                                         </Box>
