@@ -104,8 +104,8 @@ const WahineModal = ({
                                 <Box className="dronefootage">
                                     <VideoPlayer
                                         src={
-                                            wahines[index].kiriata
-                                                .clipped_30_sec_30_sec
+                                            wahines[index]?.kiriata
+                                                ?.clipped_30_sec
                                         }
                                         alt={
                                             wahines[index].kiriata
