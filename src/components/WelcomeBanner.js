@@ -1,7 +1,7 @@
 import { Flex, Heading, VStack } from '@chakra-ui/react'
 import Balancer from 'react-wrap-balancer'
 
-export default function Banner() {
+export default function WelcomeBanner() {
     return (
         <VStack
             w="100vw"
