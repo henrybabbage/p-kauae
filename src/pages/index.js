@@ -1,4 +1,6 @@
-import { ChakraNextImage } from '@/components/ChakraNextImage'
+import BackgroundImage from '@/components/BackgroundImage'
+import ChakraNextImage from '@/components/ChakraNextImage'
+import { ChakraBox } from '@/components/ChakraBox'
 import { Box, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react'
 
 import SmoothScroll from '@/components/SmoothScroll'
@@ -12,8 +14,8 @@ export default function Home({
     korero,
     kaiwhakaahua,
     portrait,
-    img,
-    blurhash
+    portraitImg,
+    portraitBlurhash
 }) {
     const markdownTheme = {
         p: (props) => {
@@ -51,10 +53,17 @@ export default function Home({
         <>
             <main>
                 <SmoothScroll>
-                    <Box p="6" id="about" bg="grey.600">
+                    <Box id="about" bg="grey.600">
                         <Grid templateColumns="repeat(12, 1fr)">
-                            <GridItem colStart={2} colEnd={12}>
+                            <GridItem colStart={1} colEnd={13}>
+                                <ChakraBox initial="hidden" animate="enter">
+                                    <BackgroundImage
+                                        src={'/images/background.jpeg'}
+                                        alt={'Taranaki landscape'}
+                                    />
+                                </ChakraBox>
                                 <Flex
+                                    position="relative"
                                     justify="center"
                                     flexDirection={'column'}
                                     height={
@@ -189,12 +198,12 @@ export default function Home({
                             <GridItem colStart={2} colEnd={7}>
                                 <Box pt={32} w="100%" h="100%">
                                     <ChakraNextImage
-                                        {...img}
+                                        {...portraitImg}
                                         src={portrait}
                                         alt={'Tania Niwa'}
                                         width={720}
                                         height={648}
-                                        blurhash={blurhash}
+                                        blurhash={portraitBlurhash}
                                         sizes={
                                             '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
                                         }
@@ -263,8 +272,8 @@ export async function getStaticProps() {
             korero: objectData.tu_tama_korero,
             kaiwhakaahua: objectData.kaiwhakaahua,
             portrait: imageUrl,
-            img,
-            blurhash
+            portraitImg: img,
+            portraitBlurhash: blurhash
         }
     }
 }
