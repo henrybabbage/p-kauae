@@ -60,10 +60,11 @@ const SmoothScroll = ({ children }) => {
     const physics = { damping: 15, mass: 0.27, stiffness: 55 } // easing of smooth scroll
     const spring = useSpring(transform, physics) // apply easing to the negative scroll value
 
+    // page transition animation
     let variants = {
-        hidden: { opacity: 0, x: 0, y: 64 },
+        hidden: { opacity: 0, x: 0, y: 0 },
         enter: { opacity: 1, x: 0, y: 0 },
-        exit: { opacity: 0, x: 0, y: 64 }
+        exit: { opacity: 0, x: 0, y: 0 }
     }
 
     useEffect(() => {
@@ -79,7 +80,7 @@ const SmoothScroll = ({ children }) => {
                 animate="enter"
                 exit="exit"
                 variants={variants}
-                transition={{ type: 'linear', duration: 1 }}
+                transition={{ type: 'linear', duration: 0.5 }}
                 ref={scrollRef}
                 style={{ y: spring }} // translateY of scroll container using negative scroll value
                 position="fixed"
