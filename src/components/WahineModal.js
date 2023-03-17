@@ -103,7 +103,10 @@ const WahineModal = ({
                             <GridItem colStart={1} colEnd={13} pt={6}>
                                 <Box className="dronefootage">
                                     <VideoPlayer
-                                        src={wahines[index].kiriata.original}
+                                        src={
+                                            wahines[index]?.kiriata
+                                                ?.clipped_30_sec
+                                        }
                                         alt={
                                             wahines[index].kiriata
                                                 .alternativeText
