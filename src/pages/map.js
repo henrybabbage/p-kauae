@@ -30,7 +30,7 @@ export default function Map({ wahines, portraits, posters, baseUrlVideo }) {
                     covers={posters}
                     baseUrlVideo={baseUrlVideo}
                 />
-                <Box pt="14" pb="12" id="map" w="100vw" h="100vh" bg="grey.600">
+                <Box pt="14" pb="12" id="map" w="100vw" h="100vh" bg="grey.800">
                     <Flex justifyContent="center" alignContent="center">
                         <Box w="84vw" h="84vh">
                             <MapBox />

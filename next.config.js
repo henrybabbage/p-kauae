@@ -12,7 +12,9 @@ const nextConfig = {
     },
     env: {
         NEXT_PUBLIC_STRAPI_URL: process.env.NEXT_PUBLIC_STRAPI_URL,
-        NEXT_PUBLIC_IMAGES_DOMAIN: process.env.NEXT_PUBLIC_IMAGES_DOMAIN
+        NEXT_PUBLIC_IMAGES_DOMAIN: process.env.NEXT_PUBLIC_IMAGES_DOMAIN,
+        NEXT_PUBLIC_YOUTUBE_ASSET_DOMAIN:
+            process.env.NEXT_PUBLIC_YOUTUBE_ASSET_DOMAIN
     },
     images: {
         domains: ['localhost', 'pukauae.s3.ap-southeast-2.amazonaws.com'],

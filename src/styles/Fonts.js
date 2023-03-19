@@ -50,6 +50,14 @@ const Fonts = () => (
             font-style: normal;
             font-weight: 700;
         }
+        
+        @font-face {
+            font-family: "GTZirkon_Black";
+            src: url("fonts/GTZirkon/GTZirkon_Black.woff2") format("woff2"),
+            url("fonts/GTZirkon/GTZirkon_Black.woff") format("woff");
+            font-style: normal;
+            font-weight: 800;
+        }
 
         @font-face {
             font-family: "GTPlanar_Regular";

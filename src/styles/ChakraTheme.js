@@ -12,16 +12,18 @@ const theme = extendTheme({
     },
     colors: {
         pink: {
-            200: '#C3918F'
+            200: '#f9abab',
+            400: '#C3918F'
         },
         grey: {
-            600: '#404041',
+            400: '#404041',
+            600: '#2f2f2f',
             800: '#231F20'
         }
     },
     fonts: {
         body: `"GTPlanar_Regular", ${base.fonts.body}, sans-serif`,
-        heading: `"GTZirkon_Bold", ${base.fonts.heading}, sans-serif`
+        heading: `"GTZirkon_Black", ${base.fonts.heading}, sans-serif`
     },
     fontSizes: {
         sm: '18px',
