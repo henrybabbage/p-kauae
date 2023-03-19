@@ -1,13 +1,21 @@
+import AboutBanner from '@/components/AboutBanner'
 import BackgroundImage from '@/components/BackgroundImage'
 import { ChakraBox } from '@/components/ChakraBox'
 import ChakraNextImage from '@/components/ChakraNextImage'
-import { Box, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react'
+import {
+    AspectRatio,
+    Box,
+    Flex,
+    Grid,
+    GridItem,
+    Heading,
+    Text
+} from '@chakra-ui/react'
 
 import SmoothScroll from '@/components/SmoothScroll'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import { getPlaiceholder } from 'plaiceholder'
 import ReactMarkdown from 'react-markdown'
-import Balancer from 'react-wrap-balancer'
 import remarkBreaks from 'remark-breaks'
 
 export default function Home({
@@ -15,7 +23,8 @@ export default function Home({
     kaiwhakaahua,
     portrait,
     portraitImg,
-    portraitBlurhash
+    portraitBlurhash,
+    heroVideo
 }) {
     const markdownTheme = {
         p: (props) => {
@@ -72,9 +81,14 @@ export default function Home({
         <>
             <main>
                 <SmoothScroll>
-                    <Box id="about" bg="grey.600">
+                    <Box id="about" bg="grey.800">
                         <Grid templateColumns="repeat(12, 1fr)">
-                            <GridItem colStart={1} colEnd={13}>
+                            <GridItem
+                                colStart={1}
+                                colEnd={13}
+                                h="100vh"
+                                overflow="hidden"
+                            >
                                 <ChakraBox initial="hidden" animate="visible">
                                     <ChakraBox variants={itemMain}>
                                         <BackgroundImage
@@ -91,18 +105,26 @@ export default function Home({
                                             'calc(100vh - var(--chakra-sizes-12))'
                                         }
                                     >
-                                        <Heading
-                                            fontSize={'84px'}
-                                            lineHeight={'1'}
-                                            textAlign={'center'}
-                                            color={'pink.200'}
-                                        >
-                                            <Balancer ratio={1.0}>
-                                                {korero.tuhinga_timatanga}
-                                            </Balancer>
-                                        </Heading>
+                                        <AboutBanner />
                                     </Flex>
                                 </ChakraBox>
+                            </GridItem>
+                            <GridItem colStart={2} colEnd={12} pt="6" pb="6">
+                                <AspectRatio ratio={16 / 9}>
+                                    {/* <Box
+                                        as="iframe"
+                                        title="Pūkauae Exhibition Opening 11th December 2019"
+                                        src={heroVideo}
+                                    /> */}
+                                    <iframe
+                                        width="560"
+                                        height="315"
+                                        src="https://www.youtube.com/embed/ooYB4800jso?controls=0"
+                                        title="Pūkauae Exhibition Opening 11th December 2019"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; gyroscope"
+                                    ></iframe>
+                                </AspectRatio>
                             </GridItem>
                             <GridItem colStart={2} colEnd={12} pt="6" pb="6">
                                 <Flex
@@ -212,7 +234,7 @@ export default function Home({
                             </GridItem>
                         </Grid>
                     </Box>
-                    <Box p="6" id="photographer" bg="grey.600">
+                    <Box p="6" id="photographer" bg="grey.800">
                         <Grid
                             templateColumns="repeat(12, 1fr)"
                             h={'calc(100vh - var(--chakra-sizes-12))'}
@@ -284,6 +306,7 @@ export async function getStaticProps() {
     const objectData = JSON.parse(jsonData)
 
     const baseUrl = objectData.whakaahua_s3_bucket
+    const heroVideo = process.env.NEXT_PUBLIC_YOUTUBE_ASSET_DOMAIN
     const imagePath = objectData.kaiwhakaahua.whakaahua.original
     const imageUrl = `${baseUrl}${imagePath}`
 
@@ -295,7 +318,8 @@ export async function getStaticProps() {
             kaiwhakaahua: objectData.kaiwhakaahua,
             portrait: imageUrl,
             portraitImg: img,
-            portraitBlurhash: blurhash
+            portraitBlurhash: blurhash,
+            heroVideo: heroVideo
         }
     }
 }

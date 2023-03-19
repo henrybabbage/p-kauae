@@ -3,7 +3,7 @@ import theme from '@/styles/ChakraTheme'
 import Fonts from '@/styles/Fonts'
 import '@/styles/globals.css'
 import { ChakraProvider } from '@chakra-ui/react'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
@@ -36,16 +36,18 @@ export default function App({ Component, pageProps }) {
             </Head>
             <ChakraProvider theme={theme}>
                 <Fonts />
-                <Header />
-                <AnimatePresence
-                    mode="wait"
-                    initial={true}
-                    onExitComplete={() => {
-                        window.scrollTo(0, 0)
-                    }}
-                >
-                    <Component {...pageProps} key={asPath} />
-                </AnimatePresence>
+                <AnimateSharedLayout type="crossfade">
+                    <AnimatePresence
+                        mode="wait"
+                        initial={true}
+                        onExitComplete={() => {
+                            window.scrollTo(0, 0)
+                        }}
+                    >
+                        <Header />
+                        <Component {...pageProps} key={asPath} />
+                    </AnimatePresence>
+                </AnimateSharedLayout>
             </ChakraProvider>
         </>
     )
