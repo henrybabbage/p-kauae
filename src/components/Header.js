@@ -1,4 +1,6 @@
 import { Box, Flex, HStack, Heading, Link } from '@chakra-ui/react'
+import { ChakraBox } from './ChakraBox'
+
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -16,30 +18,26 @@ export default function Header() {
     }
 
     return (
-        <div>
-            <Flex
-                as="nav"
-                align="center"
-                justify="space-between"
-                position="fixed"
-                w="100%"
-                p="6"
-                zIndex={20}
+        <Box>
+            <ChakraBox
+                initial={{ opacity: 0, y: -180 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                    ease: 'easeInOut',
+                    duration: 1,
+                    delay: 0.6
+                }}
             >
-                <Flex align="end" justify="flex-end">
-                    <Link variant="menu" as={NextLink} href="/" scroll={false}>
-                        <Heading
-                            as="h1"
-                            size="md"
-                            fontWeight="bold"
-                            fontFamily="body"
-                        >
-                            Tū Tama Wāhine o Taranaki
-                        </Heading>
-                    </Link>
-                </Flex>
-                <Flex align="center" justify="end">
-                    <HStack spacing="6">
+                <Flex
+                    as="nav"
+                    align="center"
+                    justify="space-between"
+                    position="fixed"
+                    w="100%"
+                    p="6"
+                    zIndex={20}
+                >
+                    <Flex align="end" justify="flex-end">
                         <Link
                             variant="menu"
                             as={NextLink}
@@ -47,34 +45,53 @@ export default function Header() {
                             scroll={false}
                         >
                             <Heading
-                                as="h2"
+                                as="h1"
                                 size="md"
                                 fontWeight="bold"
                                 fontFamily="body"
-                                textColor={activeLink('/')}
                             >
-                                About
+                                Tū Tama Wāhine o Taranaki
                             </Heading>
                         </Link>
-                        <Link
-                            variant="menu"
-                            as={NextLink}
-                            href="/map"
-                            scroll={false}
-                        >
-                            <Heading
-                                as="h2"
-                                size="md"
-                                fontWeight="bold"
-                                fontFamily="body"
-                                textColor={activeLink('/map')}
+                    </Flex>
+                    <Flex align="center" justify="end">
+                        <HStack spacing="6">
+                            <Link
+                                variant="menu"
+                                as={NextLink}
+                                href="/"
+                                scroll={false}
                             >
-                                Map
-                            </Heading>
-                        </Link>
-                    </HStack>
+                                <Heading
+                                    as="h2"
+                                    size="md"
+                                    fontWeight="bold"
+                                    fontFamily="body"
+                                    textColor={activeLink('/')}
+                                >
+                                    About
+                                </Heading>
+                            </Link>
+                            <Link
+                                variant="menu"
+                                as={NextLink}
+                                href="/map"
+                                scroll={false}
+                            >
+                                <Heading
+                                    as="h2"
+                                    size="md"
+                                    fontWeight="bold"
+                                    fontFamily="body"
+                                    textColor={activeLink('/map')}
+                                >
+                                    Map
+                                </Heading>
+                            </Link>
+                        </HStack>
+                    </Flex>
                 </Flex>
-            </Flex>
+            </ChakraBox>
             <Box
                 backgroundColor="CC404041"
                 backdropFilter="saturate(200%) blur(4px)"
@@ -87,6 +104,6 @@ export default function Header() {
                     maskImage: 'linear-gradient(to top, transparent 10%, black)'
                 }}
             ></Box>
-        </div>
+        </Box>
     )
 }
