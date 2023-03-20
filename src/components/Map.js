@@ -12,7 +12,7 @@ export default function Map() {
     })
 
     return (
-        <Box h="100%" w="100%">
+        <Box h="84vh" w="84vw">
             <ReactMapGL
                 width="100%"
                 height="100%"
@@ -25,7 +25,7 @@ export default function Map() {
                 ref={(instance) => (mapRef.current = instance)}
                 minZoom={5}
                 maxZoom={15}
-                mapStyle="mapbox://styles/leighhalliday/ckhjaksxg0x2v19s1ovps41ef"
+                mapStyle="mapbox://styles/mapbox/satellite-v9"
             ></ReactMapGL>
         </Box>
     )

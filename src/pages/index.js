@@ -2,15 +2,7 @@ import AboutBanner from '@/components/AboutBanner'
 import BackgroundImage from '@/components/BackgroundImage'
 import { ChakraBox } from '@/components/ChakraBox'
 import ChakraNextImage from '@/components/ChakraNextImage'
-import {
-    AspectRatio,
-    Box,
-    Flex,
-    Grid,
-    GridItem,
-    Heading,
-    Text
-} from '@chakra-ui/react'
+import { Box, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react'
 
 import SmoothScroll from '@/components/SmoothScroll'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
@@ -24,7 +16,8 @@ export default function Home({
     portrait,
     portraitImg,
     portraitBlurhash,
-    heroVideo
+    heroVideo,
+    baseUrlVideo
 }) {
     const markdownTheme = {
         p: (props) => {
@@ -110,21 +103,21 @@ export default function Home({
                                 </ChakraBox>
                             </GridItem>
                             <GridItem colStart={2} colEnd={12} pt="6" pb="6">
-                                <AspectRatio ratio={16 / 9}>
-                                    {/* <Box
-                                        as="iframe"
-                                        title="Pūkauae Exhibition Opening 11th December 2019"
+                                <Flex
+                                    justify="center"
+                                    flexDirection={'column'}
+                                    height={
+                                        'calc(100vh - var(--chakra-sizes-12))'
+                                    }
+                                >
+                                    <VideoPlayer
                                         src={heroVideo}
-                                    /> */}
-                                    <iframe
-                                        width="560"
-                                        height="315"
-                                        src="https://www.youtube.com/embed/ooYB4800jso?controls=0"
-                                        title="Pūkauae Exhibition Opening 11th December 2019"
-                                        frameborder="0"
-                                        allow="accelerometer; autoplay; gyroscope"
-                                    ></iframe>
-                                </AspectRatio>
+                                        baseUrlVideo={baseUrlVideo}
+                                        alt="Pūkauae Exhibition Opening 11th December 2019"
+                                        autoPlay={false}
+                                        controls={true}
+                                    />
+                                </Flex>
                             </GridItem>
                             <GridItem colStart={2} colEnd={12} pt="6" pb="6">
                                 <Flex
@@ -298,6 +291,7 @@ export default function Home({
     )
 }
 
+import VideoPlayer from '@/components/VideoPlayer'
 import fsPromises from 'fs/promises'
 import path from 'path'
 export async function getStaticProps() {
@@ -306,7 +300,8 @@ export async function getStaticProps() {
     const objectData = JSON.parse(jsonData)
 
     const baseUrl = objectData.whakaahua_s3_bucket
-    const heroVideo = process.env.NEXT_PUBLIC_YOUTUBE_ASSET_DOMAIN
+    const baseUrlVideo = objectData.kiriata_cloudfront
+    const heroVideo = objectData.tu_tama_korero.opening_video
     const imagePath = objectData.kaiwhakaahua.whakaahua.original
     const imageUrl = `${baseUrl}${imagePath}`
 
@@ -319,7 +314,8 @@ export async function getStaticProps() {
             portrait: imageUrl,
             portraitImg: img,
             portraitBlurhash: blurhash,
-            heroVideo: heroVideo
+            heroVideo: heroVideo,
+            baseUrlVideo: baseUrlVideo
         }
     }
 }
