@@ -41,6 +41,7 @@ const Fonts = () => (
             url("fonts/GTZirkon/GTZirkon_Regular.woff") format("woff");
             font-style: normal;
             font-weight: 400;
+            font-feature-settings: "ss02"
         }
         
         @font-face {
@@ -49,6 +50,7 @@ const Fonts = () => (
             url("fonts/GTZirkon/GTZirkon_Bold.woff") format("woff");
             font-style: normal;
             font-weight: 700;
+            font-feature-settings: "ss02"
         }
         
         @font-face {
@@ -57,6 +59,7 @@ const Fonts = () => (
             url("fonts/GTZirkon/GTZirkon_Black.woff") format("woff");
             font-style: normal;
             font-weight: 800;
+            font-feature-settings: "ss02"
         }
 
         @font-face {
@@ -65,6 +68,7 @@ const Fonts = () => (
             url("fonts/GTPlanar/GTPlanar_Regular.woff") format("woff");
             font-style: normal;
             font-weight: 400;
+            font-feature-settings: "ss04"
         }
         
         @font-face {
@@ -73,6 +77,7 @@ const Fonts = () => (
             url("fonts/GTPlanar/GTPlanar_Bold.woff") format("woff");
             font-style: normal;
             font-weight: 700;
+            font-feature-settings: "ss04"
         }
 	`}
     />
