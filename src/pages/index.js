@@ -235,7 +235,7 @@ export default function Home({
                         <Grid templateColumns="repeat(12, 1fr)" h="100vh">
                             <GridItem
                                 colStart={1}
-                                colEnd={7}
+                                colEnd={9}
                                 marginTop="auto"
                                 px="6"
                             >
@@ -246,33 +246,36 @@ export default function Home({
                                     textAlign="left"
                                     color="white"
                                 >
-                                    <Heading
-                                        fontSize={'84px'}
-                                        lineHeight={'1'}
-                                        textAlign={'left'}
-                                        color={'pink.200'}
-                                        pb="10"
-                                    >
-                                        {kaiwhakaahua.ingoa}
-                                    </Heading>
+                                    <Flex alignItems={'baseline'} pt={6}>
+                                        <Heading
+                                            fontSize="84px"
+                                            lineHeight="1"
+                                            textAlign="left"
+                                            color="pink.200"
+                                            pb="10"
+                                        >
+                                            {kaiwhakaahua.ingoa}
+                                        </Heading>
+                                        <Text
+                                            fontFamily="heading"
+                                            fontSize="24px"
+                                            lineHeight="1.36"
+                                            textAlign="left"
+                                            color="pink.200"
+                                            ml="4"
+                                        >
+                                            {kaiwhakaahua.whakapapa}
+                                        </Text>
+                                    </Flex>
                                     <Text
                                         fontFamily="heading"
                                         fontSize={'36px'}
                                         lineHeight={'1.36'}
                                         textAlign="left"
                                         color="white"
-                                        pb="10"
+                                        pb="28"
                                     >
                                         {kaiwhakaahua.korero}
-                                    </Text>
-                                    <Text
-                                        fontFamily="heading"
-                                        fontSize={'36px'}
-                                        lineHeight={'1.36'}
-                                        textAlign="left"
-                                        color="white"
-                                    >
-                                        {kaiwhakaahua.whakapapa}
                                     </Text>
                                     <Text
                                         fontFamily="heading"
@@ -285,9 +288,9 @@ export default function Home({
                                     </Text>
                                 </Flex>
                             </GridItem>
-                            <GridItem colStart={8} colEnd={12} marginTop="auto">
+                            <GridItem colStart={9} colEnd={13} marginTop="auto">
                                 <Flex
-                                    px="4"
+                                    px="8"
                                     pt="4"
                                     pb="10"
                                     flexDirection="column"
