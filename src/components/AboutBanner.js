@@ -186,7 +186,7 @@ const BannerRowBottom = ({ text }) => {
 
 const ScrollPrompt = () => {
     return (
-        <Box pb="4" pr="16">
+        <Box pb="4" pr="16" cursor="auto">
             <ChakraBox
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}

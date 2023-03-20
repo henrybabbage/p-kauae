@@ -23,6 +23,7 @@ const theme = extendTheme({
     },
     fonts: {
         body: `"GTPlanar_Regular", ${base.fonts.body}, sans-serif`,
+        subheading: `"GTPlanar_Bold", ${base.fonts.body}, sans-serif`,
         heading: `"GTZirkon_Black", ${base.fonts.heading}, sans-serif`
     },
     fontSizes: {

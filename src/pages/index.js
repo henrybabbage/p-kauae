@@ -47,9 +47,9 @@ export default function Home({
     }
 
     const acknowledgementsList = korero.tangata_mihia
-    const lines = acknowledgementsList.split(/\r\n|\r|\n/)
-    const leftColumn = lines.slice(0, 8)
-    const rightColumn = lines.slice(8, 16)
+    const lines = acknowledgementsList.split('Coles')
+    const leftColumn = lines[0]
+    const rightColumn = lines[1]
 
     const container = {
         animate: {
@@ -131,16 +131,17 @@ export default function Home({
                                         'calc(100vh - var(--chakra-sizes-12))'
                                     }
                                 >
-                                    <Text
-                                        fontSize={'md'}
-                                        lineHeight={'1.36'}
+                                    <Heading
+                                        as="h2"
+                                        fontFamily="heading"
+                                        fontSize="84px"
+                                        lineHeight="1.36"
                                         textAlign="left"
-                                        color="white"
+                                        color="pink.200"
+                                        pb="10"
                                     >
                                         Acknowledgements
-                                        <br />
-                                        <br />
-                                    </Text>
+                                    </Heading>
                                     <ReactMarkdown
                                         remarkPlugins={[remarkBreaks]}
                                         components={ChakraUIRenderer(
@@ -155,31 +156,31 @@ export default function Home({
                                 <Flex
                                     as="div"
                                     justify="center"
-                                    flexDirection={'column'}
-                                    height={'100vh'}
+                                    flexDirection="column"
+                                    height="100vh"
                                     lineHeight="1.36"
                                 >
+                                    <Heading
+                                        as="h2"
+                                        fontFamily="heading"
+                                        fontSize="84px"
+                                        lineHeight="1.36"
+                                        textAlign="left"
+                                        color="pink.200"
+                                        w="100vw"
+                                        pb="10"
+                                    >
+                                        A special thanks to
+                                    </Heading>
+
                                     <Text
-                                        fontSize={'36px'}
-                                        lineHeight={'1.36'}
+                                        fontSize="36px"
+                                        lineHeight="1.36"
                                         textAlign="left"
                                         color="white"
                                     >
-                                        A special thanks to
-                                        <br />
-                                        <br />
+                                        {leftColumn}
                                     </Text>
-                                    {leftColumn.map((name, index) => (
-                                        <Text
-                                            fontSize={'36px'}
-                                            lineHeight={'1.36'}
-                                            textAlign="left"
-                                            color="white"
-                                            key={index}
-                                        >
-                                            {name}
-                                        </Text>
-                                    ))}
                                 </Flex>
                             </GridItem>
                             <GridItem
@@ -205,17 +206,14 @@ export default function Home({
                                         <br />
                                         <br />
                                     </Text>
-                                    {rightColumn.map((name, index) => (
-                                        <Text
-                                            fontSize={'36px'}
-                                            lineHeight={'1.36'}
-                                            textAlign="left"
-                                            color="white"
-                                            key={index}
-                                        >
-                                            {name}
-                                        </Text>
-                                    ))}
+                                    <Text
+                                        fontSize={'36px'}
+                                        lineHeight={'1.36'}
+                                        textAlign="left"
+                                        color="white"
+                                    >
+                                        {rightColumn}
+                                    </Text>
                                 </Flex>
                             </GridItem>
                             <GridItem colStart={2} colEnd={12} pt="16">
@@ -246,7 +244,7 @@ export default function Home({
                                     textAlign="left"
                                     color="white"
                                 >
-                                    <Flex alignItems={'baseline'} pt={6}>
+                                    <Flex alignItems="baseline" pt={6}>
                                         <Heading
                                             fontSize="84px"
                                             lineHeight="1"
