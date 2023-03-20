@@ -106,6 +106,8 @@ const WahineModal = ({
                                         location={wahines[index].wahi.ingoa}
                                         autoPlay={true}
                                         controls={false}
+                                        loop={true}
+                                        muted={true}
                                     />
                                 </Box>
                                 <Flex alignItems={'baseline'} pt={6}>

@@ -8,7 +8,9 @@ export default function VideoPlayer({
     poster,
     baseUrlVideo,
     autoPlay,
-    controls
+    controls,
+    muted,
+    loop
 }) {
     const videoSrc = `${baseUrlVideo}${src}`
     return (
@@ -19,8 +21,8 @@ export default function VideoPlayer({
             aspect-ratio={16 / 9}
             autoplay={autoPlay}
             controls={controls}
-            loop
-            muted
+            muted={muted}
+            loop={loop}
         >
             <Box className="media-buffering-container">
                 <svg

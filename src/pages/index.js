@@ -116,6 +116,8 @@ export default function Home({
                                         alt="Pūkauae Exhibition Opening 11th December 2019"
                                         autoPlay={false}
                                         controls={true}
+                                        muted={false}
+                                        loop={false}
                                     />
                                 </Flex>
                             </GridItem>
