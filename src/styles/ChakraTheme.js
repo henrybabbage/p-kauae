@@ -6,7 +6,7 @@ import { theme as base, extendTheme } from '@chakra-ui/react'
 const theme = extendTheme({
     global: {
         body: {
-            bg: 'var(--chakra-colors-theme-grey)',
+            bg: 'grey.800',
             color: 'white'
         }
     },
@@ -58,7 +58,7 @@ const theme = extendTheme({
     },
     layerStyles: {
         base: {
-            bg: 'grey'
+            bg: 'grey.800'
         },
         modal: {
             bg: 'charcoal',
