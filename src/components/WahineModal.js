@@ -91,7 +91,7 @@ const WahineModal = ({
                             rowGap="40px"
                         >
                             <GridItem colStart={1} colEnd={13} pt={6}>
-                                <Box className="dronefootage">
+                                <Box className="droneFootage">
                                     <VideoPlayer
                                         src={
                                             wahines[index]?.kiriata
@@ -104,6 +104,8 @@ const WahineModal = ({
                                         poster={null}
                                         baseUrlVideo={baseUrlVideo}
                                         location={wahines[index].wahi.ingoa}
+                                        autoPlay={true}
+                                        controls={false}
                                     />
                                 </Box>
                                 <Flex alignItems={'baseline'} pt={6}>

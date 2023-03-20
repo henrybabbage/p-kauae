@@ -25,6 +25,7 @@ export default function Map() {
                 ref={(instance) => (mapRef.current = instance)}
                 minZoom={5}
                 maxZoom={15}
+                pitch={45}
                 mapStyle="mapbox://styles/henrybabbage/clfgw3onz000601rsu3nbrtzx"
             ></ReactMapGL>
         </Box>
