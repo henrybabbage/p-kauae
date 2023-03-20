@@ -2,7 +2,7 @@ import MapBox from '@/components/Map'
 import SmoothScroll from '@/components/SmoothScroll'
 import WahineModal from '@/components/WahineModal'
 
-import { Box, Button, Flex, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, useDisclosure } from '@chakra-ui/react'
 import { getPlaiceholder } from 'plaiceholder'
 
 export default function Map({ wahines, portraits, posters, baseUrlVideo }) {
@@ -10,17 +10,6 @@ export default function Map({ wahines, portraits, posters, baseUrlVideo }) {
     return (
         <main>
             <SmoothScroll>
-                <Flex justifyContent={'center'}>
-                    <Button
-                        variant={'callToAction'}
-                        color={'black'}
-                        position={'fixed'}
-                        bottom={6}
-                        onClick={onOpen}
-                    >
-                        Modal
-                    </Button>
-                </Flex>
                 <WahineModal
                     isOpen={isOpen}
                     onOpen={onOpen}
@@ -30,11 +19,25 @@ export default function Map({ wahines, portraits, posters, baseUrlVideo }) {
                     covers={posters}
                     baseUrlVideo={baseUrlVideo}
                 />
-                <Box pt="14" pb="12" id="map" w="100vw" h="100vh" bg="grey.800">
-                    <Flex justifyContent="center" alignContent="center">
-                        <Box w="84vw" h="84vh">
-                            <MapBox />
-                        </Box>
+                <Box position="fixed" bottom={10} w="100%" zIndex={1000}>
+                    <Button
+                        variant={'callToAction'}
+                        position={'fixed'}
+                        onClick={onOpen}
+                    >
+                        <Heading
+                            as="h2"
+                            size="md"
+                            fontWeight="bold"
+                            fontFamily="body"
+                        >
+                            Wahines
+                        </Heading>
+                    </Button>
+                </Box>
+                <Box id="map" w="100vw" h="100vh" bg="grey.800" pt="4">
+                    <Flex h="100vh" alignItems="center" justifyContent="center">
+                        <MapBox />
                     </Flex>
                 </Box>
             </SmoothScroll>

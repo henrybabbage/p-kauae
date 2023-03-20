@@ -16,12 +16,6 @@ const callToAction = defineStyle({
     _hover: {
         textDecoration: 'none',
         color: 'pink'
-    },
-    _focus: {
-        outline: '1px',
-        borderRadius: '4px',
-        borderColor: '#000000',
-        boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.5) !important'
     }
 })
 

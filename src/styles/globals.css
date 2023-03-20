@@ -38,6 +38,14 @@ blockquote > p {
     color: #C3918F !important;
 }
 
+.mapboxgl-ctrl-logo {
+    display: none !important;
+}
+
+.mapboxgl-ctrl-bottom-right {
+    display: none !important;
+}
+
 /*  ------------------------------ */
 /*  vidstack player
 /*  ------------------------------ */
