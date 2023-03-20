@@ -47,12 +47,12 @@ export default function Home({
     }
 
     const acknowledgementsList = korero.tangata_mihia
-    const lines = acknowledgementsList.split(/\r\n|\r|\n/)
-    const leftColumn = lines.slice(0, 8)
-    const rightColumn = lines.slice(8, 16)
+    const lines = acknowledgementsList.split('Coles')
+    const leftColumn = lines[0]
+    const rightColumn = lines[1]
 
     const container = {
-        show: {
+        animate: {
             transition: {
                 staggerChildren: 0.35
             }
@@ -60,8 +60,8 @@ export default function Home({
     }
 
     const itemMain = {
-        hidden: { opacity: 0 },
-        visible: {
+        initial: { opacity: 0 },
+        animate: {
             opacity: 1,
             transition: {
                 ease: 'easeIn',
@@ -82,7 +82,11 @@ export default function Home({
                                 h="100vh"
                                 overflow="hidden"
                             >
-                                <ChakraBox initial="hidden" animate="visible">
+                                <ChakraBox
+                                    initial="initial"
+                                    animate="animate"
+                                    variants={container}
+                                >
                                     <ChakraBox variants={itemMain}>
                                         <BackgroundImage
                                             src={'/images/background.jpeg'}
@@ -130,16 +134,17 @@ export default function Home({
                                         'calc(100vh - var(--chakra-sizes-12))'
                                     }
                                 >
-                                    <Text
-                                        fontSize={'md'}
-                                        lineHeight={'1.36'}
+                                    <Heading
+                                        as="h2"
+                                        fontFamily="heading"
+                                        fontSize="84px"
+                                        lineHeight="1.36"
                                         textAlign="left"
-                                        color="white"
+                                        color="pink.200"
+                                        pb="10"
                                     >
                                         Acknowledgements
-                                        <br />
-                                        <br />
-                                    </Text>
+                                    </Heading>
                                     <ReactMarkdown
                                         remarkPlugins={[remarkBreaks]}
                                         components={ChakraUIRenderer(
@@ -154,31 +159,31 @@ export default function Home({
                                 <Flex
                                     as="div"
                                     justify="center"
-                                    flexDirection={'column'}
-                                    height={'100vh'}
+                                    flexDirection="column"
+                                    height="100vh"
                                     lineHeight="1.36"
                                 >
+                                    <Heading
+                                        as="h2"
+                                        fontFamily="heading"
+                                        fontSize="84px"
+                                        lineHeight="1.36"
+                                        textAlign="left"
+                                        color="pink.200"
+                                        w="100vw"
+                                        pb="10"
+                                    >
+                                        A special thanks to
+                                    </Heading>
+
                                     <Text
-                                        fontSize={'36px'}
-                                        lineHeight={'1.36'}
+                                        fontSize="36px"
+                                        lineHeight="1.36"
                                         textAlign="left"
                                         color="white"
                                     >
-                                        A special thanks to
-                                        <br />
-                                        <br />
+                                        {leftColumn}
                                     </Text>
-                                    {leftColumn.map((name, index) => (
-                                        <Text
-                                            fontSize={'36px'}
-                                            lineHeight={'1.36'}
-                                            textAlign="left"
-                                            color="white"
-                                            key={index}
-                                        >
-                                            {name}
-                                        </Text>
-                                    ))}
                                 </Flex>
                             </GridItem>
                             <GridItem
@@ -204,17 +209,14 @@ export default function Home({
                                         <br />
                                         <br />
                                     </Text>
-                                    {rightColumn.map((name, index) => (
-                                        <Text
-                                            fontSize={'36px'}
-                                            lineHeight={'1.36'}
-                                            textAlign="left"
-                                            color="white"
-                                            key={index}
-                                        >
-                                            {name}
-                                        </Text>
-                                    ))}
+                                    <Text
+                                        fontSize={'36px'}
+                                        lineHeight={'1.36'}
+                                        textAlign="left"
+                                        color="white"
+                                    >
+                                        {rightColumn}
+                                    </Text>
                                 </Flex>
                             </GridItem>
                             <GridItem colStart={2} colEnd={12} pt="16">
@@ -230,13 +232,73 @@ export default function Home({
                             </GridItem>
                         </Grid>
                     </Box>
-                    <Box p="6" id="photographer" bg="grey.800">
-                        <Grid
-                            templateColumns="repeat(12, 1fr)"
-                            h={'calc(100vh - var(--chakra-sizes-12))'}
-                        >
-                            <GridItem colStart={2} colEnd={7}>
-                                <Box pt={32} w="100%" h="100%">
+                    <Box id="photographer" bg="grey.800">
+                        <Grid templateColumns="repeat(12, 1fr)" h="100vh">
+                            <GridItem
+                                colStart={1}
+                                colEnd={9}
+                                marginTop="auto"
+                                px="6"
+                            >
+                                <Flex
+                                    h="55vh"
+                                    flexDirection="column"
+                                    alignItems="start"
+                                    textAlign="left"
+                                    color="white"
+                                >
+                                    <Flex alignItems="baseline" pt={6}>
+                                        <Heading
+                                            fontSize="84px"
+                                            lineHeight="1"
+                                            textAlign="left"
+                                            color="pink.200"
+                                            pb="10"
+                                        >
+                                            {kaiwhakaahua.ingoa}
+                                        </Heading>
+                                        <Text
+                                            fontFamily="heading"
+                                            fontSize="24px"
+                                            lineHeight="1.36"
+                                            textAlign="left"
+                                            color="pink.200"
+                                            ml="4"
+                                        >
+                                            {kaiwhakaahua.whakapapa}
+                                        </Text>
+                                    </Flex>
+                                    <Text
+                                        fontFamily="heading"
+                                        fontSize={'36px'}
+                                        lineHeight={'1.36'}
+                                        textAlign="left"
+                                        color="white"
+                                        pb="28"
+                                    >
+                                        {kaiwhakaahua.korero}
+                                    </Text>
+                                    <Text
+                                        fontFamily="heading"
+                                        fontSize={'36px'}
+                                        lineHeight={'1.36'}
+                                        textAlign="left"
+                                        color="white"
+                                    >
+                                        {kaiwhakaahua.paetukutuku}
+                                    </Text>
+                                </Flex>
+                            </GridItem>
+                            <GridItem colStart={9} colEnd={13} marginTop="auto">
+                                <Flex
+                                    px="8"
+                                    pt="4"
+                                    pb="10"
+                                    flexDirection="column"
+                                    flexFlow="column"
+                                    alignItems="baseline"
+                                    filter="grayscale(100%)"
+                                >
                                     <ChakraNextImage
                                         {...portraitImg}
                                         src={portrait}
@@ -248,43 +310,7 @@ export default function Home({
                                             '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
                                         }
                                     />
-                                </Box>
-                            </GridItem>
-                            <GridItem colStart={8} colEnd={13}>
-                                <Box pt={32} textAlign="left" color="white">
-                                    <Heading
-                                        fontSize={'84px'}
-                                        lineHeight={'1'}
-                                        textAlign={'left'}
-                                        color={'pink.200'}
-                                    >
-                                        {kaiwhakaahua.ingoa}
-                                    </Heading>
-                                    <Text
-                                        fontSize={'36px'}
-                                        lineHeight={'1.36'}
-                                        textAlign="left"
-                                        color="white"
-                                    >
-                                        {kaiwhakaahua.korero}
-                                    </Text>
-                                    <Text
-                                        fontSize={'36px'}
-                                        lineHeight={'1.36'}
-                                        textAlign="left"
-                                        color="white"
-                                    >
-                                        {kaiwhakaahua.whakapapa}
-                                    </Text>
-                                    <Text
-                                        fontSize={'36px'}
-                                        lineHeight={'1.36'}
-                                        textAlign="left"
-                                        color="white"
-                                    >
-                                        {kaiwhakaahua.paetukutuku}
-                                    </Text>
-                                </Box>
+                                </Flex>
                             </GridItem>
                         </Grid>
                     </Box>
