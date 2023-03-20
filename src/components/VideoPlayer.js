@@ -1,5 +1,10 @@
 import { Box } from '@chakra-ui/react'
-import { MediaOutlet, MediaPlayer, MediaPoster } from '@vidstack/react'
+import {
+    MediaOutlet,
+    MediaPlayButton,
+    MediaPlayer,
+    MediaPoster
+} from '@vidstack/react'
 import 'vidstack/styles/base.css'
 
 export default function VideoPlayer({
@@ -20,7 +25,6 @@ export default function VideoPlayer({
             poster=""
             aspect-ratio={16 / 9}
             autoplay={autoPlay}
-            controls={controls}
             muted={muted}
             loop={loop}
         >
@@ -50,6 +54,17 @@ export default function VideoPlayer({
                     ></circle>
                 </svg>
             </Box>
+            {controls && (
+                <Box
+                    className="media-controls-container"
+                    role="group"
+                    aria-label="Media Controls"
+                >
+                    <Box className="media-controls-group">
+                        <MediaPlayButton aria-keyshortcuts="k Space" />
+                    </Box>
+                </Box>
+            )}
             <MediaOutlet />
             <MediaPoster alt={alt} />
         </MediaPlayer>

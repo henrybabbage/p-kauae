@@ -104,6 +104,7 @@ export default function Home({
                             </GridItem>
                             <GridItem colStart={2} colEnd={12} pt="6" pb="6">
                                 <Flex
+                                    pt="12"
                                     justify="center"
                                     flexDirection={'column'}
                                     height={
