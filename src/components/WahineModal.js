@@ -1,3 +1,7 @@
+import { format, parseISO } from 'date-fns'
+import dynamic from 'next/dynamic'
+import { useState } from 'react'
+
 import {
     Box,
     Button,
@@ -14,10 +18,7 @@ import {
     ModalOverlay,
     Text
 } from '@chakra-ui/react'
-import { format, parseISO } from 'date-fns'
-import { useState } from 'react'
 import PortraitModal from './PortraitModal'
-import VideoPlayer from './VideoPlayer'
 
 const WahineModal = ({
     onOpen,
@@ -28,6 +29,10 @@ const WahineModal = ({
     covers,
     baseUrlVideo
 }) => {
+    const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
+        ssr: false
+    })
+
     const [index, setIndex] = useState(0)
 
     const captureDate = wahines[index].wa_tiki_whakaahua
@@ -93,10 +98,7 @@ const WahineModal = ({
                             <GridItem colStart={1} colEnd={13} pt={6}>
                                 <Box className="droneFootage">
                                     <VideoPlayer
-                                        src={
-                                            wahines[index]?.kiriata
-                                                ?.clipped_30_sec
-                                        }
+                                        src={wahines[index]?.kiriata?.['720p']}
                                         alt={
                                             wahines[index].kiriata
                                                 .alternativeText
