@@ -1,11 +1,8 @@
 import AboutBanner from '@/components/AboutBanner'
 import BackgroundImage from '@/components/BackgroundImage'
-import SmoothScroll from '@/components/SmoothScroll'
-import { ChakraBox } from '@/components/ChakraBox'
 import ChakraNextImage from '@/components/ChakraNextImage'
-import VideoPlayer from '@/components/VideoPlayer'
-import { useRef } from 'react'
-import { useScroll, useTransform } from 'framer-motion'
+import SmoothScroll from '@/components/SmoothScroll'
+import dynamic from 'next/dynamic'
 
 import {
     Box,
@@ -30,6 +27,10 @@ export default function Home({
     heroVideo,
     baseUrlVideo
 }) {
+    const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
+        ssr: false
+    })
+
     const markdownTheme = {
         p: (props) => {
             const { children } = props
@@ -61,12 +62,13 @@ export default function Home({
     const leftColumn = acknowledgementsList.slice(0, 8)
     const rightColumn = acknowledgementsList.slice(8, 16)
 
-    let ref = useRef(null)
-    let { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ['start start', 'end start']
-    })
-    let y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
+    const videoAnimate = {
+        offscreen: { scale: 0.9 },
+        onscreen: {
+            scale: 1,
+            transition: { duration: 1 }
+        }
+    }
 
     const container = {
         animate: {
@@ -92,55 +94,74 @@ export default function Home({
             <main>
                 <SmoothScroll>
                     <Box id="about" bg="grey.800">
+                        <ChakraBox position="absolute">
+                            <BackgroundImage
+                                src={'/images/background.jpeg'}
+                                alt={'Taranaki landscape'}
+                            />
+                        </ChakraBox>
                         <Grid templateColumns="repeat(12, 1fr)">
                             <GridItem
                                 colStart={1}
                                 colEnd={13}
                                 h="100vh"
                                 overflow="hidden"
+                                position="relative"
                             >
-                                <ChakraBox
-                                    initial="initial"
-                                    animate="animate"
-                                    variants={container}
-                                >
-                                    <ChakraBox variants={itemMain}>
-                                        <BackgroundImage
-                                            src={'/images/background.jpeg'}
-                                            alt={'Taranaki landscape'}
-                                        />
-                                    </ChakraBox>
-
-                                    <Flex
-                                        position="relative"
-                                        justify="center"
-                                        flexDirection={'column'}
-                                        height={
-                                            'calc(100vh - var(--chakra-sizes-12))'
-                                        }
-                                    >
-                                        <AboutBanner />
-                                    </Flex>
-                                </ChakraBox>
-                            </GridItem>
-                            <GridItem colStart={2} colEnd={12} pt="6" pb="6">
                                 <Flex
-                                    pt="12"
+                                    position="relative"
                                     justify="center"
                                     flexDirection={'column'}
                                     height={
                                         'calc(100vh - var(--chakra-sizes-12))'
                                     }
                                 >
-                                    <VideoPlayer
-                                        src={heroVideo}
-                                        baseUrlVideo={baseUrlVideo}
-                                        alt="Pūkauae Exhibition Opening 11th December 2019"
-                                        autoPlay={false}
-                                        controls={true}
-                                        muted={false}
-                                        loop={false}
-                                    />
+                                    <AboutBanner />
+                                </Flex>
+                            </GridItem>
+                            <GridItem colStart={2} colEnd={12} pt="6" pb="6">
+                                <Flex
+                                    pt="12"
+                                    justify="center"
+                                    flexDirection={'column'}
+                                    height="100vh"
+                                >
+                                    <Heading
+                                        as="h2"
+                                        fontFamily="heading"
+                                        fontSize="124px"
+                                        lineHeight="1.36"
+                                        textAlign="center"
+                                        color="pink.200"
+                                        pb="10"
+                                    >
+                                        Pūkauae opening Puke Ariki 2019
+                                    </Heading>
+                                </Flex>
+                                <Flex
+                                    pt="12"
+                                    justify="center"
+                                    flexDirection={'column'}
+                                    height="100vh"
+                                >
+                                    <ChakraBox
+                                        initial={'offscreen'}
+                                        whileInView={'onscreen'}
+                                        viewport={{ once: true, amount: 0.7 }}
+                                        transition={{ staggerChildren: 0.5 }}
+                                    >
+                                        <ChakraBox variants={videoAnimate}>
+                                            <VideoPlayer
+                                                src={heroVideo}
+                                                baseUrlVideo={baseUrlVideo}
+                                                alt="Pūkauae Exhibition Opening 11th December 2019"
+                                                autoPlay={false}
+                                                controls={true}
+                                                muted={false}
+                                                loop={false}
+                                            />
+                                        </ChakraBox>
+                                    </ChakraBox>
                                 </Flex>
                             </GridItem>
                             <GridItem colStart={2} colEnd={12} pt="6" pb="6">
@@ -282,7 +303,12 @@ export default function Home({
                                     {korero.whakataukii}
                                 </Heading>
                             </GridItem>
-                            <GridItem colStart={2} colEnd={12} pt="16">
+                            <GridItem
+                                colStart={2}
+                                colEnd={12}
+                                pt="16"
+                                whiteSpace="pre-line"
+                            >
                                 <ReactMarkdown
                                     remarkPlugins={[remarkBreaks]}
                                     components={ChakraUIRenderer(markdownTheme)}
@@ -385,6 +411,7 @@ export default function Home({
     )
 }
 
+import { ChakraBox } from '@/components/ChakraBox'
 import fsPromises from 'fs/promises'
 import path from 'path'
 export async function getStaticProps() {

@@ -16,6 +16,8 @@
     "@emotion/styled": "^11.10.5",
     "@plaiceholder/next": "^2.5.0",
     "@vidstack/react": "^0.4.2",
+    "@vime/core": "^5.4.0",
+    "@vime/react": "^5.4.0",
     "chakra-ui-markdown-renderer": "^4.1.0",
     "date-fns": "^2.29.3",
     "eslint": "8.32.0",

@@ -37,7 +37,7 @@ export default function Map({ wahines, portraits, posters, baseUrlVideo }) {
                 </Box>
                 <Box id="map" w="100vw" h="100vh" bg="grey.800" pt="4">
                     <Flex h="100vh" alignItems="center" justifyContent="center">
-                        <MapBox />
+                        <MapBox data={wahines} />
                     </Flex>
                 </Box>
             </SmoothScroll>

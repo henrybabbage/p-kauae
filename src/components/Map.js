@@ -2,12 +2,10 @@ import { Box, Button } from '@chakra-ui/react'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { useRef, useState } from 'react'
 import ReactMapGL, { Marker } from 'react-map-gl'
-import * as places from '/public/marae_dataset_mapbox.geojson'
 
-export default function Map() {
+export default function Map({ data }) {
     const mapRef = useRef(ReactMapGL)
     const [selectedSite, setSelectedSite] = useState(null)
-    const [modalIsOpen, setModalIsOpen] = useState(null)
     const [viewport, setViewport] = useState({
         latitude: -39.296128,
         longitude: 174.063848,
@@ -32,20 +30,21 @@ export default function Map() {
                 pitch={45}
                 mapStyle="mapbox://styles/henrybabbage/clfgw3onz000601rsu3nbrtzx"
             >
-                {places.features.map((site) => (
+                {data.map((site) => (
                     <Marker
                         key={site.id}
-                        latitude={site.geometry.coordinates[1]}
-                        longitude={site.geometry.coordinates[0]}
+                        latitude={site.wahi.ahuahanga[1]}
+                        longitude={site.wahi.ahuahanga[0]}
                     >
                         <Button
                             variant={'mapLabel'}
                             onClick={(e) => {
                                 e.preventDefault()
                                 setSelectedSite(site)
-                                setModalIsOpen(true)
                             }}
-                        ></Button>
+                        >
+                            {site.wahi.ingoa}
+                        </Button>
                     </Marker>
                 ))}
             </ReactMapGL>
