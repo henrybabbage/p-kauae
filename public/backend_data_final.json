@@ -16,10 +16,11 @@
    },
    "kiriata": {
     "ingoa": "Ōrangituapeka",
-    "clipped_30_sec": "1_720p_2023-13-7_Orangituapeka_Manaia.mov",
-    "original": "2023-13-7_Orangituapeka_Manaia.mp4",
     "poster": "",
-    "alternativeText": "Te Aorangi Dillon"
+    "alternativeText": "Te Aorangi Dillon",
+    "720p": "1_720p_2023-13-7_Orangituapeka_Manaia.mov",
+    "1080p": "1_1080p_2023-13-7_Orangituapeka_Manaia.mp4",
+    "4k": "1_2023-13-7_Orangituapeka_Manaia.mov"
    },
    "wahi": {
     "ingoa": "Ōrangituapeka",
@@ -45,10 +46,11 @@
    },
    "kiriata": {
     "ingoa": "Turuturu Mōkai",
-    "clipped_30_sec": "1_720p_2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mov",
-    "original": "2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mp4",
     "poster": "",
-    "alternativeText": "Ria Wihapi Waikerepuru"
+    "alternativeText": "Ria Wihapi Waikerepuru",
+    "720p": "1_720p_2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mov",
+    "1080p": "1_1080p_2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mov",
+    "4k": "1_2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mov"
    },
    "wahi": {
     "ingoa": "Turuturu Mōkai",
@@ -74,10 +76,11 @@
    },
    "kiriata": {
     "ingoa": "Ōrangituapeka",
-    "clipped_30_sec": "2_720p_2023-13-7_Orangituapeka_Manaia.mov",
-    "original": "2023-13-7_Orangituapeka_Manaia.mp4",
     "poster": "",
-    "alternativeText": "Te Rawanake Coles"
+    "alternativeText": "Te Rawanake Coles",
+    "720p": "2_720p_2023-13-7_Orangituapeka_Manaia.mov",
+    "1080p": "2_1080p_2023-13-7_Orangituapeka_Manaia.mov",
+    "4k": "2_2023-13-7_Orangituapeka_Manaia.mov"
    },
    "wahi": {
     "ingoa": "Ōrangituapeka",
@@ -103,10 +106,11 @@
    },
    "kiriata": {
     "ingoa": "Waitara Beach",
-    "clipped_30_sec": "1_720p_2022-90-48_Waitara.mov",
-    "original": "2022-90-48_Waitara.MP4",
     "poster": "",
-    "alternativeText": "Leonie Pihama"
+    "alternativeText": "Leonie Pihama",
+    "720p": "1_720p_2022-90-48_Waitara.mov",
+    "1080p": "1_1080p_2022-90-48_Waitara.mov",
+    "4k": "1_2022-90-48_Waitara.mov"
    },
    "wahi": {
     "ingoa": "Waitara Beach",
@@ -132,10 +136,11 @@
    },
    "kiriata": {
     "ingoa": "Waitara Beach",
-    "clipped_30_sec": "2_720p_2022-90-48_Waitara.mov",
-    "original": "2022-90-48_Waitara.MP4",
     "poster": "",
-    "alternativeText": "Ngauranga Kura Ranginiwa"
+    "alternativeText": "Ngauranga Kura Ranginiwa",
+    "720p": "2_720p_2022-90-48_Waitara.mov",
+    "1080p": "2_1080p_2022-90-48_Waitara.mov",
+    "4k": "2_2022-90-48_Waitara.mov"
    },
    "wahi": {
     "ingoa": "Pukerangiora Pā",
@@ -161,10 +166,11 @@
    },
    "kiriata": {
     "ingoa": "Turuturu Mōkai",
-    "clipped_30_sec": "2_720p_2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mov",
-    "original": "2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mp4",
     "poster": "",
-    "alternativeText": "Norah Puketapu"
+    "alternativeText": "Norah Puketapu",
+    "720p": "2_720p_2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mov",
+    "1080p": "2_1080p_2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mov",
+    "4k": "2_2023-13-21_Turuturu_Mo%CC%84kai_Te_Ha%CC%84wera.mov"
    },
    "wahi": {
     "ingoa": "Turuturu Mōkai",
@@ -190,10 +196,11 @@
    },
    "kiriata": {
     "ingoa": "Parihaka Coastline",
-    "clipped_30_sec": "1_720p_2023-13-206_Parihaka_coastline.mov",
-    "original": "2023-13-206_Parihaka_coastline.MP4",
     "poster": "",
-    "alternativeText": "Ngaropi Raumati"
+    "alternativeText": "Ngaropi Raumati",
+    "720p": "1_720p_2023-13-206_Parihaka_coastline.mov",
+    "1080p": "1_1080p_2023-13-206_Parihaka_coastline.mov.mp4",
+    "4k": "1_2023-13-206_Parihaka_coastline.mov"
    },
    "wahi": {
     "ingoa": "Parihaka",
@@ -219,10 +226,11 @@
    },
    "kiriata": {
     "ingoa": "Urenui",
-    "clipped_30_sec": "1_720p_2023-5-20_URENUI.mov",
-    "original": "2023-5-20_URENUI.mp4",
     "poster": "",
-    "alternativeText": "Matehuirua Limmer"
+    "alternativeText": "Matehuirua Limmer",
+    "720p": "1_720p_2023-5-20_URENUI.mov",
+    "1080p": "1_1080p_2023-5-20_URENUI.mov",
+    "4k": "1_2023-5-20_URENUI.mov"
    },
    "wahi": {
     "ingoa": "Ruapekapeka Marae",
@@ -248,10 +256,11 @@
    },
    "kiriata": {
     "ingoa": "Hangatahua",
-    "clipped_30_sec": "1_720p_2023-13-71_Hangataahua_Okato.mov",
-    "original": "2023-13-71_Hangataahua_Okato.mp4",
     "poster": "",
-    "alternativeText": "Marie Gregory-Hunt"
+    "alternativeText": "Marie Gregory-Hunt",
+    "720p": "1_720p_2023-13-71_Hangataahua_Okato.mov",
+    "1080p": "1_1080p_2023-13-71_Hangataahua_Okato.mov",
+    "4k": "1_2023-13-71_Hangataahua_Okato.mov"
    },
    "wahi": {
     "ingoa": "Hangatahua",
@@ -277,10 +286,11 @@
    },
    "kiriata": {
     "ingoa": "Parihaka Coastline",
-    "clipped_30_sec": "2_720p_2023-13-206_Parihaka_coastline.mov",
-    "original": "2023-13-206_Parihaka_coastline.MP4",
     "poster": "",
-    "alternativeText": "Ngahina Hohaia"
+    "alternativeText": "Ngahina Hohaia",
+    "720p": "2_720p_2023-13-206_Parihaka_coastline.mov",
+    "1080p": "2_1080p_2023-13-206_Parihaka_coastline.mov",
+    "4k": "2_2023-13-206_Parihaka_coastline.mov"
    },
    "wahi": {
     "ingoa": "Parihaka",
@@ -306,10 +316,11 @@
    },
    "kiriata": {
     "ingoa": "Kōhanga Moa",
-    "clipped_30_sec": "1_720p_2023-13-84_Ko%CC%84hanga_Moa_Ingelwood.mov",
-    "original": "2023-13-84_Ko%CC%84hanga_Moa_Ingelwood.mp4",
     "poster": "",
-    "alternativeText": "Mako Jones"
+    "alternativeText": "Mako Jones",
+    "720p": "1_720p_2023-13-84_Ko%CC%84hanga_Moa_Ingelwood.mov",
+    "1080p": "1_1080p_2023-13-84_Ko%CC%84hanga_Moa_Ingelwood.mov",
+    "4k": "1_2023-13-84_Ko%CC%84hanga_Moa_Ingelwood.mov"
    },
    "wahi": {
     "ingoa": "Kōhanga Moa",
@@ -335,10 +346,11 @@
    },
    "kiriata": {
     "ingoa": "Waiwhakaiho",
-    "clipped_30_sec": "1_720p_2022-91-1_Waiwhakaiho_New_Plymouth.mov",
-    "original": "2022-91-1_Waiwhakaiho_New_Plymouth.MP4",
     "poster": "",
-    "alternativeText": "Mera Penehira"
+    "alternativeText": "Mera Penehira",
+    "720p": "1_720p_2022-91-1_Waiwhakaiho_New_Plymouth.mov",
+    "1080p": "1_1080p_2022-91-1_Waiwhakaiho_New_Plymouth.mov",
+    "4k": "1_2022-91-1_Waiwhakaiho_New_Plymouth.mov"
    },
    "wahi": {
     "ingoa": "Onuku Taipari",
@@ -364,10 +376,11 @@
    },
    "kiriata": {
     "ingoa": "Te Rere o Kāpuni",
-    "clipped_30_sec": "1_720p_2023-13-88_Te-rere_o_Ka%CC%84puni.mov",
-    "original": "2023-13-88_Te-rere_o_Ka%CC%84puni.MOV",
     "poster": "",
-    "alternativeText": "Marnie Reinfelds"
+    "alternativeText": "Marnie Reinfelds",
+    "720p": "1_720p_2023-13-88_Te-rere_o_Ka%CC%84puni.mov",
+    "1080p": "1_1080p_2023-13-88_Te-rere_o_Ka%CC%84puni.mov",
+    "4k": "1_2023-13-88_Te-rere_o_Ka%CC%84puni.mov"
    },
    "wahi": {
     "ingoa": "Te Rere o Noke",
@@ -393,10 +406,11 @@
    },
    "kiriata": {
     "ingoa": "Hangatahua",
-    "clipped_30_sec": "2_720p_2023-13-71_Hangataahua_Okato.mov",
-    "original": "2023-13-71_Hangataahua_Okato.mp4",
     "poster": "",
-    "alternativeText": "Moewai Aterea"
+    "alternativeText": "Moewai Aterea",
+    "720p": "2_720p_2023-13-71_Hangataahua_Okato.mov",
+    "1080p": "2_1080p_2023-13-71_Hangataahua_Okato.mov",
+    "4k": "2_2023-13-71_Hangataahua_Okato.mov"
    },
    "wahi": {
     "ingoa": "Pōtaka Pā",
@@ -422,10 +436,11 @@
    },
    "kiriata": {
     "ingoa": "Waiwhakaiho",
-    "clipped_30_sec": "2_720p_2022-91-1_Waiwhakaiho_New_Plymouth.mov",
-    "original": "2022-91-1_Waiwhakaiho_New_Plymouth.MP4",
     "poster": "",
-    "alternativeText": "Ngamata Skipper"
+    "alternativeText": "Ngamata Skipper",
+    "720p": "2_720p_2022-91-1_Waiwhakaiho_New_Plymouth.mov",
+    "1080p": "2_1080p_2022-91-1_Waiwhakaiho_New_Plymouth.mov",
+    "4k": "2_2022-91-1_Waiwhakaiho_New_Plymouth.mov"
    },
    "wahi": {
     "ingoa": "Waiwhakaiho, Te Rewarewa",
@@ -451,10 +466,11 @@
    },
    "kiriata": {
     "ingoa": "Te Rere o Kāpuni",
-    "clipped_30_sec": "2_720p_2023-13-88_Te-rere_o_Ka%CC%84puni.mov",
-    "original": "2023-13-88_Te-rere_o_Ka%CC%84puni.MOV",
     "poster": "",
-    "alternativeText": "Rawinia Leatherby"
+    "alternativeText": "Rawinia Leatherby",
+    "720p": "2_720p_2023-13-88_Te-rere_o_Ka%CC%84puni.mov",
+    "1080p": "2_1080p_2023-13-88_Te-rere_o_Ka%CC%84puni.mov",
+    "4k": "2_2023-13-88_Te-rere_o_Ka%CC%84puni.mov"
    },
    "wahi": {
     "ingoa": "Te Rere o Kāpuni",
