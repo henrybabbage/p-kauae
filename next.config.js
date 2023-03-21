@@ -2,6 +2,14 @@
 const { withPlaiceholder } = require('@plaiceholder/next')
 
 const nextConfig = {
+    webpack(config) {
+        config.module.rules.push({
+            test: /\.geojson$/,
+            use: ['json-loader']
+        })
+
+        return config
+    },
     i18n: {
         locales: ['en'],
         defaultLocale: 'en'

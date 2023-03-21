@@ -1,10 +1,21 @@
 import AboutBanner from '@/components/AboutBanner'
 import BackgroundImage from '@/components/BackgroundImage'
+import SmoothScroll from '@/components/SmoothScroll'
 import { ChakraBox } from '@/components/ChakraBox'
 import ChakraNextImage from '@/components/ChakraNextImage'
-import { Box, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react'
+import VideoPlayer from '@/components/VideoPlayer'
+import { useRef } from 'react'
+import { useScroll, useTransform } from 'framer-motion'
 
-import SmoothScroll from '@/components/SmoothScroll'
+import {
+    Box,
+    Flex,
+    Grid,
+    GridItem,
+    Heading,
+    Link,
+    Text
+} from '@chakra-ui/react'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import { getPlaiceholder } from 'plaiceholder'
 import ReactMarkdown from 'react-markdown'
@@ -49,6 +60,13 @@ export default function Home({
     const acknowledgementsList = korero.tangata_mihia
     const leftColumn = acknowledgementsList.slice(0, 8)
     const rightColumn = acknowledgementsList.slice(8, 16)
+
+    let ref = useRef(null)
+    let { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ['start start', 'end start']
+    })
+    let y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
 
     const container = {
         animate: {
@@ -320,15 +338,20 @@ export default function Home({
                                     >
                                         {kaiwhakaahua.korero}
                                     </Text>
-                                    <Text
-                                        fontFamily="heading"
-                                        fontSize={'36px'}
-                                        lineHeight={'1.36'}
-                                        textAlign="left"
-                                        color="white"
+                                    <Link
+                                        href={`https://${kaiwhakaahua.paetukutuku}`}
+                                        isExternal
+                                        variant="menu"
                                     >
-                                        {kaiwhakaahua.paetukutuku}
-                                    </Text>
+                                        <Text
+                                            fontFamily="heading"
+                                            fontSize={'36px'}
+                                            lineHeight={'1.36'}
+                                            textAlign="left"
+                                        >
+                                            {kaiwhakaahua.paetukutuku}
+                                        </Text>
+                                    </Link>
                                 </Flex>
                             </GridItem>
                             <GridItem colStart={9} colEnd={13} marginTop="auto">
@@ -362,7 +385,6 @@ export default function Home({
     )
 }
 
-import VideoPlayer from '@/components/VideoPlayer'
 import fsPromises from 'fs/promises'
 import path from 'path'
 export async function getStaticProps() {
