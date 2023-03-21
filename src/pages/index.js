@@ -107,6 +107,7 @@ export default function Home({
                             </GridItem>
                             <GridItem colStart={2} colEnd={12} pt="6" pb="6">
                                 <Flex
+                                    pt="12"
                                     justify="center"
                                     flexDirection={'column'}
                                     height={
@@ -119,6 +120,8 @@ export default function Home({
                                         alt="Pūkauae Exhibition Opening 11th December 2019"
                                         autoPlay={false}
                                         controls={true}
+                                        muted={false}
+                                        loop={false}
                                     />
                                 </Flex>
                             </GridItem>
