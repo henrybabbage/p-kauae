@@ -41,5 +41,8 @@
     "resize-observer-polyfill": "^1.5.1",
     "sharp": "^0.31.3",
     "vidstack": "^0.4.2"
+  },
+  "devDependencies": {
+    "json-loader": "^0.5.7"
   }
 }
