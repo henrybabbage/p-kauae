@@ -47,9 +47,8 @@ export default function Home({
     }
 
     const acknowledgementsList = korero.tangata_mihia
-    const lines = acknowledgementsList.split('Coles')
-    const leftColumn = lines[0]
-    const rightColumn = lines[1]
+    const leftColumn = acknowledgementsList.slice(0, 8)
+    const rightColumn = acknowledgementsList.slice(8, 16)
 
     const container = {
         animate: {
@@ -173,14 +172,17 @@ export default function Home({
                                         A special thanks to
                                     </Heading>
 
-                                    <Text
-                                        fontSize="36px"
-                                        lineHeight="1.36"
-                                        textAlign="left"
-                                        color="white"
-                                    >
-                                        {leftColumn}
-                                    </Text>
+                                    {leftColumn.map((name, index) => (
+                                        <Text
+                                            fontSize={'36px'}
+                                            lineHeight={'1.36'}
+                                            textAlign="left"
+                                            color="white"
+                                            key={index}
+                                        >
+                                            {name}
+                                        </Text>
+                                    ))}
                                 </Flex>
                             </GridItem>
                             <GridItem
@@ -206,24 +208,64 @@ export default function Home({
                                         <br />
                                         <br />
                                     </Text>
-                                    <Text
-                                        fontSize={'36px'}
-                                        lineHeight={'1.36'}
-                                        textAlign="left"
-                                        color="white"
-                                    >
-                                        {rightColumn}
-                                    </Text>
+                                    {rightColumn.map((name, index) => (
+                                        <Text
+                                            fontSize={'36px'}
+                                            lineHeight={'1.36'}
+                                            textAlign="left"
+                                            color="white"
+                                            key={index}
+                                        >
+                                            {name}
+                                        </Text>
+                                    ))}
                                 </Flex>
                             </GridItem>
                             <GridItem colStart={2} colEnd={12} pt="16">
                                 <ReactMarkdown
                                     remarkPlugins={[remarkBreaks]}
                                     components={ChakraUIRenderer(markdownTheme)}
-                                    children={korero.tuhinga_matua.replace(
-                                        /\n/gi,
-                                        '&nbsp; \n \n'
-                                    )}
+                                    children={korero.tuhinga_matua}
+                                    skipHtml
+                                />
+                            </GridItem>
+                            <GridItem colStart={2} colEnd={12} pt="16">
+                                <ReactMarkdown
+                                    remarkPlugins={[remarkBreaks]}
+                                    components={ChakraUIRenderer(markdownTheme)}
+                                    children={
+                                        korero.tuhinga_tauaakii_whakamaunga_atu
+                                    }
+                                    skipHtml
+                                />
+                            </GridItem>
+                            <GridItem colStart={2} colEnd={12} pt="16">
+                                <ReactMarkdown
+                                    remarkPlugins={[remarkBreaks]}
+                                    components={ChakraUIRenderer(markdownTheme)}
+                                    children={korero.ropu}
+                                    skipHtml
+                                />
+                            </GridItem>
+                            <GridItem colStart={2} colEnd={6} pt="16">
+                                <Heading
+                                    as="h2"
+                                    fontFamily="heading"
+                                    fontSize="84px"
+                                    lineHeight="1"
+                                    textAlign="center"
+                                    color="pink.200"
+                                    w="80vw"
+                                    py="6"
+                                >
+                                    {korero.whakataukii}
+                                </Heading>
+                            </GridItem>
+                            <GridItem colStart={2} colEnd={12} pt="16">
+                                <ReactMarkdown
+                                    remarkPlugins={[remarkBreaks]}
+                                    components={ChakraUIRenderer(markdownTheme)}
+                                    children={korero.tuhinga_whakamutunga}
                                     skipHtml
                                 />
                             </GridItem>
