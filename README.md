@@ -2,7 +2,7 @@
 
 This is a website for the digitized Pūkauae photographic exhibition: Tu Tama Wahine o Taranaki 30 Years of Liberation Work.
 
-Tū Tama Wāhine o Taranaki is a Kaupapa Maori development and liberation organisation that is wāhine led and is about whānau revitalisation and decolonisation.
+[Tū Tama Wāhine o Taranaki](https://www.tutamawahine.org.nz/) is a Kaupapa Maori development and liberation organisation that is wāhine led and is about whānau revitalisation and decolonisation.
 
 The organisation celebrated its 30th anniversary in 2019 and to mark this milestone, an exhibition was held at Puke Ariki presenting Taranaki wāhine moko kauae as shot by Taranaki Grandmaster of Photography [Tania Niwa](https://tanianiwa.com/).
 
