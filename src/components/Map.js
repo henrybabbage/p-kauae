@@ -37,7 +37,6 @@ export default function Map({ data }) {
         <Box h="84vh" w="84vw">
             <ReactMapGL
                 ref={mapRef}
-                onLoad={onLoad}
                 width="100%"
                 height="100%"
                 mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
