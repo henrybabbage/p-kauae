@@ -93,7 +93,7 @@ export default function Home({
         <>
             <main>
                 <SmoothScroll>
-                    <Box id="about" bg="grey.800">
+                    <Box id="about" bg="grey.900">
                         <ChakraBox position="absolute">
                             <BackgroundImage
                                 src={'/images/background.jpeg'}
@@ -318,7 +318,7 @@ export default function Home({
                             </GridItem>
                         </Grid>
                     </Box>
-                    <Box id="photographer" bg="grey.800">
+                    <Box id="photographer" bg="grey.900">
                         <Grid templateColumns="repeat(12, 1fr)" h="100vh">
                             <GridItem
                                 colStart={1}

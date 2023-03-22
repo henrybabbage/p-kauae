@@ -56,7 +56,7 @@ const WahineModal = ({
                 motionPreset="slideInBottom"
             >
                 <ModalOverlay />
-                <ModalContent maxW="100vw" p={6} bg="grey.800">
+                <ModalContent maxW="100vw" p={6} bg="grey.900">
                     <Flex
                         justifyContent={'space-between'}
                         alignContent={'start'}

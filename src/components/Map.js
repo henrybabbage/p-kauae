@@ -1,7 +1,8 @@
-import { Box, Button } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
+import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { useRef, useState } from 'react'
-import ReactMapGL, { Marker } from 'react-map-gl'
+import { useEffect, useRef, useState } from 'react'
+import ReactMapGL, { Layer, Source } from 'react-map-gl'
 
 export default function Map({ data }) {
     const mapRef = useRef(ReactMapGL)
@@ -11,6 +12,30 @@ export default function Map({ data }) {
         longitude: 174.063848,
         zoom: 10
     })
+
+    const wahi = data.map((wahine) => {
+        return {
+            id: wahine.id,
+            ingoa: wahine.wahi.ingoa,
+            lat: wahine.wahi.ahuahanga[1],
+            lng: wahine.wahi.ahuahanga[0]
+        }
+    })
+
+    const layerStyle = {
+        id: 'wahine',
+        type: 'circle',
+        paint: {
+            'circle-radius': 10,
+            'circle-color': '#007cbf'
+        }
+    }
+
+    const mapData = GeoJSON.parse(wahi, { Point: ['lat', 'lng'] })
+
+    useEffect(() => {
+        // console.log(selectedSite)
+    }, [selectedSite])
 
     return (
         <Box h="84vh" w="84vw">
@@ -29,24 +54,15 @@ export default function Map({ data }) {
                 maxZoom={15}
                 pitch={45}
                 mapStyle="mapbox://styles/henrybabbage/clfgw3onz000601rsu3nbrtzx"
+                interactiveLayerIds={['wahine']}
+                onClick={(e) => {
+                    console.log('taranaki-data', e.features)
+                    e.features.length &&
+                        setSelectedSite(e.features[0].properties)
+                }}
             >
-                {data.map((site) => (
-                    <Marker
-                        key={site.id}
-                        latitude={site.wahi.ahuahanga[1]}
-                        longitude={site.wahi.ahuahanga[0]}
-                    >
-                        <Button
-                            variant={'mapLabel'}
-                            onClick={(e) => {
-                                e.preventDefault()
-                                setSelectedSite(site)
-                            }}
-                        >
-                            {site.wahi.ingoa}
-                        </Button>
-                    </Marker>
-                ))}
+                <Source id="taranaki-data" type="geojson" data={mapData} />
+                <Layer source="taranaki-data" {...layerStyle} />
             </ReactMapGL>
         </Box>
     )

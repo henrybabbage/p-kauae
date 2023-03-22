@@ -20,7 +20,7 @@ export default function PortraitModal(props) {
             flexDir="column"
             alignItems="center"
             justifyContent="center"
-            bg="grey.600"
+            bg="grey.900"
             w="100%"
         >
             <Box position="relative">
