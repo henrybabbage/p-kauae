@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react'
 import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
 
 export default function Map({ data }) {
@@ -26,20 +26,17 @@ export default function Map({ data }) {
         id: 'wahine',
         type: 'circle',
         paint: {
-            'circle-radius': 10,
-            'circle-color': '#007cbf'
+            'circle-radius': 4,
+            'circle-color': '#ffffff'
         }
     }
 
     const mapData = GeoJSON.parse(wahi, { Point: ['lat', 'lng'] })
 
-    useEffect(() => {
-        // console.log(selectedSite)
-    }, [selectedSite])
-
     return (
         <Box h="84vh" w="84vw">
             <ReactMapGL
+                ref={mapRef}
                 width="100%"
                 height="100%"
                 mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
@@ -49,16 +46,14 @@ export default function Map({ data }) {
                     zoom: 10
                 }}
                 onViewportChange={(nextViewport) => setViewport(nextViewport)}
-                ref={(instance) => (mapRef.current = instance)}
                 minZoom={5}
                 maxZoom={15}
                 pitch={45}
                 mapStyle="mapbox://styles/henrybabbage/clfgw3onz000601rsu3nbrtzx"
                 interactiveLayerIds={['wahine']}
                 onClick={(e) => {
-                    console.log('taranaki-data', e.features)
                     e.features.length &&
-                        setSelectedSite(e.features[0].properties)
+                        setSelectedSite(e.features[0].properties.id)
                 }}
             >
                 <Source id="taranaki-data" type="geojson" data={mapData} />
