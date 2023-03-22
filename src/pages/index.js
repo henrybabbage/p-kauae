@@ -3,7 +3,6 @@ import BackgroundImage from '@/components/BackgroundImage'
 import ChakraNextImage from '@/components/ChakraNextImage'
 import SmoothScroll from '@/components/SmoothScroll'
 import dynamic from 'next/dynamic'
-
 import {
     Box,
     Flex,
@@ -11,7 +10,8 @@ import {
     GridItem,
     Heading,
     Link,
-    Text
+    Text,
+    ChakraBox
 } from '@chakra-ui/react'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import { getPlaiceholder } from 'plaiceholder'
@@ -148,7 +148,6 @@ export default function Home({
                                         initial={'offscreen'}
                                         whileInView={'onscreen'}
                                         viewport={{ once: true, amount: 0.7 }}
-                                        transition={{ staggerChildren: 0.5 }}
                                     >
                                         <ChakraBox variants={videoAnimate}>
                                             <VideoPlayer
@@ -411,7 +410,6 @@ export default function Home({
     )
 }
 
-import { ChakraBox } from '@/components/ChakraBox'
 import fsPromises from 'fs/promises'
 import path from 'path'
 export async function getStaticProps() {
