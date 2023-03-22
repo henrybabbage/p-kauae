@@ -70,13 +70,13 @@ export default function Header() {
                                     fontFamily="body"
                                     textColor={activeLink('/')}
                                 >
-                                    About
+                                    Mihi
                                 </Heading>
                             </Link>
                             <Link
                                 variant="menu"
                                 as={NextLink}
-                                href="/map"
+                                href="/haerenga"
                                 scroll={false}
                             >
                                 <Heading
@@ -84,9 +84,9 @@ export default function Header() {
                                     size="md"
                                     fontWeight="bold"
                                     fontFamily="body"
-                                    textColor={activeLink('/map')}
+                                    textColor={activeLink('/haerenga')}
                                 >
-                                    Map
+                                    Haerenga
                                 </Heading>
                             </Link>
                         </HStack>
