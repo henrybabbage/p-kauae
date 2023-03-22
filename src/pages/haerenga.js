@@ -5,7 +5,12 @@ import WahineModal from '@/components/WahineModal'
 import { Box, Button, Flex, Heading, useDisclosure } from '@chakra-ui/react'
 import { getPlaiceholder } from 'plaiceholder'
 
-export default function Map({ wahines, portraits, posters, baseUrlVideo }) {
+export default function Haerenga({
+    wahines,
+    portraits,
+    posters,
+    baseUrlVideo
+}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <main>

@@ -7,7 +7,6 @@ const nextConfig = {
             test: /\.geojson$/,
             use: ['json-loader']
         })
-
         return config
     },
     i18n: {

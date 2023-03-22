@@ -25,7 +25,16 @@ export default function Map({ data }) {
     const layerStyle = {
         id: 'wahine',
         type: 'circle',
+        source: 'taranaki-data',
+        // layout: {
+        //     'icon-image': 'diamond',
+        //     'icon-size': 4,
+        //     'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+        //     'text-anchor': 'top',
+        //     'text-size': 10
+        // },
         paint: {
+            // 'icon-color': '#ffffff',
             'circle-radius': 4,
             'circle-color': '#ffffff'
         }
@@ -36,7 +45,6 @@ export default function Map({ data }) {
     return (
         <Box h="84vh" w="84vw">
             <ReactMapGL
-                ref={mapRef}
                 width="100%"
                 height="100%"
                 mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
@@ -46,6 +54,7 @@ export default function Map({ data }) {
                     zoom: 10
                 }}
                 onViewportChange={(nextViewport) => setViewport(nextViewport)}
+                ref={(instance) => (mapRef.current = instance)}
                 minZoom={5}
                 maxZoom={15}
                 pitch={45}
