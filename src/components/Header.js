@@ -70,7 +70,7 @@ export default function Header() {
                                     fontFamily="body"
                                     textColor={activeLink('/')}
                                 >
-                                    Mihi
+                                    Whakapapa
                                 </Heading>
                             </Link>
                             <Link
