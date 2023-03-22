@@ -1,5 +1,4 @@
 import { Flex, Heading, VStack } from '@chakra-ui/react'
-import { useEffect } from 'react'
 
 export default function TransitionBanner() {
     const banner = {
@@ -15,7 +14,7 @@ export default function TransitionBanner() {
             w="100vw"
             h="100vh"
             maxH="100vh"
-            backgroundColor="grey.600"
+            backgroundColor="grey.900"
             zIndex={10}
             pointerEvents="none"
             overflow="hidden"

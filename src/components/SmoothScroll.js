@@ -94,7 +94,7 @@ const SmoothScroll = ({ children }) => {
             </ChakraBox>
             {/* blank div that has a dynamic height based on the content's inherent height */}
             {/* this is neccessary to allow the scroll container to scroll... */}
-            <Box backgroundColor="grey.600" style={{ height: pageHeight }} />
+            <Box backgroundColor="grey.900" style={{ height: pageHeight }} />
         </>
     )
 }

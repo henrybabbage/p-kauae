@@ -35,7 +35,7 @@ export default function Map({ wahines, portraits, posters, baseUrlVideo }) {
                         </Heading>
                     </Button>
                 </Box>
-                <Box id="map" w="100vw" h="100vh" bg="grey.800" pt="4">
+                <Box id="map" w="100vw" h="100vh" bg="grey.900" pt="4">
                     <Flex h="100vh" alignItems="center" justifyContent="center">
                         <MapBox data={wahines} />
                     </Flex>

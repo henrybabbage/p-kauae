@@ -6,7 +6,7 @@ import {
     chakra,
     shouldForwardProp
 } from '@chakra-ui/react'
-import { AnimatePresence, isValidMotionProp, motion } from 'framer-motion'
+import { isValidMotionProp, motion } from 'framer-motion'
 import { ChakraBox } from './ChakraBox'
 
 const banner = {
@@ -217,14 +217,14 @@ const ScrollPrompt = () => {
                     }}
                 >
                     <Text
-                        color="grey.800"
+                        color="grey.900"
                         textStyle="body"
                         textTransform="uppercase"
                     >
                         Scroll
                     </Text>
                     <Text
-                        color="grey.800"
+                        color="grey.900"
                         textStyle="body"
                         textTransform="uppercase"
                     >
