@@ -7,7 +7,8 @@ import {
     shouldForwardProp
 } from '@chakra-ui/react'
 import { isValidMotionProp, motion } from 'framer-motion'
-import { ChakraBox } from './ChakraBox'
+import { MotionBox } from './MotionBox'
+import { MotionSpan } from './MotionSpan'
 
 const banner = {
     animate: {
@@ -40,18 +41,10 @@ const letterAni = {
     }
 }
 
-const MotionSpan = chakra(motion.span, {
-    /**
-     * Allow motion props and non-Chakra props to be forwarded.
-     */
-    shouldForwardProp: (prop) =>
-        isValidMotionProp(prop) || shouldForwardProp(prop)
-})
-
 export default function AboutBanner() {
     return (
         <Box>
-            <ChakraBox
+            <MotionBox
                 zIndex={100}
                 position="relative"
                 initial="initial"
@@ -61,10 +54,10 @@ export default function AboutBanner() {
                 <BannerRowTop text={'Celebrating over 30 years'} />
                 <BannerRowCenter text={'of liberation work'} />
                 <BannerRowBottom text={'throughout Taranaki.'} />
-            </ChakraBox>
-            <ChakraBox position="absolute" bottom="100" right="100">
+            </MotionBox>
+            <MotionBox position="absolute" bottom="100" right="100">
                 <ScrollPrompt />
-            </ChakraBox>
+            </MotionBox>
         </Box>
     )
 }
@@ -135,13 +128,13 @@ const BannerRowTop = ({ text }) => {
             alignItems="center"
             w="100%"
         >
-            <ChakraBox
+            <MotionBox
                 initial={{ y: 300 }}
                 animate={{ y: 0 }}
                 transition={{ ease: [0.6, 0.01, -0.05, 0.9], duration: 0.3 }}
             >
                 <AnimatedLine text={text} />
-            </ChakraBox>
+            </MotionBox>
         </Flex>
     )
 }
@@ -154,13 +147,13 @@ const BannerRowCenter = ({ text }) => {
             alignItems="center"
             w="100%"
         >
-            <ChakraBox
+            <MotionBox
                 initial={{ y: 300 }}
                 animate={{ y: 0 }}
                 transition={{ ease: [0.6, 0.01, -0.05, 0.9], duration: 0.3 }}
             >
                 <AnimatedLine text={text} />
-            </ChakraBox>
+            </MotionBox>
         </Flex>
     )
 }
@@ -173,13 +166,13 @@ const BannerRowBottom = ({ text }) => {
             alignItems="center"
             w="100%"
         >
-            <ChakraBox
+            <MotionBox
                 initial={{ y: 300 }}
                 animate={{ y: 0 }}
                 transition={{ ease: [0.6, 0.01, -0.05, 0.9], duration: 0.3 }}
             >
                 <AnimatedLine text={text} />
-            </ChakraBox>
+            </MotionBox>
         </Flex>
     )
 }
@@ -187,7 +180,7 @@ const BannerRowBottom = ({ text }) => {
 const ScrollPrompt = () => {
     return (
         <Box pb="4" pr="16" cursor="auto">
-            <ChakraBox
+            <MotionBox
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{
@@ -204,7 +197,7 @@ const ScrollPrompt = () => {
                 display="flex"
                 justifyContent="center"
             >
-                <ChakraBox
+                <MotionBox
                     alignSelf="center"
                     textAlign="center"
                     position="relative"
@@ -230,8 +223,8 @@ const ScrollPrompt = () => {
                     >
                         Down
                     </Text>
-                </ChakraBox>
-            </ChakraBox>
+                </MotionBox>
+            </MotionBox>
         </Box>
     )
 }

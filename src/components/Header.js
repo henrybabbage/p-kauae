@@ -1,5 +1,5 @@
 import { Box, Flex, HStack, Heading, Link } from '@chakra-ui/react'
-import { ChakraBox } from './ChakraBox'
+import { MotionBox } from './MotionBox'
 
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -19,7 +19,7 @@ export default function Header() {
 
     return (
         <Box>
-            <ChakraBox
+            <MotionBox
                 initial={{ opacity: 0, y: -180 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -92,7 +92,7 @@ export default function Header() {
                         </HStack>
                     </Flex>
                 </Flex>
-            </ChakraBox>
+            </MotionBox>
             <Box
                 backgroundColor="CC404041"
                 backdropFilter="saturate(200%) blur(4px)"

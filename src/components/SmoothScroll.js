@@ -16,7 +16,7 @@ import React, {
 } from 'react'
 import ResizeObserver from 'resize-observer-polyfill'
 
-const ChakraBox = chakra(motion.div, {
+const MotionBox = chakra(motion.div, {
     /**
      * Allow motion props and non-Chakra props to be forwarded.
      */
@@ -75,7 +75,7 @@ const SmoothScroll = ({ children }) => {
 
     return (
         <>
-            <ChakraBox
+            <MotionBox
                 initial="hidden"
                 animate="enter"
                 exit="exit"
@@ -91,7 +91,7 @@ const SmoothScroll = ({ children }) => {
                 willChange="transform"
             >
                 {children}
-            </ChakraBox>
+            </MotionBox>
             {/* blank div that has a dynamic height based on the content's inherent height */}
             {/* this is neccessary to allow the scroll container to scroll... */}
             <Box backgroundColor="grey.900" style={{ height: pageHeight }} />

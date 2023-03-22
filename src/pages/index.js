@@ -2,8 +2,7 @@ import AboutBanner from '@/components/AboutBanner'
 import BackgroundImage from '@/components/BackgroundImage'
 import ChakraNextImage from '@/components/ChakraNextImage'
 import SmoothScroll from '@/components/SmoothScroll'
-import dynamic from 'next/dynamic'
-
+import { MotionBox } from '@/components/MotionBox'
 import {
     Box,
     Flex,
@@ -14,6 +13,7 @@ import {
     Text
 } from '@chakra-ui/react'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
+import dynamic from 'next/dynamic'
 import { getPlaiceholder } from 'plaiceholder'
 import ReactMarkdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
@@ -94,12 +94,12 @@ export default function Home({
             <main>
                 <SmoothScroll>
                     <Box id="about" bg="grey.900">
-                        <ChakraBox position="absolute">
+                        <MotionBox position="absolute">
                             <BackgroundImage
                                 src={'/images/background.jpeg'}
                                 alt={'Taranaki landscape'}
                             />
-                        </ChakraBox>
+                        </MotionBox>
                         <Grid templateColumns="repeat(12, 1fr)">
                             <GridItem
                                 colStart={1}
@@ -144,13 +144,12 @@ export default function Home({
                                     flexDirection={'column'}
                                     height="100vh"
                                 >
-                                    <ChakraBox
+                                    <MotionBox
                                         initial={'offscreen'}
                                         whileInView={'onscreen'}
                                         viewport={{ once: true, amount: 0.7 }}
-                                        transition={{ staggerChildren: 0.5 }}
                                     >
-                                        <ChakraBox variants={videoAnimate}>
+                                        <MotionBox variants={videoAnimate}>
                                             <VideoPlayer
                                                 src={heroVideo}
                                                 baseUrlVideo={baseUrlVideo}
@@ -160,8 +159,8 @@ export default function Home({
                                                 muted={false}
                                                 loop={false}
                                             />
-                                        </ChakraBox>
-                                    </ChakraBox>
+                                        </MotionBox>
+                                    </MotionBox>
                                 </Flex>
                             </GridItem>
                             <GridItem colStart={2} colEnd={12} pt="6" pb="6">
@@ -411,7 +410,6 @@ export default function Home({
     )
 }
 
-import { ChakraBox } from '@/components/ChakraBox'
 import fsPromises from 'fs/promises'
 import path from 'path'
 export async function getStaticProps() {
