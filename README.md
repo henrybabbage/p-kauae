@@ -8,7 +8,7 @@ The organisation celebrated its 30th anniversary in 2019 and to mark this milest
 
 The exhibition captured personal symbols of cultural resistance whilst celebrating the recovery of the art of Pūkauae as a ritual for indigenous healing and regeneration.
 
-This website is a documentation of that toi and mahi.
+This website is a documentation of that whakapapa.
 
 ***
 
