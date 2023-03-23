@@ -43,7 +43,13 @@ const WahineModal = ({
     }
 
     function handlePreviousClick() {
-        setIndex((index) => (index - 1) % wahines.length)
+        setIndex((index) => {
+            if (index === 0) {
+                return wahines.length - 1
+            } else {
+                return (index - 1) % wahines.length
+            }
+        })
     }
 
     return (
