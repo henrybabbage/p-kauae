@@ -1,12 +1,4 @@
-import {
-    Box,
-    Flex,
-    Heading,
-    Text,
-    chakra,
-    shouldForwardProp
-} from '@chakra-ui/react'
-import { isValidMotionProp, motion } from 'framer-motion'
+import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { MotionBox } from './MotionBox'
 import { MotionSpan } from './MotionSpan'
 
