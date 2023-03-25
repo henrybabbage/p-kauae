@@ -1,6 +1,14 @@
-import { AspectRatio, Box, Heading } from '@chakra-ui/react'
+import { AspectRatio, Box, Flex, Heading, Text } from '@chakra-ui/react'
 import '@vime/core/themes/default.css'
-import { ClickToPlay, Player, Poster, Spinner, Ui, Video } from '@vime/react'
+import {
+    ClickToPlay,
+    LoadingScreen,
+    Player,
+    Poster,
+    Ui,
+    Video
+} from '@vime/react'
+import Image from 'next/image'
 
 export default function VideoPlayer({
     location,
@@ -32,8 +40,35 @@ export default function VideoPlayer({
                         <source src={videoSrc} type="video/mp4" />
                     </Video>
                     <Ui>
+                        <LoadingScreen hideDots>
+                            <Flex
+                                bg="black"
+                                w="100vw"
+                                h="75vw"
+                                flexDirection="column"
+                                justifyContent="center"
+                                alignItems="center"
+                            >
+                                <Image
+                                    src="/icons/pukauae.svg"
+                                    alt="Pukauae logo"
+                                    width="150"
+                                    height="150"
+                                    priority
+                                    sizes="100vw"
+                                />
+                                <Text
+                                    pt="6"
+                                    fontFamily="body"
+                                    fontSize="16px"
+                                    color="white"
+                                    textTransform="uppercase"
+                                >
+                                    Loading
+                                </Text>
+                            </Flex>
+                        </LoadingScreen>
                         <ClickToPlay />
-                        <Spinner />
                         <Poster />
                     </Ui>
                 </Player>

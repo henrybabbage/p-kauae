@@ -67,6 +67,17 @@ blockquote > p {
     pointer-events: auto;
 }
 
+/* vime player */
+.droneFootage video {
+    width: 100vw;
+    object-fit: cover;
+    object-position: center;
+}
+
+vm-player {
+    --vm-loading-screen-z-index: 50;
+}
+
 /*  ------------------------------ */
 /*  vidstack player
 /*  ------------------------------ */
@@ -120,13 +131,6 @@ media-player[data-waiting] .media-buffering-icon {
 /* vidstack player */
 .droneFootage media-player video {
     height: 75vh;
-    object-fit: cover;
-    object-position: center;
-}
-
-/* vime player */
-.droneFootage video {
-    width: 100vw;
     object-fit: cover;
     object-position: center;
 }
