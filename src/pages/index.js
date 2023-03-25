@@ -1,8 +1,8 @@
 import AboutBanner from '@/components/AboutBanner'
 import BackgroundImage from '@/components/BackgroundImage'
 import ChakraNextImage from '@/components/ChakraNextImage'
-import SmoothScroll from '@/components/SmoothScroll'
 import { MotionBox } from '@/components/MotionBox'
+import SmoothScroll from '@/components/SmoothScroll'
 import {
     Box,
     Flex,
@@ -63,9 +63,9 @@ export default function Home({
     const rightColumn = acknowledgementsList.slice(8, 16)
 
     const videoAnimate = {
-        offscreen: { scale: 0.9 },
+        offscreen: { scale: 0.5 },
         onscreen: {
-            scale: 1,
+            scale: 0.8,
             transition: { duration: 1 }
         }
     }
@@ -138,18 +138,18 @@ export default function Home({
                                         Pūkauae opening Puke Ariki 2019
                                     </Heading>
                                 </Flex>
-                                <Flex
-                                    pt="12"
-                                    justify="center"
-                                    flexDirection={'column'}
-                                    height="100vh"
-                                >
+                            </GridItem>
+                            <GridItem colStart={4} colEnd={10} pt="6" pb="6">
+                                <Flex pt="12" justifyContent="center">
                                     <MotionBox
                                         initial={'offscreen'}
                                         whileInView={'onscreen'}
-                                        viewport={{ once: true, amount: 0.7 }}
+                                        viewport={{ once: true, amount: 0.1 }}
                                     >
-                                        <MotionBox variants={videoAnimate}>
+                                        <MotionBox
+                                            variants={videoAnimate}
+                                            className="player"
+                                        >
                                             <VideoPlayer
                                                 src={heroVideo}
                                                 baseUrlVideo={baseUrlVideo}

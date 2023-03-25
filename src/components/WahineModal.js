@@ -38,8 +38,19 @@ const WahineModal = ({
     const captureDate = wahines[index].wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
 
+    const isBrowser = () => typeof window !== 'undefined'
+
+    function scrollToTop() {
+        if (!isBrowser()) return
+        let element = document.getElementById('modal')
+        element.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
     function handleNextClick() {
         setIndex((index) => (index + 1) % wahines.length)
+        setTimeout(() => {
+            scrollToTop()
+        }, 300)
     }
 
     function handlePreviousClick() {
@@ -50,10 +61,13 @@ const WahineModal = ({
                 return (index - 1) % wahines.length
             }
         })
+        setTimeout(() => {
+            scrollToTop()
+        }, 300)
     }
 
     return (
-        <>
+        <Box id="modal">
             <Modal
                 isOpen={isOpen}
                 onClose={onClose}
@@ -102,7 +116,7 @@ const WahineModal = ({
                             rowGap="40px"
                         >
                             <GridItem colStart={1} colEnd={13} pt={6}>
-                                <Box className="droneFootage">
+                                <Box className="player">
                                     <VideoPlayer
                                         src={wahines[index]?.kiriata?.['720p']}
                                         alt={
@@ -241,7 +255,13 @@ const WahineModal = ({
                                     variant={'callToAction'}
                                     onClick={handlePreviousClick}
                                 >
-                                    {'←'} {'Previous wahine'}
+                                    {'←'}{' '}
+                                    {
+                                        wahines[
+                                            (index - 1 + wahines.length) %
+                                                wahines.length
+                                        ].ingoa
+                                    }
                                 </Button>
                             </Box>
                             <Box>
@@ -249,14 +269,18 @@ const WahineModal = ({
                                     variant={'callToAction'}
                                     onClick={handleNextClick}
                                 >
-                                    {'Next wahine'} {'→'}
+                                    {
+                                        wahines[(index + 1) % wahines.length]
+                                            .ingoa
+                                    }{' '}
+                                    {'→'}
                                 </Button>
                             </Box>
                         </Flex>
                     </ModalFooter>
                 </ModalContent>
             </Modal>
-        </>
+        </Box>
     )
 }
 
