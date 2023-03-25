@@ -68,7 +68,7 @@ blockquote > p {
 }
 
 /* vime player */
-.droneFootage video {
+.player video {
     width: 100vw;
     object-fit: cover;
     object-position: center;

@@ -32,6 +32,7 @@ export default function VideoPlayer({
                 <Player
                     playsinline
                     aspectRatio
+                    preload
                     muted={muted}
                     loop={loop}
                     autoplay={autoPlay}
