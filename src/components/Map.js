@@ -61,7 +61,7 @@ export default function Map({ data }) {
             'text-field': ['get', 'title'],
             'text-font': ['Arial Unicode MS Bold'],
             'text-offset': [0, 1.25],
-            'text-anchor': 'top'
+            'text-variable-anchor': ['top', 'bottom', 'left', 'right']
         },
         paint: {
             'icon-color': '#ffffff',
