@@ -17,11 +17,11 @@ export default function CloseButton() {
         setIsHovering(false)
     }
 
-    const hoverStyle = `${isHovering ? hoverColor : defaultColor}`
+    const style = `${isHovering ? hoverColor : defaultColor}`
 
     return (
         <Box onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            <IconContext.Provider value={{ color: hoverStyle }}>
+            <IconContext.Provider value={{ color: style }}>
                 <Close size="20px" />
             </IconContext.Provider>
         </Box>

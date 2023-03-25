@@ -1,5 +1,4 @@
 import MapBox from '@/components/Map'
-import SmoothScroll from '@/components/SmoothScroll'
 import WahineModal from '@/components/WahineModal'
 
 import { Box, Button, Flex, Heading, useDisclosure } from '@chakra-ui/react'
@@ -14,38 +13,36 @@ export default function Haerenga({
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <main>
-            <SmoothScroll>
-                <WahineModal
-                    isOpen={isOpen}
-                    onOpen={onOpen}
-                    onClose={onClose}
-                    wahines={wahines}
-                    images={portraits}
-                    covers={posters}
-                    baseUrlVideo={baseUrlVideo}
-                />
-                <Box position="fixed" bottom={10} w="100%" zIndex={1000}>
-                    <Button
-                        variant={'callToAction'}
-                        position={'fixed'}
-                        onClick={onOpen}
+            <WahineModal
+                isOpen={isOpen}
+                onOpen={onOpen}
+                onClose={onClose}
+                wahines={wahines}
+                images={portraits}
+                covers={posters}
+                baseUrlVideo={baseUrlVideo}
+            />
+            <Box position="fixed" bottom={10} w="100%" zIndex={1000}>
+                <Button
+                    variant={'callToAction'}
+                    position={'fixed'}
+                    onClick={onOpen}
+                >
+                    <Heading
+                        as="h2"
+                        size="md"
+                        fontWeight="bold"
+                        fontFamily="body"
                     >
-                        <Heading
-                            as="h2"
-                            size="md"
-                            fontWeight="bold"
-                            fontFamily="body"
-                        >
-                            Wahines
-                        </Heading>
-                    </Button>
-                </Box>
-                <Box id="map" w="100vw" h="100vh" bg="grey.900" pt="4">
-                    <Flex h="100vh" alignItems="center" justifyContent="center">
-                        <MapBox data={wahines} />
-                    </Flex>
-                </Box>
-            </SmoothScroll>
+                        Wahines
+                    </Heading>
+                </Button>
+            </Box>
+            <Box id="map" w="100vw" h="100vh" bg="grey.900" pt="4">
+                <Flex h="100vh" alignItems="center" justifyContent="center">
+                    <MapBox data={wahines} />
+                </Flex>
+            </Box>
         </main>
     )
 }
