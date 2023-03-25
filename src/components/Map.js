@@ -14,36 +14,6 @@ export default function Map({ data }) {
         zoom: 10
     })
 
-    const wahi = data.map((wahine) => {
-        return {
-            id: wahine.id,
-            title: wahine.ingoa,
-            lat: wahine.wahi.ahuahanga[1],
-            lng: wahine.wahi.ahuahanga[0]
-        }
-    })
-
-    const layerStyle = {
-        id: 'wahine',
-        type: 'symbol',
-        source: 'taranaki-data',
-        layout: {
-            'icon-image': 'diamond',
-            'icon-size': 0.35,
-            // get the title name from the source's "title" property
-            'text-field': ['get', 'title'],
-            'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-            'text-offset': [0, 1.25],
-            'text-anchor': 'top'
-        },
-        paint: {
-            'icon-color': '#ffffff'
-        }
-    }
-
-    const mapData = GeoJSON.parse(wahi, { Point: ['lat', 'lng'] })
-    console.log('mapData', mapData)
-
     const mapRefCallback = useCallback((ref) => {
         if (ref !== null) {
             mapRef.current = ref
@@ -68,6 +38,39 @@ export default function Map({ data }) {
         }
     }, [])
 
+    const wahi = data.map((wahine) => {
+        return {
+            id: wahine.id,
+            title: wahine.ingoa,
+            lat: wahine.wahi.ahuahanga[1],
+            lng: wahine.wahi.ahuahanga[0]
+        }
+    })
+
+    const layerStyle = {
+        id: 'wahine',
+        type: 'symbol',
+        source: 'taranaki-data',
+        tolerance: 0,
+        layout: {
+            'icon-image': 'diamond',
+            'icon-size': 0.35,
+            'icon-allow-overlap': true,
+            'text-optional': true,
+            // get the title name from the source's "title" property
+            'text-field': ['get', 'title'],
+            'text-font': ['Arial Unicode MS Bold'],
+            'text-offset': [0, 1.25],
+            'text-anchor': 'top'
+        },
+        paint: {
+            'icon-color': '#ffffff',
+            'text-color': '#ffffff'
+        }
+    }
+
+    const mapData = GeoJSON.parse(wahi, { Point: ['lat', 'lng'] })
+
     return (
         <Box h="84vh" w="84vw">
             <ReactMapGL
@@ -81,7 +84,7 @@ export default function Map({ data }) {
                     zoom: 10
                 }}
                 onViewportChange={(nextViewport) => setViewport(nextViewport)}
-                minZoom={5}
+                minZoom={10}
                 maxZoom={15}
                 pitch={45}
                 mapStyle="mapbox://styles/henrybabbage/clfgw3onz000601rsu3nbrtzx"
@@ -91,7 +94,12 @@ export default function Map({ data }) {
                         setSelectedSite(e.features[0].properties.id)
                 }}
             >
-                <Source id="taranaki-data" type="geojson" data={mapData} />
+                <Source
+                    id="taranaki-data"
+                    type="geojson"
+                    data={mapData}
+                    tolerance={0}
+                />
                 <Layer source="taranaki-data" {...layerStyle} />
             </ReactMapGL>
         </Box>
