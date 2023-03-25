@@ -1,4 +1,4 @@
-import { AspectRatio, Box, Flex, Heading, Text } from '@chakra-ui/react'
+import { AspectRatio, Box, Grid, Heading, Text } from '@chakra-ui/react'
 import '@vime/core/themes/default.css'
 import {
     ClickToPlay,
@@ -25,9 +25,11 @@ export default function VideoPlayer({
         <Box position="relative">
             <AspectRatio
                 maxH="75vh"
-                w="100vw"
+                maxW="100vw"
                 ratio={16 / 9}
                 cursor="crosshair"
+                display="flex"
+                justifyContent="center"
             >
                 <Player
                     playsinline
@@ -42,13 +44,13 @@ export default function VideoPlayer({
                     </Video>
                     <Ui>
                         <LoadingScreen hideDots>
-                            <Flex
-                                bg="black"
-                                w="100vw"
-                                h="75vw"
-                                flexDirection="column"
+                            <Grid
+                                bg="transparent"
+                                maxW="100vw"
+                                h="100vh"
                                 justifyContent="center"
-                                alignItems="center"
+                                alignContent="center"
+                                gridAutoColumns="row"
                             >
                                 <Image
                                     src="/icons/pukauae.svg"
@@ -57,6 +59,10 @@ export default function VideoPlayer({
                                     height="150"
                                     priority
                                     sizes="100vw"
+                                    style={{
+                                        objectFit: 'contain',
+                                        objectPosition: 'center'
+                                    }}
                                 />
                                 <Text
                                     pt="6"
@@ -64,10 +70,11 @@ export default function VideoPlayer({
                                     fontSize="16px"
                                     color="white"
                                     textTransform="uppercase"
+                                    textAlign="center"
                                 >
                                     Loading
                                 </Text>
-                            </Flex>
+                            </Grid>
                         </LoadingScreen>
                         <ClickToPlay />
                         <Poster />
