@@ -1,13 +1,6 @@
 import { AspectRatio, Box, Grid, Heading, Text } from '@chakra-ui/react'
 import '@vime/core/themes/default.css'
-import {
-    ClickToPlay,
-    LoadingScreen,
-    Player,
-    Poster,
-    Ui,
-    Video
-} from '@vime/react'
+import { LoadingScreen, Player, Poster, Ui, Video } from '@vime/react'
 import Image from 'next/image'
 
 export default function VideoPlayer({
@@ -76,7 +69,6 @@ export default function VideoPlayer({
                                 </Text>
                             </Grid>
                         </LoadingScreen>
-                        <ClickToPlay />
                         <Poster />
                     </Ui>
                 </Player>
