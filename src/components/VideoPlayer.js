@@ -15,8 +15,19 @@ export default function VideoPlayer({
     const videoSrc = `${baseUrlVideo}${src}`
     return (
         <Box position="relative">
-            <AspectRatio maxH="75vh" ratio={16 / 9} cursor="crosshair">
-                <Player playsinline aspectRatio muted loop autoplay>
+            <AspectRatio
+                maxH="75vh"
+                w="100vw"
+                ratio={16 / 9}
+                cursor="crosshair"
+            >
+                <Player
+                    playsinline
+                    aspectRatio
+                    muted={muted}
+                    loop={loop}
+                    autoplay={autoPlay}
+                >
                     <Video>
                         <source src={videoSrc} type="video/mp4" />
                     </Video>

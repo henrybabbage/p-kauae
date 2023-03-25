@@ -241,7 +241,13 @@ const WahineModal = ({
                                     variant={'callToAction'}
                                     onClick={handlePreviousClick}
                                 >
-                                    {'←'} {'Previous wahine'}
+                                    {'←'}{' '}
+                                    {
+                                        wahines[
+                                            (index - 1 + wahines.length) %
+                                                wahines.length
+                                        ].ingoa
+                                    }
                                 </Button>
                             </Box>
                             <Box>
@@ -249,7 +255,11 @@ const WahineModal = ({
                                     variant={'callToAction'}
                                     onClick={handleNextClick}
                                 >
-                                    {'Next wahine'} {'→'}
+                                    {
+                                        wahines[(index + 1) % wahines.length]
+                                            .ingoa
+                                    }{' '}
+                                    {'→'}
                                 </Button>
                             </Box>
                         </Flex>
