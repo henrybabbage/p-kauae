@@ -24,14 +24,7 @@ export default function VideoPlayer({
                 display="flex"
                 justifyContent="center"
             >
-                <Player
-                    playsinline
-                    aspectRatio
-                    preload
-                    muted={muted}
-                    loop={loop}
-                    autoplay={autoPlay}
-                >
+                <Player playsinline aspectRatio preload muted loop autoplay>
                     <Video>
                         <source src={videoSrc} type="video/mp4" />
                     </Video>
