@@ -1,7 +1,6 @@
-import { AspectRatio, Box, Grid, Heading, Text } from '@chakra-ui/react'
+import { AspectRatio, Box, Heading } from '@chakra-ui/react'
 import '@vime/core/themes/default.css'
-import { LoadingScreen, Player, Poster, Ui, Video } from '@vime/react'
-import Image from 'next/image'
+import { DefaultUi, Player, Spinner, Video } from '@vime/react'
 
 export default function VideoPlayer({
     location,
@@ -28,42 +27,9 @@ export default function VideoPlayer({
                     <Video>
                         <source src={videoSrc} type="video/mp4" />
                     </Video>
-                    <Ui>
-                        <LoadingScreen hideDots>
-                            <Grid
-                                bg="transparent"
-                                maxW="100vw"
-                                h="100vh"
-                                justifyContent="center"
-                                alignContent="center"
-                                gridAutoColumns="row"
-                            >
-                                <Image
-                                    src="/icons/pukauae.svg"
-                                    alt="Pukauae logo"
-                                    width="150"
-                                    height="150"
-                                    priority
-                                    sizes="100vw"
-                                    style={{
-                                        objectFit: 'contain',
-                                        objectPosition: 'center'
-                                    }}
-                                />
-                                <Text
-                                    pt="6"
-                                    fontFamily="body"
-                                    fontSize="16px"
-                                    color="white"
-                                    textTransform="uppercase"
-                                    textAlign="center"
-                                >
-                                    Loading
-                                </Text>
-                            </Grid>
-                        </LoadingScreen>
-                        <Poster />
-                    </Ui>
+                    <DefaultUi>
+                        <Spinner />
+                    </DefaultUi>
                 </Player>
             </AspectRatio>
             <Heading
