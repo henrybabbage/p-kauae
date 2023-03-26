@@ -1,46 +1,20 @@
-import MapBox from '@/components/Map'
-import WahineModal from '@/components/WahineModal'
+import Map from '@/components/Map'
 
-import { Box, Button, Flex, Heading, useDisclosure } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import { getPlaiceholder } from 'plaiceholder'
 
-export default function Haerenga({
-    wahines,
-    portraits,
-    posters,
-    baseUrlVideo
-}) {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+export default function Haerenga(props) {
     return (
-        <Box as="main" maxH="100vh" overflow="hidden">
-            <WahineModal
-                isOpen={isOpen}
-                onOpen={onOpen}
-                onClose={onClose}
-                wahines={wahines}
-                images={portraits}
-                covers={posters}
-                baseUrlVideo={baseUrlVideo}
-            />
-            <Box position="fixed" bottom={10} w="100%" zIndex={1000}>
-                <Button
-                    variant={'callToAction'}
-                    position={'fixed'}
-                    onClick={onOpen}
-                >
-                    <Heading
-                        as="h2"
-                        size="md"
-                        fontWeight="bold"
-                        fontFamily="body"
-                    >
-                        Wahines
-                    </Heading>
-                </Button>
-            </Box>
-            <Box id="map" w="100vw" h="100vh" bg="grey.900" pt="4">
-                <Flex h="100vh" alignItems="center" justifyContent="center">
-                    <MapBox data={wahines} />
+        <Box
+            as="main"
+            maxH="100vh"
+            maxW="100vw"
+            overflow="hidden"
+            bg="grey.900"
+        >
+            <Box id="map" w="100vw" h="100vh">
+                <Flex alignItems="center" justifyContent="center">
+                    <Map data={props} />
                 </Flex>
             </Box>
         </Box>
