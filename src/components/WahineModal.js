@@ -1,7 +1,4 @@
-import { format, parseISO } from 'date-fns'
-import dynamic from 'next/dynamic'
-import { useState } from 'react'
-
+import { isBrowser } from '@/utils/helpers'
 import {
     Box,
     Button,
@@ -18,7 +15,10 @@ import {
     ModalOverlay,
     Text
 } from '@chakra-ui/react'
-import PortraitModal from './PortraitModal'
+import { format, parseISO } from 'date-fns'
+import { useRef, useState } from 'react'
+import ModalVideo from './ModalVideo'
+import ZoomImage from './ZoomImage'
 
 const WahineModal = ({
     onOpen,
@@ -29,16 +29,10 @@ const WahineModal = ({
     covers,
     baseUrlVideo
 }) => {
-    const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
-        ssr: false
-    })
-
     const [index, setIndex] = useState(0)
 
     const captureDate = wahines[index].wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
-
-    const isBrowser = () => typeof window !== 'undefined'
 
     function scrollToTop() {
         if (!isBrowser()) return
@@ -65,6 +59,8 @@ const WahineModal = ({
             scrollToTop()
         }, 300)
     }
+
+    const playerRef = useRef(null)
 
     return (
         <Box id="modal">
@@ -117,19 +113,12 @@ const WahineModal = ({
                         >
                             <GridItem colStart={1} colEnd={13} pt={6}>
                                 <Box className="player">
-                                    <VideoPlayer
+                                    <ModalVideo
+                                        playerRef={playerRef}
                                         src={wahines[index]?.kiriata?.['1080p']}
-                                        alt={
-                                            wahines[index].kiriata
-                                                .alternativeText
-                                        }
-                                        poster={null}
                                         baseUrlVideo={baseUrlVideo}
                                         location={wahines[index].wahi.ingoa}
-                                        autoPlay={true}
-                                        controls={false}
-                                        loop={true}
-                                        muted={true}
+                                        poster={null}
                                     />
                                 </Box>
                                 <Flex alignItems={'baseline'} pt={6}>
@@ -159,7 +148,7 @@ const WahineModal = ({
                                 minH="84vh"
                             >
                                 <Flex direction={'column'}>
-                                    <PortraitModal
+                                    <ZoomImage
                                         src={images[index]?.src}
                                         alt={images[index]?.alternativeText}
                                         width={4200}
