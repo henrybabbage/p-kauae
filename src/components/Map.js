@@ -1,11 +1,13 @@
-import { Box } from '@chakra-ui/react'
+import { Box, useDisclosure } from '@chakra-ui/react'
 import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
+import WahineModal from './WahineModal'
 
 export default function Map({ data }) {
     const mapRef = useRef(null)
+    const [selectedWahine, setSelectedWahine] = useState(null)
     const [selectedSite, setSelectedSite] = useState(null)
     const [viewport, setViewport] = useState({
         latitude: -39.296128,
@@ -13,7 +15,9 @@ export default function Map({ data }) {
         zoom: 10
     })
 
-    const wahi = data.map((wahine) => {
+    const { wahines, portraits, posters, baseUrlVideo } = data
+
+    const wahi = wahines.map((wahine) => {
         return {
             id: wahine.id,
             title: wahine.ingoa,
@@ -47,16 +51,36 @@ export default function Map({ data }) {
 
     const mapData = GeoJSON.parse(wahi, { Point: ['lat', 'lng'] })
 
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
     const onClick = (e) => {
         if (e.features.length && e.features[0].properties) {
+            const { id, centroid } = e.features[0].properties
+            const clickedWahine = wahines.find((wahine) => wahine.id === id)
+            clickedWahine && setSelectedWahine(clickedWahine)
             mapRef.current.flyTo({
-                center: JSON.parse(e.features[0].properties.centroid)
+                center: JSON.parse(centroid)
             })
+            onOpen()
         }
     }
 
+    useEffect(() => {
+        console.log(selectedWahine)
+    }, [selectedWahine])
+
     return (
-        <Box h="84vh" w="84vw">
+        <Box h="100vh" w="100vw">
+            <WahineModal
+                isOpen={isOpen}
+                onOpen={onOpen}
+                onClose={onClose}
+                wahines={wahines}
+                images={portraits}
+                covers={posters}
+                baseUrlVideo={baseUrlVideo}
+                selectedWahine={selectedWahine}
+            />
             <ReactMapGL
                 width="100%"
                 height="100%"
