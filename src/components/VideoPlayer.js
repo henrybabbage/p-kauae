@@ -1,6 +1,5 @@
 import { AspectRatio, Box, Heading } from '@chakra-ui/react'
-import '@vime/core/themes/default.css'
-import { DefaultUi, Player, Spinner, Video } from '@vime/react'
+import ReactPlayer from 'react-player'
 
 export default function VideoPlayer({
     location,
@@ -23,14 +22,16 @@ export default function VideoPlayer({
                 display="flex"
                 justifyContent="center"
             >
-                <Player playsinline aspectRatio preload muted loop autoplay>
-                    <Video>
-                        <source src={videoSrc} type="video/mp4" />
-                    </Video>
-                    <DefaultUi>
-                        <Spinner />
-                    </DefaultUi>
-                </Player>
+                <ReactPlayer
+                    width="100%"
+                    height="100%"
+                    playsinline
+                    autoplay
+                    muted
+                    loop
+                    playing={true}
+                    url={videoSrc}
+                />
             </AspectRatio>
             <Heading
                 fontSize="36px"
