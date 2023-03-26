@@ -12,7 +12,7 @@ export default function Haerenga({
 }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
-        <main>
+        <Box as="main" maxH="100vh" overflow="hidden">
             <WahineModal
                 isOpen={isOpen}
                 onOpen={onOpen}
@@ -43,7 +43,7 @@ export default function Haerenga({
                     <MapBox data={wahines} />
                 </Flex>
             </Box>
-        </main>
+        </Box>
     )
 }
 

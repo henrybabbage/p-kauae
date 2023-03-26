@@ -5,7 +5,7 @@ import Zoom from 'react-medium-image-zoom'
 import ChakraNextImage from './ChakraNextImage'
 import CloseButton from './CloseButton'
 
-export default function PortraitModal(props) {
+export default function ZoomImage(props) {
     const { caption, src, alt, width, height, sizes, blurhash, ...rest } = props
 
     const DynamicZoomContent = useCallback(

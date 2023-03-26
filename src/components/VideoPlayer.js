@@ -1,28 +1,20 @@
-import { AspectRatio, Box, Heading } from '@chakra-ui/react'
-import ReactPlayer from 'react-player'
+import { isBrowser } from '@/utils/helpers'
+import { useEffect, useState } from 'react'
+import ReactPlayer from 'react-player/lazy'
 
-export default function VideoPlayer({
-    location,
-    src,
-    alt,
-    poster,
-    baseUrlVideo,
-    autoPlay,
-    muted,
-    loop
-}) {
-    const videoSrc = `${baseUrlVideo}${src}`
+export default function VideoPlayer({ playerRef, src }) {
+    const [hasWindow, setHasWindow] = useState(false)
+    useEffect(() => {
+        if (isBrowser) {
+            setHasWindow(true)
+        }
+    }, [])
     return (
-        <Box position="relative">
-            <AspectRatio
-                maxH="75vh"
-                maxW="100vw"
-                ratio={16 / 9}
-                cursor="crosshair"
-                display="flex"
-                justifyContent="center"
-            >
+        <>
+            {hasWindow && (
                 <ReactPlayer
+                    ref={playerRef}
+                    url={src}
                     width="100%"
                     height="100%"
                     playsinline
@@ -30,20 +22,8 @@ export default function VideoPlayer({
                     muted
                     loop
                     playing={true}
-                    url={videoSrc}
                 />
-            </AspectRatio>
-            <Heading
-                fontSize="36px"
-                color="white"
-                fontWeight="regular"
-                fontFamily="heading"
-                position="absolute"
-                bottom={6}
-                right={6}
-            >
-                {location}
-            </Heading>
-        </Box>
+            )}
+        </>
     )
 }
