@@ -118,7 +118,7 @@ const WahineModal = ({
                             <GridItem colStart={1} colEnd={13} pt={6}>
                                 <Box className="player">
                                     <VideoPlayer
-                                        src={wahines[index]?.kiriata?.['720p']}
+                                        src={wahines[index]?.kiriata?.['1080p']}
                                         alt={
                                             wahines[index].kiriata
                                                 .alternativeText
