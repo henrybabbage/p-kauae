@@ -172,6 +172,15 @@ const WahineModal = ({
                                     {wahines[index].korero_pukauae}
                                 </Text>
                                 <Box pt={6}>
+                                    <Text
+                                        fontSize={'18px'}
+                                        lineHeight={'1.36'}
+                                        color={'white'}
+                                    >
+                                        {wahines[index].korero_wahi}
+                                    </Text>
+                                </Box>
+                                <Box pt={6}>
                                     <HStack>
                                         <Text
                                             fontSize={'18px'}
@@ -190,45 +199,40 @@ const WahineModal = ({
                                     </HStack>
                                 </Box>
                                 <Box pt={6}>
-                                    <Text
-                                        fontSize={'18px'}
-                                        lineHeight={'1.36'}
-                                        color={'white'}
-                                    >
-                                        {wahines[index].korero_wahi}
-                                    </Text>
+                                    <HStack>
+                                        <Text
+                                            fontSize={'18px'}
+                                            lineHeight={'1.36'}
+                                            color={'pink.200'}
+                                        >
+                                            Tohunga ta moko:{' '}
+                                        </Text>
+                                        <Text
+                                            fontSize={'18px'}
+                                            lineHeight={'1.36'}
+                                            color={'white'}
+                                        >
+                                            {wahines[index].tohunga_ta_moko}
+                                        </Text>
+                                    </HStack>
                                 </Box>
                                 <Box pt={6}>
-                                    <Text
-                                        fontSize={'18px'}
-                                        lineHeight={'1.36'}
-                                        color={'pink.200'}
-                                    >
-                                        Tohunga ta moko
-                                    </Text>
-                                    <Text
-                                        fontSize={'18px'}
-                                        lineHeight={'1.36'}
-                                        color={'white'}
-                                    >
-                                        {wahines[index].tohunga_ta_moko}
-                                    </Text>
-                                </Box>
-                                <Box pt={6}>
-                                    <Text
-                                        fontSize={'18px'}
-                                        lineHeight={'1.36'}
-                                        color={'pink.200'}
-                                    >
-                                        Capture date
-                                    </Text>
-                                    <Text
-                                        fontSize={'18px'}
-                                        lineHeight={'1.36'}
-                                        color={'white'}
-                                    >
-                                        {formattedDate}
-                                    </Text>
+                                    <HStack>
+                                        <Text
+                                            fontSize={'18px'}
+                                            lineHeight={'1.36'}
+                                            color={'pink.200'}
+                                        >
+                                            Capture date:{' '}
+                                        </Text>
+                                        <Text
+                                            fontSize={'18px'}
+                                            lineHeight={'1.36'}
+                                            color={'white'}
+                                        >
+                                            {formattedDate}
+                                        </Text>
+                                    </HStack>
                                 </Box>
                             </GridItem>
                         </Grid>
