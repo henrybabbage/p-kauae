@@ -92,7 +92,7 @@ export default function Map({ data }) {
                     zoom: 10
                 }}
                 onViewportChange={(nextViewport) => setViewport(nextViewport)}
-                minZoom={10}
+                minZoom={11}
                 maxZoom={15}
                 pitch={45}
                 mapStyle="mapbox://styles/henrybabbage/clfgw3onz000601rsu3nbrtzx"
