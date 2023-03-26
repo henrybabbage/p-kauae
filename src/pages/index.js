@@ -1,4 +1,3 @@
-import AboutBanner from '@/components/AboutBanner'
 import BackgroundImage from '@/components/BackgroundImage'
 import ChakraNextImage from '@/components/ChakraNextImage'
 import { MotionBox } from '@/components/MotionBox'
@@ -116,7 +115,7 @@ export default function Home({
                                         'calc(100vh - var(--chakra-sizes-12))'
                                     }
                                 >
-                                    <AboutBanner />
+                                    <LandingBanner />
                                 </Flex>
                             </GridItem>
                             <GridItem colStart={2} colEnd={12} pt="6" pb="6">
@@ -410,6 +409,7 @@ export default function Home({
     )
 }
 
+import LandingBanner from '@/components/LandingBanner'
 import fsPromises from 'fs/promises'
 import path from 'path'
 export async function getStaticProps() {

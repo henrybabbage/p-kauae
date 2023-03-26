@@ -12,7 +12,7 @@ const textAnimation = {
     }
 }
 
-export default function AboutBanner() {
+export default function LandingBanner() {
     const lines = [
         'Celebrating over',
         '30 years of',
