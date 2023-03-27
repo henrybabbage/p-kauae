@@ -64,15 +64,35 @@ const ZoomContent = ({ img, caption, buttonUnzoom }) => {
         <>
             {buttonUnzoom}
             <Flex as="figure" h="100vh" flexDir="column" justifyContent="end">
-                {img}
-                <Box as="figcaption" zIndex="10" pt="8" pb="4" px="8">
-                    <Flex justifyContent="center">
+                <Box
+                    as="figcaption"
+                    zIndex="10"
+                    pt="2"
+                    position="absolute"
+                    top={0}
+                >
+                    <Flex justifyContent="center" w="100vw">
                         <Text
-                            fontSize={'18px'}
-                            lineHeight={'1.36'}
-                            color={'white'}
+                            fontSize="18px"
+                            lineHeight="1.36"
+                            color="pink.400"
+                            textAlign="center"
                         >
                             {caption}
+                        </Text>
+                    </Flex>
+                </Box>
+                {img}
+                <Box as="figcaption" zIndex="10" pt="8" pb="4">
+                    <Flex justifyContent="center" w="100vw">
+                        <Text
+                            fontSize="10px"
+                            lineHeight="1.36"
+                            color="white"
+                            textAlign="center"
+                            textTransform="uppercase"
+                        >
+                            Photographic artwork by Tania Niwa
                         </Text>
                     </Flex>
                 </Box>
