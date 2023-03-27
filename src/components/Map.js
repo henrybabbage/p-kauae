@@ -8,11 +8,12 @@ import WahineModal from './WahineModal'
 export default function Map({ data }) {
     const mapRef = useRef(null)
     const [selectedWahine, setSelectedWahine] = useState(null)
-    const [selectedSite, setSelectedSite] = useState(null)
     const [viewport, setViewport] = useState({
         latitude: -39.296128,
         longitude: 174.063848,
-        zoom: 10
+        bearing: 90,
+        pitch: 70,
+        zoom: 12
     })
 
     const { wahines, portraits, posters, baseUrlVideo } = data
@@ -59,9 +60,16 @@ export default function Map({ data }) {
             const clickedWahine = wahines.find((wahine) => wahine.id === id)
             clickedWahine && setSelectedWahine(clickedWahine)
             mapRef.current.flyTo({
-                center: JSON.parse(centroid)
+                center: JSON.parse(centroid),
+                pitch: 70,
+                duration: 3000
             })
-            onOpen()
+        } else {
+            mapRef.current.flyTo({
+                center: [174.063848, -39.296128],
+                pitch: 70,
+                duration: 3000
+            })
         }
     }
 
@@ -82,19 +90,13 @@ export default function Map({ data }) {
                 selectedWahine={selectedWahine}
             />
             <ReactMapGL
+                {...viewport}
+                ref={mapRef}
                 width="100%"
                 height="100%"
-                ref={mapRef}
+                pitch={70}
                 mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
-                initialViewState={{
-                    latitude: -39.296128,
-                    longitude: 174.063848,
-                    zoom: 10
-                }}
-                onViewportChange={(nextViewport) => setViewport(nextViewport)}
-                minZoom={11}
-                maxZoom={15}
-                pitch={45}
+                onMove={(event) => setViewport(event.viewport)}
                 mapStyle="mapbox://styles/henrybabbage/clfgw3onz000601rsu3nbrtzx"
                 interactiveLayerIds={['wahine']}
                 onClick={onClick}

@@ -117,7 +117,7 @@ const WahineModal = ({
                                         playerRef={playerRef}
                                         src={wahines[index]?.kiriata?.['1080p']}
                                         baseUrlVideo={baseUrlVideo}
-                                        location={wahines[index].wahi.ingoa}
+                                        location={wahines[index].kiriata.ingoa}
                                         poster={null}
                                     />
                                 </Box>

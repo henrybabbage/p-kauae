@@ -1,4 +1,5 @@
 import { Flex, Heading, VStack } from '@chakra-ui/react'
+import Image from 'next/image'
 
 export default function TransitionBanner() {
     const banner = {
@@ -19,6 +20,26 @@ export default function TransitionBanner() {
             pointerEvents="none"
             overflow="hidden"
         >
+            <Flex
+                h="100vh"
+                w="80vw"
+                textAlign="center"
+                justifyContent="center"
+                alignItems="center"
+            >
+                <Image
+                    src="/icons/pukauae.svg"
+                    alt="Pukauae logo"
+                    width="150"
+                    height="150"
+                    priority
+                    sizes="100vw"
+                    style={{
+                        objectFit: 'contain',
+                        objectPosition: 'center'
+                    }}
+                />
+            </Flex>
             <Heading
                 as="h1"
                 size="md"
@@ -29,23 +50,6 @@ export default function TransitionBanner() {
             >
                 Tū Tama Wāhine o Taranaki
             </Heading>
-            <Flex
-                h="100vh"
-                w="80vw"
-                textAlign="center"
-                justifyContent="center"
-                alignItems="center"
-            >
-                <Heading
-                    as="h2"
-                    fontSize="84px"
-                    lineHeight="1"
-                    textColor="pink.200"
-                >
-                    Celebrating over 30 years of liberation work throughout
-                    Taranaki.
-                </Heading>
-            </Flex>
         </VStack>
     )
 }
