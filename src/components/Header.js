@@ -1,4 +1,4 @@
-import { Box, Flex, HStack, Heading, Link } from '@chakra-ui/react'
+import { Box, Flex, Heading, Link } from '@chakra-ui/react'
 import { MotionBox } from './MotionBox'
 
 import NextLink from 'next/link'
@@ -37,7 +37,7 @@ export default function Header() {
                     p="6"
                     zIndex={20}
                 >
-                    <Flex align="end" justify="flex-end">
+                    <Flex w="100vw" align="end" justify="space-between">
                         <Link
                             variant="menu"
                             as={NextLink}
@@ -48,48 +48,44 @@ export default function Header() {
                                 as="h1"
                                 size="md"
                                 fontWeight="bold"
-                                fontFamily="body"
+                                fontFamily="subheading"
                                 color="white"
                             >
                                 Tū Tama Wāhine o Taranaki
                             </Heading>
                         </Link>
-                    </Flex>
-                    <Flex align="center" justify="end">
-                        <HStack spacing="6">
-                            <Link
-                                variant="menu"
-                                as={NextLink}
-                                href="/"
-                                scroll={false}
+                        <Link
+                            variant="menu"
+                            as={NextLink}
+                            href="/"
+                            scroll={false}
+                        >
+                            <Heading
+                                as="h2"
+                                size="md"
+                                fontWeight="bold"
+                                fontFamily="subheading"
+                                textColor={activeLink('/')}
                             >
-                                <Heading
-                                    as="h2"
-                                    size="md"
-                                    fontWeight="bold"
-                                    fontFamily="body"
-                                    textColor={activeLink('/')}
-                                >
-                                    Whakapapa
-                                </Heading>
-                            </Link>
-                            <Link
-                                variant="menu"
-                                as={NextLink}
-                                href="/haerenga"
-                                scroll={false}
+                                Whakapapa
+                            </Heading>
+                        </Link>
+                        <Link
+                            variant="menu"
+                            as={NextLink}
+                            href="/haerenga"
+                            scroll={false}
+                        >
+                            <Heading
+                                as="h2"
+                                size="md"
+                                fontWeight="bold"
+                                fontFamily="subheading"
+                                textColor={activeLink('/haerenga')}
                             >
-                                <Heading
-                                    as="h2"
-                                    size="md"
-                                    fontWeight="bold"
-                                    fontFamily="body"
-                                    textColor={activeLink('/haerenga')}
-                                >
-                                    Haerenga
-                                </Heading>
-                            </Link>
-                        </HStack>
+                                Haerenga
+                            </Heading>
+                        </Link>
                     </Flex>
                 </Flex>
             </MotionBox>
