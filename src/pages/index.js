@@ -1,9 +1,7 @@
-import BackgroundImage from '@/components/BackgroundImage'
 import ChakraNextImage from '@/components/ChakraNextImage'
 import LandingBanner from '@/components/LandingBanner'
 import LandingVideo from '@/components/LandingVideo'
 
-import { MotionBox } from '@/components/MotionBox'
 import SmoothScroll from '@/components/SmoothScroll'
 import {
     Box,
@@ -66,12 +64,6 @@ export default function Home({
         <Box as="main">
             <SmoothScroll>
                 <Box id="about" bg="grey.900">
-                    <MotionBox position="absolute">
-                        <BackgroundImage
-                            src={'/images/background.jpeg'}
-                            alt={'Taranaki landscape'}
-                        />
-                    </MotionBox>
                     <Grid templateColumns="repeat(12, 1fr)">
                         <GridItem
                             colStart={1}
@@ -79,12 +71,13 @@ export default function Home({
                             h="100vh"
                             overflow="hidden"
                             position="relative"
+                            bg="grey.900"
                         >
                             <Flex
                                 position="relative"
                                 justify="center"
-                                flexDirection={'column'}
-                                height={'calc(100vh - var(--chakra-sizes-12))'}
+                                flexDirection="column"
+                                height="calc(100vh - var(--chakra-sizes-12))"
                             >
                                 <LandingBanner />
                             </Flex>
@@ -98,7 +91,7 @@ export default function Home({
                             ></Flex>
                         </GridItem>
                         <GridItem colStart={2} colEnd={12} pt="6" pb="6">
-                            <Box className="player">
+                            <Box className="player" h="100vh">
                                 <LandingVideo
                                     playerRef={playerRef}
                                     src={heroVideo}
@@ -159,8 +152,8 @@ export default function Home({
 
                                 {leftColumn.map((name, index) => (
                                     <Text
-                                        fontSize={'36px'}
-                                        lineHeight={'1.36'}
+                                        fontSize="36px"
+                                        lineHeight="1.36"
                                         textAlign="left"
                                         color="white"
                                         key={index}
@@ -175,16 +168,16 @@ export default function Home({
                             colEnd={11}
                             pt="6"
                             pb="6"
-                            position={'relative'}
+                            position="relative"
                         >
                             <Flex
                                 justify="center"
-                                flexDirection={'column'}
-                                height={'100vh'}
+                                flexDirection="column"
+                                height="100vh"
                             >
                                 <Text
-                                    fontSize={'36px'}
-                                    lineHeight={'1.36'}
+                                    fontSize="36px"
+                                    lineHeight="1.36"
                                     textAlign="left"
                                     color="white"
                                     visibility="hidden"
@@ -195,8 +188,8 @@ export default function Home({
                                 </Text>
                                 {rightColumn.map((name, index) => (
                                     <Text
-                                        fontSize={'36px'}
-                                        lineHeight={'1.36'}
+                                        fontSize="36px"
+                                        lineHeight="1.36"
                                         textAlign="left"
                                         color="white"
                                         key={index}
@@ -299,8 +292,8 @@ export default function Home({
                                 </Flex>
                                 <Text
                                     fontFamily="heading"
-                                    fontSize={'36px'}
-                                    lineHeight={'1.36'}
+                                    fontSize="36px"
+                                    lineHeight="1.36"
                                     textAlign="left"
                                     color="white"
                                     pb="28"
@@ -314,8 +307,8 @@ export default function Home({
                                 >
                                     <Text
                                         fontFamily="heading"
-                                        fontSize={'36px'}
-                                        lineHeight={'1.36'}
+                                        fontSize="36px"
+                                        lineHeight="1.36"
                                         textAlign="left"
                                     >
                                         {kaiwhakaahua.paetukutuku}
@@ -336,7 +329,7 @@ export default function Home({
                                 <ChakraNextImage
                                     {...portraitImg}
                                     src={portrait}
-                                    alt={'Tania Niwa'}
+                                    alt="Tania Niwa"
                                     width={720}
                                     height={648}
                                     blurhash={portraitBlurhash}
