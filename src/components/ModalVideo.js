@@ -12,7 +12,8 @@ export default function ModalVideo({
     location,
     poster,
     alt,
-    autoPlay,
+    autoplay,
+    controls,
     muted,
     loop
 }) {
@@ -27,7 +28,13 @@ export default function ModalVideo({
                 display="flex"
                 justifyContent="center"
             >
-                <VideoPlayer playerRef={playerRef} src={videoSrc} />
+                <VideoPlayer
+                    playerRef={playerRef}
+                    src={videoSrc}
+                    autoplay={autoplay}
+                    muted={muted}
+                    loop={loop}
+                />
             </AspectRatio>
             <Heading
                 fontSize="36px"

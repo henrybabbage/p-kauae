@@ -2,7 +2,15 @@ import { isBrowser } from '@/utils/helpers'
 import { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player/lazy'
 
-export default function VideoPlayer({ playerRef, src, autoPlay, muted, loop }) {
+export default function VideoPlayer({
+    playerRef,
+    src,
+    autoplay,
+    controls,
+    muted,
+    loop,
+    playing
+}) {
     const [hasWindow, setHasWindow] = useState(false)
     useEffect(() => {
         if (isBrowser) {
@@ -18,10 +26,10 @@ export default function VideoPlayer({ playerRef, src, autoPlay, muted, loop }) {
                     width="100%"
                     height="100%"
                     playsinline
-                    autoplay={autoPlay}
+                    autoplay={autoplay}
                     muted={muted}
                     loop={loop}
-                    playing={true}
+                    playing={playing}
                 />
             )}
         </>

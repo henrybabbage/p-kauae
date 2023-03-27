@@ -12,7 +12,8 @@ export default function LandingVideo({
     baseUrlVideo,
     poster,
     alt,
-    autoPlay,
+    autoplay,
+    controls,
     muted,
     loop
 }) {
@@ -51,9 +52,11 @@ export default function LandingVideo({
                 <VideoPlayer
                     playerRef={playerRef}
                     src={videoSrc}
-                    autoPlay={autoPlay}
+                    autoplay={autoplay}
+                    controls={controls}
                     muted={muted}
                     loop={loop}
+                    // playing={false}
                 />
             </AspectRatio>
             {showTitle && (

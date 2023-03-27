@@ -119,6 +119,11 @@ const WahineModal = ({
                                         baseUrlVideo={baseUrlVideo}
                                         location={wahines[index].kiriata.ingoa}
                                         poster={null}
+                                        autoplay={true}
+                                        controls={false}
+                                        muted={true}
+                                        loop={true}
+                                        playing={true}
                                     />
                                 </Box>
                                 <Flex alignItems={'baseline'} pt={6}>
