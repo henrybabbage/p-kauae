@@ -34,6 +34,7 @@ export default function ModalVideo({
                     autoplay={autoplay}
                     muted={muted}
                     loop={loop}
+                    playing={true}
                 />
             </AspectRatio>
             <Heading
