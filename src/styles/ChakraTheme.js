@@ -23,9 +23,9 @@ const theme = extendTheme({
         }
     },
     fonts: {
-        body: `"GTPlanar_Regular", ${base.fonts.body}, sans-serif`,
-        subheading: `"GTPlanar_Bold", ${base.fonts.body}, sans-serif`,
-        heading: `"GTZirkon_Black", ${base.fonts.heading}, sans-serif`
+        body: `"Sohne_Buch", ${base.fonts.body}, sans-serif`,
+        subheading: `"SohneBreit_Halbfett", ${base.fonts.body}, sans-serif`,
+        heading: `"SohneBreit_Extrafett", ${base.fonts.heading}, sans-serif`
     },
     fontSizes: {
         sm: '18px',
