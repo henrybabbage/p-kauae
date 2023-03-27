@@ -48,7 +48,13 @@ export default function LandingVideo({
                 justifyContent="center"
                 position="relative"
             >
-                <VideoPlayer playerRef={playerRef} src={videoSrc} />
+                <VideoPlayer
+                    playerRef={playerRef}
+                    src={videoSrc}
+                    autoPlay={autoPlay}
+                    muted={muted}
+                    loop={loop}
+                />
             </AspectRatio>
             {showTitle && (
                 <Heading

@@ -5,13 +5,7 @@ import { getPlaiceholder } from 'plaiceholder'
 
 export default function Haerenga(props) {
     return (
-        <Box
-            as="main"
-            maxH="100vh"
-            maxW="100vw"
-            overflow="hidden"
-            bg="grey.900"
-        >
+        <Box as="main" maxH="100vh" maxW="100vw" bg="grey.900">
             <Box id="map" w="100vw" h="100vh">
                 <Flex alignItems="center" justifyContent="center">
                     <Map data={props} />
