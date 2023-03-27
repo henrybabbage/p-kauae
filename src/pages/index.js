@@ -97,8 +97,8 @@ export default function Home({
                                     src={heroVideo}
                                     baseUrlVideo={baseUrlVideo}
                                     alt="Pūkauae Exhibition Opening 11th December 2019"
-                                    autoPlay={false}
-                                    controls={true}
+                                    autoplay={false}
+                                    controls={false}
                                     muted={false}
                                     loop={false}
                                 />

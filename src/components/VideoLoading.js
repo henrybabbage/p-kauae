@@ -5,8 +5,8 @@ export default function VideoLoading() {
         <Box>
             <Grid
                 bg="transparent"
-                maxW="100vw"
-                h="100vh"
+                w="100%"
+                h="100%"
                 justifyContent="center"
                 alignContent="center"
                 gridAutoColumns="row"

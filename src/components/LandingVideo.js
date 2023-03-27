@@ -12,25 +12,31 @@ export default function LandingVideo({
     baseUrlVideo,
     poster,
     alt,
-    autoPlay,
+    autoplay,
+    controls,
     muted,
     loop
 }) {
     const videoSrc = `${baseUrlVideo}${src}`
 
     const [showTitle, setShowTitle] = useState(false)
+    const [isPlaying, setIsPlaying] = useState(false)
 
     const timeoutRef = useRef(null)
 
-    function handleMouseEnter() {
+    const handleMouseEnter = () => {
         setShowTitle(true)
         clearTimeout(timeoutRef.current)
     }
 
-    function handleMouseLeave() {
+    const handleMouseLeave = () => {
         timeoutRef.current = setTimeout(() => {
             setShowTitle(false)
         }, 1000)
+    }
+
+    const handlePlay = () => {
+        setIsPlaying(true)
     }
 
     return (
@@ -43,7 +49,7 @@ export default function LandingVideo({
                 maxH="75vh"
                 maxW="100vw"
                 ratio={16 / 9}
-                cursor="crosshair"
+                cursor="auto"
                 display="flex"
                 justifyContent="center"
                 position="relative"
@@ -51,9 +57,11 @@ export default function LandingVideo({
                 <VideoPlayer
                     playerRef={playerRef}
                     src={videoSrc}
-                    autoPlay={autoPlay}
+                    autoplay={autoplay}
+                    controls={controls}
                     muted={muted}
                     loop={loop}
+                    playing={isPlaying}
                 />
             </AspectRatio>
             {showTitle && (

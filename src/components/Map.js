@@ -8,6 +8,7 @@ import WahineModal from './WahineModal'
 export default function Map({ data }) {
     const mapRef = useRef(null)
     const [selectedWahine, setSelectedWahine] = useState(null)
+    const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
     const [viewport, setViewport] = useState({
         latitude: -39.296128,
         longitude: 174.063848,
@@ -102,7 +103,7 @@ export default function Map({ data }) {
                 pitch={70}
                 mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
                 onMove={(event) => setViewport(event.viewport)}
-                mapStyle="mapbox://styles/henrybabbage/clfgw3onz000601rsu3nbrtzx"
+                mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck"
                 interactiveLayerIds={['wahine']}
                 onClick={onClick}
             >
