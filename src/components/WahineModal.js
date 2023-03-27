@@ -76,10 +76,7 @@ const WahineModal = ({
             >
                 <ModalOverlay />
                 <ModalContent maxW="100vw" p={6} bg="grey.900">
-                    <Flex
-                        justifyContent={'space-between'}
-                        alignContent={'start'}
-                    >
+                    <Flex justifyContent="space-between" alignContent="start">
                         <Heading
                             textStyle="primary"
                             as="h1"
@@ -129,7 +126,7 @@ const WahineModal = ({
                                         playing={true}
                                     />
                                 </Box>
-                                <Flex alignItems={'baseline'} pt={6}>
+                                <Flex alignItems="baseline" pt={6}>
                                     <Heading
                                         fontSize="36px"
                                         color="pink.200"
@@ -245,7 +242,7 @@ const WahineModal = ({
                             </GridItem>
                         </Grid>
                     </ModalBody>
-                    <ModalFooter p={0} mt={'auto'}>
+                    <ModalFooter p={0} mt="auto">
                         <Flex
                             justifyContent="space-between"
                             maxW="100vw"

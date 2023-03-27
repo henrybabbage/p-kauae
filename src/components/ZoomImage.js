@@ -75,7 +75,7 @@ const ZoomContent = ({ img, caption, buttonUnzoom }) => {
                         <Text
                             fontSize="18px"
                             lineHeight="1.36"
-                            color="pink.400"
+                            color="pink.200"
                             textAlign="center"
                         >
                             {caption}

@@ -42,7 +42,7 @@ export default function LandingBanner() {
                             textAlign="center"
                             fontSize="94px"
                             lineHeight="1"
-                            color="pink.400"
+                            color="pink.200"
                             textStyle="heading"
                         >
                             {line}
