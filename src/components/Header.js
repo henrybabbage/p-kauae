@@ -48,7 +48,7 @@ export default function Header() {
                                 as="h1"
                                 size="md"
                                 fontWeight="bold"
-                                fontFamily="body"
+                                fontFamily="subheading"
                                 color="white"
                             >
                                 Tū Tama Wāhine o Taranaki

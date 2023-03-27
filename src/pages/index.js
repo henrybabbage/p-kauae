@@ -228,7 +228,7 @@ export default function Home({
                         <GridItem colStart={2} colEnd={6} pt="16">
                             <Heading
                                 as="h2"
-                                fontFamily="heading"
+                                fontFamily="subheading"
                                 fontSize="84px"
                                 lineHeight="1"
                                 textAlign="center"

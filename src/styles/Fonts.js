@@ -10,6 +10,7 @@ const Fonts = () => (
             font-weight: 400;
             font-style: italic;
             font-display: swap;
+            unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
             font-family: 'SohneBreit_Buch';
@@ -18,6 +19,7 @@ const Fonts = () => (
             font-weight: 400;
             font-style: normal;
             font-display: swap;
+            unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
             font-family: 'SohneBreit_ExtrafettKursiv';
@@ -26,6 +28,7 @@ const Fonts = () => (
             font-weight: 900;
             font-style: italic;
             font-display: swap;
+            unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
             font-family: 'SohneBreit_Extrafett';
@@ -34,6 +37,7 @@ const Fonts = () => (
             font-weight: 900;
             font-style: normal;
             font-display: swap;
+            unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
             font-family: 'SohneBreit_HalbfettKursiv';
@@ -42,6 +46,7 @@ const Fonts = () => (
             font-weight: 600;
             font-style: italic;
             font-display: swap;
+            unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
             font-family: 'SohneBreit_Halbfett';
@@ -50,6 +55,7 @@ const Fonts = () => (
             font-weight: 600;
             font-style: normal;
             font-display: swap;
+            unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
             font-family: 'Sohne_LeichtKursiv';
@@ -58,6 +64,7 @@ const Fonts = () => (
             font-weight: 300;
             font-style: italic;
             font-display: swap;
+            unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
             font-family: 'Sohne_Leicht';
@@ -66,6 +73,7 @@ const Fonts = () => (
             font-weight: 300;
             font-style: normal;
             font-display: swap;
+            unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
             font-family: 'Sohne_BuchKursiv';
@@ -74,6 +82,7 @@ const Fonts = () => (
             font-weight: 400;
             font-style: italic;
             font-display: swap;
+            unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
             font-family: 'Sohne_Buch';
@@ -82,6 +91,7 @@ const Fonts = () => (
             font-weight: 400;
             font-style: normal;
             font-display: swap;
+            unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
             font-family: 'National2_Regular';
