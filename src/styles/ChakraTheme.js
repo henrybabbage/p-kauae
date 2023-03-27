@@ -25,7 +25,7 @@ const theme = extendTheme({
     fonts: {
         body: `"Sohne_Buch", ${base.fonts.body}, sans-serif`,
         subheading: `"SohneBreit_Buch", ${base.fonts.body}, sans-serif`,
-        heading: `"SohneBreit_Extrafett", ${base.fonts.heading}, sans-serif`
+        heading: `"SohneBreit_Dreiviertelfett", ${base.fonts.heading}, sans-serif`
     },
     fontSizes: {
         sm: '18px',
