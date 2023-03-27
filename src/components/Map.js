@@ -15,18 +15,23 @@ export default function Map({ data }) {
         pitch: 70,
         zoom: 12
     })
+    const [mapData, setMapData] = useState(null)
 
     const { wahines, portraits, posters, baseUrlVideo } = data
 
-    const wahi = wahines.map((wahine) => {
-        return {
-            id: wahine.id,
-            title: wahine.ingoa,
-            lat: wahine.wahi.ahuahanga[1],
-            lng: wahine.wahi.ahuahanga[0],
-            centroid: wahine.wahi.ahuahanga
-        }
-    })
+    useEffect(() => {
+        const wahi = wahines.map((wahine) => {
+            return {
+                id: wahine.id,
+                title: wahine.ingoa,
+                lat: wahine.wahi.ahuahanga[1],
+                lng: wahine.wahi.ahuahanga[0],
+                centroid: wahine.wahi.ahuahanga
+            }
+        })
+        const newMapData = GeoJSON.parse(wahi, { Point: ['lat', 'lng'] })
+        setMapData(newMapData)
+    }, [wahines])
 
     const layerStyle = {
         id: 'wahine',
@@ -50,15 +55,19 @@ export default function Map({ data }) {
         }
     }
 
-    const mapData = GeoJSON.parse(wahi, { Point: ['lat', 'lng'] })
-
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const onClick = (e) => {
         if (e.features.length && e.features[0].properties) {
             const { id, centroid } = e.features[0].properties
             const clickedWahine = wahines.find((wahine) => wahine.id === id)
-            clickedWahine && setSelectedWahine(clickedWahine)
+            clickedWahine &&
+                setSelectedWahine(() => {
+                    setTimeout(() => {
+                        onOpen()
+                    }, 3200)
+                    return clickedWahine
+                })
             mapRef.current.flyTo({
                 center: JSON.parse(centroid),
                 pitch: 70,
@@ -72,10 +81,6 @@ export default function Map({ data }) {
             })
         }
     }
-
-    useEffect(() => {
-        console.log(selectedWahine)
-    }, [selectedWahine])
 
     return (
         <Box h="100vh" w="100vw">
@@ -101,12 +106,14 @@ export default function Map({ data }) {
                 interactiveLayerIds={['wahine']}
                 onClick={onClick}
             >
-                <Source
-                    id="taranaki-data"
-                    type="geojson"
-                    data={mapData}
-                    tolerance={0}
-                />
+                {mapData && (
+                    <Source
+                        id="taranaki-data"
+                        type="geojson"
+                        data={mapData}
+                        tolerance={0}
+                    />
+                )}
                 <Layer source="taranaki-data" {...layerStyle} />
             </ReactMapGL>
         </Box>
