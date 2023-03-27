@@ -67,7 +67,7 @@ export default function Header() {
                                     as="h2"
                                     size="md"
                                     fontWeight="bold"
-                                    fontFamily="body"
+                                    fontFamily="subheading"
                                     textColor={activeLink('/')}
                                 >
                                     Whakapapa
@@ -83,7 +83,7 @@ export default function Header() {
                                     as="h2"
                                     size="md"
                                     fontWeight="bold"
-                                    fontFamily="body"
+                                    fontFamily="subheading"
                                     textColor={activeLink('/haerenga')}
                                 >
                                     Haerenga

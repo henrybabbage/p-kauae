@@ -4,6 +4,22 @@ const Fonts = () => (
     <Global
         styles={`
         @font-face {
+            font-family: 'SohneBreit_BuchKursiv';
+            src: url('fonts/SohneBreit/SohneBreit_BuchKursiv.woff2') format('woff2'),
+                url('fonts/SohneBreit/SohneBreit_BuchKursiv.woff') format('woff');
+            font-weight: 400;
+            font-style: italic;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'SohneBreit_Buch';
+            src: url('fonts/SohneBreit/SohneBreit_Buch.woff2') format('woff2'),
+                url('fonts/SohneBreit/SohneBreit_Buch.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
             font-family: 'SohneBreit_ExtrafettKursiv';
             src: url('fonts/SohneBreit/SohneBreit_ExtrafettKursiv.woff2') format('woff2'),
                 url('fonts/SohneBreit/SohneBreit_ExtrafettKursiv.woff') format('woff');
