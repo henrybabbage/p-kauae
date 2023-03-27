@@ -27,14 +27,16 @@ export default function VideoPlayer({
     return (
         <Box position="relative">
             {!isReady && <VideoLoading />}
-            <Box position="absolute">
-                <IconButton
-                    aria-label="Play video"
-                    isRound
-                    bg="transparent"
-                    icon={<PlayIcon boxSize={10} color="white" />}
-                />
-            </Box>
+            {controls && (
+                <Box position="absolute">
+                    <IconButton
+                        aria-label="Play video"
+                        isRound
+                        bg="transparent"
+                        icon={<PlayIcon boxSize={10} color="white" />}
+                    />
+                </Box>
+            )}
             {hasWindow && (
                 <ReactPlayer
                     ref={playerRef}
