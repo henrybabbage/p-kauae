@@ -8,7 +8,6 @@ import WahineModal from './WahineModal'
 
 export default function Map({ data }) {
     const mapRef = useRef(null)
-    const [selectedWahine, setSelectedWahine] = useState(null)
     const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
     const [viewport, setViewport] = useState({
         latitude: -39.296128,
@@ -102,7 +101,7 @@ export default function Map({ data }) {
     }
 
     return (
-        <Box h="100vh" w="100vw">
+        <Box h="100vh" w="100vw" cursor="auto">
             <WahineModal
                 isOpen={isOpen}
                 onOpen={onOpen}

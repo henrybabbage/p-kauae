@@ -27,12 +27,15 @@ const WahineModal = ({
     wahines,
     images,
     covers,
-    baseUrlVideo
+    baseUrlVideo,
+    selectedWahine
 }) => {
     const [index, setIndex] = useState(0)
 
     const captureDate = wahines[index].wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
+
+    console.log({ selectedWahine })
 
     function scrollToTop() {
         if (!isBrowser()) return
@@ -128,18 +131,18 @@ const WahineModal = ({
                                 </Box>
                                 <Flex alignItems={'baseline'} pt={6}>
                                     <Heading
-                                        fontSize={'36px'}
-                                        color={'pink.200'}
+                                        fontSize="36px"
+                                        color="pink.200"
                                         fontWeight="regular"
-                                        fontFamily={'heading'}
+                                        fontFamily="heading"
                                     >
                                         {wahines[index].ingoa}
                                     </Heading>
                                     <Heading
-                                        fontSize={'16px'}
-                                        color={'pink.200'}
+                                        fontSize="16px"
+                                        color="pink.200"
                                         fontWeight="regular"
-                                        fontFamily={'heading'}
+                                        fontFamily="heading"
                                         ml={2}
                                     >
                                         {wahines[index].whakapapa}
@@ -152,7 +155,7 @@ const WahineModal = ({
                                 pt={6}
                                 minH="84vh"
                             >
-                                <Flex direction={'column'}>
+                                <Flex direction="column">
                                     <ZoomImage
                                         src={images[index]?.src}
                                         alt={images[index]?.alternativeText}
@@ -170,17 +173,17 @@ const WahineModal = ({
                                 minH="84vh"
                             >
                                 <Text
-                                    fontSize={'18px'}
-                                    lineHeight={'1.36'}
-                                    color={'white'}
+                                    fontSize="18px"
+                                    lineHeight="1.36"
+                                    color="white"
                                 >
                                     {wahines[index].korero_pukauae}
                                 </Text>
                                 <Box pt={6}>
                                     <Text
-                                        fontSize={'18px'}
-                                        lineHeight={'1.36'}
-                                        color={'white'}
+                                        fontSize="18px"
+                                        lineHeight="1.36"
+                                        color="white"
                                     >
                                         {wahines[index].korero_wahi}
                                     </Text>
@@ -188,16 +191,16 @@ const WahineModal = ({
                                 <Box pt={6}>
                                     <HStack>
                                         <Text
-                                            fontSize={'18px'}
-                                            lineHeight={'1.36'}
-                                            color={'pink.200'}
+                                            fontSize="18px"
+                                            lineHeight="1.36"
+                                            color="pink.200"
                                         >
                                             Photograph location:{' '}
                                         </Text>
                                         <Text
-                                            fontSize={'18px'}
-                                            lineHeight={'1.36'}
-                                            color={'white'}
+                                            fontSize="18px"
+                                            lineHeight="1.36"
+                                            color="white"
                                         >
                                             {wahines[index].wahi.ingoa}
                                         </Text>
@@ -206,16 +209,16 @@ const WahineModal = ({
                                 <Box pt={6}>
                                     <HStack>
                                         <Text
-                                            fontSize={'18px'}
-                                            lineHeight={'1.36'}
-                                            color={'pink.200'}
+                                            fontSize="18px"
+                                            lineHeight="1.36"
+                                            color="pink.200"
                                         >
                                             Tohunga ta moko:{' '}
                                         </Text>
                                         <Text
-                                            fontSize={'18px'}
-                                            lineHeight={'1.36'}
-                                            color={'white'}
+                                            fontSize="18px"
+                                            lineHeight="1.36"
+                                            color="white"
                                         >
                                             {wahines[index].tohunga_ta_moko}
                                         </Text>
@@ -224,16 +227,16 @@ const WahineModal = ({
                                 <Box pt={6}>
                                     <HStack>
                                         <Text
-                                            fontSize={'18px'}
-                                            lineHeight={'1.36'}
-                                            color={'pink.200'}
+                                            fontSize="18px"
+                                            lineHeight="1.36"
+                                            color="pink.200"
                                         >
                                             Capture date:{' '}
                                         </Text>
                                         <Text
-                                            fontSize={'18px'}
-                                            lineHeight={'1.36'}
-                                            color={'white'}
+                                            fontSize="18px"
+                                            lineHeight="1.36"
+                                            color="white"
                                         >
                                             {formattedDate}
                                         </Text>
@@ -244,7 +247,7 @@ const WahineModal = ({
                     </ModalBody>
                     <ModalFooter p={0} mt={'auto'}>
                         <Flex
-                            justifyContent={'space-between'}
+                            justifyContent="space-between"
                             maxW="100vw"
                             w="100vw"
                         >
