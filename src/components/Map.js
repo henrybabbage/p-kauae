@@ -1,4 +1,5 @@
-import { Box, useDisclosure } from '@chakra-ui/react'
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
+import { Box, IconButton, useDisclosure } from '@chakra-ui/react'
 import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { useEffect, useRef, useState } from 'react'
@@ -14,7 +15,12 @@ export default function Map({ data }) {
         longitude: 174.063848,
         bearing: 90,
         pitch: 70,
-        zoom: 12
+        zoom: 12,
+        scrollZoom: false,
+        boxZoom: true,
+        doubleClickZoom: false,
+        dragRotate: true,
+        dragPan: true
     })
     const [mapData, setMapData] = useState(null)
 
@@ -58,29 +64,41 @@ export default function Map({ data }) {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    const onClick = (e) => {
-        if (e.features.length && e.features[0].properties) {
-            const { id, centroid } = e.features[0].properties
-            const clickedWahine = wahines.find((wahine) => wahine.id === id)
-            clickedWahine &&
-                setSelectedWahine(() => {
-                    setTimeout(() => {
-                        onOpen()
-                    }, 3200)
-                    return clickedWahine
-                })
-            mapRef.current.flyTo({
-                center: JSON.parse(centroid),
-                pitch: 70,
-                duration: 3000
+    const handlePrevClick = () => {
+        const prevIndex =
+            (selectedWahineIndex - 1 + wahines.length) % wahines.length
+        prevIndex &&
+            setSelectedWahineIndex(() => {
+                setTimeout(() => {
+                    onOpen()
+                }, 3200)
+                return prevIndex
             })
-        } else {
-            mapRef.current.flyTo({
-                center: [174.063848, -39.296128],
-                pitch: 70,
-                duration: 3000
+        mapRef.current.flyTo({
+            center: wahines[prevIndex].wahi.ahuahanga,
+            pitch: 70,
+            duration: 3000
+        })
+    }
+
+    const handleNextClick = () => {
+        const nextIndex = (selectedWahineIndex + 1) % wahines.length
+        nextIndex &&
+            setSelectedWahineIndex(() => {
+                setTimeout(() => {
+                    onOpen()
+                }, 3200)
+                return nextIndex
             })
-        }
+        mapRef.current.flyTo({
+            center: wahines[nextIndex].wahi.ahuahanga,
+            pitch: 70,
+            duration: 3000
+        })
+    }
+
+    const handleTransitionEnd = () => {
+        mapRef.current.getBearing && mapRef.current.setBearing(90)
     }
 
     return (
@@ -93,20 +111,50 @@ export default function Map({ data }) {
                 images={portraits}
                 covers={posters}
                 baseUrlVideo={baseUrlVideo}
-                selectedWahine={selectedWahine}
+                selectedWahine={wahines[selectedWahineIndex]}
             />
             <ReactMapGL
                 {...viewport}
+                reuseMaps
                 ref={mapRef}
                 width="100%"
                 height="100%"
-                pitch={70}
                 mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
                 onMove={(event) => setViewport(event.viewport)}
                 mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck"
                 interactiveLayerIds={['wahine']}
-                onClick={onClick}
+                onTransitionEnd={handleTransitionEnd}
             >
+                <Box
+                    position="absolute"
+                    left="1rem"
+                    top="50%"
+                    transform="translateY(-50%)"
+                >
+                    <IconButton
+                        aria-label="Previous Wahine"
+                        icon={<ChevronLeftIcon />}
+                        onClick={handlePrevClick}
+                        isDisabled={wahines.length <= 1}
+                        isRound
+                        mr={2}
+                    />
+                </Box>
+                <Box
+                    position="absolute"
+                    right="1rem"
+                    top="50%"
+                    transform="translateY(-50%)"
+                >
+                    <IconButton
+                        aria-label="Next Wahine"
+                        icon={<ChevronRightIcon />}
+                        onClick={handleNextClick}
+                        isDisabled={wahines.length <= 1}
+                        isRound
+                        ml={2}
+                    />
+                </Box>
                 {mapData && (
                     <Source
                         id="taranaki-data"
