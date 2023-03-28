@@ -107,10 +107,6 @@ export default function Map({ data }) {
         })
     }
 
-    const handleTransitionEnd = () => {
-        mapRef.current.getBearing && mapRef.current.setBearing(90)
-    }
-
     return (
         <Box h="100vh" w="100vw" cursor="auto">
             <WahineModal
@@ -135,7 +131,6 @@ export default function Map({ data }) {
                 mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck"
                 terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
                 interactiveLayerIds={['wahine']}
-                onTransitionEnd={handleTransitionEnd}
             >
                 <Box
                     position="absolute"
@@ -145,7 +140,7 @@ export default function Map({ data }) {
                 >
                     <IconButton
                         aria-label="Previous Wahine"
-                        icon={<ChevronLeftIcon />}
+                        icon={<ChevronLeftIcon color="black" />}
                         onClick={handlePrevClick}
                         isDisabled={wahines.length <= 1}
                         isRound
@@ -160,7 +155,7 @@ export default function Map({ data }) {
                 >
                     <IconButton
                         aria-label="Next Wahine"
-                        icon={<ChevronRightIcon />}
+                        icon={<ChevronRightIcon color="black" />}
                         onClick={handleNextClick}
                         isDisabled={wahines.length <= 1}
                         isRound
