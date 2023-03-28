@@ -55,7 +55,7 @@ export default function Map({ data }) {
             'text-optional': true,
             // get the title name from the source's "title" property
             'text-field': ['get', 'title'],
-            'text-font': ['Sohne Buch', 'Arial Unicode MS Bold'],
+            'text-font': ['Sohne Kraftig', 'Arial Unicode MS Bold'],
             'text-offset': [0, 1.25],
             'text-variable-anchor': ['top', 'bottom', 'left', 'right']
         },
