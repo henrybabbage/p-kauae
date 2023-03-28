@@ -1,8 +1,9 @@
+import { useEffect, useRef, useState } from 'react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { Box, IconButton, useDisclosure } from '@chakra-ui/react'
 import GeoJSON from 'geojson'
+import { rhumbBearing } from '@turf/turf'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import WahineModal from './WahineModal'
 
@@ -25,6 +26,8 @@ export default function Map({ data }) {
 
     const { wahines, portraits, posters, baseUrlVideo } = data
 
+    const taranakiLatLng = [174.063848, -39.296128]
+
     useEffect(() => {
         const wahi = wahines.map((wahine) => {
             return {
@@ -36,6 +39,7 @@ export default function Map({ data }) {
             }
         })
         const newMapData = GeoJSON.parse(wahi, { Point: ['lat', 'lng'] })
+
         setMapData(newMapData)
     }, [wahines])
 
@@ -63,6 +67,10 @@ export default function Map({ data }) {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
+    function handleMapBearing(newLatlng) {
+        return rhumbBearing(taranakiLatLng, newLatlng)
+    }
+
     const handlePrevClick = () => {
         const prevIndex =
             (selectedWahineIndex - 1 + wahines.length) % wahines.length
@@ -76,7 +84,8 @@ export default function Map({ data }) {
         mapRef.current.flyTo({
             center: wahines[prevIndex].wahi.ahuahanga,
             pitch: 70,
-            duration: 3000
+            duration: 3000,
+            bearing: handleMapBearing(wahines[prevIndex].wahi.ahuahanga) - 180
         })
     }
 
@@ -89,15 +98,13 @@ export default function Map({ data }) {
                 }, 3200)
                 return nextIndex
             })
+
         mapRef.current.flyTo({
             center: wahines[nextIndex].wahi.ahuahanga,
             pitch: 70,
-            duration: 3000
+            duration: 3000,
+            bearing: handleMapBearing(wahines[nextIndex].wahi.ahuahanga) - 180
         })
-    }
-
-    const handleTransitionEnd = () => {
-        mapRef.current.getBearing && mapRef.current.setBearing(90)
     }
 
     return (
@@ -124,7 +131,6 @@ export default function Map({ data }) {
                 mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck"
                 terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
                 interactiveLayerIds={['wahine']}
-                onTransitionEnd={handleTransitionEnd}
             >
                 <Box
                     position="absolute"
@@ -134,7 +140,7 @@ export default function Map({ data }) {
                 >
                     <IconButton
                         aria-label="Previous Wahine"
-                        icon={<ChevronLeftIcon />}
+                        icon={<ChevronLeftIcon color="black" />}
                         onClick={handlePrevClick}
                         isDisabled={wahines.length <= 1}
                         isRound
@@ -149,7 +155,7 @@ export default function Map({ data }) {
                 >
                     <IconButton
                         aria-label="Next Wahine"
-                        icon={<ChevronRightIcon />}
+                        icon={<ChevronRightIcon color="black" />}
                         onClick={handleNextClick}
                         isDisabled={wahines.length <= 1}
                         isRound
