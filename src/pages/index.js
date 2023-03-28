@@ -337,7 +337,6 @@ export default function Home({
                                 flexDirection="column"
                                 flexFlow="column"
                                 alignItems="baseline"
-                                filter="grayscale(100%)"
                             >
                                 <ChakraNextImage
                                     {...portraitImg}
