@@ -72,6 +72,24 @@ export default function Map({ data }) {
     }
 
     const handlePrevClick = () => {
+        const nextIndex = (selectedWahineIndex + 1) % wahines.length
+        nextIndex &&
+            setSelectedWahineIndex(() => {
+                setTimeout(() => {
+                    onOpen()
+                }, 3200)
+                return nextIndex
+            })
+
+        mapRef.current.flyTo({
+            center: wahines[nextIndex].wahi.ahuahanga,
+            pitch: 70,
+            duration: 3000,
+            bearing: handleMapBearing(wahines[nextIndex].wahi.ahuahanga) - 180
+        })
+    }
+
+    const handleNextClick = () => {
         const prevIndex =
             selectedWahineIndex === 0
                 ? wahines.length - 1
@@ -88,24 +106,6 @@ export default function Map({ data }) {
             pitch: 70,
             duration: 3000,
             bearing: handleMapBearing(wahines[prevIndex].wahi.ahuahanga) - 180
-        })
-    }
-
-    const handleNextClick = () => {
-        const nextIndex = (selectedWahineIndex + 1) % wahines.length
-        nextIndex &&
-            setSelectedWahineIndex(() => {
-                setTimeout(() => {
-                    onOpen()
-                }, 3200)
-                return nextIndex
-            })
-
-        mapRef.current.flyTo({
-            center: wahines[nextIndex].wahi.ahuahanga,
-            pitch: 70,
-            duration: 3000,
-            bearing: handleMapBearing(wahines[nextIndex].wahi.ahuahanga) - 180
         })
     }
 
