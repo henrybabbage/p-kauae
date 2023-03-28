@@ -31,9 +31,9 @@ export default function LandingBanner() {
                     visible: {
                         transition: {
                             ease: [0.6, 0.01, -0.05, 0.95],
-                            duration: 0.7,
+                            duration: 1,
                             delayChildren: 0.4,
-                            staggerChildren: 0.1
+                            staggerChildren: 0.4
                         }
                     }
                 }}
