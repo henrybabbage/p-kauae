@@ -44,7 +44,7 @@ export default function LandingVideo({
     }
 
     const handlePlay = () => {
-        setIsPlaying(true)
+        setIsPlaying(!isPlaying)
     }
 
     return (
@@ -74,10 +74,7 @@ export default function LandingVideo({
                             isRound
                             bg="transparent"
                             icon={<PlayIcon boxSize={10} color="white" />}
-                            onClick={() => {
-                                handlePlay
-                                console.log('clicked play')
-                            }}
+                            onClick={handlePlay}
                         />
                     </Tooltip>
                 </Flex>
