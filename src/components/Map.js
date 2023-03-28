@@ -19,8 +19,8 @@ export default function Map({ data }) {
         scrollZoom: false,
         boxZoom: false,
         doubleClickZoom: false,
-        dragRotate: true,
-        dragPan: true
+        dragRotate: false,
+        dragPan: false
     })
     const [mapData, setMapData] = useState(null)
 
