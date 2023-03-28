@@ -32,15 +32,18 @@ export default function LandingVideo({
     const [showTitle, setShowTitle] = useState(false)
     const [showOverlay, setShowOverlay] = useState(true)
     const [isPlaying, setIsPlaying] = useState(false)
+    const [isHovering, setIsHovering] = useState(false)
 
     const timeoutRef = useRef(null)
 
     const handleMouseEnter = () => {
+        setIsHovering(true)
         setShowTitle(true)
         clearTimeout(timeoutRef.current)
     }
 
     const handleMouseLeave = () => {
+        setIsHovering(false)
         timeoutRef.current = setTimeout(() => {
             setShowTitle(false)
         }, 1000)
@@ -89,7 +92,9 @@ export default function LandingVideo({
                                 !isPlaying ? (
                                     <PlayIcon boxSize={10} color="white" />
                                 ) : (
-                                    <PauseIcon boxSize={10} color="white" />
+                                    isHovering && (
+                                        <PauseIcon boxSize={10} color="white" />
+                                    )
                                 )
                             }
                             onClick={handlePlay}

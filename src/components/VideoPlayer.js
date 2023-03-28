@@ -10,8 +10,7 @@ export default function VideoPlayer({
     autoplay,
     muted,
     loop,
-    playing,
-    showOverlay
+    playing
 }) {
     const [hasWindow, setHasWindow] = useState(false)
     const [isBuffering, setIsBuffering] = useState(null)
