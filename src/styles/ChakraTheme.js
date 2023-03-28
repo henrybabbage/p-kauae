@@ -1,6 +1,7 @@
 import { buttonTheme } from '@/theme/components/Button'
 import { linkTheme } from '@/theme/components/Link'
 import { modalTheme } from '@/theme/components/Modal'
+import { tooltipTheme } from '@/theme/components/Tooltip'
 import { theme as base, extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
@@ -72,7 +73,8 @@ const theme = extendTheme({
     components: {
         Link: linkTheme,
         Modal: modalTheme,
-        Button: buttonTheme
+        Button: buttonTheme,
+        Tooltip: tooltipTheme
     }
 })
 

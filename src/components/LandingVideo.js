@@ -39,11 +39,14 @@ export default function LandingVideo({
         setIsPlaying(true)
     }
 
+    const handleClick = () => {}
+
     return (
         <Box
             position="relative"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={handleClick}
         >
             <AspectRatio
                 maxH="75vh"

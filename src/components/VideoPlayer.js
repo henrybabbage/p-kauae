@@ -1,5 +1,5 @@
 import { isBrowser } from '@/utils/helpers'
-import { Box, IconButton } from '@chakra-ui/react'
+import { Box, IconButton, Tooltip } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player/lazy'
 import { PlayIcon } from './PlayIcon'
@@ -29,12 +29,18 @@ export default function VideoPlayer({
             {!isReady && <VideoLoading />}
             {controls && (
                 <Box position="absolute">
-                    <IconButton
-                        aria-label="Play video"
-                        isRound
-                        bg="transparent"
-                        icon={<PlayIcon boxSize={10} color="white" />}
-                    />
+                    <Tooltip
+                        label="Click to play video"
+                        placement="top"
+                        variant="video"
+                    >
+                        <IconButton
+                            aria-label="Play video"
+                            isRound
+                            bg="transparent"
+                            icon={<PlayIcon boxSize={10} color="white" />}
+                        />
+                    </Tooltip>
                 </Box>
             )}
             {hasWindow && (
