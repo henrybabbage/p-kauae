@@ -13,19 +13,17 @@ export default function VideoPlayer({
     playing
 }) {
     const [hasWindow, setHasWindow] = useState(false)
-    const [showCover, setShowCover] = useState(null)
     const [isBuffering, setIsBuffering] = useState(null)
     const [isReady, setIsReady] = useState(null)
 
     useEffect(() => {
         if (isBrowser) {
             setHasWindow(true)
-            setShowCover(true)
         }
     }, [])
 
     return (
-        <Box position="relative">
+        <Box position="relative" z="10">
             {!isReady && <VideoLoading />}
             {hasWindow && (
                 <ReactPlayer

@@ -8,6 +8,7 @@ import {
 } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import { useRef, useState } from 'react'
+import { PauseIcon } from './PauseIcon'
 import { PlayIcon } from './PlayIcon'
 
 const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
@@ -28,6 +29,7 @@ export default function LandingVideo({
     const videoSrc = `${baseUrlVideo}${src}`
 
     const [showTitle, setShowTitle] = useState(false)
+    const [showOverlay, setShowOverlay] = useState(null)
     const [isPlaying, setIsPlaying] = useState(false)
 
     const timeoutRef = useRef(null)
@@ -44,6 +46,9 @@ export default function LandingVideo({
     }
 
     const handlePlay = () => {
+        setTimeout(() => {
+            setShowOverlay(false)
+        }, 500)
         setIsPlaying(!isPlaying)
     }
 
@@ -65,7 +70,11 @@ export default function LandingVideo({
                     alignItems="center"
                 >
                     <Tooltip
-                        label="Click to play video"
+                        label={
+                            !isPlaying
+                                ? 'Click to play video'
+                                : 'Click to pause video'
+                        }
                         placement="top"
                         variant="video"
                     >
@@ -73,12 +82,32 @@ export default function LandingVideo({
                             aria-label="Play video"
                             isRound
                             bg="transparent"
-                            icon={<PlayIcon boxSize={10} color="white" />}
+                            icon={
+                                !isPlaying ? (
+                                    <PlayIcon boxSize={10} color="white" />
+                                ) : (
+                                    <PauseIcon boxSize={10} color="white" />
+                                )
+                            }
                             onClick={handlePlay}
                         />
                     </Tooltip>
                 </Flex>
             )}
+            <Box
+                opacity={showOverlay ? 1 : 0}
+                transition="opacity 0.5s"
+                position="absolute"
+                bg="black"
+                maxH="75vh"
+                maxW="100vw"
+                top={0}
+                left={0}
+                right={0}
+                bottom={0}
+                justifyContent="center"
+                alignItems="center"
+            ></Box>
             <AspectRatio
                 maxH="75vh"
                 maxW="100vw"
