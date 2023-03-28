@@ -28,14 +28,13 @@ const WahineModal = ({
     images,
     covers,
     baseUrlVideo,
-    selectedWahine
+    selectedWahine,
+    selectedWahineIndex
 }) => {
     const [index, setIndex] = useState(0)
 
     const captureDate = wahines[index].wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
-
-    console.log({ selectedWahine })
 
     function scrollToTop() {
         if (!isBrowser()) return
@@ -44,18 +43,20 @@ const WahineModal = ({
     }
 
     function handleNextClick() {
-        setIndex((index) => (index + 1) % wahines.length)
+        setIndex(
+            (selectedWahineIndex) => (selectedWahineIndex + 1) % wahines.length
+        )
         setTimeout(() => {
             scrollToTop()
         }, 300)
     }
 
     function handlePreviousClick() {
-        setIndex((index) => {
-            if (index === 0) {
+        setIndex((selectedWahineIndex) => {
+            if (selectedWahineIndex === 0) {
                 return wahines.length - 1
             } else {
-                return (index - 1) % wahines.length
+                return (selectedWahineIndex - 1) % wahines.length
             }
         })
         setTimeout(() => {
@@ -70,8 +71,8 @@ const WahineModal = ({
             <Modal
                 isOpen={isOpen}
                 onClose={onClose}
-                size={'full'}
-                scrollBehavior={'inside'}
+                size="full"
+                scrollBehavior="inside"
                 motionPreset="slideInBottom"
             >
                 <ModalOverlay />
@@ -251,7 +252,10 @@ const WahineModal = ({
                             <Box>
                                 <Button
                                     variant={'callToAction'}
-                                    onClick={handlePreviousClick}
+                                    onClick={() => {
+                                        onClose()
+                                        handlePreviousClick
+                                    }}
                                 >
                                     {'←'}{' '}
                                     {
@@ -265,7 +269,10 @@ const WahineModal = ({
                             <Box>
                                 <Button
                                     variant={'callToAction'}
-                                    onClick={handleNextClick}
+                                    onClick={() => {
+                                        onClose()
+                                        handleNextClick
+                                    }}
                                 >
                                     {
                                         wahines[(index + 1) % wahines.length]

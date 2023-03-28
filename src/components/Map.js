@@ -16,7 +16,7 @@ export default function Map({ data }) {
         pitch: 70,
         zoom: 12,
         scrollZoom: false,
-        boxZoom: true,
+        boxZoom: false,
         doubleClickZoom: false,
         dragRotate: true,
         dragPan: true
@@ -111,6 +111,7 @@ export default function Map({ data }) {
                 covers={posters}
                 baseUrlVideo={baseUrlVideo}
                 selectedWahine={wahines[selectedWahineIndex]}
+                selectedWahineIndex={selectedWahineIndex}
             />
             <ReactMapGL
                 {...viewport}
