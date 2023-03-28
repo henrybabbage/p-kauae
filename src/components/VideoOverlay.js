@@ -18,7 +18,7 @@ export default function VideoOverlay({ show }) {
                         textAlign="left"
                     >
                         Opening night video for the Pukauae exhibition at Puke
-                        Ariki Museum. The exhibition featured 17 Wahine with
+                        Ariki Museum. The exhibition featured 18 Wahine with
                         moko kauae. Photography commission by Tu Tama Wahine o
                         Taranaki.
                     </Text>
