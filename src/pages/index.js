@@ -149,7 +149,6 @@ export default function Home({
                                 >
                                     A special thanks to
                                 </Heading>
-
                                 {leftColumn.map((name, index) => (
                                     <Text
                                         fontSize="36px"
@@ -163,29 +162,27 @@ export default function Home({
                                 ))}
                             </Flex>
                         </GridItem>
-                        <GridItem
-                            colStart={7}
-                            colEnd={11}
-                            pt="6"
-                            pb="6"
-                            position="relative"
-                        >
+                        <GridItem colStart={7} colEnd={11} pt="6" pb="6">
                             <Flex
+                                as="div"
                                 justify="center"
                                 flexDirection="column"
                                 height="100vh"
+                                lineHeight="1.36"
                             >
-                                <Text
-                                    fontSize="36px"
+                                <Heading
+                                    as="h2"
+                                    fontFamily="heading"
+                                    fontSize="84px"
                                     lineHeight="1.36"
                                     textAlign="left"
-                                    color="white"
+                                    color="pink.200"
+                                    w="100vw"
+                                    pb="10"
                                     visibility="hidden"
                                 >
                                     Heading space
-                                    <br />
-                                    <br />
-                                </Text>
+                                </Heading>
                                 {rightColumn.map((name, index) => (
                                     <Text
                                         fontSize="36px"
@@ -249,6 +246,19 @@ export default function Home({
                                 remarkPlugins={[remarkBreaks]}
                                 components={ChakraUIRenderer(markdownTheme)}
                                 children={korero.tuhinga_whakamutunga}
+                                skipHtml
+                            />
+                        </GridItem>
+                        <GridItem
+                            colStart={2}
+                            colEnd={12}
+                            pt="16"
+                            whiteSpace="pre-line"
+                        >
+                            <ReactMarkdown
+                                remarkPlugins={[remarkBreaks]}
+                                components={ChakraUIRenderer(markdownTheme)}
+                                children={korero.tuhinga_whakaraapopoto}
                                 skipHtml
                             />
                         </GridItem>
