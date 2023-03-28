@@ -1,8 +1,9 @@
+import { useEffect, useRef, useState } from 'react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { Box, IconButton, useDisclosure } from '@chakra-ui/react'
 import GeoJSON from 'geojson'
+import { rhumbBearing } from '@turf/turf'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import WahineModal from './WahineModal'
 
@@ -24,6 +25,8 @@ export default function Map({ data }) {
     const [mapData, setMapData] = useState(null)
 
     const { wahines, portraits, posters, baseUrlVideo } = data
+
+    const taranakiLatLng = [-39.296128, 174.063848]
 
     useEffect(() => {
         const wahi = wahines.map((wahine) => {
@@ -63,9 +66,16 @@ export default function Map({ data }) {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
+    // TODO: This handler will be used to change the bearing of the map view based on that of Taranaki. Some experimentation will be necessary.
+    // See: https://turfjs.org/docs/#rhumbBearing
+    function handleMapBearing(newLatlng) {
+        const newAngle = rhumbBearing(taranakiLatLng, newLatlng)
+    }
+
     const handlePrevClick = () => {
         const prevIndex =
             (selectedWahineIndex - 1 + wahines.length) % wahines.length
+        console.log(handleMapBearing(wahines[prevIndex].wahi.ahuahanga))
         prevIndex &&
             setSelectedWahineIndex(() => {
                 setTimeout(() => {
@@ -82,6 +92,7 @@ export default function Map({ data }) {
 
     const handleNextClick = () => {
         const nextIndex = (selectedWahineIndex + 1) % wahines.length
+        console.log(handleMapBearing(wahines[nextIndex].wahi.ahuahanga))
         nextIndex &&
             setSelectedWahineIndex(() => {
                 setTimeout(() => {
@@ -89,6 +100,7 @@ export default function Map({ data }) {
                 }, 3200)
                 return nextIndex
             })
+
         mapRef.current.flyTo({
             center: wahines[nextIndex].wahi.ahuahanga,
             pitch: 70,
