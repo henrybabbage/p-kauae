@@ -11,11 +11,7 @@ export default function ModalVideo({
     baseUrlVideo,
     location,
     poster,
-    alt,
-    autoplay,
-    controls,
-    muted,
-    loop
+    alt
 }) {
     const videoSrc = `${baseUrlVideo}${src}`
     return (
@@ -31,9 +27,10 @@ export default function ModalVideo({
                 <VideoPlayer
                     playerRef={playerRef}
                     src={videoSrc}
-                    autoplay={autoplay}
-                    muted={muted}
-                    loop={loop}
+                    autoplay={true}
+                    controls={false}
+                    muted={true}
+                    loop={true}
                     playing={true}
                 />
             </AspectRatio>

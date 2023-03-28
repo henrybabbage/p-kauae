@@ -1,6 +1,16 @@
-import { AspectRatio, Box, Heading } from '@chakra-ui/react'
+import {
+    AspectRatio,
+    Box,
+    Flex,
+    Heading,
+    IconButton,
+    Tooltip
+} from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import { useRef, useState } from 'react'
+import { PauseIcon } from './PauseIcon'
+import { PlayIcon } from './PlayIcon'
+import VideoOverlay from './VideoOverlay'
 
 const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
     ssr: false
@@ -20,6 +30,7 @@ export default function LandingVideo({
     const videoSrc = `${baseUrlVideo}${src}`
 
     const [showTitle, setShowTitle] = useState(false)
+    const [showOverlay, setShowOverlay] = useState(true)
     const [isPlaying, setIsPlaying] = useState(false)
 
     const timeoutRef = useRef(null)
@@ -36,7 +47,10 @@ export default function LandingVideo({
     }
 
     const handlePlay = () => {
-        setIsPlaying(true)
+        setTimeout(() => {
+            setShowOverlay(false)
+        }, 500)
+        setIsPlaying(!isPlaying)
     }
 
     return (
@@ -45,6 +59,44 @@ export default function LandingVideo({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
+            {controls && (
+                <Flex
+                    position="absolute"
+                    zIndex="50"
+                    top={0}
+                    left={0}
+                    right={0}
+                    bottom={0}
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    {showOverlay && <VideoOverlay />}
+                    <Tooltip
+                        label={
+                            !isPlaying
+                                ? 'Click to play video'
+                                : 'Click to pause video'
+                        }
+                        placement="top"
+                        variant="video"
+                    >
+                        <IconButton
+                            aria-label="Play video"
+                            isRound
+                            bg="transparent"
+                            position="absolute"
+                            icon={
+                                !isPlaying ? (
+                                    <PlayIcon boxSize={10} color="white" />
+                                ) : (
+                                    <PauseIcon boxSize={10} color="white" />
+                                )
+                            }
+                            onClick={handlePlay}
+                        />
+                    </Tooltip>
+                </Flex>
+            )}
             <AspectRatio
                 maxH="75vh"
                 maxW="100vw"
@@ -58,7 +110,6 @@ export default function LandingVideo({
                     playerRef={playerRef}
                     src={videoSrc}
                     autoplay={autoplay}
-                    controls={controls}
                     muted={muted}
                     loop={loop}
                     playing={isPlaying}
@@ -71,6 +122,7 @@ export default function LandingVideo({
                     fontWeight="regular"
                     fontFamily="heading"
                     position="absolute"
+                    z="10"
                     bottom={6}
                     right={6}
                 >
