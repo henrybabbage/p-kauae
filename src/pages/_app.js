@@ -37,18 +37,16 @@ export default function App({ Component, pageProps }) {
             </Head>
             <ChakraProvider theme={theme}>
                 <Fonts />
-                <AnimateSharedLayout type="crossfade">
-                    <AnimatePresence
-                        mode="wait"
-                        initial={true}
-                        onExitComplete={() => {
-                            window.scrollTo(0, 0)
-                        }}
-                    >
-                        <Header />
-                        <Component {...pageProps} key={asPath} />
-                    </AnimatePresence>
-                </AnimateSharedLayout>
+                <AnimatePresence
+                    mode="wait"
+                    initial={true}
+                    onExitComplete={() => {
+                        window.scrollTo(0, 0)
+                    }}
+                >
+                    <Header />
+                    <Component {...pageProps} key={asPath} />
+                </AnimatePresence>
             </ChakraProvider>
         </>
     )

@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import { getPlaiceholder } from 'plaiceholder'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
 
@@ -60,10 +60,13 @@ export default function Home({
 
     const playerRef = useRef()
 
+    const [pageLoading, setPageLoading] = useState(null)
+
     return (
         <Box as="main">
             <SmoothScroll>
                 <Box id="about" bg="grey.900">
+                    {pageLoading && <TransitionBanner />}
                     <Grid templateColumns="repeat(12, 1fr)">
                         <GridItem
                             colStart={1}
@@ -356,6 +359,7 @@ export default function Home({
     )
 }
 
+import TransitionBanner from '@/components/TransitionBanner'
 import fsPromises from 'fs/promises'
 import path from 'path'
 export async function getStaticProps() {
