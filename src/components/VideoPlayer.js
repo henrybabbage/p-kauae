@@ -1,9 +1,8 @@
 import { isBrowser } from '@/utils/helpers'
-import { Box } from '@chakra-ui/react'
+import { Box, Center, Spinner } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player/lazy'
 import VideoLoading from './VideoLoading'
-import VideoOverlay from './VideoOverlay'
 
 export default function VideoPlayer({
     playerRef,
@@ -11,8 +10,7 @@ export default function VideoPlayer({
     autoplay,
     muted,
     loop,
-    playing,
-    showOverlay
+    playing
 }) {
     const [hasWindow, setHasWindow] = useState(false)
     const [isBuffering, setIsBuffering] = useState(null)
@@ -25,9 +23,18 @@ export default function VideoPlayer({
     }, [])
 
     return (
-        <Box position="absolute">
+        <Box position="absolute" bg="black" w="100%" h="100%">
             {!isReady && <VideoLoading />}
-            {/* {showOverlay && <VideoOverlay />} */}
+            {isReady && isBuffering && (
+                <Center h="100%" w="100vw" position="absolute" z="50">
+                    <Spinner
+                        size="xl"
+                        thickness="6px"
+                        speed="0.65s"
+                        color="pink.400"
+                    />
+                </Center>
+            )}
             {hasWindow && (
                 <ReactPlayer
                     ref={playerRef}
@@ -42,13 +49,13 @@ export default function VideoPlayer({
                     playing={playing}
                     controls={false}
                     onReady={() => {
-                        console.log('onReady'), setIsReady(true)
+                        setIsReady(true)
                     }}
                     onBuffer={() => {
-                        console.log('onBuffer'), setIsBuffering(true)
+                        setIsBuffering(true)
                     }}
                     onBufferEnd={() => {
-                        console.log('onBufferEnd'), setIsBuffering(false)
+                        setIsBuffering(false)
                     }}
                 />
             )}
