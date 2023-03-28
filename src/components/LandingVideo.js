@@ -1,6 +1,14 @@
-import { AspectRatio, Box, Heading } from '@chakra-ui/react'
+import {
+    AspectRatio,
+    Box,
+    Flex,
+    Heading,
+    IconButton,
+    Tooltip
+} from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import { useRef, useState } from 'react'
+import { PlayIcon } from './PlayIcon'
 
 const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
     ssr: false
@@ -39,15 +47,41 @@ export default function LandingVideo({
         setIsPlaying(true)
     }
 
-    const handleClick = () => {}
-
     return (
         <Box
             position="relative"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            onClick={handleClick}
         >
+            {controls && (
+                <Flex
+                    position="absolute"
+                    zIndex="10"
+                    top={0}
+                    left={0}
+                    right={0}
+                    bottom={0}
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    <Tooltip
+                        label="Click to play video"
+                        placement="top"
+                        variant="video"
+                    >
+                        <IconButton
+                            aria-label="Play video"
+                            isRound
+                            bg="transparent"
+                            icon={<PlayIcon boxSize={10} color="white" />}
+                            onClick={() => {
+                                handlePlay
+                                console.log('clicked play')
+                            }}
+                        />
+                    </Tooltip>
+                </Flex>
+            )}
             <AspectRatio
                 maxH="75vh"
                 maxW="100vw"
@@ -61,7 +95,6 @@ export default function LandingVideo({
                     playerRef={playerRef}
                     src={videoSrc}
                     autoplay={autoplay}
-                    controls={controls}
                     muted={muted}
                     loop={loop}
                     playing={isPlaying}

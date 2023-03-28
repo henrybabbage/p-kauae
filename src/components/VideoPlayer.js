@@ -1,15 +1,13 @@
 import { isBrowser } from '@/utils/helpers'
-import { Box, IconButton, Tooltip } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player/lazy'
-import { PlayIcon } from './PlayIcon'
 import VideoLoading from './VideoLoading'
 
 export default function VideoPlayer({
     playerRef,
     src,
     autoplay,
-    controls,
     muted,
     loop,
     playing
@@ -18,31 +16,17 @@ export default function VideoPlayer({
     const [showCover, setShowCover] = useState(null)
     const [isBuffering, setIsBuffering] = useState(null)
     const [isReady, setIsReady] = useState(null)
+
     useEffect(() => {
         if (isBrowser) {
             setHasWindow(true)
             setShowCover(true)
         }
     }, [])
+
     return (
         <Box position="relative">
             {!isReady && <VideoLoading />}
-            {controls && (
-                <Box position="absolute">
-                    <Tooltip
-                        label="Click to play video"
-                        placement="top"
-                        variant="video"
-                    >
-                        <IconButton
-                            aria-label="Play video"
-                            isRound
-                            bg="transparent"
-                            icon={<PlayIcon boxSize={10} color="white" />}
-                        />
-                    </Tooltip>
-                </Box>
-            )}
             {hasWindow && (
                 <ReactPlayer
                     ref={playerRef}
@@ -54,6 +38,7 @@ export default function VideoPlayer({
                     muted={muted}
                     loop={loop}
                     playing={playing}
+                    controls={false}
                     onReady={() => {
                         console.log('onReady'), setIsReady(true)
                     }}

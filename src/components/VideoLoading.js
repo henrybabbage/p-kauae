@@ -2,17 +2,9 @@ import { Box, Grid, Text } from '@chakra-ui/react'
 
 export default function VideoLoading() {
     return (
-        <Box>
-            <Grid
-                bg="transparent"
-                w="100%"
-                h="100%"
-                justifyContent="center"
-                alignContent="center"
-                gridAutoColumns="row"
-            >
+        <Box position="absolute">
+            <Grid bg="transparent" w="100%" h="100%" placeSelf="center">
                 <Text
-                    pt="6"
                     fontFamily="body"
                     fontSize="16px"
                     color="white"
