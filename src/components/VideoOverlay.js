@@ -1,8 +1,12 @@
 import { Box, Flex, Grid, Text } from '@chakra-ui/react'
 
-export default function VideoOverlay() {
+export default function VideoOverlay({ show }) {
     return (
-        <Box position="absolute">
+        <Box
+            position="absolute"
+            opacity={show ? 100 : 0}
+            transition="1.5s opacity ease-in-out"
+        >
             <Grid bg="pink.400" w="100%" h="75vh" placeSelf="center" z="10">
                 <Flex alignItems="flex-end" p="6" w="70%">
                     <Text

@@ -1,5 +1,5 @@
 :root {
-    --background-color: #404041;
+    --background-color: #141414;
     --body-text: #ffffff;
 }
 
@@ -55,91 +55,6 @@ blockquote > p {
     width: 100vw;
     object-fit: cover;
     object-position: center;
-}
-
-/*  ------------------------------ */
-/*  vidstack player
-/*  ------------------------------ */
-
-.media-buffering-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    /* prevent blocking lower elements (e.g., gestures). */
-    pointer-events: none;
-    /** place above poster (optional). */
-    z-index: 1;
-}
-
-.media-buffering-icon {
-    width: 84px;
-    height: 84px;
-    color: white;
-    opacity: 0;
-    transition: opacity 200ms ease;
-}
-
-.media-buffering-track {
-    opacity: 0.25;
-}
-
-.media-buffering-track-fill {
-    opacity: 0.75;
-    stroke-dasharray: 100;
-    stroke-dashoffset: 50;
-}
-
-/* Show buffering indicator while media is not ready, or buffering. */
-media-player:not([data-can-play]) .media-buffering-icon,
-media-player[data-waiting] .media-buffering-icon {
-    opacity: 1;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.media-controls-container {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* prevent blocking lower elements (e.g., gestures). */
-    pointer-events: none;
-    /** place above poster (optional). */
-    z-index: 10;
-}
-
-.media-controls-group {
-    display: flex;
-    width: 100%;
-    min-height: 48px;
-    opacity: 1;
-    padding: 8px;
-    transition: opacity 200ms ease;
-    /** prevent clicks triggering lower elements. */
-    pointer-events: auto;
-}
-
-/* Avoid double controls on iOS when in fullscreen. */
-media-player[data-ios-controls] .media-controls-group,
-/* Hide controls if media is not ready for playback, or user is idle. */
-media-player[data-user-idle] .media-controls-group,
-media-player:not([data-can-play]) .media-controls-group {
-    opacity: 0;
-    pointer-events: none;
 }
 
 /*  ------------------------------ */
@@ -230,7 +145,7 @@ media-player:not([data-can-play]) .media-controls-group {
 }
 /* altered background modal overlay */
 [data-rmiz-modal-overlay='visible'] {
-    background-color: rgba(25, 25, 25, 1);
+    background-color: rgb(10, 10, 10);
 }
 [data-rmiz-modal-content] {
     position: relative;
