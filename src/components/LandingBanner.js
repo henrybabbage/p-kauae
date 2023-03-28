@@ -12,13 +12,15 @@ const textAnimation = {
 }
 
 export default function LandingBanner() {
-    const lines = [
+    const englishLines = [
         'Celebrating over',
         '30 years of',
         'liberation work',
         'throughout',
         'Taranaki'
     ]
+
+    const reoLines = ['Tū tama wāhine', 'i te wā o', 'te kore']
 
     return (
         <Box>
@@ -36,7 +38,7 @@ export default function LandingBanner() {
                     }
                 }}
             >
-                {lines.map((line, index) => (
+                {englishLines.map((line, index) => (
                     <MotionBox key={index} variants={textAnimation}>
                         <Heading
                             textAlign="center"

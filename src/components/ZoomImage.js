@@ -54,6 +54,15 @@ export default function ZoomImage(props) {
                         sizes="100vw"
                     />
                 </Zoom>
+                <Text
+                    fontSize="14px"
+                    lineHeight="1"
+                    color="white"
+                    textAlign="left"
+                    pt="2"
+                >
+                    {'Click portrait to enlarge ↗'}
+                </Text>
             </Box>
         </Flex>
     )
