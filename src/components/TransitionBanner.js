@@ -7,15 +7,16 @@ export default function TransitionBanner() {
             w="100vw"
             h="100vh"
             maxH="100vh"
-            backgroundColor="grey.900"
-            zIndex={10}
+            backgroundColor="black"
+            zIndex={50}
             pointerEvents="none"
             overflow="hidden"
         >
             <Flex
                 h="100vh"
-                w="80vw"
+                w="100vw"
                 textAlign="center"
+                direction="column"
                 justifyContent="center"
                 alignItems="center"
             >
@@ -32,16 +33,20 @@ export default function TransitionBanner() {
                     }}
                 />
             </Flex>
-            <Heading
-                as="h1"
-                size="md"
-                textColor="white"
-                fontWeight="regular"
-                position="fixed"
-                p="6"
-            >
-                Tū Tama Wāhine o Taranaki
-            </Heading>
+            <Flex direction="column" justifyContent="end" alignItems="center">
+                <Heading
+                    as="h1"
+                    size="md"
+                    textColor="white"
+                    fontWeight="regular"
+                    fontFamily="subheading"
+                    position="absolute"
+                    textAlign="center"
+                    pb="8"
+                >
+                    Tū Tama Wāhine o Taranaki
+                </Heading>
+            </Flex>
         </VStack>
     )
 }
