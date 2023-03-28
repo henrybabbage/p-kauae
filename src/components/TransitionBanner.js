@@ -2,14 +2,6 @@ import { Flex, Heading, VStack } from '@chakra-ui/react'
 import Image from 'next/image'
 
 export default function TransitionBanner() {
-    const banner = {
-        animate: {
-            transition: {
-                delayChildren: 0.4,
-                staggerChildren: 0.1
-            }
-        }
-    }
     return (
         <VStack
             w="100vw"
