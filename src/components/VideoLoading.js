@@ -10,6 +10,7 @@ export default function VideoLoading() {
                     color="white"
                     textTransform="uppercase"
                     textAlign="center"
+                    p="6"
                 >
                     Loading video
                 </Text>

@@ -10,6 +10,7 @@ import dynamic from 'next/dynamic'
 import { useRef, useState } from 'react'
 import { PauseIcon } from './PauseIcon'
 import { PlayIcon } from './PlayIcon'
+import VideoOverlay from './VideoOverlay'
 
 const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
     ssr: false
@@ -29,7 +30,7 @@ export default function LandingVideo({
     const videoSrc = `${baseUrlVideo}${src}`
 
     const [showTitle, setShowTitle] = useState(false)
-    const [showOverlay, setShowOverlay] = useState(null)
+    const [showOverlay, setShowOverlay] = useState(true)
     const [isPlaying, setIsPlaying] = useState(false)
 
     const timeoutRef = useRef(null)
@@ -61,7 +62,7 @@ export default function LandingVideo({
             {controls && (
                 <Flex
                     position="absolute"
-                    zIndex="10"
+                    zIndex="50"
                     top={0}
                     left={0}
                     right={0}
@@ -69,6 +70,7 @@ export default function LandingVideo({
                     justifyContent="center"
                     alignItems="center"
                 >
+                    {showOverlay && <VideoOverlay />}
                     <Tooltip
                         label={
                             !isPlaying
@@ -82,6 +84,7 @@ export default function LandingVideo({
                             aria-label="Play video"
                             isRound
                             bg="transparent"
+                            position="absolute"
                             icon={
                                 !isPlaying ? (
                                     <PlayIcon boxSize={10} color="white" />
@@ -94,20 +97,6 @@ export default function LandingVideo({
                     </Tooltip>
                 </Flex>
             )}
-            <Box
-                opacity={showOverlay ? 1 : 0}
-                transition="opacity 0.5s"
-                position="absolute"
-                bg="black"
-                maxH="75vh"
-                maxW="100vw"
-                top={0}
-                left={0}
-                right={0}
-                bottom={0}
-                justifyContent="center"
-                alignItems="center"
-            ></Box>
             <AspectRatio
                 maxH="75vh"
                 maxW="100vw"
@@ -133,6 +122,7 @@ export default function LandingVideo({
                     fontWeight="regular"
                     fontFamily="heading"
                     position="absolute"
+                    z="10"
                     bottom={6}
                     right={6}
                 >

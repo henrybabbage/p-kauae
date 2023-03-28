@@ -3,6 +3,7 @@ import { Box } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player/lazy'
 import VideoLoading from './VideoLoading'
+import VideoOverlay from './VideoOverlay'
 
 export default function VideoPlayer({
     playerRef,
@@ -10,7 +11,8 @@ export default function VideoPlayer({
     autoplay,
     muted,
     loop,
-    playing
+    playing,
+    showOverlay
 }) {
     const [hasWindow, setHasWindow] = useState(false)
     const [isBuffering, setIsBuffering] = useState(null)
@@ -23,14 +25,16 @@ export default function VideoPlayer({
     }, [])
 
     return (
-        <Box position="relative" z="10">
+        <Box position="absolute">
             {!isReady && <VideoLoading />}
+            {/* {showOverlay && <VideoOverlay />} */}
             {hasWindow && (
                 <ReactPlayer
                     ref={playerRef}
                     url={src}
                     width="100%"
                     height="100%"
+                    position="relative"
                     playsinline
                     autoplay={autoplay}
                     muted={muted}
