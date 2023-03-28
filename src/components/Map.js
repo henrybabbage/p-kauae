@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { Box, IconButton, useDisclosure } from '@chakra-ui/react'
-import GeoJSON from 'geojson'
 import { rhumbBearing } from '@turf/turf'
+import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
+import { useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import WahineModal from './WahineModal'
 
@@ -73,7 +73,9 @@ export default function Map({ data }) {
 
     const handlePrevClick = () => {
         const prevIndex =
-            (selectedWahineIndex - 1 + wahines.length) % wahines.length
+            selectedWahineIndex === 0
+                ? wahines.length - 1
+                : (selectedWahineIndex - 1) % wahines.length
         prevIndex &&
             setSelectedWahineIndex(() => {
                 setTimeout(() => {
@@ -117,8 +119,9 @@ export default function Map({ data }) {
                 images={portraits}
                 covers={posters}
                 baseUrlVideo={baseUrlVideo}
-                selectedWahine={wahines[selectedWahineIndex]}
                 selectedWahineIndex={selectedWahineIndex}
+                handleNextClick={handleNextClick}
+                handlePrevClick={handlePrevClick}
             />
             <ReactMapGL
                 {...viewport}

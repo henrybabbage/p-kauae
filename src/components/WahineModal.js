@@ -1,4 +1,3 @@
-import { isBrowser } from '@/utils/helpers'
 import {
     Box,
     Button,
@@ -16,7 +15,7 @@ import {
     Text
 } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import ModalVideo from './ModalVideo'
 import ZoomImage from './ZoomImage'
 
@@ -28,40 +27,23 @@ const WahineModal = ({
     images,
     covers,
     baseUrlVideo,
-    selectedWahine,
-    selectedWahineIndex
+    selectedWahineIndex,
+    handleNextClick,
+    handlePrevClick
 }) => {
-    const [index, setIndex] = useState(0)
-
-    const captureDate = wahines[index].wa_tiki_whakaahua
+    const captureDate = wahines[selectedWahineIndex].wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
 
-    function scrollToTop() {
-        if (!isBrowser()) return
-        let element = document.getElementById('modal')
-        element.scrollTo({ top: 0, behavior: 'smooth' })
+    const getPreviousWahine = (selectedWahineIndex) => {
+        if (selectedWahineIndex === 0) {
+            return wahines.length - 1
+        } else {
+            return wahines[(selectedWahineIndex - 1) % wahines.length].ingoa
+        }
     }
 
-    function handleNextClick() {
-        setIndex(
-            (selectedWahineIndex) => (selectedWahineIndex + 1) % wahines.length
-        )
-        setTimeout(() => {
-            scrollToTop()
-        }, 300)
-    }
-
-    function handlePreviousClick() {
-        setIndex((selectedWahineIndex) => {
-            if (selectedWahineIndex === 0) {
-                return wahines.length - 1
-            } else {
-                return (selectedWahineIndex - 1) % wahines.length
-            }
-        })
-        setTimeout(() => {
-            scrollToTop()
-        }, 300)
+    const getNextWahine = (selectedWahineIndex) => {
+        return wahines[(selectedWahineIndex + 1) % wahines.length].ingoa
     }
 
     const playerRef = useRef(null)
@@ -116,9 +98,15 @@ const WahineModal = ({
                                 <Box className="player">
                                     <ModalVideo
                                         playerRef={playerRef}
-                                        src={wahines[index]?.kiriata?.['1080p']}
+                                        src={
+                                            wahines[selectedWahineIndex]
+                                                ?.kiriata?.['1080p']
+                                        }
                                         baseUrlVideo={baseUrlVideo}
-                                        location={wahines[index].kiriata.ingoa}
+                                        location={
+                                            wahines[selectedWahineIndex].kiriata
+                                                .ingoa
+                                        }
                                         poster={null}
                                         autoplay={true}
                                         muted={true}
@@ -132,7 +120,7 @@ const WahineModal = ({
                                         fontWeight="regular"
                                         fontFamily="heading"
                                     >
-                                        {wahines[index].ingoa}
+                                        {wahines[selectedWahineIndex].ingoa}
                                     </Heading>
                                     <Heading
                                         fontSize="16px"
@@ -141,7 +129,7 @@ const WahineModal = ({
                                         fontFamily="heading"
                                         ml={2}
                                     >
-                                        {wahines[index].whakapapa}
+                                        {wahines[selectedWahineIndex].whakapapa}
                                     </Heading>
                                 </Flex>
                             </GridItem>
@@ -153,12 +141,20 @@ const WahineModal = ({
                             >
                                 <Flex direction="column">
                                     <ZoomImage
-                                        src={images[index]?.src}
-                                        alt={images[index]?.alternativeText}
+                                        src={images[selectedWahineIndex]?.src}
+                                        alt={
+                                            images[selectedWahineIndex]
+                                                ?.alternativeText
+                                        }
                                         width={4200}
                                         height={2800}
-                                        blurhash={images[index]?.blurhash}
-                                        caption={wahines[index]?.ingoa}
+                                        blurhash={
+                                            images[selectedWahineIndex]
+                                                ?.blurhash
+                                        }
+                                        caption={
+                                            wahines[selectedWahineIndex]?.ingoa
+                                        }
                                     />
                                 </Flex>
                             </GridItem>
@@ -173,7 +169,10 @@ const WahineModal = ({
                                     lineHeight="1.36"
                                     color="white"
                                 >
-                                    {wahines[index].korero_pukauae}
+                                    {
+                                        wahines[selectedWahineIndex]
+                                            .korero_pukauae
+                                    }
                                 </Text>
                                 <Box pt={6}>
                                     <Text
@@ -181,7 +180,10 @@ const WahineModal = ({
                                         lineHeight="1.36"
                                         color="white"
                                     >
-                                        {wahines[index].korero_wahi}
+                                        {
+                                            wahines[selectedWahineIndex]
+                                                .korero_wahi
+                                        }
                                     </Text>
                                 </Box>
                                 <Box pt={6}>
@@ -198,7 +200,10 @@ const WahineModal = ({
                                             lineHeight="1.36"
                                             color="white"
                                         >
-                                            {wahines[index].wahi.ingoa}
+                                            {
+                                                wahines[selectedWahineIndex]
+                                                    .wahi.ingoa
+                                            }
                                         </Text>
                                     </HStack>
                                 </Box>
@@ -216,7 +221,10 @@ const WahineModal = ({
                                             lineHeight="1.36"
                                             color="white"
                                         >
-                                            {wahines[index].tohunga_ta_moko}
+                                            {
+                                                wahines[selectedWahineIndex]
+                                                    .tohunga_ta_moko
+                                            }
                                         </Text>
                                     </HStack>
                                 </Box>
@@ -252,16 +260,11 @@ const WahineModal = ({
                                     variant={'callToAction'}
                                     onClick={() => {
                                         onClose()
-                                        handlePreviousClick
+                                        handlePrevClick(selectedWahineIndex)
                                     }}
                                 >
                                     {'←'}{' '}
-                                    {
-                                        wahines[
-                                            (index - 1 + wahines.length) %
-                                                wahines.length
-                                        ].ingoa
-                                    }
+                                    {getPreviousWahine(selectedWahineIndex)}
                                 </Button>
                             </Box>
                             <Box>
@@ -269,14 +272,10 @@ const WahineModal = ({
                                     variant={'callToAction'}
                                     onClick={() => {
                                         onClose()
-                                        handleNextClick
+                                        handleNextClick(selectedWahineIndex)
                                     }}
                                 >
-                                    {
-                                        wahines[(index + 1) % wahines.length]
-                                            .ingoa
-                                    }{' '}
-                                    {'→'}
+                                    {getNextWahine(selectedWahineIndex)} {'→'}
                                 </Button>
                             </Box>
                         </Flex>
