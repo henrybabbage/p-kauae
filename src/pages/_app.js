@@ -1,17 +1,38 @@
 import Header from '@/components/Header'
+import TransitionBanner from '@/components/TransitionBanner'
 import theme from '@/styles/ChakraTheme'
 import Fonts from '@/styles/Fonts'
 import '@/styles/globals.css'
 import { ChakraProvider } from '@chakra-ui/react'
 import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { Router, useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 export const siteTitle = 'Tū Tama Wāhine o Taranaki'
 
 export default function App({ Component, pageProps }) {
     const { asPath } = useRouter()
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        // Used for page transition
+        const start = () => {
+            setLoading(true)
+        }
+        const end = () => {
+            setLoading(false)
+        }
+        Router.events.on('routeChangeStart', start)
+        Router.events.on('routeChangeComplete', end)
+        Router.events.on('routeChangeError', end)
+        return () => {
+            Router.events.off('routeChangeStart', start)
+            Router.events.off('routeChangeComplete', end)
+            Router.events.off('routeChangeError', end)
+        }
+    }, [])
+
     useEffect(() => {
         const handleContextMenu = (e) => {
             // prevent the right-click menu from appearing
@@ -22,6 +43,7 @@ export default function App({ Component, pageProps }) {
             document.removeEventListener('contextmenu', handleContextMenu)
         }
     }, [])
+
     return (
         <>
             <Head>
@@ -56,7 +78,11 @@ export default function App({ Component, pageProps }) {
                     }}
                 >
                     <Header />
-                    <Component {...pageProps} key={asPath} />
+                    {loading ? (
+                        <TransitionBanner />
+                    ) : (
+                        <Component {...pageProps} key={asPath} />
+                    )}
                 </AnimatePresence>
             </ChakraProvider>
         </>

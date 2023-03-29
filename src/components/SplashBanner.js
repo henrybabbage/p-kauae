@@ -30,10 +30,11 @@ export default function SplashBanner() {
                 alignItems="center"
             >
                 <Heading
-                    as="h2"
-                    fontSize="84px"
+                    textAlign="center"
+                    fontSize="94px"
                     lineHeight="1"
-                    textColor="pink.200"
+                    color="pink.200"
+                    fontFamily="heading"
                 >
                     <Balancer ratio={1.0}>Nau mai ki Pūkauae</Balancer>
                 </Heading>

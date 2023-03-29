@@ -18,10 +18,10 @@ export default function Header() {
     }
 
     return (
-        <Box>
+        <>
             <MotionBox
-                initial={{ opacity: 0, y: -180 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ y: -180 }}
+                animate={{ y: 0 }}
                 transition={{
                     ease: 'easeInOut',
                     duration: 1,
@@ -101,6 +101,6 @@ export default function Header() {
                     maskImage: 'linear-gradient(to top, transparent 10%, black)'
                 }}
             ></Box>
-        </Box>
+        </>
     )
 }
