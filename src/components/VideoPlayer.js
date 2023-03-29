@@ -43,7 +43,7 @@ export default function VideoPlayer({
                     height="100%"
                     position="relative"
                     playsinline
-                    autoplay={autoplay}
+                    autoPlay={autoplay}
                     muted={muted}
                     loop={loop}
                     playing={playing}
