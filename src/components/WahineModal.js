@@ -267,6 +267,18 @@ const WahineModal = ({
                                     {getPreviousWahine(selectedWahineIndex)}
                                 </Button>
                             </Box>
+                            <Flex alignItems="center">
+                                <Text
+                                    fontFamily="subheading"
+                                    fontSize="16px"
+                                    lineHeight="1"
+                                    textAlign="center"
+                                    color="white"
+                                    textTransform="uppercase"
+                                >
+                                    Scroll down
+                                </Text>
+                            </Flex>
                             <Box>
                                 <Button
                                     variant={'callToAction'}
