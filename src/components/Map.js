@@ -1,5 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
-import { Box, IconButton, useDisclosure } from '@chakra-ui/react'
+import { Box, HStack, IconButton, Text, useDisclosure } from '@chakra-ui/react'
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
@@ -110,7 +110,7 @@ export default function Map({ data }) {
     }
 
     return (
-        <Box h="100vh" w="100vw" cursor="auto">
+        <Box h="100vh" w="100vw" cursor="auto" position="relative">
             <WahineModal
                 isOpen={isOpen}
                 onOpen={onOpen}
@@ -129,6 +129,7 @@ export default function Map({ data }) {
                 ref={mapRef}
                 width="100%"
                 height="100%"
+                position="relative"
                 mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
                 onMove={(event) => setViewport(event.viewport)}
                 mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck"
@@ -175,6 +176,41 @@ export default function Map({ data }) {
                 )}
                 <Layer source="taranaki-data" {...layerStyle} />
             </ReactMapGL>
+            <HStack spacing="24px" position="fixed" z="20" bottom="6" left="6">
+                <Text
+                    id="month"
+                    fontFamily="subheading"
+                    fontSize="14px"
+                    lineHeight="1"
+                    textAlign="left"
+                    color="white"
+                    pb="2"
+                >
+                    {'Paenga-whāwhā'}
+                </Text>
+                <Text
+                    id="month"
+                    fontFamily="subheading"
+                    fontSize="14px"
+                    lineHeight="1"
+                    textAlign="left"
+                    color="white"
+                    pb="2"
+                >
+                    {' • '}
+                </Text>
+                <Text
+                    id="moon-phase"
+                    fontFamily="subheading"
+                    fontSize="14px"
+                    lineHeight="1"
+                    textAlign="left"
+                    color="white"
+                    pb="2"
+                >
+                    {'Ohua'}
+                </Text>
+            </HStack>
         </Box>
     )
 }

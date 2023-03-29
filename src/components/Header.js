@@ -28,21 +28,14 @@ export default function Header() {
                     delay: 0.6
                 }}
             >
-                <Flex
-                    as="nav"
-                    align="center"
-                    justify="space-between"
-                    position="fixed"
-                    w="100%"
-                    p="6"
-                    zIndex={20}
-                >
-                    <Flex w="100vw" align="end" justify="space-between">
+                <Box as="nav" position="absolute" w="100vw" p="6" zIndex={20}>
+                    <Flex justifyContent="start">
                         <Link
                             variant="menu"
                             as={NextLink}
                             href="/"
                             scroll={false}
+                            position="fixed"
                         >
                             <Heading
                                 as="h1"
@@ -54,11 +47,15 @@ export default function Header() {
                                 Tū Tama Wāhine o Taranaki
                             </Heading>
                         </Link>
+                    </Flex>
+
+                    <Flex justifyContent="center">
                         <Link
                             variant="menu"
                             as={NextLink}
                             href="/"
                             scroll={false}
+                            position="fixed"
                         >
                             <Heading
                                 as="h2"
@@ -70,11 +67,14 @@ export default function Header() {
                                 Whakapapa
                             </Heading>
                         </Link>
+                    </Flex>
+                    <Flex justifyContent="end">
                         <Link
                             variant="menu"
                             as={NextLink}
                             href="/haerenga"
                             scroll={false}
+                            position="fixed"
                         >
                             <Heading
                                 as="h2"
@@ -87,7 +87,7 @@ export default function Header() {
                             </Heading>
                         </Link>
                     </Flex>
-                </Flex>
+                </Box>
             </MotionBox>
             <Box
                 backgroundColor="CC404041"

@@ -3,14 +3,25 @@ import theme from '@/styles/ChakraTheme'
 import Fonts from '@/styles/Fonts'
 import '@/styles/globals.css'
 import { ChakraProvider } from '@chakra-ui/react'
-import { AnimatePresence, AnimateSharedLayout } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 export const siteTitle = 'Tū Tama Wāhine o Taranaki'
 
 export default function App({ Component, pageProps }) {
     const { asPath } = useRouter()
+    useEffect(() => {
+        const handleContextMenu = (e) => {
+            // prevent the right-click menu from appearing
+            e.preventDefault()
+        }
+        document.addEventListener('contextmenu', handleContextMenu)
+        return () => {
+            document.removeEventListener('contextmenu', handleContextMenu)
+        }
+    }, [])
     return (
         <>
             <Head>

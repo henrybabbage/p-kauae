@@ -10,7 +10,7 @@ export default function ScrollPrompt() {
                 transition={{
                     ease: [0.6, 0.01, -0.05, 0.95],
                     duration: 1,
-                    delay: 1.8
+                    delay: 2.8
                 }}
                 className="scroll"
                 h="100px"
