@@ -17,10 +17,9 @@ export default function VideoOverlay({ show }) {
                         lineHeight="1.3"
                         textAlign="left"
                     >
-                        Opening night video for the Pukauae exhibition at Puke
-                        Ariki Museum. The exhibition featured 18 Wahine with
-                        moko kauae. Photography commission by Tu Tama Wahine o
-                        Taranaki.
+                        Opening of the Pūkauae exhibition at Puke Ariki Museum, Ngāmotu, Taranaki 2019.
+The exhibition featured photography of wāhine mau moko at places of significance in Taranaki, captured by artist Tania Niwa.
+This project attempts to make visible the images of these women, their connection to place and their stories of healing and liberation through the art of Pūkauae.
                     </Text>
                 </Flex>
             </Grid>
