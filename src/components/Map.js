@@ -5,6 +5,7 @@ import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
+import DigitalClock from './DigitalClock'
 import WahineModal from './WahineModal'
 
 export default function Map({ data }) {
@@ -176,7 +177,21 @@ export default function Map({ data }) {
                 )}
                 <Layer source="taranaki-data" {...layerStyle} />
             </ReactMapGL>
-            <HStack spacing="24px" position="fixed" z="20" bottom="6" left="6">
+            <Box position="fixed" left="6" bottom="6">
+                <DigitalClock />
+            </Box>
+            <HStack spacing="24px" position="fixed" z="20" bottom="6" left="32">
+                <Text
+                    id="month"
+                    fontFamily="subheading"
+                    fontSize="14px"
+                    lineHeight="1"
+                    textAlign="left"
+                    color="white"
+                    pb="2"
+                >
+                    {' • '}
+                </Text>
                 <Text
                     id="month"
                     fontFamily="subheading"

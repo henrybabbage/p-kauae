@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import { getPlaiceholder } from 'plaiceholder'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
 
@@ -60,13 +60,10 @@ export default function Home({
 
     const playerRef = useRef()
 
-    const [pageLoading, setPageLoading] = useState(null)
-
     return (
         <Box as="main">
             <SmoothScroll>
                 <Box id="about" bg="grey.900">
-                    {pageLoading && <TransitionBanner />}
                     <Grid templateColumns="repeat(12, 1fr)">
                         <GridItem
                             colStart={1}
@@ -107,7 +104,7 @@ export default function Home({
                                 />
                             </Box>
                         </GridItem>
-                        <GridItem colStart={2} colEnd={12} pt="6" pb="6">
+                        <GridItem colStart={4} colEnd={12} pt="6" pb="6">
                             <Flex
                                 justify="center"
                                 flexDirection={'column'}
@@ -132,7 +129,7 @@ export default function Home({
                                 />
                             </Flex>
                         </GridItem>
-                        <GridItem colStart={2} colEnd={6} pt="6" pb="6">
+                        <GridItem colStart={4} colEnd={9} pt="6" pb="6">
                             <Flex
                                 as="div"
                                 justify="center"
@@ -165,7 +162,7 @@ export default function Home({
                                 ))}
                             </Flex>
                         </GridItem>
-                        <GridItem colStart={7} colEnd={11} pt="6" pb="6">
+                        <GridItem colStart={9} colEnd={13} pt="6" pb="6">
                             <Flex
                                 as="div"
                                 justify="center"
@@ -199,7 +196,7 @@ export default function Home({
                                 ))}
                             </Flex>
                         </GridItem>
-                        <GridItem colStart={2} colEnd={12} pt="16">
+                        <GridItem colStart={4} colEnd={12} pt="16">
                             <ReactMarkdown
                                 remarkPlugins={[remarkBreaks]}
                                 components={ChakraUIRenderer(markdownTheme)}
@@ -207,7 +204,7 @@ export default function Home({
                                 skipHtml
                             />
                         </GridItem>
-                        <GridItem colStart={2} colEnd={12} pt="16">
+                        <GridItem colStart={4} colEnd={12} pt="16">
                             <ReactMarkdown
                                 remarkPlugins={[remarkBreaks]}
                                 components={ChakraUIRenderer(markdownTheme)}
@@ -217,7 +214,7 @@ export default function Home({
                                 skipHtml
                             />
                         </GridItem>
-                        <GridItem colStart={2} colEnd={12} pt="16">
+                        <GridItem colStart={4} colEnd={12} pt="16">
                             <ReactMarkdown
                                 remarkPlugins={[remarkBreaks]}
                                 components={ChakraUIRenderer(markdownTheme)}
@@ -240,7 +237,7 @@ export default function Home({
                             </Heading>
                         </GridItem>
                         <GridItem
-                            colStart={2}
+                            colStart={4}
                             colEnd={12}
                             pt="16"
                             whiteSpace="pre-line"
@@ -253,7 +250,7 @@ export default function Home({
                             />
                         </GridItem>
                         <GridItem
-                            colStart={2}
+                            colStart={4}
                             colEnd={12}
                             pt="16"
                             whiteSpace="pre-line"
@@ -309,7 +306,6 @@ export default function Home({
                                     lineHeight="1.36"
                                     textAlign="left"
                                     color="white"
-                                    pb="28"
                                 >
                                     {kaiwhakaahua.korero}
                                 </Text>
@@ -317,6 +313,8 @@ export default function Home({
                                     href={`https://${kaiwhakaahua.paetukutuku}`}
                                     isExternal
                                     variant="menu"
+                                    bottom="8"
+                                    position="absolute"
                                 >
                                     <Text
                                         fontFamily="heading"

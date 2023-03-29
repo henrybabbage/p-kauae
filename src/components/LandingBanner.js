@@ -23,7 +23,7 @@ export default function LandingBanner() {
     const reoLines = ['Tū tama wāhine', 'i te wā o', 'te kore']
 
     return (
-        <Box>
+        <>
             <MotionBox
                 initial="hidden"
                 animate="visible"
@@ -45,7 +45,7 @@ export default function LandingBanner() {
                             fontSize="94px"
                             lineHeight="1"
                             color="pink.200"
-                            textStyle="heading"
+                            fontFamily="heading"
                         >
                             {line}
                         </Heading>
@@ -55,6 +55,6 @@ export default function LandingBanner() {
             <MotionBox position="absolute" bottom="100" right="100">
                 <ScrollPrompt />
             </MotionBox>
-        </Box>
+        </>
     )
 }

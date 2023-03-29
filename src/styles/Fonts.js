@@ -10,6 +10,7 @@ const Fonts = () => (
             font-weight: 400;
             font-style: italic;
             font-display: swap;
+            font-variant-numeric: tabular-nums;
             unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
@@ -19,6 +20,7 @@ const Fonts = () => (
             font-weight: 400;
             font-style: normal;
             font-display: swap;
+            font-variant-numeric: tabular-nums;
             unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
@@ -28,6 +30,7 @@ const Fonts = () => (
             font-weight: 900;
             font-style: italic;
             font-display: swap;
+            font-variant-numeric: tabular-nums;
             unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
@@ -37,6 +40,7 @@ const Fonts = () => (
             font-weight: 900;
             font-style: normal;
             font-display: swap;
+            font-variant-numeric: tabular-nums;
             unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
@@ -46,6 +50,7 @@ const Fonts = () => (
             font-weight: 600;
             font-style: italic;
             font-display: swap;
+            font-variant-numeric: tabular-nums;
             unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
@@ -55,6 +60,27 @@ const Fonts = () => (
             font-weight: 600;
             font-style: normal;
             font-display: swap;
+            font-variant-numeric: tabular-nums;
+            unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
+        }
+        @font-face {
+            font-family: 'SohneBreit_DreiviertelfettKursiv';
+            src: url('fonts/SohneBreit/SohneBreit_DreiviertelfettKursiv.woff2') format('woff2'),
+                url('fonts/SohneBreit/SohneBreit_DreiviertelfettKursiv.woff') format('woff');
+            font-weight: 500;
+            font-style: italic;
+            font-display: swap;
+            font-variant-numeric: tabular-nums;
+            unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
+        }
+        @font-face {
+            font-family: 'SohneBreit_Dreiviertelfett';
+            src: url('fonts/SohneBreit/SohneBreit_Dreiviertelfett.woff2') format('woff2'),
+                url('fonts/SohneBreit/SohneBreit_Dreiviertelfett.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+            font-variant-numeric: tabular-nums;
             unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
@@ -64,6 +90,7 @@ const Fonts = () => (
             font-weight: 300;
             font-style: italic;
             font-display: swap;
+            font-variant-numeric: tabular-nums;
             unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
@@ -73,6 +100,7 @@ const Fonts = () => (
             font-weight: 300;
             font-style: normal;
             font-display: swap;
+            font-variant-numeric: tabular-nums;
             unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
@@ -82,6 +110,7 @@ const Fonts = () => (
             font-weight: 400;
             font-style: italic;
             font-display: swap;
+            font-variant-numeric: tabular-nums;
             unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {
@@ -91,6 +120,7 @@ const Fonts = () => (
             font-weight: 400;
             font-style: normal;
             font-display: swap;
+            font-variant-numeric: tabular-nums;
             unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
         }
         @font-face {

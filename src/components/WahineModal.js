@@ -58,14 +58,14 @@ const WahineModal = ({
                 motionPreset="slideInBottom"
             >
                 <ModalOverlay />
-                <ModalContent maxW="100vw" p={6} bg="grey.900">
+                <ModalContent maxW="100vw" p={6} bg="grey.900" h="fit-content">
                     <Flex justifyContent="space-between" alignContent="start">
                         <Heading
-                            textStyle="primary"
                             as="h1"
                             size="md"
                             color="white"
                             fontWeight="regular"
+                            fontFamily="subheading"
                         >
                             Tū Tama Wāhine o Taranaki
                         </Heading>
@@ -92,7 +92,7 @@ const WahineModal = ({
                             templateColumns="repeat(12, 1fr)"
                             maxW="100vw"
                             columnGap="40px"
-                            rowGap="40px"
+                            rowGap="20px"
                         >
                             <GridItem colStart={1} colEnd={13} pt={6}>
                                 <Box className="player">
@@ -137,7 +137,9 @@ const WahineModal = ({
                                 colStart={1}
                                 colEnd={7}
                                 pt={6}
-                                minH="84vh"
+                                pb={6}
+                                h="auto"
+                                // minH="84vh"
                             >
                                 <Flex direction="column">
                                     <ZoomImage
@@ -162,7 +164,9 @@ const WahineModal = ({
                                 colStart={7}
                                 colEnd={13}
                                 pt={6}
-                                minH="84vh"
+                                pb={6}
+                                h="auto"
+                                // minH="84vh"
                             >
                                 <Text
                                     fontSize="18px"
