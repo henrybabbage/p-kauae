@@ -45,7 +45,7 @@ export default function LandingBanner() {
                             fontSize="94px"
                             lineHeight="1"
                             color="pink.200"
-                            textStyle="heading"
+                            fontFamily="heading"
                         >
                             {line}
                         </Heading>

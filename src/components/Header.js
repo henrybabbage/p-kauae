@@ -25,7 +25,7 @@ export default function Header() {
                 transition={{
                     ease: 'easeInOut',
                     duration: 1,
-                    delay: 0.6
+                    delay: 1.8
                 }}
             >
                 <Box as="nav" position="absolute" w="100vw" p="6" zIndex={20}>
