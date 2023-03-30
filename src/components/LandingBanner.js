@@ -52,9 +52,6 @@ export default function LandingBanner() {
                     </MotionBox>
                 ))}
             </MotionBox>
-            <MotionBox position="absolute" bottom="100" right="100">
-                <ScrollPrompt />
-            </MotionBox>
         </>
     )
 }

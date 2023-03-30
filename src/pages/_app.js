@@ -81,7 +81,7 @@ export default function App({ Component, pageProps }) {
                     {loading ? (
                         <TransitionBanner />
                     ) : (
-                        <Component {...pageProps} key={asPath} />
+                        <Component layout {...pageProps} key={asPath} />
                     )}
                 </AnimatePresence>
             </ChakraProvider>
