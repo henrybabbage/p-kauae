@@ -142,34 +142,31 @@ export default function Map({ data }) {
         })
     }
 
+    const wahinesArrayLength = wahines.length
+
     const onClick = (e) => {
         if (e.features.length && e.features[0].properties) {
             const { id } = e.features[0].properties
-            console.log('id', id)
             const clickedWahine = wahines.find((wahine) => wahine.id === id)
 
-            console.log(clickedWahine)
-
-            // clickedWahine &&
-            //     setSelectedWahineIndex(() => {
-            //         setTimeout(() => {
-            //             onOpen()
-            //         }, 3200)
-            //         return clickedWahine
-            //     })
-
-            // mapRef.current.flyTo({
-            //     center: wahines[prevIndex].wahi.ahuahanga,
-            //     pitch: 70,
-            //     duration: 3000,
-            //     bearing:
-            //         handleMapBearing(wahines[prevIndex].wahi.ahuahanga) - 180
-            // })
+            clickedWahine &&
+                setSelectedWahineIndex(() => {
+                    setTimeout(() => {
+                        onOpen()
+                    }, 3200)
+                    return clickedWahine.id - 1
+                })
+            mapRef.current.flyTo({
+                center: wahines[clickedWahine.id - 1].wahi.ahuahanga,
+                pitch: 70,
+                duration: 3000,
+                bearing:
+                    handleMapBearing(
+                        wahines[clickedWahine.id - 1].wahi.ahuahanga
+                    ) - 180
+            })
         }
     }
-
-    // console.log('selectedWahineIndex', selectedWahineIndex)
-    // console.log('wahine', wahines[selectedWahineIndex].ingoa)
 
     return (
         <Box h="100vh" w="100vw" cursor="auto" position="relative">

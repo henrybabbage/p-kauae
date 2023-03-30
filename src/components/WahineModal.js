@@ -34,10 +34,6 @@ const WahineModal = ({
     const captureDate = wahines[selectedWahineIndex].wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
 
-    // console.log('selectedWahineIndex', selectedWahineIndex)
-
-    const wahinesLength = wahines.length
-
     const getPreviousWahine = (selectedWahineIndex) => {
         if (selectedWahineIndex === wahines.length) {
             return 0
