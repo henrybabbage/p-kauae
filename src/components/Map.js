@@ -13,14 +13,36 @@ const randomFirstWahine = () => {
     return index
 }
 
+const latLngOptions = [
+    { latitude: -39.565997787590135, longitude: 174.29172348541545 },
+    { latitude: -39.565997787590135, longitude: 174.29172348541545 },
+    { latitude: -39.582078648735035, longitude: 174.15676449475075 },
+    { latitude: -39.582078648735035, longitude: 174.15676449475075 },
+    { latitude: -39.3252965231007, longitude: 174.1073037804627 },
+    { latitude: -39.318496306584905, longitude: 174.099359208252 },
+    { latitude: -39.367594679853745, longitude: 173.8095453055592 },
+    { latitude: -39.2885374, longitude: 173.8397035 },
+    { latitude: -39.2885374, longitude: 173.8397035 },
+    { latitude: -39.24832985708955, longitude: 173.9354912075433 },
+    { latitude: -39.157052852754376, longitude: 174.21095456800253 },
+    { latitude: -39.06191077154044, longitude: 174.02025238525744 },
+    { latitude: -39.03801449196456, longitude: 174.11135608585238 },
+    { latitude: -38.98841455903835, longitude: 174.2233916041253 },
+    { latitude: -39.06782525043155, longitude: 174.26466659215401 },
+    { latitude: -38.98954738956933, longitude: 174.40478763948636 }
+]
+
+const randomStartPoint =
+    latLngOptions[Math.floor(Math.random() * latLngOptions.length)]
+
 export default function Map({ data }) {
     const mapRef = useRef(null)
-    const [selectedWahineIndex, setSelectedWahineIndex] = useState(
-        randomFirstWahine()
-    )
+    const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
     const [viewport, setViewport] = useState({
-        latitude: -39.296128,
-        longitude: 174.063848,
+        latitude: randomStartPoint.latitude,
+        longitude: randomStartPoint.longitude,
+        // latitude: -39.296128,
+        // longitude: 174.063848,
         bearing: 90,
         pitch: 70,
         zoom: 12,
@@ -120,6 +142,32 @@ export default function Map({ data }) {
         })
     }
 
+    const onClick = (e) => {
+        if (e.features.length && e.features[0].properties) {
+            const { id } = e.features[0].properties
+            console.log('id', id)
+            const clickedWahine = wahines.find((wahine) => wahine.id === id)
+
+            console.log(clickedWahine)
+
+            // clickedWahine &&
+            //     setSelectedWahineIndex(() => {
+            //         setTimeout(() => {
+            //             onOpen()
+            //         }, 3200)
+            //         return clickedWahine
+            //     })
+
+            // mapRef.current.flyTo({
+            //     center: wahines[prevIndex].wahi.ahuahanga,
+            //     pitch: 70,
+            //     duration: 3000,
+            //     bearing:
+            //         handleMapBearing(wahines[prevIndex].wahi.ahuahanga) - 180
+            // })
+        }
+    }
+
     // console.log('selectedWahineIndex', selectedWahineIndex)
     // console.log('wahine', wahines[selectedWahineIndex].ingoa)
 
@@ -149,6 +197,7 @@ export default function Map({ data }) {
                 mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck"
                 terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
                 interactiveLayerIds={['wahine']}
+                onClick={onClick}
             >
                 <Box
                     position="absolute"
