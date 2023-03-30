@@ -20,6 +20,8 @@ export default function LandingVideo({
     playerRef,
     src,
     baseUrlVideo,
+    videoKorero,
+    videoTitle,
     poster,
     alt,
     autoplay,
@@ -73,7 +75,10 @@ export default function LandingVideo({
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <VideoOverlay show={showOverlay} />
+                    <VideoOverlay
+                        show={showOverlay}
+                        videoKorero={videoKorero}
+                    />
                     <Tooltip
                         label={
                             !isPlaying
@@ -103,7 +108,7 @@ export default function LandingVideo({
                 </Flex>
             )}
             <AspectRatio
-                maxH="75vh"
+                maxH={['auto', 'auto', 'auto', '75vh']}
                 maxW="100vw"
                 ratio={16 / 9}
                 cursor="auto"
@@ -131,7 +136,7 @@ export default function LandingVideo({
                     bottom={6}
                     right={6}
                 >
-                    Puke Ariki Opening
+                    {videoTitle}
                 </Heading>
             )}
         </Box>
