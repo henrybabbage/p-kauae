@@ -25,6 +25,8 @@ export default function Home({
     portraitImg,
     portraitBlurhash,
     heroVideo,
+    videoKorero,
+    videoTitle,
     baseUrlVideo
 }) {
     const markdownTheme = {
@@ -64,7 +66,10 @@ export default function Home({
         <Box as="main">
             <SmoothScroll>
                 <Box id="about" bg="grey.900">
-                    <Grid templateColumns="repeat(12, 1fr)">
+                    <Grid
+                        templateColumns="repeat(12, 1fr)"
+                        px={['6', '6', '6', '0', '0']}
+                    >
                         <GridItem
                             colStart={1}
                             colEnd={13}
@@ -82,7 +87,12 @@ export default function Home({
                                 <LandingBanner />
                             </Flex>
                         </GridItem>
-                        <GridItem colStart={2} colEnd={12} pt="6" pb="6">
+                        <GridItem
+                            colStart={[1, 1, 1, 1, 4]}
+                            colEnd={[13, 13, 13, 12, 12]}
+                            pt="6"
+                            pb="6"
+                        >
                             <Flex
                                 pt="12"
                                 justify="center"
@@ -91,11 +101,17 @@ export default function Home({
                             ></Flex>
                         </GridItem>
                         <GridItem colStart={2} colEnd={12} pt="6" pb="6">
-                            <Box className="player" h="100vh">
+                            <Box
+                                className="player"
+                                h={['auto', 'auto', 'auto', '100vh']}
+                                w="100%"
+                            >
                                 <LandingVideo
                                     playerRef={playerRef}
                                     src={heroVideo}
                                     baseUrlVideo={baseUrlVideo}
+                                    videoKorero={videoKorero}
+                                    videoTitle={videoTitle}
                                     alt="Pūkauae Exhibition Opening 11th December 2019"
                                     autoplay={false}
                                     controls={true}
@@ -104,7 +120,12 @@ export default function Home({
                                 />
                             </Box>
                         </GridItem>
-                        <GridItem colStart={4} colEnd={12} pt="6" pb="6">
+                        <GridItem
+                            colStart={[1, 1, 1, 1, 4]}
+                            colEnd={[13, 13, 13, 12, 12]}
+                            pt="6"
+                            pb="6"
+                        >
                             <Flex
                                 justify="center"
                                 flexDirection={'column'}
@@ -113,7 +134,13 @@ export default function Home({
                                 <Heading
                                     as="h2"
                                     fontFamily="heading"
-                                    fontSize="84px"
+                                    fontSize={[
+                                        '36px',
+                                        '36px',
+                                        '46px',
+                                        '46',
+                                        '84px'
+                                    ]}
                                     lineHeight="1.36"
                                     textAlign="left"
                                     color="pink.200"
@@ -129,7 +156,12 @@ export default function Home({
                                 />
                             </Flex>
                         </GridItem>
-                        <GridItem colStart={4} colEnd={9} pt="6" pb="6">
+                        <GridItem
+                            colStart={[1, 1, 1, 4, 4]}
+                            colEnd={[13, 13, 13, 8, 8]}
+                            pt="6"
+                            pb="6"
+                        >
                             <Flex
                                 as="div"
                                 justify="center"
@@ -140,7 +172,7 @@ export default function Home({
                                 <Heading
                                     as="h2"
                                     fontFamily="heading"
-                                    fontSize="84px"
+                                    fontSize={['36px', '46px', '46', '84px']}
                                     lineHeight="1.36"
                                     textAlign="left"
                                     color="pink.200"
@@ -162,7 +194,12 @@ export default function Home({
                                 ))}
                             </Flex>
                         </GridItem>
-                        <GridItem colStart={9} colEnd={13} pt="6" pb="6">
+                        <GridItem
+                            colStart={[1, 1, 1, 9, 9]}
+                            colEnd={[13, 13, 13, 13, 13]}
+                            pt="6"
+                            pb="6"
+                        >
                             <Flex
                                 as="div"
                                 justify="center"
@@ -222,19 +259,21 @@ export default function Home({
                                 skipHtml
                             />
                         </GridItem>
-                        <GridItem colStart={2} colEnd={6} pt="16">
-                            <Heading
-                                as="h2"
-                                fontFamily="subheading"
-                                fontSize="84px"
-                                lineHeight="1"
-                                textAlign="center"
-                                color="pink.200"
-                                w="80vw"
-                                py="6"
-                            >
-                                {korero.whakataukii}
-                            </Heading>
+                        <GridItem colStart={2} colEnd={12} pt="16">
+                            <Flex justifyContent="center">
+                                <Heading
+                                    as="h2"
+                                    fontFamily="subheading"
+                                    fontSize={['36px', '46px', '56', '84px']}
+                                    lineHeight="1"
+                                    textAlign="center"
+                                    color="pink.200"
+                                    w="100%"
+                                    py="6"
+                                >
+                                    {korero.whakataukii}
+                                </Heading>
+                            </Flex>
                         </GridItem>
                         <GridItem
                             colStart={4}
@@ -265,10 +304,15 @@ export default function Home({
                     </Grid>
                 </Box>
                 <Box id="photographer" bg="grey.900">
-                    <Grid templateColumns="repeat(12, 1fr)" h="100vh">
+                    <Grid
+                        templateColumns="repeat(12, 1fr)"
+                        h="100vh"
+                        maxH="100vh"
+                        px={['6', '6', '6', '0', '0']}
+                    >
                         <GridItem
                             colStart={1}
-                            colEnd={9}
+                            colEnd={[13, 13, 9, 9]}
                             marginTop="auto"
                             px="6"
                         >
@@ -279,13 +323,28 @@ export default function Home({
                                 textAlign="left"
                                 color="white"
                             >
-                                <Flex alignItems="baseline" pt={6}>
+                                <Flex
+                                    direction={[
+                                        'column',
+                                        'column',
+                                        'row',
+                                        'row'
+                                    ]}
+                                    alignItems="baseline"
+                                    pt={6}
+                                >
                                     <Heading
-                                        fontSize="84px"
+                                        fontSize={[
+                                            '36px',
+                                            '36px',
+                                            '46px',
+                                            '56px',
+                                            '84px'
+                                        ]}
                                         lineHeight="1"
                                         textAlign="left"
                                         color="pink.200"
-                                        pb="10"
+                                        pb={['2', '2', '10', '10']}
                                     >
                                         {kaiwhakaahua.ingoa}
                                     </Heading>
@@ -295,14 +354,21 @@ export default function Home({
                                         lineHeight="1.36"
                                         textAlign="left"
                                         color="pink.200"
-                                        ml="4"
+                                        ml={['0', '0', '4', '4']}
+                                        pb={['2', '2', '0', '0']}
                                     >
                                         {kaiwhakaahua.whakapapa}
                                     </Text>
                                 </Flex>
                                 <Text
                                     fontFamily="heading"
-                                    fontSize="36px"
+                                    fontSize={[
+                                        '26px',
+                                        '26px',
+                                        '26px',
+                                        '36',
+                                        '36px'
+                                    ]}
                                     lineHeight="1.36"
                                     textAlign="left"
                                     color="white"
@@ -318,7 +384,13 @@ export default function Home({
                                 >
                                     <Text
                                         fontFamily="heading"
-                                        fontSize="36px"
+                                        fontSize={[
+                                            '26px',
+                                            '26px',
+                                            '26px',
+                                            '36',
+                                            '36px'
+                                        ]}
                                         lineHeight="1.36"
                                         textAlign="left"
                                     >
@@ -327,7 +399,12 @@ export default function Home({
                                 </Link>
                             </Flex>
                         </GridItem>
-                        <GridItem colStart={9} colEnd={13} marginTop="auto">
+                        <GridItem
+                            colStart={[1, 1, 1, 9, 9]}
+                            colEnd={[13, 13, 13, 13, 13]}
+                            marginTop="auto"
+                            pb={['10', '10', '10', '0', '0']}
+                        >
                             <Flex
                                 px="8"
                                 pt="4"
@@ -356,7 +433,6 @@ export default function Home({
     )
 }
 
-import TransitionBanner from '@/components/TransitionBanner'
 import fsPromises from 'fs/promises'
 import path from 'path'
 export async function getStaticProps() {
@@ -367,6 +443,8 @@ export async function getStaticProps() {
     const baseUrl = objectData.whakaahua_s3_bucket
     const baseUrlVideo = objectData.kiriata_cloudfront
     const heroVideo = objectData.tu_tama_korero.opening_video
+    const videoKorero = objectData.tu_tama_korero.opening_video_korero
+    const videoTitle = objectData.tu_tama_korero.opening_video_title
     const imagePath = objectData.kaiwhakaahua.whakaahua.original
     const imageUrl = `${baseUrl}${imagePath}`
 
@@ -380,6 +458,8 @@ export async function getStaticProps() {
             portraitImg: img,
             portraitBlurhash: blurhash,
             heroVideo: heroVideo,
+            videoKorero: videoKorero,
+            videoTitle: videoTitle,
             baseUrlVideo: baseUrlVideo
         }
     }

@@ -1,4 +1,4 @@
-import { Box, Heading } from '@chakra-ui/react'
+import { Heading } from '@chakra-ui/react'
 import { MotionBox } from './MotionBox'
 import ScrollPrompt from './ScrollPrompt'
 
@@ -42,7 +42,7 @@ export default function LandingBanner() {
                     <MotionBox key={index} variants={textAnimation}>
                         <Heading
                             textAlign="center"
-                            fontSize="94px"
+                            fontSize={['36px', '46px', '56', '94px']}
                             lineHeight="1"
                             color="pink.200"
                             fontFamily="heading"
