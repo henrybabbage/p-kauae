@@ -177,12 +177,11 @@ export default function Map({ data }) {
                 )}
                 <Layer source="taranaki-data" {...layerStyle} />
             </ReactMapGL>
-            <Box position="fixed" left="6" bottom="6">
+            <Box id="local-time" position="fixed" left="6" bottom="6">
                 <DigitalClock />
             </Box>
             <HStack spacing="24px" position="fixed" z="20" bottom="6" left="32">
                 <Text
-                    id="month"
                     fontFamily="subheading"
                     fontSize="14px"
                     lineHeight="1"
@@ -204,7 +203,6 @@ export default function Map({ data }) {
                     {'Paenga-whāwhā'}
                 </Text>
                 <Text
-                    id="month"
                     fontFamily="subheading"
                     fontSize="14px"
                     lineHeight="1"
