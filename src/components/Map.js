@@ -73,7 +73,10 @@ export default function Map({ data }) {
     }
 
     const handlePrevClick = () => {
-        const nextIndex = (selectedWahineIndex + 1) % wahines.length
+        const nextIndex =
+            selectedWahineIndex === wahines.length
+                ? 0
+                : (selectedWahineIndex + 1) % wahines.length
         nextIndex &&
             setSelectedWahineIndex(() => {
                 setTimeout(() => {
@@ -109,6 +112,9 @@ export default function Map({ data }) {
             bearing: handleMapBearing(wahines[prevIndex].wahi.ahuahanga) - 180
         })
     }
+
+    console.log('index', selectedWahineIndex)
+    console.log('wahine', wahines[selectedWahineIndex].ingoa)
 
     return (
         <Box h="100vh" w="100vw" cursor="auto" position="relative">
