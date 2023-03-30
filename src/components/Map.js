@@ -8,9 +8,16 @@ import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
 import WahineModal from './WahineModal'
 
+const randomFirstWahine = () => {
+    const index = Math.floor(Math.random() * 15)
+    return index
+}
+
 export default function Map({ data }) {
     const mapRef = useRef(null)
-    const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
+    const [selectedWahineIndex, setSelectedWahineIndex] = useState(
+        randomFirstWahine()
+    )
     const [viewport, setViewport] = useState({
         latitude: -39.296128,
         longitude: 174.063848,
@@ -73,31 +80,10 @@ export default function Map({ data }) {
     }
 
     const handlePrevClick = () => {
-        const nextIndex =
-            selectedWahineIndex === wahines.length
+        const prevIndex =
+            selectedWahineIndex === wahines.length - 1
                 ? 0
                 : (selectedWahineIndex + 1) % wahines.length
-        nextIndex &&
-            setSelectedWahineIndex(() => {
-                setTimeout(() => {
-                    onOpen()
-                }, 3200)
-                return nextIndex
-            })
-
-        mapRef.current.flyTo({
-            center: wahines[nextIndex].wahi.ahuahanga,
-            pitch: 70,
-            duration: 3000,
-            bearing: handleMapBearing(wahines[nextIndex].wahi.ahuahanga) - 180
-        })
-    }
-
-    const handleNextClick = () => {
-        const prevIndex =
-            selectedWahineIndex === 0
-                ? wahines.length - 1
-                : (selectedWahineIndex - 1) % wahines.length
         prevIndex &&
             setSelectedWahineIndex(() => {
                 setTimeout(() => {
@@ -105,6 +91,7 @@ export default function Map({ data }) {
                 }, 3200)
                 return prevIndex
             })
+
         mapRef.current.flyTo({
             center: wahines[prevIndex].wahi.ahuahanga,
             pitch: 70,
@@ -113,8 +100,28 @@ export default function Map({ data }) {
         })
     }
 
-    console.log('index', selectedWahineIndex)
-    console.log('wahine', wahines[selectedWahineIndex].ingoa)
+    const handleNextClick = () => {
+        const nextIndex =
+            selectedWahineIndex === 0
+                ? wahines.length - 1
+                : (selectedWahineIndex - 1) % wahines.length
+        nextIndex &&
+            setSelectedWahineIndex(() => {
+                setTimeout(() => {
+                    onOpen()
+                }, 3200)
+                return nextIndex
+            })
+        mapRef.current.flyTo({
+            center: wahines[nextIndex].wahi.ahuahanga,
+            pitch: 70,
+            duration: 3000,
+            bearing: handleMapBearing(wahines[nextIndex].wahi.ahuahanga) - 180
+        })
+    }
+
+    // console.log('selectedWahineIndex', selectedWahineIndex)
+    // console.log('wahine', wahines[selectedWahineIndex].ingoa)
 
     return (
         <Box h="100vh" w="100vw" cursor="auto" position="relative">
