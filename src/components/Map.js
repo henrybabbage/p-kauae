@@ -105,15 +105,13 @@ export default function Map({ data }) {
         const prevIndex =
             selectedWahineIndex === wahines.length - 1
                 ? 0
-                : (selectedWahineIndex + 1) % wahines.length
-        prevIndex &&
-            setSelectedWahineIndex(() => {
-                setTimeout(() => {
-                    onOpen()
-                }, 3200)
-                return prevIndex
-            })
-
+                : selectedWahineIndex + 1
+        setSelectedWahineIndex(() => {
+            setTimeout(() => {
+                onOpen()
+            }, 3200)
+            return prevIndex
+        })
         mapRef.current.flyTo({
             center: wahines[prevIndex].wahi.ahuahanga,
             pitch: 70,
@@ -126,14 +124,13 @@ export default function Map({ data }) {
         const nextIndex =
             selectedWahineIndex === 0
                 ? wahines.length - 1
-                : (selectedWahineIndex - 1) % wahines.length
-        nextIndex &&
-            setSelectedWahineIndex(() => {
-                setTimeout(() => {
-                    onOpen()
-                }, 3200)
-                return nextIndex
-            })
+                : selectedWahineIndex - 1
+        setSelectedWahineIndex(() => {
+            setTimeout(() => {
+                onOpen()
+            }, 3200)
+            return nextIndex
+        })
         mapRef.current.flyTo({
             center: wahines[nextIndex].wahi.ahuahanga,
             pitch: 70,
@@ -142,13 +139,10 @@ export default function Map({ data }) {
         })
     }
 
-    const wahinesArrayLength = wahines.length
-
     const onClick = (e) => {
         if (e.features.length && e.features[0].properties) {
             const { id } = e.features[0].properties
             const clickedWahine = wahines.find((wahine) => wahine.id === id)
-
             clickedWahine &&
                 setSelectedWahineIndex(() => {
                     setTimeout(() => {
