@@ -206,7 +206,6 @@ export default function Map({ data }) {
                         aria-label="Previous Wahine"
                         icon={<ChevronLeftIcon color="black" />}
                         onClick={handlePrevClick}
-                        isDisabled={wahines.length <= 1}
                         isRound
                         mr={2}
                     />
@@ -221,7 +220,6 @@ export default function Map({ data }) {
                         aria-label="Next Wahine"
                         icon={<ChevronRightIcon color="black" />}
                         onClick={handleNextClick}
-                        isDisabled={wahines.length <= 1}
                         isRound
                         ml={2}
                     />
