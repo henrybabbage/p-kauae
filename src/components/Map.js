@@ -191,7 +191,7 @@ export default function Map({ data }) {
                 position="relative"
                 mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
                 onMove={(event) => setViewport(event.viewport)}
-                mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck"
+                mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck?optimize=true"
                 terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
                 interactiveLayerIds={['wahine']}
                 onClick={onClick}
@@ -206,7 +206,6 @@ export default function Map({ data }) {
                         aria-label="Previous Wahine"
                         icon={<ChevronLeftIcon color="black" />}
                         onClick={handlePrevClick}
-                        isDisabled={wahines.length <= 1}
                         isRound
                         mr={2}
                     />
@@ -221,7 +220,6 @@ export default function Map({ data }) {
                         aria-label="Next Wahine"
                         icon={<ChevronRightIcon color="black" />}
                         onClick={handleNextClick}
-                        isDisabled={wahines.length <= 1}
                         isRound
                         ml={2}
                     />

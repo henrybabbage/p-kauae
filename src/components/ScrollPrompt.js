@@ -1,9 +1,24 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 import { MotionBox } from './MotionBox'
 
 export default function ScrollPrompt() {
     return (
-        <Box pb="4" pr="16" cursor="auto">
+        <MotionBox
+            position="absolute"
+            cursor="pointer"
+            whileHover={{
+                scale: 1.1,
+                transition: {
+                    duration: 0.2
+                }
+            }}
+            whileTap={{
+                scale: 1.3,
+                transition: {
+                    duration: 0.2
+                }
+            }}
+        >
             <MotionBox
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -17,7 +32,7 @@ export default function ScrollPrompt() {
                 w="100px"
                 backgroundColor="white"
                 borderRadius="100%"
-                position="absolute"
+                position="relative"
                 display="flex"
                 justifyContent="center"
             >
@@ -49,6 +64,6 @@ export default function ScrollPrompt() {
                     </Text>
                 </MotionBox>
             </MotionBox>
-        </Box>
+        </MotionBox>
     )
 }

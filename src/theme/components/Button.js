@@ -38,6 +38,25 @@ const mapLabel = defineStyle({
     }
 })
 
+const scrollPrompt = defineStyle({
+    border: 'none',
+    borderRadius: 0,
+    padding: 0,
+    margin: 0,
+    iconSpacing: 0,
+    height: 'inherit',
+    width: 'inherit',
+    fontWeight: 'regular',
+    fontSize: 'sm',
+    fontFamily: 'body',
+    color: 'white',
+    transition: 'transform 0.15s ease-out',
+    _hover: {
+        textDecoration: 'none',
+        color: 'pink'
+    }
+})
+
 export const buttonTheme = defineStyleConfig({
-    variants: { callToAction, mapLabel }
+    variants: { callToAction, mapLabel, scrollPrompt }
 })

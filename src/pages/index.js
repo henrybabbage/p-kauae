@@ -5,6 +5,7 @@ import LandingVideo from '@/components/LandingVideo'
 import SmoothScroll from '@/components/SmoothScroll'
 import {
     Box,
+    Button,
     Flex,
     Grid,
     GridItem,
@@ -62,6 +63,12 @@ export default function Home({
 
     const playerRef = useRef()
 
+    const videoRef = useRef(null)
+
+    const scrollToRef = (ref) => {
+        ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+
     return (
         <Box as="main">
             <SmoothScroll>
@@ -86,6 +93,19 @@ export default function Home({
                             >
                                 <LandingBanner />
                             </Flex>
+                            <Flex direction="column">
+                                <Button
+                                    variant="scrollPrompt"
+                                    position="absolute"
+                                    bottom="150"
+                                    right="150"
+                                    onClick={() => scrollToRef(videoRef)}
+                                >
+                                    <MotionBox>
+                                        <ScrollPrompt />
+                                    </MotionBox>
+                                </Button>
+                            </Flex>
                         </GridItem>
                         <GridItem
                             colStart={[1, 1, 1, 1, 4]}
@@ -102,6 +122,7 @@ export default function Home({
                         </GridItem>
                         <GridItem colStart={2} colEnd={12} pt="6" pb="6">
                             <Box
+                                ref={videoRef}
                                 className="player"
                                 h={['auto', 'auto', 'auto', '100vh']}
                                 w="100%"
@@ -433,6 +454,8 @@ export default function Home({
     )
 }
 
+import { MotionBox } from '@/components/MotionBox'
+import ScrollPrompt from '@/components/ScrollPrompt'
 import fsPromises from 'fs/promises'
 import path from 'path'
 export async function getStaticProps() {
