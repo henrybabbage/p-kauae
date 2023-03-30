@@ -33,20 +33,6 @@ export default function TransitionBanner() {
                     }}
                 />
             </Flex>
-            <Flex direction="column" justifyContent="end" alignItems="center">
-                <Heading
-                    as="h1"
-                    size="md"
-                    textColor="white"
-                    fontWeight="regular"
-                    fontFamily="subheading"
-                    position="absolute"
-                    textAlign="center"
-                    pb="8"
-                >
-                    Tū Tama Wāhine o Taranaki
-                </Heading>
-            </Flex>
         </VStack>
     )
 }
