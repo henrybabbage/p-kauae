@@ -35,15 +35,19 @@ const WahineModal = ({
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
 
     const getPreviousWahine = (selectedWahineIndex) => {
-        if (selectedWahineIndex === 0) {
-            return wahines.length - 1
+        if (selectedWahineIndex === wahines.length) {
+            return 0
         } else {
-            return wahines[(selectedWahineIndex - 1) % wahines.length].ingoa
+            return wahines[(selectedWahineIndex + 1) % wahines.length].ingoa
         }
     }
 
     const getNextWahine = (selectedWahineIndex) => {
-        return wahines[(selectedWahineIndex + 1) % wahines.length].ingoa
+        if (selectedWahineIndex === 0) {
+            return wahines.length
+        } else {
+            return wahines[(selectedWahineIndex - 1) % wahines.length].ingoa
+        }
     }
 
     const playerRef = useRef(null)
