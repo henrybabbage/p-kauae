@@ -6,6 +6,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import { useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
+import MapProgress from './MapProgress'
 import WahineModal from './WahineModal'
 
 export default function Map({ data }) {
@@ -255,6 +256,9 @@ export default function Map({ data }) {
                     {'Ohua'}
                 </Text>
             </HStack>
+            <Box position="fixed" right="6" bottom="6">
+                <MapProgress />
+            </Box>
         </Box>
     )
 }
