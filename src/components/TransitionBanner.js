@@ -1,5 +1,6 @@
-import { Flex, Heading, VStack } from '@chakra-ui/react'
+import { Flex, VStack } from '@chakra-ui/react'
 import Image from 'next/image'
+import { MotionBox } from './MotionBox'
 
 export default function TransitionBanner() {
     return (
@@ -8,7 +9,6 @@ export default function TransitionBanner() {
             h="100vh"
             maxH="100vh"
             backgroundColor="black"
-            zIndex={50}
             pointerEvents="none"
             overflow="hidden"
         >
@@ -20,18 +20,27 @@ export default function TransitionBanner() {
                 justifyContent="center"
                 alignItems="center"
             >
-                <Image
-                    src="/icons/pukauae.svg"
-                    alt="Pukauae logo"
-                    width="150"
-                    height="150"
-                    priority
-                    sizes="100vw"
-                    style={{
-                        objectFit: 'contain',
-                        objectPosition: 'center'
+                <MotionBox
+                    animate={{ scale: 1.1 }}
+                    transition={{
+                        duration: 1,
+                        repeat: Infinity,
+                        repeatType: 'mirror'
                     }}
-                />
+                >
+                    <Image
+                        src="/icons/pukauae.svg"
+                        alt="Pukauae logo"
+                        width="150"
+                        height="150"
+                        priority
+                        sizes="100vw"
+                        style={{
+                            objectFit: 'contain',
+                            objectPosition: 'center'
+                        }}
+                    />
+                </MotionBox>
             </Flex>
         </VStack>
     )

@@ -7,6 +7,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import { useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
+import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
 import WahineModal from './WahineModal'
 
@@ -37,8 +38,9 @@ export default function Map({ data }) {
     const [mapData, setMapData] = useState(null)
     const [timerStarted, setTimerStarted] = useState(null)
     const [progress] = useCountdown(0.05, timerStarted)
+    const [showOverlay, setShowOverlay] = useState(false)
 
-    const { wahines, portraits, posters, baseUrlVideo } = data
+    const { wahines, haerengaKorero, portraits, posters, baseUrlVideo } = data
 
     const taranakiLatLng = [174.063848, -39.296128]
 
@@ -163,6 +165,7 @@ export default function Map({ data }) {
                 handleNextClick={handleNextClick}
                 handlePrevClick={handlePrevClick}
             />
+            {showOverlay && <MapOverlay haerengaKorero={haerengaKorero} />}
             <ReactMapGL
                 {...viewport}
                 reuseMaps
@@ -170,6 +173,7 @@ export default function Map({ data }) {
                 width="100%"
                 height="100%"
                 position="relative"
+                localFontFamily={'SohneBreit_Buch'}
                 mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
                 onMove={(event) => setViewport(event.viewport)}
                 mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck?optimize=true"
