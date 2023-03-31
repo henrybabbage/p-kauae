@@ -21,6 +21,7 @@ import WahineModal from './WahineModal'
 export default function Map({ data }) {
     const mapRef = useRef(null)
     const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
+    const [mapIsVisible, setMapIsVisible] = useState(false)
     const [viewport, setViewport] = useState(() => {
         const { wahines } = data
         const wahineLatLngs = wahines.map((wahine) => ({
@@ -168,7 +169,14 @@ export default function Map({ data }) {
             >
                 <MapOverlay haerengaKorero={haerengaKorero} />
             </Flex>
-            <Box h="100vh" w="100vw" cursor="auto" position="relative">
+            <Box
+                h="100vh"
+                w="100vw"
+                cursor="auto"
+                position="relative"
+                opacity={mapIsVisible ? 1 : 0}
+                transition={'opacity 2s'}
+            >
                 <WahineModal
                     isOpen={isOpen}
                     onOpen={onOpen}
@@ -195,6 +203,7 @@ export default function Map({ data }) {
                     terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
                     interactiveLayerIds={['wahine']}
                     onClick={onClick}
+                    onLoad={(e) => setMapIsVisible(true)}
                 >
                     <Box
                         position="absolute"
