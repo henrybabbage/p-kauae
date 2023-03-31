@@ -1,11 +1,11 @@
-import { Box, Circle, CircularProgress, IconButton } from '@chakra-ui/react'
+import { Box, Circle, CircularProgress } from '@chakra-ui/react'
 import { LogoIcon } from './LogoIcon'
 
-export default function MapProgress() {
+export default function MapProgress({ value }) {
     return (
         <Box>
             <CircularProgress
-                value={10}
+                value={value}
                 size="80px"
                 color="pink.200"
                 position="relative"
@@ -23,16 +23,7 @@ export default function MapProgress() {
                     left="50%"
                     transform="translate(-50%, -50%)"
                 >
-                    <IconButton
-                        aria-label="Tu Tama Wahine o Taranaki logo"
-                        isRound
-                        bg="transparent"
-                        position="absolute"
-                        top="50%"
-                        left="50%"
-                        transform="translate(-50%, -50%)"
-                        icon={<LogoIcon boxSize={12} color="pink.200" />}
-                    />
+                    <LogoIcon boxSize={12} color="pink.200" />
                 </Circle>
             </CircularProgress>
         </Box>

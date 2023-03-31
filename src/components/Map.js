@@ -1,3 +1,4 @@
+import { useCountdown } from '@/hooks/useCountdown'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { Box, HStack, IconButton, Text, useDisclosure } from '@chakra-ui/react'
 import { rhumbBearing } from '@turf/turf'
@@ -34,6 +35,8 @@ export default function Map({ data }) {
         }
     })
     const [mapData, setMapData] = useState(null)
+    const [timerStarted, setTimerStarted] = useState(null)
+    const [progress] = useCountdown(0.05, timerStarted)
 
     const { wahines, portraits, posters, baseUrlVideo } = data
 
@@ -88,6 +91,7 @@ export default function Map({ data }) {
                 ? 0
                 : selectedWahineIndex + 1
         setSelectedWahineIndex(() => {
+            setTimerStarted(!timerStarted)
             setTimeout(() => {
                 onOpen()
             }, 3200)
@@ -107,6 +111,7 @@ export default function Map({ data }) {
                 ? wahines.length - 1
                 : selectedWahineIndex - 1
         setSelectedWahineIndex(() => {
+            setTimerStarted(!timerStarted)
             setTimeout(() => {
                 onOpen()
             }, 3200)
@@ -126,6 +131,7 @@ export default function Map({ data }) {
             const clickedWahine = wahines.find((wahine) => wahine.id === id)
             clickedWahine &&
                 setSelectedWahineIndex(() => {
+                    setTimerStarted(!timerStarted)
                     setTimeout(() => {
                         onOpen()
                     }, 3200)
@@ -257,7 +263,7 @@ export default function Map({ data }) {
                 </Text>
             </HStack>
             <Box position="fixed" right="6" bottom="6">
-                <MapProgress />
+                <MapProgress value={progress} />
             </Box>
         </Box>
     )
