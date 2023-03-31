@@ -95,7 +95,7 @@ export default function Home({
                                 <LandingBanner />
                             </Flex>
                             <Flex direction="column">
-                                <Link href="/#video">
+                                <Link href="/#video" scroll={false}>
                                     <Button
                                         variant="scrollPrompt"
                                         position="absolute"
@@ -143,7 +143,7 @@ export default function Home({
                                     baseUrlVideo={baseUrlVideo}
                                     videoKorero={videoKorero}
                                     videoTitle={videoTitle}
-                                    alt="Pūkauae Exhibition Opening 11th December 2019"
+                                    alt="Pūkauae exhibition opening 11th December 2019"
                                     autoplay={false}
                                     controls={true}
                                     muted={false}
