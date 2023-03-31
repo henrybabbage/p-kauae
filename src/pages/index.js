@@ -97,7 +97,7 @@ export default function Home({
                             <Flex direction="column">
                                 <Link href="/#video" scroll={false}>
                                     <Button
-                                        variant="scrollPrompt"
+                                        variant="prompt"
                                         position="absolute"
                                         bottom="150"
                                         right="150"

@@ -15,7 +15,9 @@ const callToAction = defineStyle({
     transition: 'transform 0.15s ease-out',
     _hover: {
         textDecoration: 'none',
-        color: 'pink'
+        textColor: 'pink',
+        transitionDuration: '0.5s',
+        transitionTimingFunction: 'ease-out'
     }
 })
 
@@ -34,11 +36,13 @@ const mapLabel = defineStyle({
     transition: 'transform 0.15s ease-out',
     _hover: {
         textDecoration: 'none',
-        color: 'pink'
+        textColor: 'pink',
+        transitionDuration: '0.5s',
+        transitionTimingFunction: 'ease-out'
     }
 })
 
-const scrollPrompt = defineStyle({
+const prompt = defineStyle({
     border: 'none',
     borderRadius: 0,
     padding: 0,
@@ -53,10 +57,12 @@ const scrollPrompt = defineStyle({
     transition: 'transform 0.15s ease-out',
     _hover: {
         textDecoration: 'none',
-        color: 'pink'
+        textColor: 'pink',
+        transitionDuration: '0.5s',
+        transitionTimingFunction: 'ease-out'
     }
 })
 
 export const buttonTheme = defineStyleConfig({
-    variants: { callToAction, mapLabel, scrollPrompt }
+    variants: { callToAction, mapLabel, prompt }
 })
