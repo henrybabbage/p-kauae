@@ -23,6 +23,7 @@ export async function getStaticProps() {
     const objectData = JSON.parse(jsonData)
 
     const wahines = objectData.wahine
+    const haerengaKorero = objectData.tu_tama_korero.haerenga_korero
     const baseUrl = objectData.whakaahua_s3_bucket
     const baseUrlVideo = objectData.kiriata_cloudfront
 
@@ -68,6 +69,7 @@ export async function getStaticProps() {
     return {
         props: {
             wahines,
+            haerengaKorero,
             portraits,
             posters,
             baseUrlVideo: baseUrlVideo

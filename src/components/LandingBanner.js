@@ -1,6 +1,5 @@
 import { Heading } from '@chakra-ui/react'
 import { MotionBox } from './MotionBox'
-import ScrollPrompt from './ScrollPrompt'
 
 const textAnimation = {
     hidden: {

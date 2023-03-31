@@ -44,27 +44,6 @@ export default function App({ Component, pageProps }) {
         }
     }, [])
 
-    // The handler to smoothly scroll the element into view
-    const handleExitComplete = () => {
-        if (typeof window !== 'undefined') {
-            // Get the hash from the url
-            const hashId = window.location.hash
-
-            if (hashId) {
-                // Use the hash to find the first element with that id
-                const element = document.querySelector(hashId)
-
-                if (element) {
-                    element.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start',
-                        inline: 'nearest'
-                    })
-                }
-            }
-        }
-    }
-
     return (
         <>
             <Head>
@@ -94,7 +73,9 @@ export default function App({ Component, pageProps }) {
                 <AnimatePresence
                     mode="wait"
                     initial={true}
-                    onExitComplete={handleExitComplete}
+                    onExitComplete={() => {
+                        window.scrollTo(0, 0)
+                    }}
                 >
                     <Header />
                     {loading ? (

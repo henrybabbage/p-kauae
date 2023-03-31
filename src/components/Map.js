@@ -1,11 +1,21 @@
+import { useCountdown } from '@/hooks/useCountdown'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
-import { Box, HStack, IconButton, Text, useDisclosure } from '@chakra-ui/react'
+import {
+    Box,
+    Flex,
+    HStack,
+    IconButton,
+    Text,
+    useDisclosure
+} from '@chakra-ui/react'
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
+import MapOverlay from './MapOverlay'
+import MapProgress from './MapProgress'
 import WahineModal from './WahineModal'
 
 export default function Map({ data }) {
@@ -33,8 +43,10 @@ export default function Map({ data }) {
         }
     })
     const [mapData, setMapData] = useState(null)
+    const [timerStarted, setTimerStarted] = useState(null)
+    const [progress] = useCountdown(0.05, timerStarted)
 
-    const { wahines, portraits, posters, baseUrlVideo } = data
+    const { wahines, haerengaKorero, portraits, posters, baseUrlVideo } = data
 
     const taranakiLatLng = [174.063848, -39.296128]
 
@@ -87,6 +99,7 @@ export default function Map({ data }) {
                 ? 0
                 : selectedWahineIndex + 1
         setSelectedWahineIndex(() => {
+            setTimerStarted(!timerStarted)
             setTimeout(() => {
                 onOpen()
             }, 3200)
@@ -106,6 +119,7 @@ export default function Map({ data }) {
                 ? wahines.length - 1
                 : selectedWahineIndex - 1
         setSelectedWahineIndex(() => {
+            setTimerStarted(!timerStarted)
             setTimeout(() => {
                 onOpen()
             }, 3200)
@@ -125,6 +139,7 @@ export default function Map({ data }) {
             const clickedWahine = wahines.find((wahine) => wahine.id === id)
             clickedWahine &&
                 setSelectedWahineIndex(() => {
+                    setTimerStarted(!timerStarted)
                     setTimeout(() => {
                         onOpen()
                     }, 3200)
@@ -143,118 +158,139 @@ export default function Map({ data }) {
     }
 
     return (
-        <Box h="100vh" w="100vw" cursor="auto" position="relative">
-            <WahineModal
-                isOpen={isOpen}
-                onOpen={onOpen}
-                onClose={onClose}
-                wahines={wahines}
-                images={portraits}
-                covers={posters}
-                baseUrlVideo={baseUrlVideo}
-                selectedWahineIndex={selectedWahineIndex}
-                handleNextClick={handleNextClick}
-                handlePrevClick={handlePrevClick}
-            />
-            <ReactMapGL
-                {...viewport}
-                reuseMaps
-                ref={mapRef}
-                width="100%"
-                height="100%"
-                position="relative"
-                mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
-                onMove={(event) => setViewport(event.viewport)}
-                mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck?optimize=true"
-                terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
-                interactiveLayerIds={['wahine']}
-                onClick={onClick}
+        <>
+            <Flex
+                position="absolute"
+                width="100vw"
+                height="100vh"
+                justifyContent="center"
+                alignItems="center"
             >
-                <Box
-                    position="absolute"
-                    left="1rem"
-                    top="50%"
-                    transform="translateY(-50%)"
+                <MapOverlay haerengaKorero={haerengaKorero} />
+            </Flex>
+            <Box h="100vh" w="100vw" cursor="auto" position="relative">
+                <WahineModal
+                    isOpen={isOpen}
+                    onOpen={onOpen}
+                    onClose={onClose}
+                    wahines={wahines}
+                    images={portraits}
+                    covers={posters}
+                    baseUrlVideo={baseUrlVideo}
+                    selectedWahineIndex={selectedWahineIndex}
+                    handleNextClick={handleNextClick}
+                    handlePrevClick={handlePrevClick}
+                />
+                <ReactMapGL
+                    {...viewport}
+                    reuseMaps
+                    ref={mapRef}
+                    width="100%"
+                    height="100%"
+                    position="relative"
+                    localFontFamily={'SohneBreit_Buch'}
+                    mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
+                    onMove={(event) => setViewport(event.viewport)}
+                    mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck?optimize=true"
+                    terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
+                    interactiveLayerIds={['wahine']}
+                    onClick={onClick}
                 >
-                    <IconButton
-                        aria-label="Previous Wahine"
-                        icon={<ChevronLeftIcon color="black" />}
-                        onClick={handlePrevClick}
-                        isRound
-                        mr={2}
-                    />
+                    <Box
+                        position="absolute"
+                        left="1rem"
+                        top="50%"
+                        transform="translateY(-50%)"
+                    >
+                        <IconButton
+                            aria-label="Previous Wahine"
+                            icon={<ChevronLeftIcon color="black" />}
+                            onClick={handlePrevClick}
+                            isRound
+                            mr={2}
+                        />
+                    </Box>
+                    <Box
+                        position="absolute"
+                        right="1rem"
+                        top="50%"
+                        transform="translateY(-50%)"
+                    >
+                        <IconButton
+                            aria-label="Next Wahine"
+                            icon={<ChevronRightIcon color="black" />}
+                            onClick={handleNextClick}
+                            isRound
+                            ml={2}
+                        />
+                    </Box>
+                    {mapData && (
+                        <Source
+                            id="taranaki-data"
+                            type="geojson"
+                            data={mapData}
+                            tolerance={0}
+                        />
+                    )}
+                    <Layer source="taranaki-data" {...layerStyle} />
+                </ReactMapGL>
+                <Box id="local-time" position="fixed" left="6" bottom="6">
+                    <DigitalClock />
                 </Box>
-                <Box
-                    position="absolute"
-                    right="1rem"
-                    top="50%"
-                    transform="translateY(-50%)"
+                <HStack
+                    spacing="24px"
+                    position="fixed"
+                    z="20"
+                    bottom="6"
+                    left="32"
                 >
-                    <IconButton
-                        aria-label="Next Wahine"
-                        icon={<ChevronRightIcon color="black" />}
-                        onClick={handleNextClick}
-                        isRound
-                        ml={2}
-                    />
+                    <Text
+                        fontFamily="subheading"
+                        fontSize="14px"
+                        lineHeight="1"
+                        textAlign="left"
+                        color="white"
+                        pb="2"
+                    >
+                        {' • '}
+                    </Text>
+                    <Text
+                        id="month"
+                        fontFamily="subheading"
+                        fontSize="14px"
+                        lineHeight="1"
+                        textAlign="left"
+                        color="white"
+                        pb="2"
+                    >
+                        {'Paenga-whāwhā'}
+                    </Text>
+                    <Text
+                        fontFamily="subheading"
+                        fontSize="14px"
+                        lineHeight="1"
+                        textAlign="left"
+                        color="white"
+                        pb="2"
+                    >
+                        {' • '}
+                    </Text>
+                    <Text
+                        id="moon-phase"
+                        fontFamily="subheading"
+                        fontSize="14px"
+                        lineHeight="1"
+                        textAlign="left"
+                        color="white"
+                        pb="2"
+                    >
+                        {'Ohua'}
+                    </Text>
+                </HStack>
+                <Box position="fixed" right="6" bottom="6">
+                    <MapProgress value={progress} />
                 </Box>
-                {mapData && (
-                    <Source
-                        id="taranaki-data"
-                        type="geojson"
-                        data={mapData}
-                        tolerance={0}
-                    />
-                )}
-                <Layer source="taranaki-data" {...layerStyle} />
-            </ReactMapGL>
-            <Box id="local-time" position="fixed" left="6" bottom="6">
-                <DigitalClock />
             </Box>
-            <HStack spacing="24px" position="fixed" z="20" bottom="6" left="32">
-                <Text
-                    fontFamily="subheading"
-                    fontSize="14px"
-                    lineHeight="1"
-                    textAlign="left"
-                    color="white"
-                    pb="2"
-                >
-                    {' • '}
-                </Text>
-                <Text
-                    id="month"
-                    fontFamily="subheading"
-                    fontSize="14px"
-                    lineHeight="1"
-                    textAlign="left"
-                    color="white"
-                    pb="2"
-                >
-                    {'Paenga-whāwhā'}
-                </Text>
-                <Text
-                    fontFamily="subheading"
-                    fontSize="14px"
-                    lineHeight="1"
-                    textAlign="left"
-                    color="white"
-                    pb="2"
-                >
-                    {' • '}
-                </Text>
-                <Text
-                    id="moon-phase"
-                    fontFamily="subheading"
-                    fontSize="14px"
-                    lineHeight="1"
-                    textAlign="left"
-                    color="white"
-                    pb="2"
-                >
-                    {'Ohua'}
-                </Text>
-            </HStack>
-        </Box>
+        </>
     )
 }
