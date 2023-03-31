@@ -1,7 +1,8 @@
 import ChakraNextImage from '@/components/ChakraNextImage'
 import LandingBanner from '@/components/LandingBanner'
 import LandingVideo from '@/components/LandingVideo'
-
+import { MotionBox } from '@/components/MotionBox'
+import ScrollPrompt from '@/components/ScrollPrompt'
 import SmoothScroll from '@/components/SmoothScroll'
 import {
     Box,
@@ -66,7 +67,7 @@ export default function Home({
     const videoRef = useRef(null)
 
     const scrollToRef = (ref) => {
-        ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
 
     return (
@@ -94,17 +95,19 @@ export default function Home({
                                 <LandingBanner />
                             </Flex>
                             <Flex direction="column">
-                                <Button
-                                    variant="scrollPrompt"
-                                    position="absolute"
-                                    bottom="150"
-                                    right="150"
-                                    onClick={() => scrollToRef(videoRef)}
-                                >
-                                    <MotionBox>
-                                        <ScrollPrompt />
-                                    </MotionBox>
-                                </Button>
+                                <Link href="/#video">
+                                    <Button
+                                        variant="scrollPrompt"
+                                        position="absolute"
+                                        bottom="150"
+                                        right="150"
+                                        onClick={() => scrollToRef(videoRef)}
+                                    >
+                                        <MotionBox>
+                                            <ScrollPrompt />
+                                        </MotionBox>
+                                    </Button>
+                                </Link>
                             </Flex>
                         </GridItem>
                         <GridItem
@@ -120,11 +123,18 @@ export default function Home({
                                 height="50vh"
                             ></Flex>
                         </GridItem>
-                        <GridItem colStart={2} colEnd={12} pt="6" pb="6">
+                        <GridItem
+                            colStart={2}
+                            colEnd={12}
+                            pt="6"
+                            pb="6"
+                            h="100vh"
+                            ref={videoRef}
+                            id="video"
+                        >
                             <Box
-                                ref={videoRef}
                                 className="player"
-                                h={['auto', 'auto', 'auto', '100vh']}
+                                h={['auto', 'auto', 'auto', '100vh', '100vh']}
                                 w="100%"
                             >
                                 <LandingVideo
@@ -454,8 +464,6 @@ export default function Home({
     )
 }
 
-import { MotionBox } from '@/components/MotionBox'
-import ScrollPrompt from '@/components/ScrollPrompt'
 import fsPromises from 'fs/promises'
 import path from 'path'
 export async function getStaticProps() {
