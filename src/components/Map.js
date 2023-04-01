@@ -66,13 +66,15 @@ export default function Map({ data }) {
         setMapData(newMapData)
     }, [wahines])
 
+    let activeWahineId = selectedWahineIndex + 1
+
     const layerStyle = {
         id: 'wahine',
         type: 'symbol',
         source: 'taranaki-data',
         tolerance: 0,
         layout: {
-            'icon-image': 'diamond',
+            // 'icon-image': 'diamond',
             'icon-size': 0.35,
             'icon-allow-overlap': true,
             'text-optional': true,
@@ -89,7 +91,12 @@ export default function Map({ data }) {
                 'case',
                 ['boolean', ['feature-state', 'hover'], false],
                 '#f9abab',
-                '#ffffff'
+                [
+                    'case',
+                    ['==', ['get', 'id'], activeWahineId],
+                    '#f9abab',
+                    '#ffffff'
+                ]
             ]
         }
     }
@@ -167,31 +174,33 @@ export default function Map({ data }) {
     let hoveredStateId = null
 
     const onMapLoad = useCallback(() => {
-        mapRef.current.on('mousemove', 'wahine', (e) => {
-            if (e.features.length > 0) {
+        mapRef &&
+            mapRef.current.on('mousemove', 'wahine', (e) => {
+                if (e.features.length > 0) {
+                    if (hoveredStateId !== null) {
+                        mapRef.current.setFeatureState(
+                            { source: 'taranaki-data', id: hoveredStateId },
+                            { hover: false }
+                        )
+                    }
+                    // eslint-disable-next-line react-hooks/exhaustive-deps
+                    hoveredStateId = e.features[0].id
+                    mapRef.current.setFeatureState(
+                        { source: 'taranaki-data', id: hoveredStateId },
+                        { hover: true }
+                    )
+                }
+            })
+        mapRef &&
+            mapRef.current.on('mouseleave', 'wahine', () => {
                 if (hoveredStateId !== null) {
                     mapRef.current.setFeatureState(
                         { source: 'taranaki-data', id: hoveredStateId },
                         { hover: false }
                     )
                 }
-                // eslint-disable-next-line react-hooks/exhaustive-deps
-                hoveredStateId = e.features[0].id
-                mapRef.current.setFeatureState(
-                    { source: 'taranaki-data', id: hoveredStateId },
-                    { hover: true }
-                )
-            }
-        })
-        mapRef.current.on('mouseleave', 'wahine', () => {
-            if (hoveredStateId !== null) {
-                mapRef.current.setFeatureState(
-                    { source: 'taranaki-data', id: hoveredStateId },
-                    { hover: false }
-                )
-            }
-            hoveredStateId = null
-        })
+                hoveredStateId = null
+            })
     }, [])
 
     return (
