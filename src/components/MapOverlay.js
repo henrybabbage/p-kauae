@@ -12,7 +12,9 @@ export default function MapOverlay({ haerengaKorero }) {
             placeSelf="center"
             position="absolute"
             opacity={showOverlay ? 100 : 0}
-            transition="1s opacity ease-in-out"
+            transition="opacity ease-in-out"
+            transitionDuration="1s"
+            transitionProperty="10s"
         >
             <Flex direction="column" justifyContent="center" p="6">
                 <Text
