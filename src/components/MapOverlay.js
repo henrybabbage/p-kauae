@@ -16,7 +16,13 @@ export default function MapOverlay({ haerengaKorero }) {
             transitionDuration="1s"
             transitionProperty="10s"
         >
-            <Flex direction="column" justifyContent="center" p="6">
+            <Flex
+                direction="column"
+                justifyContent="center"
+                p="6"
+                w="100%"
+                h="auto"
+            >
                 <Text
                     as="h1"
                     fontFamily="subheading"
