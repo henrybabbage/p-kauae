@@ -175,6 +175,7 @@ export default function Map({ data }) {
                         { hover: false }
                     )
                 }
+                // eslint-disable-next-line react-hooks/exhaustive-deps
                 hoveredStateId = e.features[0].id
                 mapRef.current.setFeatureState(
                     { source: 'taranaki-data', id: hoveredStateId },
