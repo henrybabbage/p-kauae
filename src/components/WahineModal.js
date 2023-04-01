@@ -52,9 +52,12 @@ const WahineModal = ({
         }
     }
 
+    const modalRef = useRef(null)
     const playerRef = useRef(null)
 
-    const { scrollYProgress } = useScroll()
+    const { scrollYProgress } = useScroll({
+        target: modalRef
+    })
     const opacity = useTransform(scrollYProgress, [0, 1], [1, 0])
 
     return (
@@ -149,6 +152,7 @@ const WahineModal = ({
                                 pb={6}
                                 h="100%"
                                 minH="60vh"
+                                ref={modalRef}
                             >
                                 <Flex direction="column">
                                     <ZoomImage
