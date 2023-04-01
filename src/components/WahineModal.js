@@ -147,8 +147,8 @@ const WahineModal = ({
                                 colEnd={7}
                                 pt={6}
                                 pb={6}
-                                h="auto"
-                                // minH="84vh"
+                                h="100%"
+                                minH="60vh"
                             >
                                 <Flex direction="column">
                                     <ZoomImage
@@ -175,7 +175,7 @@ const WahineModal = ({
                                 pt={6}
                                 pb={6}
                                 h="auto"
-                                // minH="84vh"
+                                minH="60vh"
                             >
                                 <Text
                                     fontSize="18px"
