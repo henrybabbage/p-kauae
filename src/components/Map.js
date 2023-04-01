@@ -11,7 +11,7 @@ import {
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
 import MapOverlay from './MapOverlay'
@@ -84,7 +84,13 @@ export default function Map({ data }) {
         },
         paint: {
             'icon-color': '#ffffff',
-            'text-color': '#ffffff'
+            // 'text-color': '#ffffff',
+            'text-color': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                '#f9abab',
+                '#ffffff'
+            ]
         }
     }
 
@@ -158,6 +164,35 @@ export default function Map({ data }) {
         }
     }
 
+    let hoveredStateId = null
+
+    const onMapLoad = useCallback(() => {
+        mapRef.current.on('mousemove', 'wahine', (e) => {
+            if (e.features.length > 0) {
+                if (hoveredStateId !== null) {
+                    mapRef.current.setFeatureState(
+                        { source: 'taranaki-data', id: hoveredStateId },
+                        { hover: false }
+                    )
+                }
+                hoveredStateId = e.features[0].id
+                mapRef.current.setFeatureState(
+                    { source: 'taranaki-data', id: hoveredStateId },
+                    { hover: true }
+                )
+            }
+        })
+        mapRef.current.on('mouseleave', 'wahine', () => {
+            if (hoveredStateId !== null) {
+                mapRef.current.setFeatureState(
+                    { source: 'taranaki-data', id: hoveredStateId },
+                    { hover: false }
+                )
+            }
+            hoveredStateId = null
+        })
+    }, [])
+
     return (
         <>
             <Flex
@@ -203,7 +238,9 @@ export default function Map({ data }) {
                     terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
                     interactiveLayerIds={['wahine']}
                     onClick={onClick}
-                    onLoad={(e) => setMapIsVisible(true)}
+                    onLoad={(e) => {
+                        setMapIsVisible(true), onMapLoad(e)
+                    }}
                 >
                     <Box
                         position="absolute"
@@ -239,6 +276,7 @@ export default function Map({ data }) {
                             type="geojson"
                             data={mapData}
                             tolerance={0}
+                            generateId={true}
                         />
                     )}
                     <Layer source="taranaki-data" {...layerStyle} />
