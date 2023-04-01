@@ -10,6 +10,7 @@ import dynamic from 'next/dynamic'
 import { useRef, useState } from 'react'
 import { PauseIcon } from './PauseIcon'
 import { PlayIcon } from './PlayIcon'
+import VideoCover from './VideoCover'
 import VideoOverlay from './VideoOverlay'
 
 const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
@@ -79,6 +80,7 @@ export default function LandingVideo({
                         show={showOverlay}
                         videoKorero={videoKorero}
                     />
+                    {/* <VideoCover /> */}
                     <Tooltip
                         label={
                             !isPlaying
