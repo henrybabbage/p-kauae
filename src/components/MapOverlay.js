@@ -1,8 +1,7 @@
-import { Button, Flex, Grid, Text } from '@chakra-ui/react'
-import { useState } from 'react'
+import { Box, Flex, Grid, Text } from '@chakra-ui/react'
+import Image from 'next/image'
 
-export default function MapOverlay({ haerengaKorero }) {
-    const [showOverlay, setShowOverlay] = useState(true)
+export default function MapOverlay({ haerengaKorero, mapIsVisible }) {
     return (
         <Grid
             bg="black"
@@ -11,45 +10,54 @@ export default function MapOverlay({ haerengaKorero }) {
             z="100"
             placeSelf="center"
             position="absolute"
-            opacity={showOverlay ? 100 : 0}
-            transition="opacity ease-in-out"
-            transitionDuration="1s"
-            transitionProperty="10s"
+            opacity={mapIsVisible ? 0 : 100}
+            transition="opacity ease-out"
+            transitionDuration="0.3s"
+            transitionDelay="1.5s"
         >
             <Flex
                 direction="column"
                 justifyContent="center"
+                alignItems="center"
                 p="6"
-                w="100%"
+                w="100vw"
                 h="auto"
             >
-                <Text
-                    as="h1"
-                    fontFamily="subheading"
-                    fontSize="22px"
-                    color="white"
-                    lineHeight="1.3"
-                    textAlign="center"
-                    textColor="white"
+                <Box
+                    pb="12"
+                    opacity={mapIsVisible ? 0 : 100}
+                    transition="opacity ease-out"
+                    transitionDuration="0.3s"
                 >
-                    {haerengaKorero}
-                </Text>
-                <Button
-                    variant="prompt"
-                    pt="8"
-                    onClick={() => setShowOverlay(false)}
-                >
+                    <Image
+                        src="/images/water.jpeg"
+                        alt="Taranaki landscape"
+                        width="300"
+                        height="300"
+                        priority
+                        style={{
+                            objectFit: 'contain',
+                            objectPosition: 'center'
+                        }}
+                    />
+                </Box>
+                <Box w="300px">
                     <Text
-                        as="h2"
+                        as="h1"
                         fontFamily="subheading"
-                        fontSize="16px"
-                        lineHeight="1.36"
-                        textTransform="uppercase"
+                        fontSize="18px"
+                        color="white"
+                        lineHeight="1.3"
+                        textAlign="center"
                         textColor="white"
+                        textTransform="uppercase"
+                        opacity={mapIsVisible ? 0 : 100}
+                        transition="opacity ease-out"
+                        transitionDuration="0.3s"
                     >
-                        Click to enter
+                        {haerengaKorero}
                     </Text>
-                </Button>
+                </Box>
             </Flex>
         </Grid>
     )

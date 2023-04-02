@@ -15,7 +15,6 @@ import {
     Text
 } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
-import { useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import ModalVideo from './ModalVideo'
 import { MotionBox } from './MotionBox'
@@ -54,11 +53,6 @@ const WahineModal = ({
 
     const modalRef = useRef(null)
     const playerRef = useRef(null)
-
-    const { scrollYProgress } = useScroll({
-        target: modalRef
-    })
-    const opacity = useTransform(scrollYProgress, [0, 1], [1, 0])
 
     return (
         <Box id="modal">
@@ -285,7 +279,7 @@ const WahineModal = ({
                                 </Button>
                             </Box>
                             <Flex alignItems="center">
-                                <MotionBox animate={{ opacity: opacity }}>
+                                <MotionBox>
                                     <Text
                                         fontFamily="subheading"
                                         fontSize="16px"

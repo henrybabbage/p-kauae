@@ -6,7 +6,6 @@ import ScrollPrompt from '@/components/ScrollPrompt'
 import SmoothScroll from '@/components/SmoothScroll'
 import {
     Box,
-    Button,
     Flex,
     Grid,
     GridItem,
@@ -95,19 +94,15 @@ export default function Home({
                                 <LandingBanner />
                             </Flex>
                             <Flex direction="column">
-                                <Link href="/#video" scroll={false}>
-                                    <Button
-                                        variant="prompt"
-                                        position="absolute"
-                                        bottom="150"
-                                        right="150"
-                                        onClick={() => scrollToRef(videoRef)}
-                                    >
-                                        <MotionBox>
-                                            <ScrollPrompt />
-                                        </MotionBox>
-                                    </Button>
-                                </Link>
+                                <Box
+                                    position="absolute"
+                                    bottom="150"
+                                    right="150"
+                                >
+                                    <MotionBox>
+                                        <ScrollPrompt />
+                                    </MotionBox>
+                                </Box>
                             </Flex>
                         </GridItem>
                         <GridItem
@@ -120,7 +115,7 @@ export default function Home({
                                 pt="12"
                                 justify="center"
                                 flexDirection={'column'}
-                                height="50vh"
+                                height="25vh"
                             ></Flex>
                         </GridItem>
                         <GridItem
@@ -335,20 +330,15 @@ export default function Home({
                     </Grid>
                 </Box>
                 <Box id="photographer" bg="grey.900">
-                    <Grid
-                        templateColumns="repeat(12, 1fr)"
+                    <Flex
+                        direction="row"
+                        justifyContent="space-between"
                         h="100vh"
                         maxH="100vh"
-                        px={['6', '6', '6', '0', '0']}
+                        px={['6', '6', '6', '6', '6']}
                     >
-                        <GridItem
-                            colStart={1}
-                            colEnd={[13, 13, 9, 9]}
-                            marginTop="auto"
-                            px="6"
-                        >
+                        <Box marginTop="auto" w="80vw" h="55vh">
                             <Flex
-                                h="55vh"
                                 flexDirection="column"
                                 alignItems="start"
                                 textAlign="left"
@@ -429,35 +419,29 @@ export default function Home({
                                     </Text>
                                 </Link>
                             </Flex>
-                        </GridItem>
-                        <GridItem
-                            colStart={[1, 1, 1, 9, 9]}
-                            colEnd={[13, 13, 13, 13, 13]}
+                        </Box>
+                        <Box
                             marginTop="auto"
                             pb={['10', '10', '10', '0', '0']}
+                            h="50vh"
+                            w="32vw"
                         >
-                            <Flex
-                                px="8"
-                                pt="4"
-                                pb="10"
-                                flexDirection="column"
-                                flexFlow="column"
-                                alignItems="baseline"
-                            >
+                            <Flex direction="column" alignItems="baseline">
                                 <ChakraNextImage
                                     {...portraitImg}
                                     src={portrait}
                                     alt="Tania Niwa"
-                                    width={720}
-                                    height={648}
+                                    // width={720}
+                                    // height={648}
+                                    fill
                                     blurhash={portraitBlurhash}
                                     sizes={
                                         '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
                                     }
                                 />
                             </Flex>
-                        </GridItem>
-                    </Grid>
+                        </Box>
+                    </Flex>
                 </Box>
             </SmoothScroll>
         </Box>

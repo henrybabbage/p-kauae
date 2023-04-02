@@ -9,7 +9,7 @@ import Head from 'next/head'
 import { Router, useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
-export const siteTitle = 'Tū Tama Wāhine o Taranaki'
+export const siteTitle = 'Pūkauae'
 
 export default function App({ Component, pageProps }) {
     const { asPath } = useRouter()
@@ -33,16 +33,16 @@ export default function App({ Component, pageProps }) {
         }
     }, [])
 
-    useEffect(() => {
-        const handleContextMenu = (e) => {
-            // prevent the right-click menu from appearing
-            e.preventDefault()
-        }
-        document.addEventListener('contextmenu', handleContextMenu)
-        return () => {
-            document.removeEventListener('contextmenu', handleContextMenu)
-        }
-    }, [])
+    // useEffect(() => {
+    //     const handleContextMenu = (e) => {
+    //         // prevent the right-click menu from appearing
+    //         e.preventDefault()
+    //     }
+    //     document.addEventListener('contextmenu', handleContextMenu)
+    //     return () => {
+    //         document.removeEventListener('contextmenu', handleContextMenu)
+    //     }
+    // }, [])
 
     return (
         <>
@@ -71,7 +71,7 @@ export default function App({ Component, pageProps }) {
             <ChakraProvider theme={theme}>
                 <Fonts />
                 <AnimatePresence
-                    mode="wait"
+                    mode="sync"
                     initial={true}
                     onExitComplete={() => {
                         window.scrollTo(0, 0)

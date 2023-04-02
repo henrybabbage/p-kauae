@@ -13,7 +13,7 @@ export default function VideoCover() {
                 overflow="hidden"
             >
                 <Image
-                    src="/images/video.jpg"
+                    src="/images/duotone.jpg"
                     alt="video preview image"
                     width="1200"
                     height="592"

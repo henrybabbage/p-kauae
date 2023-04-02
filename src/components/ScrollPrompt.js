@@ -5,19 +5,19 @@ export default function ScrollPrompt() {
     return (
         <MotionBox
             position="absolute"
-            cursor="pointer"
+            cursor="auto"
             whileHover={{
                 scale: 1.1,
                 transition: {
                     duration: 0.2
                 }
             }}
-            whileTap={{
-                scale: 1.3,
-                transition: {
-                    duration: 0.2
-                }
-            }}
+            // whileTap={{
+            //     scale: 1.3,
+            //     transition: {
+            //         duration: 0.2
+            //     }
+            // }}
         >
             <MotionBox
                 initial={{ scale: 0 }}
