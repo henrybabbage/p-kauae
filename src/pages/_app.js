@@ -9,7 +9,7 @@ import Head from 'next/head'
 import { Router, useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
-export const siteTitle = 'Tū Tama Wāhine o Taranaki'
+export const siteTitle = 'Pūkauae'
 
 export default function App({ Component, pageProps }) {
     const { asPath } = useRouter()

@@ -10,7 +10,7 @@ export default function MapOverlay({ haerengaKorero }) {
             h="100vh"
             z="100"
             placeSelf="center"
-            position="absolute"
+            position="relative"
             opacity={showOverlay ? 100 : 0}
             transition="opacity ease-in-out"
             transitionDuration="1s"
@@ -20,7 +20,7 @@ export default function MapOverlay({ haerengaKorero }) {
                 direction="column"
                 justifyContent="center"
                 p="6"
-                w="100%"
+                w="100vw"
                 h="auto"
             >
                 <Text
