@@ -1,4 +1,3 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
 import { useCountdown } from '@/hooks/useCountdown'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import {
@@ -12,6 +11,7 @@ import {
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
 import MapOverlay from './MapOverlay'
@@ -37,12 +37,7 @@ export default function Map({ data }) {
             longitude: randomStartPoint.lng,
             bearing: 90,
             pitch: 70,
-            zoom: 12,
-            scrollZoom: false,
-            boxZoom: false,
-            doubleClickZoom: false,
-            dragRotate: false,
-            dragPan: false
+            zoom: 12
         }
     })
     const [mapData, setMapData] = useState(null)
@@ -251,6 +246,11 @@ export default function Map({ data }) {
                     ref={mapRef}
                     width="100%"
                     height="100%"
+                    scrollZoom={false}
+                    boxZoom={false}
+                    doubleClickZoom={false}
+                    dragRotate={false}
+                    dragPan={false}
                     position="relative"
                     localFontFamily={'SohneBreit_Buch'}
                     mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}

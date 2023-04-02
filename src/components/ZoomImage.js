@@ -22,8 +22,9 @@ export default function ZoomImage(props) {
             justifyContent="center"
             bg="grey.900"
             w="100%"
+            h="100%"
         >
-            <Box position="relative">
+            <Box position="relative" w="100%" h="100%">
                 <Zoom
                     zoomMargin={45}
                     ZoomContent={(zoomProps) => (

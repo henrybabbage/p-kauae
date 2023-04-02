@@ -146,6 +146,7 @@ const WahineModal = ({
                                 pb={6}
                                 h="100%"
                                 minH="60vh"
+                                w="48vw"
                                 ref={modalRef}
                             >
                                 <Flex direction="column">
