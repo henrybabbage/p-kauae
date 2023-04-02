@@ -34,7 +34,11 @@ export default function Home({
         p: (props) => {
             const { children } = props
             return (
-                <Text fontSize={'36px'} lineHeight={'1.36'} color="white">
+                <Text
+                    fontSize={['30px', '30px', '30px', '36px', '36px']}
+                    lineHeight={['1.36']}
+                    color="white"
+                >
                     {children}
                 </Text>
             )
@@ -45,11 +49,11 @@ export default function Home({
                 <Box
                     as="blockquote"
                     color="pink.200"
-                    my="78px"
-                    fontSize={'72px'}
-                    fontFamily={'heading'}
-                    lineHeight={'1'}
-                    textAlign={'center'}
+                    my={['68px', '68px', '78px', '78px', '78px']}
+                    fontSize={['60px', '60px', '60px', '72px', '72px']}
+                    fontFamily="heading"
+                    lineHeight="1"
+                    textAlign="center"
                 >
                     {children}
                 </Box>
@@ -108,8 +112,8 @@ export default function Home({
                         <GridItem
                             colStart={[1, 1, 1, 1, 4]}
                             colEnd={[13, 13, 13, 12, 12]}
-                            pt="6"
-                            pb="6"
+                            pt={['0', '0', '6', '6', '6']}
+                            pb={['0', '0', '6', '6', '6']}
                         >
                             <Flex
                                 pt="12"
@@ -121,8 +125,8 @@ export default function Home({
                         <GridItem
                             colStart={2}
                             colEnd={12}
-                            pt="6"
-                            pb="6"
+                            pt={['0', '0', '6', '6', '6']}
+                            pb={['0', '0', '6', '6', '6']}
                             h="100vh"
                             ref={videoRef}
                             id="video"
@@ -149,8 +153,8 @@ export default function Home({
                         <GridItem
                             colStart={[1, 1, 1, 1, 4]}
                             colEnd={[13, 13, 13, 12, 12]}
-                            pt="6"
-                            pb="6"
+                            pt={['2', '2', '6', '6', '6']}
+                            pb={['6', '6', '6', '6', '6']}
                         >
                             <Flex
                                 justify="center"
@@ -161,8 +165,8 @@ export default function Home({
                                     as="h2"
                                     fontFamily="heading"
                                     fontSize={[
-                                        '36px',
-                                        '36px',
+                                        '30px',
+                                        '30px',
                                         '46px',
                                         '46',
                                         '84px'
@@ -170,7 +174,7 @@ export default function Home({
                                     lineHeight="1.36"
                                     textAlign="left"
                                     color="pink.200"
-                                    pb="10"
+                                    pb={['6', '6', '10', '10', '10']}
                                 >
                                     Acknowledgements
                                 </Heading>
@@ -185,31 +189,49 @@ export default function Home({
                         <GridItem
                             colStart={[1, 1, 1, 4, 4]}
                             colEnd={[13, 13, 13, 8, 8]}
-                            pt="6"
-                            pb="6"
+                            pt={['2', '2', '6', '6', '6']}
+                            pb={['6', '6', '6', '6', '6']}
                         >
                             <Flex
                                 as="div"
                                 justify="center"
                                 flexDirection="column"
-                                height="100vh"
+                                height={[
+                                    '40vh',
+                                    '40vh',
+                                    '100vh',
+                                    '100vh',
+                                    '100vh'
+                                ]}
                                 lineHeight="1.36"
                             >
                                 <Heading
                                     as="h2"
                                     fontFamily="heading"
-                                    fontSize={['36px', '46px', '46', '84px']}
+                                    fontSize={[
+                                        '30px',
+                                        '30px',
+                                        '46',
+                                        '84px',
+                                        '84px'
+                                    ]}
                                     lineHeight="1.36"
                                     textAlign="left"
                                     color="pink.200"
                                     w="100vw"
-                                    pb="10"
+                                    pb={['2', '2', '10', '10', '10']}
                                 >
                                     A special thanks to
                                 </Heading>
                                 {leftColumn.map((name, index) => (
                                     <Text
-                                        fontSize="36px"
+                                        fontSize={[
+                                            '30px',
+                                            '30px',
+                                            '36px',
+                                            '36px',
+                                            '36px'
+                                        ]}
                                         lineHeight="1.36"
                                         textAlign="left"
                                         color="white"
@@ -223,14 +245,20 @@ export default function Home({
                         <GridItem
                             colStart={[1, 1, 1, 9, 9]}
                             colEnd={[13, 13, 13, 13, 13]}
-                            pt="6"
-                            pb="6"
+                            pt={['6', '6', '6', '6', '6']}
+                            pb={['36', '36', '36', '6', '6']}
                         >
                             <Flex
                                 as="div"
                                 justify="center"
                                 flexDirection="column"
-                                height="100vh"
+                                height={[
+                                    '40vh',
+                                    '40vh',
+                                    '100vh',
+                                    '100vh',
+                                    '100vh'
+                                ]}
                                 lineHeight="1.36"
                             >
                                 <Heading
@@ -241,14 +269,20 @@ export default function Home({
                                     textAlign="left"
                                     color="pink.200"
                                     w="100vw"
-                                    pb="10"
+                                    pb={['2', '2', '10', '10', '10']}
                                     visibility="hidden"
                                 >
                                     Heading space
                                 </Heading>
                                 {rightColumn.map((name, index) => (
                                     <Text
-                                        fontSize="36px"
+                                        fontSize={[
+                                            '30px',
+                                            '30px',
+                                            '36px',
+                                            '36px',
+                                            '36px'
+                                        ]}
                                         lineHeight="1.36"
                                         textAlign="left"
                                         color="white"
@@ -259,7 +293,11 @@ export default function Home({
                                 ))}
                             </Flex>
                         </GridItem>
-                        <GridItem colStart={4} colEnd={12} pt="16">
+                        <GridItem
+                            colStart={[1, 1, 1, 4, 4]}
+                            colEnd={[13, 13, 13, 12, 12]}
+                            pt={['16', '16', '16', '16', '16']}
+                        >
                             <ReactMarkdown
                                 remarkPlugins={[remarkBreaks]}
                                 components={ChakraUIRenderer(markdownTheme)}
@@ -267,7 +305,11 @@ export default function Home({
                                 skipHtml
                             />
                         </GridItem>
-                        <GridItem colStart={4} colEnd={12} pt="16">
+                        <GridItem
+                            colStart={[1, 1, 1, 4, 4]}
+                            colEnd={[13, 13, 13, 12, 12]}
+                            pt={['6', '6', '6', '16', '16']}
+                        >
                             <ReactMarkdown
                                 remarkPlugins={[remarkBreaks]}
                                 components={ChakraUIRenderer(markdownTheme)}
@@ -277,7 +319,11 @@ export default function Home({
                                 skipHtml
                             />
                         </GridItem>
-                        <GridItem colStart={4} colEnd={12} pt="16">
+                        <GridItem
+                            colStart={[1, 1, 1, 4, 4]}
+                            colEnd={[13, 13, 13, 12, 12]}
+                            pt={['6', '6', '6', '16', '16']}
+                        >
                             <ReactMarkdown
                                 remarkPlugins={[remarkBreaks]}
                                 components={ChakraUIRenderer(markdownTheme)}
@@ -285,12 +331,22 @@ export default function Home({
                                 skipHtml
                             />
                         </GridItem>
-                        <GridItem colStart={2} colEnd={12} pt="16">
+                        <GridItem
+                            colStart={[1, 1, 1, 2, 2]}
+                            colEnd={[13, 13, 13, 12, 12]}
+                            pt={['6', '6', '6', '16', '16']}
+                        >
                             <Flex justifyContent="center">
                                 <Heading
                                     as="h2"
                                     fontFamily="subheading"
-                                    fontSize={['36px', '46px', '56', '84px']}
+                                    fontSize={[
+                                        '40px',
+                                        '48px',
+                                        '48px',
+                                        '84px',
+                                        '84px'
+                                    ]}
                                     lineHeight="1"
                                     textAlign="center"
                                     color="pink.200"
@@ -302,9 +358,9 @@ export default function Home({
                             </Flex>
                         </GridItem>
                         <GridItem
-                            colStart={4}
-                            colEnd={12}
-                            pt="16"
+                            colStart={[1, 1, 1, 4, 4]}
+                            colEnd={[13, 13, 13, 12, 12]}
+                            pt={['6', '6', '6', '16', '16']}
                             whiteSpace="pre-line"
                         >
                             <ReactMarkdown
@@ -315,9 +371,9 @@ export default function Home({
                             />
                         </GridItem>
                         <GridItem
-                            colStart={4}
-                            colEnd={12}
-                            pt="16"
+                            colStart={[1, 1, 1, 4, 4]}
+                            colEnd={[13, 13, 13, 12, 12]}
+                            pt={['6', '6', '6', '16', '16']}
                             whiteSpace="pre-line"
                         >
                             <ReactMarkdown
@@ -329,17 +385,42 @@ export default function Home({
                         </GridItem>
                     </Grid>
                 </Box>
-                <Box id="photographer" bg="grey.900">
+                <Box
+                    id="photographer"
+                    bg="grey.900"
+                    pt={[24, 24, 24, null, null, null]}
+                >
                     <Flex
-                        direction="row"
-                        justifyContent="space-between"
+                        direction={[
+                            'column',
+                            'column',
+                            'column',
+                            'row',
+                            'row',
+                            'row'
+                        ]}
+                        justifyContent={[
+                            null,
+                            null,
+                            null,
+                            'space-between',
+                            'space-between',
+                            'space-between'
+                        ]}
                         h="100vh"
                         maxH="100vh"
                         px={['6', '6', '6', '6', '6']}
                     >
                         <Box marginTop="auto" w="80vw" h="55vh">
                             <Flex
-                                flexDirection="column"
+                                flexDirection={[
+                                    'column',
+                                    'column',
+                                    'column',
+                                    'column',
+                                    'column',
+                                    'column'
+                                ]}
                                 alignItems="start"
                                 textAlign="left"
                                 color="white"
@@ -348,6 +429,8 @@ export default function Home({
                                     direction={[
                                         'column',
                                         'column',
+                                        'column',
+                                        'row',
                                         'row',
                                         'row'
                                     ]}
@@ -424,9 +507,20 @@ export default function Home({
                             marginTop="auto"
                             pb={['10', '10', '10', '0', '0']}
                             h="50vh"
-                            w="32vw"
+                            w={['66vw', '66vw', '66vw', '32vw', '32vw', '32vw']}
                         >
-                            <Flex direction="column" alignItems="baseline">
+                            <Flex
+                                direction="column"
+                                alignItems="baseline"
+                                justifyContent={[
+                                    'flex-end',
+                                    'flex-end',
+                                    'flex-end',
+                                    null,
+                                    null,
+                                    null
+                                ]}
+                            >
                                 <ChakraNextImage
                                     {...portraitImg}
                                     src={portrait}
