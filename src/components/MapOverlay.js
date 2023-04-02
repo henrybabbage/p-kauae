@@ -9,7 +9,7 @@ export default function MapOverlay({ haerengaKorero, mapIsVisible }) {
             h="100vh"
             z="100"
             placeSelf="center"
-            position="relative"
+            position="absolute"
             opacity={mapIsVisible ? 0 : 100}
             transition="opacity ease-out"
             transitionDuration="0.3s"
@@ -41,21 +41,23 @@ export default function MapOverlay({ haerengaKorero, mapIsVisible }) {
                         }}
                     />
                 </Box>
-                <Text
-                    as="h1"
-                    fontFamily="subheading"
-                    fontSize="18px"
-                    color="white"
-                    lineHeight="1.3"
-                    textAlign="center"
-                    textColor="white"
-                    textTransform="uppercase"
-                    opacity={mapIsVisible ? 0 : 100}
-                    transition="opacity ease-out"
-                    transitionDuration="0.3s"
-                >
-                    {haerengaKorero}
-                </Text>
+                <Box w="300px">
+                    <Text
+                        as="h1"
+                        fontFamily="subheading"
+                        fontSize="18px"
+                        color="white"
+                        lineHeight="1.3"
+                        textAlign="center"
+                        textColor="white"
+                        textTransform="uppercase"
+                        opacity={mapIsVisible ? 0 : 100}
+                        transition="opacity ease-out"
+                        transitionDuration="0.3s"
+                    >
+                        {haerengaKorero}
+                    </Text>
+                </Box>
             </Flex>
         </Grid>
     )
