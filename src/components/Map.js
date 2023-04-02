@@ -22,6 +22,7 @@ export default function Map({ data }) {
     const mapRef = useRef(null)
     const timeOutRef = useRef(null)
     const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
+    const [modalOpenPending, setModalOpenPending] = useState(false)
     const [mapIsVisible, setMapIsVisible] = useState(false)
     const [viewport, setViewport] = useState(() => {
         const { wahines } = data
@@ -104,6 +105,15 @@ export default function Map({ data }) {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
+    function handleModalDelay() {
+        setModalOpenPending(true)
+        timeOutRef.current && clearTimeout(timeOutRef.current)
+        timeOutRef.current = setTimeout(() => {
+            setModalOpenPending(false)
+            onOpen()
+        }, 3200)
+    }
+
     function handleMapBearing(newLatlng) {
         return rhumbBearing(taranakiLatLng, newLatlng)
     }
@@ -115,10 +125,7 @@ export default function Map({ data }) {
                 : selectedWahineIndex + 1
 
         setSelectedWahineIndex(prevIndex)
-        timeOutRef.current && clearTimeout(timeOutRef.current)
-        timeOutRef.current = setTimeout(() => {
-            onOpen()
-        }, 3200)
+        handleModalDelay()
         mapRef.current.flyTo({
             center: wahines[prevIndex].wahi.ahuahanga,
             pitch: 70,
@@ -133,10 +140,7 @@ export default function Map({ data }) {
                 ? wahines.length - 1
                 : selectedWahineIndex - 1
         setSelectedWahineIndex(nextIndex)
-        timeOutRef.current && clearTimeout(timeOutRef.current)
-        timeOutRef.current = setTimeout(() => {
-            onOpen()
-        }, 3200)
+        handleModalDelay()
         mapRef.current.flyTo({
             center: wahines[nextIndex].wahi.ahuahanga,
             pitch: 70,
@@ -152,10 +156,7 @@ export default function Map({ data }) {
             //TODO - find index, do not subtract from id.
             if (clickedWahine) {
                 setSelectedWahineIndex(clickedWahine.id - 1)
-                timeOutRef.current && clearTimeout(timeOutRef.current)
-                timeOutRef.current = setTimeout(() => {
-                    onOpen()
-                }, 3200)
+                handleModalDelay()
             }
             mapRef.current.flyTo({
                 center: wahines[clickedWahine.id - 1].wahi.ahuahanga,
@@ -347,7 +348,7 @@ export default function Map({ data }) {
                     </Text>
                 </HStack>
                 <Box position="fixed" right="6" bottom="6">
-                    <MapProgress value={progress} />
+                    <MapProgress loading={modalOpenPending} />
                 </Box>
             </Box>
         </>
