@@ -12,6 +12,7 @@ import {
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
 import MapOverlay from './MapOverlay'
@@ -67,13 +68,15 @@ export default function Map({ data }) {
         setMapData(newMapData)
     }, [wahines])
 
+    let activeWahineId = selectedWahineIndex + 1
+
     const layerStyle = {
         id: 'wahine',
         type: 'symbol',
         source: 'taranaki-data',
         tolerance: 0,
         layout: {
-            'icon-image': 'diamond',
+            // 'icon-image': 'diamond',
             'icon-size': 0.35,
             'icon-allow-overlap': true,
             'text-optional': true,
@@ -85,7 +88,18 @@ export default function Map({ data }) {
         },
         paint: {
             'icon-color': '#ffffff',
-            'text-color': '#ffffff'
+            // 'text-color': '#ffffff',
+            'text-color': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                '#f9abab',
+                [
+                    'case',
+                    ['==', ['get', 'id'], activeWahineId],
+                    '#f9abab',
+                    '#ffffff'
+                ]
+            ]
         }
     }
 
@@ -156,6 +170,38 @@ export default function Map({ data }) {
         }
     }
 
+    let hoveredStateId = null
+
+    const onMapLoad = useCallback(() => {
+        mapRef &&
+            mapRef.current.on('mousemove', 'wahine', (e) => {
+                if (e.features.length > 0) {
+                    if (hoveredStateId !== null) {
+                        mapRef.current.setFeatureState(
+                            { source: 'taranaki-data', id: hoveredStateId },
+                            { hover: false }
+                        )
+                    }
+                    // eslint-disable-next-line react-hooks/exhaustive-deps
+                    hoveredStateId = e.features[0].id
+                    mapRef.current.setFeatureState(
+                        { source: 'taranaki-data', id: hoveredStateId },
+                        { hover: true }
+                    )
+                }
+            })
+        mapRef &&
+            mapRef.current.on('mouseleave', 'wahine', () => {
+                if (hoveredStateId !== null) {
+                    mapRef.current.setFeatureState(
+                        { source: 'taranaki-data', id: hoveredStateId },
+                        { hover: false }
+                    )
+                }
+                hoveredStateId = null
+            })
+    }, [])
+
     return (
         <>
             <Flex
@@ -165,7 +211,10 @@ export default function Map({ data }) {
                 justifyContent="center"
                 alignItems="center"
             >
-                <MapOverlay haerengaKorero={haerengaKorero} />
+                <MapOverlay
+                    haerengaKorero={haerengaKorero}
+                    mapIsVisible={mapIsVisible}
+                />
             </Flex>
             <Box
                 h="100vh"
@@ -173,7 +222,8 @@ export default function Map({ data }) {
                 cursor="auto"
                 position="relative"
                 opacity={mapIsVisible ? 1 : 0}
-                transition={'opacity 2s'}
+                transition="opacity 0.5s ease-in"
+                transitionDelay="1s"
             >
                 <WahineModal
                     isOpen={isOpen}
@@ -201,7 +251,9 @@ export default function Map({ data }) {
                     terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
                     interactiveLayerIds={['wahine']}
                     onClick={onClick}
-                    onLoad={(e) => setMapIsVisible(true)}
+                    onLoad={(e) => {
+                        setMapIsVisible(true), onMapLoad(e)
+                    }}
                 >
                     <Box
                         position="absolute"
@@ -237,6 +289,7 @@ export default function Map({ data }) {
                             type="geojson"
                             data={mapData}
                             tolerance={0}
+                            generateId={true}
                         />
                     )}
                     <Layer source="taranaki-data" {...layerStyle} />

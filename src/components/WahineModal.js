@@ -17,6 +17,7 @@ import {
 import { format, parseISO } from 'date-fns'
 import { useRef } from 'react'
 import ModalVideo from './ModalVideo'
+import { MotionBox } from './MotionBox'
 import ZoomImage from './ZoomImage'
 
 const WahineModal = ({
@@ -50,6 +51,7 @@ const WahineModal = ({
         }
     }
 
+    const modalRef = useRef(null)
     const playerRef = useRef(null)
 
     return (
@@ -142,8 +144,9 @@ const WahineModal = ({
                                 colEnd={7}
                                 pt={6}
                                 pb={6}
-                                h="auto"
-                                // minH="84vh"
+                                h="100%"
+                                minH="60vh"
+                                ref={modalRef}
                             >
                                 <Flex direction="column">
                                     <ZoomImage
@@ -170,7 +173,7 @@ const WahineModal = ({
                                 pt={6}
                                 pb={6}
                                 h="auto"
-                                // minH="84vh"
+                                minH="60vh"
                             >
                                 <Text
                                     fontSize="18px"
@@ -276,16 +279,18 @@ const WahineModal = ({
                                 </Button>
                             </Box>
                             <Flex alignItems="center">
-                                <Text
-                                    fontFamily="subheading"
-                                    fontSize="16px"
-                                    lineHeight="1"
-                                    textAlign="center"
-                                    color="white"
-                                    textTransform="uppercase"
-                                >
-                                    Scroll down
-                                </Text>
+                                <MotionBox>
+                                    <Text
+                                        fontFamily="subheading"
+                                        fontSize="16px"
+                                        lineHeight="1"
+                                        textAlign="center"
+                                        color="white"
+                                        textTransform="uppercase"
+                                    >
+                                        Scroll down
+                                    </Text>
+                                </MotionBox>
                             </Flex>
                             <Box>
                                 <Button
