@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { useCountdown } from '@/hooks/useCountdown'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import {
@@ -11,7 +12,6 @@ import {
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
 import MapOverlay from './MapOverlay'
@@ -20,6 +20,7 @@ import WahineModal from './WahineModal'
 
 export default function Map({ data }) {
     const mapRef = useRef(null)
+    const timeOutRef = useRef(null)
     const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
     const [mapIsVisible, setMapIsVisible] = useState(false)
     const [viewport, setViewport] = useState(() => {
@@ -99,13 +100,12 @@ export default function Map({ data }) {
             selectedWahineIndex === wahines.length - 1
                 ? 0
                 : selectedWahineIndex + 1
-        setSelectedWahineIndex(() => {
-            setTimerStarted(!timerStarted)
-            setTimeout(() => {
-                onOpen()
-            }, 3200)
-            return prevIndex
-        })
+
+        setSelectedWahineIndex(prevIndex)
+        timeOutRef.current && clearTimeout(timeOutRef.current)
+        timeOutRef.current = setTimeout(() => {
+            onOpen()
+        }, 3200)
         mapRef.current.flyTo({
             center: wahines[prevIndex].wahi.ahuahanga,
             pitch: 70,
@@ -119,13 +119,11 @@ export default function Map({ data }) {
             selectedWahineIndex === 0
                 ? wahines.length - 1
                 : selectedWahineIndex - 1
-        setSelectedWahineIndex(() => {
-            setTimerStarted(!timerStarted)
-            setTimeout(() => {
-                onOpen()
-            }, 3200)
-            return nextIndex
-        })
+        setSelectedWahineIndex(nextIndex)
+        timeOutRef.current && clearTimeout(timeOutRef.current)
+        timeOutRef.current = setTimeout(() => {
+            onOpen()
+        }, 3200)
         mapRef.current.flyTo({
             center: wahines[nextIndex].wahi.ahuahanga,
             pitch: 70,
@@ -138,14 +136,14 @@ export default function Map({ data }) {
         if (e.features.length && e.features[0].properties) {
             const { id } = e.features[0].properties
             const clickedWahine = wahines.find((wahine) => wahine.id === id)
-            clickedWahine &&
-                setSelectedWahineIndex(() => {
-                    setTimerStarted(!timerStarted)
-                    setTimeout(() => {
-                        onOpen()
-                    }, 3200)
-                    return clickedWahine.id - 1
-                })
+            //TODO - find index, do not subtract from id.
+            if (clickedWahine) {
+                setSelectedWahineIndex(clickedWahine.id - 1)
+                timeOutRef.current && clearTimeout(timeOutRef.current)
+                timeOutRef.current = setTimeout(() => {
+                    onOpen()
+                }, 3200)
+            }
             mapRef.current.flyTo({
                 center: wahines[clickedWahine.id - 1].wahi.ahuahanga,
                 pitch: 70,
