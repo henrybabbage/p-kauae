@@ -20,7 +20,9 @@ import WahineModal from './WahineModal'
 
 export default function Map({ data }) {
     const mapRef = useRef(null)
+    const timeOutRef = useRef(null)
     const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
+    const [modalOpenPending, setModalOpenPending] = useState(false)
     const [mapIsVisible, setMapIsVisible] = useState(false)
     const [viewport, setViewport] = useState(() => {
         const { wahines } = data
@@ -35,12 +37,7 @@ export default function Map({ data }) {
             longitude: randomStartPoint.lng,
             bearing: 90,
             pitch: 70,
-            zoom: 12,
-            scrollZoom: false,
-            boxZoom: false,
-            doubleClickZoom: false,
-            dragRotate: false,
-            dragPan: false
+            zoom: 12
         }
     })
     const [mapData, setMapData] = useState(null)
@@ -104,6 +101,15 @@ export default function Map({ data }) {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
+    function handleModalDelay() {
+        setModalOpenPending(true)
+        timeOutRef.current && clearTimeout(timeOutRef.current)
+        timeOutRef.current = setTimeout(() => {
+            setModalOpenPending(false)
+            onOpen()
+        }, 3200)
+    }
+
     function handleMapBearing(newLatlng) {
         return rhumbBearing(taranakiLatLng, newLatlng)
     }
@@ -113,13 +119,9 @@ export default function Map({ data }) {
             selectedWahineIndex === wahines.length - 1
                 ? 0
                 : selectedWahineIndex + 1
-        setSelectedWahineIndex(() => {
-            setTimerStarted(!timerStarted)
-            setTimeout(() => {
-                onOpen()
-            }, 3200)
-            return prevIndex
-        })
+
+        setSelectedWahineIndex(prevIndex)
+        handleModalDelay()
         mapRef.current.flyTo({
             center: wahines[prevIndex].wahi.ahuahanga,
             pitch: 70,
@@ -133,13 +135,8 @@ export default function Map({ data }) {
             selectedWahineIndex === 0
                 ? wahines.length - 1
                 : selectedWahineIndex - 1
-        setSelectedWahineIndex(() => {
-            setTimerStarted(!timerStarted)
-            setTimeout(() => {
-                onOpen()
-            }, 3200)
-            return nextIndex
-        })
+        setSelectedWahineIndex(nextIndex)
+        handleModalDelay()
         mapRef.current.flyTo({
             center: wahines[nextIndex].wahi.ahuahanga,
             pitch: 70,
@@ -152,14 +149,11 @@ export default function Map({ data }) {
         if (e.features.length && e.features[0].properties) {
             const { id } = e.features[0].properties
             const clickedWahine = wahines.find((wahine) => wahine.id === id)
-            clickedWahine &&
-                setSelectedWahineIndex(() => {
-                    setTimerStarted(!timerStarted)
-                    setTimeout(() => {
-                        onOpen()
-                    }, 3200)
-                    return clickedWahine.id - 1
-                })
+            //TODO find index, do not subtract from id
+            if (clickedWahine) {
+                setSelectedWahineIndex(clickedWahine.id - 1)
+                handleModalDelay()
+            }
             mapRef.current.flyTo({
                 center: wahines[clickedWahine.id - 1].wahi.ahuahanga,
                 pitch: 70,
@@ -252,6 +246,11 @@ export default function Map({ data }) {
                     ref={mapRef}
                     width="100%"
                     height="100%"
+                    scrollZoom={false}
+                    boxZoom={false}
+                    doubleClickZoom={false}
+                    dragRotate={false}
+                    dragPan={false}
                     position="relative"
                     localFontFamily={'SohneBreit_Buch'}
                     mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
@@ -357,7 +356,11 @@ export default function Map({ data }) {
                     </Text>
                 </HStack>
                 <Box position="fixed" right="6" bottom="6">
-                    <MapProgress value={progress} showTimer={showTimer} />
+                    <MapProgress
+                        value={progress}
+                        showTimer={showTimer}
+                        loading={modalOpenPending}
+                    />
                 </Box>
             </Box>
         </>

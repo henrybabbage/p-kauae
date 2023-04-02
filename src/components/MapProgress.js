@@ -1,10 +1,10 @@
 import { Circle, Flex, Spinner } from '@chakra-ui/react'
 import { LogoIcon } from './LogoIcon'
 
-export default function MapProgress({ value, showTimer }) {
+export default function MapProgress({ loading }) {
     return (
         <Flex justifyContent="center" alignItems="center">
-            {showTimer && (
+            {loading && (
                 <Spinner
                     thickness="6px"
                     speed="3s"
@@ -14,16 +14,12 @@ export default function MapProgress({ value, showTimer }) {
                     position="absolute"
                 />
             )}
-            <Circle size="70px" bg="white" position="relative" />
             <Circle
                 size="70px"
                 bg="white"
-                position="absolute"
+                position="relative"
                 border="2px solid"
                 borderColor="white"
-                top="50%"
-                left="50%"
-                transform="translate(-50%, -50%)"
             >
                 <LogoIcon boxSize={14} color="pink.200" />
             </Circle>
