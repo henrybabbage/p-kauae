@@ -212,7 +212,10 @@ export default function Map({ data }) {
                 justifyContent="center"
                 alignItems="center"
             >
-                <MapOverlay haerengaKorero={haerengaKorero} />
+                <MapOverlay
+                    haerengaKorero={haerengaKorero}
+                    mapIsVisible={mapIsVisible}
+                />
             </Flex>
             <Box
                 h="100vh"
@@ -220,7 +223,8 @@ export default function Map({ data }) {
                 cursor="auto"
                 position="relative"
                 opacity={mapIsVisible ? 1 : 0}
-                transition={'opacity 2s'}
+                transition="opacity 0.5s ease-in"
+                transitionDelay="1s"
             >
                 <WahineModal
                     isOpen={isOpen}
