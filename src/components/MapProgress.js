@@ -11,30 +11,18 @@ export default function MapProgress({ loading }) {
                     emptyColor="white"
                     color="pink.200"
                     size="xxl"
+                    position="absolute"
                 />
             )}
-            {/* <CircularProgress
-                value={value}
-                size="80px"
-                color="pink.200"
-                position="relative"
-                thickness="8px"
-                trackColor="white"
-                z="50"
-            > */}
             <Circle
                 size="70px"
                 bg="white"
-                position="absolute"
+                position="relative"
                 border="2px solid"
                 borderColor="white"
-                top="50%"
-                left="50%"
-                transform="translate(-50%, -50%)"
             >
                 <LogoIcon boxSize={14} color="pink.200" />
             </Circle>
-            {/* </CircularProgress> */}
         </Flex>
     )
 }

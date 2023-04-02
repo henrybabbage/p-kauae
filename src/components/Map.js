@@ -47,6 +47,7 @@ export default function Map({ data }) {
     })
     const [mapData, setMapData] = useState(null)
     const [timerStarted, setTimerStarted] = useState(null)
+    const [showTimer, setShowTimer] = useState(null)
     const [progress] = useCountdown(0.05, timerStarted)
 
     const { wahines, haerengaKorero, portraits, posters, baseUrlVideo } = data
@@ -202,6 +203,13 @@ export default function Map({ data }) {
             })
     }, [])
 
+    useEffect(() => {
+        setShowTimer(true)
+        setTimeout(() => {
+            setShowTimer(false)
+        }, 3200)
+    }, [timerStarted])
+
     return (
         <>
             <Flex
@@ -348,7 +356,11 @@ export default function Map({ data }) {
                     </Text>
                 </HStack>
                 <Box position="fixed" right="6" bottom="6">
-                    <MapProgress loading={modalOpenPending} />
+                    <MapProgress
+                        value={progress}
+                        showTimer={showTimer}
+                        loading={modalOpenPending}
+                    />
                 </Box>
             </Box>
         </>

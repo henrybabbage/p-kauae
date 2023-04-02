@@ -1,9 +1,14 @@
 import { Box, Grid } from '@chakra-ui/react'
 import Image from 'next/image'
 
-export default function VideoCover() {
+export default function VideoCover({ show }) {
     return (
-        <Box position="absolute">
+        <Box
+            position="absolute"
+            opacity={show ? 100 : 0}
+            transition="opacity ease-in-out"
+            transitionDuration="0.3s"
+        >
             <Grid
                 z="10"
                 w="100%"
