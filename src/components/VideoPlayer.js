@@ -51,11 +51,15 @@ export default function VideoPlayer({
                     onReady={() => {
                         setIsReady(true)
                     }}
+                    onPause={() => {}}
                     onBuffer={() => {
                         setIsBuffering(true)
                     }}
                     onBufferEnd={() => {
                         setIsBuffering(false)
+                    }}
+                    onEnded={() => {
+                        console.log('ended')
                     }}
                 />
             )}
