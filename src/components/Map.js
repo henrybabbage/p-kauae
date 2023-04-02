@@ -154,7 +154,7 @@ export default function Map({ data }) {
         if (e.features.length && e.features[0].properties) {
             const { id } = e.features[0].properties
             const clickedWahine = wahines.find((wahine) => wahine.id === id)
-            //TODO - find index, do not subtract from id.
+            //TODO find index, do not subtract from id
             if (clickedWahine) {
                 setSelectedWahineIndex(clickedWahine.id - 1)
                 handleModalDelay()
