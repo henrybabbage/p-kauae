@@ -36,18 +36,18 @@ const WahineModal = ({
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
 
     const getPreviousWahine = (selectedWahineIndex) => {
-        if (selectedWahineIndex === wahines.length) {
-            return 0
+        if (selectedWahineIndex === wahines.length - 1) {
+            return wahines[0]?.ingoa || 'Previous'
         } else {
-            return wahines[(selectedWahineIndex + 1) % wahines.length].ingoa
+            return wahines[selectedWahineIndex + 1]?.ingoa || 'Previous'
         }
     }
 
     const getNextWahine = (selectedWahineIndex) => {
         if (selectedWahineIndex === 0) {
-            return wahines.length
+            return wahines[wahines.length - 1]?.ingoa || 'Next'
         } else {
-            return wahines[(selectedWahineIndex - 1) % wahines.length].ingoa
+            return wahines[selectedWahineIndex - 1]?.ingoa || 'Next'
         }
     }
 

@@ -76,11 +76,11 @@ export default function LandingVideo({
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <VideoOverlay
+                    {/* <VideoOverlay
                         show={showOverlay}
                         videoKorero={videoKorero}
-                    />
-                    {/* <VideoCover /> */}
+                    /> */}
+                    <VideoCover show={showOverlay} />
                     <Tooltip
                         label={
                             !isPlaying
