@@ -238,7 +238,7 @@ const WahineModal = ({
                             </GridItem>
                             <GridItem
                                 colStart={[1, 1, 1, 7, 7, 7]}
-                                colEnd={[12, 12, 12, 12, 12, 12]}
+                                colEnd={[12, 12, 12, 13, 13, 13]}
                                 pt={[2, 2, 2, 6, 6, 6]}
                                 pb={[2, 2, 2, 6, 6, 6]}
                                 h="auto"
@@ -256,8 +256,8 @@ const WahineModal = ({
                                         '12px',
                                         '12px',
                                         '12px',
-                                        '18px',
-                                        '18px',
+                                        '16px',
+                                        '16px',
                                         '18px'
                                     ]}
                                     lineHeight="1.36"
@@ -274,8 +274,8 @@ const WahineModal = ({
                                             '12px',
                                             '12px',
                                             '12px',
-                                            '18px',
-                                            '18px',
+                                            '16px',
+                                            '16px',
                                             '18px'
                                         ]}
                                         lineHeight="1.36"
@@ -294,8 +294,8 @@ const WahineModal = ({
                                                 '12px',
                                                 '12px',
                                                 '12px',
-                                                '18px',
-                                                '18px',
+                                                '16px',
+                                                '16px',
                                                 '18px'
                                             ]}
                                             lineHeight="1.36"
@@ -308,8 +308,8 @@ const WahineModal = ({
                                                 '12px',
                                                 '12px',
                                                 '12px',
-                                                '18px',
-                                                '18px',
+                                                '16px',
+                                                '16px',
                                                 '18px'
                                             ]}
                                             lineHeight="1.36"
@@ -329,8 +329,8 @@ const WahineModal = ({
                                                 '12px',
                                                 '12px',
                                                 '12px',
-                                                '18px',
-                                                '18px',
+                                                '16px',
+                                                '16px',
                                                 '18px'
                                             ]}
                                             lineHeight="1.36"
@@ -343,8 +343,8 @@ const WahineModal = ({
                                                 '12px',
                                                 '12px',
                                                 '12px',
-                                                '18px',
-                                                '18px',
+                                                '16px',
+                                                '16px',
                                                 '18px'
                                             ]}
                                             lineHeight="1.36"
@@ -364,8 +364,8 @@ const WahineModal = ({
                                                 '12px',
                                                 '12px',
                                                 '12px',
-                                                '18px',
-                                                '18px',
+                                                '16px',
+                                                '16px',
                                                 '18px'
                                             ]}
                                             lineHeight="1.36"
@@ -378,8 +378,8 @@ const WahineModal = ({
                                                 '12px',
                                                 '12px',
                                                 '12px',
-                                                '18px',
-                                                '18px',
+                                                '16px',
+                                                '16px',
                                                 '18px'
                                             ]}
                                             lineHeight="1.36"
