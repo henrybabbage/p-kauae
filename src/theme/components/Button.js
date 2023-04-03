@@ -85,6 +85,24 @@ const menu = defineStyle({
     }
 })
 
+const sizes = {
+    xl: defineStyle({
+        fontSize: 'xl'
+    }),
+    lg: defineStyle({
+        fontSize: 'lg'
+    }),
+    md: defineStyle({
+        fontSize: 'md'
+    }),
+    sm: defineStyle({
+        fontSize: 'sm'
+    }),
+    xs: defineStyle({
+        fontSize: 'xs'
+    })
+}
+
 export const buttonTheme = defineStyleConfig({
-    variants: { callToAction, mapLabel, prompt, menu }
+    variants: { callToAction, mapLabel, prompt, menu, sizes }
 })

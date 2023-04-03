@@ -46,7 +46,14 @@ export default function Header() {
                         >
                             <Heading
                                 as="h2"
-                                size={['xs', 'xs', 'xs', 'md', 'md', 'md']}
+                                fontSize={[
+                                    '10px',
+                                    '10px',
+                                    '10px',
+                                    '20px',
+                                    '20px',
+                                    '20px'
+                                ]}
                                 lineHeight="1.36"
                                 fontWeight="bold"
                                 fontFamily="subheading"
@@ -77,7 +84,14 @@ export default function Header() {
                         >
                             <Heading
                                 as="h2"
-                                size="md"
+                                fontSize={[
+                                    '10px',
+                                    '10px',
+                                    '10px',
+                                    '20px',
+                                    '20px',
+                                    '20px'
+                                ]}
                                 lineHeight="1.36"
                                 fontWeight="bold"
                                 fontFamily="subheading"
@@ -107,7 +121,14 @@ export default function Header() {
                         >
                             <Heading
                                 as="h2"
-                                size="md"
+                                fontSize={[
+                                    '10px',
+                                    '10px',
+                                    '10px',
+                                    '20px',
+                                    '20px',
+                                    '20px'
+                                ]}
                                 lineHeight="1.36"
                                 fontWeight="bold"
                                 fontFamily="subheading"

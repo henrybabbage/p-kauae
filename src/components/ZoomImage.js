@@ -56,7 +56,7 @@ export default function ZoomImage(props) {
                     />
                 </Zoom>
                 <Text
-                    fontSize="14px"
+                    fontSize={['10px', '10px', '10px', '14px', '14px', '14px']}
                     lineHeight="1"
                     color="white"
                     textAlign="left"

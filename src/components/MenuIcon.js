@@ -6,7 +6,7 @@ export default function MenuIcon({ openDrawer }) {
             <Flex direction="column" alignItems="center">
                 <Heading
                     as="h2"
-                    size={['xs', 'xs', 'xs', 'md', 'md', 'md']}
+                    fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
                     lineHeight="1.36"
                     fontWeight="bold"
                     fontFamily="subheading"
