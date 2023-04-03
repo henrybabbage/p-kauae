@@ -55,7 +55,7 @@ export default function MobileMenu({ onOpen, isOpen, onClose }) {
                                 <Link
                                     variant="menu"
                                     as={NextLink}
-                                    href="/haerenga"
+                                    href="/"
                                     scroll={false}
                                 >
                                     <Heading

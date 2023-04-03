@@ -40,8 +40,8 @@ export default function ScrollPrompt() {
                     alignSelf="center"
                     textAlign="center"
                     position="relative"
-                    width="75px"
-                    height="75px"
+                    width={['60px', '60px', '60px', '75px', '75px', '75px']}
+                    height={['60px', '60px', '60px', '75px', '75px', '75px']}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{
