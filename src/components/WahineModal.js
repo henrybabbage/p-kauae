@@ -75,7 +75,7 @@ const WahineModal = ({
                         >
                             Tū Tama Wāhine o Taranaki
                         </Heading>
-                        <Button variant={'callToAction'} onClick={onClose}>
+                        <Button variant="callToAction" onClick={onClose}>
                             Back to map
                         </Button>
                     </Flex>

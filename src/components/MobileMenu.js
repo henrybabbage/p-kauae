@@ -2,9 +2,9 @@ import {
     Box,
     Drawer,
     DrawerBody,
+    DrawerCloseButton,
     DrawerContent,
     DrawerOverlay,
-    Flex,
     Heading,
     Link
 } from '@chakra-ui/react'
@@ -26,46 +26,42 @@ export default function MobileMenu({ onOpen, isOpen, onClose }) {
     return (
         <>
             <Drawer
+                id="drawer"
                 placement="right"
                 size="full"
                 onClose={onClose}
                 isOpen={isOpen}
                 bg="grey.900"
-                h="100vh"
-                maxH="100vh"
-                w="100vw"
                 p={0}
                 m={0}
             >
                 <DrawerOverlay />
-                <DrawerContent h="100vh" maxH="100vh" w="100vw" p={0} m={0}>
+                <DrawerContent p={0} m={0} id="inner">
+                    <DrawerCloseButton isRound color="white" />
                     <DrawerBody
                         bg="grey.900"
                         p={0}
                         m={0}
-                        h="100vh"
-                        maxH="100vh"
-                        w="100vw"
+                        overflow="hidden"
+                        id="body"
                     >
-                        <Flex
-                            h="100vh"
-                            maxH="100vh"
-                            w="100vw"
-                            direction="column"
-                            justifyContent="center"
-                            overflow="hidden"
+                        <Box
+                            position="absolute"
+                            top="50%"
+                            left="50%"
+                            transform="translate(-50%, -50%)"
                         >
-                            <Box pb="6">
+                            <Box pb="4">
                                 <Link
                                     variant="menu"
                                     as={NextLink}
                                     href="/haerenga"
                                     scroll={false}
-                                    position="fixed"
                                 >
                                     <Heading
                                         as="h2"
                                         size="xl"
+                                        textAlign="center"
                                         fontWeight="bold"
                                         fontFamily="subheading"
                                         textColor={activeLink('/')}
@@ -74,17 +70,17 @@ export default function MobileMenu({ onOpen, isOpen, onClose }) {
                                     </Heading>
                                 </Link>
                             </Box>
-                            <Box pt="6">
+                            <Box pt="4">
                                 <Link
                                     variant="menu"
                                     as={NextLink}
                                     href="/haerenga"
                                     scroll={false}
-                                    position="fixed"
                                 >
                                     <Heading
                                         as="h2"
                                         size="xl"
+                                        textAlign="center"
                                         fontWeight="bold"
                                         fontFamily="subheading"
                                         textColor={activeLink('/haerenga')}
@@ -93,7 +89,7 @@ export default function MobileMenu({ onOpen, isOpen, onClose }) {
                                     </Heading>
                                 </Link>
                             </Box>
-                        </Flex>
+                        </Box>
                     </DrawerBody>
                 </DrawerContent>
             </Drawer>

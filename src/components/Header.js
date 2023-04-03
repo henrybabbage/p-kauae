@@ -45,8 +45,9 @@ export default function Header() {
                             position="fixed"
                         >
                             <Heading
-                                as="h1"
+                                as="h2"
                                 size={['xs', 'xs', 'xs', 'md', 'md', 'md']}
+                                lineHeight="1.36"
                                 fontWeight="bold"
                                 fontFamily="subheading"
                                 color="white"
@@ -77,6 +78,7 @@ export default function Header() {
                             <Heading
                                 as="h2"
                                 size="md"
+                                lineHeight="1.36"
                                 fontWeight="bold"
                                 fontFamily="subheading"
                                 textColor={activeLink('/')}
@@ -106,6 +108,7 @@ export default function Header() {
                             <Heading
                                 as="h2"
                                 size="md"
+                                lineHeight="1.36"
                                 fontWeight="bold"
                                 fontFamily="subheading"
                                 textColor={activeLink('/haerenga')}
@@ -115,7 +118,6 @@ export default function Header() {
                         </Link>
                     </Flex>
                     <Flex
-                        justifyContent="end"
                         display={[
                             'flex',
                             'flex',
@@ -124,6 +126,8 @@ export default function Header() {
                             'none',
                             'none'
                         ]}
+                        alignItems="baseline"
+                        justifyContent="end"
                     >
                         <MenuIcon openDrawer={menu.onOpen} />
                     </Flex>
