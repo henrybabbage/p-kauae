@@ -1,5 +1,4 @@
 import ChakraNextImage from '@/components/ChakraNextImage'
-import CircularText from '@/components/CircularText'
 import LandingBanner from '@/components/LandingBanner'
 import LandingVideo from '@/components/LandingVideo'
 import { MotionBox } from '@/components/MotionBox'
@@ -613,9 +612,9 @@ export default function Home({
     )
 }
 
+import ScrollPrompt from '@/components/ScrollPrompt'
 import fsPromises from 'fs/promises'
 import path from 'path'
-import ScrollPrompt from '@/components/ScrollPrompt'
 export async function getStaticProps() {
     const filePath = path.join(process.cwd(), '/public/backend_data_final.json')
     const jsonData = await fsPromises.readFile(filePath)
