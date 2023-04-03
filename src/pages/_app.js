@@ -11,6 +11,73 @@ import { useEffect, useState } from 'react'
 
 export const siteTitle = 'Pūkauae'
 
+export const metadata = {
+    title: 'Pūkauae',
+    description:
+        'Tū Tama Wāhine o Taranaki is a tangata whenua development and liberation organisation.',
+    keywords: [
+        'pūkauae',
+        'pukauae',
+        'tu tama wahine o taranaki',
+        'tu tama wahine',
+        'taranaki'
+    ],
+    authors: [
+        { name: 'Henry Babbage' },
+        { name: 'Luke Enoka' },
+        { name: 'Rere-No-A-Rangi Pope' },
+        { name: 'Blaine Western' }
+    ],
+    icons: {
+        icon: [
+            {
+                url: '/favicons/favicon-16x16.png',
+                sizes: '16x16',
+                type: 'image/png'
+            },
+            {
+                url: '/favicons/favicon-32x32.png',
+                sizes: '32x32',
+                type: 'image/png'
+            }
+        ],
+        apple: '/apple-touch-icon.png',
+        other: [
+            {
+                rel: 'manifest',
+                url: '/favicons/site.webmanifest'
+            },
+            {
+                rel: 'shortcut icon',
+                url: '/favicons/favicon.ico'
+            }
+        ]
+    },
+    openGraph: {
+        title: 'Pūkauae',
+        description:
+            'Tū Tama Wāhine o Taranaki is a tangata whenua development and liberation organisation.',
+        url: 'https://www.pukauae.com',
+        siteName: 'Pūkauae',
+        images: [
+            {
+                url: '',
+                width: 800,
+                height: 600,
+                alt: 'Pūkauae'
+            },
+            {
+                url: '',
+                width: 1800,
+                height: 1600,
+                alt: 'Pūkauae'
+            }
+        ],
+        locale: 'en-US',
+        type: 'website'
+    }
+}
+
 export default function App({ Component, pageProps }) {
     const { asPath } = useRouter()
     const [loading, setLoading] = useState(false)
@@ -34,16 +101,16 @@ export default function App({ Component, pageProps }) {
         }
     }, [])
 
-    useEffect(() => {
-        const handleContextMenu = (e) => {
-            // prevent the right-click menu from appearing
-            e.preventDefault()
-        }
-        document.addEventListener('contextmenu', handleContextMenu)
-        return () => {
-            document.removeEventListener('contextmenu', handleContextMenu)
-        }
-    }, [])
+    // useEffect(() => {
+    //     const handleContextMenu = (e) => {
+    //         // prevent the right-click menu from appearing
+    //         e.preventDefault()
+    //     }
+    //     document.addEventListener('contextmenu', handleContextMenu)
+    //     return () => {
+    //         document.removeEventListener('contextmenu', handleContextMenu)
+    //     }
+    // }, [])
 
     return (
         <>
