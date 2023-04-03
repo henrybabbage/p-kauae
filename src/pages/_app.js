@@ -102,16 +102,16 @@ export default function App({ Component, pageProps }) {
         }
     }, [])
 
-    // useEffect(() => {
-    //     const handleContextMenu = (e) => {
-    //         // prevent the right-click menu from appearing
-    //         e.preventDefault()
-    //     }
-    //     document.addEventListener('contextmenu', handleContextMenu)
-    //     return () => {
-    //         document.removeEventListener('contextmenu', handleContextMenu)
-    //     }
-    // }, [])
+    useEffect(() => {
+        const handleContextMenu = (e) => {
+            // prevent the right-click menu from appearing
+            e.preventDefault()
+        }
+        document.addEventListener('contextmenu', handleContextMenu)
+        return () => {
+            document.removeEventListener('contextmenu', handleContextMenu)
+        }
+    }, [])
 
     return (
         <>
