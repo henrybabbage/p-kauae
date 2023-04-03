@@ -133,8 +133,22 @@ export default function Home({
                         >
                             <Box
                                 className="player"
-                                h={['auto', 'auto', 'auto', '100vh', '100vh']}
-                                w="100%"
+                                h={[
+                                    'auto',
+                                    'auto',
+                                    'auto',
+                                    '100vh',
+                                    '100vh',
+                                    '100vh'
+                                ]}
+                                w={[
+                                    '100%',
+                                    '100%',
+                                    '100%',
+                                    '100%',
+                                    '100%',
+                                    '100%'
+                                ]}
                             >
                                 <LandingVideo
                                     playerRef={playerRef}

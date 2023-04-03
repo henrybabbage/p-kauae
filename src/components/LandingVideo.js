@@ -10,8 +10,8 @@ import dynamic from 'next/dynamic'
 import { useRef, useState } from 'react'
 import { PauseIcon } from './PauseIcon'
 import { PlayIcon } from './PlayIcon'
-import VideoOverlay from './VideoOverlay'
 import VideoCover from './VideoCover'
+import VideoOverlay from './VideoOverlay'
 
 const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
     ssr: false
@@ -111,7 +111,7 @@ export default function LandingVideo({
                 </Flex>
             )}
             <AspectRatio
-                maxH={['auto', 'auto', 'auto', '75vh']}
+                maxH={['auto', 'auto', 'auto', '75vh', '75vh', '75vh']}
                 maxW="100vw"
                 ratio={16 / 9}
                 cursor="auto"
