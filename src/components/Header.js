@@ -1,8 +1,10 @@
-import { Box, Flex, Heading, Link } from '@chakra-ui/react'
+import { Box, Flex, Heading, Link, useDisclosure } from '@chakra-ui/react'
 import { MotionBox } from './MotionBox'
 
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
+import MenuIcon from './MenuIcon'
+import MobileMenu from './MobileMenu'
 
 export default function Header() {
     const router = useRouter()
@@ -17,8 +19,13 @@ export default function Header() {
         return color
     }
 
+    // const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const menu = useDisclosure()
+
     return (
         <>
+            <MobileMenu isOpen={menu.isOpen} onClose={menu.onClose} />
             <MotionBox
                 initial={{ y: -180 }}
                 animate={{ y: 0 }}
@@ -49,7 +56,17 @@ export default function Header() {
                         </Link>
                     </Flex>
 
-                    <Flex justifyContent="center">
+                    <Flex
+                        justifyContent="center"
+                        display={[
+                            'none',
+                            'none',
+                            'none',
+                            'flex',
+                            'flex',
+                            'flex'
+                        ]}
+                    >
                         <Link
                             variant="menu"
                             as={NextLink}
@@ -68,7 +85,17 @@ export default function Header() {
                             </Heading>
                         </Link>
                     </Flex>
-                    <Flex justifyContent="end">
+                    <Flex
+                        justifyContent="end"
+                        display={[
+                            'none',
+                            'none',
+                            'none',
+                            'flex',
+                            'flex',
+                            'flex'
+                        ]}
+                    >
                         <Link
                             variant="menu"
                             as={NextLink}
@@ -86,6 +113,19 @@ export default function Header() {
                                 Haerenga
                             </Heading>
                         </Link>
+                    </Flex>
+                    <Flex
+                        justifyContent="end"
+                        display={[
+                            'flex',
+                            'flex',
+                            'flex',
+                            'none',
+                            'none',
+                            'none'
+                        ]}
+                    >
+                        <MenuIcon openDrawer={menu.onOpen} />
                     </Flex>
                 </Box>
             </MotionBox>
