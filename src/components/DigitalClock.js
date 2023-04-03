@@ -10,7 +10,7 @@ export default function DigitalClock() {
             lineHeight="1"
             textAlign="left"
             color="white"
-            pb="2"
+            pb={['3.5', '3.5', '3.5', '2', '2', '2']}
         >
             <Clock
                 format={'HH:mm:ss'}
