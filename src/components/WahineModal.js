@@ -64,25 +64,50 @@ const WahineModal = ({
                 motionPreset="slideInBottom"
             >
                 <ModalOverlay />
-                <ModalContent maxW="100vw" p={6} bg="grey.900" h="fit-content">
+                <ModalContent
+                    maxW="100vw"
+                    p={[4, 4, 4, 6, 6, 6]}
+                    bg="grey.900"
+                    h="fit-content"
+                >
                     <Flex justifyContent="space-between" alignContent="start">
                         <Heading
                             as="h1"
-                            size="md"
+                            fontSize={[
+                                '10px',
+                                '10px',
+                                '10px',
+                                '20px',
+                                '20px',
+                                '20px'
+                            ]}
                             color="white"
                             fontWeight="regular"
                             fontFamily="subheading"
                         >
                             Tū Tama Wāhine o Taranaki
                         </Heading>
-                        <Button variant={'callToAction'} onClick={onClose}>
-                            Back to map
+                        <Button variant="menu" onClick={onClose}>
+                            <Text
+                                fontSize={[
+                                    '10px',
+                                    '10px',
+                                    '10px',
+                                    '20px',
+                                    '20px',
+                                    '20px'
+                                ]}
+                            >
+                                Back to map
+                            </Text>
                         </Button>
                     </Flex>
                     <ModalHeader p={0}></ModalHeader>
                     <ModalBody
                         maxW="100vw"
-                        p={0}
+                        pt={0}
+                        px={0}
+                        pb={[4, 4, 4, 0, 0, 0]}
                         overflow="scroll"
                         sx={{
                             '-webkit-scrollbar': {
@@ -100,7 +125,11 @@ const WahineModal = ({
                             columnGap="40px"
                             rowGap="20px"
                         >
-                            <GridItem colStart={1} colEnd={13} pt={6}>
+                            <GridItem
+                                colStart={[1, 1, 1, 1, 1, 1]}
+                                colEnd={[12, 12, 12, 13, 13, 13]}
+                                pt={[2, 2, 2, 6, 6, 6]}
+                            >
                                 <Box className="player">
                                     <ModalVideo
                                         playerRef={playerRef}
@@ -119,9 +148,27 @@ const WahineModal = ({
                                         loop={true}
                                     />
                                 </Box>
-                                <Flex alignItems="baseline" pt={6}>
+                                <Flex
+                                    direction={[
+                                        'column',
+                                        'column',
+                                        'column',
+                                        'row',
+                                        'row',
+                                        'row'
+                                    ]}
+                                    alignItems="baseline"
+                                    pt={6}
+                                >
                                     <Heading
-                                        fontSize="36px"
+                                        fontSize={[
+                                            '20px',
+                                            '20px',
+                                            '20px',
+                                            '36px',
+                                            '36px',
+                                            '36px'
+                                        ]}
                                         color="pink.200"
                                         fontWeight="regular"
                                         fontFamily="heading"
@@ -129,24 +176,45 @@ const WahineModal = ({
                                         {wahines[selectedWahineIndex].ingoa}
                                     </Heading>
                                     <Heading
-                                        fontSize="16px"
+                                        fontSize={[
+                                            '8px',
+                                            '8px',
+                                            '8px',
+                                            '16px',
+                                            '16px',
+                                            '16px'
+                                        ]}
                                         color="pink.200"
                                         fontWeight="regular"
                                         fontFamily="heading"
-                                        ml={2}
+                                        ml={[0, 0, 0, 2, 2, 2]}
                                     >
                                         {wahines[selectedWahineIndex].whakapapa}
                                     </Heading>
                                 </Flex>
                             </GridItem>
                             <GridItem
-                                colStart={1}
-                                colEnd={7}
-                                pt={6}
-                                pb={6}
+                                colStart={[1, 1, 1, 1, 1, 1]}
+                                colEnd={[12, 12, 12, 7, 7, 7]}
+                                pt={[2, 2, 2, 6, 6, 6]}
+                                pb={[2, 2, 2, 6, 6, 6]}
                                 h="100%"
-                                minH="60vh"
-                                w="48vw"
+                                minH={[
+                                    'fit-content',
+                                    'fit-content',
+                                    'fit-content',
+                                    '60vh',
+                                    '60vh',
+                                    '60vh'
+                                ]}
+                                w={[
+                                    '100%',
+                                    '100%',
+                                    '100%',
+                                    '48vw',
+                                    '48vw',
+                                    '48vw'
+                                ]}
                                 ref={modalRef}
                             >
                                 <Flex direction="column">
@@ -169,15 +237,29 @@ const WahineModal = ({
                                 </Flex>
                             </GridItem>
                             <GridItem
-                                colStart={7}
-                                colEnd={13}
-                                pt={6}
-                                pb={6}
+                                colStart={[1, 1, 1, 7, 7, 7]}
+                                colEnd={[12, 12, 12, 13, 13, 13]}
+                                pt={[2, 2, 2, 6, 6, 6]}
+                                pb={[2, 2, 2, 6, 6, 6]}
                                 h="auto"
-                                minH="60vh"
+                                minH={[
+                                    'fit-content',
+                                    'fit-content',
+                                    'fit-content',
+                                    '60vh',
+                                    '60vh',
+                                    '60vh'
+                                ]}
                             >
                                 <Text
-                                    fontSize="18px"
+                                    fontSize={[
+                                        '12px',
+                                        '12px',
+                                        '12px',
+                                        '16px',
+                                        '16px',
+                                        '18px'
+                                    ]}
                                     lineHeight="1.36"
                                     color="white"
                                 >
@@ -188,7 +270,14 @@ const WahineModal = ({
                                 </Text>
                                 <Box pt={6}>
                                     <Text
-                                        fontSize="18px"
+                                        fontSize={[
+                                            '12px',
+                                            '12px',
+                                            '12px',
+                                            '16px',
+                                            '16px',
+                                            '18px'
+                                        ]}
                                         lineHeight="1.36"
                                         color="white"
                                     >
@@ -201,14 +290,28 @@ const WahineModal = ({
                                 <Box pt={6}>
                                     <HStack>
                                         <Text
-                                            fontSize="18px"
+                                            fontSize={[
+                                                '12px',
+                                                '12px',
+                                                '12px',
+                                                '16px',
+                                                '16px',
+                                                '18px'
+                                            ]}
                                             lineHeight="1.36"
                                             color="pink.200"
                                         >
                                             Photograph location:{' '}
                                         </Text>
                                         <Text
-                                            fontSize="18px"
+                                            fontSize={[
+                                                '12px',
+                                                '12px',
+                                                '12px',
+                                                '16px',
+                                                '16px',
+                                                '18px'
+                                            ]}
                                             lineHeight="1.36"
                                             color="white"
                                         >
@@ -222,14 +325,28 @@ const WahineModal = ({
                                 <Box pt={6}>
                                     <HStack>
                                         <Text
-                                            fontSize="18px"
+                                            fontSize={[
+                                                '12px',
+                                                '12px',
+                                                '12px',
+                                                '16px',
+                                                '16px',
+                                                '18px'
+                                            ]}
                                             lineHeight="1.36"
                                             color="pink.200"
                                         >
                                             Tohunga ta moko:{' '}
                                         </Text>
                                         <Text
-                                            fontSize="18px"
+                                            fontSize={[
+                                                '12px',
+                                                '12px',
+                                                '12px',
+                                                '16px',
+                                                '16px',
+                                                '18px'
+                                            ]}
                                             lineHeight="1.36"
                                             color="white"
                                         >
@@ -243,14 +360,28 @@ const WahineModal = ({
                                 <Box pt={6}>
                                     <HStack>
                                         <Text
-                                            fontSize="18px"
+                                            fontSize={[
+                                                '12px',
+                                                '12px',
+                                                '12px',
+                                                '16px',
+                                                '16px',
+                                                '18px'
+                                            ]}
                                             lineHeight="1.36"
                                             color="pink.200"
                                         >
                                             Capture date:{' '}
                                         </Text>
                                         <Text
-                                            fontSize="18px"
+                                            fontSize={[
+                                                '12px',
+                                                '12px',
+                                                '12px',
+                                                '16px',
+                                                '16px',
+                                                '18px'
+                                            ]}
                                             lineHeight="1.36"
                                             color="white"
                                         >
@@ -270,6 +401,7 @@ const WahineModal = ({
                             <Box>
                                 <Button
                                     variant={'callToAction'}
+                                    size={['xs', 'xs', 'xs', 'xl', 'xl', 'xl']}
                                     onClick={() => {
                                         onClose()
                                         handlePrevClick(selectedWahineIndex)
@@ -283,7 +415,14 @@ const WahineModal = ({
                                 <MotionBox>
                                     <Text
                                         fontFamily="subheading"
-                                        fontSize="16px"
+                                        fontSize={[
+                                            '8px',
+                                            '8px',
+                                            '8px',
+                                            '16px',
+                                            '16px',
+                                            '16px'
+                                        ]}
                                         lineHeight="1"
                                         textAlign="center"
                                         color="white"
@@ -296,6 +435,7 @@ const WahineModal = ({
                             <Box>
                                 <Button
                                     variant={'callToAction'}
+                                    size={['xs', 'xs', 'xs', 'xl', 'xl', 'xl']}
                                     onClick={() => {
                                         onClose()
                                         handleNextClick(selectedWahineIndex)

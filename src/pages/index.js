@@ -35,7 +35,7 @@ export default function Home({
             const { children } = props
             return (
                 <Text
-                    fontSize={['30px', '30px', '30px', '36px', '36px']}
+                    fontSize={['30px', '30px', '30px', '36px', '36px', '36px']}
                     lineHeight={['1.36']}
                     color="white"
                 >
@@ -168,7 +168,7 @@ export default function Home({
                                         '30px',
                                         '30px',
                                         '46px',
-                                        '46',
+                                        '46px',
                                         '84px'
                                     ]}
                                     lineHeight="1.36"
@@ -211,7 +211,7 @@ export default function Home({
                                     fontSize={[
                                         '30px',
                                         '30px',
-                                        '46',
+                                        '46px',
                                         '84px',
                                         '84px'
                                     ]}
@@ -226,6 +226,7 @@ export default function Home({
                                 {leftColumn.map((name, index) => (
                                     <Text
                                         fontSize={[
+                                            '30px',
                                             '30px',
                                             '30px',
                                             '36px',
@@ -277,6 +278,7 @@ export default function Home({
                                 {rightColumn.map((name, index) => (
                                     <Text
                                         fontSize={[
+                                            '30px',
                                             '30px',
                                             '30px',
                                             '36px',

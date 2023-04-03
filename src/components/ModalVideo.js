@@ -35,7 +35,7 @@ export default function ModalVideo({
                 />
             </AspectRatio>
             <Heading
-                fontSize="36px"
+                fontSize={['16px', '16px', '16px', '36px', '36px', '36px']}
                 color="white"
                 fontWeight="regular"
                 fontFamily="heading"

@@ -5,7 +5,8 @@ import {
     HStack,
     IconButton,
     Text,
-    useDisclosure
+    useDisclosure,
+    useMediaQuery
 } from '@chakra-ui/react'
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
@@ -15,36 +16,34 @@ import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
 import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
-import MoonPhaseDisplay from './MoonPhase'
 import WahineModal from './WahineModal'
 
 export default function Map({ data }) {
+    const taranakiLatLng = [174.063848, -39.296128]
+    function handleMapBearing(newLatlng) {
+        return rhumbBearing(taranakiLatLng, newLatlng) - 180
+    }
     const mapRef = useRef(null)
     const timeOutRef = useRef(null)
-    const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
     const [modalOpenPending, setModalOpenPending] = useState(false)
     const [mapIsVisible, setMapIsVisible] = useState(false)
+    const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
     const [viewport, setViewport] = useState(() => {
         const { wahines } = data
-        const wahineLatLngs = wahines.map((wahine) => ({
-            lat: wahine.wahi.ahuahanga[1],
-            lng: wahine.wahi.ahuahanga[0]
-        }))
-        const randomStartPoint =
-            wahineLatLngs[Math.floor(Math.random() * wahineLatLngs.length)]
+        const randomIndex = Math.floor(Math.random() * wahines.length)
+        setSelectedWahineIndex(randomIndex)
         return {
-            latitude: randomStartPoint.lat,
-            longitude: randomStartPoint.lng,
-            bearing: 90,
-            pitch: 70,
+            latitude: wahines[randomIndex].wahi.ahuahanga[1],
+            longitude: wahines[randomIndex].wahi.ahuahanga[0],
+            activeId: wahines[randomIndex].id,
+            bearing: handleMapBearing(wahines[randomIndex].wahi.ahuahanga),
+            pitch: 100,
             zoom: 11
         }
     })
     const [mapData, setMapData] = useState(null)
 
     const { wahines, haerengaKorero, portraits, posters, baseUrlVideo } = data
-
-    const taranakiLatLng = [174.063848, -39.296128]
 
     useEffect(() => {
         const wahi = wahines.map((wahine) => {
@@ -106,10 +105,6 @@ export default function Map({ data }) {
         }, 3200)
     }
 
-    function handleMapBearing(newLatlng) {
-        return rhumbBearing(taranakiLatLng, newLatlng)
-    }
-
     const handlePrevClick = () => {
         const prevIndex =
             selectedWahineIndex === wahines.length - 1
@@ -122,11 +117,10 @@ export default function Map({ data }) {
             center: wahines[prevIndex].wahi.ahuahanga,
             pitch: 70,
             duration: 3000,
-            bearing: handleMapBearing(wahines[prevIndex].wahi.ahuahanga) - 180
+            bearing: handleMapBearing(wahines[prevIndex].wahi.ahuahanga)
         })
     }
 
-    // TODO find the active wahine index and setSelectedWahineIndex on page load
     const handleNextClick = () => {
         const nextIndex =
             selectedWahineIndex === 0
@@ -138,7 +132,7 @@ export default function Map({ data }) {
             center: wahines[nextIndex].wahi.ahuahanga,
             pitch: 70,
             duration: 3000,
-            bearing: handleMapBearing(wahines[nextIndex].wahi.ahuahanga) - 180
+            bearing: handleMapBearing(wahines[nextIndex].wahi.ahuahanga)
         })
     }
 
@@ -155,10 +149,9 @@ export default function Map({ data }) {
                 center: wahines[clickedWahine.id - 1].wahi.ahuahanga,
                 pitch: 70,
                 duration: 3000,
-                bearing:
-                    handleMapBearing(
-                        wahines[clickedWahine.id - 1].wahi.ahuahanga
-                    ) - 180
+                bearing: handleMapBearing(
+                    wahines[clickedWahine.id - 1].wahi.ahuahanga
+                )
             })
         }
     }
@@ -194,6 +187,11 @@ export default function Map({ data }) {
                 hoveredStateId = null
             })
     }, [])
+
+    const [isDesktop] = useMediaQuery('(min-width: 992px)', {
+        ssr: true,
+        fallback: false // return false on the server, and re-evaluate on the client side
+    })
 
     return (
         <>
@@ -345,7 +343,18 @@ export default function Map({ data }) {
                         {'Tamatea whakapau'}
                     </Text>
                 </HStack>
-                <Box position="fixed" right="6" bottom="6">
+                <Box
+                    position="fixed"
+                    right={[
+                        'calc(50vw - 35px)',
+                        'calc(50vw - 35px)',
+                        'calc(50vw - 35px)',
+                        '6',
+                        '6',
+                        '6'
+                    ]}
+                    bottom={['24', '24', '24', '6', '6', '6']}
+                >
                     <MapProgress loading={modalOpenPending} />
                 </Box>
             </Box>

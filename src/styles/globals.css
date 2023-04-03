@@ -46,10 +46,6 @@ blockquote > p {
     display: none !important;
 }
 
-.duotone {
-    filter: url(/images/duotone.svg#duotone);
-}
-
 /*  ------------------------------ */
 /*  react player
 /*  ------------------------------ */

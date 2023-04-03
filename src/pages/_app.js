@@ -1,4 +1,5 @@
 import Header from '@/components/Header'
+import SplashBanner from '@/components/SplashBanner'
 import TransitionBanner from '@/components/TransitionBanner'
 import theme from '@/styles/ChakraTheme'
 import Fonts from '@/styles/Fonts'
@@ -163,6 +164,7 @@ export default function App({ Component, pageProps }) {
                         window.scrollTo(0, 0)
                     }}
                 >
+                    {/* <SplashBanner /> */}
                     <Header />
                     {loading ? (
                         <TransitionBanner />
