@@ -1,8 +1,8 @@
 import ChakraNextImage from '@/components/ChakraNextImage'
+import CircularText from '@/components/CircularText'
 import LandingBanner from '@/components/LandingBanner'
 import LandingVideo from '@/components/LandingVideo'
 import { MotionBox } from '@/components/MotionBox'
-import ScrollPrompt from '@/components/ScrollPrompt'
 import SmoothScroll from '@/components/SmoothScroll'
 import {
     Box,
@@ -36,7 +36,7 @@ export default function Home({
             const { children } = props
             return (
                 <Text
-                    fontSize={['28px', '28px', '28px', '36px', '36px', '36px']}
+                    fontSize={['24px', '24px', '24px', '36px', '36px', '36px']}
                     lineHeight={['1.36']}
                     color="white"
                 >
@@ -103,13 +103,17 @@ export default function Home({
                             >
                                 <LandingBanner />
                             </Flex>
-                            <Flex direction="column">
+                            <Flex
+                                direction="column"
+                                alignItems="center"
+                                justifyContent="center"
+                            >
                                 <Box
                                     position="absolute"
                                     bottom="150"
                                     right="150"
                                 >
-                                    <MotionBox>
+                                    <MotionBox position="relative">
                                         <ScrollPrompt />
                                     </MotionBox>
                                 </Box>
@@ -185,10 +189,10 @@ export default function Home({
                             </Box>
                         </GridItem>
                         <GridItem
-                            colStart={[1, 1, 1, 1, 4]}
-                            colEnd={[13, 13, 13, 12, 12]}
-                            pt={['2', '2', '6', '6', '6']}
-                            pb={['6', '6', '6', '6', '6']}
+                            colStart={[1, 1, 1, 1, 4, 4]}
+                            colEnd={[13, 13, 13, 12, 12, 12]}
+                            pt={['2', '2', '6', '6', '6', '6']}
+                            pb={['6', '6', '6', '6', '6', '6']}
                         >
                             <Flex
                                 justify="center"
@@ -199,9 +203,9 @@ export default function Home({
                                     as="h2"
                                     fontFamily="heading"
                                     fontSize={[
-                                        '28px',
-                                        '28px',
-                                        '28px',
+                                        '24px',
+                                        '24px',
+                                        '24px',
                                         '46px',
                                         '84px',
                                         '84px'
@@ -222,10 +226,11 @@ export default function Home({
                             </Flex>
                         </GridItem>
                         <GridItem
-                            colStart={[1, 1, 1, 4, 4]}
-                            colEnd={[13, 13, 13, 8, 8]}
+                            colStart={[1, 1, 1, 4, 4, 4]}
+                            colEnd={[13, 13, 13, 8, 8, 8]}
                             pt={['2', '2', '6', '6', '6']}
                             pb={['6', '6', '6', '6', '6']}
+                            height="auto"
                         >
                             <Flex
                                 as="div"
@@ -244,9 +249,9 @@ export default function Home({
                                     as="h2"
                                     fontFamily="heading"
                                     fontSize={[
-                                        '28px',
-                                        '28px',
-                                        '28px',
+                                        '24px',
+                                        '24px',
+                                        '24px',
                                         '46px',
                                         '84px',
                                         '84px'
@@ -262,9 +267,9 @@ export default function Home({
                                 {leftColumn.map((name, index) => (
                                     <Text
                                         fontSize={[
-                                            '28px',
-                                            '28px',
-                                            '28px',
+                                            '24px',
+                                            '24px',
+                                            '24px',
                                             '36px',
                                             '36px',
                                             '36px'
@@ -273,6 +278,7 @@ export default function Home({
                                         textAlign="left"
                                         color="white"
                                         key={index}
+                                        height="auto"
                                     >
                                         {name}
                                     </Text>
@@ -284,6 +290,7 @@ export default function Home({
                             colEnd={[13, 13, 13, 13, 13]}
                             pt={['2', '2', '2', '6', '6', '6']}
                             pb={['36', '36', '36', '6', '6']}
+                            height="auto"
                         >
                             <Flex
                                 as="div"
@@ -302,9 +309,9 @@ export default function Home({
                                     as="h2"
                                     fontFamily="heading"
                                     fontSize={[
-                                        '28px',
-                                        '28px',
-                                        '28px',
+                                        '24px',
+                                        '24px',
+                                        '24px',
                                         '46px',
                                         '84px',
                                         '84px'
@@ -312,7 +319,14 @@ export default function Home({
                                     lineHeight="1.36"
                                     textAlign="left"
                                     color="pink.200"
-                                    w="100vw"
+                                    w={[
+                                        '98vw',
+                                        '98vw',
+                                        '98vw',
+                                        '100vw',
+                                        '100vw',
+                                        '100vw'
+                                    ]}
                                     pb={['2', '2', '10', '10', '10']}
                                     visibility="hidden"
                                 >
@@ -321,9 +335,9 @@ export default function Home({
                                 {rightColumn.map((name, index) => (
                                     <Text
                                         fontSize={[
-                                            '30px',
-                                            '30px',
-                                            '30px',
+                                            '24px',
+                                            '24px',
+                                            '24px',
                                             '36px',
                                             '36px',
                                             '36px'
@@ -332,6 +346,7 @@ export default function Home({
                                         textAlign="left"
                                         color="white"
                                         key={index}
+                                        height="auto"
                                     >
                                         {name}
                                     </Text>
@@ -389,6 +404,7 @@ export default function Home({
                                         '40px',
                                         '48px',
                                         '48px',
+                                        '84px',
                                         '84px',
                                         '84px'
                                     ]}
@@ -520,10 +536,10 @@ export default function Home({
                                 <Text
                                     fontFamily="heading"
                                     fontSize={[
-                                        '26px',
-                                        '26px',
-                                        '26px',
-                                        '26px',
+                                        '24px',
+                                        '24px',
+                                        '24px',
+                                        '36px',
                                         '36px',
                                         '36px'
                                     ]}
@@ -543,10 +559,11 @@ export default function Home({
                                     <Text
                                         fontFamily="heading"
                                         fontSize={[
-                                            '26px',
-                                            '26px',
-                                            '26px',
-                                            '36',
+                                            '24px',
+                                            '24px',
+                                            '24px',
+                                            '36px',
+                                            '36px',
                                             '36px'
                                         ]}
                                         lineHeight="1.36"
@@ -598,6 +615,7 @@ export default function Home({
 
 import fsPromises from 'fs/promises'
 import path from 'path'
+import ScrollPrompt from '@/components/ScrollPrompt'
 export async function getStaticProps() {
     const filePath = path.join(process.cwd(), '/public/backend_data_final.json')
     const jsonData = await fsPromises.readFile(filePath)

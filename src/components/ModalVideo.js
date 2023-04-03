@@ -17,10 +17,10 @@ export default function ModalVideo({
     return (
         <Box position="relative">
             <AspectRatio
-                maxH="75vh"
-                maxW="100vw"
+                maxH={['auto', 'auto', 'auto', '75vh', '75vh', '75vh']}
+                maxW={['96vw', '96vw', '96vw', '100vw', '100vw', '100vw']}
                 ratio={16 / 9}
-                cursor="crosshair"
+                cursor="auto"
                 display="flex"
                 justifyContent="center"
             >
