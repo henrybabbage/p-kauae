@@ -1,4 +1,4 @@
-import { AspectRatio, Box, Heading } from '@chakra-ui/react'
+import { AspectRatio, Box, Flex, Heading } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 
 const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
@@ -15,7 +15,7 @@ export default function ModalVideo({
 }) {
     const videoSrc = `${baseUrlVideo}${src}`
     return (
-        <Box position="relative">
+        <Box position="relative" w="100%" maxWidth="100%">
             <AspectRatio
                 maxH={['auto', 'auto', 'auto', '75vh', '75vh', '75vh']}
                 maxW={['96vw', '96vw', '96vw', '100vw', '100vw', '100vw']}
@@ -36,17 +36,26 @@ export default function ModalVideo({
                     isPlaying={true}
                 />
             </AspectRatio>
-            <Heading
-                fontSize={['16px', '16px', '16px', '36px', '36px', '36px']}
-                color="white"
-                fontWeight="regular"
-                fontFamily="heading"
-                position="absolute"
-                bottom={6}
-                right={6}
+            <Flex
+                maxH={['auto', 'auto', 'auto', '75vh', '75vh', '75vh']}
+                maxW={['96vw', '96vw', '96vw', '100vw', '100vw', '100vw']}
+                display="flex"
+                justifyContent="end"
             >
-                {location}
-            </Heading>
+                <Heading
+                    fontSize={['16px', '16px', '16px', '36px', '36px', '36px']}
+                    color="white"
+                    fontWeight="regular"
+                    fontFamily="heading"
+                    position="absolute"
+                    bottom={6}
+                    right={6}
+                    w="fit-content"
+                    textAlign="right"
+                >
+                    {location}
+                </Heading>
+            </Flex>
         </Box>
     )
 }

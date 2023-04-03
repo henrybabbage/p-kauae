@@ -30,7 +30,7 @@ export default function VideoPlayer({
     }, [])
 
     return (
-        <Box position="absolute" bg="black" w="100%" h="100%">
+        <Box position="relative" bg="black" w="100%" h="100%">
             {!isReady && <VideoLoading />}
             {isReady && isBuffering && (
                 <Center h="100%" w="100vw" position="absolute" z="50">

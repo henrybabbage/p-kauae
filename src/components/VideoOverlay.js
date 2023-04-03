@@ -13,7 +13,7 @@ export default function VideoOverlay({ showInfo, videoKorero }) {
                 <Center p="6" w="100%">
                     <Text
                         as="h3"
-                        w="80%"
+                        w={['100%', '100%', '100%', '80%', '80%', '80%']}
                         fontFamily="subheading"
                         fontSize={[
                             '12px',

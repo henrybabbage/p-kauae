@@ -4,6 +4,9 @@ const callToAction = defineStyle({
     border: 'none',
     borderRadius: 0,
     padding: 0,
+    paddingInlineEnd: '0 !important',
+    paddingInlineStart: '0 !important',
+    wordWrap: 'break-word',
     margin: 0,
     iconSpacing: 0,
     height: 'inherit',
@@ -99,7 +102,7 @@ const sizes = {
         fontSize: 'sm'
     }),
     xs: defineStyle({
-        fontSize: 'xs'
+        fontSize: '9px'
     })
 }
 
