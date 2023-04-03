@@ -14,6 +14,7 @@ export const siteTitle = 'Pūkauae'
 export default function App({ Component, pageProps }) {
     const { asPath } = useRouter()
     const [loading, setLoading] = useState(false)
+    const [bannerShown, setBannerShown] = useState(false)
 
     useEffect(() => {
         // Used for page transition
@@ -33,16 +34,16 @@ export default function App({ Component, pageProps }) {
         }
     }, [])
 
-    // useEffect(() => {
-    //     const handleContextMenu = (e) => {
-    //         // prevent the right-click menu from appearing
-    //         e.preventDefault()
-    //     }
-    //     document.addEventListener('contextmenu', handleContextMenu)
-    //     return () => {
-    //         document.removeEventListener('contextmenu', handleContextMenu)
-    //     }
-    // }, [])
+    useEffect(() => {
+        const handleContextMenu = (e) => {
+            // prevent the right-click menu from appearing
+            e.preventDefault()
+        }
+        document.addEventListener('contextmenu', handleContextMenu)
+        return () => {
+            document.removeEventListener('contextmenu', handleContextMenu)
+        }
+    }, [])
 
     return (
         <>
@@ -71,7 +72,7 @@ export default function App({ Component, pageProps }) {
             <ChakraProvider theme={theme}>
                 <Fonts />
                 <AnimatePresence
-                    mode="sync"
+                    mode="wait"
                     initial={true}
                     onExitComplete={() => {
                         window.scrollTo(0, 0)

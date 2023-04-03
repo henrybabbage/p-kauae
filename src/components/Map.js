@@ -1,4 +1,3 @@
-import { useCountdown } from '@/hooks/useCountdown'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import {
     Box,
@@ -16,6 +15,7 @@ import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
 import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
+import MoonPhaseDisplay from './MoonPhase'
 import WahineModal from './WahineModal'
 
 export default function Map({ data }) {
@@ -41,9 +41,6 @@ export default function Map({ data }) {
         }
     })
     const [mapData, setMapData] = useState(null)
-    const [timerStarted, setTimerStarted] = useState(null)
-    const [showTimer, setShowTimer] = useState(null)
-    const [progress] = useCountdown(0.05, timerStarted)
 
     const { wahines, haerengaKorero, portraits, posters, baseUrlVideo } = data
 
@@ -198,13 +195,6 @@ export default function Map({ data }) {
             })
     }, [])
 
-    useEffect(() => {
-        setShowTimer(true)
-        setTimeout(() => {
-            setShowTimer(false)
-        }, 3200)
-    }, [timerStarted])
-
     return (
         <>
             <Flex
@@ -352,15 +342,11 @@ export default function Map({ data }) {
                         color="white"
                         pb="2"
                     >
-                        {'Ohua'}
+                        {'Tamatea whakapau'}
                     </Text>
                 </HStack>
                 <Box position="fixed" right="6" bottom="6">
-                    <MapProgress
-                        value={progress}
-                        showTimer={showTimer}
-                        loading={modalOpenPending}
-                    />
+                    <MapProgress loading={modalOpenPending} />
                 </Box>
             </Box>
         </>
