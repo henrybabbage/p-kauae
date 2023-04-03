@@ -298,28 +298,26 @@ export default function Home({
                                 ]}
                                 lineHeight="1.36"
                             >
-                                {isDesktop && (
-                                    <Heading
-                                        as="h2"
-                                        fontFamily="heading"
-                                        fontSize={[
-                                            '28px',
-                                            '28px',
-                                            '28px',
-                                            '46px',
-                                            '84px',
-                                            '84px'
-                                        ]}
-                                        lineHeight="1.36"
-                                        textAlign="left"
-                                        color="pink.200"
-                                        w="100vw"
-                                        pb={['2', '2', '10', '10', '10']}
-                                        visibility="hidden"
-                                    >
-                                        Heading space
-                                    </Heading>
-                                )}
+                                <Heading
+                                    as="h2"
+                                    fontFamily="heading"
+                                    fontSize={[
+                                        '28px',
+                                        '28px',
+                                        '28px',
+                                        '46px',
+                                        '84px',
+                                        '84px'
+                                    ]}
+                                    lineHeight="1.36"
+                                    textAlign="left"
+                                    color="pink.200"
+                                    w="100vw"
+                                    pb={['2', '2', '10', '10', '10']}
+                                    visibility="hidden"
+                                >
+                                    Heading space
+                                </Heading>
                                 {rightColumn.map((name, index) => (
                                     <Text
                                         fontSize={[
