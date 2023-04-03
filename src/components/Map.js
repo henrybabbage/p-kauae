@@ -1,4 +1,3 @@
-import { useCountdown } from '@/hooks/useCountdown'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import {
     Box,
@@ -16,6 +15,7 @@ import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
 import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
+import MoonPhaseDisplay from './MoonPhase'
 import WahineModal from './WahineModal'
 
 export default function Map({ data }) {
@@ -37,13 +37,10 @@ export default function Map({ data }) {
             longitude: randomStartPoint.lng,
             bearing: 90,
             pitch: 70,
-            zoom: 12
+            zoom: 11
         }
     })
     const [mapData, setMapData] = useState(null)
-    const [timerStarted, setTimerStarted] = useState(null)
-    const [showTimer, setShowTimer] = useState(null)
-    const [progress] = useCountdown(0.05, timerStarted)
 
     const { wahines, haerengaKorero, portraits, posters, baseUrlVideo } = data
 
@@ -84,7 +81,6 @@ export default function Map({ data }) {
         },
         paint: {
             'icon-color': '#ffffff',
-            // 'text-color': '#ffffff',
             'text-color': [
                 'case',
                 ['boolean', ['feature-state', 'hover'], false],
@@ -130,6 +126,7 @@ export default function Map({ data }) {
         })
     }
 
+    // TODO find the active wahine index and setSelectedWahineIndex on page load
     const handleNextClick = () => {
         const nextIndex =
             selectedWahineIndex === 0
@@ -197,13 +194,6 @@ export default function Map({ data }) {
                 hoveredStateId = null
             })
     }, [])
-
-    useEffect(() => {
-        setShowTimer(true)
-        setTimeout(() => {
-            setShowTimer(false)
-        }, 3200)
-    }, [timerStarted])
 
     return (
         <>
@@ -352,15 +342,11 @@ export default function Map({ data }) {
                         color="white"
                         pb="2"
                     >
-                        {'Ohua'}
+                        {'Tamatea whakapau'}
                     </Text>
                 </HStack>
                 <Box position="fixed" right="6" bottom="6">
-                    <MapProgress
-                        value={progress}
-                        showTimer={showTimer}
-                        loading={modalOpenPending}
-                    />
+                    <MapProgress loading={modalOpenPending} />
                 </Box>
             </Box>
         </>

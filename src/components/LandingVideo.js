@@ -10,8 +10,8 @@ import dynamic from 'next/dynamic'
 import { useRef, useState } from 'react'
 import { PauseIcon } from './PauseIcon'
 import { PlayIcon } from './PlayIcon'
-import VideoCover from './VideoCover'
 import VideoOverlay from './VideoOverlay'
+import VideoCover from './VideoCover'
 
 const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
     ssr: false
@@ -32,10 +32,11 @@ export default function LandingVideo({
 }) {
     const videoSrc = `${baseUrlVideo}${src}`
 
-    const [showTitle, setShowTitle] = useState(false)
-    const [showOverlay, setShowOverlay] = useState(true)
     const [isPlaying, setIsPlaying] = useState(false)
     const [isHovering, setIsHovering] = useState(false)
+    const [showTitle, setShowTitle] = useState(false)
+    const [showCover, setShowCover] = useState(true)
+    const [showInfo, setShowInfo] = useState(null)
 
     const timeoutRef = useRef(null)
 
@@ -54,7 +55,7 @@ export default function LandingVideo({
 
     const handlePlay = () => {
         setTimeout(() => {
-            setShowOverlay(false)
+            setShowCover(false)
         }, 500)
         setIsPlaying(!isPlaying)
     }
@@ -76,11 +77,11 @@ export default function LandingVideo({
                     justifyContent="center"
                     alignItems="center"
                 >
-                    {/* <VideoOverlay
-                        show={showOverlay}
+                    <VideoOverlay
+                        showInfo={!isPlaying}
                         videoKorero={videoKorero}
-                    /> */}
-                    <VideoCover show={showOverlay} />
+                    />
+                    <VideoCover showCover={showCover} />
                     <Tooltip
                         label={
                             !isPlaying
@@ -125,6 +126,7 @@ export default function LandingVideo({
                     muted={muted}
                     loop={loop}
                     playing={isPlaying}
+                    showInfo={showInfo}
                 />
             </AspectRatio>
             {showTitle && (

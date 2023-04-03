@@ -1,5 +1,6 @@
 import { Box, Flex, Grid, Text } from '@chakra-ui/react'
 import Image from 'next/image'
+import { MotionBox } from './MotionBox'
 
 export default function MapOverlay({ haerengaKorero, mapIsVisible }) {
     return (
@@ -29,17 +30,27 @@ export default function MapOverlay({ haerengaKorero, mapIsVisible }) {
                     transition="opacity ease-out"
                     transitionDuration="0.3s"
                 >
-                    <Image
-                        src="/images/water.jpeg"
-                        alt="Taranaki landscape"
-                        width="300"
-                        height="300"
-                        priority
-                        style={{
-                            objectFit: 'contain',
-                            objectPosition: 'center'
+                    <MotionBox
+                        animate={{ scale: 1.1 }}
+                        transition={{
+                            duration: 1,
+                            repeat: Infinity,
+                            repeatType: 'mirror'
                         }}
-                    />
+                    >
+                        <Image
+                            src="/icons/pukauae.svg"
+                            alt="Pukauae logo"
+                            width="150"
+                            height="150"
+                            priority
+                            sizes="100vw"
+                            style={{
+                                objectFit: 'contain',
+                                objectPosition: 'center'
+                            }}
+                        />
+                    </MotionBox>
                 </Box>
                 <Box w="300px">
                     <Text

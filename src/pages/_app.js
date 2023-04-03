@@ -11,9 +11,77 @@ import { useEffect, useState } from 'react'
 
 export const siteTitle = 'Pūkauae'
 
+export const metadata = {
+    title: 'Pūkauae',
+    description:
+        'Tū Tama Wāhine o Taranaki is a tangata whenua development and liberation organisation.',
+    keywords: [
+        'pūkauae',
+        'pukauae',
+        'tu tama wahine o taranaki',
+        'tu tama wahine',
+        'taranaki'
+    ],
+    authors: [
+        { name: 'Henry Babbage' },
+        { name: 'Luke Enoka' },
+        { name: 'Rere-No-A-Rangi Pope' },
+        { name: 'Blaine Western' }
+    ],
+    icons: {
+        icon: [
+            {
+                url: '/favicons/favicon-16x16.png',
+                sizes: '16x16',
+                type: 'image/png'
+            },
+            {
+                url: '/favicons/favicon-32x32.png',
+                sizes: '32x32',
+                type: 'image/png'
+            }
+        ],
+        apple: '/apple-touch-icon.png',
+        other: [
+            {
+                rel: 'manifest',
+                url: '/favicons/site.webmanifest'
+            },
+            {
+                rel: 'shortcut icon',
+                url: '/favicons/favicon.ico'
+            }
+        ]
+    },
+    openGraph: {
+        title: 'Pūkauae',
+        description:
+            'Tū Tama Wāhine o Taranaki is a tangata whenua development and liberation organisation.',
+        url: 'https://www.pukauae.com',
+        siteName: 'Pūkauae',
+        images: [
+            {
+                url: '',
+                width: 800,
+                height: 600,
+                alt: 'Pūkauae'
+            },
+            {
+                url: '',
+                width: 1800,
+                height: 1600,
+                alt: 'Pūkauae'
+            }
+        ],
+        locale: 'en-US',
+        type: 'website'
+    }
+}
+
 export default function App({ Component, pageProps }) {
     const { asPath } = useRouter()
     const [loading, setLoading] = useState(false)
+    const [bannerShown, setBannerShown] = useState(false)
 
     useEffect(() => {
         // Used for page transition
@@ -53,25 +121,43 @@ export default function App({ Component, pageProps }) {
                     content="Website for the Pūkauae Photographic exhibition"
                 />
                 <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <meta charset="utf-8" />
-                <link rel="icon" href="data:," />
-                <meta
-                    name="description"
-                    content="Tū Tama Wāhine o Taranaki is a tangata whenua development and liberation organisation."
-                />
-                <meta
                     name="author"
                     content="Henry Babbage, Luke Enoka, Rere-No-A-Rangi Pope, Blaine Western"
                 />
                 <meta name="keywords" content="art" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
+                <meta charset="utf-8" />
+                <meta
+                    name="msapplication-config"
+                    content="/favicons/browserconfig.xml"
+                />
+                <link
+                    rel="apple-touch-icon"
+                    sizes="180x180"
+                    href="/favicons/apple-touch-icon.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="32x32"
+                    href="/favicons/favicon-32x32.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="16x16"
+                    href="/favicons/favicon-16x16.png"
+                />
+                <link rel="manifest" href="/favicons/site.webmanifest" />
+                <link rel="shortcut icon" href="/favicons/favicon.ico" />
             </Head>
             <ChakraProvider theme={theme}>
                 <Fonts />
                 <AnimatePresence
-                    mode="sync"
+                    mode="wait"
                     initial={true}
                     onExitComplete={() => {
                         window.scrollTo(0, 0)

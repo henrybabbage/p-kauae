@@ -7,7 +7,7 @@ export default function MapProgress({ loading }) {
             {loading && (
                 <Spinner
                     thickness="6px"
-                    speed="3s"
+                    speed="6s"
                     emptyColor="white"
                     color="pink.200"
                     size="xxl"
