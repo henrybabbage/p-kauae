@@ -1,4 +1,4 @@
-import { Box, Grid } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import Image from 'next/image'
 
 export default function VideoCover({ showCover }) {
@@ -9,26 +9,26 @@ export default function VideoCover({ showCover }) {
             transition="opacity ease-in-out"
             transitionDuration="0.3s"
         >
-            <Grid
+            <Box
                 z="10"
-                w="100%"
+                w="100vw"
                 h="75vh"
-                placeSelf="center"
                 position="relative"
                 overflow="hidden"
             >
                 <Image
                     src="/images/duotone.jpg"
                     alt="video preview image"
-                    width="1200"
-                    height="592"
+                    // width="1200"
+                    // height="592"
+                    fill
                     sizes="100vw"
                     style={{
-                        objectFit: 'contain',
+                        objectFit: 'cover',
                         objectPosition: 'center'
                     }}
                 />
-            </Grid>
+            </Box>
         </Box>
     )
 }
