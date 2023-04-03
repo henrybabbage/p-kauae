@@ -11,7 +11,8 @@ import {
     GridItem,
     Heading,
     Link,
-    Text
+    Text,
+    useMediaQuery
 } from '@chakra-ui/react'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import { getPlaiceholder } from 'plaiceholder'
@@ -35,7 +36,7 @@ export default function Home({
             const { children } = props
             return (
                 <Text
-                    fontSize={['30px', '30px', '30px', '36px', '36px', '36px']}
+                    fontSize={['28px', '28px', '28px', '36px', '36px', '36px']}
                     lineHeight={['1.36']}
                     color="white"
                 >
@@ -50,7 +51,7 @@ export default function Home({
                     as="blockquote"
                     color="pink.200"
                     my={['68px', '68px', '78px', '78px', '78px']}
-                    fontSize={['60px', '60px', '60px', '72px', '72px']}
+                    fontSize={['60px', '60px', '60px', '72px', '72px', '72px']}
                     fontFamily="heading"
                     lineHeight="1"
                     textAlign="center"
@@ -72,6 +73,11 @@ export default function Home({
     const scrollToRef = (ref) => {
         ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
+
+    const [isDesktop] = useMediaQuery('(min-width: 992px)', {
+        ssr: true,
+        fallback: false
+    })
 
     return (
         <Box as="main">
@@ -119,7 +125,14 @@ export default function Home({
                                 pt="12"
                                 justify="center"
                                 flexDirection={'column'}
-                                height="25vh"
+                                height={[
+                                    '10vh',
+                                    '10vh',
+                                    '10vh',
+                                    '25vh',
+                                    '25vh',
+                                    '25vh'
+                                ]}
                             ></Flex>
                         </GridItem>
                         <GridItem
@@ -127,7 +140,14 @@ export default function Home({
                             colEnd={[13, 13, 13, 12, 12, 12]}
                             pt={['0', '0', '6', '6', '6']}
                             pb={['0', '0', '6', '6', '6']}
-                            h="100vh"
+                            h={[
+                                'fit-content',
+                                'fit-content',
+                                'fit-content',
+                                '100vh',
+                                '100vh',
+                                '100vh'
+                            ]}
                             ref={videoRef}
                             id="video"
                         >
@@ -179,10 +199,11 @@ export default function Home({
                                     as="h2"
                                     fontFamily="heading"
                                     fontSize={[
-                                        '30px',
-                                        '30px',
+                                        '28px',
+                                        '28px',
+                                        '28px',
                                         '46px',
-                                        '46px',
+                                        '84px',
                                         '84px'
                                     ]}
                                     lineHeight="1.36"
@@ -223,8 +244,9 @@ export default function Home({
                                     as="h2"
                                     fontFamily="heading"
                                     fontSize={[
-                                        '30px',
-                                        '30px',
+                                        '28px',
+                                        '28px',
+                                        '28px',
                                         '46px',
                                         '84px',
                                         '84px'
@@ -240,9 +262,9 @@ export default function Home({
                                 {leftColumn.map((name, index) => (
                                     <Text
                                         fontSize={[
-                                            '30px',
-                                            '30px',
-                                            '30px',
+                                            '28px',
+                                            '28px',
+                                            '28px',
                                             '36px',
                                             '36px',
                                             '36px'
@@ -260,7 +282,7 @@ export default function Home({
                         <GridItem
                             colStart={[1, 1, 1, 9, 9]}
                             colEnd={[13, 13, 13, 13, 13]}
-                            pt={['6', '6', '6', '6', '6']}
+                            pt={['2', '2', '2', '6', '6', '6']}
                             pb={['36', '36', '36', '6', '6']}
                         >
                             <Flex
@@ -276,19 +298,28 @@ export default function Home({
                                 ]}
                                 lineHeight="1.36"
                             >
-                                <Heading
-                                    as="h2"
-                                    fontFamily="heading"
-                                    fontSize="84px"
-                                    lineHeight="1.36"
-                                    textAlign="left"
-                                    color="pink.200"
-                                    w="100vw"
-                                    pb={['2', '2', '10', '10', '10']}
-                                    visibility="hidden"
-                                >
-                                    Heading space
-                                </Heading>
+                                {isDesktop && (
+                                    <Heading
+                                        as="h2"
+                                        fontFamily="heading"
+                                        fontSize={[
+                                            '28px',
+                                            '28px',
+                                            '28px',
+                                            '46px',
+                                            '84px',
+                                            '84px'
+                                        ]}
+                                        lineHeight="1.36"
+                                        textAlign="left"
+                                        color="pink.200"
+                                        w="100vw"
+                                        pb={['2', '2', '10', '10', '10']}
+                                        visibility="hidden"
+                                    >
+                                        Heading space
+                                    </Heading>
+                                )}
                                 {rightColumn.map((name, index) => (
                                     <Text
                                         fontSize={[
@@ -457,6 +488,7 @@ export default function Home({
                                         fontSize={[
                                             '36px',
                                             '36px',
+                                            '36px',
                                             '46px',
                                             '56px',
                                             '84px'
@@ -470,7 +502,14 @@ export default function Home({
                                     </Heading>
                                     <Text
                                         fontFamily="heading"
-                                        fontSize="24px"
+                                        fontSize={[
+                                            '16px',
+                                            '16px',
+                                            '16px',
+                                            '24px',
+                                            '24px',
+                                            '24px'
+                                        ]}
                                         lineHeight="1.36"
                                         textAlign="left"
                                         color="pink.200"
@@ -486,7 +525,8 @@ export default function Home({
                                         '26px',
                                         '26px',
                                         '26px',
-                                        '36',
+                                        '26px',
+                                        '36px',
                                         '36px'
                                     ]}
                                     lineHeight="1.36"
