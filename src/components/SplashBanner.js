@@ -1,5 +1,7 @@
+import useStorage from '@/hooks/useStorage'
 import { Box, Flex, Heading, VStack } from '@chakra-ui/react'
 import Image from 'next/image'
+import { useEffect } from 'react'
 import Balancer from 'react-wrap-balancer'
 
 export default function SplashBanner({ bannerShown, setBannerShown }) {
