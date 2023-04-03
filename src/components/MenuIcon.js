@@ -5,7 +5,7 @@ export default function MenuIcon({ openDrawer }) {
         <Button variant="callToAction" onClick={openDrawer} p="2.5">
             <Heading
                 as="h2"
-                size="md"
+                size={['xs', 'xs', 'xs', 'md', 'md', 'md']}
                 fontWeight="bold"
                 fontFamily="subheading"
                 textColor="white"

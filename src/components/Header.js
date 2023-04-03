@@ -46,7 +46,7 @@ export default function Header() {
                         >
                             <Heading
                                 as="h1"
-                                size="md"
+                                size={['xs', 'xs', 'xs', 'md', 'md', 'md']}
                                 fontWeight="bold"
                                 fontFamily="subheading"
                                 color="white"
