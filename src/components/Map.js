@@ -5,7 +5,8 @@ import {
     HStack,
     IconButton,
     Text,
-    useDisclosure
+    useDisclosure,
+    useMediaQuery
 } from '@chakra-ui/react'
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
@@ -187,6 +188,11 @@ export default function Map({ data }) {
             })
     }, [])
 
+    const [isDesktop] = useMediaQuery('(min-width: 992px)', {
+        ssr: true,
+        fallback: false // return false on the server, and re-evaluate on the client side
+    })
+
     return (
         <>
             <Flex
@@ -337,7 +343,18 @@ export default function Map({ data }) {
                         {'Tamatea whakapau'}
                     </Text>
                 </HStack>
-                <Box position="fixed" right="6" bottom="6">
+                <Box
+                    position="fixed"
+                    right={[
+                        'calc(50vw - 35px)',
+                        'calc(50vw - 35px)',
+                        'calc(50vw - 35px)',
+                        '6',
+                        '6',
+                        '6'
+                    ]}
+                    bottom={['24', '24', '24', '6', '6', '6']}
+                >
                     <MapProgress loading={modalOpenPending} />
                 </Box>
             </Box>
