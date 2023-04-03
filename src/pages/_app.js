@@ -121,20 +121,38 @@ export default function App({ Component, pageProps }) {
                     content="Website for the Pūkauae Photographic exhibition"
                 />
                 <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <meta charset="utf-8" />
-                <link rel="icon" href="data:," />
-                <meta
-                    name="description"
-                    content="Tū Tama Wāhine o Taranaki is a tangata whenua development and liberation organisation."
-                />
-                <meta
                     name="author"
                     content="Henry Babbage, Luke Enoka, Rere-No-A-Rangi Pope, Blaine Western"
                 />
                 <meta name="keywords" content="art" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
+                <meta charset="utf-8" />
+                <meta
+                    name="msapplication-config"
+                    content="/favicons/browserconfig.xml"
+                />
+                <link
+                    rel="apple-touch-icon"
+                    sizes="180x180"
+                    href="/favicons/apple-touch-icon.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="32x32"
+                    href="/favicons/favicon-32x32.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="16x16"
+                    href="/favicons/favicon-16x16.png"
+                />
+                <link rel="manifest" href="/favicons/site.webmanifest" />
+                <link rel="shortcut icon" href="/favicons/favicon.ico" />
             </Head>
             <ChakraProvider theme={theme}>
                 <Fonts />
