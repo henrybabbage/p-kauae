@@ -1,4 +1,4 @@
-import { Text } from '@chakra-ui/react'
+import Image from 'next/image'
 import { MotionBox } from './MotionBox'
 
 export default function ScrollPrompt() {
@@ -40,6 +40,8 @@ export default function ScrollPrompt() {
                     alignSelf="center"
                     textAlign="center"
                     position="relative"
+                    width="75px"
+                    height="75px"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{
@@ -48,36 +50,18 @@ export default function ScrollPrompt() {
                         delay: 1.8
                     }}
                 >
-                    <Text
-                        color="grey.900"
-                        textStyle="body"
-                        textTransform="uppercase"
-                        fontSize={[
-                            '12px',
-                            '12px',
-                            '12px',
-                            '16px',
-                            '16px',
-                            '16px'
-                        ]}
-                    >
-                        Scroll
-                    </Text>
-                    <Text
-                        color="grey.900"
-                        textStyle="body"
-                        textTransform="uppercase"
-                        fontSize={[
-                            '12px',
-                            '12px',
-                            '12px',
-                            '16px',
-                            '16px',
-                            '16px'
-                        ]}
-                    >
-                        Down
-                    </Text>
+                    <Image
+                        src="/icons/pukauae.svg"
+                        alt="Pūkauae icon"
+                        width="75"
+                        height="75"
+                        priority
+                        sizes="100vw"
+                        style={{
+                            objectFit: 'contain',
+                            objectPosition: 'center'
+                        }}
+                    />
                 </MotionBox>
             </MotionBox>
         </MotionBox>

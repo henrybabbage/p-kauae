@@ -65,10 +65,12 @@ const WahineModal = ({
             >
                 <ModalOverlay />
                 <ModalContent
+                    w="auto"
                     maxW="100vw"
                     p={[4, 4, 4, 6, 6, 6]}
                     bg="grey.900"
                     h="fit-content"
+                    overflow="hidden"
                 >
                     <Flex justifyContent="space-between" alignContent="start">
                         <Heading
@@ -104,6 +106,7 @@ const WahineModal = ({
                     </Flex>
                     <ModalHeader p={0}></ModalHeader>
                     <ModalBody
+                        width="auto"
                         maxW="100vw"
                         pt={0}
                         px={0}
@@ -121,13 +124,27 @@ const WahineModal = ({
                     >
                         <Grid
                             templateColumns="repeat(12, 1fr)"
-                            maxW="100vw"
-                            columnGap="40px"
+                            maxW={[
+                                '100vw',
+                                '100vw',
+                                '100vw',
+                                '100vw',
+                                '100vw',
+                                '100vw'
+                            ]}
+                            columnGap={[
+                                '20px',
+                                '20px',
+                                '20px',
+                                '40px',
+                                '40px',
+                                '40px'
+                            ]}
                             rowGap="20px"
                         >
                             <GridItem
                                 colStart={[1, 1, 1, 1, 1, 1]}
-                                colEnd={[12, 12, 12, 13, 13, 13]}
+                                colEnd={[13, 13, 13, 13, 13, 13]}
                                 pt={[2, 2, 2, 6, 6, 6]}
                             >
                                 <Box className="player">
@@ -195,10 +212,11 @@ const WahineModal = ({
                             </GridItem>
                             <GridItem
                                 colStart={[1, 1, 1, 1, 1, 1]}
-                                colEnd={[12, 12, 12, 7, 7, 7]}
+                                colEnd={[13, 13, 13, 7, 7, 7]}
                                 pt={[2, 2, 2, 6, 6, 6]}
                                 pb={[2, 2, 2, 6, 6, 6]}
-                                h="100%"
+                                // h="100%"
+                                maxW="100%"
                                 minH={[
                                     'fit-content',
                                     'fit-content',
@@ -241,7 +259,7 @@ const WahineModal = ({
                                 colEnd={[12, 12, 12, 13, 13, 13]}
                                 pt={[2, 2, 2, 6, 6, 6]}
                                 pb={[2, 2, 2, 6, 6, 6]}
-                                h="auto"
+                                // h="auto"
                                 minH={[
                                     'fit-content',
                                     'fit-content',
@@ -250,6 +268,9 @@ const WahineModal = ({
                                     '60vh',
                                     '60vh'
                                 ]}
+                                w="96%"
+                                maxW="96%"
+                                whiteSpace="normal"
                             >
                                 <Text
                                     fontSize={[
@@ -262,6 +283,10 @@ const WahineModal = ({
                                     ]}
                                     lineHeight="1.36"
                                     color="white"
+                                    wordWrap="break-word"
+                                    whiteSpace="normal"
+                                    w="96%"
+                                    maxW="96%"
                                 >
                                     {
                                         wahines[selectedWahineIndex]
@@ -280,6 +305,10 @@ const WahineModal = ({
                                         ]}
                                         lineHeight="1.36"
                                         color="white"
+                                        wordWrap="break-word"
+                                        whiteSpace="normal"
+                                        w="96%"
+                                        maxW="96%"
                                     >
                                         {
                                             wahines[selectedWahineIndex]

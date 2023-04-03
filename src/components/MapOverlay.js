@@ -56,7 +56,14 @@ export default function MapOverlay({ haerengaKorero, mapIsVisible }) {
                     <Text
                         as="h1"
                         fontFamily="subheading"
-                        fontSize="18px"
+                        fontSize={[
+                            '14px',
+                            '14px',
+                            '14px',
+                            '18px',
+                            '18px',
+                            '18px'
+                        ]}
                         color="white"
                         lineHeight="1.3"
                         textAlign="center"
