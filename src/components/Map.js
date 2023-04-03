@@ -37,7 +37,7 @@ export default function Map({ data }) {
             longitude: randomStartPoint.lng,
             bearing: 90,
             pitch: 70,
-            zoom: 12
+            zoom: 11
         }
     })
     const [mapData, setMapData] = useState(null)
@@ -84,7 +84,6 @@ export default function Map({ data }) {
         },
         paint: {
             'icon-color': '#ffffff',
-            // 'text-color': '#ffffff',
             'text-color': [
                 'case',
                 ['boolean', ['feature-state', 'hover'], false],
@@ -130,6 +129,7 @@ export default function Map({ data }) {
         })
     }
 
+    // TODO find the active wahine index and setSelectedWahineIndex on page load
     const handleNextClick = () => {
         const nextIndex =
             selectedWahineIndex === 0
