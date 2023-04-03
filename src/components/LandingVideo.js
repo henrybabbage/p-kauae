@@ -10,8 +10,6 @@ import dynamic from 'next/dynamic'
 import { useRef, useState } from 'react'
 import { PauseIcon } from './PauseIcon'
 import { PlayIcon } from './PlayIcon'
-import VideoOverlay from './VideoOverlay'
-import VideoCover from './VideoCover'
 
 const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
     ssr: false
@@ -77,11 +75,6 @@ export default function LandingVideo({
                     justifyContent="center"
                     alignItems="center"
                 >
-                    <VideoOverlay
-                        showInfo={!isPlaying}
-                        videoKorero={videoKorero}
-                    />
-                    <VideoCover showCover={showCover} />
                     <Tooltip
                         label={
                             !isPlaying
@@ -111,7 +104,7 @@ export default function LandingVideo({
                 </Flex>
             )}
             <AspectRatio
-                maxH={['auto', 'auto', 'auto', '75vh']}
+                maxH={['auto', 'auto', 'auto', '75vh', '75vh', '75vh']}
                 maxW="100vw"
                 ratio={16 / 9}
                 cursor="auto"
@@ -125,20 +118,24 @@ export default function LandingVideo({
                     autoplay={autoplay}
                     muted={muted}
                     loop={loop}
-                    playing={isPlaying}
+                    info={true}
+                    cover={true}
+                    isPlaying={isPlaying}
                     showInfo={showInfo}
+                    showCover={showCover}
+                    videoKorero={videoKorero}
                 />
             </AspectRatio>
             {showTitle && (
                 <Heading
-                    fontSize="36px"
+                    fontSize={['16px', '16px', '16px', '36px', '36px', '36px']}
                     color="white"
                     fontWeight="regular"
                     fontFamily="heading"
                     position="absolute"
                     z="10"
-                    bottom={6}
-                    right={6}
+                    bottom={[4, 4, 4, 6, 6, 6]}
+                    right={[4, 4, 4, 6, 6, 6]}
                 >
                     {videoTitle}
                 </Heading>

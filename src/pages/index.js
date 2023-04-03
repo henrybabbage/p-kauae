@@ -123,8 +123,8 @@ export default function Home({
                             ></Flex>
                         </GridItem>
                         <GridItem
-                            colStart={2}
-                            colEnd={12}
+                            colStart={[1, 1, 1, 2, 2, 2]}
+                            colEnd={[13, 13, 13, 12, 12, 12]}
                             pt={['0', '0', '6', '6', '6']}
                             pb={['0', '0', '6', '6', '6']}
                             h="100vh"
@@ -133,8 +133,22 @@ export default function Home({
                         >
                             <Box
                                 className="player"
-                                h={['auto', 'auto', 'auto', '100vh', '100vh']}
-                                w="100%"
+                                h={[
+                                    'auto',
+                                    'auto',
+                                    'auto',
+                                    '100vh',
+                                    '100vh',
+                                    '100vh'
+                                ]}
+                                w={[
+                                    '100%',
+                                    '100%',
+                                    '100%',
+                                    '100%',
+                                    '100%',
+                                    '100%'
+                                ]}
                             >
                                 <LandingVideo
                                     playerRef={playerRef}

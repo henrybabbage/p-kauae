@@ -2,7 +2,9 @@ import { isBrowser } from '@/utils/helpers'
 import { Box, Center, Spinner } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player/lazy'
+import VideoCover from './VideoCover'
 import VideoLoading from './VideoLoading'
+import VideoOverlay from './VideoOverlay'
 
 export default function VideoPlayer({
     playerRef,
@@ -10,7 +12,12 @@ export default function VideoPlayer({
     autoplay,
     muted,
     loop,
-    playing
+    info,
+    cover,
+    videoKorero,
+    isPlaying,
+    showInfo,
+    showCover
 }) {
     const [hasWindow, setHasWindow] = useState(false)
     const [isBuffering, setIsBuffering] = useState(null)
@@ -35,6 +42,10 @@ export default function VideoPlayer({
                     />
                 </Center>
             )}
+            {info && (
+                <VideoOverlay showInfo={!isPlaying} videoKorero={videoKorero} />
+            )}
+            {cover && <VideoCover showCover={showCover} />}
             {hasWindow && (
                 <ReactPlayer
                     ref={playerRef}
@@ -46,7 +57,7 @@ export default function VideoPlayer({
                     autoPlay={autoplay}
                     muted={muted}
                     loop={loop}
-                    playing={playing}
+                    playing={isPlaying}
                     controls={false}
                     onReady={() => {
                         setIsReady(true)

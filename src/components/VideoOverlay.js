@@ -15,7 +15,14 @@ export default function VideoOverlay({ showInfo, videoKorero }) {
                         as="h3"
                         w="80%"
                         fontFamily="subheading"
-                        fontSize={['12px', '12px', '12px', '22px', '22px']}
+                        fontSize={[
+                            '12px',
+                            '12px',
+                            '12px',
+                            '22px',
+                            '22px',
+                            '22px'
+                        ]}
                         color="black"
                         lineHeight="1.3"
                         textAlign="center"

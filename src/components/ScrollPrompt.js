@@ -28,8 +28,8 @@ export default function ScrollPrompt() {
                     delay: 2.8
                 }}
                 className="scroll"
-                h="100px"
-                w="100px"
+                h={['80px', '80px', '80px', '100px', '100px', '100px']}
+                w={['80px', '80px', '80px', '100px', '100px', '100px']}
                 backgroundColor="white"
                 borderRadius="100%"
                 position="relative"
@@ -52,6 +52,14 @@ export default function ScrollPrompt() {
                         color="grey.900"
                         textStyle="body"
                         textTransform="uppercase"
+                        fontSize={[
+                            '12px',
+                            '12px',
+                            '12px',
+                            '16px',
+                            '16px',
+                            '16px'
+                        ]}
                     >
                         Scroll
                     </Text>
@@ -59,6 +67,14 @@ export default function ScrollPrompt() {
                         color="grey.900"
                         textStyle="body"
                         textTransform="uppercase"
+                        fontSize={[
+                            '12px',
+                            '12px',
+                            '12px',
+                            '16px',
+                            '16px',
+                            '16px'
+                        ]}
                     >
                         Down
                     </Text>
