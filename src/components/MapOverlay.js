@@ -41,8 +41,8 @@ export default function MapOverlay({ haerengaKorero, mapIsVisible }) {
                         <Image
                             src="/icons/pukauae.svg"
                             alt="Pukauae logo"
-                            width="150"
-                            height="150"
+                            width="125"
+                            height="125"
                             priority
                             sizes="100vw"
                             style={{

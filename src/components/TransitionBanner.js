@@ -1,4 +1,4 @@
-import { Flex, VStack } from '@chakra-ui/react'
+import { Box, Flex, Text, VStack } from '@chakra-ui/react'
 import Image from 'next/image'
 import { MotionBox } from './MotionBox'
 
@@ -19,6 +19,7 @@ export default function TransitionBanner() {
                 direction="column"
                 justifyContent="center"
                 alignItems="center"
+                p="6"
             >
                 <MotionBox
                     animate={{ scale: 1.1 }}
@@ -27,12 +28,13 @@ export default function TransitionBanner() {
                         repeat: Infinity,
                         repeatType: 'mirror'
                     }}
+                    pb="12"
                 >
                     <Image
                         src="/icons/pukauae.svg"
                         alt="Pukauae logo"
-                        width="150"
-                        height="150"
+                        width="125"
+                        height="125"
                         priority
                         sizes="100vw"
                         style={{
@@ -41,6 +43,21 @@ export default function TransitionBanner() {
                         }}
                     />
                 </MotionBox>
+                <Box w="300px">
+                    <Text
+                        as="h1"
+                        fontFamily="subheading"
+                        fontSize="18px"
+                        color="white"
+                        lineHeight="1.3"
+                        textAlign="center"
+                        textColor="white"
+                        textTransform="uppercase"
+                        opacity={0}
+                    >
+                        Loading
+                    </Text>
+                </Box>
             </Flex>
         </VStack>
     )
