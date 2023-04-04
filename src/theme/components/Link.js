@@ -19,7 +19,6 @@ const sizes = {
 }
 
 const menuVariant = defineStyle({
-    // transition: 'textColor 0.5s ease-out',
     _hover: {
         textDecoration: 'none',
         textColor: 'pink',

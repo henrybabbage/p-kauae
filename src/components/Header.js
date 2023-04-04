@@ -1,26 +1,11 @@
-import { Box, Flex, Heading, Link, useDisclosure } from '@chakra-ui/react'
+import { Box, Flex, Heading, useDisclosure } from '@chakra-ui/react'
 import { MotionBox } from './MotionBox'
 
-import NextLink from 'next/link'
-import { useRouter } from 'next/router'
 import MenuIcon from './MenuIcon'
 import MobileMenu from './MobileMenu'
+import NavLink from './NavLink'
 
 export default function Header() {
-    const router = useRouter()
-
-    const activeLink = (value) => {
-        let color
-        if (value === router.pathname) {
-            color = 'pink.200'
-        } else {
-            color = 'white'
-        }
-        return color
-    }
-
-    // const { isOpen, onOpen, onClose } = useDisclosure()
-
     const menu = useDisclosure()
 
     return (
@@ -37,13 +22,7 @@ export default function Header() {
             >
                 <Box as="nav" position="absolute" w="100vw" p="6" zIndex={20}>
                     <Flex justifyContent="start">
-                        <Link
-                            variant="menu"
-                            as={NextLink}
-                            href="/"
-                            scroll={false}
-                            position="fixed"
-                        >
+                        <NavLink href="/" isSiteTitle={true}>
                             <Heading
                                 as="h2"
                                 fontSize={[
@@ -57,11 +36,10 @@ export default function Header() {
                                 lineHeight="1.36"
                                 fontWeight="bold"
                                 fontFamily="subheading"
-                                color="white"
                             >
                                 Tū Tama Wāhine o Taranaki
                             </Heading>
-                        </Link>
+                        </NavLink>
                     </Flex>
 
                     <Flex
@@ -75,13 +53,7 @@ export default function Header() {
                             'flex'
                         ]}
                     >
-                        <Link
-                            variant="menu"
-                            as={NextLink}
-                            href="/"
-                            scroll={false}
-                            position="fixed"
-                        >
+                        <NavLink href="/">
                             <Heading
                                 as="h2"
                                 fontSize={[
@@ -95,11 +67,10 @@ export default function Header() {
                                 lineHeight="1.36"
                                 fontWeight="bold"
                                 fontFamily="subheading"
-                                textColor={activeLink('/')}
                             >
                                 Whakapapa
                             </Heading>
-                        </Link>
+                        </NavLink>
                     </Flex>
                     <Flex
                         justifyContent="end"
@@ -112,13 +83,7 @@ export default function Header() {
                             'flex'
                         ]}
                     >
-                        <Link
-                            variant="menu"
-                            as={NextLink}
-                            href="/haerenga"
-                            scroll={false}
-                            position="fixed"
-                        >
+                        <NavLink href="/haerenga">
                             <Heading
                                 as="h2"
                                 fontSize={[
@@ -132,11 +97,10 @@ export default function Header() {
                                 lineHeight="1.36"
                                 fontWeight="bold"
                                 fontFamily="subheading"
-                                textColor={activeLink('/haerenga')}
                             >
                                 Haerenga
                             </Heading>
-                        </Link>
+                        </NavLink>
                     </Flex>
                     <Flex
                         display={[
