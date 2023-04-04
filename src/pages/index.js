@@ -431,8 +431,8 @@ export default function Home({
                             />
                         </GridItem>
                         <GridItem
-                            colStart={[1, 1, 1, 4, 4]}
-                            colEnd={[13, 13, 13, 12, 12]}
+                            colStart={[1, 1, 1, 4, 4, 4]}
+                            colEnd={[13, 13, 13, 12, 12, 12]}
                             pt={['6', '6', '6', '16', '16']}
                             whiteSpace="pre-line"
                         >
@@ -442,6 +442,17 @@ export default function Home({
                                 children={korero.tuhinga_whakaraapopoto}
                                 skipHtml
                             />
+                        </GridItem>
+                        <GridItem
+                            colStart={1}
+                            colEnd={13}
+                            py={['6', '6', '6', '20', '20', '20']}
+                            h="15vh"
+                            placeSelf="center"
+                        >
+                            <Box py={['6', '6', '6', '16', '16', '16']}>
+                                <LinkPrompt />
+                            </Box>
                         </GridItem>
                     </Grid>
                 </Box>
@@ -612,6 +623,7 @@ export default function Home({
     )
 }
 
+import LinkPrompt from '@/components/LinkPrompt'
 import ScrollPrompt from '@/components/ScrollPrompt'
 import fsPromises from 'fs/promises'
 import path from 'path'

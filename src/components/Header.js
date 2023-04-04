@@ -1,6 +1,7 @@
 import { Box, Flex, Heading, useDisclosure } from '@chakra-ui/react'
 import { MotionBox } from './MotionBox'
 
+import HoverableHeading from './HoverableHeading'
 import MenuIcon from './MenuIcon'
 import MobileMenu from './MobileMenu'
 import NavLink from './NavLink'
@@ -53,23 +54,11 @@ export default function Header() {
                             'flex'
                         ]}
                     >
-                        <NavLink href="/">
-                            <Heading
-                                as="h2"
-                                fontSize={[
-                                    '10px',
-                                    '10px',
-                                    '10px',
-                                    '20px',
-                                    '20px',
-                                    '20px'
-                                ]}
-                                lineHeight="1.36"
-                                fontWeight="bold"
-                                fontFamily="subheading"
-                            >
-                                Whakapapa
-                            </Heading>
+                        <NavLink href="/" asPath="/whakapapa">
+                            <HoverableHeading
+                                hoverContent="About"
+                                defaultContent="Whakapapa"
+                            />
                         </NavLink>
                     </Flex>
                     <Flex
@@ -84,22 +73,10 @@ export default function Header() {
                         ]}
                     >
                         <NavLink href="/haerenga">
-                            <Heading
-                                as="h2"
-                                fontSize={[
-                                    '10px',
-                                    '10px',
-                                    '10px',
-                                    '20px',
-                                    '20px',
-                                    '20px'
-                                ]}
-                                lineHeight="1.36"
-                                fontWeight="bold"
-                                fontFamily="subheading"
-                            >
-                                Haerenga
-                            </Heading>
+                            <HoverableHeading
+                                hoverContent="Journey"
+                                defaultContent="Haerenga"
+                            />
                         </NavLink>
                     </Flex>
                     <Flex

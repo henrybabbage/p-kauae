@@ -2,7 +2,12 @@ import { Link as ChakraLink, useTheme } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
-export default function NavLink({ href, children, isSiteTitle = false }) {
+export default function NavLink({
+    href,
+    children,
+    isSiteTitle = false,
+    asPath
+}) {
     const router = useRouter()
     const isActive = router.pathname === href
     const hoverColor = 'pink.200'
@@ -12,6 +17,7 @@ export default function NavLink({ href, children, isSiteTitle = false }) {
     return (
         <ChakraLink
             as={NextLink}
+            asPath={asPath}
             href={href}
             color={isActive && !isSiteTitle ? activeColor : 'white'}
             textDecoration={
