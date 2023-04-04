@@ -22,7 +22,7 @@ const navVariant = defineStyle({
     _hover: {
         textDecoration: 'underline',
         textUnderlinePosition: 'under',
-        textUnderlineOffset: '0.2em',
+        textUnderlineOffset: '0.5em',
         color: 'pink.200',
         transitionDuration: '0.5s',
         transitionTimingFunction: 'ease-out'
