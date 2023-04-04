@@ -1,11 +1,14 @@
 import { Box, Flex, Heading, useDisclosure } from '@chakra-ui/react'
 import { MotionBox } from './MotionBox'
 
+import { useState } from 'react'
 import MenuIcon from './MenuIcon'
 import MobileMenu from './MobileMenu'
 import NavLink from './NavLink'
 
 export default function Header() {
+    const [haerengaIsHovered, setHaerengaIsHovered] = useState(null)
+    const [whakapapaIsHovered, setWhakapapaIsHovered] = useState(null)
     const menu = useDisclosure()
 
     return (
@@ -52,25 +55,15 @@ export default function Header() {
                             'flex',
                             'flex'
                         ]}
+                        onMouseEnter={() => setWhakapapaIsHovered(true)}
+                        onMouseLeave={() => setWhakapapaIsHovered(false)}
                     >
-                        <NavLink href="/">
-                            <Heading
-                                as="h2"
-                                fontSize={[
-                                    '10px',
-                                    '10px',
-                                    '10px',
-                                    '20px',
-                                    '20px',
-                                    '20px'
-                                ]}
-                                lineHeight="1.36"
-                                fontWeight="bold"
-                                fontFamily="subheading"
-                            >
-                                Whakapapa
-                            </Heading>
-                        </NavLink>
+                        <NavLink
+                            href="/"
+                            reoText="Whakapapa"
+                            englishText="About"
+                            isHovered={whakapapaIsHovered}
+                        />
                     </Flex>
                     <Flex
                         justifyContent="end"
@@ -82,25 +75,15 @@ export default function Header() {
                             'flex',
                             'flex'
                         ]}
+                        onMouseEnter={() => setHaerengaIsHovered(true)}
+                        onMouseLeave={() => setHaerengaIsHovered(false)}
                     >
-                        <NavLink href="/haerenga">
-                            <Heading
-                                as="h2"
-                                fontSize={[
-                                    '10px',
-                                    '10px',
-                                    '10px',
-                                    '20px',
-                                    '20px',
-                                    '20px'
-                                ]}
-                                lineHeight="1.36"
-                                fontWeight="bold"
-                                fontFamily="subheading"
-                            >
-                                Haerenga
-                            </Heading>
-                        </NavLink>
+                        <NavLink
+                            href="/haerenga"
+                            reoText="Haerenga"
+                            englishText="Journey"
+                            isHovered={haerengaIsHovered}
+                        />
                     </Flex>
                     <Flex
                         display={[

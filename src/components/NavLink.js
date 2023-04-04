@@ -1,8 +1,15 @@
-import { Link as ChakraLink, useTheme } from '@chakra-ui/react'
+import { Link as ChakraLink, Heading, useTheme } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
-export default function NavLink({ href, children, isSiteTitle = false }) {
+export default function NavLink({
+    href,
+    children,
+    isSiteTitle = false,
+    englishText,
+    reoText,
+    isHovered
+}) {
     const router = useRouter()
     const isActive = router.pathname === href
     const hoverColor = 'pink.200'
@@ -28,7 +35,15 @@ export default function NavLink({ href, children, isSiteTitle = false }) {
             scroll={false}
             position="fixed"
         >
-            {children}
+            <Heading
+                as="h2"
+                fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
+                lineHeight="1.36"
+                fontWeight="bold"
+                fontFamily="subheading"
+            >
+                {isHovered ? englishText : reoText}
+            </Heading>
         </ChakraLink>
     )
 }
