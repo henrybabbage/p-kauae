@@ -10,7 +10,7 @@ export default function NavLink({ href, children, isSiteTitle = false }) {
     return (
         <ChakraLink
             as={NextLink}
-            variant="menu"
+            variant="nav"
             href={href}
             color={isActive && !isSiteTitle ? activeColor : 'white'}
             textDecoration={
