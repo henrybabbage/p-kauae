@@ -5,7 +5,6 @@ import { MotionBox } from '@/components/MotionBox'
 import SmoothScroll from '@/components/SmoothScroll'
 import {
     Box,
-    Center,
     Flex,
     Grid,
     GridItem,
@@ -86,6 +85,7 @@ export default function Home({
                     <Grid
                         templateColumns="repeat(12, 1fr)"
                         px={['6', '6', '6', '0', '0']}
+                        w="100vw"
                     >
                         <GridItem
                             colStart={1}
@@ -447,15 +447,19 @@ export default function Home({
                         <GridItem
                             colStart={1}
                             colEnd={13}
-                            py={['6', '6', '6', '20', '20', '20']}
+                            py={['6', '6', '6', '24', '24', '24']}
                             h="15vh"
+                            w="100%"
+                            placeItems="center"
                         >
-                            <Center
-                                w="100vw"
-                                py={['6', '6', '6', '16', '16', '16']}
+                            <Box
+                                transform="translate(-50%, -50%)"
+                                position="absolute"
+                                left="50%"
+                                mt={['6', '6', '6', '24', '24', '24']}
                             >
                                 <LinkPrompt />
-                            </Center>
+                            </Box>
                         </GridItem>
                     </Grid>
                 </Box>
