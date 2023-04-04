@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import CircularText from './CircularText'
 import { MotionBox } from './MotionBox'
 
 export default function ScrollPrompt() {
@@ -44,6 +45,7 @@ export default function ScrollPrompt() {
                         delay: 1.8
                     }}
                 >
+                    {/* <CircularText /> */}
                     <Image
                         src="/icons/pukauae.svg"
                         alt="Pūkauae icon"
