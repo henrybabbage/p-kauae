@@ -12,12 +12,6 @@ export default function ScrollPrompt() {
                     duration: 0.2
                 }
             }}
-            // whileTap={{
-            //     scale: 1.3,
-            //     transition: {
-            //         duration: 0.2
-            //     }
-            // }}
         >
             <MotionBox
                 initial={{ scale: 0 }}

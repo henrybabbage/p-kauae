@@ -111,7 +111,14 @@ export default function Home({
                                 <Box
                                     position="absolute"
                                     bottom="150"
-                                    right="150"
+                                    right={[
+                                        'calc(50vw + 20px)',
+                                        'calc(50vw + 20px)',
+                                        'calc(50vw + 20px)',
+                                        '150',
+                                        '150',
+                                        '150'
+                                    ]}
                                 >
                                     <MotionBox position="relative">
                                         <ScrollPrompt />
@@ -456,7 +463,7 @@ export default function Home({
                                 transform="translate(-50%, -50%)"
                                 position="absolute"
                                 left="50%"
-                                mt={['6', '6', '6', '24', '24', '24']}
+                                mt={['16', '16', '16', '24', '24', '24']}
                             >
                                 <LinkPrompt />
                             </Box>
@@ -466,7 +473,7 @@ export default function Home({
                 <Box
                     id="photographer"
                     bg="grey.900"
-                    pt={[24, 24, 24, null, null, null]}
+                    pt={['24', '24', '24', null, null, null]}
                 >
                     <Flex
                         direction={[
