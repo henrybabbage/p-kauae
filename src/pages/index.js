@@ -120,7 +120,7 @@ export default function Home({
                                         '150'
                                     ]}
                                 >
-                                    <MotionBox position="relative">
+                                    <MotionBox position="absolute">
                                         <ScrollPrompt />
                                     </MotionBox>
                                 </Box>
@@ -637,6 +637,7 @@ export default function Home({
     )
 }
 
+import CircularText from '@/components/CircularText'
 import LinkPrompt from '@/components/LinkPrompt'
 import ScrollPrompt from '@/components/ScrollPrompt'
 import fsPromises from 'fs/promises'
