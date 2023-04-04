@@ -18,11 +18,23 @@ const sizes = {
     })
 }
 
+const navVariant = defineStyle({
+    _hover: {
+        textDecoration: 'underline',
+        textUnderlinePosition: 'under',
+        textUnderlineOffset: '0.5em',
+        color: 'pink.200',
+        transitionDuration: '0.5s',
+        transitionTimingFunction: 'ease-out'
+    }
+})
+
 const menuVariant = defineStyle({
-    // transition: 'textColor 0.5s ease-out',
     _hover: {
         textDecoration: 'none',
-        textColor: 'pink',
+        textUnderlinePosition: 'under',
+        textUnderlineOffset: '0.2em',
+        color: 'pink.200',
         transitionDuration: '0.5s',
         transitionTimingFunction: 'ease-out'
     }
@@ -32,6 +44,7 @@ export const linkTheme = defineStyleConfig({
     baseStyle,
     sizes,
     variants: {
-        menu: menuVariant
+        menu: menuVariant,
+        nac: navVariant
     }
 })
