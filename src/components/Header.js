@@ -27,9 +27,9 @@ export default function Header() {
                             <Heading
                                 as="h2"
                                 fontSize={[
-                                    '10px',
-                                    '10px',
-                                    '10px',
+                                    '14px',
+                                    '14px',
+                                    '14px',
                                     '20px',
                                     '20px',
                                     '20px'

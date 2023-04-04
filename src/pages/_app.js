@@ -101,16 +101,16 @@ export default function App({ Component, pageProps }) {
         }
     }, [])
 
-    useEffect(() => {
-        const handleContextMenu = (e) => {
-            // prevent the right-click menu from appearing
-            e.preventDefault()
-        }
-        document.addEventListener('contextmenu', handleContextMenu)
-        return () => {
-            document.removeEventListener('contextmenu', handleContextMenu)
-        }
-    }, [])
+    // useEffect(() => {
+    //     const handleContextMenu = (e) => {
+    //         // prevent the right-click menu from appearing
+    //         e.preventDefault()
+    //     }
+    //     document.addEventListener('contextmenu', handleContextMenu)
+    //     return () => {
+    //         document.removeEventListener('contextmenu', handleContextMenu)
+    //     }
+    // }, [])
 
     return (
         <>
@@ -124,7 +124,10 @@ export default function App({ Component, pageProps }) {
                     name="author"
                     content="Henry Babbage, Luke Enoka, Rere-No-A-Rangi Pope, Blaine Western"
                 />
-                <meta name="keywords" content="art" />
+                <meta
+                    name="keywords"
+                    content="pukauae, tu tama wahine o taranaki, tu tama wahine, art"
+                />
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1"

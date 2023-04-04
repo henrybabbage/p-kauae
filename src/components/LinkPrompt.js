@@ -11,8 +11,7 @@ export default function LinkPrompt() {
             scroll={false}
         >
             <MotionBox
-                position="absolute"
-                cursor="auto"
+                cursor="pointer"
                 whileHover={{
                     scale: 1.1,
                     transition: {
@@ -35,13 +34,14 @@ export default function LinkPrompt() {
                         delay: 2.8
                     }}
                     className="scroll"
-                    h="100px"
-                    w="100px"
+                    h={['80px', '80px', '80px', '140px', '140px', '140px']}
+                    w={['80px', '80px', '80px', '140px', '140px', '140px']}
                     backgroundColor="white"
-                    borderRadius="100%"
+                    borderRadius="50%"
                     position="relative"
                     display="flex"
                     justifyContent="center"
+                    boxShadow="0px 0px 200px 50px rgba(249,171,171,0.3)"
                 >
                     <MotionBox
                         alignSelf="center"
@@ -59,9 +59,9 @@ export default function LinkPrompt() {
                             color="grey.900"
                             fontFamily="subheading"
                             fontSize={[
-                                '12px',
-                                '12px',
-                                '12px',
+                                '8px',
+                                '8px',
+                                '8px',
                                 '14px',
                                 '14px',
                                 '14px'
@@ -74,9 +74,9 @@ export default function LinkPrompt() {
                             color="grey.900"
                             fontFamily="subheading"
                             fontSize={[
-                                '12px',
-                                '12px',
-                                '12px',
+                                '8px',
+                                '8px',
+                                '8px',
                                 '14px',
                                 '14px',
                                 '14px'
