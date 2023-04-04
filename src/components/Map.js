@@ -5,8 +5,7 @@ import {
     HStack,
     IconButton,
     Text,
-    useDisclosure,
-    useMediaQuery
+    useDisclosure
 } from '@chakra-ui/react'
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
@@ -68,11 +67,9 @@ export default function Map({ data }) {
         source: 'taranaki-data',
         tolerance: 0,
         layout: {
-            // 'icon-image': 'diamond',
             'icon-size': 0.35,
             'icon-allow-overlap': true,
             'text-optional': true,
-            // get the title name from the source's "title" property
             'text-field': ['get', 'title'],
             'text-font': ['Arial Unicode MS Bold'],
             'text-offset': [0, 1.25],
@@ -187,11 +184,6 @@ export default function Map({ data }) {
                 hoveredStateId = null
             })
     }, [])
-
-    const [isDesktop] = useMediaQuery('(min-width: 992px)', {
-        ssr: true,
-        fallback: false // return false on the server, and re-evaluate on the client side
-    })
 
     return (
         <>
