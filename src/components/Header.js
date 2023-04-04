@@ -1,14 +1,12 @@
 import { Box, Flex, Heading, useDisclosure } from '@chakra-ui/react'
 import { MotionBox } from './MotionBox'
 
-import { useState } from 'react'
+import HoverableHeading from './HoverableHeading'
 import MenuIcon from './MenuIcon'
 import MobileMenu from './MobileMenu'
 import NavLink from './NavLink'
 
 export default function Header() {
-    const [haerengaIsHovered, setHaerengaIsHovered] = useState(null)
-    const [whakapapaIsHovered, setWhakapapaIsHovered] = useState(null)
     const menu = useDisclosure()
 
     return (
@@ -55,15 +53,13 @@ export default function Header() {
                             'flex',
                             'flex'
                         ]}
-                        onMouseEnter={() => setWhakapapaIsHovered(true)}
-                        onMouseLeave={() => setWhakapapaIsHovered(false)}
                     >
-                        <NavLink
-                            href="/"
-                            reoText="Whakapapa"
-                            englishText="About"
-                            isHovered={whakapapaIsHovered}
-                        />
+                        <NavLink href="/" asPath="/whakapapa">
+                            <HoverableHeading
+                                hoverContent="About"
+                                defaultContent="Whakapapa"
+                            />
+                        </NavLink>
                     </Flex>
                     <Flex
                         justifyContent="end"
@@ -75,15 +71,13 @@ export default function Header() {
                             'flex',
                             'flex'
                         ]}
-                        onMouseEnter={() => setHaerengaIsHovered(true)}
-                        onMouseLeave={() => setHaerengaIsHovered(false)}
                     >
-                        <NavLink
-                            href="/haerenga"
-                            reoText="Haerenga"
-                            englishText="Journey"
-                            isHovered={haerengaIsHovered}
-                        />
+                        <NavLink href="/haerenga">
+                            <HoverableHeading
+                                hoverContent="Journey"
+                                defaultContent="Haerenga"
+                            />
+                        </NavLink>
                     </Flex>
                     <Flex
                         display={[

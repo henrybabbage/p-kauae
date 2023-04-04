@@ -446,11 +446,11 @@ export default function Home({
                         <GridItem
                             colStart={1}
                             colEnd={13}
-                            py={['6', '6', '6', '16', '16', '16']}
+                            py={['6', '6', '6', '20', '20', '20']}
                             h="15vh"
                             placeSelf="center"
                         >
-                            <Box pt={['6', '6', '6', '16', '16', '16']}>
+                            <Box py={['6', '6', '6', '16', '16', '16']}>
                                 <LinkPrompt />
                             </Box>
                         </GridItem>
