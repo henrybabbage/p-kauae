@@ -35,13 +35,14 @@ export default function LinkPrompt() {
                         delay: 2.8
                     }}
                     className="scroll"
-                    h="100px"
-                    w="100px"
+                    h="125px"
+                    w="125px"
                     backgroundColor="white"
                     borderRadius="100%"
                     position="relative"
                     display="flex"
                     justifyContent="center"
+                    boxShadow="0px 0px 200px 50px rgba(249,171,171,0.3)"
                 >
                     <MotionBox
                         alignSelf="center"
