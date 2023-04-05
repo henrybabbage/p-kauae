@@ -15,7 +15,7 @@ import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
 import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
-import WahineModal from './WahineModal'
+import MapModal from './MapModal'
 
 export default function Map({ data }) {
     const taranakiLatLng = [174.063848, -39.296128]
@@ -208,7 +208,7 @@ export default function Map({ data }) {
                 transition="opacity 0.5s ease-in"
                 transitionDelay="1s"
             >
-                <WahineModal
+                <MapModal
                     isOpen={isOpen}
                     onOpen={onOpen}
                     onClose={onClose}
