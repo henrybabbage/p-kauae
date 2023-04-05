@@ -1,19 +1,10 @@
+import { Box } from '@chakra-ui/react'
 import Image from 'next/image'
-import CircularText from './CircularText'
 import { MotionBox } from './MotionBox'
 
 export default function ScrollPrompt() {
     return (
-        <MotionBox
-            position="absolute"
-            cursor="auto"
-            whileHover={{
-                scale: 1.1,
-                transition: {
-                    duration: 0.2
-                }
-            }}
-        >
+        <Box position="relative" cursor="auto">
             <MotionBox
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -22,7 +13,6 @@ export default function ScrollPrompt() {
                     duration: 1,
                     delay: 2.8
                 }}
-                className="scroll"
                 h={['80px', '80px', '80px', '100px', '100px', '100px']}
                 w={['80px', '80px', '80px', '100px', '100px', '100px']}
                 backgroundColor="white"
@@ -35,8 +25,8 @@ export default function ScrollPrompt() {
                     alignSelf="center"
                     textAlign="center"
                     position="relative"
-                    width={['60px', '60px', '60px', '75px', '75px', '75px']}
-                    height={['60px', '60px', '60px', '75px', '75px', '75px']}
+                    width={['60px', '60px', '60px', '80px', '80px', '80px']}
+                    height={['60px', '60px', '60px', '80px', '80px', '80px']}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{
@@ -45,12 +35,11 @@ export default function ScrollPrompt() {
                         delay: 1.8
                     }}
                 >
-                    {/* <CircularText /> */}
                     <Image
                         src="/icons/pukauae.svg"
                         alt="Pūkauae icon"
-                        width="75"
-                        height="75"
+                        width="80"
+                        height="80"
                         priority
                         sizes="100vw"
                         style={{
@@ -60,6 +49,6 @@ export default function ScrollPrompt() {
                     />
                 </MotionBox>
             </MotionBox>
-        </MotionBox>
+        </Box>
     )
 }
