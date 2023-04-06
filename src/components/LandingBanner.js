@@ -42,7 +42,7 @@ export default function LandingBanner() {
                         <Heading
                             textAlign="center"
                             fontSize={['36px', '46px', '56', '94px']}
-                            lineHeight="1"
+                            lineHeight="1.05"
                             color="pink.200"
                             fontFamily="heading"
                         >
