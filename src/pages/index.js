@@ -54,7 +54,7 @@ export default function Home({
                     my={['68px', '68px', '78px', '78px', '78px']}
                     fontSize={['60px', '60px', '60px', '72px', '72px', '72px']}
                     fontFamily="heading"
-                    lineHeight="1.05"
+                    lineHeight="1.10"
                     textAlign="center"
                 >
                     {children}
@@ -418,12 +418,12 @@ export default function Home({
                                             '40px',
                                             '48px',
                                             '48px',
-                                            '84px',
-                                            '84px',
-                                            '84px'
+                                            '72px',
+                                            '72px',
+                                            '72px'
                                         ]}
-                                        lineHeight="1.05"
-                                        textAlign="center"
+                                        lineHeight="1.10"
+                                        textAlign="left"
                                         color="pink.200"
                                         w="100%"
                                         py="6"
