@@ -1,4 +1,5 @@
 import ChakraNextImage from '@/components/ChakraNextImage'
+import Footer from '@/components/Footer'
 import LandingBanner from '@/components/LandingBanner'
 import LandingVideo from '@/components/LandingVideo'
 import LinkPrompt from '@/components/LinkPrompt'
@@ -51,8 +52,8 @@ export default function Home({
                 <Box
                     as="blockquote"
                     color="pink.200"
-                    my={['68px', '68px', '78px', '78px', '78px']}
-                    fontSize={['60px', '60px', '60px', '72px', '72px', '72px']}
+                    my={['68px', '68px', '68px', '78px', '78px', '78px']}
+                    fontSize={['36px', '36px', '36px', '72px', '72px', '72px']}
                     fontFamily="heading"
                     lineHeight="1.10"
                     textAlign="center"
@@ -415,9 +416,9 @@ export default function Home({
                                         as="h2"
                                         fontFamily="subheading"
                                         fontSize={[
-                                            '40px',
-                                            '48px',
-                                            '48px',
+                                            '36px',
+                                            '36px',
+                                            '36px',
                                             '72px',
                                             '72px',
                                             '72px'
@@ -502,9 +503,20 @@ export default function Home({
                             h="100vh"
                             maxH="100vh"
                             px={['6', '6', '6', '6', '6']}
-                            pb={['2', '2', '2', '6', '6', '6']}
+                            pb={['2', '2', '2', '2', '2', '2']}
                         >
-                            <Box marginTop="auto" w="80vw" h="55vh">
+                            <Box
+                                marginTop="auto"
+                                w="85vw"
+                                h={[
+                                    '35vh',
+                                    '35vh',
+                                    '35vh',
+                                    '45vh',
+                                    '45vh',
+                                    '45vh'
+                                ]}
+                            >
                                 <Flex
                                     flexDirection={[
                                         'column',
@@ -528,7 +540,6 @@ export default function Home({
                                             'row'
                                         ]}
                                         alignItems="baseline"
-                                        pt={6}
                                     >
                                         <Heading
                                             fontSize={[
@@ -545,6 +556,7 @@ export default function Home({
                                             pb={['2', '2', '10', '10']}
                                         >
                                             {kaiwhakaahua.ingoa}
+                                            <br />
                                         </Heading>
                                         <Text
                                             fontFamily="heading"
@@ -566,7 +578,7 @@ export default function Home({
                                         </Text>
                                     </Flex>
                                     <Text
-                                        fontFamily="heading"
+                                        fontFamily="body"
                                         fontSize={[
                                             '24px',
                                             '24px',
@@ -581,12 +593,27 @@ export default function Home({
                                     >
                                         {kaiwhakaahua.korero}
                                     </Text>
+                                    <Text
+                                        fontFamily="body"
+                                        fontSize={[
+                                            '24px',
+                                            '24px',
+                                            '24px',
+                                            '36px',
+                                            '36px',
+                                            '36px'
+                                        ]}
+                                        lineHeight="1.36"
+                                        textAlign="left"
+                                        color="white"
+                                    >
+                                        {kaiwhakaahua.tohu}
+                                    </Text>
                                     <Link
                                         href={`https://${kaiwhakaahua.paetukutuku}`}
                                         isExternal
                                         variant="menu"
-                                        bottom="8"
-                                        position="absolute"
+                                        mt={['4', '4', '4', '14', '14', '14']}
                                     >
                                         <Text
                                             fontFamily="heading"
@@ -601,6 +628,7 @@ export default function Home({
                                             lineHeight="1.36"
                                             textAlign="left"
                                         >
+                                            <br />
                                             {kaiwhakaahua.paetukutuku}
                                         </Text>
                                     </Link>
@@ -608,8 +636,15 @@ export default function Home({
                             </Box>
                             <Box
                                 marginTop="auto"
-                                pb={['10', '10', '10', '0', '0']}
-                                h="50vh"
+                                pb={['10', '10', '10', '0', '0', '0']}
+                                h={[
+                                    '35vh',
+                                    '35vh',
+                                    '35vh',
+                                    '45vh',
+                                    '45vh',
+                                    '45vh'
+                                ]}
                                 w={[
                                     '66vw',
                                     '66vw',
@@ -646,6 +681,9 @@ export default function Home({
                                 </Flex>
                             </Box>
                         </Flex>
+                    </Box>
+                    <Box pb={['4', '4', '4', '6', '6', '6']}>
+                        <Footer />
                     </Box>
                 </Box>
             </SmoothScroll>

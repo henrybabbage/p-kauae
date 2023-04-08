@@ -2,11 +2,7 @@ import { Flex, HStack, Text } from '@chakra-ui/react'
 
 export default function Footer() {
     return (
-        <Flex
-            w="100vw"
-            p={['2', '2', '2', '6', '6', '6']}
-            justifyContent="start"
-        >
+        <Flex w="100vw" justifyContent="center">
             <HStack spacing="6">
                 <Text
                     fontFamily="body"
