@@ -259,7 +259,6 @@ export default function MapModal({
                                 colEnd={[13, 13, 13, 13, 13, 13]}
                                 pt={[2, 2, 2, 6, 6, 6]}
                                 pb={[2, 2, 2, 6, 6, 6]}
-                                // h="auto"
                                 minH={[
                                     'fit-content',
                                     'fit-content',

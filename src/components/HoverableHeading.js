@@ -12,6 +12,8 @@ export default function HoverableHeading({
             lineHeight="1.36"
             fontWeight="bold"
             fontFamily="subheading"
+            width="140px"
+            textAlign="center"
         >
             <Box
                 {...props}
