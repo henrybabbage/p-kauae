@@ -5,7 +5,8 @@ import {
     HStack,
     IconButton,
     Text,
-    useDisclosure
+    useDisclosure,
+    useMediaQuery
 } from '@chakra-ui/react'
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
@@ -13,9 +14,10 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
+import MapModal from './MapModal'
 import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
-import MapModal from './MapModal'
+import { MoonIcon } from './MoonIcon'
 
 export default function Map({ data }) {
     const taranakiLatLng = [174.063848, -39.296128]
@@ -185,6 +187,11 @@ export default function Map({ data }) {
             })
     }, [])
 
+    const [isDesktop] = useMediaQuery('(min-width: 900px)', {
+        ssr: true,
+        fallback: false
+    })
+
     return (
         <>
             <Flex
@@ -226,6 +233,7 @@ export default function Map({ data }) {
                     ref={mapRef}
                     width="100%"
                     height="100%"
+                    cursor={'pointer'}
                     scrollZoom={false}
                     boxZoom={false}
                     doubleClickZoom={false}
@@ -332,8 +340,28 @@ export default function Map({ data }) {
                         color="white"
                         pb="2"
                     >
-                        {'Tamatea whakapau'}
+                        {'Korekore piri kī Tangaroa'}
                     </Text>
+                    {isDesktop && (
+                        <>
+                            <Text
+                                fontFamily="subheading"
+                                fontSize="14px"
+                                lineHeight="1"
+                                textAlign="left"
+                                color="white"
+                                pb="2"
+                            >
+                                {' • '}
+                            </Text>
+                            <MoonIcon
+                                id="moon"
+                                boxSize={6}
+                                color="white"
+                                pb={2}
+                            />
+                        </>
+                    )}
                 </HStack>
                 <Box
                     position="fixed"
