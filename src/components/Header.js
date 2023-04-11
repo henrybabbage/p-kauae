@@ -58,6 +58,7 @@ export default function Header() {
                             <HoverableHeading
                                 hoverContent="About"
                                 defaultContent="Whakapapa"
+                                textAlign="center"
                             />
                         </NavLink>
                     </Flex>
@@ -76,6 +77,7 @@ export default function Header() {
                             <HoverableHeading
                                 hoverContent="Journey"
                                 defaultContent="Haerenga"
+                                textAlign="right"
                             />
                         </NavLink>
                     </Flex>
