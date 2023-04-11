@@ -116,9 +116,9 @@ export default function Home({
                                         position="absolute"
                                         bottom="150"
                                         right={[
-                                            'calc(50vw + 20px)',
-                                            'calc(50vw + 20px)',
-                                            'calc(50vw + 20px)',
+                                            'calc(50vw)',
+                                            'calc(50vw)',
+                                            'calc(50vw)',
                                             '150',
                                             '150',
                                             '150'

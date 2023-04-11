@@ -256,7 +256,7 @@ export default function MapModal({
                             </GridItem>
                             <GridItem
                                 colStart={[1, 1, 1, 7, 7, 7]}
-                                colEnd={[12, 12, 12, 13, 13, 13]}
+                                colEnd={[13, 13, 13, 13, 13, 13]}
                                 pt={[2, 2, 2, 6, 6, 6]}
                                 pb={[2, 2, 2, 6, 6, 6]}
                                 // h="auto"
@@ -268,8 +268,8 @@ export default function MapModal({
                                     '60vh',
                                     '60vh'
                                 ]}
-                                w="96%"
-                                maxW="96%"
+                                w="100%"
+                                maxW="100%"
                                 whiteSpace="normal"
                             >
                                 <Text
@@ -285,8 +285,8 @@ export default function MapModal({
                                     color="white"
                                     wordWrap="break-word"
                                     whiteSpace="normal"
-                                    w="96%"
-                                    maxW="96%"
+                                    w="100%"
+                                    maxW="100%"
                                 >
                                     {
                                         wahines[selectedWahineIndex]
@@ -307,49 +307,14 @@ export default function MapModal({
                                         color="white"
                                         wordWrap="break-word"
                                         whiteSpace="normal"
-                                        w="96%"
-                                        maxW="96%"
+                                        w="100%"
+                                        maxW="100%"
                                     >
                                         {
                                             wahines[selectedWahineIndex]
                                                 .korero_wahi
                                         }
                                     </Text>
-                                </Box>
-                                <Box pt={6}>
-                                    <HStack>
-                                        <Text
-                                            fontSize={[
-                                                '12px',
-                                                '12px',
-                                                '12px',
-                                                '16px',
-                                                '16px',
-                                                '18px'
-                                            ]}
-                                            lineHeight="1.36"
-                                            color="pink.200"
-                                        >
-                                            Photograph location:{' '}
-                                        </Text>
-                                        <Text
-                                            fontSize={[
-                                                '12px',
-                                                '12px',
-                                                '12px',
-                                                '16px',
-                                                '16px',
-                                                '18px'
-                                            ]}
-                                            lineHeight="1.36"
-                                            color="white"
-                                        >
-                                            {
-                                                wahines[selectedWahineIndex]
-                                                    .wahi.ingoa
-                                            }
-                                        </Text>
-                                    </HStack>
                                 </Box>
                                 <Box pt={6}>
                                     <HStack>
@@ -382,6 +347,41 @@ export default function MapModal({
                                             {
                                                 wahines[selectedWahineIndex]
                                                     .tohunga_ta_moko
+                                            }
+                                        </Text>
+                                    </HStack>
+                                </Box>
+                                <Box pt={6}>
+                                    <HStack>
+                                        <Text
+                                            fontSize={[
+                                                '12px',
+                                                '12px',
+                                                '12px',
+                                                '16px',
+                                                '16px',
+                                                '18px'
+                                            ]}
+                                            lineHeight="1.36"
+                                            color="pink.200"
+                                        >
+                                            Photograph location:{' '}
+                                        </Text>
+                                        <Text
+                                            fontSize={[
+                                                '12px',
+                                                '12px',
+                                                '12px',
+                                                '16px',
+                                                '16px',
+                                                '18px'
+                                            ]}
+                                            lineHeight="1.36"
+                                            color="white"
+                                        >
+                                            {
+                                                wahines[selectedWahineIndex]
+                                                    .wahi.ingoa
                                             }
                                         </Text>
                                     </HStack>
