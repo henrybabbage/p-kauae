@@ -108,26 +108,36 @@ export default function Home({
                                     <LandingBanner />
                                 </Flex>
                                 <Flex
-                                    direction="column"
-                                    alignItems="center"
-                                    justifyContent="center"
+                                    justifyContent={[
+                                        'center',
+                                        'center',
+                                        'center',
+                                        'flex-end',
+                                        'flex-end',
+                                        'flex-end'
+                                    ]}
                                 >
-                                    <Box
+                                    <MotionBox
                                         position="absolute"
-                                        bottom="150"
+                                        bottom={[
+                                            '55',
+                                            '55',
+                                            '55',
+                                            '55',
+                                            '55',
+                                            '55'
+                                        ]}
                                         right={[
-                                            'calc(50vw)',
-                                            'calc(50vw)',
-                                            'calc(50vw)',
-                                            '150',
-                                            '150',
-                                            '150'
+                                            null,
+                                            null,
+                                            null,
+                                            '55',
+                                            '55',
+                                            '55'
                                         ]}
                                     >
-                                        <MotionBox position="absolute">
-                                            <ScrollPrompt />
-                                        </MotionBox>
-                                    </Box>
+                                        <ScrollPrompt />
+                                    </MotionBox>
                                 </Flex>
                             </GridItem>
                             <GridItem

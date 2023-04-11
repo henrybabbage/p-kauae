@@ -7,16 +7,15 @@ export default function HoverableHeading({
 }) {
     return (
         <Heading
+            {...props}
             as="h2"
             fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
             lineHeight="1.36"
             fontWeight="bold"
             fontFamily="subheading"
             width="140px"
-            textAlign="center"
         >
             <Box
-                {...props}
                 _hover={{ _before: { content: `'${hoverContent}'` } }}
                 _before={{ content: `'${defaultContent}'` }}
                 as="span"
