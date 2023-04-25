@@ -18,6 +18,8 @@ const nextConfig = {
         styledComponents: true
     },
     env: {
+        NEXT_PUBLIC_VISUALCROSSING_API_KEY:
+            process.env.NEXT_PUBLIC_VISUALCROSSING_API_KEY,
         NEXT_PUBLIC_STRAPI_URL: process.env.NEXT_PUBLIC_STRAPI_URL,
         NEXT_PUBLIC_IMAGES_DOMAIN: process.env.NEXT_PUBLIC_IMAGES_DOMAIN,
         NEXT_PUBLIC_YOUTUBE_ASSET_DOMAIN:

@@ -57,6 +57,16 @@ blockquote > p {
     object-position: center;
 }
 
+.react-player__preview {
+}
+
+.react-player__shadow {
+}
+
+.react-player__play-icon {
+    display: none;
+}
+
 /*  ------------------------------ */
 /*  react-medium-image-zoom
 /*  ------------------------------ */

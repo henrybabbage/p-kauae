@@ -17,15 +17,18 @@ import DigitalClock from './DigitalClock'
 import MapModal from './MapModal'
 import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
-import { MoonIcon } from './MoonIcon'
+import MoonPhaseDisplay from './MoonPhaseDisplay'
 
 export default function Map({ data }) {
     const taranakiLatLng = [174.063848, -39.296128]
+
     function handleMapBearing(newLatlng) {
         return rhumbBearing(taranakiLatLng, newLatlng) - 180
     }
+
     const mapRef = useRef(null)
     const timeOutRef = useRef(null)
+
     const [modalOpenPending, setModalOpenPending] = useState(false)
     const [mapIsVisible, setMapIsVisible] = useState(false)
     const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
@@ -290,7 +293,12 @@ export default function Map({ data }) {
                     )}
                     <Layer source="taranaki-data" {...layerStyle} />
                 </ReactMapGL>
-                <Box id="local-time" position="fixed" left="6" bottom="6">
+                <Box
+                    id="local-time"
+                    position="fixed"
+                    left="6"
+                    bottom={['6', '6', '6', '6', '6', '6']}
+                >
                     <DigitalClock />
                 </Box>
                 <HStack
@@ -331,18 +339,8 @@ export default function Map({ data }) {
                     >
                         {' • '}
                     </Text>
-                    <Text
-                        id="moon-phase"
-                        fontFamily="subheading"
-                        fontSize="14px"
-                        lineHeight="1"
-                        textAlign="left"
-                        color="white"
-                        pb="2"
-                    >
-                        {'Korekore piri kī Tangaroa'}
-                    </Text>
-                    {isDesktop && (
+                    <MoonPhaseDisplay />
+                    {/* {isDesktop && (
                         <>
                             <Text
                                 fontFamily="subheading"
@@ -361,7 +359,7 @@ export default function Map({ data }) {
                                 pb={2}
                             />
                         </>
-                    )}
+                    )} */}
                 </HStack>
                 <Box
                     position="fixed"
