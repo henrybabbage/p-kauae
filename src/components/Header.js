@@ -54,7 +54,7 @@ export default function Header() {
                             'flex'
                         ]}
                     >
-                        <NavLink href="/" asPath="/whakapapa">
+                        <NavLink href="/">
                             <HoverableHeading
                                 hoverContent="About"
                                 defaultContent="Whakapapa"

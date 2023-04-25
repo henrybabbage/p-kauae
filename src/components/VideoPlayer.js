@@ -17,7 +17,8 @@ export default function VideoPlayer({
     videoKorero,
     isPlaying,
     showInfo,
-    showCover
+    showCover,
+    poster
 }) {
     const [hasWindow, setHasWindow] = useState(false)
     const [isBuffering, setIsBuffering] = useState(null)
@@ -59,10 +60,16 @@ export default function VideoPlayer({
                     loop={loop}
                     playing={isPlaying}
                     controls={false}
+                    // light={poster}
                     onReady={() => {
                         setIsReady(true)
                     }}
-                    onPause={() => {}}
+                    onPause={() => {
+                        console.log('pause')
+                    }}
+                    onPlay={() => {
+                        console.log('play')
+                    }}
                     onBuffer={() => {
                         setIsBuffering(true)
                     }}

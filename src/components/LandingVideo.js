@@ -10,6 +10,7 @@ import dynamic from 'next/dynamic'
 import { useRef, useState } from 'react'
 import { PauseIcon } from './PauseIcon'
 import { PlayIcon } from './PlayIcon'
+import { useMemo } from 'react'
 
 const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
     ssr: false
@@ -57,6 +58,23 @@ export default function LandingVideo({
         }, 500)
         setIsPlaying(!isPlaying)
     }
+
+    const config = useMemo(() => {
+        return {
+            file: {
+                attributes: {
+                    style: {
+                        height: 'auto',
+                        width: '100%'
+                    },
+                    poster: poster,
+                    preload: 'auto',
+                    controlsList: 'nodownload noremoteplayback',
+                    disablePictureInPicture: true
+                }
+            }
+        }
+    }, [poster])
 
     return (
         <Box
@@ -124,6 +142,18 @@ export default function LandingVideo({
                     showInfo={showInfo}
                     showCover={showCover}
                     videoKorero={videoKorero}
+                    // poster={
+                    //     <Image
+                    //         src="/images/duotone.jpg"
+                    //         alt="Pūkauae"
+                    //         width={1920}
+                    //         height={1080}
+                    //         style={{
+                    //             objectFit: 'cover',
+                    //             objectPosition: 'center'
+                    //         }}
+                    //     />
+                    // }
                 />
             </AspectRatio>
             {showTitle && (
