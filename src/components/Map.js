@@ -18,6 +18,7 @@ import MapModal from './MapModal'
 import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
 import MoonPhaseDisplay from './MoonPhaseDisplay'
+import MonthDisplay from './MonthDisplay'
 
 export default function Map({ data }) {
     const taranakiLatLng = [174.063848, -39.296128]
@@ -318,17 +319,7 @@ export default function Map({ data }) {
                     >
                         {' • '}
                     </Text>
-                    <Text
-                        id="month"
-                        fontFamily="subheading"
-                        fontSize="14px"
-                        lineHeight="1"
-                        textAlign="left"
-                        color="white"
-                        pb="2"
-                    >
-                        {'Paenga-whāwhā'}
-                    </Text>
+                    <MonthDisplay />
                     <Text
                         fontFamily="subheading"
                         fontSize="14px"
