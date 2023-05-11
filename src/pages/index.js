@@ -38,7 +38,7 @@ export default function Home({
             const { children } = props
             return (
                 <Text
-                    fontSize={['24px', '24px', '24px', '36px', '36px', '36px']}
+                    fontSize={['24px', '24px', '24px', '32px', '32px', '32px']}
                     lineHeight={['1.36']}
                     color="white"
                 >
@@ -285,7 +285,7 @@ export default function Home({
                                         textAlign="left"
                                         color="pink.200"
                                         w="100vw"
-                                        pb={['2', '2', '10', '10', '10']}
+                                        pb={['2', '2', '2', '10', '10', '10']}
                                     >
                                         A special thanks to
                                     </Heading>
@@ -295,9 +295,9 @@ export default function Home({
                                                 '24px',
                                                 '24px',
                                                 '24px',
-                                                '36px',
-                                                '36px',
-                                                '36px'
+                                                '32px',
+                                                '32px',
+                                                '32px'
                                             ]}
                                             lineHeight="1.36"
                                             textAlign="left"
@@ -363,9 +363,9 @@ export default function Home({
                                                 '24px',
                                                 '24px',
                                                 '24px',
-                                                '36px',
-                                                '36px',
-                                                '36px'
+                                                '32px',
+                                                '32px',
+                                                '32px'
                                             ]}
                                             lineHeight="1.36"
                                             textAlign="left"
@@ -563,7 +563,14 @@ export default function Home({
                                             lineHeight="1"
                                             textAlign="left"
                                             color="pink.200"
-                                            pb={['2', '2', '10', '10']}
+                                            pb={[
+                                                '2',
+                                                '2',
+                                                '2',
+                                                '10',
+                                                '10',
+                                                '10'
+                                            ]}
                                         >
                                             {kaiwhakaahua.ingoa}
                                             <br />
@@ -581,8 +588,8 @@ export default function Home({
                                             lineHeight="1.36"
                                             textAlign="left"
                                             color="pink.200"
-                                            ml={['0', '0', '4', '4']}
-                                            pb={['2', '2', '0', '0']}
+                                            ml={['0', '0', '0', '4', '4', '4']}
+                                            pb={['2', '2', '2', '0', '0', '0']}
                                         >
                                             {kaiwhakaahua.whakapapa}
                                         </Text>
@@ -593,9 +600,9 @@ export default function Home({
                                             '24px',
                                             '24px',
                                             '24px',
-                                            '36px',
-                                            '36px',
-                                            '36px'
+                                            '30px',
+                                            '30px',
+                                            '30px'
                                         ]}
                                         lineHeight="1.36"
                                         textAlign="left"
@@ -603,27 +610,27 @@ export default function Home({
                                     >
                                         {kaiwhakaahua.korero}
                                     </Text>
-                                    <Text
+                                    {/* <Text
                                         fontFamily="body"
                                         fontSize={[
                                             '24px',
                                             '24px',
                                             '24px',
-                                            '36px',
-                                            '36px',
-                                            '36px'
+                                            '30px',
+                                            '30px',
+                                            '30px'
                                         ]}
                                         lineHeight="1.36"
                                         textAlign="left"
                                         color="white"
                                     >
                                         {kaiwhakaahua.tohu}
-                                    </Text>
+                                    </Text> */}
                                     <Link
                                         href={`https://${kaiwhakaahua.paetukutuku}`}
                                         isExternal
                                         variant="menu"
-                                        mt={['4', '4', '4', '14', '14', '14']}
+                                        // mt={['4', '4', '4', '14', '14', '14']}
                                     >
                                         <Text
                                             fontFamily="heading"
@@ -631,9 +638,9 @@ export default function Home({
                                                 '24px',
                                                 '24px',
                                                 '24px',
-                                                '36px',
-                                                '36px',
-                                                '36px'
+                                                '32px',
+                                                '32px',
+                                                '32px'
                                             ]}
                                             lineHeight="1.36"
                                             textAlign="left"
@@ -692,9 +699,9 @@ export default function Home({
                             </Box>
                         </Flex>
                     </Box>
-                    <Box pb={['4', '4', '4', '6', '6', '6']}>
-                        <Footer />
-                    </Box>
+                </Box>
+                <Box pb={['4', '4', '4', '6', '6', '6']}>
+                    <Footer />
                 </Box>
             </SmoothScroll>
         </Box>

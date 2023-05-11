@@ -12,7 +12,7 @@ const callToAction = defineStyle({
     height: 'inherit',
     width: 'inherit',
     fontWeight: 'regular',
-    fontSize: 'xl',
+    // fontSize: 'xl',
     fontFamily: 'subheading',
     color: 'white',
     transition: 'transform 0.15s ease-out',
@@ -33,7 +33,7 @@ const mapLabel = defineStyle({
     height: 'inherit',
     width: 'inherit',
     fontWeight: 'regular',
-    fontSize: 'xs',
+    // fontSize: 'xs',
     fontFamily: 'body',
     color: 'white',
     transition: 'transform 0.15s ease-out',
@@ -54,7 +54,7 @@ const prompt = defineStyle({
     height: 'inherit',
     width: 'inherit',
     fontWeight: 'regular',
-    fontSize: 'sm',
+    // fontSize: 'sm',
     fontFamily: 'body',
     color: 'white',
     transition: 'transform 0.15s ease-out',
@@ -75,7 +75,7 @@ const menu = defineStyle({
     height: 'inherit',
     width: 'inherit',
     fontWeight: 'bold',
-    fontSize: 'xs',
+    // fontSize: 'xs',
     lineHeight: '1.36',
     fontFamily: 'subheading',
     color: 'white',
@@ -102,7 +102,7 @@ const sizes = {
         fontSize: 'sm'
     }),
     xs: defineStyle({
-        fontSize: '9px'
+        fontSize: '12px'
     })
 }
 
