@@ -1,4 +1,5 @@
 import { buttonTheme } from '@/theme/components/Button'
+import { headingTheme } from '@/theme/components/Heading'
 import { linkTheme } from '@/theme/components/Link'
 import { modalTheme } from '@/theme/components/Modal'
 import { spinnerTheme } from '@/theme/components/Spinner'
@@ -32,32 +33,23 @@ const theme = extendTheme({
     fontSizes: {
         sm: '18px',
         md: '36px',
-        lg: '72px'
+        lg: '72px',
+        xl: '84px'
     },
     textStyles: {
-        primary: {
-            fontFamily: 'var(--chakra-fonts-body)'
+        subheading: {
+            fontFamily: 'var(--chakra-fonts-subheading)',
+            fontSize: ['24px', '24px', '24px', '46px', '84px', '84px'],
+            lineHeight: '1.36',
+            textAlign: 'left',
+            color: 'pink.200'
         },
-        secondary: {
-            fontFamily: 'var(--chakra-fonts-heading)'
-        },
-        h1: {
-            fontFamily: 'var(--chakra-fonts-heading)',
-            fontSize: ['30px', '72px'],
-            fontWeight: '700',
-            lineHeight: '90%'
-        },
-        h2: {
-            fontFamily: 'var(--chakra-fonts-heading)',
-            fontSize: ['30px', '72px'],
-            fontWeight: '700',
-            lineHeight: '90%'
-        },
-        p: {
+        body: {
             fontFamily: 'var(--chakra-fonts-body)',
-            fontSize: ['26px', '36px'],
-            fontWeight: '700',
-            lineHeight: '90%'
+            fontSize: ['24px', '24px', '24px', '36px', '36px', '36px'],
+            lineHeight: '1.36',
+            textAlign: 'left',
+            color: 'white'
         }
     },
     layerStyles: {
@@ -65,13 +57,14 @@ const theme = extendTheme({
             bg: 'grey.900'
         },
         modal: {
-            bg: 'charcoal',
+            bg: 'grey.900',
             color: 'white',
             border: '2px solid',
             borderColor: 'white'
         }
     },
     components: {
+        Heading: headingTheme,
         Link: linkTheme,
         Modal: modalTheme,
         Button: buttonTheme,
