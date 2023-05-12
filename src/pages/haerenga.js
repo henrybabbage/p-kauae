@@ -46,19 +46,30 @@ export async function getStaticProps() {
         (wahinesVideos) => `${baseUrl}${wahinesVideos?.kiriata?.poster}`
     )
 
+    // const posters = await Promise.all(
+    //     posterUrls &&
+    //         posterUrls.map(async (src) => {
+    //             return getPlaiceholder(src)
+    //                 .then(({ blurhash, img }) => {
+    //                     return { blurhash, img }
+    //                 })
+    //                 .catch(() => ({
+    //                     blurhash: null,
+    //                     img: 'error'
+    //                 }))
+    //         })
+    // ).then((values) => ({ success: true, data: values }))
+
     const posters = await Promise.all(
-        posterUrls &&
-            posterUrls.map(async (src) => {
-                return getPlaiceholder(src)
-                    .then(({ blurhash, img }) => {
-                        return { blurhash, img }
-                    })
-                    .catch(() => ({
-                        blurhash: null,
-                        img: 'error'
-                    }))
-            })
-    ).then((values) => ({ success: true, data: values }))
+        posterUrls.map(async (src) => {
+            const { blurhash, img } = await getPlaiceholder(src)
+            return {
+                ...img,
+                blurhash,
+                alternativeText: 'Whenua photograph'
+            }
+        })
+    ).then((values) => values)
 
     if (!wahines) {
         return {
