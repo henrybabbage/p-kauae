@@ -5,6 +5,7 @@ import LandingBanner from '@/components/LandingBanner'
 import LandingVideo from '@/components/LandingVideo'
 import LinkPrompt from '@/components/LinkPrompt'
 import { MotionBox } from '@/components/MotionBox'
+import SectionBreak from '@/components/SectionBreak'
 import SmoothScroll from '@/components/SmoothScroll'
 import {
     Box,
@@ -443,7 +444,7 @@ export default function Home({
                                     skipHtml
                                 />
                             </GridItem>
-                            <GridItem
+                            {/* <GridItem
                                 colStart={1}
                                 colEnd={13}
                                 py={['6', '6', '6', '24', '24', '24']}
@@ -459,220 +460,187 @@ export default function Home({
                                 >
                                     <LinkPrompt />
                                 </Box>
-                            </GridItem>
+                            </GridItem> */}
                         </Grid>
                     </Box>
-                    <Box
-                        id="photographer"
-                        bg="grey.900"
-                        pt={['24', '24', '24', null, null, null]}
+                </Box>
+                <Box
+                    id="photographer"
+                    bg="grey.900"
+                    pt={['24', '24', '24', null, null, null]}
+                >
+                    <Flex
+                        direction={[
+                            'column',
+                            'column',
+                            'column',
+                            'row',
+                            'row',
+                            'row'
+                        ]}
+                        justifyContent={[
+                            null,
+                            null,
+                            null,
+                            'space-between',
+                            'space-between',
+                            'space-between'
+                        ]}
+                        h="100vh"
+                        maxH="100vh"
+                        px={['6', '6', '6', '6', '6', '6']}
+                        pb={['2', '2', '2', '2', '2', '2']}
                     >
-                        <Flex
-                            direction={[
-                                'column',
-                                'column',
-                                'column',
-                                'row',
-                                'row',
-                                'row'
-                            ]}
-                            justifyContent={[
-                                null,
-                                null,
-                                null,
-                                'space-between',
-                                'space-between',
-                                'space-between'
-                            ]}
-                            h="100vh"
-                            maxH="100vh"
-                            px={['6', '6', '6', '6', '6']}
-                            pb={['2', '2', '2', '2', '2', '2']}
+                        <Box
+                            marginTop="auto"
+                            w="84vw"
+                            // h={['35vh', '35vh', '35vh', '45vh', '45vh', '45vh']}
                         >
-                            <Box
-                                marginTop="auto"
-                                w="85vw"
-                                h={[
-                                    '35vh',
-                                    '35vh',
-                                    '35vh',
-                                    '45vh',
-                                    '45vh',
-                                    '45vh'
+                            <Flex
+                                flexDirection={[
+                                    'column',
+                                    'column',
+                                    'column',
+                                    'column',
+                                    'column',
+                                    'column'
                                 ]}
+                                alignItems="start"
+                                textAlign="left"
+                                color="white"
                             >
                                 <Flex
-                                    flexDirection={[
+                                    direction={[
                                         'column',
                                         'column',
                                         'column',
-                                        'column',
-                                        'column',
-                                        'column'
+                                        'row',
+                                        'row',
+                                        'row'
                                     ]}
-                                    alignItems="start"
+                                    alignItems="baseline"
+                                >
+                                    <Heading
+                                        fontSize={[
+                                            '36px',
+                                            '36px',
+                                            '36px',
+                                            '46px',
+                                            '56px',
+                                            '84px'
+                                        ]}
+                                        lineHeight="1"
+                                        textAlign="left"
+                                        color="pink.200"
+                                        pb={['2', '2', '2', '10', '10', '10']}
+                                    >
+                                        {kaiwhakaahua.ingoa}
+                                        <br />
+                                    </Heading>
+                                    <Text
+                                        fontFamily="heading"
+                                        fontSize={[
+                                            '16px',
+                                            '16px',
+                                            '16px',
+                                            '24px',
+                                            '24px',
+                                            '24px'
+                                        ]}
+                                        lineHeight="1.36"
+                                        textAlign="left"
+                                        color="pink.200"
+                                        ml={['0', '0', '0', '4', '4', '4']}
+                                        pb={['2', '2', '2', '0', '0', '0']}
+                                    >
+                                        {kaiwhakaahua.whakapapa}
+                                    </Text>
+                                </Flex>
+                                <Text
+                                    fontFamily="body"
+                                    fontSize={[
+                                        '24px',
+                                        '24px',
+                                        '24px',
+                                        '30px',
+                                        '30px',
+                                        '30px'
+                                    ]}
+                                    lineHeight="1.36"
                                     textAlign="left"
                                     color="white"
                                 >
-                                    <Flex
-                                        direction={[
-                                            'column',
-                                            'column',
-                                            'column',
-                                            'row',
-                                            'row',
-                                            'row'
-                                        ]}
-                                        alignItems="baseline"
-                                    >
-                                        <Heading
-                                            fontSize={[
-                                                '36px',
-                                                '36px',
-                                                '36px',
-                                                '46px',
-                                                '56px',
-                                                '84px'
-                                            ]}
-                                            lineHeight="1"
-                                            textAlign="left"
-                                            color="pink.200"
-                                            pb={[
-                                                '2',
-                                                '2',
-                                                '2',
-                                                '10',
-                                                '10',
-                                                '10'
-                                            ]}
-                                        >
-                                            {kaiwhakaahua.ingoa}
-                                            <br />
-                                        </Heading>
-                                        <Text
-                                            fontFamily="heading"
-                                            fontSize={[
-                                                '16px',
-                                                '16px',
-                                                '16px',
-                                                '24px',
-                                                '24px',
-                                                '24px'
-                                            ]}
-                                            lineHeight="1.36"
-                                            textAlign="left"
-                                            color="pink.200"
-                                            ml={['0', '0', '0', '4', '4', '4']}
-                                            pb={['2', '2', '2', '0', '0', '0']}
-                                        >
-                                            {kaiwhakaahua.whakapapa}
-                                        </Text>
-                                    </Flex>
+                                    {kaiwhakaahua.korero}
+                                </Text>
+                                <Link
+                                    href={`https://${kaiwhakaahua.paetukutuku}`}
+                                    isExternal
+                                    variant="menu"
+                                    mt={['4', '4', '4', '0', '0', '0']}
+                                >
                                     <Text
-                                        fontFamily="body"
+                                        fontFamily="heading"
                                         fontSize={[
                                             '24px',
                                             '24px',
                                             '24px',
-                                            '30px',
-                                            '30px',
-                                            '30px'
+                                            '32px',
+                                            '32px',
+                                            '32px'
                                         ]}
                                         lineHeight="1.36"
                                         textAlign="left"
-                                        color="white"
                                     >
-                                        {kaiwhakaahua.korero}
+                                        <br />
+                                        {kaiwhakaahua.paetukutuku}
                                     </Text>
-                                    {/* <Text
-                                        fontFamily="body"
-                                        fontSize={[
-                                            '24px',
-                                            '24px',
-                                            '24px',
-                                            '30px',
-                                            '30px',
-                                            '30px'
-                                        ]}
-                                        lineHeight="1.36"
-                                        textAlign="left"
-                                        color="white"
-                                    >
-                                        {kaiwhakaahua.tohu}
-                                    </Text> */}
-                                    <Link
-                                        href={`https://${kaiwhakaahua.paetukutuku}`}
-                                        isExternal
-                                        variant="menu"
-                                        // mt={['4', '4', '4', '14', '14', '14']}
-                                    >
-                                        <Text
-                                            fontFamily="heading"
-                                            fontSize={[
-                                                '24px',
-                                                '24px',
-                                                '24px',
-                                                '32px',
-                                                '32px',
-                                                '32px'
-                                            ]}
-                                            lineHeight="1.36"
-                                            textAlign="left"
-                                        >
-                                            <br />
-                                            {kaiwhakaahua.paetukutuku}
-                                        </Text>
-                                    </Link>
-                                </Flex>
-                            </Box>
-                            <Box
-                                marginTop="auto"
-                                pb={['10', '10', '10', '0', '0', '0']}
-                                h={[
-                                    '35vh',
-                                    '35vh',
-                                    '35vh',
-                                    '45vh',
-                                    '45vh',
-                                    '45vh'
-                                ]}
-                                w={[
-                                    '66vw',
-                                    '66vw',
-                                    '66vw',
-                                    '32vw',
-                                    '32vw',
-                                    '32vw'
+                                </Link>
+                            </Flex>
+                        </Box>
+                        <Box
+                            marginTop="auto"
+                            pb={['10', '10', '10', '0', '0', '0']}
+                            h={['35vh', '35vh', '35vh', '45vh', '45vh', '45vh']}
+                            w={['66vw', '66vw', '66vw', '32vw', '32vw', '32vw']}
+                        >
+                            <Flex
+                                direction="column"
+                                alignItems="baseline"
+                                justifyContent={[
+                                    'flex-end',
+                                    'flex-end',
+                                    'flex-end',
+                                    null,
+                                    null,
+                                    null
                                 ]}
                             >
-                                <Flex
-                                    direction="column"
-                                    alignItems="baseline"
-                                    justifyContent={[
-                                        'flex-end',
-                                        'flex-end',
-                                        'flex-end',
-                                        null,
-                                        null,
-                                        null
-                                    ]}
-                                >
-                                    <ChakraNextImage
-                                        {...portraitImg}
-                                        src={portrait}
-                                        alt="Tania Niwa"
-                                        // width={720}
-                                        // height={648}
-                                        fill
-                                        blurhash={portraitBlurhash}
-                                        sizes={
-                                            '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
-                                        }
-                                    />
-                                </Flex>
-                            </Box>
-                        </Flex>
-                    </Box>
+                                <ChakraNextImage
+                                    {...portraitImg}
+                                    src={portrait}
+                                    alt="Tania Niwa"
+                                    // width={720}
+                                    // height={648}
+                                    fill
+                                    blurhash={portraitBlurhash}
+                                    sizes={
+                                        '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
+                                    }
+                                />
+                            </Flex>
+                        </Box>
+                    </Flex>
+                </Box>
+                <Box h="100vh" w="100vw" position="relative">
+                    <Flex
+                        direction="column"
+                        justifyContent="center"
+                        alignItems="center"
+                        h="100%"
+                        w="100%"
+                    >
+                        <LinkPrompt />
+                    </Flex>
                 </Box>
                 <Box pb={['4', '4', '4', '6', '6', '6']}>
                     <Footer />
@@ -682,7 +650,6 @@ export default function Home({
     )
 }
 
-import SectionBreak from '@/components/SectionBreak'
 import fsPromises from 'fs/promises'
 import path from 'path'
 export async function getStaticProps() {

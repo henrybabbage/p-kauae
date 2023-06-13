@@ -12,6 +12,8 @@ export default function LinkPrompt() {
         >
             <MotionBox
                 cursor="pointer"
+                ransform="translate(-50%, -50%)"
+                left="50%"
                 whileHover={{
                     scale: 1.1,
                     transition: {
