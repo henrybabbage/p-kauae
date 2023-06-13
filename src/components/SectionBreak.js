@@ -2,7 +2,7 @@ import { Flex } from '@chakra-ui/react'
 import Image from 'next/image'
 import { MotionBox } from './MotionBox'
 
-export default function ScrollPrompt() {
+export default function SectionBreak() {
     return (
         <Flex position="relative" cursor="auto" width="100vw" justify="center">
             <MotionBox

@@ -5,7 +5,7 @@ export default function Footer() {
         <Flex
             w="100vw"
             justifyContent="center"
-            pt={['10px', '10px', '10px', '40px', '40px', '40px']}
+            pt={['10px', '10px', '10px', '0px', '0px', '0px']}
         >
             <HStack spacing="6">
                 <Text
