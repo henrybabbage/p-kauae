@@ -1,10 +1,10 @@
-import { Box } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import Image from 'next/image'
 import { MotionBox } from './MotionBox'
 
 export default function ScrollPrompt() {
     return (
-        <Box position="relative" cursor="auto">
+        <Flex position="relative" cursor="auto" width="100vw" justify="center">
             <MotionBox
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -15,7 +15,6 @@ export default function ScrollPrompt() {
                 }}
                 h={['80px', '80px', '80px', '100px', '100px', '100px']}
                 w={['80px', '80px', '80px', '100px', '100px', '100px']}
-                backgroundColor="white"
                 borderRadius="100%"
                 position="relative"
                 display="flex"
@@ -49,6 +48,6 @@ export default function ScrollPrompt() {
                     />
                 </MotionBox>
             </MotionBox>
-        </Box>
+        </Flex>
     )
 }

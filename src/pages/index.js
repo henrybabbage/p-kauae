@@ -90,7 +90,7 @@ export default function Home({
                     <Box id="about" bg="grey.900">
                         <Grid
                             templateColumns="repeat(12, 1fr)"
-                            px={['6', '6', '6', '0', '0']}
+                            px={['6', '6', '6', '0', '0', '0']}
                             w="100vw"
                         >
                             <GridItem
@@ -105,38 +105,11 @@ export default function Home({
                                     position="relative"
                                     justify="center"
                                     flexDirection="column"
-                                    height="calc(100vh - var(--chakra-sizes-12))"
+                                    height="100vh"
                                 >
                                     <LandingBanner />
-                                </Flex>
-                                <Flex
-                                    justifyContent={[
-                                        'center',
-                                        'center',
-                                        'center',
-                                        'flex-end',
-                                        'flex-end',
-                                        'flex-end'
-                                    ]}
-                                >
                                     <MotionBox
-                                        position="absolute"
-                                        bottom={[
-                                            '55',
-                                            '55',
-                                            '55',
-                                            '55',
-                                            '55',
-                                            '55'
-                                        ]}
-                                        right={[
-                                            null,
-                                            null,
-                                            null,
-                                            '55',
-                                            '55',
-                                            '55'
-                                        ]}
+                                        pt={['0', '0', '0', '6', '6', '6']}
                                     >
                                         <ScrollPrompt />
                                     </MotionBox>
@@ -145,8 +118,8 @@ export default function Home({
                             <GridItem
                                 colStart={[1, 1, 1, 1, 4]}
                                 colEnd={[13, 13, 13, 12, 12]}
-                                pt={['0', '0', '6', '6', '6']}
-                                pb={['0', '0', '6', '6', '6']}
+                                pt={['0', '0', '6', '6', '6', '6']}
+                                pb={['0', '0', '6', '6', '6', '6']}
                             >
                                 <Flex
                                     pt="12"
