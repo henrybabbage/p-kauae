@@ -1,4 +1,4 @@
-import kaiwhakaahua from './schemas/documents/kaiwhakaahua'
+import kaiwhakaahua from './schemas/singletons/kaiwhakaahua'
 import wahine from './schemas/documents/wahine'
 import korero from './schemas/singletons/korero'
 
