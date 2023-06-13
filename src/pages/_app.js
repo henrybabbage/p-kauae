@@ -100,7 +100,7 @@ export default function App({ Component, pageProps }) {
                     }}
                 >
                     {/* <SplashBanner /> */}
-                    <Header />
+                    {/* <Header /> */}
                     {loading ? (
                         <TransitionBanner />
                     ) : (

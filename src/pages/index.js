@@ -1,5 +1,6 @@
 import ChakraNextImage from '@/components/ChakraNextImage'
 import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 import LandingBanner from '@/components/LandingBanner'
 import LandingVideo from '@/components/LandingVideo'
 import LinkPrompt from '@/components/LinkPrompt'
@@ -83,6 +84,7 @@ export default function Home({
 
     return (
         <Box as="main">
+            <Header />
             <SmoothScroll>
                 <Box>
                     <Box id="about" bg="grey.900">
