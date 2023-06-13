@@ -19,7 +19,7 @@ export default function LandingBanner() {
         'Taranaki'
     ]
 
-    const reoLines = ['Tū tama wāhine', 'i te wā o', 'te kore']
+    const reoLines = ['Tū tama wāhine', 'i te wā o te kore']
 
     return (
         <>
