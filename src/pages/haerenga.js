@@ -1,11 +1,12 @@
+import Header from '@/components/Header'
 import Map from '@/components/Map'
-
 import { Box, Flex } from '@chakra-ui/react'
 import { getPlaiceholder } from 'plaiceholder'
 
 export default function Haerenga(props) {
     return (
         <Box as="main" maxH="100vh" maxW="100vw" bg="grey.900">
+            <Header />
             <Box id="map" h="100vh" w="100vw">
                 <Flex alignItems="center" justifyContent="center">
                     <Map data={props} />
@@ -46,19 +47,30 @@ export async function getStaticProps() {
         (wahinesVideos) => `${baseUrl}${wahinesVideos?.kiriata?.poster}`
     )
 
+    // const posters = await Promise.all(
+    //     posterUrls &&
+    //         posterUrls.map(async (src) => {
+    //             return getPlaiceholder(src)
+    //                 .then(({ blurhash, img }) => {
+    //                     return { blurhash, img }
+    //                 })
+    //                 .catch(() => ({
+    //                     blurhash: null,
+    //                     img: 'error'
+    //                 }))
+    //         })
+    // ).then((values) => ({ success: true, data: values }))
+
     const posters = await Promise.all(
-        posterUrls &&
-            posterUrls.map(async (src) => {
-                return getPlaiceholder(src)
-                    .then(({ blurhash, img }) => {
-                        return { blurhash, img }
-                    })
-                    .catch(() => ({
-                        blurhash: null,
-                        img: 'error'
-                    }))
-            })
-    ).then((values) => ({ success: true, data: values }))
+        posterUrls.map(async (src) => {
+            const { blurhash, img } = await getPlaiceholder(src)
+            return {
+                ...img,
+                blurhash,
+                alternativeText: 'Whenua photograph'
+            }
+        })
+    ).then((values) => values)
 
     if (!wahines) {
         return {

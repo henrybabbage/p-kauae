@@ -1,18 +1,19 @@
 {
-	"plugins": [
-		"prettier"
-	],
-	"extends": [
-		"next/core-web-vitals",
-		"plugin:prettier/recommended"
-	],
-	"rules": {
-		"prettier/prettier": "error",
-		"no-console": "warn",
+    "plugins": [
+        "prettier"
+    ],
+    "extends": [
+        "next/core-web-vitals",
+        "plugin:prettier/recommended"
+    ],
+    "rules": {
+        "import/no-anonymous-default-export": "off",
+        "prettier/prettier": "error",
+        "no-console": "warn",
         "react/no-children-prop": "off",
-		"indent": [
-			"warn",
-			4
-		]
-	}
+        "indent": [
+            "warn",
+            4
+        ]
+    }
 }
