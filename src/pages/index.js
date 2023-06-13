@@ -5,7 +5,6 @@ import LandingBanner from '@/components/LandingBanner'
 import LandingVideo from '@/components/LandingVideo'
 import LinkPrompt from '@/components/LinkPrompt'
 import { MotionBox } from '@/components/MotionBox'
-import ScrollPrompt from '@/components/ScrollPrompt'
 import SmoothScroll from '@/components/SmoothScroll'
 import {
     Box,
@@ -111,7 +110,7 @@ export default function Home({
                                     <MotionBox
                                         pt={['0', '0', '0', '6', '6', '6']}
                                     >
-                                        <ScrollPrompt />
+                                        <SectionBreak />
                                     </MotionBox>
                                 </Flex>
                             </GridItem>
@@ -683,6 +682,7 @@ export default function Home({
     )
 }
 
+import SectionBreak from '@/components/SectionBreak'
 import fsPromises from 'fs/promises'
 import path from 'path'
 export async function getStaticProps() {
