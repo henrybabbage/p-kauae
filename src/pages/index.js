@@ -478,6 +478,9 @@ export default function Home({
                         <Box
                             w="84vw"
                             pb={['4', '4', '8', '0', '0', '0']}
+                            height="100vh"
+                            display="flex"
+                            flexDirection="column-reverse"
                             // marginTop="auto"
                         >
                             <Flex
@@ -583,8 +586,17 @@ export default function Home({
                         <Box
                             // marginTop="auto"
                             pb={['10', '10', '10', '0', '0', '0']}
-                            h={['35vh', '35vh', '35vh', '45vh', '45vh', '45vh']}
+                            h={[
+                                '100vh',
+                                '100vh',
+                                '100vh',
+                                '100vh',
+                                '100vh',
+                                '100vh'
+                            ]}
                             w={['66vw', '66vw', '66vw', '32vw', '32vw', '32vw']}
+                            display="flex"
+                            flexDirection="column-reverse"
                         >
                             <Flex
                                 direction="column"
