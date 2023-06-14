@@ -4,7 +4,7 @@ import { MotionBox } from './MotionBox'
 
 export default function SectionBreak() {
     return (
-        <Flex position="relative" cursor="auto" width="100vw" justify="center">
+        <Flex position="relative" cursor="auto" justify="center">
             <MotionBox
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
