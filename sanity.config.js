@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /**
  * This configuration is used to for the Sanity Studio that’s mounted on the `/pages/studio/[[...index]].jsx` route
  */
@@ -12,17 +13,64 @@ import { schema } from './sanity/schema'
 
 const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Pūkauae'
 
+// Define the actions that should be available for singleton documents
+const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
+
+// Define the singleton document types
+const singletonTypes = new Set(['korero', 'kaiwhakaahua'])
+
 export default defineConfig({
     basePath: '/studio',
     projectId: 'l5wjxg7c',
     dataset: 'production',
     title,
     // Add and edit the content schema in the './sanity/schema' folder
-    schema,
+    schema: {
+        types: schema.types,
+        templates: (templates) =>
+            templates.filter(
+                ({ schemaType }) => !singletonTypes.has(schemaType)
+            )
+    },
     plugins: [
-        deskTool(),
+        deskTool({
+            structure: (S) =>
+                S.list()
+                    .title('Content')
+                    .items([
+                        // Our singleton type has a list item with a custom child
+                        S.listItem().title('Korero').id('korero').child(
+                            // Instead of rendering a list of documents, we render a single
+                            // document, specifying the `documentId` manually to ensure
+                            // that we're editing the single instance of the document
+                            S.document()
+                                .schemaType('korero')
+                                .documentId('korero')
+                        ),
+                        S.listItem()
+                            .title('kaiwhakaahua')
+                            .id('kaiwhakaahua')
+                            .child(
+                                S.document()
+                                    .schemaType('kaiwhakaahua')
+                                    .documentId('kaiwhakaahua')
+                            ),
+                        // Regular document types
+                        S.documentTypeListItem('wahine').title('Wahine')
+                    ])
+        }),
         // Vision is a tool that lets you query your content with GROQ in the studio
         // https://www.sanity.io/docs/the-vision-plugin
         visionTool({ defaultApiVersion: apiVersion })
-    ]
+    ],
+    document: {
+        // For singleton types, filter out actions that are not explicitly included
+        // in the `singletonActions` list defined above
+        actions: (input, context) =>
+            singletonTypes.has(context.schemaType)
+                ? input.filter(
+                      ({ action }) => action && singletonActions.has(action)
+                  )
+                : input
+    }
 })
