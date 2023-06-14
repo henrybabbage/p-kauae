@@ -4,8 +4,18 @@ export default {
     type: 'document',
     fields: [
         {
+            name: 'id',
+            title: 'ID',
+            type: 'number'
+        },
+        {
             name: 'ingoa',
             title: 'Ingoa',
+            type: 'string'
+        },
+        {
+            name: 'whakapapa',
+            title: 'Whakapapa',
             type: 'string'
         },
         {
@@ -13,6 +23,39 @@ export default {
             title: 'Korero pukauae',
             type: 'array',
             of: [{ type: 'block' }]
+        },
+        {
+            name: 'korero_wahi',
+            title: 'Korero wahi',
+            type: 'array',
+            of: [{ type: 'block' }]
+        },
+        {
+            name: 'tohunga_ta_moko',
+            title: 'Tohunga ta moko',
+            type: 'string'
+        },
+        {
+            name: 'wa_tiki_whakaahua',
+            title: 'Wa tiki whakaahua',
+            type: 'date'
+        },
+        {
+            name: 'wahi',
+            title: 'Wahi',
+            type: 'object',
+            fields: [
+                {
+                    name: 'ingoa',
+                    title: 'Ingoa',
+                    type: 'string'
+                },
+                {
+                    name: 'ahuahanga',
+                    title: 'Ahuahanga',
+                    type: 'geopoint'
+                }
+            ]
         }
     ]
 }

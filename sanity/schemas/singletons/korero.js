@@ -4,6 +4,12 @@ export default {
     type: 'document',
     fields: [
         {
+            name: 'title',
+            title: 'Title',
+            type: 'string',
+            readOnly: true
+        },
+        {
             name: 'tuhinga_matua',
             title: 'Tuhinga matua',
             type: 'string'
