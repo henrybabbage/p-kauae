@@ -116,8 +116,8 @@ export default function Home({
                                 </Flex>
                             </GridItem>
                             <GridItem
-                                colStart={[1, 1, 1, 1, 4]}
-                                colEnd={[13, 13, 13, 12, 12]}
+                                colStart={[1, 1, 1, 1, 4, 4]}
+                                colEnd={[13, 13, 13, 12, 12, 12]}
                                 pt={['0', '0', '6', '6', '6', '6']}
                                 pb={['0', '0', '6', '6', '6', '6']}
                             >
@@ -185,7 +185,7 @@ export default function Home({
                                 </Box>
                             </GridItem>
                             <GridItem
-                                colStart={[1, 1, 1, 1, 4, 4]}
+                                colStart={[1, 1, 1, 4, 4, 4]}
                                 colEnd={[13, 13, 13, 12, 12, 12]}
                                 pt={['2', '2', '6', '6', '6', '6']}
                                 pb={['6', '6', '6', '6', '6', '6']}
@@ -205,13 +205,13 @@ export default function Home({
                                             '24px',
                                             '24px',
                                             '46px',
-                                            '84px',
+                                            '74px',
                                             '84px'
                                         ]}
                                         lineHeight="1.36"
                                         textAlign="left"
                                         color="pink.200"
-                                        pb={['6', '6', '10', '10', '10']}
+                                        pb={['6', '6', '6', '10', '10', '10']}
                                     >
                                         Acknowledgements
                                     </Heading>
@@ -228,8 +228,8 @@ export default function Home({
                             <GridItem
                                 colStart={[1, 1, 1, 4, 4, 4]}
                                 colEnd={[13, 13, 13, 8, 8, 8]}
-                                pt={['2', '2', '6', '6', '6']}
-                                pb={['6', '6', '6', '6', '6']}
+                                pt={['2', '2', '6', '6', '6', '6']}
+                                pb={['6', '6', '6', '6', '6', '6']}
                                 height="auto"
                             >
                                 <Flex
@@ -237,6 +237,7 @@ export default function Home({
                                     justify="center"
                                     flexDirection="column"
                                     height={[
+                                        '40vh',
                                         '40vh',
                                         '40vh',
                                         '100vh',
@@ -253,7 +254,7 @@ export default function Home({
                                             '24px',
                                             '24px',
                                             '46px',
-                                            '84px',
+                                            '74px',
                                             '84px'
                                         ]}
                                         lineHeight="1.36"
@@ -404,8 +405,8 @@ export default function Home({
                                             '36px',
                                             '36px',
                                             '36px',
-                                            '72px',
-                                            '72px',
+                                            '62px',
+                                            '62px',
                                             '72px'
                                         ]}
                                         lineHeight="1.10"
@@ -444,23 +445,6 @@ export default function Home({
                                     skipHtml
                                 />
                             </GridItem>
-                            {/* <GridItem
-                                colStart={1}
-                                colEnd={13}
-                                py={['6', '6', '6', '24', '24', '24']}
-                                h="15vh"
-                                w="100%"
-                                placeItems="center"
-                            >
-                                <Box
-                                    transform="translate(-50%, -50%)"
-                                    position="absolute"
-                                    left="50%"
-                                    mt={['16', '16', '16', '24', '24', '24']}
-                                >
-                                    <LinkPrompt />
-                                </Box>
-                            </GridItem> */}
                         </Grid>
                     </Box>
                 </Box>
@@ -492,9 +476,9 @@ export default function Home({
                         pb={['2', '2', '2', '2', '2', '2']}
                     >
                         <Box
-                            marginTop="auto"
                             w="84vw"
-                            // h={['35vh', '35vh', '35vh', '45vh', '45vh', '45vh']}
+                            pb={['4', '4', '8', '0', '0', '0']}
+                            // marginTop="auto"
                         >
                             <Flex
                                 flexDirection={[
@@ -576,7 +560,6 @@ export default function Home({
                                     href={`https://${kaiwhakaahua.paetukutuku}`}
                                     isExternal
                                     variant="menu"
-                                    mt={['4', '4', '4', '0', '0', '0']}
                                 >
                                     <Text
                                         fontFamily="heading"
@@ -598,7 +581,7 @@ export default function Home({
                             </Flex>
                         </Box>
                         <Box
-                            marginTop="auto"
+                            // marginTop="auto"
                             pb={['10', '10', '10', '0', '0', '0']}
                             h={['35vh', '35vh', '35vh', '45vh', '45vh', '45vh']}
                             w={['66vw', '66vw', '66vw', '32vw', '32vw', '32vw']}
