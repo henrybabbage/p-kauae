@@ -14,6 +14,16 @@ export default {
             type: 'string'
         },
         {
+            name: 'paetukutuku',
+            title: 'Paetukutuku',
+            type: 'string',
+            validation: (Rule) =>
+                Rule.uri({
+                    scheme: ['http', 'https'],
+                    allowRelative: false
+                })
+        },
+        {
             name: 'korero',
             title: 'Korero',
             type: 'array',

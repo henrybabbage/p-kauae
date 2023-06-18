@@ -58,6 +58,12 @@ export default {
             of: [{ type: 'block' }]
         },
         {
+            name: 'tangata_mihia',
+            title: 'Tangata mihia',
+            type: 'array',
+            of: [{ type: 'string' }]
+        },
+        {
             name: 'opening_video',
             title: 'Opening video',
             type: 'string'
