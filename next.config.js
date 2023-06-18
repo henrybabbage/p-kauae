@@ -45,6 +45,10 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: '**.strapi.io'
+            },
+            {
+                protocol: 'https',
+                hostname: 'cdn.sanity.io'
             }
         ]
     }

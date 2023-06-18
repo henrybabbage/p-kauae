@@ -14,6 +14,16 @@ export default {
             type: 'string'
         },
         {
+            name: 'whakaahua',
+            title: 'Whakaahua',
+            type: 'whakaahua'
+        },
+        {
+            name: 'kiriata',
+            title: 'Kiriata',
+            type: 'kiriata'
+        },
+        {
             name: 'whakapapa',
             title: 'Whakapapa',
             type: 'string'
@@ -43,19 +53,7 @@ export default {
         {
             name: 'wahi',
             title: 'Wahi',
-            type: 'object',
-            fields: [
-                {
-                    name: 'ingoa',
-                    title: 'Ingoa',
-                    type: 'string'
-                },
-                {
-                    name: 'ahuahanga',
-                    title: 'Ahuahanga',
-                    type: 'geopoint'
-                }
-            ]
+            type: 'wahi'
         }
     ]
 }
