@@ -8,6 +8,7 @@ import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
+import { BlockContentIcon, CogIcon, UserIcon, UsersIcon } from '@sanity/icons'
 import { apiVersion } from './sanity/env'
 import { schema } from './sanity/schema'
 
@@ -38,25 +39,41 @@ export default defineConfig({
                 S.list()
                     .title('Content')
                     .items([
+                        // Regular document type
+                        S.documentTypeListItem('wahine')
+                            .title('Wahine')
+                            .icon(UsersIcon),
                         // Our singleton type has a list item with a custom child
-                        S.listItem().title('Korero').id('korero').child(
-                            // Instead of rendering a list of documents, we render a single
-                            // document, specifying the `documentId` manually to ensure
-                            // that we're editing the single instance of the document
-                            S.document()
-                                .schemaType('korero')
-                                .documentId('korero')
-                        ),
                         S.listItem()
-                            .title('kaiwhakaahua')
+                            .title('Kaiwhakaahua')
                             .id('kaiwhakaahua')
+                            .icon(UserIcon)
                             .child(
                                 S.document()
                                     .schemaType('kaiwhakaahua')
                                     .documentId('kaiwhakaahua')
                             ),
-                        // Regular document types
-                        S.documentTypeListItem('wahine').title('Wahine')
+                        S.listItem()
+                            .title('Korero')
+                            .id('korero')
+                            .icon(BlockContentIcon)
+                            .child(
+                                // Instead of rendering a list of documents, we render a single
+                                // document, specifying the `documentId` manually to ensure
+                                // that we're editing the single instance of the document
+                                S.document()
+                                    .schemaType('korero')
+                                    .documentId('korero')
+                            ),
+                        S.listItem()
+                            .title('Config')
+                            .id('config')
+                            .icon(CogIcon)
+                            .child(
+                                S.document()
+                                    .schemaType('config')
+                                    .documentId('config')
+                            )
                     ])
         }),
         // Vision is a tool that lets you query your content with GROQ in the studio
