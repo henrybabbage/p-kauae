@@ -31,7 +31,11 @@ const nextConfig = {
             process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE
     },
     images: {
-        domains: ['localhost', 'pukauae.s3.ap-southeast-2.amazonaws.com'],
+        domains: [
+            'localhost',
+            'pukauae.s3.ap-southeast-2.amazonaws.com',
+            'cdn.sanity.io'
+        ],
         formats: ['image/avif', 'image/webp'],
         remotePatterns: [
             {

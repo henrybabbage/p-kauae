@@ -20,6 +20,7 @@
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.12.0",
     "@turf/turf": "^6.5.0",
+    "@vidstack/react": "^0.6.13",
     "blurhash": "^2.0.5",
     "chakra-ui-markdown-renderer": "^4.1.0",
     "date-fns": "^2.29.3",
@@ -31,6 +32,7 @@
     "fs.promises": "^0.1.2",
     "geojson": "^0.5.0",
     "mapbox-gl": "^2.12.1",
+    "media-icons": "^0.10.0",
     "next": "^13.2.4",
     "next-sanity": "^4.3.3",
     "path": "^0.12.7",
@@ -50,9 +52,11 @@
     "remark-breaks": "^3.0.2",
     "resize-observer-polyfill": "^1.5.1",
     "sanity": "^3.12.1",
+    "sanity-plugin-iframe-pane": "^2.3.1",
     "sanity-plugin-media": "^2.0.5",
     "sharp": "^0.31.3",
-    "styled-components": "^5.3.11"
+    "styled-components": "^5.3.11",
+    "vidstack": "^0.6.13"
   },
   "devDependencies": {
     "json-loader": "^0.5.7"

@@ -18,42 +18,15 @@ import {
     useMediaQuery
 } from '@chakra-ui/react'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
-import { getPlaiceholder } from 'plaiceholder'
 import { useRef } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
-import { client } from '../../sanity/lib/sanity.client'
-import { koreroQuery } from '../../sanity/lib/sanity.queries'
-import { PreviewSuspense } from 'next-sanity/preview'
-import { lazy } from 'react'
+import { usePreview } from 'sanity/lib/sanity.preview'
+import PreviewButton from './PreviewButton'
 
-export default function Home({
-    preview,
-    data,
-    korero,
-    kaiwhakaahua,
-    portrait,
-    portraitImg,
-    portraitBlurhash,
-    heroVideo,
-    videoKorero,
-    videoTitle,
-    baseUrlVideo
-}) {
-    const {
-        whakataukii,
-        tangata_mihia,
-        tuhinga_timatanga,
-        ropu,
-        tuhinga_whakaraapopoto,
-        mihi,
-        tuhinga_tauaakii_whakamaunga_atu,
-        opening_video,
-        haerenga_korero,
-        opening_video_korero,
-        opening_video_title,
-        tuhinga_whakamutunga
-    } = data
+export default function HomePage({ query, preview = false }) {
+    const data = usePreview(null, query)
+
     const markdownTheme = {
         p: (props) => {
             const { children } = props
@@ -101,14 +74,10 @@ export default function Home({
         ssr: true,
         fallback: false
     })
-
-    return preview ? (
-        <PreviewSuspense fallback="Loading...">
-            {/* <PreviewPage query={koreroQuery} /> */}
-        </PreviewSuspense>
-    ) : (
+    return (
         <Box as="main">
             <Header />
+            {preview && <PreviewButton />}
             <SmoothScroll>
                 <Box>
                     <Box id="about" bg="grey.900">
@@ -667,44 +636,4 @@ export default function Home({
             </SmoothScroll>
         </Box>
     )
-}
-
-import fsPromises from 'fs/promises'
-import path from 'path'
-export async function getStaticProps({ preview = false }) {
-    if (preview) {
-        return { props: { preview } }
-    }
-
-    const data = await client.fetch(koreroQuery)
-
-    const filePath = path.join(process.cwd(), '/public/backend_data_final.json')
-    const jsonData = await fsPromises.readFile(filePath)
-    const objectData = JSON.parse(jsonData)
-
-    const baseUrl = objectData.whakaahua_s3_bucket
-    const baseUrlVideo = objectData.kiriata_cloudfront
-    const heroVideo = objectData.tu_tama_korero.opening_video
-    const videoKorero = objectData.tu_tama_korero.opening_video_korero
-    const videoTitle = objectData.tu_tama_korero.opening_video_title
-    const imagePath = objectData.kaiwhakaahua.whakaahua.original
-    const imageUrl = `${baseUrl}${imagePath}`
-
-    const { blurhash, img } = await getPlaiceholder(imageUrl)
-
-    return {
-        props: {
-            preview,
-            data,
-            korero: objectData.tu_tama_korero,
-            kaiwhakaahua: objectData.kaiwhakaahua,
-            portrait: imageUrl,
-            portraitImg: img,
-            portraitBlurhash: blurhash,
-            heroVideo: heroVideo,
-            videoKorero: videoKorero,
-            videoTitle: videoTitle,
-            baseUrlVideo: baseUrlVideo
-        }
-    }
 }
