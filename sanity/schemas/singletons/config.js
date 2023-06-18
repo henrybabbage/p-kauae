@@ -11,12 +11,12 @@ export default {
         },
         {
             name: 'whakaahua_s3_bucket',
-            title: 'AmazonS3BaseURL',
+            title: 'Amazon S3 Base URL',
             type: 'string'
         },
         {
             name: 'kiriata_cloudfront',
-            title: 'CloudfrontBaseURL',
+            title: 'Cloudfront Base URL',
             type: 'string'
         }
     ]
