@@ -22,8 +22,11 @@ import { getPlaiceholder } from 'plaiceholder'
 import { useRef } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
+import { client } from '../../sanity/lib/sanity.client'
+import { koreroQuery } from '../../sanity/lib/sanity.queries'
 
 export default function Home({
+    data,
     korero,
     kaiwhakaahua,
     portrait,
@@ -648,6 +651,8 @@ export default function Home({
 import fsPromises from 'fs/promises'
 import path from 'path'
 export async function getStaticProps() {
+    const data = await client.fetch(koreroQuery)
+
     const filePath = path.join(process.cwd(), '/public/backend_data_final.json')
     const jsonData = await fsPromises.readFile(filePath)
     const objectData = JSON.parse(jsonData)
@@ -664,6 +669,7 @@ export async function getStaticProps() {
 
     return {
         props: {
+            data,
             korero: objectData.tu_tama_korero,
             kaiwhakaahua: objectData.kaiwhakaahua,
             portrait: imageUrl,
