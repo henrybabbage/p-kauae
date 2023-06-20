@@ -56,6 +56,19 @@ blockquote > p {
 }
 
 /*  ------------------------------ */
+/*  vidstack player
+/*  ------------------------------ */
+
+/* Do something while poster image is loading. */
+media-poster[data-loading] {
+}
+
+/* Do something if poster image fails to load. */
+media-poster[aria-hidden='true'] {
+}
+
+
+/*  ------------------------------ */
 /*  react player
 /*  ------------------------------ */
 

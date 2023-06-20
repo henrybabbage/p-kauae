@@ -21,10 +21,10 @@ import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import { useRef } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
-import { usePreview } from 'sanity/lib/sanity.preview'
+import { usePreview } from '../../sanity/lib/sanity.preview'
 import PreviewButton from './PreviewButton'
 
-export default function HomePage({ query, preview = false }) {
+export default function PreviewHome({ query, preview = false }) {
     const data = usePreview(null, query)
 
     const markdownTheme = {

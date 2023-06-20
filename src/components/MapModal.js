@@ -159,7 +159,7 @@ export default function MapModal({
                                             wahines[selectedWahineIndex].kiriata
                                                 .ingoa
                                         }
-                                        poster={null}
+                                        poster={covers[selectedWahineIndex]}
                                         autoplay={true}
                                         muted={true}
                                         loop={true}

@@ -18,14 +18,15 @@ import {
     useMediaQuery
 } from '@chakra-ui/react'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
+import { PreviewSuspense } from 'next-sanity/preview'
 import { getPlaiceholder } from 'plaiceholder'
-import { useRef } from 'react'
+import { lazy, useRef } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
 import { client } from '../../sanity/lib/sanity.client'
 import { koreroQuery } from '../../sanity/lib/sanity.queries'
-import { PreviewSuspense } from 'next-sanity/preview'
-import { lazy } from 'react'
+
+const PreviewHome = lazy(() => import('../components/PreviewHome'))
 
 export default function Home({
     preview,
@@ -104,7 +105,7 @@ export default function Home({
 
     return preview ? (
         <PreviewSuspense fallback="Loading...">
-            {/* <PreviewPage query={koreroQuery} /> */}
+            {/* <PreviewHome query={koreroQuery} /> */}
         </PreviewSuspense>
     ) : (
         <Box as="main">
