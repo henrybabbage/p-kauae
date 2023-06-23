@@ -21,12 +21,23 @@ import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import { useRef } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkBreaks from 'remark-breaks'
-import { usePreview } from '../../sanity/lib/sanity.preview'
 import PreviewButton from './PreviewButton'
 
-export default function PreviewHome({ query, preview = false }) {
-    const data = usePreview(null, query)
-
+export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
+    const {
+        whakataukii,
+        tangata_mihia,
+        tuhinga_timatanga,
+        ropu,
+        tuhinga_whakaraapopoto,
+        mihi,
+        tuhinga_tauaakii_whakamaunga_atu,
+        opening_video,
+        haerenga_korero,
+        opening_video_korero,
+        opening_video_title,
+        tuhinga_whakamutunga
+    } = korero
     const markdownTheme = {
         p: (props) => {
             const { children } = props
@@ -58,7 +69,7 @@ export default function PreviewHome({ query, preview = false }) {
         }
     }
 
-    const acknowledgementsList = korero.tangata_mihia
+    const acknowledgementsList = tangata_mihia
     const leftColumn = acknowledgementsList.slice(0, 8)
     const rightColumn = acknowledgementsList.slice(8, 16)
 
@@ -66,14 +77,11 @@ export default function PreviewHome({ query, preview = false }) {
 
     const videoRef = useRef(null)
 
-    const scrollToRef = (ref) => {
-        ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    }
-
     const [isDesktop] = useMediaQuery('(min-width: 992px)', {
         ssr: true,
         fallback: false
     })
+
     return (
         <Box as="main">
             <Header />
@@ -213,7 +221,7 @@ export default function PreviewHome({ query, preview = false }) {
                                         components={ChakraUIRenderer(
                                             markdownTheme
                                         )}
-                                        children={korero.mihi}
+                                        children={mihi}
                                         skipHtml
                                     />
                                 </Flex>
@@ -355,7 +363,7 @@ export default function PreviewHome({ query, preview = false }) {
                                 <ReactMarkdown
                                     remarkPlugins={[remarkBreaks]}
                                     components={ChakraUIRenderer(markdownTheme)}
-                                    children={korero.tuhinga_matua}
+                                    children={tuhinga_matua}
                                     skipHtml
                                 />
                             </GridItem>
@@ -367,9 +375,7 @@ export default function PreviewHome({ query, preview = false }) {
                                 <ReactMarkdown
                                     remarkPlugins={[remarkBreaks]}
                                     components={ChakraUIRenderer(markdownTheme)}
-                                    children={
-                                        korero.tuhinga_tauaakii_whakamaunga_atu
-                                    }
+                                    children={tuhinga_tauaakii_whakamaunga_atu}
                                     skipHtml
                                 />
                             </GridItem>
@@ -381,7 +387,7 @@ export default function PreviewHome({ query, preview = false }) {
                                 <ReactMarkdown
                                     remarkPlugins={[remarkBreaks]}
                                     components={ChakraUIRenderer(markdownTheme)}
-                                    children={korero.ropu}
+                                    children={ropu}
                                     skipHtml
                                 />
                             </GridItem>
@@ -408,7 +414,7 @@ export default function PreviewHome({ query, preview = false }) {
                                         w="100%"
                                         py="6"
                                     >
-                                        {korero.whakataukii}
+                                        {whakataukii}
                                     </Heading>
                                 </Flex>
                             </GridItem>
@@ -421,7 +427,7 @@ export default function PreviewHome({ query, preview = false }) {
                                 <ReactMarkdown
                                     remarkPlugins={[remarkBreaks]}
                                     components={ChakraUIRenderer(markdownTheme)}
-                                    children={korero.tuhinga_whakamutunga}
+                                    children={tuhinga_whakamutunga}
                                     skipHtml
                                 />
                             </GridItem>
@@ -434,7 +440,7 @@ export default function PreviewHome({ query, preview = false }) {
                                 <ReactMarkdown
                                     remarkPlugins={[remarkBreaks]}
                                     components={ChakraUIRenderer(markdownTheme)}
-                                    children={korero.tuhinga_whakaraapopoto}
+                                    children={tuhinga_whakaraapopoto}
                                     skipHtml
                                 />
                             </GridItem>

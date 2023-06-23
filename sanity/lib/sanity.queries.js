@@ -35,7 +35,7 @@ export const wahineQuery = groq`*[_type == 'wahine']{
     }
 }`
 
-export const kaiwhakaahuaQuery = groq`*[_type == 'kaiwhakaahua']{
+export const kaiwhakaahuaQuery = groq`*[_type == 'kaiwhakaahua'][0]{
     ingoa,  
     korero,
         whakapapa,
@@ -44,9 +44,9 @@ export const kaiwhakaahuaQuery = groq`*[_type == 'kaiwhakaahua']{
             ...,
         }
     }
-}[0]`
+}`
 
-export const koreroQuery = groq`*[_type == 'korero']{
+export const koreroQuery = groq`*[_type == 'korero'][0]{
     whakataukii,
     tangata_mihia,
     tuhinga_timatanga,
@@ -59,4 +59,4 @@ export const koreroQuery = groq`*[_type == 'korero']{
     opening_video_korero,
     opening_video_title,
     tuhinga_whakamutunga,
-}[0]`
+}`
