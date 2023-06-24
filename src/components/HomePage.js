@@ -7,6 +7,7 @@ import LinkPrompt from '@/components/LinkPrompt'
 import { MotionBox } from '@/components/MotionBox'
 import SectionBreak from '@/components/SectionBreak'
 import SmoothScroll from '@/components/SmoothScroll'
+import { cloudfrontDomain } from '@/utils/api'
 import {
     Box,
     Flex,
@@ -17,25 +18,26 @@ import {
     Text,
     useMediaQuery
 } from '@chakra-ui/react'
-import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import { useRef } from 'react'
-import ReactMarkdown from 'react-markdown'
-import remarkBreaks from 'remark-breaks'
+import { CustomPortableText } from './CustomPortableText'
 import PreviewButton from './PreviewButton'
 
 export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
+    const baseUrlVideo = cloudfrontDomain
     const {
         whakataukii,
         tangata_mihia,
+        tuhinga_matua,
         tuhinga_timatanga,
+        tuhinga_timatanga_english,
         ropu,
         tuhinga_whakaraapopoto,
         mihi,
         tuhinga_tauaakii_whakamaunga_atu,
         opening_video,
-        haerenga_korero,
         opening_video_korero,
         opening_video_title,
+        opening_video_poster,
         tuhinga_whakamutunga
     } = korero
     const markdownTheme = {
@@ -108,7 +110,10 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                     flexDirection="column"
                                     height="100vh"
                                 >
-                                    <LandingBanner />
+                                    <LandingBanner
+                                        reoText={tuhinga_timatanga}
+                                        englishText={tuhinga_timatanga_english}
+                                    />
                                     <MotionBox
                                         pt={['0', '0', '0', '6', '6', '6']}
                                     >
@@ -173,10 +178,11 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                 >
                                     <LandingVideo
                                         playerRef={playerRef}
-                                        src={heroVideo}
+                                        src={opening_video}
                                         baseUrlVideo={baseUrlVideo}
-                                        videoKorero={videoKorero}
-                                        videoTitle={videoTitle}
+                                        videoKorero={opening_video_korero}
+                                        videoTitle={opening_video_title}
+                                        poster={opening_video_poster}
                                         alt="Pūkauae exhibition opening 11th December 2019"
                                         autoplay={false}
                                         controls={true}
@@ -216,13 +222,9 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                     >
                                         Acknowledgements
                                     </Heading>
-                                    <ReactMarkdown
-                                        remarkPlugins={[remarkBreaks]}
-                                        components={ChakraUIRenderer(
-                                            markdownTheme
-                                        )}
-                                        children={mihi}
-                                        skipHtml
+                                    <CustomPortableText
+                                        paragraphClasses={''}
+                                        value={mihi}
                                     />
                                 </Flex>
                             </GridItem>
@@ -360,11 +362,9 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                 colEnd={[13, 13, 13, 12, 12]}
                                 pt={['16', '16', '16', '16', '16']}
                             >
-                                <ReactMarkdown
-                                    remarkPlugins={[remarkBreaks]}
-                                    components={ChakraUIRenderer(markdownTheme)}
-                                    children={tuhinga_matua}
-                                    skipHtml
+                                <CustomPortableText
+                                    paragraphClasses={''}
+                                    value={tuhinga_matua}
                                 />
                             </GridItem>
                             <GridItem
@@ -372,11 +372,9 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                 colEnd={[13, 13, 13, 12, 12]}
                                 pt={['6', '6', '6', '16', '16']}
                             >
-                                <ReactMarkdown
-                                    remarkPlugins={[remarkBreaks]}
-                                    components={ChakraUIRenderer(markdownTheme)}
-                                    children={tuhinga_tauaakii_whakamaunga_atu}
-                                    skipHtml
+                                <CustomPortableText
+                                    paragraphClasses={''}
+                                    value={tuhinga_tauaakii_whakamaunga_atu}
                                 />
                             </GridItem>
                             <GridItem
@@ -384,11 +382,9 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                 colEnd={[13, 13, 13, 12, 12]}
                                 pt={['6', '6', '6', '16', '16']}
                             >
-                                <ReactMarkdown
-                                    remarkPlugins={[remarkBreaks]}
-                                    components={ChakraUIRenderer(markdownTheme)}
-                                    children={ropu}
-                                    skipHtml
+                                <CustomPortableText
+                                    paragraphClasses={''}
+                                    value={ropu}
                                 />
                             </GridItem>
                             <GridItem
@@ -397,7 +393,7 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                 pt={['6', '6', '6', '16', '16']}
                             >
                                 <Flex justifyContent="center">
-                                    <Heading
+                                    <Box
                                         as="h2"
                                         fontFamily="subheading"
                                         fontSize={[
@@ -414,8 +410,11 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                         w="100%"
                                         py="6"
                                     >
-                                        {whakataukii}
-                                    </Heading>
+                                        <CustomPortableText
+                                            paragraphClasses={''}
+                                            value={whakataukii}
+                                        />
+                                    </Box>
                                 </Flex>
                             </GridItem>
                             <GridItem
@@ -424,11 +423,9 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                 pt={['6', '6', '6', '16', '16']}
                                 whiteSpace="pre-line"
                             >
-                                <ReactMarkdown
-                                    remarkPlugins={[remarkBreaks]}
-                                    components={ChakraUIRenderer(markdownTheme)}
-                                    children={tuhinga_whakamutunga}
-                                    skipHtml
+                                <CustomPortableText
+                                    paragraphClasses={''}
+                                    value={tuhinga_whakamutunga}
                                 />
                             </GridItem>
                             <GridItem
@@ -437,11 +434,9 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                 pt={['6', '6', '6', '16', '16']}
                                 whiteSpace="pre-line"
                             >
-                                <ReactMarkdown
-                                    remarkPlugins={[remarkBreaks]}
-                                    components={ChakraUIRenderer(markdownTheme)}
-                                    children={tuhinga_whakaraapopoto}
-                                    skipHtml
+                                <CustomPortableText
+                                    paragraphClasses={''}
+                                    value={tuhinga_whakaraapopoto}
                                 />
                             </GridItem>
                         </Grid>
@@ -542,7 +537,7 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                         {kaiwhakaahua.whakapapa}
                                     </Text>
                                 </Flex>
-                                <Text
+                                <Box
                                     fontFamily="body"
                                     fontSize={[
                                         '24px',
@@ -556,8 +551,11 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                     textAlign="left"
                                     color="white"
                                 >
-                                    {kaiwhakaahua.korero}
-                                </Text>
+                                    <CustomPortableText
+                                        paragraphClasses={''}
+                                        value={kaiwhakaahua.korero}
+                                    />
+                                </Box>
                                 <Link
                                     href={`https://${kaiwhakaahua.paetukutuku}`}
                                     isExternal
@@ -610,13 +608,15 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                 ]}
                             >
                                 <ChakraNextImage
-                                    {...portraitImg}
-                                    src={portrait}
+                                    src={kaiwhakaahua.whakaahua.asset.url}
                                     alt="Tania Niwa"
-                                    // width={720}
-                                    // height={648}
+                                    width={720}
+                                    height={648}
                                     fill
-                                    blurhash={portraitBlurhash}
+                                    blurhash={
+                                        kaiwhakaahua.whakaahua.asset.metadata
+                                            .blurHash
+                                    }
                                     sizes={
                                         '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
                                     }

@@ -15,7 +15,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@plaiceholder/next": "^2.5.0",
-    "@portabletext/react": "^3.0.2",
+    "@portabletext/react": "^3.0.3",
     "@sanity/icons": "^2.3.1",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.12.0",

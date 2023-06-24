@@ -12,50 +12,49 @@ export default {
         {
             name: 'tuhinga_matua',
             title: 'Tuhinga matua',
-            type: 'array',
-            of: [{ type: 'block' }]
+            type: 'content'
         },
         {
             name: 'tuhinga_tauaakii_whakamaunga_atu',
             title: 'Tuhinga tauaakii whakamaunga atu',
-            type: 'array',
-            of: [{ type: 'block' }]
+            type: 'content'
         },
         {
             name: 'ropu',
             title: 'Ropu',
-            type: 'array',
-            of: [{ type: 'block' }]
+            type: 'content'
         },
         {
             name: 'tuhinga_whakamutunga',
             title: 'Tuhinga whakamutunga',
-            type: 'array',
-            of: [{ type: 'block' }]
+            type: 'content'
         },
         {
             name: 'tuhinga_whakaraapopoto',
             title: 'Tuhinga whakaraapopoto',
-            type: 'array',
-            of: [{ type: 'block' }]
+            type: 'content'
         },
         {
             name: 'tuhinga_timatanga',
-            title: 'Tuhinga timatanga',
-            type: 'array',
-            of: [{ type: 'block' }]
+            title: 'Tuhinga timatanga in Te Reo Māori',
+            description: 'Text displayed when landing page loads',
+            type: 'content'
+        },
+        {
+            name: 'tuhinga_timatanga_english',
+            title: 'Tuhinga timatanga in English',
+            description: 'Text displayed when landing page loads',
+            type: 'content'
         },
         {
             name: 'whakataukii',
             title: 'Whakataukii',
-            type: 'array',
-            of: [{ type: 'block' }]
+            type: 'content'
         },
         {
             name: 'mihi',
             title: 'Mihi',
-            type: 'array',
-            of: [{ type: 'block' }]
+            type: 'content'
         },
         {
             name: 'tangata_mihia',
@@ -71,8 +70,7 @@ export default {
         {
             name: 'opening_video_korero',
             title: 'Opening video korero',
-            type: 'array',
-            of: [{ type: 'block' }]
+            type: 'content'
         },
         {
             name: 'opening_video_title',
@@ -80,9 +78,15 @@ export default {
             type: 'string'
         },
         {
+            name: 'opening_video_poster',
+            title: 'Opening video poster',
+            type: 'whakaahua'
+        },
+        {
             name: 'haerenga_korero',
             title: 'Haerenga korero',
-            type: 'string'
+            type: 'string',
+            description: 'Text displayed while haerenga page loads'
         }
     ]
 }
