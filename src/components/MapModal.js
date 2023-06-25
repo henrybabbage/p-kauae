@@ -19,6 +19,7 @@ import { useRef } from 'react'
 import ModalVideo from './ModalVideo'
 import { MotionBox } from './MotionBox'
 import ZoomImage from './ZoomImage'
+import { CustomPortableText } from './CustomPortableText'
 
 export default function MapModal({
     onOpen,
@@ -30,7 +31,6 @@ export default function MapModal({
     handleNextClick,
     handlePrevClick
 }) {
-    console.log('wahines-modal', wahines)
     const captureDate = wahines[selectedWahineIndex].wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
 
@@ -277,49 +277,53 @@ export default function MapModal({
                                 maxW="100%"
                                 whiteSpace="normal"
                             >
-                                <Text
-                                    fontSize={[
-                                        '12px',
-                                        '12px',
-                                        '12px',
-                                        '16px',
-                                        '16px',
-                                        '18px'
-                                    ]}
-                                    lineHeight="1.36"
-                                    color="white"
-                                    wordWrap="break-word"
-                                    whiteSpace="normal"
-                                    w="100%"
-                                    maxW="100%"
-                                >
-                                    {
-                                        wahines[selectedWahineIndex]
-                                            .korero_pukauae
-                                    }
-                                </Text>
-                                <Box pt={6}>
-                                    <Text
-                                        fontSize={[
+                                <CustomPortableText
+                                    as={'p'}
+                                    sx={{
+                                        fontSize: [
                                             '12px',
                                             '12px',
                                             '12px',
                                             '16px',
                                             '16px',
                                             '18px'
-                                        ]}
-                                        lineHeight="1.36"
-                                        color="white"
-                                        wordWrap="break-word"
-                                        whiteSpace="normal"
-                                        w="100%"
-                                        maxW="100%"
-                                    >
-                                        {
+                                        ],
+                                        lineHeight: ['1.36'],
+                                        color: 'white',
+                                        wordWrap: 'break-word',
+                                        whiteSpace: 'normal',
+                                        width: '100%',
+                                        maxWidth: '100%'
+                                    }}
+                                    value={
+                                        wahines[selectedWahineIndex]
+                                            .korero_pukauae
+                                    }
+                                />
+                                <Box pt={6}>
+                                    <CustomPortableText
+                                        as={'p'}
+                                        sx={{
+                                            fontSize: [
+                                                '12px',
+                                                '12px',
+                                                '12px',
+                                                '16px',
+                                                '16px',
+                                                '18px'
+                                            ],
+                                            lineHeight: ['1.36'],
+                                            color: 'white',
+                                            wordWrap: 'break-word',
+                                            whiteSpace: 'normal',
+                                            width: '100%',
+                                            maxWidth: '100%'
+                                        }}
+                                        value={
                                             wahines[selectedWahineIndex]
                                                 .korero_wahi
                                         }
-                                    </Text>
+                                    />
                                 </Box>
                                 <Box pt={6}>
                                     <HStack>
