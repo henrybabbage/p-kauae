@@ -133,9 +133,6 @@ export default function Map({ data }) {
         })
     }
 
-    console.log('lat', wahines[4].wahi.ahuahanga.lat)
-    console.log('lng', wahines[4].wahi.ahuahanga.lng)
-
     const handleNextClick = () => {
         const nextIndex =
             selectedWahineIndex === 0
