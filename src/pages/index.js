@@ -34,6 +34,7 @@ export async function getStaticProps({ preview = false }) {
             preview,
             korero: korero,
             kaiwhakaahua: kaiwhakaahua
-        }
+        },
+        revalidate: 60
     }
 }

@@ -21,7 +21,7 @@ import { useRef } from 'react'
 import { CustomPortableText } from './CustomPortableText'
 import PreviewButton from './PreviewButton'
 
-export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
+export default function HomePage({ kaiwhakaahua, korero, preview }) {
     const baseUrlVideo = cloudfrontDomain
     const {
         whakataukii,
@@ -145,7 +145,7 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                         baseUrlVideo={baseUrlVideo}
                                         videoKorero={opening_video_korero}
                                         videoTitle={opening_video_title}
-                                        poster={opening_video_poster}
+                                        poster={'/images/duotone.jpg'}
                                         alt="Pūkauae exhibition opening 11th December 2019"
                                         autoplay={false}
                                         controls={true}

@@ -25,13 +25,12 @@ export default function MapModal({
     onClose,
     isOpen,
     wahines,
-    images,
-    covers,
     baseUrlVideo,
     selectedWahineIndex,
     handleNextClick,
     handlePrevClick
 }) {
+    console.log('wahines-modal', wahines)
     const captureDate = wahines[selectedWahineIndex].wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
 
@@ -152,14 +151,17 @@ export default function MapModal({
                                         playerRef={playerRef}
                                         src={
                                             wahines[selectedWahineIndex]
-                                                ?.kiriata?.['1080p']
+                                                ?.kiriata?.url_1080p
                                         }
                                         baseUrlVideo={baseUrlVideo}
                                         location={
                                             wahines[selectedWahineIndex].kiriata
                                                 .ingoa
                                         }
-                                        poster={covers[selectedWahineIndex]}
+                                        poster={
+                                            wahines[selectedWahineIndex].kiriata
+                                                .poster?.asset?.url
+                                        }
                                         autoplay={true}
                                         muted={true}
                                         loop={true}
@@ -237,15 +239,19 @@ export default function MapModal({
                             >
                                 <Flex direction="column">
                                     <ZoomImage
-                                        src={images[selectedWahineIndex]?.src}
+                                        src={
+                                            wahines[selectedWahineIndex]
+                                                ?.whakaahua?.asset?.url
+                                        }
                                         alt={
-                                            images[selectedWahineIndex]
-                                                ?.alternativeText
+                                            wahines[selectedWahineIndex]
+                                                ?.whakaahua?.alternative_text
                                         }
                                         width={4200}
                                         height={2800}
                                         blurhash={
-                                            images[selectedWahineIndex]
+                                            wahines[selectedWahineIndex]
+                                                ?.whakaahua?.asset?.metadata
                                                 ?.blurhash
                                         }
                                         caption={
