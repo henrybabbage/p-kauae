@@ -24,10 +24,10 @@ export async function getStaticProps({ preview = false }) {
         return { props: { preview } }
     }
 
-    const korero = await client.fetch(koreroQuery)
-    const kaiwhakaahua = await client.fetch(kaiwhakaahuaQuery)
-
-    console.log({ preview, korero, kaiwhakaahua })
+    const [korero, kaiwhakaahua] = await Promise.all([
+        client.fetch(koreroQuery),
+        client.fetch(kaiwhakaahuaQuery)
+    ])
 
     return {
         props: {

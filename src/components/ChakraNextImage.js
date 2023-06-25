@@ -5,7 +5,7 @@ import { Blurhash } from 'react-blurhash'
 export default function ChakraNextImage(props) {
     const { src, alt, width, height, sizes, blurhash, ...rest } = props
     return (
-        <Box position="relative">
+        <Box position="absolute">
             {blurhash && (
                 <Blurhash
                     hash={blurhash}

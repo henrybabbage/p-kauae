@@ -15,8 +15,7 @@ import {
     GridItem,
     Heading,
     Link,
-    Text,
-    useMediaQuery
+    Text
 } from '@chakra-ui/react'
 import { useRef } from 'react'
 import { CustomPortableText } from './CustomPortableText'
@@ -40,49 +39,13 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
         opening_video_poster,
         tuhinga_whakamutunga
     } = korero
-    const markdownTheme = {
-        p: (props) => {
-            const { children } = props
-            return (
-                <Text
-                    fontSize={['24px', '24px', '24px', '32px', '32px', '32px']}
-                    lineHeight={['1.36']}
-                    color="white"
-                >
-                    {children}
-                </Text>
-            )
-        },
-        blockquote: (props) => {
-            const { children } = props
-            return (
-                <Box
-                    as="blockquote"
-                    color="pink.200"
-                    my={['68px', '68px', '68px', '78px', '78px', '78px']}
-                    fontSize={['36px', '36px', '36px', '72px', '72px', '72px']}
-                    fontFamily="heading"
-                    lineHeight="1.10"
-                    textAlign="center"
-                >
-                    {children}
-                </Box>
-            )
-        }
-    }
+
+    const playerRef = useRef()
+    const videoRef = useRef(null)
 
     const acknowledgementsList = tangata_mihia
     const leftColumn = acknowledgementsList.slice(0, 8)
     const rightColumn = acknowledgementsList.slice(8, 16)
-
-    const playerRef = useRef()
-
-    const videoRef = useRef(null)
-
-    const [isDesktop] = useMediaQuery('(min-width: 992px)', {
-        ssr: true,
-        fallback: false
-    })
 
     return (
         <Box as="main">
@@ -223,7 +186,19 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                         Acknowledgements
                                     </Heading>
                                     <CustomPortableText
-                                        paragraphClasses={''}
+                                        as={'p'}
+                                        sx={{
+                                            fontSize: [
+                                                '24px',
+                                                '24px',
+                                                '24px',
+                                                '32px',
+                                                '32px',
+                                                '32px'
+                                            ],
+                                            lineHeight: ['1.36'],
+                                            color: 'white'
+                                        }}
                                         value={mihi}
                                     />
                                 </Flex>
@@ -363,7 +338,19 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                 pt={['16', '16', '16', '16', '16']}
                             >
                                 <CustomPortableText
-                                    paragraphClasses={''}
+                                    as={'p'}
+                                    sx={{
+                                        fontSize: [
+                                            '24px',
+                                            '24px',
+                                            '24px',
+                                            '32px',
+                                            '32px',
+                                            '32px'
+                                        ],
+                                        lineHeight: ['1.36'],
+                                        color: 'white'
+                                    }}
                                     value={tuhinga_matua}
                                 />
                             </GridItem>
@@ -373,7 +360,19 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                 pt={['6', '6', '6', '16', '16']}
                             >
                                 <CustomPortableText
-                                    paragraphClasses={''}
+                                    as={'p'}
+                                    sx={{
+                                        fontSize: [
+                                            '24px',
+                                            '24px',
+                                            '24px',
+                                            '32px',
+                                            '32px',
+                                            '32px'
+                                        ],
+                                        lineHeight: ['1.36'],
+                                        color: 'white'
+                                    }}
                                     value={tuhinga_tauaakii_whakamaunga_atu}
                                 />
                             </GridItem>
@@ -383,7 +382,19 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                 pt={['6', '6', '6', '16', '16']}
                             >
                                 <CustomPortableText
-                                    paragraphClasses={''}
+                                    as={'p'}
+                                    sx={{
+                                        fontSize: [
+                                            '24px',
+                                            '24px',
+                                            '24px',
+                                            '32px',
+                                            '32px',
+                                            '32px'
+                                        ],
+                                        lineHeight: ['1.36'],
+                                        color: 'white'
+                                    }}
                                     value={ropu}
                                 />
                             </GridItem>
@@ -393,28 +404,26 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                 pt={['6', '6', '6', '16', '16']}
                             >
                                 <Flex justifyContent="center">
-                                    <Box
-                                        as="h2"
-                                        fontFamily="subheading"
-                                        fontSize={[
-                                            '36px',
-                                            '36px',
-                                            '36px',
-                                            '62px',
-                                            '62px',
-                                            '72px'
-                                        ]}
-                                        lineHeight="1.10"
-                                        textAlign="left"
-                                        color="pink.200"
-                                        w="100%"
-                                        py="6"
-                                    >
-                                        <CustomPortableText
-                                            paragraphClasses={''}
-                                            value={whakataukii}
-                                        />
-                                    </Box>
+                                    <CustomPortableText
+                                        as={'h2'}
+                                        sx={{
+                                            fontFamily: 'subheading',
+                                            fontSize: [
+                                                '36px',
+                                                '36px',
+                                                '36px',
+                                                '62px',
+                                                '62px',
+                                                '72px'
+                                            ],
+                                            lineHeight: '1.10',
+                                            textAlign: 'left',
+                                            color: 'pink.200',
+                                            width: '100%',
+                                            py: '6'
+                                        }}
+                                        value={whakataukii}
+                                    />
                                 </Flex>
                             </GridItem>
                             <GridItem
@@ -424,7 +433,19 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                 whiteSpace="pre-line"
                             >
                                 <CustomPortableText
-                                    paragraphClasses={''}
+                                    as={'p'}
+                                    sx={{
+                                        fontSize: [
+                                            '24px',
+                                            '24px',
+                                            '24px',
+                                            '32px',
+                                            '32px',
+                                            '32px'
+                                        ],
+                                        lineHeight: ['1.36'],
+                                        color: 'white'
+                                    }}
                                     value={tuhinga_whakamutunga}
                                 />
                             </GridItem>
@@ -435,7 +456,19 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                 whiteSpace="pre-line"
                             >
                                 <CustomPortableText
-                                    paragraphClasses={''}
+                                    as={'p'}
+                                    sx={{
+                                        fontSize: [
+                                            '24px',
+                                            '24px',
+                                            '24px',
+                                            '32px',
+                                            '32px',
+                                            '32px'
+                                        ],
+                                        lineHeight: ['1.36'],
+                                        color: 'white'
+                                    }}
                                     value={tuhinga_whakaraapopoto}
                                 />
                             </GridItem>
@@ -552,7 +585,19 @@ export default function HomePage({ kaiwhakaahua, korero, preview = false }) {
                                     color="white"
                                 >
                                     <CustomPortableText
-                                        paragraphClasses={''}
+                                        as={'p'}
+                                        sx={{
+                                            fontSize: [
+                                                '24px',
+                                                '24px',
+                                                '24px',
+                                                '32px',
+                                                '32px',
+                                                '32px'
+                                            ],
+                                            lineHeight: ['1.36'],
+                                            color: 'white'
+                                        }}
                                         value={kaiwhakaahua.korero}
                                     />
                                 </Box>

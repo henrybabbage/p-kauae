@@ -1,10 +1,15 @@
+import { Box } from '@chakra-ui/react'
 import { PortableText } from '@portabletext/react'
 
-export function CustomPortableText({ paragraphClasses, value }) {
+export function CustomPortableText({ sx, as, value }) {
     const components = {
         block: {
             normal: ({ children }) => {
-                return <p className={paragraphClasses}>{children}</p>
+                return (
+                    <Box as={as} sx={sx}>
+                        {children}
+                    </Box>
+                )
             }
         }
     }
