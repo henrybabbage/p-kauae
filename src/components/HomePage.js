@@ -7,6 +7,7 @@ import LinkPrompt from '@/components/LinkPrompt'
 import { MotionBox } from '@/components/MotionBox'
 import SectionBreak from '@/components/SectionBreak'
 import SmoothScroll from '@/components/SmoothScroll'
+import { cloudfrontDomain } from '@/utils/api'
 import {
     Box,
     Flex,
@@ -14,66 +15,38 @@ import {
     GridItem,
     Heading,
     Link,
-    Text,
-    useMediaQuery
+    Text
 } from '@chakra-ui/react'
-import ChakraUIRenderer from 'chakra-ui-markdown-renderer'
 import { useRef } from 'react'
-import ReactMarkdown from 'react-markdown'
-import remarkBreaks from 'remark-breaks'
-import { usePreview } from '../../sanity/lib/sanity.preview'
+import { CustomPortableText } from './CustomPortableText'
 import PreviewButton from './PreviewButton'
 
-export default function PreviewHome({ query, preview = false }) {
-    const data = usePreview(null, query)
+export default function HomePage({ kaiwhakaahua, korero, preview }) {
+    const baseUrlVideo = cloudfrontDomain
+    const {
+        whakataukii,
+        tangata_mihia,
+        tuhinga_matua,
+        tuhinga_timatanga,
+        tuhinga_timatanga_english,
+        ropu,
+        tuhinga_whakaraapopoto,
+        mihi,
+        tuhinga_tauaakii_whakamaunga_atu,
+        opening_video,
+        opening_video_korero,
+        opening_video_title,
+        opening_video_poster,
+        tuhinga_whakamutunga
+    } = korero
 
-    const markdownTheme = {
-        p: (props) => {
-            const { children } = props
-            return (
-                <Text
-                    fontSize={['24px', '24px', '24px', '32px', '32px', '32px']}
-                    lineHeight={['1.36']}
-                    color="white"
-                >
-                    {children}
-                </Text>
-            )
-        },
-        blockquote: (props) => {
-            const { children } = props
-            return (
-                <Box
-                    as="blockquote"
-                    color="pink.200"
-                    my={['68px', '68px', '68px', '78px', '78px', '78px']}
-                    fontSize={['36px', '36px', '36px', '72px', '72px', '72px']}
-                    fontFamily="heading"
-                    lineHeight="1.10"
-                    textAlign="center"
-                >
-                    {children}
-                </Box>
-            )
-        }
-    }
+    const playerRef = useRef()
+    const videoRef = useRef(null)
 
-    const acknowledgementsList = korero.tangata_mihia
+    const acknowledgementsList = tangata_mihia
     const leftColumn = acknowledgementsList.slice(0, 8)
     const rightColumn = acknowledgementsList.slice(8, 16)
 
-    const playerRef = useRef()
-
-    const videoRef = useRef(null)
-
-    const scrollToRef = (ref) => {
-        ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    }
-
-    const [isDesktop] = useMediaQuery('(min-width: 992px)', {
-        ssr: true,
-        fallback: false
-    })
     return (
         <Box as="main">
             <Header />
@@ -100,7 +73,10 @@ export default function PreviewHome({ query, preview = false }) {
                                     flexDirection="column"
                                     height="100vh"
                                 >
-                                    <LandingBanner />
+                                    <LandingBanner
+                                        reoText={tuhinga_timatanga}
+                                        englishText={tuhinga_timatanga_english}
+                                    />
                                     <MotionBox
                                         pt={['0', '0', '0', '6', '6', '6']}
                                     >
@@ -165,10 +141,11 @@ export default function PreviewHome({ query, preview = false }) {
                                 >
                                     <LandingVideo
                                         playerRef={playerRef}
-                                        src={heroVideo}
+                                        src={opening_video}
                                         baseUrlVideo={baseUrlVideo}
-                                        videoKorero={videoKorero}
-                                        videoTitle={videoTitle}
+                                        videoKorero={opening_video_korero}
+                                        videoTitle={opening_video_title}
+                                        poster={'/images/duotone.jpg'}
                                         alt="Pūkauae exhibition opening 11th December 2019"
                                         autoplay={false}
                                         controls={true}
@@ -208,13 +185,21 @@ export default function PreviewHome({ query, preview = false }) {
                                     >
                                         Acknowledgements
                                     </Heading>
-                                    <ReactMarkdown
-                                        remarkPlugins={[remarkBreaks]}
-                                        components={ChakraUIRenderer(
-                                            markdownTheme
-                                        )}
-                                        children={korero.mihi}
-                                        skipHtml
+                                    <CustomPortableText
+                                        as={'p'}
+                                        sx={{
+                                            fontSize: [
+                                                '24px',
+                                                '24px',
+                                                '24px',
+                                                '32px',
+                                                '32px',
+                                                '32px'
+                                            ],
+                                            lineHeight: ['1.36'],
+                                            color: 'white'
+                                        }}
+                                        value={mihi}
                                     />
                                 </Flex>
                             </GridItem>
@@ -352,11 +337,21 @@ export default function PreviewHome({ query, preview = false }) {
                                 colEnd={[13, 13, 13, 12, 12]}
                                 pt={['16', '16', '16', '16', '16']}
                             >
-                                <ReactMarkdown
-                                    remarkPlugins={[remarkBreaks]}
-                                    components={ChakraUIRenderer(markdownTheme)}
-                                    children={korero.tuhinga_matua}
-                                    skipHtml
+                                <CustomPortableText
+                                    as={'p'}
+                                    sx={{
+                                        fontSize: [
+                                            '24px',
+                                            '24px',
+                                            '24px',
+                                            '32px',
+                                            '32px',
+                                            '32px'
+                                        ],
+                                        lineHeight: ['1.36'],
+                                        color: 'white'
+                                    }}
+                                    value={tuhinga_matua}
                                 />
                             </GridItem>
                             <GridItem
@@ -364,13 +359,21 @@ export default function PreviewHome({ query, preview = false }) {
                                 colEnd={[13, 13, 13, 12, 12]}
                                 pt={['6', '6', '6', '16', '16']}
                             >
-                                <ReactMarkdown
-                                    remarkPlugins={[remarkBreaks]}
-                                    components={ChakraUIRenderer(markdownTheme)}
-                                    children={
-                                        korero.tuhinga_tauaakii_whakamaunga_atu
-                                    }
-                                    skipHtml
+                                <CustomPortableText
+                                    as={'p'}
+                                    sx={{
+                                        fontSize: [
+                                            '24px',
+                                            '24px',
+                                            '24px',
+                                            '32px',
+                                            '32px',
+                                            '32px'
+                                        ],
+                                        lineHeight: ['1.36'],
+                                        color: 'white'
+                                    }}
+                                    value={tuhinga_tauaakii_whakamaunga_atu}
                                 />
                             </GridItem>
                             <GridItem
@@ -378,11 +381,21 @@ export default function PreviewHome({ query, preview = false }) {
                                 colEnd={[13, 13, 13, 12, 12]}
                                 pt={['6', '6', '6', '16', '16']}
                             >
-                                <ReactMarkdown
-                                    remarkPlugins={[remarkBreaks]}
-                                    components={ChakraUIRenderer(markdownTheme)}
-                                    children={korero.ropu}
-                                    skipHtml
+                                <CustomPortableText
+                                    as={'p'}
+                                    sx={{
+                                        fontSize: [
+                                            '24px',
+                                            '24px',
+                                            '24px',
+                                            '32px',
+                                            '32px',
+                                            '32px'
+                                        ],
+                                        lineHeight: ['1.36'],
+                                        color: 'white'
+                                    }}
+                                    value={ropu}
                                 />
                             </GridItem>
                             <GridItem
@@ -391,25 +404,26 @@ export default function PreviewHome({ query, preview = false }) {
                                 pt={['6', '6', '6', '16', '16']}
                             >
                                 <Flex justifyContent="center">
-                                    <Heading
-                                        as="h2"
-                                        fontFamily="subheading"
-                                        fontSize={[
-                                            '36px',
-                                            '36px',
-                                            '36px',
-                                            '62px',
-                                            '62px',
-                                            '72px'
-                                        ]}
-                                        lineHeight="1.10"
-                                        textAlign="left"
-                                        color="pink.200"
-                                        w="100%"
-                                        py="6"
-                                    >
-                                        {korero.whakataukii}
-                                    </Heading>
+                                    <CustomPortableText
+                                        as={'h2'}
+                                        sx={{
+                                            fontFamily: 'subheading',
+                                            fontSize: [
+                                                '36px',
+                                                '36px',
+                                                '36px',
+                                                '62px',
+                                                '62px',
+                                                '72px'
+                                            ],
+                                            lineHeight: '1.10',
+                                            textAlign: 'left',
+                                            color: 'pink.200',
+                                            width: '100%',
+                                            py: '6'
+                                        }}
+                                        value={whakataukii}
+                                    />
                                 </Flex>
                             </GridItem>
                             <GridItem
@@ -418,11 +432,21 @@ export default function PreviewHome({ query, preview = false }) {
                                 pt={['6', '6', '6', '16', '16']}
                                 whiteSpace="pre-line"
                             >
-                                <ReactMarkdown
-                                    remarkPlugins={[remarkBreaks]}
-                                    components={ChakraUIRenderer(markdownTheme)}
-                                    children={korero.tuhinga_whakamutunga}
-                                    skipHtml
+                                <CustomPortableText
+                                    as={'p'}
+                                    sx={{
+                                        fontSize: [
+                                            '24px',
+                                            '24px',
+                                            '24px',
+                                            '32px',
+                                            '32px',
+                                            '32px'
+                                        ],
+                                        lineHeight: ['1.36'],
+                                        color: 'white'
+                                    }}
+                                    value={tuhinga_whakamutunga}
                                 />
                             </GridItem>
                             <GridItem
@@ -431,11 +455,21 @@ export default function PreviewHome({ query, preview = false }) {
                                 pt={['6', '6', '6', '16', '16']}
                                 whiteSpace="pre-line"
                             >
-                                <ReactMarkdown
-                                    remarkPlugins={[remarkBreaks]}
-                                    components={ChakraUIRenderer(markdownTheme)}
-                                    children={korero.tuhinga_whakaraapopoto}
-                                    skipHtml
+                                <CustomPortableText
+                                    as={'p'}
+                                    sx={{
+                                        fontSize: [
+                                            '24px',
+                                            '24px',
+                                            '24px',
+                                            '32px',
+                                            '32px',
+                                            '32px'
+                                        ],
+                                        lineHeight: ['1.36'],
+                                        color: 'white'
+                                    }}
+                                    value={tuhinga_whakaraapopoto}
                                 />
                             </GridItem>
                         </Grid>
@@ -536,7 +570,7 @@ export default function PreviewHome({ query, preview = false }) {
                                         {kaiwhakaahua.whakapapa}
                                     </Text>
                                 </Flex>
-                                <Text
+                                <Box
                                     fontFamily="body"
                                     fontSize={[
                                         '24px',
@@ -550,8 +584,23 @@ export default function PreviewHome({ query, preview = false }) {
                                     textAlign="left"
                                     color="white"
                                 >
-                                    {kaiwhakaahua.korero}
-                                </Text>
+                                    <CustomPortableText
+                                        as={'p'}
+                                        sx={{
+                                            fontSize: [
+                                                '24px',
+                                                '24px',
+                                                '24px',
+                                                '32px',
+                                                '32px',
+                                                '32px'
+                                            ],
+                                            lineHeight: ['1.36'],
+                                            color: 'white'
+                                        }}
+                                        value={kaiwhakaahua.korero}
+                                    />
+                                </Box>
                                 <Link
                                     href={`https://${kaiwhakaahua.paetukutuku}`}
                                     isExternal
@@ -604,16 +653,21 @@ export default function PreviewHome({ query, preview = false }) {
                                 ]}
                             >
                                 <ChakraNextImage
-                                    {...portraitImg}
-                                    src={portrait}
+                                    src={kaiwhakaahua.whakaahua.asset.url}
                                     alt="Tania Niwa"
-                                    // width={720}
-                                    // height={648}
+                                    width={720}
+                                    height={648}
                                     fill
-                                    blurhash={portraitBlurhash}
+                                    blurhash={
+                                        kaiwhakaahua.whakaahua.asset.metadata
+                                            .blurHash
+                                    }
                                     sizes={
                                         '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
                                     }
+                                    sx={{
+                                        paddingRight: 'var(--chakra-space-6)'
+                                    }}
                                 />
                             </Flex>
                         </Box>

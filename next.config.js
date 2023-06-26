@@ -28,7 +28,11 @@ const nextConfig = {
             process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
         NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET,
         NEXT_PUBLIC_SANITY_PROJECT_TITLE:
-            process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE
+            process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE,
+        NEXT_PUBLIC_SANITY_API_WRITE_TOKEN:
+            process.env.NEXT_PUBLIC_SANITY_API_WRITE_TOKEN,
+        NEXT_PUBLIC_SANITY_API_READ_TOKEN:
+            process.env.NEXT_PUBLIC_SANITY_API_READ_TOKEN
     },
     images: {
         domains: [

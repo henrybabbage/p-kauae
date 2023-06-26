@@ -2,7 +2,8 @@ import { groq } from 'next-sanity'
 
 export const kiriataQuery = groq`*[_type == 'config'][0].kiriata_cloudfront`
 
-export const wahineQuery = groq`*[_type == 'wahine']{
+export const wahineQuery = groq`*[_type == 'wahine']| order(id asc){
+    _id,
     id,
     ingoa,
     korero_pukauae,
@@ -35,21 +36,22 @@ export const wahineQuery = groq`*[_type == 'wahine']{
     }
 }`
 
-export const kaiwhakaahuaQuery = groq`*[_type == 'kaiwhakaahua']{
+export const kaiwhakaahuaQuery = groq`*[_type == 'kaiwhakaahua'][0]{
     ingoa,  
     korero,
-        whakapapa,
-        whakaahua{
+    whakapapa,
+    whakaahua{
         asset->{
             ...,
         }
     }
-}[0]`
+}`
 
-export const koreroQuery = groq`*[_type == 'korero']{
+export const koreroQuery = groq`*[_type == 'korero'][0]{
     whakataukii,
     tangata_mihia,
     tuhinga_timatanga,
+    tuhinga_timatanga_english,
     ropu,
     tuhinga_whakaraapopoto,
     mihi,
@@ -58,5 +60,6 @@ export const koreroQuery = groq`*[_type == 'korero']{
     haerenga_korero,
     opening_video_korero,
     opening_video_title,
+    opening_video_poster,
     tuhinga_whakamutunga,
-}[0]`
+}`

@@ -10,7 +10,10 @@ const textAnimation = {
     }
 }
 
-export default function LandingBanner() {
+export default function LandingBanner({
+    tuhinga_timatanga,
+    tuhinga_timatanga_english
+}) {
     const englishLines = [
         'Celebrating over',
         '30 years of',

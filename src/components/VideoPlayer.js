@@ -37,7 +37,7 @@ export default function VideoPlayer({
 
     return (
         <Box position="relative" bg="black" w="100%" h="100%">
-            {/* <MediaPlayer
+            <MediaPlayer
                 title={title}
                 src={src}
                 poster={poster}
@@ -50,8 +50,8 @@ export default function VideoPlayer({
             >
                 <MediaOutlet />
                 <MediaPoster alt={title} />
-            </MediaPlayer> */}
-            {!isReady && <VideoLoading />}
+            </MediaPlayer>
+            {/* {!isReady && <VideoLoading />}
             {isReady && isBuffering && (
                 <Center h="100%" w="100vw" position="absolute" z="50">
                     <Spinner
@@ -99,7 +99,7 @@ export default function VideoPlayer({
                         console.log('ended')
                     }}
                 />
-            )}
+            )} */}
         </Box>
     )
 }
