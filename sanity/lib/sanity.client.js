@@ -18,7 +18,7 @@ export function getClient(preview) {
         // @TODO perspectives require vX for now
         apiVersion: 'X',
         useCdn: true,
-        token: process.env.SANITY_API_READ_TOKEN,
+        // token: process.env.SANITY_API_READ_TOKEN,
         perspective: 'published',
         studioUrl: '/studio',
         logger: console
