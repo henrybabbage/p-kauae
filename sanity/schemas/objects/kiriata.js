@@ -15,6 +15,11 @@ export default {
             readOnly: true
         },
         {
+            name: 'mux_1080p',
+            title: 'Mux 1080p',
+            type: 'mux.video'
+        },
+        {
             name: 'poster',
             title: 'Poster',
             type: 'whakaahua'
