@@ -26,6 +26,7 @@ export default function Map({ data }) {
     const taranakiLatLng = [-39.296128, 174.063848]
 
     function handleMapBearing(newLatlng) {
+        console.log('newLatlng', newLatlng)
         return rhumbBearing(taranakiLatLng, newLatlng) - 180
     }
 
@@ -39,6 +40,7 @@ export default function Map({ data }) {
         const wahines = data
         const randomIndex = Math.floor(Math.random() * wahines.length)
         setSelectedWahineIndex(randomIndex)
+        console.log('randomLat', wahines[randomIndex].wahi.ahuahanga.lat)
         return {
             latitude: wahines[randomIndex].wahi.ahuahanga.lat,
             longitude: wahines[randomIndex].wahi.ahuahanga.lng,
