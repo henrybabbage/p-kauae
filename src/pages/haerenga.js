@@ -3,12 +3,13 @@ import { PreviewSuspense } from 'next-sanity/preview'
 import { lazy } from 'react'
 import { client } from '../../sanity/lib/sanity.client'
 import { wahineQuery } from '../../sanity/lib/sanity.queries'
+import PreviewLoading from '@/components/PreviewLoading'
 
 const PreviewMapPage = lazy(() => import('../components/PreviewMapPage'))
 
 export default function Haerenga({ wahines, preview }) {
     return preview ? (
-        <PreviewSuspense fallback="Loading...">
+        <PreviewSuspense fallback={<PreviewLoading />}>
             <PreviewMapPage wahineQuery={wahineQuery} />
         </PreviewSuspense>
     ) : (
