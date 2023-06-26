@@ -23,10 +23,13 @@ import MoonPhaseDisplay from './MoonPhaseDisplay'
 
 export default function Map({ data }) {
     const baseUrlVideo = cloudfrontDomain
-    const taranakiLatLng = [-39.296128, 174.063848]
+    // Taranaki, New Zealand [Longitude, Latitiude]
+    // Negative values denote Southern Hemisphere
+    // rhumbBearing function wants order: [Lng, Lat]
+    const taranakiLatLng = [174.063848, -39.296128]
 
+    // reference from https://turfjs.org/docs/#rhumbBearing
     function handleMapBearing(newLatlng) {
-        console.log('newLatlng', newLatlng)
         return rhumbBearing(taranakiLatLng, newLatlng) - 180
     }
 
@@ -40,14 +43,14 @@ export default function Map({ data }) {
         const wahines = data
         const randomIndex = Math.floor(Math.random() * wahines.length)
         setSelectedWahineIndex(randomIndex)
-        console.log('randomLat', wahines[randomIndex].wahi.ahuahanga.lat)
         return {
             latitude: wahines[randomIndex].wahi.ahuahanga.lat,
             longitude: wahines[randomIndex].wahi.ahuahanga.lng,
             activeId: wahines[randomIndex].id,
+            // bearing should be provided in [Lng, Lat] order
             bearing: handleMapBearing([
-                wahines[randomIndex].wahi.ahuahanga.lat,
-                wahines[randomIndex].wahi.ahuahanga.lng
+                wahines[randomIndex].wahi.ahuahanga.lng,
+                wahines[randomIndex].wahi.ahuahanga.lat
             ]),
             pitch: 100,
             zoom: 11
@@ -122,15 +125,16 @@ export default function Map({ data }) {
         setSelectedWahineIndex(prevIndex)
         handleModalDelay()
         mapRef.current.flyTo({
+            // flyTo wants order: [Lng, Lat]
             center: [
-                wahines[prevIndex].wahi.ahuahanga.lat,
-                wahines[prevIndex].wahi.ahuahanga.lng
+                wahines[clickedWahine.id - 1].wahi.ahuahanga.lng,
+                wahines[clickedWahine.id - 1].wahi.ahuahanga.lat
             ],
             pitch: 70,
             duration: 3000,
             bearing: handleMapBearing([
-                wahines[prevIndex].wahi.ahuahanga.lat,
-                wahines[prevIndex].wahi.ahuahanga.lng
+                wahines[prevIndex].wahi.ahuahanga.lng,
+                wahines[prevIndex].wahi.ahuahanga.lat
             ])
         })
     }
@@ -144,14 +148,14 @@ export default function Map({ data }) {
         handleModalDelay()
         mapRef.current.flyTo({
             center: [
-                wahines[nextIndex].wahi.ahuahanga.lat,
-                wahines[nextIndex].wahi.ahuahanga.lng
+                wahines[clickedWahine.id - 1].wahi.ahuahanga.lng,
+                wahines[clickedWahine.id - 1].wahi.ahuahanga.lat
             ],
             pitch: 70,
             duration: 3000,
             bearing: handleMapBearing([
-                wahines[nextIndex].wahi.ahuahanga.lat,
-                wahines[nextIndex].wahi.ahuahanga.lng
+                wahines[nextIndex].wahi.ahuahanga.lng,
+                wahines[nextIndex].wahi.ahuahanga.lat
             ])
         })
     }
@@ -160,6 +164,7 @@ export default function Map({ data }) {
         if (e.features.length && e.features[0].properties) {
             const { id } = e.features[0].properties
             const clickedWahine = wahines.find((wahine) => wahine.id === id)
+            console.log('clickedWahine', clickedWahine)
             //TODO find index, do not subtract from id
             if (clickedWahine) {
                 setSelectedWahineIndex(clickedWahine.id - 1)
@@ -167,14 +172,14 @@ export default function Map({ data }) {
             }
             mapRef.current.flyTo({
                 center: [
-                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lat,
-                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lng
+                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lng,
+                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lat
                 ],
                 pitch: 70,
                 duration: 3000,
                 bearing: handleMapBearing([
-                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lat,
-                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lng
+                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lng,
+                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lat
                 ])
             })
         }
