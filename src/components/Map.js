@@ -17,13 +17,14 @@ import DigitalClock from './DigitalClock'
 import MapModal from './MapModal'
 import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
-import MoonPhaseDisplay from './MoonPhaseDisplay'
 import MonthDisplay from './MonthDisplay'
+import MoonPhaseDisplay from './MoonPhaseDisplay'
 
 export default function Map({ data }) {
     const taranakiLatLng = [174.063848, -39.296128]
 
     function handleMapBearing(newLatlng) {
+        console.log('newLatlng', newLatlng)
         return rhumbBearing(taranakiLatLng, newLatlng) - 180
     }
 

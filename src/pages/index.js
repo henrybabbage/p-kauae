@@ -55,7 +55,7 @@ export default function Home({
         opening_video_title,
         tuhinga_whakamutunga
     } = data
-    console.log({ data })
+
     const markdownTheme = {
         p: (props) => {
             const { children } = props
