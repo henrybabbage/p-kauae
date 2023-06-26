@@ -2,7 +2,8 @@ import { groq } from 'next-sanity'
 
 export const kiriataQuery = groq`*[_type == 'config'][0].kiriata_cloudfront`
 
-export const wahineQuery = groq`*[_type == 'wahine']{
+export const wahineQuery = groq`*[_type == 'wahine']| order(id asc){
+    _id,
     id,
     ingoa,
     korero_pukauae,

@@ -127,8 +127,8 @@ export default function Map({ data }) {
         mapRef.current.flyTo({
             // flyTo wants order: [Lng, Lat]
             center: [
-                wahines[clickedWahine.id - 1].wahi.ahuahanga.lng,
-                wahines[clickedWahine.id - 1].wahi.ahuahanga.lat
+                wahines[prevIndex].wahi.ahuahanga.lng,
+                wahines[prevIndex].wahi.ahuahanga.lat
             ],
             pitch: 70,
             duration: 3000,
@@ -148,8 +148,8 @@ export default function Map({ data }) {
         handleModalDelay()
         mapRef.current.flyTo({
             center: [
-                wahines[clickedWahine.id - 1].wahi.ahuahanga.lng,
-                wahines[clickedWahine.id - 1].wahi.ahuahanga.lat
+                wahines[nextIndex].wahi.ahuahanga.lng,
+                wahines[nextIndex].wahi.ahuahanga.lat
             ],
             pitch: 70,
             duration: 3000,
