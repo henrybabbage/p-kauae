@@ -30,6 +30,7 @@ export default function Map({ data }) {
 
     // reference from https://turfjs.org/docs/#rhumbBearing
     function handleMapBearing(newLatlng) {
+        console.log('newLatlng', newLatlng)
         return rhumbBearing(taranakiLatLng, newLatlng) - 180
     }
 

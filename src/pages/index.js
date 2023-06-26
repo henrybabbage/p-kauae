@@ -3,12 +3,13 @@ import { PreviewSuspense } from 'next-sanity/preview'
 import { lazy } from 'react'
 import { client } from '../../sanity/lib/sanity.client'
 import { kaiwhakaahuaQuery, koreroQuery } from '../../sanity/lib/sanity.queries'
+import PreviewLoading from '@/components/PreviewLoading'
 
 const PreviewHomePage = lazy(() => import('../components/PreviewHomePage'))
 
 export default function Home({ preview, kaiwhakaahua, korero }) {
     return preview ? (
-        <PreviewSuspense fallback="Loading...">
+        <PreviewSuspense fallback={<PreviewLoading />}>
             <PreviewHomePage
                 koreroQuery={koreroQuery}
                 kaiwhakaahuaQuery={kaiwhakaahuaQuery}
