@@ -11,7 +11,8 @@ export default {
         {
             name: 'url_1080p',
             title: '1080p',
-            type: 'string'
+            type: 'string',
+            readOnly: true
         },
         {
             name: 'poster',

@@ -1,10 +1,14 @@
 import { isBrowser } from '@/utils/helpers'
 import { Box, Center, Spinner } from '@chakra-ui/react'
+import { MediaOutlet, MediaPlayer, MediaPoster } from '@vidstack/react'
 import { useEffect, useState } from 'react'
-import ReactPlayer from 'react-player/lazy'
-import VideoCover from './VideoCover'
-import VideoLoading from './VideoLoading'
+import 'vidstack/styles/base.css'
+import 'vidstack/styles/defaults.css'
+import 'vidstack/styles/ui/buffering.css'
 import VideoOverlay from './VideoOverlay'
+import VideoLoading from './VideoLoading'
+import VideoCover from './VideoCover'
+import ReactPlayer from 'react-player'
 
 export default function VideoPlayer({
     playerRef,
@@ -15,6 +19,7 @@ export default function VideoPlayer({
     info,
     cover,
     videoKorero,
+    title,
     isPlaying,
     showInfo,
     showCover,
@@ -32,12 +37,26 @@ export default function VideoPlayer({
 
     return (
         <Box position="relative" bg="black" w="100%" h="100%">
-            {!isReady && <VideoLoading />}
+            <MediaPlayer
+                title={title}
+                src={src}
+                poster={poster}
+                aspectRatio={16 / 9}
+                autoplay={autoplay}
+                loop={loop}
+                muted={muted}
+                playsinline
+                eager
+            >
+                <MediaOutlet />
+                <MediaPoster alt={title} />
+            </MediaPlayer>
+            {/* {!isReady && <VideoLoading />}
             {isReady && isBuffering && (
                 <Center h="100%" w="100vw" position="absolute" z="50">
                     <Spinner
                         size="xl"
-                        thickness="6px"
+                        thickness="4px"
                         speed="0.65s"
                         color="pink.400"
                     />
@@ -80,7 +99,7 @@ export default function VideoPlayer({
                         console.log('ended')
                     }}
                 />
-            )}
+            )} */}
         </Box>
     )
 }

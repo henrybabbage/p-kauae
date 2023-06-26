@@ -32,14 +32,12 @@ export default {
         {
             name: 'korero_pukauae',
             title: 'Korero pukauae',
-            type: 'array',
-            of: [{ type: 'block' }]
+            type: 'content'
         },
         {
             name: 'korero_wahi',
             title: 'Korero wahi',
-            type: 'array',
-            of: [{ type: 'block' }]
+            type: 'content'
         },
         {
             name: 'tohunga_ta_moko',

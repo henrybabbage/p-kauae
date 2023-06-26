@@ -19,14 +19,13 @@ import { useRef } from 'react'
 import ModalVideo from './ModalVideo'
 import { MotionBox } from './MotionBox'
 import ZoomImage from './ZoomImage'
+import { CustomPortableText } from './CustomPortableText'
 
 export default function MapModal({
     onOpen,
     onClose,
     isOpen,
     wahines,
-    images,
-    covers,
     baseUrlVideo,
     selectedWahineIndex,
     handleNextClick,
@@ -152,14 +151,17 @@ export default function MapModal({
                                         playerRef={playerRef}
                                         src={
                                             wahines[selectedWahineIndex]
-                                                ?.kiriata?.['1080p']
+                                                ?.kiriata?.url_1080p
                                         }
                                         baseUrlVideo={baseUrlVideo}
                                         location={
                                             wahines[selectedWahineIndex].kiriata
                                                 .ingoa
                                         }
-                                        poster={null}
+                                        poster={
+                                            wahines[selectedWahineIndex].kiriata
+                                                .poster?.asset?.url
+                                        }
                                         autoplay={true}
                                         muted={true}
                                         loop={true}
@@ -237,15 +239,19 @@ export default function MapModal({
                             >
                                 <Flex direction="column">
                                     <ZoomImage
-                                        src={images[selectedWahineIndex]?.src}
+                                        src={
+                                            wahines[selectedWahineIndex]
+                                                ?.whakaahua?.asset?.url
+                                        }
                                         alt={
-                                            images[selectedWahineIndex]
-                                                ?.alternativeText
+                                            wahines[selectedWahineIndex]
+                                                ?.whakaahua?.alternative_text
                                         }
                                         width={4200}
                                         height={2800}
                                         blurhash={
-                                            images[selectedWahineIndex]
+                                            wahines[selectedWahineIndex]
+                                                ?.whakaahua?.asset?.metadata
                                                 ?.blurhash
                                         }
                                         caption={
@@ -271,49 +277,53 @@ export default function MapModal({
                                 maxW="100%"
                                 whiteSpace="normal"
                             >
-                                <Text
-                                    fontSize={[
-                                        '12px',
-                                        '12px',
-                                        '12px',
-                                        '16px',
-                                        '16px',
-                                        '18px'
-                                    ]}
-                                    lineHeight="1.36"
-                                    color="white"
-                                    wordWrap="break-word"
-                                    whiteSpace="normal"
-                                    w="100%"
-                                    maxW="100%"
-                                >
-                                    {
-                                        wahines[selectedWahineIndex]
-                                            .korero_pukauae
-                                    }
-                                </Text>
-                                <Box pt={6}>
-                                    <Text
-                                        fontSize={[
+                                <CustomPortableText
+                                    as={'p'}
+                                    sx={{
+                                        fontSize: [
                                             '12px',
                                             '12px',
                                             '12px',
                                             '16px',
                                             '16px',
                                             '18px'
-                                        ]}
-                                        lineHeight="1.36"
-                                        color="white"
-                                        wordWrap="break-word"
-                                        whiteSpace="normal"
-                                        w="100%"
-                                        maxW="100%"
-                                    >
-                                        {
+                                        ],
+                                        lineHeight: ['1.36'],
+                                        color: 'white',
+                                        wordWrap: 'break-word',
+                                        whiteSpace: 'normal',
+                                        width: '100%',
+                                        maxWidth: '100%'
+                                    }}
+                                    value={
+                                        wahines[selectedWahineIndex]
+                                            .korero_pukauae
+                                    }
+                                />
+                                <Box pt={6}>
+                                    <CustomPortableText
+                                        as={'p'}
+                                        sx={{
+                                            fontSize: [
+                                                '12px',
+                                                '12px',
+                                                '12px',
+                                                '16px',
+                                                '16px',
+                                                '18px'
+                                            ],
+                                            lineHeight: ['1.36'],
+                                            color: 'white',
+                                            wordWrap: 'break-word',
+                                            whiteSpace: 'normal',
+                                            width: '100%',
+                                            maxWidth: '100%'
+                                        }}
+                                        value={
                                             wahines[selectedWahineIndex]
                                                 .korero_wahi
                                         }
-                                    </Text>
+                                    />
                                 </Box>
                                 <Box pt={6}>
                                     <HStack>

@@ -14,7 +14,8 @@ export default {
         {
             name: 'ahuahanga',
             title: 'Ahuahanga',
-            type: 'geopoint'
+            type: 'geopoint',
+            readOnly: true
         }
     ]
 }

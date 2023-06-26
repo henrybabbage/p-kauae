@@ -26,8 +26,7 @@ export default {
         {
             name: 'korero',
             title: 'Korero',
-            type: 'array',
-            of: [{ type: 'block' }]
+            type: 'content'
         },
         {
             name: 'whakaahua',

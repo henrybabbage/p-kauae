@@ -27,6 +27,8 @@ export default function ModalVideo({
                 <VideoPlayer
                     playerRef={playerRef}
                     src={videoSrc}
+                    poster={poster}
+                    title={location}
                     autoplay={true}
                     controls={false}
                     muted={true}

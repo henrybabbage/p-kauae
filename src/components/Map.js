@@ -1,3 +1,4 @@
+import { cloudfrontDomain } from '@/utils/api'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import {
     Box,
@@ -17,12 +18,17 @@ import DigitalClock from './DigitalClock'
 import MapModal from './MapModal'
 import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
-import MoonPhaseDisplay from './MoonPhaseDisplay'
 import MonthDisplay from './MonthDisplay'
+import MoonPhaseDisplay from './MoonPhaseDisplay'
 
 export default function Map({ data }) {
+    const baseUrlVideo = cloudfrontDomain
+    // Taranaki, New Zealand [Longitude, Latitiude]
+    // Negative values denote Southern Hemisphere
+    // rhumbBearing function wants order: [Lng, Lat]
     const taranakiLatLng = [174.063848, -39.296128]
 
+    // reference from https://turfjs.org/docs/#rhumbBearing
     function handleMapBearing(newLatlng) {
         return rhumbBearing(taranakiLatLng, newLatlng) - 180
     }
@@ -34,34 +40,37 @@ export default function Map({ data }) {
     const [mapIsVisible, setMapIsVisible] = useState(false)
     const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
     const [viewport, setViewport] = useState(() => {
-        const { wahines } = data
+        const wahines = data
         const randomIndex = Math.floor(Math.random() * wahines.length)
         setSelectedWahineIndex(randomIndex)
         return {
-            latitude: wahines[randomIndex].wahi.ahuahanga[1],
-            longitude: wahines[randomIndex].wahi.ahuahanga[0],
+            latitude: wahines[randomIndex].wahi.ahuahanga.lat,
+            longitude: wahines[randomIndex].wahi.ahuahanga.lng,
             activeId: wahines[randomIndex].id,
-            bearing: handleMapBearing(wahines[randomIndex].wahi.ahuahanga),
+            // bearing should be provided in [Lng, Lat] order
+            bearing: handleMapBearing([
+                wahines[randomIndex].wahi.ahuahanga.lng,
+                wahines[randomIndex].wahi.ahuahanga.lat
+            ]),
             pitch: 100,
             zoom: 11
         }
     })
     const [mapData, setMapData] = useState(null)
 
-    const { wahines, haerengaKorero, portraits, posters, baseUrlVideo } = data
+    const wahines = data
 
     useEffect(() => {
         const wahi = wahines.map((wahine) => {
             return {
                 id: wahine.id,
                 title: wahine.ingoa,
-                lat: wahine.wahi.ahuahanga[1],
-                lng: wahine.wahi.ahuahanga[0],
+                lat: wahine.wahi.ahuahanga.lat,
+                lng: wahine.wahi.ahuahanga.lng,
                 centroid: wahine.wahi.ahuahanga
             }
         })
         const newMapData = GeoJSON.parse(wahi, { Point: ['lat', 'lng'] })
-
         setMapData(newMapData)
     }, [wahines])
 
@@ -113,14 +122,20 @@ export default function Map({ data }) {
             selectedWahineIndex === wahines.length - 1
                 ? 0
                 : selectedWahineIndex + 1
-
         setSelectedWahineIndex(prevIndex)
         handleModalDelay()
         mapRef.current.flyTo({
-            center: wahines[prevIndex].wahi.ahuahanga,
+            // flyTo wants order: [Lng, Lat]
+            center: [
+                wahines[prevIndex].wahi.ahuahanga.lng,
+                wahines[prevIndex].wahi.ahuahanga.lat
+            ],
             pitch: 70,
             duration: 3000,
-            bearing: handleMapBearing(wahines[prevIndex].wahi.ahuahanga)
+            bearing: handleMapBearing([
+                wahines[prevIndex].wahi.ahuahanga.lng,
+                wahines[prevIndex].wahi.ahuahanga.lat
+            ])
         })
     }
 
@@ -132,10 +147,16 @@ export default function Map({ data }) {
         setSelectedWahineIndex(nextIndex)
         handleModalDelay()
         mapRef.current.flyTo({
-            center: wahines[nextIndex].wahi.ahuahanga,
+            center: [
+                wahines[nextIndex].wahi.ahuahanga.lng,
+                wahines[nextIndex].wahi.ahuahanga.lat
+            ],
             pitch: 70,
             duration: 3000,
-            bearing: handleMapBearing(wahines[nextIndex].wahi.ahuahanga)
+            bearing: handleMapBearing([
+                wahines[nextIndex].wahi.ahuahanga.lng,
+                wahines[nextIndex].wahi.ahuahanga.lat
+            ])
         })
     }
 
@@ -149,12 +170,16 @@ export default function Map({ data }) {
                 handleModalDelay()
             }
             mapRef.current.flyTo({
-                center: wahines[clickedWahine.id - 1].wahi.ahuahanga,
+                center: [
+                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lng,
+                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lat
+                ],
                 pitch: 70,
                 duration: 3000,
-                bearing: handleMapBearing(
-                    wahines[clickedWahine.id - 1].wahi.ahuahanga
-                )
+                bearing: handleMapBearing([
+                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lng,
+                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lat
+                ])
             })
         }
     }
@@ -206,7 +231,7 @@ export default function Map({ data }) {
                 alignItems="center"
             >
                 <MapOverlay
-                    haerengaKorero={haerengaKorero}
+                    haerengaKorero={'Map Loading'}
                     mapIsVisible={mapIsVisible}
                 />
             </Flex>
@@ -224,8 +249,6 @@ export default function Map({ data }) {
                     onOpen={onOpen}
                     onClose={onClose}
                     wahines={wahines}
-                    images={portraits}
-                    covers={posters}
                     baseUrlVideo={baseUrlVideo}
                     selectedWahineIndex={selectedWahineIndex}
                     handleNextClick={handleNextClick}
@@ -237,13 +260,13 @@ export default function Map({ data }) {
                     ref={mapRef}
                     width="100%"
                     height="100%"
-                    cursor={'pointer'}
+                    cursor="pointer"
+                    position="relative"
                     scrollZoom={false}
                     boxZoom={false}
                     doubleClickZoom={false}
                     dragRotate={false}
                     dragPan={false}
-                    position="relative"
                     localFontFamily={'SohneBreit_Buch'}
                     mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
                     onMove={(event) => setViewport(event.viewport)}
