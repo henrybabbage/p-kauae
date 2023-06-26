@@ -14,6 +14,8 @@ import { apiVersion } from './sanity/env'
 import { schema } from './sanity/schema'
 
 const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Pūkauae'
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'l5wjxg7c'
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
@@ -23,8 +25,8 @@ const singletonTypes = new Set(['korero', 'kaiwhakaahua'])
 
 export default defineConfig({
     basePath: '/studio',
-    projectId: 'l5wjxg7c',
-    dataset: 'production',
+    projectId,
+    dataset,
     title,
     // Add and edit the content schema in the './sanity/schema' folder
     schema: {
