@@ -9,6 +9,8 @@ export default function ChakraNextImage(props) {
             {blurhash && (
                 <Blurhash
                     hash={blurhash}
+                    width={`${width}px`}
+                    height={`${height}px`}
                     punch={1}
                     style={{
                         position: 'absolute',
