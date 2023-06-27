@@ -43,6 +43,7 @@ export default function HomePage({ kaiwhakaahua, korero, preview }) {
     const playerRef = useRef()
     const videoRef = useRef(null)
 
+    // split array of items into two columns
     const acknowledgementsList = tangata_mihia
     const leftColumn = acknowledgementsList.slice(0, 8)
     const rightColumn = acknowledgementsList.slice(8, 16)

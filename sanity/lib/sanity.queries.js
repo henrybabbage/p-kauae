@@ -48,6 +48,7 @@ export const kaiwhakaahuaQuery = groq`*[_type == 'kaiwhakaahua'][0]{
 }`
 
 export const koreroQuery = groq`*[_type == 'korero'][0]{
+    tuhinga_matua,
     whakataukii,
     tangata_mihia,
     tuhinga_timatanga,

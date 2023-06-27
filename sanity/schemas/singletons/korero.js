@@ -10,6 +10,32 @@ export default {
             readOnly: true
         },
         {
+            name: 'tuhinga_timatanga',
+            title: 'Tuhinga timatanga in Te Reo Māori',
+            description: 'Text displayed when landing page loads',
+            type: 'content'
+        },
+        {
+            name: 'tuhinga_timatanga_english',
+            title: 'Tuhinga timatanga in English',
+            description: 'Text displayed when landing page loads',
+            type: 'content'
+        },
+        {
+            name: 'mihi',
+            title: 'Mihi',
+            type: 'content',
+            description: 'Acknowledgements'
+        },
+        {
+            name: 'tangata_mihia',
+            title: 'Tangata mihia',
+            type: 'array',
+            of: [{ type: 'string' }],
+            validation: (Rule) => Rule.max(16),
+            description: 'Thanks to'
+        },
+        {
             name: 'tuhinga_matua',
             title: 'Tuhinga matua',
             type: 'content'
@@ -25,6 +51,12 @@ export default {
             type: 'content'
         },
         {
+            name: 'whakataukii',
+            title: 'Whakataukii',
+            type: 'content',
+            description: 'Blockquote in large text'
+        },
+        {
             name: 'tuhinga_whakamutunga',
             title: 'Tuhinga whakamutunga',
             type: 'content'
@@ -35,52 +67,28 @@ export default {
             type: 'content'
         },
         {
-            name: 'tuhinga_timatanga',
-            title: 'Tuhinga timatanga in Te Reo Māori',
-            description: 'Text displayed when landing page loads',
-            type: 'content'
-        },
-        {
-            name: 'tuhinga_timatanga_english',
-            title: 'Tuhinga timatanga in English',
-            description: 'Text displayed when landing page loads',
-            type: 'content'
-        },
-        {
-            name: 'whakataukii',
-            title: 'Whakataukii',
-            type: 'content'
-        },
-        {
-            name: 'mihi',
-            title: 'Mihi',
-            type: 'content'
-        },
-        {
-            name: 'tangata_mihia',
-            title: 'Tangata mihia',
-            type: 'array',
-            of: [{ type: 'string' }]
-        },
-        {
             name: 'opening_video',
-            title: 'Opening video',
-            type: 'string'
+            title: 'Video',
+            type: 'string',
+            readOnly: true
         },
         {
             name: 'opening_video_korero',
-            title: 'Opening video korero',
-            type: 'content'
+            title: 'Video korero',
+            type: 'content',
+            description: 'Text displayed while video loads'
         },
         {
             name: 'opening_video_title',
-            title: 'Opening video title',
-            type: 'string'
+            title: 'Video title',
+            type: 'string',
+            description: 'Title displayed when hovering over video'
         },
         {
             name: 'opening_video_poster',
-            title: 'Opening video poster',
-            type: 'whakaahua'
+            title: 'Video poster',
+            type: 'whakaahua',
+            description: 'Image displayed when video is paused'
         },
         {
             name: 'haerenga_korero',
