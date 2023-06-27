@@ -76,8 +76,6 @@ export default function LandingVideo({
         }
     }, [poster])
 
-    console.log({ poster })
-
     return (
         <Box
             position="relative"
