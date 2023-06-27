@@ -66,6 +66,10 @@ export const koreroQuery = groq`*[_type == 'korero'][0]{
     haerenga_korero,
     opening_video_korero,
     opening_video_title,
-    opening_video_poster,
+    opening_video_poster{
+        asset->{
+            ...,
+        }
+    },
     tuhinga_whakamutunga,
 }`

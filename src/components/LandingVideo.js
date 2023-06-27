@@ -30,7 +30,6 @@ export default function LandingVideo({
 }) {
     // const videoSrc = `${baseUrlVideo}${src}`
     const videoSrc = src.secure_url
-    console.log({ videoSrc })
 
     const [isPlaying, setIsPlaying] = useState(false)
     const [isHovering, setIsHovering] = useState(false)
@@ -60,22 +59,22 @@ export default function LandingVideo({
         setIsPlaying(!isPlaying)
     }
 
-    const config = useMemo(() => {
-        return {
-            file: {
-                attributes: {
-                    style: {
-                        height: 'auto',
-                        width: '100%'
-                    },
-                    poster: poster,
-                    preload: 'auto',
-                    controlsList: 'nodownload noremoteplayback',
-                    disablePictureInPicture: true
-                }
-            }
-        }
-    }, [poster])
+    // const config = useMemo(() => {
+    //     return {
+    //         file: {
+    //             attributes: {
+    //                 style: {
+    //                     height: 'auto',
+    //                     width: '100%'
+    //                 },
+    //                 poster: poster,
+    //                 preload: 'auto',
+    //                 controlsList: 'nodownload noremoteplayback',
+    //                 disablePictureInPicture: true
+    //             }
+    //         }
+    //     }
+    // }, [poster])
 
     return (
         <Box
@@ -83,7 +82,7 @@ export default function LandingVideo({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            {controls && (
+            {/* {controls && (
                 <Flex
                     position="absolute"
                     zIndex="50"
@@ -121,7 +120,7 @@ export default function LandingVideo({
                         />
                     </Tooltip>
                 </Flex>
-            )}
+            )} */}
             <AspectRatio
                 maxH={['auto', 'auto', 'auto', '75vh', '75vh', '75vh']}
                 maxW="100vw"
@@ -144,6 +143,7 @@ export default function LandingVideo({
                     showCover={showCover}
                     videoKorero={videoKorero}
                     poster={poster}
+                    controls={controls}
                 />
             </AspectRatio>
             {showTitle && (

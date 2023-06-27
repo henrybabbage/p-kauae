@@ -1,14 +1,17 @@
 import { isBrowser } from '@/utils/helpers'
-import { Box, Center, Spinner } from '@chakra-ui/react'
-import { MediaOutlet, MediaPlayer, MediaPoster } from '@vidstack/react'
+import { Box } from '@chakra-ui/react'
+import {
+    MediaCommunitySkin,
+    MediaOutlet,
+    MediaPlayButton,
+    MediaPlayer,
+    MediaPoster
+} from '@vidstack/react'
 import { useEffect, useState } from 'react'
 import 'vidstack/styles/base.css'
+import 'vidstack/styles/community-skin/video.css'
 import 'vidstack/styles/defaults.css'
 import 'vidstack/styles/ui/buffering.css'
-import VideoOverlay from './VideoOverlay'
-import VideoLoading from './VideoLoading'
-import VideoCover from './VideoCover'
-import ReactPlayer from 'react-player'
 
 export default function VideoPlayer({
     playerRef,
@@ -23,7 +26,8 @@ export default function VideoPlayer({
     isPlaying,
     showInfo,
     showCover,
-    poster
+    poster,
+    controls
 }) {
     const [hasWindow, setHasWindow] = useState(false)
     const [isBuffering, setIsBuffering] = useState(null)
@@ -44,12 +48,29 @@ export default function VideoPlayer({
                 aspectRatio={16 / 9}
                 autoplay={autoplay}
                 loop={loop}
-                muted={true}
+                muted={muted}
+                controls={controls}
                 playsinline
                 eager
             >
+                {controls && <MediaCommunitySkin />}
                 <MediaOutlet />
-                <MediaPoster alt={title} />
+                <MediaPoster data-loading alt={title} />
+                {controls && (
+                    <div
+                        className="media-controls-container"
+                        role="group"
+                        aria-label="Media Controls"
+                    >
+                        <div className="media-controls-group">Controls Top</div>
+                        <div className="media-controls-group">
+                            <MediaPlayButton />
+                        </div>
+                        <div className="media-controls-group">
+                            Controls Bottom
+                        </div>
+                    </div>
+                )}
             </MediaPlayer>
             {/* {!isReady && <VideoLoading />}
             {isReady && isBuffering && (
