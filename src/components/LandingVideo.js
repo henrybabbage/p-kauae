@@ -28,7 +28,8 @@ export default function LandingVideo({
     muted,
     loop
 }) {
-    const videoSrc = `${baseUrlVideo}${src}`
+    // const videoSrc = `${baseUrlVideo}${src}`
+    const videoSrc = `${src}`
 
     const [isPlaying, setIsPlaying] = useState(false)
     const [isHovering, setIsHovering] = useState(false)
@@ -74,6 +75,8 @@ export default function LandingVideo({
             }
         }
     }, [poster])
+
+    console.log({ poster })
 
     return (
         <Box
