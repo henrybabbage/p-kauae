@@ -144,7 +144,7 @@ export default function HomePage({ kaiwhakaahua, korero, preview }) {
                                         baseUrlVideo={baseUrlVideo}
                                         videoKorero={opening_video_korero}
                                         videoTitle={opening_video_title}
-                                        poster={'/images/duotone.jpg'}
+                                        poster={opening_video_poster.asset.url}
                                         alt="Pūkauae exhibition opening 11th December 2019"
                                         autoplay={false}
                                         controls={true}
