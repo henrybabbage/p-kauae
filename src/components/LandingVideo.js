@@ -29,7 +29,7 @@ export default function LandingVideo({
     loop
 }) {
     // const videoSrc = `${baseUrlVideo}${src}`
-    const videoSrc = `${src}`
+    const videoSrc = src.url
 
     const [isPlaying, setIsPlaying] = useState(false)
     const [isHovering, setIsHovering] = useState(false)
