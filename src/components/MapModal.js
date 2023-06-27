@@ -16,10 +16,10 @@ import {
 } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
 import { useRef } from 'react'
+import { CustomPortableText } from './CustomPortableText'
 import ModalVideo from './ModalVideo'
 import { MotionBox } from './MotionBox'
 import ZoomImage from './ZoomImage'
-import { CustomPortableText } from './CustomPortableText'
 
 export default function MapModal({
     onOpen,
@@ -149,9 +149,13 @@ export default function MapModal({
                                 <Box className="player">
                                     <ModalVideo
                                         playerRef={playerRef}
+                                        // src={
+                                        //     wahines[selectedWahineIndex]
+                                        //         ?.kiriata?.url_1080p
+                                        // }
                                         src={
                                             wahines[selectedWahineIndex]
-                                                ?.kiriata?.url_1080p
+                                                ?.kiriata?.droneFootage?.url
                                         }
                                         baseUrlVideo={baseUrlVideo}
                                         location={
