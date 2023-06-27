@@ -155,7 +155,8 @@ export default function MapModal({
                                         // }
                                         src={
                                             wahines[selectedWahineIndex]
-                                                ?.kiriata?.droneFootage?.url
+                                                ?.kiriata?.droneFootage
+                                                ?.secure_url
                                         }
                                         baseUrlVideo={baseUrlVideo}
                                         location={
