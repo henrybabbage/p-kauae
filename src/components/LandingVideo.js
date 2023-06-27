@@ -30,7 +30,6 @@ export default function LandingVideo({
 }) {
     // const videoSrc = `${baseUrlVideo}${src}`
     const videoSrc = src.secure_url
-    console.log({ videoSrc })
 
     const [isPlaying, setIsPlaying] = useState(false)
     const [isHovering, setIsHovering] = useState(false)
