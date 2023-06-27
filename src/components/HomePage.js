@@ -72,18 +72,16 @@ export default function HomePage({ kaiwhakaahua, korero, preview }) {
                                     position="relative"
                                     justify="center"
                                     flexDirection="column"
-                                    height="100vh"
+                                    height="80vh"
                                 >
                                     <LandingBanner
                                         reoText={tuhinga_timatanga}
                                         englishText={tuhinga_timatanga_english}
                                     />
-                                    <MotionBox
-                                        pt={['0', '0', '0', '6', '6', '6']}
-                                    >
-                                        <SectionBreak />
-                                    </MotionBox>
                                 </Flex>
+                                <MotionBox pt={['0', '0', '0', '4', '4', '4']}>
+                                    <SectionBreak />
+                                </MotionBox>
                             </GridItem>
                             <GridItem
                                 colStart={[1, 1, 1, 1, 4, 4]}
