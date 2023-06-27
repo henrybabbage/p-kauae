@@ -66,11 +66,17 @@ export default {
             title: 'Tuhinga whakaraapopoto',
             type: 'content'
         },
+        // {
+        //     name: 'opening_video',
+        //     title: 'Video',
+        //     type: 'string',
+        //     readOnly: true
+        // },
         {
             name: 'opening_video',
             title: 'Video',
-            type: 'string',
-            readOnly: true
+            type: 'cloudinary.asset'
+            // readOnly: true
         },
         {
             name: 'opening_video_korero',
