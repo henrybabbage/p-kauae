@@ -5,9 +5,9 @@
 
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
-import { muxInput } from 'sanity-plugin-mux-input'
+import { cloudinarySchemaPlugin } from 'sanity-plugin-cloudinary'
 import { media } from 'sanity-plugin-media'
+import { deskTool } from 'sanity/desk'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { BlockContentIcon, CogIcon, UserIcon, UsersIcon } from '@sanity/icons'
@@ -84,7 +84,7 @@ export default defineConfig({
         // https://www.sanity.io/docs/the-vision-plugin
         visionTool({ defaultApiVersion: apiVersion }),
         media(),
-        muxInput()
+        cloudinarySchemaPlugin()
     ],
     document: {
         // For singleton types, filter out actions that are not explicitly included

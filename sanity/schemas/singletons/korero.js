@@ -69,7 +69,8 @@ export default {
         {
             name: 'opening_video',
             title: 'Video',
-            type: 'string'
+            type: 'string',
+            readOnly: true
         },
         {
             name: 'opening_video_korero',
