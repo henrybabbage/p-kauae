@@ -38,7 +38,8 @@ const nextConfig = {
         domains: [
             'localhost',
             'pukauae.s3.ap-southeast-2.amazonaws.com',
-            'cdn.sanity.io'
+            'cdn.sanity.io',
+            'res.cloudinary.com'
         ],
         formats: ['image/avif', 'image/webp'],
         remotePatterns: [
