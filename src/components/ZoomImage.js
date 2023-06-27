@@ -7,7 +7,6 @@ import CloseButton from './CloseButton'
 
 export default function ZoomImage(props) {
     const { caption, src, alt, width, height, sizes, blurhash, ...rest } = props
-    console.log({ src })
 
     const DynamicZoomContent = useCallback(
         (props) => {
