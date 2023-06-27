@@ -13,7 +13,8 @@ export default function ModalVideo({
     poster,
     alt
 }) {
-    const videoSrc = `${baseUrlVideo}${src}`
+    // const videoSrc = `${baseUrlVideo}${src}`
+    const videoSrc = `${src}`
     return (
         <Box position="relative" w="100%" maxWidth="100%">
             <AspectRatio
