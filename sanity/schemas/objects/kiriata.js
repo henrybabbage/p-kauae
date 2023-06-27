@@ -12,7 +12,8 @@ export default {
             name: 'url_1080p',
             title: '1080p',
             type: 'string',
-            readOnly: true
+            readOnly: true,
+            hidden: true
         },
         {
             name: 'url_1080p_cloudinary',
@@ -37,10 +38,10 @@ export default {
                                 'onlyCloudinaryAccess'
                             )
                         ) {
-                            // only use clooudinary as an asset source
+                            // only use cloudinary as an asset source
                             return [cloudinaryImageSource]
                         }
-                        // dont add cloudnary as an asset sources
+                        // don't add cloudinary as an asset sources
                         return previousAssetSources
                     }
                 }
