@@ -16,8 +16,8 @@ export default {
             hidden: true
         },
         {
-            name: 'url_1080p_cloudinary',
-            title: 'Video cloudinary',
+            name: 'droneFootage',
+            title: 'Drone footage',
             type: 'cloudinary.asset',
             form: {
                 image: {

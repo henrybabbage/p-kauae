@@ -26,6 +26,9 @@ export const wahineQuery = groq`*[_type == 'wahine']| order(id asc){
         alternative_text,
         },
         url_1080p,
+        droneFootage{
+            ...,
+        },
     },
     wahi{
         ingoa,
