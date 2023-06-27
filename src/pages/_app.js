@@ -14,7 +14,6 @@ export const siteTitle = 'Pūkauae'
 export default function App({ Component, pageProps }) {
     const { asPath } = useRouter()
     const [loading, setLoading] = useState(false)
-    const [bannerShown, setBannerShown] = useState(false)
 
     useEffect(() => {
         // Used for page transition
@@ -99,8 +98,6 @@ export default function App({ Component, pageProps }) {
                         window.scrollTo(0, 0)
                     }}
                 >
-                    {/* <SplashBanner /> */}
-                    {/* <Header /> */}
                     {loading ? (
                         <TransitionBanner />
                     ) : (
