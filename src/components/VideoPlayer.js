@@ -44,7 +44,7 @@ export default function VideoPlayer({
                 aspectRatio={16 / 9}
                 autoplay={autoplay}
                 loop={loop}
-                muted={muted}
+                muted={true}
                 playsinline
                 eager
             >

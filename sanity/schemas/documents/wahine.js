@@ -7,7 +7,8 @@ export default {
             name: 'id',
             title: 'ID',
             type: 'number',
-            readOnly: true
+            readOnly: true,
+            hidden: true
         },
         {
             name: 'ingoa',
