@@ -39,7 +39,7 @@ export default function VideoPlayer({
         }
     }, [])
 
-    const [isMobile] = useMediaQuery('(max-width: 740px)', {
+    const [isMobile] = useMediaQuery('(max-width: 640px)', {
         ssr: true,
         fallback: false
     })
@@ -61,7 +61,7 @@ export default function VideoPlayer({
                 {controls && !isMobile && <MediaCommunitySkin />}
                 <MediaOutlet />
                 <MediaPoster data-loading alt={title} />
-                {controls && isMobile && (
+                {controls && !isMobile && (
                     <div
                         className="media-controls-container"
                         role="group"
