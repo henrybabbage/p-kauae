@@ -1,16 +1,14 @@
 import { Box } from '@chakra-ui/react'
 import NextImage from 'next/image'
-import { Blurhash } from 'react-blurhash'
+import { BlurhashCanvas } from 'react-blurhash'
 
 export default function ChakraNextImage(props) {
     const { src, alt, width, height, sizes, blurhash, ...rest } = props
     return (
-        <Box position="absolute">
+        <Box position="relative">
             {blurhash && (
-                <Blurhash
+                <BlurhashCanvas
                     hash={blurhash}
-                    width={`${width}px`}
-                    height={`${height}px`}
                     punch={1}
                     style={{
                         position: 'absolute',
@@ -19,7 +17,8 @@ export default function ChakraNextImage(props) {
                         bottom: 0,
                         left: 0,
                         width: '100%',
-                        height: '100%'
+                        height: '100%',
+                        overflow: 'hidden'
                     }}
                 />
             )}

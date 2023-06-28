@@ -149,16 +149,11 @@ export default function MapModal({
                                 <Box className="player">
                                     <ModalVideo
                                         playerRef={playerRef}
-                                        // src={
-                                        //     wahines[selectedWahineIndex]
-                                        //         ?.kiriata?.url_1080p
-                                        // }
                                         src={
                                             wahines[selectedWahineIndex]
                                                 ?.kiriata?.droneFootage
                                                 ?.secure_url
                                         }
-                                        baseUrlVideo={baseUrlVideo}
                                         location={
                                             wahines[selectedWahineIndex].kiriata
                                                 .ingoa
@@ -257,7 +252,7 @@ export default function MapModal({
                                         blurhash={
                                             wahines[selectedWahineIndex]
                                                 ?.whakaahua?.asset?.metadata
-                                                ?.blurhash
+                                                ?.blurHash
                                         }
                                         caption={
                                             wahines[selectedWahineIndex]?.ingoa

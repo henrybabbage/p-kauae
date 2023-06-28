@@ -664,9 +664,6 @@ export default function HomePage({ kaiwhakaahua, korero, preview }) {
                                     sizes={
                                         '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
                                     }
-                                    sx={{
-                                        paddingRight: 'var(--chakra-space-6)'
-                                    }}
                                 />
                             </Flex>
                         </Box>

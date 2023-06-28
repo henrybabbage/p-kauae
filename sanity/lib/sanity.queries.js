@@ -14,18 +14,24 @@ export const wahineQuery = groq`*[_type == 'wahine']| order(id asc){
     whakaahua{
         alternative_text,
         asset->{
-        ...,
-        },
+            ...,
+            metadata{
+                blurHash,
+                ...,
+            }
+        }
     },
     kiriata{
         ingoa,
         poster{
-        asset->{
-            ...,
-        },
+            asset->{
+                ...,
+                metadata{
+                    ...,
+                }
+            },
         alternative_text,
         },
-        url_1080p,
         droneFootage{
             ...,
         },
@@ -46,6 +52,9 @@ export const kaiwhakaahuaQuery = groq`*[_type == 'kaiwhakaahua'][0]{
     whakaahua{
         asset->{
             ...,
+             metadata{
+                ...,
+            }
         }
     }
 }`
@@ -60,16 +69,19 @@ export const koreroQuery = groq`*[_type == 'korero'][0]{
     tuhinga_whakaraapopoto,
     mihi,
     tuhinga_tauaakii_whakamaunga_atu,
+    haerenga_korero,
     opening_video{
         ...,
     },
-    haerenga_korero,
-    opening_video_korero,
-    opening_video_title,
     opening_video_poster{
         asset->{
             ...,
+             metadata{
+                ...,
+            }
         }
     },
+    opening_video_korero,
+    opening_video_title,
     tuhinga_whakamutunga,
 }`
