@@ -9,7 +9,7 @@ import {
 } from '@vidstack/react'
 import { useEffect, useState } from 'react'
 import 'vidstack/styles/base.css'
-import 'vidstack/styles/community-skin/video.css'
+// import 'vidstack/styles/community-skin/video.css'
 import 'vidstack/styles/defaults.css'
 
 export default function VideoPlayer({
@@ -59,7 +59,7 @@ export default function VideoPlayer({
             >
                 <MediaOutlet />
                 <MediaPoster data-loading alt={title} />
-                {controls && !isMobile && <MediaCommunitySkin />}
+                {/* {controls && !isMobile && <MediaCommunitySkin />} */}
                 {controls && !isMobile && (
                     <Box
                         className="media-controls-container"
