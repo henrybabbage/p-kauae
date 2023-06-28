@@ -9,6 +9,7 @@ const nextConfig = {
         })
         return config
     },
+    experimental: { urlImports: ['https://themer.sanity.build/'] },
     i18n: {
         locales: ['en'],
         defaultLocale: 'en'
@@ -35,26 +36,9 @@ const nextConfig = {
             process.env.NEXT_PUBLIC_SANITY_API_READ_TOKEN
     },
     images: {
-        domains: [
-            'localhost',
-            'pukauae.s3.ap-southeast-2.amazonaws.com',
-            'cdn.sanity.io',
-            'res.cloudinary.com'
-        ],
+        domains: ['localhost', 'cdn.sanity.io', 'res.cloudinary.com'],
         formats: ['image/avif', 'image/webp'],
         remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: '**.amazonaws.com'
-            },
-            {
-                protocol: 'https',
-                hostname: '**.cloudfront.net'
-            },
-            {
-                protocol: 'https',
-                hostname: '**.strapi.io'
-            },
             {
                 protocol: 'https',
                 hostname: 'cdn.sanity.io'

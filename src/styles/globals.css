@@ -41,12 +41,6 @@ a {
     appearance: none;
 }
 
-blockquote > p {
-    font-size: 72px !important;
-    line-height: 1 !important;
-    color: #c3918f !important;
-}
-
 .mapboxgl-ctrl-logo {
     display: none !important;
 }

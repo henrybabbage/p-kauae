@@ -4,6 +4,7 @@
  */
 
 import { visionTool } from '@sanity/vision'
+import { theme } from 'https://themer.sanity.build/api/hues?default=c3918f;darkest:141414&primary=c3918f&transparent=lightest:fff&positive=lightest:fff&caution=lightest:fff&critical=lightest:fff&lightest=c3918f'
 import { defineConfig } from 'sanity'
 import { cloudinarySchemaPlugin } from 'sanity-plugin-cloudinary'
 import { media } from 'sanity-plugin-media'
@@ -25,6 +26,7 @@ const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
 const singletonTypes = new Set(['korero', 'kaiwhakaahua'])
 
 export default defineConfig({
+    theme,
     basePath: '/studio',
     projectId,
     dataset,

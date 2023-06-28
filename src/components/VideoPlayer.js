@@ -9,9 +9,9 @@ import {
 } from '@vidstack/react'
 import { useEffect, useState } from 'react'
 import 'vidstack/styles/base.css'
-import 'vidstack/styles/community-skin/video.css'
 import 'vidstack/styles/defaults.css'
 import 'vidstack/styles/ui/buffering.css'
+import 'vidstack/styles/community-skin/video.css'
 
 export default function VideoPlayer({
     playerRef,
