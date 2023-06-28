@@ -5,7 +5,7 @@ import LandingBanner from '@/components/LandingBanner'
 import LandingVideo from '@/components/LandingVideo'
 import LinkPrompt from '@/components/LinkPrompt'
 import { MotionBox } from '@/components/MotionBox'
-import SectionBreak from '@/components/SectionBreak'
+import SectionBreakIcon from '@/components/SectionBreakIcon'
 import SmoothScroll from '@/components/SmoothScroll'
 import { cloudfrontDomain } from '@/utils/api'
 import {
@@ -80,7 +80,7 @@ export default function HomePage({ kaiwhakaahua, korero, preview }) {
                                     />
                                 </Flex>
                                 <MotionBox pt={['0', '0', '0', '4', '4', '4']}>
-                                    <SectionBreak />
+                                    <SectionBreakIcon />
                                 </MotionBox>
                             </GridItem>
                             <GridItem
