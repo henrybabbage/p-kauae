@@ -13,7 +13,7 @@ export default {
             name: 'alternative_text',
             title: 'Alternative text',
             type: 'string',
-            description: 'Alternative text for screenreaders'
+            description: 'Important for accessibility and used by screenreaders'
         }
     ],
     preview: {
