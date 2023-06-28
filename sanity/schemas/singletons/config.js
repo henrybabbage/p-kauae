@@ -1,4 +1,4 @@
-import { decodeAssetUrl } from 'sanity/utils/decodeAssetUrl'
+import { decodeAssetUrl } from '../../utils/decodeAssetUrl'
 
 export default {
     name: 'config',
