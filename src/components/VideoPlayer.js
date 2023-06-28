@@ -1,5 +1,5 @@
 import { isBrowser } from '@/utils/helpers'
-import { Box } from '@chakra-ui/react'
+import { Box, useMediaQuery } from '@chakra-ui/react'
 import {
     MediaCommunitySkin,
     MediaOutlet,
@@ -39,6 +39,11 @@ export default function VideoPlayer({
         }
     }, [])
 
+    const [isMobile] = useMediaQuery('(max-width: 740px)', {
+        ssr: true,
+        fallback: false
+    })
+
     return (
         <Box position="relative" bg="black" w="100%" h="100%">
             <MediaPlayer
@@ -53,22 +58,20 @@ export default function VideoPlayer({
                 playsinline
                 eager
             >
-                {controls && <MediaCommunitySkin />}
+                {controls && !isMobile && <MediaCommunitySkin />}
                 <MediaOutlet />
                 <MediaPoster data-loading alt={title} />
-                {controls && (
+                {controls && isMobile && (
                     <div
                         className="media-controls-container"
                         role="group"
                         aria-label="Media Controls"
                     >
-                        <div className="media-controls-group">Controls Top</div>
+                        <div className="media-controls-group"></div>
                         <div className="media-controls-group">
                             <MediaPlayButton />
                         </div>
-                        <div className="media-controls-group">
-                            Controls Bottom
-                        </div>
+                        <div className="media-controls-group"></div>
                     </div>
                 )}
             </MediaPlayer>
