@@ -61,6 +61,11 @@ media-poster[data-loading] {
 media-poster[aria-hidden='true'] {
 }
 
+.media-controls {
+    background-color: rgb(0 0 0 / 0.5);
+    border-radius: 50%;
+}
+
 .media-controls-container {
     position: absolute;
     display: flex;

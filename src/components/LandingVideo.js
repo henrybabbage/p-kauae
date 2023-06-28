@@ -1,15 +1,6 @@
-import {
-    AspectRatio,
-    Box,
-    Flex,
-    Heading,
-    IconButton,
-    Tooltip
-} from '@chakra-ui/react'
+import { AspectRatio, Box, Heading } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
-import { useMemo, useRef, useState } from 'react'
-import { PauseIcon } from './PauseIcon'
-import { PlayIcon } from './PlayIcon'
+import { useRef, useState } from 'react'
 
 const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
     ssr: false
@@ -154,8 +145,8 @@ export default function LandingVideo({
                     fontFamily="subheading"
                     position="absolute"
                     z="10"
-                    bottom={[4, 4, 4, 12, 12, 12]}
-                    right={[4, 4, 4, 6, 6, 6]}
+                    top={[4, 4, 4, 6, 6, 6]}
+                    left={[4, 4, 4, 6, 6, 6]}
                 >
                     {videoTitle}
                 </Heading>

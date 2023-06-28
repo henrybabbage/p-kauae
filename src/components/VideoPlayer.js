@@ -9,9 +9,8 @@ import {
 } from '@vidstack/react'
 import { useEffect, useState } from 'react'
 import 'vidstack/styles/base.css'
-import 'vidstack/styles/defaults.css'
-import 'vidstack/styles/ui/buffering.css'
 import 'vidstack/styles/community-skin/video.css'
+import 'vidstack/styles/defaults.css'
 
 export default function VideoPlayer({
     playerRef,
@@ -58,21 +57,21 @@ export default function VideoPlayer({
                 playsinline
                 eager
             >
-                {controls && !isMobile && <MediaCommunitySkin />}
                 <MediaOutlet />
                 <MediaPoster data-loading alt={title} />
+                {controls && !isMobile && <MediaCommunitySkin />}
                 {controls && !isMobile && (
-                    <div
+                    <Box
                         className="media-controls-container"
                         role="group"
                         aria-label="Media Controls"
                     >
-                        <div className="media-controls-group"></div>
-                        <div className="media-controls-group">
-                            <MediaPlayButton />
-                        </div>
-                        <div className="media-controls-group"></div>
-                    </div>
+                        <Box className="media-controls-group"></Box>
+                        <Box className="media-controls-group">
+                            <MediaPlayButton className="media-controls" />
+                        </Box>
+                        <Box className="media-controls-group"></Box>
+                    </Box>
                 )}
             </MediaPlayer>
             {/* {!isReady && <VideoLoading />}
