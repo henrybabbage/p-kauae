@@ -4,7 +4,7 @@
  */
 
 import { visionTool } from '@sanity/vision'
-import { theme } from 'https://themer.sanity.build/api/hues?default=c3918f;darkest:141414&primary=c3918f&transparent=lightest:fff&positive=lightest:fff&caution=lightest:fff&critical=lightest:fff&lightest=c3918f'
+import { theme } from 'https://themer.sanity.build/api/hues?default=ffffff&primary=c3918f&transparent=c3918f&positive=lightest:fff&caution=lightest:fff&critical=lightest:fff&lightest=ffffff&darkest=141414'
 import { defineConfig } from 'sanity'
 import { cloudinarySchemaPlugin } from 'sanity-plugin-cloudinary'
 import { media } from 'sanity-plugin-media'
