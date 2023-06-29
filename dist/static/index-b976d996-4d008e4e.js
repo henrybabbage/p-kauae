@@ -1,1 +1,0 @@
-import{DocumentPane as m}from"./index-0de920bc-c3fb88a4.js";import{D as n}from"./sanity-d9a2bcca.js";import"./json-inspector-69ea852b.js";import"https://themer.sanity.build/api/hues?default=c3918f;darkest:141414&primary=c3918f&transparent=lightest:fff&positive=lightest:fff&caution=lightest:fff&critical=lightest:fff&lightest=c3918f";export{n as DocumentPaneProvider,m as default};
