@@ -1,23 +1,25 @@
 import MapPage from '@/components/MapPage'
-import { PreviewSuspense } from 'next-sanity/preview'
+import PreviewProvider from '@/components/PreviewProvider'
 import { lazy } from 'react'
 import { client } from '../../sanity/lib/sanity.client'
 import { wahineQuery } from '../../sanity/lib/sanity.queries'
-import PreviewLoading from '@/components/PreviewLoading'
 
 const PreviewMapPage = lazy(() => import('../components/PreviewMapPage'))
 
 export default function Haerenga({ wahines, preview }) {
     return preview ? (
-        <PreviewSuspense fallback={<PreviewLoading />}>
-            <PreviewMapPage wahineQuery={wahineQuery} />
-        </PreviewSuspense>
+        <PreviewProvider token={preview.token}>
+            <PreviewMapPage data={wahines} wahineQuery={wahineQuery} />
+        </PreviewProvider>
     ) : (
-        <MapPage wahines={wahines} />
+        <MapPage data={wahines} />
     )
 }
 
-export async function getStaticProps({ preview = false }) {
+export async function getStaticProps(context) {
+    const { token } = context.previewData ?? {}
+    const preview = context.preview ? { token } : null
+
     if (preview) {
         return { props: { preview } }
     }

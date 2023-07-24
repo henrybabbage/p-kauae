@@ -1,7 +1,5 @@
 import { groq } from 'next-sanity'
 
-export const kiriataQuery = groq`*[_type == 'config'][0].kiriata_cloudfront`
-
 export const wahineQuery = groq`*[_type == 'wahine']| order(id asc){
     _id,
     id,
@@ -84,4 +82,17 @@ export const koreroQuery = groq`*[_type == 'korero'][0]{
     opening_video_korero,
     opening_video_title,
     tuhinga_whakamutunga,
+    "kaiwhakaahua": *[_type == 'kaiwhakaahua'][0]{
+        ingoa,  
+        korero,
+        whakapapa,
+        whakaahua{
+            asset->{
+                ...,
+                metadata{
+                    ...,
+                }
+            }
+        }
+    }
 }`

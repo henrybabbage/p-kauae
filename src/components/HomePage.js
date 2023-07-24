@@ -21,7 +21,7 @@ import { useRef } from 'react'
 import { CustomPortableText } from './CustomPortableText'
 import PreviewButton from './PreviewButton'
 
-export default function HomePage({ kaiwhakaahua, korero, preview }) {
+export default function HomePage({ data: korero, preview }) {
     const baseUrlVideo = cloudfrontDomain
     const {
         whakataukii,
@@ -37,7 +37,8 @@ export default function HomePage({ kaiwhakaahua, korero, preview }) {
         opening_video_korero,
         opening_video_title,
         opening_video_poster,
-        tuhinga_whakamutunga
+        tuhinga_whakamutunga,
+        kaiwhakaahua
     } = korero
 
     const playerRef = useRef()

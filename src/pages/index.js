@@ -1,40 +1,35 @@
 import HomePage from '@/components/HomePage'
-import { PreviewSuspense } from 'next-sanity/preview'
+import PreviewProvider from '@/components/PreviewProvider'
 import { lazy } from 'react'
 import { client } from '../../sanity/lib/sanity.client'
-import { kaiwhakaahuaQuery, koreroQuery } from '../../sanity/lib/sanity.queries'
-import PreviewLoading from '@/components/PreviewLoading'
+import { koreroQuery } from '../../sanity/lib/sanity.queries'
 
 const PreviewHomePage = lazy(() => import('../components/PreviewHomePage'))
 
-export default function Home({ preview, kaiwhakaahua, korero }) {
+export default function Home({ preview, korero }) {
     return preview ? (
-        <PreviewSuspense fallback={<PreviewLoading />}>
-            <PreviewHomePage
-                koreroQuery={koreroQuery}
-                kaiwhakaahuaQuery={kaiwhakaahuaQuery}
-            />
-        </PreviewSuspense>
+        <PreviewProvider token={preview.token}>
+            <PreviewHomePage data={korero} koreroQuery={koreroQuery} />
+        </PreviewProvider>
     ) : (
-        <HomePage kaiwhakaahua={kaiwhakaahua} korero={korero} />
+        <HomePage data={korero} />
     )
 }
 
-export async function getStaticProps({ preview = false }) {
+export async function getStaticProps(context) {
+    const { token } = context.previewData ?? {}
+    const preview = context.preview ? { token } : null
+
     if (preview) {
         return { props: { preview } }
     }
 
-    const [korero, kaiwhakaahua] = await Promise.all([
-        client.fetch(koreroQuery),
-        client.fetch(kaiwhakaahuaQuery)
-    ])
+    const korero = await client.fetch(koreroQuery)
 
     return {
         props: {
             preview,
-            korero: korero,
-            kaiwhakaahua: kaiwhakaahua
+            korero: korero
         },
         revalidate: 60
     }
