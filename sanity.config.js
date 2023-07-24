@@ -4,7 +4,7 @@
  */
 
 import { visionTool } from '@sanity/vision'
-import { theme } from 'https://themer.sanity.build/api/hues?default=ffffff&primary=c3918f&transparent=c3918f&positive=lightest:fff&caution=lightest:fff&critical=lightest:fff&lightest=ffffff&darkest=141414'
+import { theme } from 'https://themer.sanity.build/api/hues?default=c3918f&primary=c3918f&transparent=c3918f&darkest=141414'
 import { defineConfig } from 'sanity'
 import { cloudinarySchemaPlugin } from 'sanity-plugin-cloudinary'
 import { media } from 'sanity-plugin-media'
@@ -45,11 +45,10 @@ export default defineConfig({
                 S.list()
                     .title('Content')
                     .items([
-                        // Regular document type
                         S.documentTypeListItem('wahine')
                             .title('Wahine')
                             .icon(UsersIcon),
-                        // Our singleton type has a list item with a custom child
+                        // Singleton type has a list item with a custom child
                         S.listItem()
                             .title('Kaiwhakaahua')
                             .id('kaiwhakaahua')
