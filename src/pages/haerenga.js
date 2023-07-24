@@ -1,4 +1,5 @@
 import MapPage from '@/components/MapPage'
+import dynamic from 'next/dynamic'
 import { getClient } from '../../sanity/lib/sanity.client'
 import { wahineQuery } from '../../sanity/lib/sanity.queries'
 
