@@ -10,7 +10,7 @@ export const client = createClient({
     studioUrl
 })
 
-export function getClient(preview) {
+export function getClient(previewToken) {
     const client = createClient({
         projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
         dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
@@ -19,12 +19,12 @@ export function getClient(preview) {
         studioUrl: '/studio',
         perspective: 'published'
     })
-    if (preview) {
-        if (!preview.token) {
+    if (previewToken) {
+        if (!previewToken) {
             throw new Error('You must provide a token to preview drafts')
         }
         return client.withConfig({
-            token: preview.token,
+            token: previewToken,
             useCdn: false,
             ignoreBrowserTokenWarning: true,
             perspective: 'previewDrafts'

@@ -1,14 +1,14 @@
 import HomePage from '@/components/HomePage'
-import PreviewProvider from '@/components/PreviewProvider'
-import { lazy } from 'react'
-import { client } from '../../sanity/lib/sanity.client'
+import dynamic from 'next/dynamic'
+import { getClient } from '../../sanity/lib/sanity.client'
 import { koreroQuery } from '../../sanity/lib/sanity.queries'
 
-const PreviewHomePage = lazy(() => import('../components/PreviewHomePage'))
+const PreviewProvider = dynamic(() => import('@/components/PreviewProvider'))
+const PreviewHomePage = dynamic(() => import('@/components/PreviewHomePage'))
 
-export default function Home({ preview, korero }) {
+export default function Home({ preview, previewToken, korero }) {
     return preview ? (
-        <PreviewProvider token={preview.token}>
+        <PreviewProvider token={previewToken}>
             <PreviewHomePage data={korero} koreroQuery={koreroQuery} />
         </PreviewProvider>
     ) : (
@@ -17,18 +17,21 @@ export default function Home({ preview, korero }) {
 }
 
 export async function getStaticProps(context) {
-    const { token } = context.previewData ?? {}
-    const preview = context.preview ? { token } : null
-
-    if (preview) {
-        return { props: { preview } }
+    const preview = context.draftMode || false
+    const previewToken = preview ? process.env.SANITY_API_READ_TOKEN : ``
+    if (preview && !previewToken) {
+        throw new Error(
+            `Preview mode is active, but SANITY_READ_TOKEN is not set in environment variables`
+        )
     }
+    const client = getClient(previewToken)
 
     const korero = await client.fetch(koreroQuery)
 
     return {
         props: {
             preview,
+            previewToken,
             korero: korero
         },
         revalidate: 60
