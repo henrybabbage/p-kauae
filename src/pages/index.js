@@ -3,8 +3,8 @@ import dynamic from 'next/dynamic'
 import { getClient } from '../../sanity/lib/sanity.client'
 import { koreroQuery } from '../../sanity/lib/sanity.queries'
 
-const PreviewProvider = dynamic(() => import('@/components/PreviewProvider'))
-const PreviewHomePage = dynamic(() => import('@/components/PreviewHomePage'))
+const PreviewProvider = dynamic(() => import('../components/PreviewProvider'))
+const PreviewHomePage = dynamic(() => import('../components/PreviewHomePage'))
 
 export default function Home({ preview, previewToken, korero }) {
     return preview ? (
@@ -21,7 +21,7 @@ export async function getStaticProps(context) {
     const previewToken = preview ? process.env.SANITY_API_READ_TOKEN : ``
     if (preview && !previewToken) {
         throw new Error(
-            `Preview mode is active, but SANITY_READ_TOKEN is not set in environment variables`
+            `Preview mode is active, but SANITY_API_READ_TOKEN is not set in environment variables`
         )
     }
     const client = getClient(previewToken)
