@@ -1,4 +1,4 @@
-import { useLiveQuery } from 'next-sanity/preview'
+import { useLiveQuery } from '@sanity/preview-kit'
 import MapPage from './MapPage'
 import PreviewLoading from './PreviewLoading'
 
