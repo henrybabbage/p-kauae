@@ -3,7 +3,7 @@ import Map from '@/components/Map'
 import { Box, Flex } from '@chakra-ui/react'
 import PreviewButton from './PreviewButton'
 
-export default function MapPage({ wahines, preview }) {
+export default function MapPage({ data: wahines, preview }) {
     return (
         <Box as="main" maxH="100vh" maxW="100vw" bg="grey.900">
             <Header />

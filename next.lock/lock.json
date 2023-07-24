@@ -1,4 +1,6 @@
 {
+  "https://themer.sanity.build/api/hues?default=c3918f&primary=c3918f&transparent=c3918f&darkest=141414": { "integrity": "sha512-qOlMLJHRafbbLsdZJt85rURBkZLVWxKgOnHjWMv+YeFDM1hirvwhBmRGobcHxp6o+2rIVIntwCHro0da3mOaYg==", "contentType": "application/javascript; charset=utf-8" },
   "https://themer.sanity.build/api/hues?default=c3918f;darkest:141414&primary=c3918f&transparent=lightest:fff&positive=lightest:fff&caution=lightest:fff&critical=lightest:fff&lightest=c3918f": { "integrity": "sha512-3LCMaVGg7Qv4dbYzZXb8I/K2g6uB9lsZodBSeCsAV4PA9FQqOKCw5xSdkopIDWSavgdAOsxk0Jhm1faKLnJyoA==", "contentType": "application/javascript; charset=utf-8" },
+  "https://themer.sanity.build/api/hues?default=ffffff&primary=c3918f&transparent=c3918f&positive=lightest:fff&caution=lightest:fff&critical=lightest:fff&lightest=ffffff&darkest=141414": { "integrity": "sha512-NG37cLN/4yZSAwqJyxJJKBdAagxrINHv4pFqR0TO7kKR+ul44WNl/qQ/3Ujjoe0nr9dYidvna/dJaRuVxU145Q==", "contentType": "application/javascript; charset=utf-8" },
   "version": 1
 }
