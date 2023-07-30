@@ -28,6 +28,8 @@ export async function getStaticProps(context) {
 
     const korero = await client.fetch(koreroQuery)
 
+    console.log({ previewToken })
+
     return {
         props: {
             preview,
