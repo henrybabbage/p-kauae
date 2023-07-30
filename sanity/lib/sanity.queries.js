@@ -44,6 +44,7 @@ export const wahineQuery = groq`*[_type == 'wahine']| order(id asc){
 }`
 
 export const kaiwhakaahuaQuery = groq`*[_type == 'kaiwhakaahua'][0]{
+    _id,
     ingoa,  
     korero,
     whakapapa,
@@ -58,6 +59,7 @@ export const kaiwhakaahuaQuery = groq`*[_type == 'kaiwhakaahua'][0]{
 }`
 
 export const koreroQuery = groq`*[_type == 'korero'][0]{
+    _id,
     tuhinga_matua,
     whakataukii,
     tangata_mihia,

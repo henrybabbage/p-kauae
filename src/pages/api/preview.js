@@ -3,5 +3,5 @@
 export default function preview(req, res) {
     res.setDraftMode({ enable: true })
     res.writeHead(307, { Location: '/' })
-    res.end()
+    res.end('Draft mode is enabled')
 }
