@@ -15,7 +15,8 @@ export default {
             name: 'site',
             title: 'Site',
             type: 'url',
-            description: 'Canonical url for search engine results.'
+            description: 'Canonical url for search engine results.',
+            readOnly: true
         },
         {
             name: 'siteTitle',
