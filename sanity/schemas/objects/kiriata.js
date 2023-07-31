@@ -22,22 +22,11 @@ export default {
             form: {
                 image: {
                     assetSources: (previousAssetSources, context) => {
-                        if (
-                            context.currentUser?.roles.includes(
-                                'cloudinaryAccess'
-                            )
-                        ) {
+                        if (context.currentUser?.roles.includes('cloudinaryAccess')) {
                             // appends cloudinary as an asset source
-                            return [
-                                ...previousAssetSources,
-                                cloudinaryImageSource
-                            ]
+                            return [...previousAssetSources, cloudinaryImageSource]
                         }
-                        if (
-                            context.currentUser?.roles.includes(
-                                'onlyCloudinaryAccess'
-                            )
-                        ) {
+                        if (context.currentUser?.roles.includes('onlyCloudinaryAccess')) {
                             // only use cloudinary as an asset source
                             return [cloudinaryImageSource]
                         }
