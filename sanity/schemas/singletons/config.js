@@ -9,7 +9,7 @@ export default {
             name: 'name',
             title: 'Name',
             type: 'string',
-            readOnly: true
+            hidden: true
         },
         {
             name: 'site',
@@ -21,10 +21,7 @@ export default {
             name: 'siteTitle',
             title: 'Site Title',
             type: 'string',
-            validation: (Rule) =>
-                Rule.max(50).warning(
-                    'Longer titles may be truncated by search engines'
-                ),
+            validation: (Rule) => Rule.max(50).warning('Longer titles may be truncated by search engines'),
             description: 'Website title for search engine results.'
         },
         {
@@ -32,18 +29,14 @@ export default {
             title: 'Site Description',
             type: 'text',
             rows: 3,
-            validation: (Rule) =>
-                Rule.max(150).warning(
-                    'Longer descriptions may be truncated by search engines'
-                ),
+            validation: (Rule) => Rule.max(150).warning('Longer descriptions may be truncated by search engines'),
             description: 'Website description for search engine results.'
         },
         {
             name: 'ogImage',
             title: 'Open Graph Image',
             type: 'image',
-            description:
-                'Displayed on social cards and search engine results. Recommended size: 1200x630 (PNG or JPG).',
+            description: 'Displayed on social cards and search engine results. Recommended size: 1200x630 (PNG or JPG).',
             options: {
                 hotspot: true
             }
@@ -52,8 +45,7 @@ export default {
             title: 'Error Page (404)',
             name: 'error',
             type: 'text',
-            description:
-                'This text will display on a 404 page for any URL at your domain that does not exist yet',
+            description: 'This text will display on a 404 page for any URL at your domain that does not exist yet',
             rows: 3,
             hidden: true
         },
