@@ -1,12 +1,6 @@
 import { isBrowser } from '@/utils/helpers'
 import { Box, useMediaQuery } from '@chakra-ui/react'
-import {
-    MediaCommunitySkin,
-    MediaOutlet,
-    MediaPlayButton,
-    MediaPlayer,
-    MediaPoster
-} from '@vidstack/react'
+import { MediaOutlet, MediaPlayButton, MediaPlayer, MediaPoster } from '@vidstack/react'
 import { useEffect, useState } from 'react'
 import 'vidstack/styles/base.css'
 // import 'vidstack/styles/community-skin/video.css'
@@ -61,11 +55,7 @@ export default function VideoPlayer({
                 <MediaPoster data-loading alt={title} />
                 {/* {controls && !isMobile && <MediaCommunitySkin />} */}
                 {controls && !isMobile && (
-                    <Box
-                        className="media-controls-container"
-                        role="group"
-                        aria-label="Media Controls"
-                    >
+                    <Box className="media-controls-container" role="group" aria-label="Media Controls">
                         <Box className="media-controls-group"></Box>
                         <Box className="media-controls-group">
                             <MediaPlayButton className="media-controls" />

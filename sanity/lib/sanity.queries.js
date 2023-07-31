@@ -48,6 +48,7 @@ export const kaiwhakaahuaQuery = groq`*[_type == 'kaiwhakaahua'][0]{
     ingoa,  
     korero,
     whakapapa,
+    paetukutuku,
     whakaahua{
         asset->{
             ...,
@@ -88,6 +89,7 @@ export const koreroQuery = groq`*[_type == 'korero'][0]{
         ingoa,  
         korero,
         whakapapa,
+        paetukutuku,
         whakaahua{
             asset->{
                 ...,

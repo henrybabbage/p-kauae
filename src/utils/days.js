@@ -14,8 +14,7 @@ export default days = {
     ['Hotu']: 'an unpleasant day, the sea is rough.',
     ['Atua']: 'an abominable day.',
     ['Turu']: 'a day to collect food from the sea.',
-    ['Rākau-nui']:
-        'the moon is filled out, produce from the sea is the staple food.',
+    ['Rākau-nui']: 'the moon is filled out, produce from the sea is the staple food.',
     ['Rākau-matohi']: 'a fine day, the moon now wanes.',
     ['Takirau']: 'fine weather during the morning.',
     ['Oike']: 'the afternoon is favourable.',
@@ -24,8 +23,7 @@ export default days = {
     ['Korekore-hahani']: 'a fairly good day.',
     ['Tangaroa-ā-mua']: 'a good day for fishing.',
     ['Tangaroa-ā-roto']: 'a good day for fishing.',
-    ['Tangaroa-kiokio']:
-        'an excellent day for fishing, a misty aspect prevails on land.',
+    ['Tangaroa-kiokio']: 'an excellent day for fishing, a misty aspect prevails on land.',
     ['Ōtāne']: 'a good day, and a good night for eeling.',
     ['Ōrongonui']: 'a desirable day, the īnanga (whitebait) migrate.',
     ['Mauri']: 'the morning is fine, the moon has now darkened.',

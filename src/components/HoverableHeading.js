@@ -1,10 +1,6 @@
 import { Box, Heading } from '@chakra-ui/react'
 
-export default function HoverableHeading({
-    hoverContent,
-    defaultContent,
-    ...props
-}) {
+export default function HoverableHeading({ hoverContent, defaultContent, ...props }) {
     return (
         <Heading
             {...props}
@@ -15,11 +11,7 @@ export default function HoverableHeading({
             fontFamily="subheading"
             width="140px"
         >
-            <Box
-                _hover={{ _before: { content: `'${hoverContent}'` } }}
-                _before={{ content: `'${defaultContent}'` }}
-                as="span"
-            />
+            <Box _hover={{ _before: { content: `'${hoverContent}'` } }} _before={{ content: `'${defaultContent}'` }} as="span" />
         </Heading>
     )
 }

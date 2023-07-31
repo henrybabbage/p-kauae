@@ -20,9 +20,7 @@ export async function getStaticProps(context) {
     const preview = context.draftMode || false
     const previewToken = preview ? process.env.SANITY_API_READ_TOKEN : ``
     if (preview && !previewToken) {
-        throw new Error(
-            `Preview mode is active, but SANITY_READ_TOKEN is not set in environment variables`
-        )
+        throw new Error(`Preview mode is active, but SANITY_READ_TOKEN is not set in environment variables`)
     }
     const client = getClient(previewToken)
 

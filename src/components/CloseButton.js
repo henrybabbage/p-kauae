@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import { TfiClose as Close } from 'react-icons/tfi'
-import { IconContext } from 'react-icons'
 import { Box } from '@chakra-ui/react'
+import { useState } from 'react'
+import { IconContext } from 'react-icons'
+import { TfiClose as Close } from 'react-icons/tfi'
 
 export default function CloseButton() {
     const hoverColor = '#C3918F'

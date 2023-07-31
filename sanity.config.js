@@ -9,6 +9,7 @@ import { defineConfig } from 'sanity'
 import { cloudinarySchemaPlugin } from 'sanity-plugin-cloudinary'
 import { media } from 'sanity-plugin-media'
 import { deskTool } from 'sanity/desk'
+import { defaultDocumentNode } from './sanity/utils/defaultDocumentNode'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { BlockContentIcon, CogIcon, UserIcon, UsersIcon } from '@sanity/icons'
@@ -41,6 +42,7 @@ export default defineConfig({
     },
     plugins: [
         deskTool({
+            defaultDocumentNode,
             structure: (S) =>
                 S.list()
                     .title('Content')

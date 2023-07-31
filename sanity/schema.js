@@ -8,14 +8,5 @@ import kaiwhakaahua from './schemas/singletons/kaiwhakaahua'
 import korero from './schemas/singletons/korero'
 
 export const schema = {
-    types: [
-        config,
-        content,
-        whakaahua,
-        kiriata,
-        korero,
-        wahine,
-        kaiwhakaahua,
-        wahi
-    ]
+    types: [config, content, whakaahua, kiriata, korero, wahine, kaiwhakaahua, wahi]
 }
