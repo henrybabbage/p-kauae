@@ -7,7 +7,7 @@ export default {
             name: 'title',
             title: 'Title',
             type: 'string',
-            readOnly: true
+            hidden: true
         },
         {
             name: 'tuhinga_timatanga',

@@ -22,23 +22,8 @@ export default function SplashBanner({ bannerShown, setBannerShown }) {
     return (
         <>
             {
-                <VStack
-                    w="100vw"
-                    h="100vh"
-                    maxH="100vh"
-                    backgroundColor="grey.900"
-                    zIndex={10}
-                    pointerEvents="none"
-                    overflow="hidden"
-                >
-                    <Flex
-                        h="100vh"
-                        w="80vw"
-                        textAlign="center"
-                        justifyContent="center"
-                        alignItems="center"
-                        direction="column"
-                    >
+                <VStack w="100vw" h="100vh" maxH="100vh" backgroundColor="grey.900" zIndex={10} pointerEvents="none" overflow="hidden">
+                    <Flex h="100vh" w="80vw" textAlign="center" justifyContent="center" alignItems="center" direction="column">
                         <Box position="relative" width="150px" height="150px">
                             <Image
                                 src="/icons/pukauae.svg"
@@ -53,14 +38,7 @@ export default function SplashBanner({ bannerShown, setBannerShown }) {
                                 }}
                             />
                         </Box>
-                        <Heading
-                            pt="12"
-                            textAlign="center"
-                            fontSize="56px"
-                            lineHeight="1"
-                            color="pink.200"
-                            fontFamily="heading"
-                        >
+                        <Heading pt="12" textAlign="center" fontSize="56px" lineHeight="1" color="pink.200" fontFamily="heading">
                             <Balancer ratio={1.0}>Nau mai ki Pūkauae</Balancer>
                         </Heading>
                     </Flex>

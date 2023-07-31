@@ -1,17 +1,6 @@
 import { Box } from '@chakra-ui/react'
-import {
-    useScroll,
-    useSpring,
-    useTransform,
-    useWillChange
-} from 'framer-motion'
-import React, {
-    useCallback,
-    useEffect,
-    useLayoutEffect,
-    useRef,
-    useState
-} from 'react'
+import { useScroll, useSpring, useTransform, useWillChange } from 'framer-motion'
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import ResizeObserver from 'resize-observer-polyfill'
 import { MotionBox } from './MotionBox'
 
@@ -37,9 +26,7 @@ const SmoothScroll = ({ children }) => {
 
     // observe when browser is resizing
     useLayoutEffect(() => {
-        const resizeObserver = new ResizeObserver((entries) =>
-            resizePageHeight(entries)
-        )
+        const resizeObserver = new ResizeObserver((entries) => resizePageHeight(entries))
         scrollRef && resizeObserver.observe(scrollRef.current)
         return () => resizeObserver.disconnect()
     }, [scrollRef, resizePageHeight])

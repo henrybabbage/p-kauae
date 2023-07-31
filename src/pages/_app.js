@@ -1,4 +1,3 @@
-import Header from '@/components/Header'
 import TransitionBanner from '@/components/TransitionBanner'
 import theme from '@/styles/ChakraTheme'
 import Fonts from '@/styles/Fonts'
@@ -48,44 +47,15 @@ export default function App({ Component, pageProps }) {
         <>
             <Head>
                 <title>{siteTitle}</title>
-                <meta
-                    name="description"
-                    content="Website for the Pūkauae photographic exhibition"
-                />
-                <meta
-                    name="author"
-                    content="Henry Babbage, Luke Enoka, Rere-No-A-Rangi Pope, Blaine Western"
-                />
-                <meta
-                    name="keywords"
-                    content="pukauae, tu tama wahine o taranaki, tu tama wahine, art"
-                />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
+                <meta name="description" content="Website for the Pūkauae photographic exhibition" />
+                <meta name="author" content="Henry Babbage, Luke Enoka, Rere-No-A-Rangi Pope, Blaine Western" />
+                <meta name="keywords" content="pukauae, tu tama wahine o taranaki, tu tama wahine, art" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta charSet="utf-8" />
-                <meta
-                    name="msapplication-config"
-                    content="/favicons/browserconfig.xml"
-                />
-                <link
-                    rel="apple-touch-icon"
-                    sizes="180x180"
-                    href="/favicons/apple-touch-icon.png"
-                />
-                <link
-                    rel="icon"
-                    type="image/png"
-                    sizes="32x32"
-                    href="/favicons/favicon-32x32.png"
-                />
-                <link
-                    rel="icon"
-                    type="image/png"
-                    sizes="16x16"
-                    href="/favicons/favicon-16x16.png"
-                />
+                <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
                 <link rel="manifest" href="/favicons/site.webmanifest" />
                 <link rel="shortcut icon" href="/favicons/favicon.ico" />
             </Head>
@@ -98,11 +68,7 @@ export default function App({ Component, pageProps }) {
                         window.scrollTo(0, 0)
                     }}
                 >
-                    {loading ? (
-                        <TransitionBanner />
-                    ) : (
-                        <Component layout {...pageProps} key={asPath} />
-                    )}
+                    {loading ? <TransitionBanner /> : <Component layout {...pageProps} key={asPath} />}
                 </AnimatePresence>
             </ChakraProvider>
         </>

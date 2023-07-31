@@ -2,16 +2,7 @@ import { Box, Text } from '@chakra-ui/react'
 
 export default function PreviewLoading() {
     return (
-        <Box
-            backgroundColor="grey.900"
-            w="100vw"
-            h="100vh"
-            overflow="hidden"
-            display="flex"
-            flexDir="column"
-            justifyContent="center"
-            alignItems="center"
-        >
+        <Box backgroundColor="grey.900" w="100vw" h="100vh" overflow="hidden" display="flex" flexDir="column" justifyContent="center" alignItems="center">
             <Text
                 color="white"
                 fontFamily="subheading"

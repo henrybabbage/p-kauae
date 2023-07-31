@@ -16,20 +16,8 @@ export default function MapOverlay({ haerengaKorero, mapIsVisible }) {
             transitionDuration="0.3s"
             transitionDelay="1.5s"
         >
-            <Flex
-                direction="column"
-                justifyContent="center"
-                alignItems="center"
-                p="6"
-                w="100vw"
-                h="auto"
-            >
-                <Box
-                    pb="12"
-                    opacity={mapIsVisible ? 0 : 100}
-                    transition="opacity ease-out"
-                    transitionDuration="0.3s"
-                >
+            <Flex direction="column" justifyContent="center" alignItems="center" p="6" w="100vw" h="auto">
+                <Box pb="12" opacity={mapIsVisible ? 0 : 100} transition="opacity ease-out" transitionDuration="0.3s">
                     <MotionBox
                         animate={{ scale: 1.1 }}
                         transition={{
@@ -56,14 +44,7 @@ export default function MapOverlay({ haerengaKorero, mapIsVisible }) {
                     <Text
                         as="h1"
                         fontFamily="subheading"
-                        fontSize={[
-                            '14px',
-                            '14px',
-                            '14px',
-                            '18px',
-                            '18px',
-                            '18px'
-                        ]}
+                        fontSize={['14px', '14px', '14px', '18px', '18px', '18px']}
                         color="white"
                         lineHeight="1.3"
                         textAlign="center"

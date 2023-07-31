@@ -21,16 +21,7 @@ import ModalVideo from './ModalVideo'
 import { MotionBox } from './MotionBox'
 import ZoomImage from './ZoomImage'
 
-export default function MapModal({
-    onOpen,
-    onClose,
-    isOpen,
-    wahines,
-    baseUrlVideo,
-    selectedWahineIndex,
-    handleNextClick,
-    handlePrevClick
-}) {
+export default function MapModal({ onOpen, onClose, isOpen, wahines, baseUrlVideo, selectedWahineIndex, handleNextClick, handlePrevClick }) {
     const captureDate = wahines[selectedWahineIndex].wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
 
@@ -55,52 +46,15 @@ export default function MapModal({
 
     return (
         <Box id="modal">
-            <Modal
-                isOpen={isOpen}
-                onClose={onClose}
-                size="full"
-                scrollBehavior="inside"
-                motionPreset="slideInBottom"
-            >
+            <Modal isOpen={isOpen} onClose={onClose} size="full" scrollBehavior="inside" motionPreset="slideInBottom">
                 <ModalOverlay />
-                <ModalContent
-                    w="auto"
-                    maxW="100vw"
-                    p={[4, 4, 4, 6, 6, 6]}
-                    bg="grey.900"
-                    h="fit-content"
-                    overflow="hidden"
-                >
+                <ModalContent w="auto" maxW="100vw" p={[4, 4, 4, 6, 6, 6]} bg="grey.900" h="fit-content" overflow="hidden">
                     <Flex justifyContent="space-between" alignContent="start">
-                        <Heading
-                            as="h1"
-                            fontSize={[
-                                '10px',
-                                '10px',
-                                '10px',
-                                '20px',
-                                '20px',
-                                '20px'
-                            ]}
-                            color="white"
-                            fontWeight="regular"
-                            fontFamily="subheading"
-                        >
+                        <Heading as="h1" fontSize={['10px', '10px', '10px', '20px', '20px', '20px']} color="white" fontWeight="regular" fontFamily="subheading">
                             Tū Tama Wāhine o Taranaki
                         </Heading>
                         <Button variant="menu" onClick={onClose}>
-                            <Text
-                                fontSize={[
-                                    '10px',
-                                    '10px',
-                                    '10px',
-                                    '20px',
-                                    '20px',
-                                    '20px'
-                                ]}
-                            >
-                                Back to map
-                            </Text>
+                            <Text fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}>Back to map</Text>
                         </Button>
                     </Flex>
                     <ModalHeader p={0}></ModalHeader>
@@ -123,71 +77,25 @@ export default function MapModal({
                     >
                         <Grid
                             templateColumns="repeat(12, 1fr)"
-                            maxW={[
-                                '100vw',
-                                '100vw',
-                                '100vw',
-                                '100vw',
-                                '100vw',
-                                '100vw'
-                            ]}
-                            columnGap={[
-                                '20px',
-                                '20px',
-                                '20px',
-                                '40px',
-                                '40px',
-                                '40px'
-                            ]}
+                            maxW={['100vw', '100vw', '100vw', '100vw', '100vw', '100vw']}
+                            columnGap={['20px', '20px', '20px', '40px', '40px', '40px']}
                             rowGap="20px"
                         >
-                            <GridItem
-                                colStart={[1, 1, 1, 1, 1, 1]}
-                                colEnd={[13, 13, 13, 13, 13, 13]}
-                                pt={[2, 2, 2, 6, 6, 6]}
-                            >
+                            <GridItem colStart={[1, 1, 1, 1, 1, 1]} colEnd={[13, 13, 13, 13, 13, 13]} pt={[2, 2, 2, 6, 6, 6]}>
                                 <Box className="player">
                                     <ModalVideo
                                         playerRef={playerRef}
-                                        src={
-                                            wahines[selectedWahineIndex]
-                                                ?.kiriata?.droneFootage
-                                                ?.secure_url
-                                        }
-                                        location={
-                                            wahines[selectedWahineIndex].kiriata
-                                                .ingoa
-                                        }
-                                        poster={
-                                            wahines[selectedWahineIndex].kiriata
-                                                .poster?.asset?.url
-                                        }
+                                        src={wahines[selectedWahineIndex]?.kiriata?.droneFootage?.secure_url}
+                                        location={wahines[selectedWahineIndex].kiriata.ingoa}
+                                        poster={wahines[selectedWahineIndex].kiriata.poster?.asset?.url}
                                         autoplay={true}
                                         muted={true}
                                         loop={true}
                                     />
                                 </Box>
-                                <Flex
-                                    direction={[
-                                        'column',
-                                        'column',
-                                        'column',
-                                        'row',
-                                        'row',
-                                        'row'
-                                    ]}
-                                    alignItems="baseline"
-                                    pt={6}
-                                >
+                                <Flex direction={['column', 'column', 'column', 'row', 'row', 'row']} alignItems="baseline" pt={6}>
                                     <Heading
-                                        fontSize={[
-                                            '20px',
-                                            '20px',
-                                            '20px',
-                                            '36px',
-                                            '36px',
-                                            '36px'
-                                        ]}
+                                        fontSize={['20px', '20px', '20px', '36px', '36px', '36px']}
                                         color="pink.200"
                                         fontWeight="regular"
                                         fontFamily="heading"
@@ -195,14 +103,7 @@ export default function MapModal({
                                         {wahines[selectedWahineIndex].ingoa}
                                     </Heading>
                                     <Heading
-                                        fontSize={[
-                                            '8px',
-                                            '8px',
-                                            '8px',
-                                            '16px',
-                                            '16px',
-                                            '16px'
-                                        ]}
+                                        fontSize={['8px', '8px', '8px', '16px', '16px', '16px']}
                                         color="pink.200"
                                         fontWeight="regular"
                                         fontFamily="heading"
@@ -219,44 +120,18 @@ export default function MapModal({
                                 pb={[2, 2, 2, 6, 6, 6]}
                                 // h="100%"
                                 maxW="100%"
-                                minH={[
-                                    'fit-content',
-                                    'fit-content',
-                                    'fit-content',
-                                    '60vh',
-                                    '60vh',
-                                    '60vh'
-                                ]}
-                                w={[
-                                    '100%',
-                                    '100%',
-                                    '100%',
-                                    '48vw',
-                                    '48vw',
-                                    '48vw'
-                                ]}
+                                minH={['fit-content', 'fit-content', 'fit-content', '60vh', '60vh', '60vh']}
+                                w={['100%', '100%', '100%', '48vw', '48vw', '48vw']}
                                 ref={modalRef}
                             >
                                 <Flex direction="column">
                                     <ZoomImage
-                                        src={
-                                            wahines[selectedWahineIndex]
-                                                ?.whakaahua?.asset?.url
-                                        }
-                                        alt={
-                                            wahines[selectedWahineIndex]
-                                                ?.whakaahua?.alternative_text
-                                        }
+                                        src={wahines[selectedWahineIndex]?.whakaahua?.asset?.url}
+                                        alt={wahines[selectedWahineIndex]?.whakaahua?.alternative_text}
                                         width={4200}
                                         height={2800}
-                                        blurhash={
-                                            wahines[selectedWahineIndex]
-                                                ?.whakaahua?.asset?.metadata
-                                                ?.blurHash
-                                        }
-                                        caption={
-                                            wahines[selectedWahineIndex]?.ingoa
-                                        }
+                                        blurhash={wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata?.blurHash}
+                                        caption={wahines[selectedWahineIndex]?.ingoa}
                                     />
                                 </Flex>
                             </GridItem>
@@ -265,14 +140,7 @@ export default function MapModal({
                                 colEnd={[13, 13, 13, 13, 13, 13]}
                                 pt={[2, 2, 2, 6, 6, 6]}
                                 pb={[2, 2, 2, 6, 6, 6]}
-                                minH={[
-                                    'fit-content',
-                                    'fit-content',
-                                    'fit-content',
-                                    '60vh',
-                                    '60vh',
-                                    '60vh'
-                                ]}
+                                minH={['fit-content', 'fit-content', 'fit-content', '60vh', '60vh', '60vh']}
                                 w="100%"
                                 maxW="100%"
                                 whiteSpace="normal"
@@ -280,14 +148,7 @@ export default function MapModal({
                                 <CustomPortableText
                                     as={'p'}
                                     sx={{
-                                        fontSize: [
-                                            '12px',
-                                            '12px',
-                                            '12px',
-                                            '16px',
-                                            '16px',
-                                            '18px'
-                                        ],
+                                        fontSize: ['12px', '12px', '12px', '16px', '16px', '18px'],
                                         lineHeight: ['1.36'],
                                         color: 'white',
                                         wordWrap: 'break-word',
@@ -295,23 +156,13 @@ export default function MapModal({
                                         width: '100%',
                                         maxWidth: '100%'
                                     }}
-                                    value={
-                                        wahines[selectedWahineIndex]
-                                            .korero_pukauae
-                                    }
+                                    value={wahines[selectedWahineIndex].korero_pukauae}
                                 />
                                 <Box pt={6}>
                                     <CustomPortableText
                                         as={'p'}
                                         sx={{
-                                            fontSize: [
-                                                '12px',
-                                                '12px',
-                                                '12px',
-                                                '16px',
-                                                '16px',
-                                                '18px'
-                                            ],
+                                            fontSize: ['12px', '12px', '12px', '16px', '16px', '18px'],
                                             lineHeight: ['1.36'],
                                             color: 'white',
                                             wordWrap: 'break-word',
@@ -319,110 +170,35 @@ export default function MapModal({
                                             width: '100%',
                                             maxWidth: '100%'
                                         }}
-                                        value={
-                                            wahines[selectedWahineIndex]
-                                                .korero_wahi
-                                        }
+                                        value={wahines[selectedWahineIndex].korero_wahi}
                                     />
                                 </Box>
                                 <Box pt={6}>
                                     <HStack>
-                                        <Text
-                                            fontSize={[
-                                                '12px',
-                                                '12px',
-                                                '12px',
-                                                '16px',
-                                                '16px',
-                                                '18px'
-                                            ]}
-                                            lineHeight="1.36"
-                                            color="pink.200"
-                                        >
+                                        <Text fontSize={['12px', '12px', '12px', '16px', '16px', '18px']} lineHeight="1.36" color="pink.200">
                                             Tohunga ta moko:{' '}
                                         </Text>
-                                        <Text
-                                            fontSize={[
-                                                '12px',
-                                                '12px',
-                                                '12px',
-                                                '16px',
-                                                '16px',
-                                                '18px'
-                                            ]}
-                                            lineHeight="1.36"
-                                            color="white"
-                                        >
-                                            {
-                                                wahines[selectedWahineIndex]
-                                                    .tohunga_ta_moko
-                                            }
+                                        <Text fontSize={['12px', '12px', '12px', '16px', '16px', '18px']} lineHeight="1.36" color="white">
+                                            {wahines[selectedWahineIndex].tohunga_ta_moko}
                                         </Text>
                                     </HStack>
                                 </Box>
                                 <Box pt={6}>
                                     <HStack>
-                                        <Text
-                                            fontSize={[
-                                                '12px',
-                                                '12px',
-                                                '12px',
-                                                '16px',
-                                                '16px',
-                                                '18px'
-                                            ]}
-                                            lineHeight="1.36"
-                                            color="pink.200"
-                                        >
+                                        <Text fontSize={['12px', '12px', '12px', '16px', '16px', '18px']} lineHeight="1.36" color="pink.200">
                                             Photograph location:{' '}
                                         </Text>
-                                        <Text
-                                            fontSize={[
-                                                '12px',
-                                                '12px',
-                                                '12px',
-                                                '16px',
-                                                '16px',
-                                                '18px'
-                                            ]}
-                                            lineHeight="1.36"
-                                            color="white"
-                                        >
-                                            {
-                                                wahines[selectedWahineIndex]
-                                                    .wahi.ingoa
-                                            }
+                                        <Text fontSize={['12px', '12px', '12px', '16px', '16px', '18px']} lineHeight="1.36" color="white">
+                                            {wahines[selectedWahineIndex].wahi.ingoa}
                                         </Text>
                                     </HStack>
                                 </Box>
                                 <Box pt={6}>
                                     <HStack>
-                                        <Text
-                                            fontSize={[
-                                                '12px',
-                                                '12px',
-                                                '12px',
-                                                '16px',
-                                                '16px',
-                                                '18px'
-                                            ]}
-                                            lineHeight="1.36"
-                                            color="pink.200"
-                                        >
+                                        <Text fontSize={['12px', '12px', '12px', '16px', '16px', '18px']} lineHeight="1.36" color="pink.200">
                                             Capture date:{' '}
                                         </Text>
-                                        <Text
-                                            fontSize={[
-                                                '12px',
-                                                '12px',
-                                                '12px',
-                                                '16px',
-                                                '16px',
-                                                '18px'
-                                            ]}
-                                            lineHeight="1.36"
-                                            color="white"
-                                        >
+                                        <Text fontSize={['12px', '12px', '12px', '16px', '16px', '18px']} lineHeight="1.36" color="white">
                                             {formattedDate}
                                         </Text>
                                     </HStack>
@@ -431,11 +207,7 @@ export default function MapModal({
                         </Grid>
                     </ModalBody>
                     <ModalFooter p={0} mt="auto">
-                        <Flex
-                            justifyContent="space-between"
-                            maxW="100vw"
-                            w="100vw"
-                        >
+                        <Flex justifyContent="space-between" maxW="100vw" w="100vw">
                             <Box>
                                 <Button
                                     variant={'callToAction'}
@@ -445,22 +217,14 @@ export default function MapModal({
                                         handlePrevClick(selectedWahineIndex)
                                     }}
                                 >
-                                    {'←'}{' '}
-                                    {getPreviousWahine(selectedWahineIndex)}
+                                    {'←'} {getPreviousWahine(selectedWahineIndex)}
                                 </Button>
                             </Box>
                             <Flex alignItems="center">
                                 <MotionBox>
                                     <Text
                                         fontFamily="subheading"
-                                        fontSize={[
-                                            '8px',
-                                            '8px',
-                                            '8px',
-                                            '16px',
-                                            '16px',
-                                            '16px'
-                                        ]}
+                                        fontSize={['8px', '8px', '8px', '16px', '16px', '16px']}
                                         lineHeight="1"
                                         textAlign="center"
                                         color="white"

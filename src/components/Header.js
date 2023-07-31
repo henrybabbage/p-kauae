@@ -26,14 +26,7 @@ export default function Header() {
                         <NavLink href="/" isSiteTitle={true}>
                             <Heading
                                 as="h2"
-                                fontSize={[
-                                    '14px',
-                                    '14px',
-                                    '14px',
-                                    '20px',
-                                    '20px',
-                                    '20px'
-                                ]}
+                                fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
                                 lineHeight="1.36"
                                 fontWeight="bold"
                                 fontFamily="subheading"
@@ -43,56 +36,17 @@ export default function Header() {
                         </NavLink>
                     </Flex>
 
-                    <Flex
-                        justifyContent="center"
-                        display={[
-                            'none',
-                            'none',
-                            'none',
-                            'flex',
-                            'flex',
-                            'flex'
-                        ]}
-                    >
+                    <Flex justifyContent="center" display={['none', 'none', 'none', 'flex', 'flex', 'flex']}>
                         <NavLink href="/">
-                            <HoverableHeading
-                                hoverContent="About"
-                                defaultContent="Whakapapa"
-                                textAlign="center"
-                            />
+                            <HoverableHeading hoverContent="About" defaultContent="Whakapapa" textAlign="center" />
                         </NavLink>
                     </Flex>
-                    <Flex
-                        justifyContent="end"
-                        display={[
-                            'none',
-                            'none',
-                            'none',
-                            'flex',
-                            'flex',
-                            'flex'
-                        ]}
-                    >
+                    <Flex justifyContent="end" display={['none', 'none', 'none', 'flex', 'flex', 'flex']}>
                         <NavLink href="/haerenga">
-                            <HoverableHeading
-                                hoverContent="Journey"
-                                defaultContent="Haerenga"
-                                textAlign="right"
-                            />
+                            <HoverableHeading hoverContent="Journey" defaultContent="Haerenga" textAlign="right" />
                         </NavLink>
                     </Flex>
-                    <Flex
-                        display={[
-                            'flex',
-                            'flex',
-                            'flex',
-                            'none',
-                            'none',
-                            'none'
-                        ]}
-                        alignItems="baseline"
-                        justifyContent="end"
-                    >
+                    <Flex display={['flex', 'flex', 'flex', 'none', 'none', 'none']} alignItems="baseline" justifyContent="end">
                         <MenuIcon openDrawer={menu.onOpen} />
                     </Flex>
                 </Box>

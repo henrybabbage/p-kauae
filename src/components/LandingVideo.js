@@ -6,19 +6,7 @@ const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
     ssr: false
 })
 
-export default function LandingVideo({
-    playerRef,
-    src,
-    baseUrlVideo,
-    videoKorero,
-    videoTitle,
-    poster,
-    alt,
-    autoplay,
-    controls,
-    muted,
-    loop
-}) {
+export default function LandingVideo({ playerRef, src, baseUrlVideo, videoKorero, videoTitle, poster, alt, autoplay, controls, muted, loop }) {
     // const videoSrc = `${baseUrlVideo}${src}`
     const videoSrc = src.secure_url
 
@@ -68,11 +56,7 @@ export default function LandingVideo({
     // }, [poster])
 
     return (
-        <Box
-            position="relative"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-        >
+        <Box position="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             {/* {controls && (
                 <Flex
                     position="absolute"

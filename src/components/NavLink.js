@@ -14,11 +14,7 @@ export default function NavLink({ href, children, isSiteTitle = false }) {
             as={NextLink}
             href={href}
             color={isActive && !isSiteTitle ? activeColor : 'white'}
-            textDecoration={
-                isActive &&
-                !isSiteTitle &&
-                `${underlineColor} underline solid 2px`
-            }
+            textDecoration={isActive && !isSiteTitle && `${underlineColor} underline solid 2px`}
             textUnderlineOffset="5px"
             _hover={{
                 color: hoverColor,

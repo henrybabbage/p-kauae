@@ -28,9 +28,7 @@ export default function CircularText() {
                     dominantBaseline="central"
                     letterSpacing="1em"
                 >
-                    <textPath xlinkHref="#circle-text-path">
-                        {'SCROLL DOWN'}
-                    </textPath>
+                    <textPath xlinkHref="#circle-text-path">{'SCROLL DOWN'}</textPath>
                 </text>
                 <path
                     id="circle-text-path"

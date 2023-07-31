@@ -1,14 +1,9 @@
-import { Box, Link as ChakraLink, Text, VStack } from '@chakra-ui/react'
+import { Box, Link as ChakraLink, Text } from '@chakra-ui/react'
 import NextLink from 'next/link'
 
 export default function LinkPrompt() {
     return (
-        <ChakraLink
-            variant="menu"
-            as={NextLink}
-            href="/haerenga"
-            scroll={false}
-        >
+        <ChakraLink variant="menu" as={NextLink} href="/haerenga" scroll={false}>
             <Box position="relative" cursor="pointer">
                 <Box
                     position="absolute"
