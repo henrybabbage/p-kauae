@@ -52,6 +52,7 @@ export default function Header() {
                 </Box>
             </MotionBox>
             <Box
+                pointerEvents="none"
                 backgroundColor="CC404041"
                 backdropFilter="saturate(200%) blur(4px)"
                 position="fixed"
