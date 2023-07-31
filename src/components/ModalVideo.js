@@ -5,14 +5,7 @@ const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
     ssr: false
 })
 
-export default function ModalVideo({
-    playerRef,
-    src,
-    baseUrlVideo,
-    location,
-    poster,
-    alt
-}) {
+export default function ModalVideo({ playerRef, src, baseUrlVideo, location, poster, alt }) {
     // const videoSrc = `${baseUrlVideo}${src}`
     const videoSrc = `${src}`
     return (
