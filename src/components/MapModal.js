@@ -21,7 +21,7 @@ import ModalVideo from './ModalVideo'
 import { MotionBox } from './MotionBox'
 import ZoomImage from './ZoomImage'
 
-export default function MapModal({ onOpen, onClose, isOpen, wahines, baseUrlVideo, selectedWahineIndex, handleNextClick, handlePrevClick }) {
+export default function MapModal({ onOpen, onClose, isOpen, wahines, selectedWahineIndex, handleNextClick, handlePrevClick }) {
     const captureDate = wahines[selectedWahineIndex].wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
 
