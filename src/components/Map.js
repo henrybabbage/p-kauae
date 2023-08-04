@@ -183,7 +183,6 @@ export default function Map({ data }) {
                     onOpen={onOpen}
                     onClose={onClose}
                     wahines={wahines}
-                    baseUrlVideo={baseUrlVideo}
                     selectedWahineIndex={selectedWahineIndex}
                     handleNextClick={handleNextClick}
                     handlePrevClick={handlePrevClick}
