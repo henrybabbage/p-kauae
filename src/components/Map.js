@@ -1,4 +1,3 @@
-import { cloudfrontDomain } from '@/utils/api'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { Box, Flex, HStack, IconButton, Text, useDisclosure, useMediaQuery } from '@chakra-ui/react'
 import { rhumbBearing } from '@turf/turf'
@@ -6,6 +5,7 @@ import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
+
 import DigitalClock from './DigitalClock'
 import MapModal from './MapModal'
 import MapOverlay from './MapOverlay'
@@ -14,7 +14,7 @@ import MonthDisplay from './MonthDisplay'
 import MoonPhaseDisplay from './MoonPhaseDisplay'
 
 export default function Map({ data }) {
-    const baseUrlVideo = cloudfrontDomain
+    console.log({ data })
     // Taranaki, New Zealand [Longitude, Latitiude]
     // Negative values denote Southern Hemisphere
     // rhumbBearing function wants order: [Lng, Lat]
@@ -25,9 +25,7 @@ export default function Map({ data }) {
         return rhumbBearing(taranakiLatLng, newLatlng) - 180
     }
 
-    const mapRef = useRef(null)
-    const timeOutRef = useRef(null)
-
+    const [mapData, setMapData] = useState(null)
     const [modalOpenPending, setModalOpenPending] = useState(false)
     const [mapIsVisible, setMapIsVisible] = useState(false)
     const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
@@ -45,7 +43,9 @@ export default function Map({ data }) {
             zoom: 11
         }
     })
-    const [mapData, setMapData] = useState(null)
+
+    const mapRef = useRef(null)
+    const timeOutRef = useRef(null)
 
     const wahines = data
 
