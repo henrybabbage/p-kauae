@@ -1,17 +1,35 @@
 import { Heading } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import { MotionBox } from './MotionBox'
 
-const fadeAnimation = {
+const firstFadeAnimation = {
     initial: {
         opacity: 0
     },
     animate: {
         opacity: 1,
         transition: {
-            duration: 2.5,
+            duration: 3,
             repeat: Infinity,
-            repeatType: 'reverse'
+            repeatType: 'mirror'
+        }
+    },
+    exit: {
+        opacity: 0
+    }
+}
+
+const lastFadeAnimation = {
+    initial: {
+        opacity: 0
+    },
+    animate: {
+        opacity: 1,
+        transition: {
+            delay: 3,
+            duration: 3,
+            repeat: Infinity,
+            repeatType: 'mirror'
         }
     },
     exit: {
@@ -20,12 +38,24 @@ const fadeAnimation = {
 }
 
 const englishLines = ['Celebrating over', '30 years of', 'liberation work', 'throughout', 'Taranaki']
-
 const reoLines = ['Tū tama wāhine', 'i te wā o te kore']
 
-const AnimatedLines = ({ lines }) => {
+const english = {
+    text: englishLines,
+    variants: firstFadeAnimation,
+    key: 'english'
+}
+const reo = {
+    text: reoLines,
+    variants: lastFadeAnimation,
+    key: 'reo'
+}
+
+const banners = [english, reo]
+
+const AnimatedLines = ({ lines, variants, key }) => {
     return (
-        <MotionBox paddingTop={['0', '0', '0', '12', '12', '12']} key="animated-lines" initial="initial" animate="animate" exit="exit" variants={fadeAnimation}>
+        <MotionBox key={key} paddingTop={['0', '0', '0', '12', '12', '12']} initial="initial" animate="animate" exit="exit" variants={variants}>
             {lines.map((line, index) => (
                 <Heading
                     key={index}
@@ -43,15 +73,13 @@ const AnimatedLines = ({ lines }) => {
 }
 
 export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_english }) {
-    const [showEnglish, setShowEnglish] = useState(true)
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setShowEnglish((prev) => !prev)
-        }, 5000)
-
-        return () => clearInterval(intervalId)
-    }, [])
-
-    return showEnglish ? <AnimatedLines lines={englishLines} /> : <AnimatedLines lines={reoLines} />
+    return (
+        <AnimatePresence mode="wait">
+            {banners.map((object, i) => (
+                <MotionBox key={i} position="absolute" display="flex" justifyContent="center" aligntItems="center" w="100%">
+                    <AnimatedLines key={object.key} lines={object.text} variants={object.variants} />
+                </MotionBox>
+            ))}
+        </AnimatePresence>
+    )
 }
