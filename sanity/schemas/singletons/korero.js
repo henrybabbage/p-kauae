@@ -2,6 +2,7 @@ export default {
     name: 'korero',
     title: 'Korero',
     type: 'document',
+    liveEdit: true,
     fields: [
         {
             name: 'title',
