@@ -18,7 +18,7 @@ export default function Home({ preview, previewToken, korero }) {
 
 export async function getStaticProps(context) {
     const preview = context.draftMode || false
-    const previewToken = preview ? process.env.SANITY_API_READ_TOKEN : ``
+    const previewToken = preview ? process.env.SANITY_API_READ_TOKEN : null
     if (preview && !previewToken) {
         throw new Error(`Preview mode is active, but SANITY_API_READ_TOKEN is not set in environment variables`)
     }
