@@ -1,5 +1,5 @@
 import Header from '@/components/Header'
-import Map from '@/components/Map'
+import Map from '@/components/Map/Map'
 import { Box, Flex } from '@chakra-ui/react'
 import PreviewButton from './PreviewButton'
 

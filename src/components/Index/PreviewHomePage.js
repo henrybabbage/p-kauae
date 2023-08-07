@@ -1,6 +1,6 @@
 import { useLiveQuery } from '@sanity/preview-kit'
+import PreviewLoading from '../Preview/PreviewLoading'
 import HomePage from './HomePage'
-import PreviewLoading from './PreviewLoading'
 
 export default function PreviewHomePage({ data: initialData, koreroQuery }) {
     const [data, loading] = useLiveQuery(initialData, koreroQuery)

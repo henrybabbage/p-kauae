@@ -1,7 +1,6 @@
 import { Heading } from '@chakra-ui/react'
 import { AnimatePresence } from 'framer-motion'
-import { useEffect } from 'react'
-import { MotionBox } from './MotionBox'
+import { MotionBox } from '../Primitives/MotionBox'
 
 const firstFadeAnimation = {
     initial: {

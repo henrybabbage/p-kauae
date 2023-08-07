@@ -1,4 +1,4 @@
-import { MotionBox } from './MotionBox'
+import { MotionBox } from '../../Primitives/MotionBox'
 
 export default function CircularText() {
     return (

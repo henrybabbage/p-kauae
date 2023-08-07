@@ -1,4 +1,4 @@
-import TransitionBanner from '@/components/TransitionBanner'
+import TransitionBanner from '@/components/Common/Banners/TransitionBanner'
 import theme from '@/styles/ChakraTheme'
 import Fonts from '@/styles/Fonts'
 import '@/styles/globals.css'

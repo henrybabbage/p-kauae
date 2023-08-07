@@ -16,10 +16,10 @@ import {
 } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
 import { useRef } from 'react'
-import { CustomPortableText } from './CustomPortableText'
-import ModalVideo from './ModalVideo'
-import { MotionBox } from './MotionBox'
-import ZoomImage from './ZoomImage'
+import ModalVideo from '../Common/Media/ModalVideo'
+import { CustomPortableText } from '../Primitives/CustomPortableText'
+import { MotionBox } from '../Primitives/MotionBox'
+import ZoomImage from '../ZoomImage'
 
 export default function MapModal({ onOpen, onClose, isOpen, wahines, selectedWahineIndex, handleNextClick, handlePrevClick }) {
     const captureDate = wahines[selectedWahineIndex].wa_tiki_whakaahua

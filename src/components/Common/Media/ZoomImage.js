@@ -2,8 +2,8 @@ import { Box, Flex, Text } from '@chakra-ui/react'
 import { useCallback } from 'react'
 import Zoom from 'react-medium-image-zoom'
 
-import ChakraNextImage from './ChakraNextImage'
-import CloseButton from './CloseButton'
+import CloseButton from './Common/Buttons/CloseButton'
+import ChakraNextImage from './Primitives/ChakraNextImage'
 
 export default function ZoomImage(props) {
     const { caption, src, alt, width, height, sizes, blurhash, ...rest } = props

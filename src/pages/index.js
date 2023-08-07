@@ -1,10 +1,10 @@
-import HomePage from '@/components/HomePage'
+import HomePage from '@/components/Index/HomePage'
 import dynamic from 'next/dynamic'
 import { getClient } from '../../sanity/lib/sanity.client'
 import { koreroQuery } from '../../sanity/lib/sanity.queries'
 
 const PreviewProvider = dynamic(() => import('../components/PreviewProvider'))
-const PreviewHomePage = dynamic(() => import('../components/PreviewHomePage'))
+const PreviewHomePage = dynamic(() => import('../components/Index/PreviewHomePage'))
 
 export default function Home({ preview, previewToken, korero }) {
     return preview ? (

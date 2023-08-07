@@ -7,11 +7,11 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
 
 import DigitalClock from './DigitalClock'
+import MonthDisplay from './MonthDisplay'
+import MoonPhaseDisplay from '../MoonPhaseDisplay'
 import MapModal from './MapModal'
 import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
-import MonthDisplay from './MonthDisplay'
-import MoonPhaseDisplay from './MoonPhaseDisplay'
 
 export default function Map({ data }) {
     // Taranaki, New Zealand [Longitude, Latitiude]

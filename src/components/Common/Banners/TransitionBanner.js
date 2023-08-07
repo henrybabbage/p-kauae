@@ -1,6 +1,6 @@
 import { Box, Flex, Text, VStack } from '@chakra-ui/react'
 import Image from 'next/image'
-import { MotionBox } from './MotionBox'
+import { MotionBox } from '../../Primitives/MotionBox'
 
 export default function TransitionBanner() {
     return (
