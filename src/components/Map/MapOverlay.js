@@ -1,6 +1,6 @@
 import { Box, Flex, Grid, Text } from '@chakra-ui/react'
 import Image from 'next/image'
-import { MotionBox } from './MotionBox'
+import { MotionBox } from '../Primitives/MotionBox'
 
 export default function MapOverlay({ haerengaKorero, mapIsVisible }) {
     return (

@@ -1,16 +1,16 @@
 import Footer from '@/components/Common/Footer/Footer'
 import SectionBreakIcon from '@/components/Common/Icons/SectionBreakIcon'
-import Header from '@/components/Header'
 import LandingBanner from '@/components/Index/LandingBanner'
 import LinkPrompt from '@/components/Index/LinkPrompt'
-import LandingVideo from '@/components/LandingVideo'
 import ChakraNextImage from '@/components/Primitives/ChakraNextImage'
 import { MotionBox } from '@/components/Primitives/MotionBox'
 import SmoothScroll from '@/components/Primitives/SmoothScroll'
 import { Box, Flex, Grid, GridItem, Heading, Link, Text } from '@chakra-ui/react'
 import { useRef } from 'react'
 import PreviewButton from '../Common/Buttons/PreviewButton'
+import Header from '../Common/Header/Header'
 import { CustomPortableText } from '../Primitives/CustomPortableText'
+import LandingVideo from './LandingVideo'
 
 export default function HomePage({ data: korero, preview }) {
     const {

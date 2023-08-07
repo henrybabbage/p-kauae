@@ -1,7 +1,7 @@
 import { AspectRatio, Box, Flex, Heading } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 
-const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'), {
+const VideoPlayer = dynamic(() => import('./VideoPlayer'), {
     ssr: false
 })
 

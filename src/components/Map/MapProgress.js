@@ -1,5 +1,5 @@
 import { Circle, Flex, Spinner } from '@chakra-ui/react'
-import { LogoIcon } from './Common/Icons/LogoIcon'
+import { LogoIcon } from '../Common/Icons/LogoIcon'
 
 export default function MapProgress({ loading }) {
     return (

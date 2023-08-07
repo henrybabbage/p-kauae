@@ -1,9 +1,9 @@
 import { Box, Flex, Heading, useDisclosure } from '@chakra-ui/react'
-import { MotionBox } from './MotionBox'
 
+import { MotionBox } from '@/components/Primitives/MotionBox'
+import MenuIcon from '../Icons/MenuIcon'
+import MobileMenu from '../Mobile/MobileMenu'
 import HoverableHeading from './HoverableHeading'
-import MenuIcon from './MenuIcon'
-import MobileMenu from './MobileMenu'
 import NavLink from './NavLink'
 
 export default function Header() {

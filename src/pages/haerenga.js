@@ -1,9 +1,9 @@
-import MapPage from '@/components/MapPage'
+import MapPage from '@/components/Map/MapPage'
 import dynamic from 'next/dynamic'
 import { getClient } from '../../sanity/lib/sanity.client'
 import { wahineQuery } from '../../sanity/lib/sanity.queries'
 
-const PreviewProvider = dynamic(() => import('../components/PreviewProvider'))
+const PreviewProvider = dynamic(() => import('../components/Preview/PreviewProvider'))
 const PreviewMapPage = dynamic(() => import('../components/Map/PreviewMapPage'))
 
 export default function Haerenga({ wahines, preview = false, previewToken }) {

@@ -17,9 +17,9 @@ import {
 import { format, parseISO } from 'date-fns'
 import { useRef } from 'react'
 import ModalVideo from '../Common/Media/ModalVideo'
+import ZoomImage from '../Common/Media/ZoomImage'
 import { CustomPortableText } from '../Primitives/CustomPortableText'
 import { MotionBox } from '../Primitives/MotionBox'
-import ZoomImage from '../ZoomImage'
 
 export default function MapModal({ onOpen, onClose, isOpen, wahines, selectedWahineIndex, handleNextClick, handlePrevClick }) {
     const captureDate = wahines[selectedWahineIndex].wa_tiki_whakaahua

@@ -1,7 +1,7 @@
-import Header from '@/components/Header'
 import Map from '@/components/Map/Map'
 import { Box, Flex } from '@chakra-ui/react'
-import PreviewButton from './PreviewButton'
+import PreviewButton from '../Common/Buttons/PreviewButton'
+import Header from '../Common/Header/Header'
 
 export default function MapPage({ data: wahines, preview = false }) {
     return (
