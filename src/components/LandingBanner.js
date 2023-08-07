@@ -1,5 +1,6 @@
 import { Heading } from '@chakra-ui/react'
 import { AnimatePresence } from 'framer-motion'
+import { useEffect } from 'react'
 import { MotionBox } from './MotionBox'
 
 const firstFadeAnimation = {
@@ -34,6 +35,23 @@ const lastFadeAnimation = {
     },
     exit: {
         opacity: 0
+    }
+}
+
+const variants = {
+    slide: {
+        opacity: [0, 1, 0],
+        transition: {
+            // Total duration:
+            duration: 1,
+            // Timing of each keyframe
+            times: [0, 2, 4],
+
+            // Looping behaviour
+            repeat: Infinity,
+            repeatType: 'loop',
+            repeatDelay: 2
+        }
     }
 }
 
@@ -73,6 +91,22 @@ const AnimatedLines = ({ lines, variants, key }) => {
 }
 
 export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_english }) {
+    // useEffect(() => {
+    //     const sequence1 = async () => {
+    //         await bannerControls.start('in')
+    //         await bannerControls.start('out')
+    //     }
+    //     const sequence2 = async () => {
+    //         await bannerControls.start('in')
+    //         await bannerControls.start('out')
+    //     }
+    //     const sequenceJoined = async () => {
+    //         await sequence1()
+    //         await sequence2()
+    //     }
+    //     sequenceJoined()
+    // })
+
     return (
         <AnimatePresence mode="wait">
             {banners.map((object, i) => (

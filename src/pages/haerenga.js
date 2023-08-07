@@ -6,7 +6,7 @@ import { wahineQuery } from '../../sanity/lib/sanity.queries'
 const PreviewProvider = dynamic(() => import('../components/PreviewProvider'))
 const PreviewMapPage = dynamic(() => import('../components/PreviewMapPage'))
 
-export default function Haerenga({ wahines, preview, previewToken }) {
+export default function Haerenga({ wahines, preview = false, previewToken }) {
     return preview ? (
         <PreviewProvider token={previewToken}>
             <PreviewMapPage data={wahines} wahineQuery={wahineQuery} />

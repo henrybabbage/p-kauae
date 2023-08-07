@@ -1,5 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
-import { Box, Flex, HStack, IconButton, Text, useDisclosure, useMediaQuery } from '@chakra-ui/react'
+import { Box, Flex, HStack, IconButton, Text, useDisclosure } from '@chakra-ui/react'
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
@@ -14,7 +14,6 @@ import MonthDisplay from './MonthDisplay'
 import MoonPhaseDisplay from './MoonPhaseDisplay'
 
 export default function Map({ data }) {
-    console.log({ data })
     // Taranaki, New Zealand [Longitude, Latitiude]
     // Negative values denote Southern Hemisphere
     // rhumbBearing function wants order: [Lng, Lat]
@@ -42,7 +41,7 @@ export default function Map({ data }) {
             pitch: 100,
             zoom: 11
         }
-    })
+    }, [])
 
     const mapRef = useRef(null)
     const timeOutRef = useRef(null)
@@ -167,11 +166,6 @@ export default function Map({ data }) {
             })
     }, [])
 
-    const [isDesktop] = useMediaQuery('(min-width: 900px)', {
-        ssr: true,
-        fallback: false
-    })
-
     return (
         <>
             <Flex position="absolute" width="100vw" height="100vh" justifyContent="center" alignItems="center">
@@ -232,26 +226,6 @@ export default function Map({ data }) {
                         {' • '}
                     </Text>
                     <MoonPhaseDisplay />
-                    {/* {isDesktop && (
-                        <>
-                            <Text
-                                fontFamily="subheading"
-                                fontSize="14px"
-                                lineHeight="1"
-                                textAlign="left"
-                                color="white"
-                                pb="2"
-                            >
-                                {' • '}
-                            </Text>
-                            <MoonIcon
-                                id="moon"
-                                boxSize={6}
-                                color="white"
-                                pb={2}
-                            />
-                        </>
-                    )} */}
                 </HStack>
                 <Box
                     position="fixed"
