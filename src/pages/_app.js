@@ -1,7 +1,8 @@
-import TransitionBanner from '@/components/TransitionBanner'
+import TransitionBanner from '@/components/Common/Banners/TransitionBanner'
 import theme from '@/styles/ChakraTheme'
 import Fonts from '@/styles/Fonts'
 import '@/styles/globals.css'
+import useFoucFix from '@/utils/useFoucFix'
 import { ChakraProvider } from '@chakra-ui/react'
 import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'
@@ -11,8 +12,11 @@ import { useEffect, useState } from 'react'
 export const siteTitle = 'Pūkauae'
 
 export default function App({ Component, pageProps }) {
-    const { asPath } = useRouter()
     const [loading, setLoading] = useState(false)
+
+    useFoucFix()
+
+    const { asPath } = useRouter()
 
     useEffect(() => {
         // Used for page transition

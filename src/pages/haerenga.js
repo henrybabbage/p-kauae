@@ -1,12 +1,12 @@
-import MapPage from '@/components/MapPage'
+import MapPage from '@/components/Map/MapPage'
 import dynamic from 'next/dynamic'
 import { getClient } from '../../sanity/lib/sanity.client'
 import { wahineQuery } from '../../sanity/lib/sanity.queries'
 
-const PreviewProvider = dynamic(() => import('../components/PreviewProvider'))
-const PreviewMapPage = dynamic(() => import('../components/PreviewMapPage'))
+const PreviewProvider = dynamic(() => import('../components/Preview/PreviewProvider'))
+const PreviewMapPage = dynamic(() => import('../components/Map/PreviewMapPage'))
 
-export default function Haerenga({ wahines, preview, previewToken }) {
+export default function Haerenga({ wahines, preview = false, previewToken }) {
     return preview ? (
         <PreviewProvider token={previewToken}>
             <PreviewMapPage data={wahines} wahineQuery={wahineQuery} />
@@ -18,7 +18,7 @@ export default function Haerenga({ wahines, preview, previewToken }) {
 
 export async function getStaticProps(context) {
     const preview = context.draftMode || false
-    const previewToken = preview ? process.env.SANITY_API_READ_TOKEN : ``
+    const previewToken = preview ? process.env.SANITY_API_READ_TOKEN : null
     if (preview && !previewToken) {
         throw new Error(`Preview mode is active, but SANITY_READ_TOKEN is not set in environment variables`)
     }

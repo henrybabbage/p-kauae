@@ -35,10 +35,7 @@ export default defineConfig({
     // Add and edit the content schema in the './sanity/schema' folder
     schema: {
         types: schema.types,
-        templates: (templates) =>
-            templates.filter(
-                ({ schemaType }) => !singletonTypes.has(schemaType)
-            )
+        templates: (templates) => templates.filter(({ schemaType }) => !singletonTypes.has(schemaType))
     },
     plugins: [
         deskTool({
@@ -47,40 +44,20 @@ export default defineConfig({
                 S.list()
                     .title('Content')
                     .items([
-                        S.documentTypeListItem('wahine')
-                            .title('Wahine')
-                            .icon(UsersIcon),
+                        S.documentTypeListItem('wahine').title('Wahine').icon(UsersIcon),
                         // Singleton type has a list item with a custom child
                         S.listItem()
                             .title('Kaiwhakaahua')
                             .id('kaiwhakaahua')
                             .icon(UserIcon)
-                            .child(
-                                S.document()
-                                    .schemaType('kaiwhakaahua')
-                                    .documentId('kaiwhakaahua')
-                            ),
-                        S.listItem()
-                            .title('Korero')
-                            .id('korero')
-                            .icon(BlockContentIcon)
-                            .child(
-                                // Instead of rendering a list of documents, we render a single
-                                // document, specifying the `documentId` manually to ensure
-                                // that we're editing the single instance of the document
-                                S.document()
-                                    .schemaType('korero')
-                                    .documentId('korero')
-                            ),
-                        S.listItem()
-                            .title('Config')
-                            .id('config')
-                            .icon(CogIcon)
-                            .child(
-                                S.document()
-                                    .schemaType('config')
-                                    .documentId('config')
-                            )
+                            .child(S.document().schemaType('kaiwhakaahua').documentId('kaiwhakaahua')),
+                        S.listItem().title('Korero').id('korero').icon(BlockContentIcon).child(
+                            // Instead of rendering a list of documents, we render a single
+                            // document, specifying the `documentId` manually to ensure
+                            // that we're editing the single instance of the document
+                            S.document().schemaType('korero').documentId('korero')
+                        ),
+                        S.listItem().title('Config').id('config').icon(CogIcon).child(S.document().schemaType('config').documentId('config'))
                     ])
         }),
         // Vision is a tool that lets you query your content with GROQ in the studio
@@ -92,11 +69,6 @@ export default defineConfig({
     document: {
         // For singleton types, filter out actions that are not explicitly included
         // in the `singletonActions` list defined above
-        actions: (input, context) =>
-            singletonTypes.has(context.schemaType)
-                ? input.filter(
-                      ({ action }) => action && singletonActions.has(action)
-                  )
-                : input
+        actions: (input, context) => (singletonTypes.has(context.schemaType) ? input.filter(({ action }) => action && singletonActions.has(action)) : input)
     }
 })
