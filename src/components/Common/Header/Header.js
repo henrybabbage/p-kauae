@@ -6,7 +6,7 @@ import MobileMenu from '../Mobile/MobileMenu'
 import HoverableHeading from './HoverableHeading'
 import NavLink from './NavLink'
 
-export default function Header() {
+export default function Header({ blurEffect }) {
     const menu = useDisclosure()
 
     return (
@@ -52,6 +52,7 @@ export default function Header() {
                 </Box>
             </MotionBox>
             <Box
+                display={blurEffect ? 'static' : 'none'}
                 pointerEvents="none"
                 backgroundColor="CC404041"
                 backdropFilter="saturate(200%) blur(4px)"

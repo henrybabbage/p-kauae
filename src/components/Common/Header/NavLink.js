@@ -4,10 +4,10 @@ import { useRouter } from 'next/router'
 
 export default function NavLink({ href, children, isSiteTitle = false }) {
     const router = useRouter()
+    const { colors } = useTheme()
     const isActive = router.pathname === href
     const hoverColor = 'pink.200'
     const activeColor = 'pink.200'
-    const { colors } = useTheme()
     const underlineColor = colors.pink[200]
     return (
         <ChakraLink
