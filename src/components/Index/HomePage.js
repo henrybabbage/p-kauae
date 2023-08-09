@@ -43,7 +43,7 @@ export default function HomePage({ data: korero, preview }) {
 
     return (
         <Box as="main">
-            <Header />
+            <Header blurEffect={true} />
             {preview && <PreviewButton />}
             <SmoothScroll>
                 <Box id="about" bg="grey.900">
