@@ -1,7 +1,15 @@
 import { Icon } from '@chakra-ui/react'
 
 export const LogoIcon = (props) => (
-    <Icon width="400" height="400" viewBox="0 0 400 400" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <Icon
+        width="400"
+        height="400"
+        viewBox="0 0 400 400"
+        fill="none"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        {...props}
+    >
         <path
             d="M84.3724 50L82.9156 51.4571C82.7338 51.6389 82.6928 51.9137 82.8199 52.1372C86.2229 58.1218 94.5115 73.4755 98.8969 98.1985C102.43 118.118 99.392 140.201 97.3544 149.146C97.3222 149.287 97.4791 149.388 97.6017 149.311C109.224 141.949 116.846 129.392 120.073 111.64C122.85 96.3609 119.116 72.2006 117.954 65.4075C106.31 61.1147 95.0893 55.9525 84.3724 50Z"
             fill="#f9abab"

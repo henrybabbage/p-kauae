@@ -66,7 +66,7 @@ export default function App({ Component, pageProps }) {
             <ChakraProvider theme={theme}>
                 <Fonts />
                 <AnimatePresence
-                    mode="wait"
+                    mode="sync"
                     initial={true}
                     onExitComplete={() => {
                         window.scrollTo(0, 0)

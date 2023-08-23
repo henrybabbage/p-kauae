@@ -5,10 +5,12 @@ import { useEffect } from 'react'
 const useFoucFix = () =>
     useEffect(() => {
         // Gather all server-side rendered stylesheet entries.
-        let ssrPageStyleSheetsEntries = Array.from(document.querySelectorAll('link[rel="stylesheet"][data-n-p]')).map((element) => ({
-            element,
-            href: element.getAttribute('href')
-        }))
+        let ssrPageStyleSheetsEntries = Array.from(document.querySelectorAll('link[rel="stylesheet"][data-n-p]')).map(
+            (element) => ({
+                element,
+                href: element.getAttribute('href')
+            })
+        )
 
         // Remove the `data-n-p` attribute to prevent Next.js from removing it early.
         ssrPageStyleSheetsEntries.forEach(({ element }) => element.removeAttribute('data-n-p'))

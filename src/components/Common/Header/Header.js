@@ -1,6 +1,5 @@
 import { Box, Flex, Heading, useDisclosure } from '@chakra-ui/react'
 
-import { MotionBox } from '@/components/Primitives/MotionBox'
 import MenuIcon from '../Icons/MenuIcon'
 import MobileMenu from '../Mobile/MobileMenu'
 import HoverableHeading from './HoverableHeading'
@@ -12,7 +11,7 @@ export default function Header({ blurEffect }) {
     return (
         <>
             <MobileMenu isOpen={menu.isOpen} onClose={menu.onClose} />
-            <MotionBox
+            {/* <MotionBox
                 initial={{ y: -180 }}
                 animate={{ y: 0 }}
                 transition={{
@@ -20,37 +19,41 @@ export default function Header({ blurEffect }) {
                     duration: 1,
                     delay: 1.8
                 }}
-            >
-                <Box as="nav" position="absolute" w="100vw" p="6" zIndex={20}>
-                    <Flex justifyContent="start">
-                        <NavLink href="/" isSiteTitle={true}>
-                            <Heading
-                                as="h2"
-                                fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
-                                lineHeight="1.36"
-                                fontWeight="bold"
-                                fontFamily="subheading"
-                            >
-                                Tū Tama Wāhine o Taranaki
-                            </Heading>
-                        </NavLink>
-                    </Flex>
+            > */}
+            <Box as="nav" position="absolute" w="100vw" p="6" zIndex={20}>
+                <Flex justifyContent="start">
+                    <NavLink href="/" isSiteTitle={true}>
+                        <Heading
+                            as="h2"
+                            fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
+                            lineHeight="1.36"
+                            fontWeight="bold"
+                            fontFamily="subheading"
+                        >
+                            Tū Tama Wāhine o Taranaki
+                        </Heading>
+                    </NavLink>
+                </Flex>
 
-                    <Flex justifyContent="center" display={['none', 'none', 'none', 'flex', 'flex', 'flex']}>
-                        <NavLink href="/">
-                            <HoverableHeading hoverContent="About" defaultContent="Whakapapa" textAlign="center" />
-                        </NavLink>
-                    </Flex>
-                    <Flex justifyContent="end" display={['none', 'none', 'none', 'flex', 'flex', 'flex']}>
-                        <NavLink href="/haerenga">
-                            <HoverableHeading hoverContent="Journey" defaultContent="Haerenga" textAlign="right" />
-                        </NavLink>
-                    </Flex>
-                    <Flex display={['flex', 'flex', 'flex', 'none', 'none', 'none']} alignItems="baseline" justifyContent="end">
-                        <MenuIcon openDrawer={menu.onOpen} />
-                    </Flex>
-                </Box>
-            </MotionBox>
+                <Flex justifyContent="center" display={['none', 'none', 'none', 'flex', 'flex', 'flex']}>
+                    <NavLink href="/">
+                        <HoverableHeading hoverContent="About" defaultContent="Whakapapa" textAlign="center" />
+                    </NavLink>
+                </Flex>
+                <Flex justifyContent="end" display={['none', 'none', 'none', 'flex', 'flex', 'flex']}>
+                    <NavLink href="/haerenga">
+                        <HoverableHeading hoverContent="Journey" defaultContent="Haerenga" textAlign="right" />
+                    </NavLink>
+                </Flex>
+                <Flex
+                    display={['flex', 'flex', 'flex', 'none', 'none', 'none']}
+                    alignItems="baseline"
+                    justifyContent="end"
+                >
+                    <MenuIcon openDrawer={menu.onOpen} />
+                </Flex>
+            </Box>
+            {/* </MotionBox> */}
             <Box
                 display={blurEffect ? 'static' : 'none'}
                 pointerEvents="none"

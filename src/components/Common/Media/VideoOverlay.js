@@ -2,7 +2,13 @@ import { Box, Center, Grid, Text } from '@chakra-ui/react'
 
 export default function VideoOverlay({ showInfo, videoKorero }) {
     return (
-        <Box position="absolute" opacity={showInfo ? 100 : 0} transition="opacity ease-in-out" transitionDuration="1s" transitionDelay="8s">
+        <Box
+            position="absolute"
+            opacity={showInfo ? 100 : 0}
+            transition="opacity ease-in-out"
+            transitionDuration="1s"
+            transitionDelay="8s"
+        >
             <Grid bg="pink.400" w="100%" h="75vh" placeSelf="center" z="10">
                 <Center p="6" w="100%">
                     <Text

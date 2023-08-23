@@ -28,7 +28,15 @@ export default function MonthDisplay() {
 
     return (
         <Box>
-            <Text text="white" fontFamily="subheading" fontSize="14px" lineHeight="1" textAlign="left" color="white" pb="2">
+            <Text
+                text="white"
+                fontFamily="subheading"
+                fontSize="14px"
+                lineHeight="1"
+                textAlign="left"
+                color="white"
+                pb="2"
+            >
                 {currentMonth}
             </Text>
         </Box>

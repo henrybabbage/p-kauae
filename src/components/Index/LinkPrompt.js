@@ -24,7 +24,11 @@ export default function LinkPrompt() {
                     fontSize={['8px', '8px', '8px', '14px', '14px', '14px']}
                     textTransform="uppercase"
                     textAlign="center"
-                    _groupHover={{ textColor: 'pink.200', textDecoration: 'pink.200 underline solid 2px', textUnderlineOffset: '5px' }}
+                    _groupHover={{
+                        textColor: 'pink.200',
+                        textDecoration: 'pink.200 underline solid 2px',
+                        textUnderlineOffset: '5px'
+                    }}
                 >
                     Explore
                 </Text>
@@ -34,7 +38,11 @@ export default function LinkPrompt() {
                     fontSize={['8px', '8px', '8px', '14px', '14px', '14px']}
                     textTransform="uppercase"
                     textAlign="center"
-                    _groupHover={{ textColor: 'pink.200', textDecoration: 'pink.200 underline solid 2px', textUnderlineOffset: '5px' }}
+                    _groupHover={{
+                        textColor: 'pink.200',
+                        textDecoration: 'pink.200 underline solid 2px',
+                        textUnderlineOffset: '5px'
+                    }}
                 >
                     Map
                 </Text>

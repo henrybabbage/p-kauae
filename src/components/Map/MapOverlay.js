@@ -1,6 +1,5 @@
 import { Box, Flex, Grid, Text } from '@chakra-ui/react'
 import Image from 'next/image'
-import { MotionBox } from '../Primitives/MotionBox'
 
 export default function MapOverlay({ haerengaKorero, mapIsVisible }) {
     return (
@@ -18,27 +17,18 @@ export default function MapOverlay({ haerengaKorero, mapIsVisible }) {
         >
             <Flex direction="column" justifyContent="center" alignItems="center" p="6" w="100vw" h="auto">
                 <Box pb="12" opacity={mapIsVisible ? 0 : 100} transition="opacity ease-out" transitionDuration="0.3s">
-                    <MotionBox
-                        animate={{ scale: 1.1 }}
-                        transition={{
-                            duration: 1,
-                            repeat: Infinity,
-                            repeatType: 'mirror'
+                    <Image
+                        src="/icons/pukauae.svg"
+                        alt="Pukauae logo"
+                        width="125"
+                        height="125"
+                        priority
+                        sizes="100vw"
+                        style={{
+                            objectFit: 'contain',
+                            objectPosition: 'center'
                         }}
-                    >
-                        <Image
-                            src="/icons/pukauae.svg"
-                            alt="Pukauae logo"
-                            width="125"
-                            height="125"
-                            priority
-                            sizes="100vw"
-                            style={{
-                                objectFit: 'contain',
-                                objectPosition: 'center'
-                            }}
-                        />
-                    </MotionBox>
+                    />
                 </Box>
                 <Box w="300px">
                     <Text
