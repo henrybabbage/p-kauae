@@ -6,7 +6,19 @@ const VideoPlayer = dynamic(() => import('@/components/Common/Media/VideoPlayer'
     ssr: false
 })
 
-export default function LandingVideo({ playerRef, src, baseUrlVideo, videoKorero, videoTitle, poster, alt, autoplay, controls, muted, loop }) {
+export default function LandingVideo({
+    playerRef,
+    src,
+    baseUrlVideo,
+    videoKorero,
+    videoTitle,
+    poster,
+    alt,
+    autoplay,
+    controls,
+    muted,
+    loop
+}) {
     // const videoSrc = `${baseUrlVideo}${src}`
     const videoSrc = src.secure_url
 

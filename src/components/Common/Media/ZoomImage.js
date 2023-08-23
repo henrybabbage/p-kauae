@@ -40,7 +40,13 @@ export default function ZoomImage(props) {
                 >
                     <ChakraNextImage src={src} alt={alt} width={4200} height={2800} blurhash={blurhash} sizes="100vw" />
                 </Zoom>
-                <Text fontSize={['10px', '10px', '10px', '14px', '14px', '14px']} lineHeight="1" color="white" textAlign="left" pt="2">
+                <Text
+                    fontSize={['10px', '10px', '10px', '14px', '14px', '14px']}
+                    lineHeight="1"
+                    color="white"
+                    textAlign="left"
+                    pt="2"
+                >
                     {'Click portrait to enlarge ↗'}
                 </Text>
             </Box>
@@ -63,7 +69,13 @@ const ZoomContent = ({ img, caption, buttonUnzoom }) => {
                 {img}
                 <Box as="figcaption" zIndex="10" pt="8" pb="4">
                     <Flex justifyContent="center" w="100vw">
-                        <Text fontSize="10px" lineHeight="1.36" color="white" textAlign="center" textTransform="uppercase">
+                        <Text
+                            fontSize="10px"
+                            lineHeight="1.36"
+                            color="white"
+                            textAlign="center"
+                            textTransform="uppercase"
+                        >
                             Photographic artwork by Tania Niwa
                         </Text>
                     </Flex>

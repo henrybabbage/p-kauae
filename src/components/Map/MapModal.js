@@ -21,7 +21,15 @@ import ZoomImage from '../Common/Media/ZoomImage'
 import { CustomPortableText } from '../Primitives/CustomPortableText'
 import { MotionBox } from '../Primitives/MotionBox'
 
-export default function MapModal({ onOpen, onClose, isOpen, wahines, selectedWahineIndex, handleNextClick, handlePrevClick }) {
+export default function MapModal({
+    onOpen,
+    onClose,
+    isOpen,
+    wahines,
+    selectedWahineIndex,
+    handleNextClick,
+    handlePrevClick
+}) {
     const captureDate = wahines[selectedWahineIndex].wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
 
@@ -48,9 +56,22 @@ export default function MapModal({ onOpen, onClose, isOpen, wahines, selectedWah
         <Box id="modal">
             <Modal isOpen={isOpen} onClose={onClose} size="full" scrollBehavior="inside" motionPreset="slideInBottom">
                 <ModalOverlay />
-                <ModalContent w="auto" maxW="100vw" p={[4, 4, 4, 6, 6, 6]} bg="grey.900" h="fit-content" overflow="hidden">
+                <ModalContent
+                    w="auto"
+                    maxW="100vw"
+                    p={[4, 4, 4, 6, 6, 6]}
+                    bg="grey.900"
+                    h="fit-content"
+                    overflow="hidden"
+                >
                     <Flex justifyContent="space-between" alignContent="start">
-                        <Heading as="h1" fontSize={['10px', '10px', '10px', '20px', '20px', '20px']} color="white" fontWeight="regular" fontFamily="subheading">
+                        <Heading
+                            as="h1"
+                            fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
+                            color="white"
+                            fontWeight="regular"
+                            fontFamily="subheading"
+                        >
                             Tū Tama Wāhine o Taranaki
                         </Heading>
                         <Button variant="menu" onClick={onClose}>
@@ -81,7 +102,11 @@ export default function MapModal({ onOpen, onClose, isOpen, wahines, selectedWah
                             columnGap={['20px', '20px', '20px', '40px', '40px', '40px']}
                             rowGap="20px"
                         >
-                            <GridItem colStart={[1, 1, 1, 1, 1, 1]} colEnd={[13, 13, 13, 13, 13, 13]} pt={[2, 2, 2, 6, 6, 6]}>
+                            <GridItem
+                                colStart={[1, 1, 1, 1, 1, 1]}
+                                colEnd={[13, 13, 13, 13, 13, 13]}
+                                pt={[2, 2, 2, 6, 6, 6]}
+                            >
                                 <Box className="player">
                                     <ModalVideo
                                         playerRef={playerRef}
@@ -93,7 +118,11 @@ export default function MapModal({ onOpen, onClose, isOpen, wahines, selectedWah
                                         loop={true}
                                     />
                                 </Box>
-                                <Flex direction={['column', 'column', 'column', 'row', 'row', 'row']} alignItems="baseline" pt={6}>
+                                <Flex
+                                    direction={['column', 'column', 'column', 'row', 'row', 'row']}
+                                    alignItems="baseline"
+                                    pt={6}
+                                >
                                     <Heading
                                         fontSize={['20px', '20px', '20px', '36px', '36px', '36px']}
                                         color="pink.200"
@@ -175,30 +204,54 @@ export default function MapModal({ onOpen, onClose, isOpen, wahines, selectedWah
                                 </Box>
                                 <Box pt={6}>
                                     <HStack>
-                                        <Text fontSize={['12px', '12px', '12px', '16px', '16px', '18px']} lineHeight="1.36" color="pink.200">
+                                        <Text
+                                            fontSize={['12px', '12px', '12px', '16px', '16px', '18px']}
+                                            lineHeight="1.36"
+                                            color="pink.200"
+                                        >
                                             Tohunga ta moko:{' '}
                                         </Text>
-                                        <Text fontSize={['12px', '12px', '12px', '16px', '16px', '18px']} lineHeight="1.36" color="white">
+                                        <Text
+                                            fontSize={['12px', '12px', '12px', '16px', '16px', '18px']}
+                                            lineHeight="1.36"
+                                            color="white"
+                                        >
                                             {wahines[selectedWahineIndex].tohunga_ta_moko}
                                         </Text>
                                     </HStack>
                                 </Box>
                                 <Box pt={6}>
                                     <HStack>
-                                        <Text fontSize={['12px', '12px', '12px', '16px', '16px', '18px']} lineHeight="1.36" color="pink.200">
+                                        <Text
+                                            fontSize={['12px', '12px', '12px', '16px', '16px', '18px']}
+                                            lineHeight="1.36"
+                                            color="pink.200"
+                                        >
                                             Photograph location:{' '}
                                         </Text>
-                                        <Text fontSize={['12px', '12px', '12px', '16px', '16px', '18px']} lineHeight="1.36" color="white">
+                                        <Text
+                                            fontSize={['12px', '12px', '12px', '16px', '16px', '18px']}
+                                            lineHeight="1.36"
+                                            color="white"
+                                        >
                                             {wahines[selectedWahineIndex].wahi.ingoa}
                                         </Text>
                                     </HStack>
                                 </Box>
                                 <Box pt={6}>
                                     <HStack>
-                                        <Text fontSize={['12px', '12px', '12px', '16px', '16px', '18px']} lineHeight="1.36" color="pink.200">
+                                        <Text
+                                            fontSize={['12px', '12px', '12px', '16px', '16px', '18px']}
+                                            lineHeight="1.36"
+                                            color="pink.200"
+                                        >
                                             Capture date:{' '}
                                         </Text>
-                                        <Text fontSize={['12px', '12px', '12px', '16px', '16px', '18px']} lineHeight="1.36" color="white">
+                                        <Text
+                                            fontSize={['12px', '12px', '12px', '16px', '16px', '18px']}
+                                            lineHeight="1.36"
+                                            color="white"
+                                        >
                                             {formattedDate}
                                         </Text>
                                     </HStack>

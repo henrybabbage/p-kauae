@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react'
-import BackgroundImage from './BackgroundImage'
 import { MotionBox } from '../../Primitives/MotionBox'
+import BackgroundImage from './BackgroundImage'
 
 export default function ParallaxImage() {
     return (

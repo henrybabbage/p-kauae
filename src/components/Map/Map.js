@@ -38,7 +38,10 @@ export default function Map({ data }) {
             longitude: wahines[randomIndex].wahi.ahuahanga.lng,
             activeId: wahines[randomIndex].id,
             // bearing should be provided in [Lng, Lat] order
-            bearing: handleMapBearing([wahines[randomIndex].wahi.ahuahanga.lng, wahines[randomIndex].wahi.ahuahanga.lat]),
+            bearing: handleMapBearing([
+                wahines[randomIndex].wahi.ahuahanga.lng,
+                wahines[randomIndex].wahi.ahuahanga.lat
+            ]),
             pitch: 100,
             zoom: 11
         }
@@ -136,10 +139,16 @@ export default function Map({ data }) {
                 handleModalDelay()
             }
             mapRef.current.flyTo({
-                center: [wahines[clickedWahine.id - 1].wahi.ahuahanga.lng, wahines[clickedWahine.id - 1].wahi.ahuahanga.lat],
+                center: [
+                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lng,
+                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lat
+                ],
                 pitch: 70,
                 duration: 3000,
-                bearing: handleMapBearing([wahines[clickedWahine.id - 1].wahi.ahuahanga.lng, wahines[clickedWahine.id - 1].wahi.ahuahanga.lat])
+                bearing: handleMapBearing([
+                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lng,
+                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lat
+                ])
             })
         }
     }
@@ -151,7 +160,10 @@ export default function Map({ data }) {
             mapRef.current.on('mousemove', 'wahine', (e) => {
                 if (e.features.length > 0) {
                     if (hoveredStateId !== null) {
-                        mapRef.current.setFeatureState({ source: 'taranaki-data', id: hoveredStateId }, { hover: false })
+                        mapRef.current.setFeatureState(
+                            { source: 'taranaki-data', id: hoveredStateId },
+                            { hover: false }
+                        )
                     }
                     // eslint-disable-next-line react-hooks/exhaustive-deps
                     hoveredStateId = e.features[0].id
@@ -172,7 +184,15 @@ export default function Map({ data }) {
             <Flex position="absolute" width="100vw" height="100vh" justifyContent="center" alignItems="center">
                 <MapOverlay haerengaKorero={'Map Loading'} mapIsVisible={mapIsVisible} />
             </Flex>
-            <Box h="100vh" w="100vw" cursor="auto" position="relative" opacity={mapIsVisible ? 1 : 0} transition="opacity 0.5s ease-in" transitionDelay="1s">
+            <Box
+                h="100vh"
+                w="100vw"
+                cursor="auto"
+                position="relative"
+                opacity={mapIsVisible ? 1 : 0}
+                transition="opacity 0.5s ease-in"
+                transitionDelay="1s"
+            >
                 <MapModal
                     isOpen={isOpen}
                     onOpen={onOpen}
@@ -207,12 +227,26 @@ export default function Map({ data }) {
                     }}
                 >
                     <Box position="absolute" left="1rem" top="50%" transform="translateY(-50%)">
-                        <IconButton aria-label="Previous Wahine" icon={<ChevronLeftIcon color="black" />} onClick={handlePrevClick} isRound mr={2} />
+                        <IconButton
+                            aria-label="Previous Wahine"
+                            icon={<ChevronLeftIcon color="black" />}
+                            onClick={handlePrevClick}
+                            isRound
+                            mr={2}
+                        />
                     </Box>
                     <Box position="absolute" right="1rem" top="50%" transform="translateY(-50%)">
-                        <IconButton aria-label="Next Wahine" icon={<ChevronRightIcon color="black" />} onClick={handleNextClick} isRound ml={2} />
+                        <IconButton
+                            aria-label="Next Wahine"
+                            icon={<ChevronRightIcon color="black" />}
+                            onClick={handleNextClick}
+                            isRound
+                            ml={2}
+                        />
                     </Box>
-                    {mapData && <Source id="taranaki-data" type="geojson" data={mapData} tolerance={0} generateId={true} />}
+                    {mapData && (
+                        <Source id="taranaki-data" type="geojson" data={mapData} tolerance={0} generateId={true} />
+                    )}
                     <Layer source="taranaki-data" {...layerStyle} />
                 </ReactMapGL>
                 <Box id="local-time" position="fixed" left="6" bottom={['6', '6', '6', '6', '6', '6']}>

@@ -44,7 +44,15 @@ export default function MoonPhaseDisplay() {
     return (
         <Box>
             {moonPhaseName !== null ? (
-                <Text text="white" fontFamily="subheading" fontSize="14px" lineHeight="1" textAlign="left" color="white" pb="2">
+                <Text
+                    text="white"
+                    fontFamily="subheading"
+                    fontSize="14px"
+                    lineHeight="1"
+                    textAlign="left"
+                    color="white"
+                    pb="2"
+                >
                     {moonPhaseName}
                 </Text>
             ) : null}
