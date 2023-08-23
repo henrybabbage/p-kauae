@@ -12,12 +12,12 @@ export default function Header({ blurEffect }) {
         <>
             <MobileMenu isOpen={menu.isOpen} onClose={menu.onClose} />
             {/* <MotionBox
-                initial={{ y: -180 }}
-                animate={{ y: 0 }}
+                initial={{ y: -200, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
                 transition={{
                     ease: 'easeInOut',
-                    duration: 1,
-                    delay: 1.8
+                    duration: 0.5,
+                    delay: 1
                 }}
             > */}
             <Box as="nav" position="absolute" w="100vw" p="6" zIndex={20}>
