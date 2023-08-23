@@ -351,7 +351,7 @@ export default function HomePage({ data: korero, preview }) {
                                     value={kaiwhakaahua.korero}
                                 />
                             </Box>
-                            <Link href={`https://${kaiwhakaahua.paetukutuku}`} isExternal variant="menu">
+                            <Link href={kaiwhakaahua.paetukutuku} isExternal variant="menu">
                                 <Text
                                     fontFamily="heading"
                                     fontSize={['24px', '24px', '24px', '32px', '32px', '32px']}
