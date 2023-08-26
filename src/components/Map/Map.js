@@ -76,6 +76,7 @@ export default function Map({ data }) {
         layout: {
             'icon-size': 0.35,
             'icon-allow-overlap': true,
+            'text-allow-overlap': true,
             'text-optional': true,
             'text-field': ['get', 'title'],
             'text-font': ['Arial Unicode MS Bold'],
@@ -182,7 +183,7 @@ export default function Map({ data }) {
     return (
         <>
             <Flex position="absolute" width="100vw" height="100vh" justifyContent="center" alignItems="center">
-                <MapOverlay haerengaKorero={'Map Loading'} mapIsVisible={mapIsVisible} />
+                <MapOverlay haerengaKorero={'Loading map'} mapIsVisible={mapIsVisible} />
             </Flex>
             <Box
                 h="100vh"
