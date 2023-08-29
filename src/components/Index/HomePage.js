@@ -127,14 +127,14 @@ export default function HomePage({ data: korero, preview }) {
                         colStart={[1, 1, 1, 4, 4, 4]}
                         colEnd={[13, 13, 13, 8, 8, 8]}
                         pt={['2', '2', '6', '6', '6', '6']}
-                        pb={['6', '6', '6', '6', '6', '6']}
+                        pb={['0', '0', '0', '6', '6', '6']}
                         height="auto"
                     >
                         <Flex
                             as="div"
                             justify="center"
                             flexDirection="column"
-                            height={['40vh', '40vh', '40vh', '100vh', '100vh', '100vh']}
+                            height={['auto', 'auto', 'auto', '100vh', '100vh', '100vh']}
                             lineHeight="1.36"
                         >
                             <Heading
@@ -166,7 +166,7 @@ export default function HomePage({ data: korero, preview }) {
                     <GridItem
                         colStart={[1, 1, 1, 9, 9]}
                         colEnd={[13, 13, 13, 13, 13]}
-                        pt={['2', '2', '2', '6', '6', '6']}
+                        pt={['0', '0', '0', '6', '6', '6']}
                         pb={['36', '36', '36', '6', '6']}
                         height="auto"
                     >
@@ -174,7 +174,7 @@ export default function HomePage({ data: korero, preview }) {
                             as="div"
                             justify="center"
                             flexDirection="column"
-                            height={['40vh', '40vh', '100vh', '100vh', '100vh']}
+                            height={['auto', 'auto', 'auto', '100vh', '100vh', '100vh']}
                             lineHeight="1.36"
                         >
                             <Heading

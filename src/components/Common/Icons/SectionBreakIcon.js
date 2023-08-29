@@ -1,18 +1,11 @@
-import { Flex } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import Image from 'next/image'
 import { MotionBox } from '../../Primitives/MotionBox'
 
 export default function SectionBreakIcon() {
     return (
         <Flex position="relative" cursor="auto" justify="center">
-            <MotionBox
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{
-                    ease: [0.6, 0.01, -0.05, 0.95],
-                    duration: 1,
-                    delay: 2
-                }}
+            <Box
                 h={['80px', '80px', '80px', '100px', '100px', '100px']}
                 w={['80px', '80px', '80px', '100px', '100px', '100px']}
                 borderRadius="100%"
@@ -47,7 +40,7 @@ export default function SectionBreakIcon() {
                         }}
                     />
                 </MotionBox>
-            </MotionBox>
+            </Box>
         </Flex>
     )
 }
