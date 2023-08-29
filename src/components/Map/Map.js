@@ -103,7 +103,6 @@ export default function Map({ data }) {
 
     const mapModal = useDisclosure()
     const instructionsModal = useDisclosure()
-    // const { isOpen, onOpen, onClose } = useDisclosure()
 
     function handleModalDelay() {
         setModalOpenPending(true)
