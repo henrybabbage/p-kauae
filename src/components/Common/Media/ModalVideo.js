@@ -39,8 +39,7 @@ export default function ModalVideo({ playerRef, src, location, poster, alt }) {
                 fontFamily="heading"
                 position="absolute"
                 bottom={'18px'}
-                left={[null, null, null, '18px', '18px', '18px']}
-                right={['18px', '18px', '18px', null, null, null]}
+                left={['18px', '18px', '18px', '18px', '18px', '18px']}
                 w="fit-content"
                 textAlign={['right', 'right', 'right', 'left', 'left', 'left']}
                 touch-action="manipulation"
