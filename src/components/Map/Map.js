@@ -1,5 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
-import { Box, HStack, IconButton, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Center, HStack, Heading, IconButton, Text, useDisclosure } from '@chakra-ui/react'
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
@@ -12,6 +12,7 @@ import MonthDisplay from './MonthDisplay'
 import { TabletAndAbove } from '@/utils/breakpoints'
 import { Client } from 'react-hydration-provider'
 import MapModal from './MapModal'
+import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
 import MoonPhaseDisplay from './MoonPhaseDisplay'
 
@@ -100,7 +101,9 @@ export default function Map({ data }) {
         }
     }
 
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const mapModal = useDisclosure()
+    const instructionsModal = useDisclosure()
+    // const { isOpen, onOpen, onClose } = useDisclosure()
 
     function handleModalDelay() {
         setModalOpenPending(true)
@@ -109,7 +112,7 @@ export default function Map({ data }) {
         timeOutRef.current && clearTimeout(timeOutRef.current)
         timeOutRef.current = setTimeout(() => {
             setModalOpenPending(false)
-            onOpen()
+            mapModal.onOpen()
         }, 3200)
     }
 
@@ -212,7 +215,28 @@ export default function Map({ data }) {
 
     return (
         <>
-            {/* <MapOverlay haerengaKorero={'Loading map'} mapIsVisible={mapIsVisible} /> */}
+            <MapOverlay
+                isOpen={instructionsModal.isOpen}
+                onOpen={instructionsModal.onOpen}
+                onClose={instructionsModal.onClose}
+            />
+            <Center id="fallback" h="100vh" w="100vw" position="absolute">
+                <Heading
+                    as="h1"
+                    fontFamily="subheading"
+                    fontSize={['14px', '14px', '14px', '18px', '18px', '18px']}
+                    color="white"
+                    lineHeight="1.3"
+                    textAlign="center"
+                    textColor="white"
+                    textTransform="uppercase"
+                    opacity={!mapIsVisible ? 1 : 0}
+                    transition="opacity 0.5s ease-in"
+                    transitionDelay="1s"
+                >
+                    {'Loading map'}
+                </Heading>
+            </Center>
             <Box
                 h="100vh"
                 w="100vw"
@@ -223,9 +247,9 @@ export default function Map({ data }) {
                 transitionDelay="1s"
             >
                 <MapModal
-                    isOpen={isOpen}
-                    onOpen={onOpen}
-                    onClose={onClose}
+                    isOpen={mapModal.isOpen}
+                    onOpen={mapModal.onOpen}
+                    onClose={mapModal.onClose}
                     wahines={wahines}
                     selectedWahineIndex={selectedWahineIndex}
                     handleNextClick={handleNextClick}
@@ -333,6 +357,28 @@ export default function Map({ data }) {
                             >
                                 {wahines[selectedWahineIndex].ingoa}
                             </Text>
+                            <Text
+                                fontFamily="subheading"
+                                fontSize="14px"
+                                lineHeight="1"
+                                textAlign="left"
+                                color="white"
+                                pb="2"
+                            >
+                                {' • '}
+                            </Text>
+                            <Button variant="prompt" onClick={instructionsModal.onOpen}>
+                                <Text
+                                    fontFamily="subheading"
+                                    fontSize="14px"
+                                    lineHeight="1"
+                                    textAlign="left"
+                                    color="white"
+                                    pb="2"
+                                >
+                                    {'Guide'}
+                                </Text>
+                            </Button>
                         </HStack>
                     </TabletAndAbove>
                 </Client>

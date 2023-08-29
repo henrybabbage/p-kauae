@@ -11,7 +11,7 @@ export default function TransitionBanner() {
             w="100vw"
             h="100vh"
             maxH="100vh"
-            z="100"
+            z="1000"
             pointerEvents="none"
             overflow="hidden"
         >

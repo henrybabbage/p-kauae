@@ -11,7 +11,7 @@ export default function Header({ blurEffect }) {
 
     return (
         <>
-            <MobileMenu isOpen={menu.isOpen} onClose={menu.onClose} zIndex="1000" />
+            <MobileMenu isOpen={menu.isOpen} onClose={menu.onClose} />
             <Box as="nav" position="absolute" w="100vw" p="6" zIndex={20}>
                 <Flex w="auto" justifyContent="start">
                     <NavLink href="/" isSiteTitle={true}>

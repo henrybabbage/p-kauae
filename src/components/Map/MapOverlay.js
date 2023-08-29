@@ -1,40 +1,91 @@
-import { Center, Flex, Text } from '@chakra-ui/react'
+import {
+    Button,
+    Flex,
+    Heading,
+    Modal,
+    ModalBody,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+    Text
+} from '@chakra-ui/react'
 import Balancer from 'react-wrap-balancer'
 
-export default function MapOverlay({ haerengaKorero, mapIsVisible }) {
+export default function MapOverlay({ onClose, onOpen, isOpen }) {
     return (
-        <Center
-            bg="grey.900"
-            w="100vw"
-            h="100vh"
-            maxH="100vh"
-            z="100"
-            position="fixed"
-            opacity={mapIsVisible ? 0 : 100}
-            transition="opacity ease-in-out"
-            transitionDuration="0.3s"
-            pointerEvents="none"
+        <Modal
+            isOpen={isOpen}
+            onClose={onClose}
+            onOpen={onOpen}
+            size="full"
+            motionPreset="slideInBottom"
             overflow="hidden"
+            sx={{
+                '-webkit-scrollbar': {
+                    display: 'none'
+                },
+                '::-ms-overflow-style': {
+                    display: 'none'
+                },
+                scrollbarWidth: 'none'
+            }}
         >
-            <Flex flexDir="column">
-                <Balancer>
-                    <Text
-                        as="h1"
-                        fontFamily="subheading"
-                        fontSize={['14px', '14px', '14px', '36px', '36px', '36px']}
-                        color="white"
-                        lineHeight="1.3"
-                        textAlign="center"
-                        textColor="white"
-                        // textTransform="uppercase"
-                        opacity={mapIsVisible ? 0 : 100}
-                        transition="opacity ease-in-out"
-                        transitionDuration="0.3s"
-                    >
-                        {'This map highlights the relationship between each woman and the land they are connected to.'}
-                    </Text>
-                </Balancer>
-            </Flex>
-        </Center>
+            <ModalOverlay />
+            <ModalContent m={0} p={0} bg="grey.900" overflow="hidden" maxW="100vw" maxH="100vh">
+                <ModalHeader h="fit-content">
+                    <Flex justifyContent="space-between" alignContent="start">
+                        <Heading
+                            as="h1"
+                            fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
+                            color="white"
+                            fontWeight="regular"
+                            fontFamily="subheading"
+                        >
+                            {'Nau mai ki Pūkauae'}
+                        </Heading>
+                        <Button variant="prompt" onClick={onClose} zIndex="100">
+                            <Text fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}>{'(Close)'}</Text>
+                        </Button>
+                    </Flex>
+                </ModalHeader>
+                <ModalBody
+                    p={0}
+                    m={0}
+                    maxW="100%"
+                    maxH="100%"
+                    position="absolute"
+                    overflow="hidden"
+                    sx={{
+                        '-webkit-scrollbar': {
+                            display: 'none'
+                        },
+                        '::-ms-overflow-style': {
+                            display: 'none'
+                        },
+                        scrollbarWidth: 'none'
+                    }}
+                >
+                    <Flex flexDir="column" justifyContent="center" alignItems="center" h="100vh" w="100vw">
+                        <Balancer>
+                            <Text
+                                as="h1"
+                                fontFamily="subheading"
+                                fontSize={['14px', '14px', '14px', '36px', '36px', '36px']}
+                                color="white"
+                                lineHeight="1.3"
+                                textAlign="center"
+                                textColor="white"
+                            >
+                                {
+                                    'This map highlights the relationship between each woman and the land they are connected to.'
+                                }
+                            </Text>
+                        </Balancer>
+                    </Flex>
+                </ModalBody>
+                <ModalFooter></ModalFooter>
+            </ModalContent>
+        </Modal>
     )
 }
