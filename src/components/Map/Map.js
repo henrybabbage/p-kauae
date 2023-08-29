@@ -278,7 +278,8 @@ export default function Map({ data }) {
                         setMapIsVisible(true), onMapLoad(e)
                     }}
                 >
-                    <Box position="absolute" left="1rem" top="50%" transform="translateY(-50%)">
+                    {/* Arrow buttons */}
+                    {/* <Box position="absolute" left="1rem" top="50%" transform="translateY(-50%)">
                         <IconButton
                             aria-label="Previous Wahine"
                             icon={<ChevronLeftIcon color="black" />}
@@ -295,7 +296,7 @@ export default function Map({ data }) {
                             isRound
                             ml={2}
                         />
-                    </Box>
+                    </Box> */}
                     {mapData && (
                         <Source id="taranaki-data" type="geojson" data={mapData} tolerance={0} generateId={true} />
                     )}
@@ -308,31 +309,9 @@ export default function Map({ data }) {
                                 spacing="24px"
                                 position="fixed"
                                 z="20"
-                                bottom={['6', '6', '6', '8', '8', '8']}
+                                bottom={['6', '6', '8', '8', '8', '8']}
                                 left="8"
                             >
-                                <MonthDisplay />
-                                <Text
-                                    fontFamily="subheading"
-                                    fontSize="14px"
-                                    lineHeight="1"
-                                    textAlign="left"
-                                    color="white"
-                                    pb="2"
-                                >
-                                    {' • '}
-                                </Text>
-                                <MoonPhaseDisplay />
-                                <Text
-                                    fontFamily="subheading"
-                                    fontSize="14px"
-                                    lineHeight="1"
-                                    textAlign="left"
-                                    color="white"
-                                    pb="2"
-                                >
-                                    {' • '}
-                                </Text>
                                 <Text
                                     fontFamily="subheading"
                                     fontSize="14px"
@@ -363,6 +342,18 @@ export default function Map({ data }) {
                                 >
                                     {wahines[selectedWahineIndex]?.ingoa}
                                 </Text>
+                            </HStack>
+                            <HStack
+                                spacing="24px"
+                                position="fixed"
+                                z="20"
+                                bottom={['6', '6', '8', '8', '8', '8']}
+                                right="8"
+                            >
+                                <Box w="64px"></Box>
+                                <Box id="local-time" position="absolute">
+                                    <DigitalClock />
+                                </Box>
                                 <Text
                                     fontFamily="subheading"
                                     fontSize="14px"
@@ -373,29 +364,18 @@ export default function Map({ data }) {
                                 >
                                     {' • '}
                                 </Text>
-                                <Button variant="prompt" onClick={instructionsModal.onOpen}>
-                                    <Text
-                                        fontFamily="subheading"
-                                        fontSize="14px"
-                                        lineHeight="1"
-                                        textAlign="left"
-                                        color="white"
-                                        pb="2"
-                                    >
-                                        {'Guide'}
-                                    </Text>
-                                </Button>
-                            </HStack>
-                            <HStack
-                                spacing="24px"
-                                position="fixed"
-                                z="20"
-                                bottom={['6', '6', '6', '8', '8', '8']}
-                                right="32"
-                            >
-                                <Box id="local-time" position="fixed" bottom={['6', '6', '6', '8', '8', '8']}>
-                                    <DigitalClock />
-                                </Box>
+                                <MonthDisplay />
+                                <Text
+                                    fontFamily="subheading"
+                                    fontSize="14px"
+                                    lineHeight="1"
+                                    textAlign="left"
+                                    color="white"
+                                    pb="2"
+                                >
+                                    {' • '}
+                                </Text>
+                                <MoonPhaseDisplay />
                             </HStack>
                         </Flex>
                     </TabletAndAbove>
