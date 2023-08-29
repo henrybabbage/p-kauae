@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-const { withPlaiceholder } = require('@plaiceholder/next')
 
 const nextConfig = {
     webpack(config) {
@@ -14,7 +13,7 @@ const nextConfig = {
         locales: ['en'],
         defaultLocale: 'en'
     },
-    reactStrictMode: false,
+    reactStrictMode: true,
     compiler: {
         styledComponents: true
     },
@@ -45,4 +44,4 @@ const nextConfig = {
     }
 }
 
-module.exports = withPlaiceholder({ ...nextConfig })
+module.exports = nextConfig
