@@ -9,7 +9,7 @@ export default function DigitalClock() {
             fontSize="14px"
             lineHeight="1"
             textAlign="left"
-            color="white"
+            color="#FFD233"
             pb={['2', '2', '2', '2', '2', '2']}
         >
             <Clock format={'HH:mm:ss'} ticking={true} timezone={'NZ'} noSsr={true} />
