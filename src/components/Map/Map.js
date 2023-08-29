@@ -1,5 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
-import { Box, Flex, HStack, IconButton, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, HStack, IconButton, Text, useDisclosure } from '@chakra-ui/react'
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
@@ -77,6 +77,7 @@ export default function Map({ data }) {
             'icon-size': 0.35,
             'icon-allow-overlap': true,
             'text-allow-overlap': true,
+            'text-ignore-placement': true,
             'text-optional': true,
             'text-field': ['get', 'title'],
             'text-font': ['Arial Unicode MS Bold'],
@@ -182,9 +183,7 @@ export default function Map({ data }) {
 
     return (
         <>
-            <Flex position="absolute" width="100vw" height="100vh" justifyContent="center" alignItems="center">
-                <MapOverlay haerengaKorero={'Loading map'} mapIsVisible={mapIsVisible} />
-            </Flex>
+            {/* <MapOverlay haerengaKorero={'Loading map'} mapIsVisible={mapIsVisible} /> */}
             <Box
                 h="100vh"
                 w="100vw"
@@ -221,6 +220,7 @@ export default function Map({ data }) {
                     onMove={(event) => setViewport(event.viewport)}
                     mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck?optimize=true"
                     terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
+                    // interactiveLayerIds={[]}
                     interactiveLayerIds={['wahine']}
                     onClick={onClick}
                     onLoad={(e) => {
@@ -250,10 +250,10 @@ export default function Map({ data }) {
                     )}
                     <Layer source="taranaki-data" {...layerStyle} />
                 </ReactMapGL>
-                <Box id="local-time" position="fixed" left="6" bottom={['6', '6', '6', '6', '6', '6']}>
+                <Box id="local-time" position="fixed" left="6" bottom={['6', '6', '6', '8', '8', '8']}>
                     <DigitalClock />
                 </Box>
-                <HStack spacing="24px" position="fixed" z="20" bottom="6" left="32">
+                <HStack spacing="24px" position="fixed" z="20" bottom={['6', '6', '6', '8', '8', '8']} left="32">
                     <Text fontFamily="subheading" fontSize="14px" lineHeight="1" textAlign="left" color="white" pb="2">
                         {' • '}
                     </Text>
@@ -263,13 +263,7 @@ export default function Map({ data }) {
                     </Text>
                     <MoonPhaseDisplay />
                 </HStack>
-                <Box
-                    position="fixed"
-                    right={['calc(50vw - 35px)', 'calc(50vw - 35px)', 'calc(50vw - 35px)', '6', '6', '6']}
-                    bottom={['24', '24', '24', '6', '6', '6']}
-                >
-                    <MapProgress loading={modalOpenPending} />
-                </Box>
+                <MapProgress loading={modalOpenPending} />
             </Box>
         </>
     )

@@ -1,4 +1,3 @@
-import { Box } from '@chakra-ui/react'
 import Head from 'next/head'
 
 export const siteTitle = 'Tū Tama Wāhine o Taranaki'
@@ -18,9 +17,7 @@ const Layout = ({ children }) => {
                 <meta name="author" content="Henry Babbage, Luke Enoka, Rere-No-A-Rangi Pope, Blaine Western" />
                 <meta name="keywords" content="art" />
             </Head>
-            <Box w="100vw" h="100vh" display="flex" flexDirection="column">
-                {children}
-            </Box>
+            {children}
         </>
     )
 }

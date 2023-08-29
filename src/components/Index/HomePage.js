@@ -6,7 +6,7 @@ import { MotionBox } from '@/components/Primitives/MotionBox'
 import { Box, Flex, Grid, GridItem, Heading, Link, Text } from '@chakra-ui/react'
 import { useRef } from 'react'
 import PreviewButton from '../Common/Buttons/PreviewButton'
-import Header from '../Common/Header/Header'
+import SectionBreakIcon from '../Common/Icons/SectionBreakIcon'
 import { CustomPortableText } from '../Primitives/CustomPortableText'
 import LandingVideo from './LandingVideo'
 
@@ -41,7 +41,6 @@ export default function HomePage({ data: korero, preview }) {
 
     return (
         <Box as="main">
-            <Header blurEffect={true} />
             {preview && <PreviewButton />}
             {/* <SmoothScroll> */}
             <Box id="about" bg="grey.900">
@@ -50,7 +49,9 @@ export default function HomePage({ data: korero, preview }) {
                         <Flex position="relative" justify="center" flexDirection="column" height="80vh">
                             <LandingBanner reoText={tuhinga_timatanga} englishText={tuhinga_timatanga_english} />
                         </Flex>
-                        <MotionBox pt={['0', '0', '0', '4', '4', '4']}>{/* <SectionBreakIcon /> */}</MotionBox>
+                        <MotionBox pt={['0', '0', '0', '4', '4', '4']}>
+                            <SectionBreakIcon />
+                        </MotionBox>
                     </GridItem>
                     <GridItem
                         colStart={[1, 1, 1, 1, 4, 4]}

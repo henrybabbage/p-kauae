@@ -1,4 +1,5 @@
 import TransitionBanner from '@/components/Common/Banners/TransitionBanner'
+import Header from '@/components/Common/Header/Header'
 import theme from '@/styles/ChakraTheme'
 import Fonts from '@/styles/Fonts'
 import '@/styles/globals.css'
@@ -16,7 +17,7 @@ export default function App({ Component, pageProps }) {
 
     useFoucFix()
 
-    const { asPath } = useRouter()
+    const { asPath, pathname } = useRouter()
 
     useEffect(() => {
         // Used for page transition
@@ -72,6 +73,7 @@ export default function App({ Component, pageProps }) {
                         window.scrollTo(0, 0)
                     }}
                 >
+                    <Header blurEffect={pathname === '/' ? true : false} />
                     {loading ? <TransitionBanner /> : <Component layout {...pageProps} key={asPath} />}
                 </AnimatePresence>
             </ChakraProvider>

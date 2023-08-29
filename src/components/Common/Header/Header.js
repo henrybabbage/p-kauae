@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, useDisclosure } from '@chakra-ui/react'
 
+import { MotionBox } from '@/components/Primitives/MotionBox'
 import MenuIcon from '../Icons/MenuIcon'
 import MobileMenu from '../Mobile/MobileMenu'
 import HoverableHeading from './HoverableHeading'
@@ -11,38 +12,58 @@ export default function Header({ blurEffect }) {
     return (
         <>
             <MobileMenu isOpen={menu.isOpen} onClose={menu.onClose} />
-            {/* <MotionBox
-                initial={{ y: -200, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{
-                    ease: 'easeInOut',
-                    duration: 0.5,
-                    delay: 1
-                }}
-            > */}
             <Box as="nav" position="absolute" w="100vw" p="6" zIndex={20}>
-                <Flex justifyContent="start">
+                <Flex w="auto" justifyContent="start">
                     <NavLink href="/" isSiteTitle={true}>
-                        <Heading
-                            as="h2"
-                            fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
-                            lineHeight="1.36"
-                            fontWeight="bold"
-                            fontFamily="subheading"
+                        <MotionBox
+                            zIndex={100}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{
+                                ease: 'easeIn',
+                                duration: 0.5
+                            }}
                         >
-                            Tū Tama Wāhine o Taranaki
-                        </Heading>
+                            <Heading
+                                as="h2"
+                                fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
+                                lineHeight="1.36"
+                                fontWeight="bold"
+                                fontFamily="subheading"
+                            >
+                                Tū Tama Wāhine o Taranaki
+                            </Heading>
+                        </MotionBox>
                     </NavLink>
                 </Flex>
-
-                <Flex justifyContent="center" display={['none', 'none', 'none', 'flex', 'flex', 'flex']}>
+                <Flex w="auto" justifyContent="center" display={['none', 'none', 'none', 'flex', 'flex', 'flex']}>
                     <NavLink href="/">
-                        <HoverableHeading hoverContent="About" defaultContent="Whakapapa" textAlign="center" />
+                        <MotionBox
+                            zIndex={100}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{
+                                ease: 'easeIn',
+                                duration: 0.5
+                            }}
+                        >
+                            <HoverableHeading hoverContent="About" defaultContent="Whakapapa" textAlign="center" />
+                        </MotionBox>
                     </NavLink>
                 </Flex>
-                <Flex justifyContent="end" display={['none', 'none', 'none', 'flex', 'flex', 'flex']}>
+                <Flex w="auto" justifyContent="end" display={['none', 'none', 'none', 'flex', 'flex', 'flex']}>
                     <NavLink href="/haerenga">
-                        <HoverableHeading hoverContent="Journey" defaultContent="Haerenga" textAlign="right" />
+                        <MotionBox
+                            zIndex={100}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{
+                                ease: 'easeIn',
+                                duration: 0.5
+                            }}
+                        >
+                            <HoverableHeading hoverContent="Journey" defaultContent="Haerenga" textAlign="right" />
+                        </MotionBox>
                     </NavLink>
                 </Flex>
                 <Flex
@@ -53,7 +74,6 @@ export default function Header({ blurEffect }) {
                     <MenuIcon openDrawer={menu.onOpen} />
                 </Flex>
             </Box>
-            {/* </MotionBox> */}
             <Box
                 display={blurEffect ? 'static' : 'none'}
                 pointerEvents="none"

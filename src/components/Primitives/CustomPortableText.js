@@ -11,6 +11,15 @@ export function CustomPortableText({ sx, as, value }) {
                     </Box>
                 )
             }
+        },
+        marks: {
+            highlight: ({ children }) => {
+                return (
+                    <Box as={'span'} sx={sx} bg="pink.200">
+                        {children}
+                    </Box>
+                )
+            }
         }
     }
 
