@@ -42,6 +42,7 @@ export default function VideoPlayer({
                 controls={controls}
                 playsinline
                 eager
+                className="media-player"
             >
                 <MediaOutlet>
                     <MediaPoster className="media-video-poster" data-loading alt={title} />
@@ -54,7 +55,7 @@ export default function VideoPlayer({
                                     placement="top"
                                     variant="video"
                                 >
-                                    <MediaPlayButton className="media-controls" />
+                                    <MediaPlayButton aria-keyshortcuts="k Space" className="media-controls" />
                                 </Tooltip>
                             </Box>
                             <Box className="media-controls-group"></Box>
