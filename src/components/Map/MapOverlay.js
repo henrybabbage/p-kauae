@@ -1,53 +1,40 @@
-import { Box, Flex, Grid, Text } from '@chakra-ui/react'
-import Image from 'next/image'
+import { Center, Flex, Text } from '@chakra-ui/react'
+import Balancer from 'react-wrap-balancer'
 
 export default function MapOverlay({ haerengaKorero, mapIsVisible }) {
     return (
-        <Grid
-            bg="black"
+        <Center
+            bg="grey.900"
             w="100vw"
             h="100vh"
+            maxH="100vh"
             z="100"
-            placeSelf="center"
-            position="absolute"
+            position="fixed"
             opacity={mapIsVisible ? 0 : 100}
-            transition="opacity ease-out"
+            transition="opacity ease-in-out"
             transitionDuration="0.3s"
-            transitionDelay="1.5s"
+            pointerEvents="none"
+            overflow="hidden"
         >
-            <Flex direction="column" justifyContent="center" alignItems="center" p="6" w="100vw" h="auto">
-                <Box pb="12" opacity={mapIsVisible ? 0 : 100} transition="opacity ease-out" transitionDuration="0.3s">
-                    <Image
-                        src="/icons/pukauae.svg"
-                        alt="Pukauae logo"
-                        width="125"
-                        height="125"
-                        priority
-                        sizes="100vw"
-                        style={{
-                            objectFit: 'contain',
-                            objectPosition: 'center'
-                        }}
-                    />
-                </Box>
-                <Box w="300px">
+            <Flex flexDir="column">
+                <Balancer>
                     <Text
                         as="h1"
                         fontFamily="subheading"
-                        fontSize={['14px', '14px', '14px', '18px', '18px', '18px']}
+                        fontSize={['14px', '14px', '14px', '36px', '36px', '36px']}
                         color="white"
                         lineHeight="1.3"
                         textAlign="center"
                         textColor="white"
-                        textTransform="uppercase"
+                        // textTransform="uppercase"
                         opacity={mapIsVisible ? 0 : 100}
-                        transition="opacity ease-out"
+                        transition="opacity ease-in-out"
                         transitionDuration="0.3s"
                     >
-                        {haerengaKorero}
+                        {'This map highlights the relationship between each woman and the land they are connected to.'}
                     </Text>
-                </Box>
+                </Balancer>
             </Flex>
-        </Grid>
+        </Center>
     )
 }

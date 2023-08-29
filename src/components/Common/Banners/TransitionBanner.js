@@ -1,16 +1,17 @@
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import Image from 'next/image'
 
 export default function TransitionBanner() {
     return (
         <Flex
+            bg="grey.900"
             flexDir="column"
             justifyContent="center"
             alignItems="center"
             w="100vw"
             h="100vh"
             maxH="100vh"
-            backgroundColor="black"
+            z="100"
             pointerEvents="none"
             overflow="hidden"
         >
@@ -27,19 +28,6 @@ export default function TransitionBanner() {
                         objectPosition: 'center'
                     }}
                 />
-            </Box>
-            <Box w="300px" opacity={0}>
-                <Text
-                    as="h1"
-                    fontFamily="subheading"
-                    fontSize={['14px', '14px', '14px', '18px', '18px', '18px']}
-                    lineHeight="1.3"
-                    textAlign="center"
-                    textColor="white"
-                    textTransform="uppercase"
-                >
-                    Loading
-                </Text>
             </Box>
         </Flex>
     )

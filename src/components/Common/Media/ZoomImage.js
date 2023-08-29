@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Box, Flex, Text, Tooltip } from '@chakra-ui/react'
 import { useCallback } from 'react'
 import Zoom from 'react-medium-image-zoom'
 
@@ -38,17 +38,19 @@ export default function ZoomImage(props) {
                         />
                     )}
                 >
-                    <ChakraNextImage src={src} alt={alt} width={4200} height={2800} blurhash={blurhash} sizes="100vw" />
+                    <Tooltip gutter="-34" label={'Click portrait to enlarge ↗'} placement="bottom" variant="zoom">
+                        <Box w="100%" h="100%">
+                            <ChakraNextImage
+                                src={src}
+                                alt={alt}
+                                width={4200}
+                                height={2800}
+                                blurhash={blurhash}
+                                sizes="100vw"
+                            />
+                        </Box>
+                    </Tooltip>
                 </Zoom>
-                <Text
-                    fontSize={['10px', '10px', '10px', '14px', '14px', '14px']}
-                    lineHeight="1"
-                    color="white"
-                    textAlign="left"
-                    pt="2"
-                >
-                    {'Click portrait to enlarge ↗'}
-                </Text>
             </Box>
         </Flex>
     )

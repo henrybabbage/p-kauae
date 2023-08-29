@@ -2,11 +2,17 @@ import { buttonTheme } from '@/theme/components/Button'
 import { headingTheme } from '@/theme/components/Heading'
 import { linkTheme } from '@/theme/components/Link'
 import { modalTheme } from '@/theme/components/Modal'
+import { progressTheme } from '@/theme/components/Progress'
 import { spinnerTheme } from '@/theme/components/Spinner'
+import { stepperTheme } from '@/theme/components/Stepper'
 import { tooltipTheme } from '@/theme/components/Tooltip'
 import { theme as base, extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
+    config: {
+        initialColorMode: 'light',
+        useSystemColorMode: false
+    },
     global: {
         body: {
             bg: 'grey.900',
@@ -14,6 +20,14 @@ const theme = extendTheme({
         }
     },
     colors: {
+        state: {
+            activeColor: '#f9abab',
+            completedColor: '#f9abab',
+            disabledColor: 'white',
+            errorColor: 'white',
+            inactiveColor: 'white',
+            stepTextColor: 'white'
+        },
         pink: {
             200: '#f9abab',
             400: '#C3918F'
@@ -28,7 +42,8 @@ const theme = extendTheme({
     fonts: {
         body: `"Sohne_Buch", ${base.fonts.body}, sans-serif`,
         subheading: `"SohneBreit_Buch", ${base.fonts.body}, sans-serif`,
-        heading: `"SohneBreit_Dreiviertelfett", ${base.fonts.heading}, sans-serif`
+        heading: `"SohneBreit_Dreiviertelfett", ${base.fonts.heading}, sans-serif`,
+        menu: `"Sohne_Halbfett", ${base.fonts.menu}, sans-serif`
     },
     fontSizes: {
         sm: '18px',
@@ -37,6 +52,13 @@ const theme = extendTheme({
         xl: '84px'
     },
     textStyles: {
+        heading: {
+            fontFamily: 'var(--chakra-fonts-heading)',
+            fontSize: ['24px', '24px', '24px', '36px', '36px', '36px'],
+            lineHeight: '1.36',
+            textAlign: 'left',
+            color: 'pink.200'
+        },
         subheading: {
             fontFamily: 'var(--chakra-fonts-subheading)',
             fontSize: ['24px', '24px', '24px', '46px', '84px', '84px'],
@@ -69,7 +91,9 @@ const theme = extendTheme({
         Modal: modalTheme,
         Button: buttonTheme,
         Tooltip: tooltipTheme,
-        Spinner: spinnerTheme
+        Spinner: spinnerTheme,
+        Progress: progressTheme,
+        Stepper: stepperTheme
     }
 })
 

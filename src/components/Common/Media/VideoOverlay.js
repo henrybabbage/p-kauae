@@ -9,7 +9,7 @@ export default function VideoOverlay({ showInfo, videoKorero }) {
             transitionDuration="1s"
             transitionDelay="8s"
         >
-            <Grid bg="pink.400" w="100%" h="75vh" placeSelf="center" z="10">
+            <Grid bg="pink.200" w="100%" h="75vh" placeSelf="center" z="10">
                 <Center p="6" w="100%">
                     <Text
                         as="h3"
