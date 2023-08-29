@@ -1,28 +1,24 @@
-import { AspectRatio, Box, Flex, Heading } from '@chakra-ui/react'
+import { AspectRatio, Box, Heading } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 
 const VideoPlayer = dynamic(() => import('./VideoPlayer'), {
     ssr: false
 })
 
-export default function ModalVideo({ playerRef, src, baseUrlVideo, location, poster, alt }) {
-    // const videoSrc = `${baseUrlVideo}${src}`
-    const videoSrc = `${src}`
+export default function ModalVideo({ playerRef, src, location, poster, alt }) {
     return (
         <Box position="relative" w="100%" maxWidth="100%">
             <AspectRatio
-                maxH={['auto', 'auto', 'auto', '75vh', '75vh', '75vh']}
-                maxW={['96vw', '96vw', '96vw', '100vw', '100vw', '100vw']}
+                maxH={['auto', 'auto', 'auto', '100%', '100%', '100%']}
+                maxW={['100%', '100%', '100%', '100%', '100%', '100%']}
                 ratio={16 / 9}
                 cursor="auto"
-                display="flex"
-                justifyContent="center"
             >
                 <VideoPlayer
                     playerRef={playerRef}
-                    src={videoSrc}
+                    src={src}
                     poster={poster}
-                    title={location}
+                    title={location || alt || ''}
                     autoplay={true}
                     controls={false}
                     muted={true}
@@ -32,26 +28,20 @@ export default function ModalVideo({ playerRef, src, baseUrlVideo, location, pos
                     isPlaying={true}
                 />
             </AspectRatio>
-            <Flex
-                maxH={['auto', 'auto', 'auto', '75vh', '75vh', '75vh']}
-                maxW={['96vw', '96vw', '96vw', '100vw', '100vw', '100vw']}
-                display="flex"
-                justifyContent="end"
+            <Heading
+                fontSize={['16px', '16px', '16px', '36px', '36px', '36px']}
+                color="white"
+                fontWeight="regular"
+                fontFamily="heading"
+                position="absolute"
+                bottom={'18px'}
+                left={[null, null, null, '18px', '18px', '18px']}
+                right={['18px', '18px', '18px', null, null, null]}
+                w="fit-content"
+                textAlign={['right', 'right', 'right', 'left', 'left', 'left']}
             >
-                <Heading
-                    fontSize={['16px', '16px', '16px', '36px', '36px', '36px']}
-                    color="white"
-                    fontWeight="regular"
-                    fontFamily="heading"
-                    position="absolute"
-                    bottom={6}
-                    right={6}
-                    w="fit-content"
-                    textAlign="right"
-                >
-                    {location}
-                </Heading>
-            </Flex>
+                {location}
+            </Heading>
         </Box>
     )
 }

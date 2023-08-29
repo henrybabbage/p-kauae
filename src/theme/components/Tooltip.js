@@ -39,11 +39,21 @@ const playButtonVariant = defineStyle({
     textTransform: 'uppercase'
 })
 
+const zoomPromptVariant = defineStyle({
+    fontWeight: 'regular',
+    fontSize: 'xs',
+    fontFamily: 'subheading',
+    color: 'black',
+    backgroundColor: 'white',
+    textTransform: 'uppercase'
+})
+
 // export the component theme
 export const tooltipTheme = defineStyleConfig({
     baseStyle,
     sizes,
     variants: {
-        video: playButtonVariant
+        video: playButtonVariant,
+        zoom: zoomPromptVariant
     }
 })

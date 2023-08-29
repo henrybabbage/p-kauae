@@ -113,7 +113,7 @@ media-player[data-autoplay-error] .media-controls {
 
 /* react player */
 .player video {
-    width: 100vw;
+    width: 100%;
     object-fit: cover;
     object-position: center;
 }
