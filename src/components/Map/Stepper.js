@@ -1,5 +1,7 @@
+import { Box, Button } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { MotionBox } from '../Primitives/MotionBox'
 
 export default function StepsComponent() {
     let [step, setStep] = useState(1)
@@ -15,40 +17,42 @@ export default function StepsComponent() {
     }, [step])
 
     return (
-        <div className="mx-auto max-h-full w-full max-w-md rounded-lg bg-white shadow">
-            <div className="flex justify-between rounded p-8">
+        <Box className="mx-auto max-h-full w-full max-w-md rounded-lg bg-white shadow">
+            <Box className="flex justify-between rounded p-8">
                 <Step step={1} currentStep={step} />
                 <Step step={2} currentStep={step} />
                 <Step step={3} currentStep={step} />
                 <Step step={4} currentStep={step} />
-            </div>
-            <div className="px-8 pb-8">
-                <div>
-                    <div className="mt-0 space-y-2">
-                        <div className="h-4 w-5/6 rounded bg-neutral-100" />
-                        <div className="h-4 rounded bg-neutral-100" />
-                        <div className="h-4 w-4/6 rounded bg-neutral-100" />
-                    </div>
-                </div>
+            </Box>
+            <Box className="px-8 pb-8">
+                <Box>
+                    <Box className="mt-0 space-y-2">
+                        <Box className="h-4 w-5/6 rounded bg-neutral-100" />
+                        <Box className="h-4 rounded bg-neutral-100" />
+                        <Box className="h-4 w-4/6 rounded bg-neutral-100" />
+                    </Box>
+                </Box>
 
-                <div className="mt-10 flex justify-between">
-                    <button
+                <Box className="mt-10 flex justify-between">
+                    <Button
+                        variant="prompt"
                         onClick={() => setStep(step < 2 ? step : step - 1)}
                         className="rounded px-2 py-1 text-neutral-400 hover:text-neutral-700"
                     >
                         Back
-                    </button>
-                    <button
+                    </Button>
+                    <Button
+                        variant="prompt"
                         onClick={() => setStep(step > 4 ? step : step + 1)}
                         className={`${
                             step > 4 ? 'pointer-events-none opacity-50' : ''
                         } bg flex items-center justify-center rounded-full bg-blue-500 py-1.5 px-3.5 font-medium tracking-tight text-white hover:bg-blue-600 active:bg-blue-700`}
                     >
                         Continue
-                    </button>
-                </div>
-            </div>
-        </div>
+                    </Button>
+                </Box>
+            </Box>
+        </Box>
     )
 }
 
@@ -56,8 +60,8 @@ function Step({ step, currentStep }) {
     let status = currentStep === step ? 'active' : currentStep < step ? 'inactive' : 'complete'
 
     return (
-        <motion.div animate={status} className="relative">
-            <motion.div
+        <MotionBox animate={status} className="relative">
+            <MotionBox
                 variants={{
                     active: {
                         scale: 1,
@@ -77,9 +81,9 @@ function Step({ step, currentStep }) {
                     ease: 'circOut'
                 }}
                 className="absolute inset-0 rounded-full bg-blue-200"
-            ></motion.div>
+            ></MotionBox>
 
-            <motion.div
+            <MotionBox
                 initial={false}
                 variants={{
                     inactive: {
@@ -101,11 +105,11 @@ function Step({ step, currentStep }) {
                 transition={{ duration: 0.2 }}
                 className={`relative flex h-10 w-10 items-center justify-center rounded-full border-2 font-semibold`}
             >
-                <div className="flex items-center justify-center">
+                <Box className="flex items-center justify-center">
                     {status === 'complete' ? <CheckIcon className="h-6 w-6 text-white" /> : <span>{step}</span>}
-                </div>
-            </motion.div>
-        </motion.div>
+                </Box>
+            </MotionBox>
+        </MotionBox>
     )
 }
 

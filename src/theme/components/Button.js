@@ -21,6 +21,9 @@ const callToAction = defineStyle({
         textColor: 'pink',
         transitionDuration: '0.5s',
         transitionTimingFunction: 'ease-out'
+    },
+    _focus: {
+        boxShadow: 'none'
     }
 })
 
@@ -42,6 +45,9 @@ const mapLabel = defineStyle({
         textColor: 'pink',
         transitionDuration: '0.5s',
         transitionTimingFunction: 'ease-out'
+    },
+    _focus: {
+        boxShadow: 'none'
     }
 })
 
@@ -63,6 +69,9 @@ const prompt = defineStyle({
         textColor: 'pink',
         transitionDuration: '0.5s',
         transitionTimingFunction: 'ease-out'
+    },
+    _focus: {
+        boxShadow: 'none'
     }
 })
 
@@ -85,6 +94,9 @@ const menu = defineStyle({
         textColor: 'pink',
         transitionDuration: '0.5s',
         transitionTimingFunction: 'ease-out'
+    },
+    _focus: {
+        boxShadow: 'none'
     }
 })
 

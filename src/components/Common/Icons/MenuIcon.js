@@ -2,7 +2,7 @@ import { Button, Flex, Heading } from '@chakra-ui/react'
 
 export default function MenuIcon({ openDrawer }) {
     return (
-        <Button variant="menu" onClick={openDrawer}>
+        <Button variant="menu" onClick={openDrawer} zIndex="100">
             <Flex direction="column" alignItems="center">
                 <Heading
                     as="h2"
