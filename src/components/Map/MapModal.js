@@ -105,158 +105,170 @@ export default function MapModal({
                     }}
                 >
                     <Flex flexDirection={['column', 'column', 'column', 'row', 'row', 'row']} wrap="nowrap" gap="24px">
-                        <Box flex={['0', '0', '0', '1', '1', '1']}>
-                            <Flex flexDir="column" gap="24px">
-                                <Box display="block" max-width="100%" width="100%" height="auto">
-                                    <Client>
-                                        <TabletAndAbove>
-                                            <ZoomImage
-                                                src={wahines[selectedWahineIndex]?.whakaahua?.asset?.url}
-                                                alt={wahines[selectedWahineIndex]?.whakaahua?.alternative_text}
-                                                width={
-                                                    wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata?.dimensions
-                                                        ?.width
-                                                }
-                                                height={
-                                                    wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata?.dimensions
-                                                        ?.height
-                                                }
-                                                blurhash={
-                                                    wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata?.blurHash
-                                                }
-                                                caption={wahines[selectedWahineIndex]?.ingoa}
-                                            />
-                                        </TabletAndAbove>
-                                        <Mobile>
-                                            <ChakraNextImage
-                                                src={wahines[selectedWahineIndex]?.whakaahua?.asset?.url}
-                                                alt={wahines[selectedWahineIndex]?.whakaahua?.alternative_text}
-                                                width={
-                                                    wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata?.dimensions
-                                                        ?.width
-                                                }
-                                                height={
-                                                    wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata?.dimensions
-                                                        ?.height
-                                                }
-                                                blurhash={
-                                                    wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata?.blurHash
-                                                }
-                                            />
-                                        </Mobile>
-                                    </Client>
-                                </Box>
-                                <Box>
-                                    <ModalVideo
-                                        playerRef={playerRef}
-                                        src={wahines[selectedWahineIndex]?.kiriata?.droneFootage?.secure_url}
-                                        location={wahines[selectedWahineIndex].kiriata.ingoa}
-                                        poster={wahines[selectedWahineIndex].kiriata.poster?.asset?.url}
-                                        autoplay={true}
-                                        muted={true}
-                                        loop={true}
-                                    />
-                                </Box>
-                            </Flex>
-                        </Box>
-                        <Box flex="1">
-                            <Flex flexDir="column">
-                                <Heading
-                                    position="relative"
-                                    top={['0', '0', '0', '-18px', '-18px', '-18px']}
-                                    fontSize={['28px', '28px', '28px', '64px', '64px', '64px']}
-                                    color="pink.200"
-                                    fontWeight="regular"
-                                    fontFamily="heading"
-                                >
-                                    {wahines[selectedWahineIndex].ingoa}
-                                </Heading>
-                                <Heading
-                                    fontSize={['12px', '12px', '12px', '30px', '30px', '30px']}
-                                    color="pink.200"
-                                    fontWeight="regular"
-                                    fontFamily="heading"
-                                >
-                                    {wahines[selectedWahineIndex].whakapapa}
-                                </Heading>
-                                <Flex pt="24px" flexDir="column" gap={['12px', '12px', '12px', '24px', '24px', '24px']}>
-                                    <CustomPortableText
-                                        as={'p'}
-                                        sx={{
-                                            fontSize: ['12px', '12px', '12px', '20px', '20px', '20px'],
-                                            lineHeight: ['1.36'],
-                                            color: 'white',
-                                            wordWrap: 'break-word',
-                                            whiteSpace: 'normal',
-                                            width: '100%',
-                                            maxWidth: '100%'
-                                        }}
-                                        value={wahines[selectedWahineIndex].korero_pukauae}
-                                    />
-                                    <CustomPortableText
-                                        as={'p'}
-                                        sx={{
-                                            fontSize: ['12px', '12px', '12px', '20px', '20px', '20px'],
-                                            lineHeight: ['1.36'],
-                                            color: 'white',
-                                            wordWrap: 'break-word',
-                                            whiteSpace: 'normal',
-                                            width: '100%',
-                                            maxWidth: '100%'
-                                        }}
-                                        value={wahines[selectedWahineIndex].korero_wahi}
-                                    />
-                                    <HStack>
-                                        <Text
-                                            fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
-                                            lineHeight="1.36"
-                                            color="pink.200"
-                                        >
-                                            Tohunga ta moko:{' '}
-                                        </Text>
-                                        <Text
-                                            fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
-                                            lineHeight="1.36"
-                                            color="white"
-                                        >
-                                            {wahines[selectedWahineIndex].tohunga_ta_moko}
-                                        </Text>
-                                    </HStack>
-                                    <HStack>
-                                        <Text
-                                            fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
-                                            lineHeight="1.36"
-                                            color="pink.200"
-                                        >
-                                            Photograph location:{' '}
-                                        </Text>
-                                        <Text
-                                            fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
-                                            lineHeight="1.36"
-                                            color="white"
-                                        >
-                                            {wahines[selectedWahineIndex].wahi.ingoa}
-                                        </Text>
-                                    </HStack>
-                                    <HStack>
-                                        <Text
-                                            fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
-                                            lineHeight="1.36"
-                                            color="pink.200"
-                                        >
-                                            Capture date:{' '}
-                                        </Text>
-                                        <Text
-                                            fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
-                                            lineHeight="1.36"
-                                            color="white"
-                                        >
-                                            {formattedDate}
-                                        </Text>
-                                    </HStack>
+                        <Flex flexDir="column" gap="10px">
+                            <Box w="100%" maxW="100vw" h="auto">
+                                <ModalVideo
+                                    playerRef={playerRef}
+                                    src={wahines[selectedWahineIndex]?.kiriata?.droneFootage?.secure_url}
+                                    location={wahines[selectedWahineIndex].kiriata.ingoa}
+                                    poster={wahines[selectedWahineIndex].kiriata.poster?.asset?.url}
+                                    autoplay={true}
+                                    muted={true}
+                                    loop={true}
+                                />
+                            </Box>
+                            <Flex
+                                flexDirection={['column', 'column', 'column', 'row', 'row', 'row']}
+                                w="100%"
+                                maxW="100vw"
+                                gap="20px"
+                                pt={[0, 0, 0, 4, 4, 4]}
+                            >
+                                <Flex flexDirection="column" gap="10px" justifyContent="start" flex="1">
+                                    <Heading
+                                        fontSize={['28px', '28px', '28px', '36px', '36px', '36px']}
+                                        color="pink.200"
+                                        fontWeight="regular"
+                                        fontFamily="heading"
+                                    >
+                                        {wahines[selectedWahineIndex].ingoa}
+                                    </Heading>
+                                    <Heading
+                                        fontSize={['12px', '12px', '12px', '16px', '16px', '16px']}
+                                        color="pink.200"
+                                        fontWeight="regular"
+                                        fontFamily="heading"
+                                    >
+                                        {wahines[selectedWahineIndex].whakapapa}
+                                    </Heading>
+                                    <Box
+                                        display="block"
+                                        max-width="100%"
+                                        width="100%"
+                                        height="auto"
+                                        pt={[2, 2, 2, 4, 4, 4]}
+                                    >
+                                        <Client>
+                                            <TabletAndAbove>
+                                                <ZoomImage
+                                                    src={wahines[selectedWahineIndex]?.whakaahua?.asset?.url}
+                                                    alt={wahines[selectedWahineIndex]?.whakaahua?.alternative_text}
+                                                    width={
+                                                        wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata
+                                                            ?.dimensions?.width
+                                                    }
+                                                    height={
+                                                        wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata
+                                                            ?.dimensions?.height
+                                                    }
+                                                    blurhash={
+                                                        wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata
+                                                            ?.blurHash
+                                                    }
+                                                    caption={wahines[selectedWahineIndex]?.ingoa}
+                                                />
+                                            </TabletAndAbove>
+                                            <Mobile>
+                                                <ChakraNextImage
+                                                    src={wahines[selectedWahineIndex]?.whakaahua?.asset?.url}
+                                                    alt={wahines[selectedWahineIndex]?.whakaahua?.alternative_text}
+                                                    width={
+                                                        wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata
+                                                            ?.dimensions?.width
+                                                    }
+                                                    height={
+                                                        wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata
+                                                            ?.dimensions?.height
+                                                    }
+                                                    blurhash={
+                                                        wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata
+                                                            ?.blurHash
+                                                    }
+                                                />
+                                            </Mobile>
+                                        </Client>
+                                    </Box>
                                 </Flex>
+                                <Box flex="1">
+                                    <Flex flexDir="column" gap={['12px', '12px', '12px', '24px', '24px', '24px']}>
+                                        <CustomPortableText
+                                            as={'p'}
+                                            sx={{
+                                                fontSize: ['12px', '12px', '12px', '20px', '20px', '20px'],
+                                                lineHeight: ['1.36'],
+                                                color: 'white',
+                                                wordWrap: 'break-word',
+                                                whiteSpace: 'normal',
+                                                width: '100%',
+                                                maxWidth: '100%'
+                                            }}
+                                            value={wahines[selectedWahineIndex].korero_pukauae}
+                                        />
+                                        <CustomPortableText
+                                            as={'p'}
+                                            sx={{
+                                                fontSize: ['12px', '12px', '12px', '20px', '20px', '20px'],
+                                                lineHeight: ['1.36'],
+                                                color: 'white',
+                                                wordWrap: 'break-word',
+                                                whiteSpace: 'normal',
+                                                width: '100%',
+                                                maxWidth: '100%'
+                                            }}
+                                            value={wahines[selectedWahineIndex].korero_wahi}
+                                        />
+                                        <HStack>
+                                            <Text
+                                                fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
+                                                lineHeight="1.36"
+                                                color="pink.200"
+                                            >
+                                                Tohunga ta moko:{' '}
+                                            </Text>
+                                            <Text
+                                                fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
+                                                lineHeight="1.36"
+                                                color="white"
+                                            >
+                                                {wahines[selectedWahineIndex].tohunga_ta_moko}
+                                            </Text>
+                                        </HStack>
+                                        <HStack>
+                                            <Text
+                                                fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
+                                                lineHeight="1.36"
+                                                color="pink.200"
+                                            >
+                                                Photograph location:{' '}
+                                            </Text>
+                                            <Text
+                                                fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
+                                                lineHeight="1.36"
+                                                color="white"
+                                            >
+                                                {wahines[selectedWahineIndex].wahi.ingoa}
+                                            </Text>
+                                        </HStack>
+                                        <HStack>
+                                            <Text
+                                                fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
+                                                lineHeight="1.36"
+                                                color="pink.200"
+                                            >
+                                                Capture date:{' '}
+                                            </Text>
+                                            <Text
+                                                fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
+                                                lineHeight="1.36"
+                                                color="white"
+                                            >
+                                                {formattedDate}
+                                            </Text>
+                                        </HStack>
+                                    </Flex>
+                                </Box>
                             </Flex>
-                        </Box>
+                        </Flex>
                     </Flex>
                 </ModalBody>
                 <ModalFooter p={0} mt="auto">
