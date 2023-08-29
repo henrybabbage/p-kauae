@@ -16,3 +16,7 @@ export const TabletAndBelow = ({ children }) => {
     const isNotDesktop = useMediaQuery({ maxWidth: 991 })
     return isNotDesktop ? children : null
 }
+export const TabletAndAbove = ({ children }) => {
+    const isNotMobile = useMediaQuery({ minWidth: 768 })
+    return isNotMobile ? children : null
+}

@@ -1,3 +1,4 @@
+import { Mobile, TabletAndAbove, TabletAndBelow } from '@/utils/breakpoints'
 import {
     Box,
     Button,
@@ -14,8 +15,10 @@ import {
 } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
 import { useRef } from 'react'
+import { Client } from 'react-hydration-provider'
 import ModalVideo from '../Common/Media/ModalVideo'
 import ZoomImage from '../Common/Media/ZoomImage'
+import ChakraNextImage from '../Primitives/ChakraNextImage'
 import { CustomPortableText } from '../Primitives/CustomPortableText'
 
 export default function MapModal({
@@ -103,16 +106,33 @@ export default function MapModal({
                             <Box flex={['0', '0', '0', '1', '1', '1']}>
                                 <Flex flexDir="column" gap="24px">
                                     <Box>
-                                        <ZoomImage
-                                            src={wahines[selectedWahineIndex]?.whakaahua?.asset?.url}
-                                            alt={wahines[selectedWahineIndex]?.whakaahua?.alternative_text}
-                                            width={4200}
-                                            height={2800}
-                                            blurhash={
-                                                wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata?.blurHash
-                                            }
-                                            caption={wahines[selectedWahineIndex]?.ingoa}
-                                        />
+                                        <Client>
+                                            <TabletAndAbove>
+                                                <ZoomImage
+                                                    src={wahines[selectedWahineIndex]?.whakaahua?.asset?.url}
+                                                    alt={wahines[selectedWahineIndex]?.whakaahua?.alternative_text}
+                                                    width={4200}
+                                                    height={2800}
+                                                    blurhash={
+                                                        wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata
+                                                            ?.blurHash
+                                                    }
+                                                    caption={wahines[selectedWahineIndex]?.ingoa}
+                                                />
+                                            </TabletAndAbove>
+                                            <Mobile>
+                                                <ChakraNextImage
+                                                    src={wahines[selectedWahineIndex]?.whakaahua?.asset?.url}
+                                                    alt={wahines[selectedWahineIndex]?.whakaahua?.alternative_text}
+                                                    width={4200}
+                                                    height={2800}
+                                                    blurhash={
+                                                        wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata
+                                                            ?.blurHash
+                                                    }
+                                                />
+                                            </Mobile>
+                                        </Client>
                                     </Box>
                                     <Box className="player">
                                         <ModalVideo

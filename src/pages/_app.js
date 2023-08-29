@@ -9,6 +9,7 @@ import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'
 import { Router, useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { HydrationProvider } from 'react-hydration-provider'
 
 export const siteTitle = 'Pūkauae'
 
@@ -64,19 +65,21 @@ export default function App({ Component, pageProps }) {
                 <link rel="manifest" href="/favicons/site.webmanifest" />
                 <link rel="shortcut icon" href="/favicons/favicon.ico" />
             </Head>
-            <ChakraProvider theme={theme}>
-                <Fonts />
-                <AnimatePresence
-                    mode="sync"
-                    initial={true}
-                    onExitComplete={() => {
-                        window.scrollTo(0, 0)
-                    }}
-                >
-                    <Header blurEffect={pathname === '/' ? true : false} />
-                    {loading ? <TransitionBanner /> : <Component layout {...pageProps} key={asPath} />}
-                </AnimatePresence>
-            </ChakraProvider>
+            <HydrationProvider>
+                <ChakraProvider theme={theme}>
+                    <Fonts />
+                    <AnimatePresence
+                        mode="sync"
+                        initial={true}
+                        onExitComplete={() => {
+                            window.scrollTo(0, 0)
+                        }}
+                    >
+                        <Header blurEffect={pathname === '/' ? true : false} />
+                        {loading ? <TransitionBanner /> : <Component layout {...pageProps} key={asPath} />}
+                    </AnimatePresence>
+                </ChakraProvider>
+            </HydrationProvider>
         </>
     )
 }
