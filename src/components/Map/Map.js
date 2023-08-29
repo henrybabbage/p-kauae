@@ -317,7 +317,7 @@ export default function Map({ data }) {
                                     fontSize="14px"
                                     lineHeight="1"
                                     textAlign="left"
-                                    color="white"
+                                    color="#FFD233"
                                     pb="2"
                                 >
                                     {wahines[selectedWahineIndex]?.wahi?.ingoa}
@@ -327,7 +327,7 @@ export default function Map({ data }) {
                                     fontSize="14px"
                                     lineHeight="1"
                                     textAlign="left"
-                                    color="white"
+                                    color="#FFD233"
                                     pb="2"
                                 >
                                     {' • '}
@@ -337,7 +337,7 @@ export default function Map({ data }) {
                                     fontSize="14px"
                                     lineHeight="1"
                                     textAlign="left"
-                                    color="white"
+                                    color="#FFD233"
                                     pb="2"
                                 >
                                     {wahines[selectedWahineIndex]?.ingoa}
@@ -359,7 +359,7 @@ export default function Map({ data }) {
                                     fontSize="14px"
                                     lineHeight="1"
                                     textAlign="left"
-                                    color="white"
+                                    color="#FFD233"
                                     pb="2"
                                 >
                                     {' • '}
@@ -370,7 +370,7 @@ export default function Map({ data }) {
                                     fontSize="14px"
                                     lineHeight="1"
                                     textAlign="left"
-                                    color="white"
+                                    color="#FFD233"
                                     pb="2"
                                 >
                                     {' • '}
