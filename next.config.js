@@ -14,7 +14,7 @@ const nextConfig = {
         locales: ['en'],
         defaultLocale: 'en'
     },
-    reactStrictMode: true,
+    reactStrictMode: false,
     compiler: {
         styledComponents: true
     },

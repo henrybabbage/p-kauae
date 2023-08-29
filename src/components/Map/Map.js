@@ -10,9 +10,10 @@ import DigitalClock from './DigitalClock'
 import MonthDisplay from './MonthDisplay'
 
 import MapModal from './MapModal'
-import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
 import MoonPhaseDisplay from './MoonPhaseDisplay'
+
+let interval = undefined
 
 export default function Map({ data }) {
     // Taranaki, New Zealand [Longitude, Latitiude]
@@ -46,6 +47,8 @@ export default function Map({ data }) {
             zoom: 11
         }
     }, [])
+    const [running, setRunning] = useState(false)
+    const [progress, setProgress] = useState(0)
 
     const mapRef = useRef(null)
     const timeOutRef = useRef(null)
@@ -99,6 +102,8 @@ export default function Map({ data }) {
 
     function handleModalDelay() {
         setModalOpenPending(true)
+        setRunning(true)
+        setProgress(0)
         timeOutRef.current && clearTimeout(timeOutRef.current)
         timeOutRef.current = setTimeout(() => {
             setModalOpenPending(false)
@@ -106,7 +111,27 @@ export default function Map({ data }) {
         }, 3200)
     }
 
+    // progress indicator
+    useEffect(() => {
+        if (running) {
+            interval = setInterval(() => {
+                setProgress((prev) => prev + 1)
+            }, 10)
+        } else {
+            clearInterval(interval)
+        }
+    }, [running])
+
+    useEffect(() => {
+        if (progress === 100) {
+            setRunning(false)
+            clearInterval(interval)
+        }
+    }, [progress])
+
     const handlePrevClick = () => {
+        setProgress(0)
+        setRunning(!running)
         const prevIndex = selectedWahineIndex === wahines.length - 1 ? 0 : selectedWahineIndex + 1
         setSelectedWahineIndex(prevIndex)
         handleModalDelay()
@@ -120,6 +145,8 @@ export default function Map({ data }) {
     }
 
     const handleNextClick = () => {
+        setProgress(0)
+        setRunning(!running)
         const nextIndex = selectedWahineIndex === 0 ? wahines.length - 1 : selectedWahineIndex - 1
         setSelectedWahineIndex(nextIndex)
         handleModalDelay()
@@ -162,20 +189,20 @@ export default function Map({ data }) {
             mapRef.current.on('mousemove', 'wahine', (e) => {
                 if (e.features.length > 0) {
                     if (hoveredStateId !== null) {
-                        mapRef.current.setFeatureState(
+                        mapRef?.current?.setFeatureState(
                             { source: 'taranaki-data', id: hoveredStateId },
                             { hover: false }
                         )
                     }
                     // eslint-disable-next-line react-hooks/exhaustive-deps
                     hoveredStateId = e.features[0].id
-                    mapRef.current.setFeatureState({ source: 'taranaki-data', id: hoveredStateId }, { hover: true })
+                    mapRef?.current?.setFeatureState({ source: 'taranaki-data', id: hoveredStateId }, { hover: true })
                 }
             })
         mapRef &&
             mapRef.current.on('mouseleave', 'wahine', () => {
                 if (hoveredStateId !== null) {
-                    mapRef.current.setFeatureState({ source: 'taranaki-data', id: hoveredStateId }, { hover: false })
+                    mapRef?.current?.setFeatureState({ source: 'taranaki-data', id: hoveredStateId }, { hover: false })
                 }
                 hoveredStateId = null
             })
@@ -262,8 +289,14 @@ export default function Map({ data }) {
                         {' • '}
                     </Text>
                     <MoonPhaseDisplay />
+                    <Text fontFamily="subheading" fontSize="14px" lineHeight="1" textAlign="left" color="white" pb="2">
+                        {' • '}
+                    </Text>
+                    {/* <Text fontFamily="subheading" fontSize="14px" lineHeight="1" textAlign="left" color="white" pb="2">
+                        {wahines[selectedWahineIndex].ingoa}
+                    </Text> */}
                 </HStack>
-                <MapProgress loading={modalOpenPending} />
+                <MapProgress pending={modalOpenPending} value={progress} />
             </Box>
         </>
     )
