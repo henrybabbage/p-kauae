@@ -23,8 +23,6 @@ export default function ModalVideo({ playerRef, src, location, poster, alt }) {
                     controls={false}
                     muted={true}
                     loop={true}
-                    cover={false}
-                    info={false}
                     isPlaying={true}
                 />
             </AspectRatio>

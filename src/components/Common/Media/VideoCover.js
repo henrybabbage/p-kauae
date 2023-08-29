@@ -13,8 +13,6 @@ export default function VideoCover({ showCover }) {
                 <Image
                     src="/images/duotone.jpg"
                     alt="video preview image"
-                    // width="1200"
-                    // height="592"
                     fill
                     sizes="100vw"
                     style={{

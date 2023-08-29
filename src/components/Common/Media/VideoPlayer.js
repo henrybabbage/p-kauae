@@ -1,10 +1,10 @@
 import { isBrowser } from '@/utils/helpers'
-import { Box, useMediaQuery } from '@chakra-ui/react'
+import { Box, Tooltip } from '@chakra-ui/react'
 import { MediaOutlet, MediaPlayButton, MediaPlayer, MediaPoster } from '@vidstack/react'
 import { useEffect, useState } from 'react'
-import 'vidstack/styles/base.css'
-// import 'vidstack/styles/community-skin/video.css'
+import 'vidstack/styles/community-skin/video.css'
 import 'vidstack/styles/defaults.css'
+import VideoOverlay from './VideoOverlay'
 
 export default function VideoPlayer({
     playerRef,
@@ -12,19 +12,16 @@ export default function VideoPlayer({
     autoplay,
     muted,
     loop,
-    info,
-    cover,
     videoKorero,
     title,
     isPlaying,
-    showInfo,
-    showCover,
     poster,
     controls
 }) {
     const [hasWindow, setHasWindow] = useState(false)
     const [isBuffering, setIsBuffering] = useState(null)
     const [isReady, setIsReady] = useState(null)
+    const [showInfo, setShowInfo] = useState(false)
 
     useEffect(() => {
         if (isBrowser) {
@@ -32,13 +29,8 @@ export default function VideoPlayer({
         }
     }, [])
 
-    const [isMobile] = useMediaQuery('(max-width: 640px)', {
-        ssr: true,
-        fallback: false
-    })
-
     return (
-        <Box position="relative" bg="black" w="100%" h="100%" userSelect="auto" cursor="auto">
+        <Box position="absolute" bg="black" w="100%" h="100%" userSelect="all" cursor="auto">
             <MediaPlayer
                 title={title}
                 src={src}
@@ -51,68 +43,27 @@ export default function VideoPlayer({
                 playsinline
                 eager
             >
-                <MediaOutlet />
-                <MediaPoster data-loading alt={title} />
-                {/* {controls && !isMobile && <MediaCommunitySkin />} */}
-                {controls && !isMobile && (
-                    <Box className="media-controls-container" role="group" aria-label="Media Controls">
-                        <Box className="media-controls-group"></Box>
-                        <Box className="media-controls-group">
-                            <MediaPlayButton className="media-controls" />
+                <MediaOutlet>
+                    <MediaPoster className="media-video-poster" data-loading alt={title} />
+                    {controls && (
+                        <Box className="media-controls-container" role="group" aria-label="Media Controls">
+                            <Box className="media-controls-group"></Box>
+                            <Box className="media-controls-group">
+                                <Tooltip
+                                    label={!isPlaying ? 'Click to play video' : 'Click to pause video'}
+                                    placement="top"
+                                    variant="video"
+                                >
+                                    <MediaPlayButton className="media-controls" />
+                                </Tooltip>
+                            </Box>
+                            <Box className="media-controls-group"></Box>
                         </Box>
-                        <Box className="media-controls-group"></Box>
-                    </Box>
-                )}
+                    )}
+                </MediaOutlet>
+                {/* <MediaCommunitySkin /> */}
             </MediaPlayer>
-            {/* {!isReady && <VideoLoading />}
-            {isReady && isBuffering && (
-                <Center h="100%" w="100vw" position="absolute" z="50">
-                    <Spinner
-                        size="xl"
-                        thickness="4px"
-                        speed="0.65s"
-                        color="pink.400"
-                    />
-                </Center>
-            )}
-            {info && (
-                <VideoOverlay showInfo={!isPlaying} videoKorero={videoKorero} />
-            )}
-            {cover && <VideoCover showCover={showCover} />}
-            {hasWindow && (
-                <ReactPlayer
-                    ref={playerRef}
-                    url={src}
-                    width="100%"
-                    height="100%"
-                    position="relative"
-                    playsinline
-                    autoPlay={autoplay}
-                    muted={muted}
-                    loop={loop}
-                    playing={isPlaying}
-                    controls={false}
-                    // light={poster}
-                    onReady={() => {
-                        setIsReady(true)
-                    }}
-                    onPause={() => {
-                        console.log('pause')
-                    }}
-                    onPlay={() => {
-                        console.log('play')
-                    }}
-                    onBuffer={() => {
-                        setIsBuffering(true)
-                    }}
-                    onBufferEnd={() => {
-                        setIsBuffering(false)
-                    }}
-                    onEnded={() => {
-                        console.log('ended')
-                    }}
-                />
-            )} */}
+            {showInfo && <VideoOverlay showInfo={showInfo} videoKorero={videoKorero} />}
         </Box>
     )
 }
