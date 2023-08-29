@@ -146,7 +146,7 @@ export default function MapModal({
                                         </Mobile>
                                     </Client>
                                 </Box>
-                                <Box className="player">
+                                <Box>
                                     <ModalVideo
                                         playerRef={playerRef}
                                         src={wahines[selectedWahineIndex]?.kiriata?.droneFootage?.secure_url}
