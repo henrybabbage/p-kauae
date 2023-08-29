@@ -9,6 +9,8 @@ import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
 import MonthDisplay from './MonthDisplay'
 
+import { TabletAndAbove } from '@/utils/breakpoints'
+import { Client } from 'react-hydration-provider'
 import MapModal from './MapModal'
 import MapProgress from './MapProgress'
 import MoonPhaseDisplay from './MoonPhaseDisplay'
@@ -277,25 +279,63 @@ export default function Map({ data }) {
                     )}
                     <Layer source="taranaki-data" {...layerStyle} />
                 </ReactMapGL>
-                <Box id="local-time" position="fixed" left="6" bottom={['6', '6', '6', '8', '8', '8']}>
-                    <DigitalClock />
-                </Box>
-                <HStack spacing="24px" position="fixed" z="20" bottom={['6', '6', '6', '8', '8', '8']} left="32">
-                    <Text fontFamily="subheading" fontSize="14px" lineHeight="1" textAlign="left" color="white" pb="2">
-                        {' • '}
-                    </Text>
-                    <MonthDisplay />
-                    <Text fontFamily="subheading" fontSize="14px" lineHeight="1" textAlign="left" color="white" pb="2">
-                        {' • '}
-                    </Text>
-                    <MoonPhaseDisplay />
-                    <Text fontFamily="subheading" fontSize="14px" lineHeight="1" textAlign="left" color="white" pb="2">
-                        {' • '}
-                    </Text>
-                    {/* <Text fontFamily="subheading" fontSize="14px" lineHeight="1" textAlign="left" color="white" pb="2">
-                        {wahines[selectedWahineIndex].ingoa}
-                    </Text> */}
-                </HStack>
+                <Client>
+                    <TabletAndAbove>
+                        <Box id="local-time" position="fixed" left="6" bottom={['6', '6', '6', '8', '8', '8']}>
+                            <DigitalClock />
+                        </Box>
+                        <HStack
+                            spacing="24px"
+                            position="fixed"
+                            z="20"
+                            bottom={['6', '6', '6', '8', '8', '8']}
+                            left="32"
+                        >
+                            <Text
+                                fontFamily="subheading"
+                                fontSize="14px"
+                                lineHeight="1"
+                                textAlign="left"
+                                color="white"
+                                pb="2"
+                            >
+                                {' • '}
+                            </Text>
+                            <MonthDisplay />
+                            <Text
+                                fontFamily="subheading"
+                                fontSize="14px"
+                                lineHeight="1"
+                                textAlign="left"
+                                color="white"
+                                pb="2"
+                            >
+                                {' • '}
+                            </Text>
+                            <MoonPhaseDisplay />
+                            <Text
+                                fontFamily="subheading"
+                                fontSize="14px"
+                                lineHeight="1"
+                                textAlign="left"
+                                color="white"
+                                pb="2"
+                            >
+                                {' • '}
+                            </Text>
+                            <Text
+                                fontFamily="subheading"
+                                fontSize="14px"
+                                lineHeight="1"
+                                textAlign="left"
+                                color="white"
+                                pb="2"
+                            >
+                                {wahines[selectedWahineIndex].ingoa}
+                            </Text>
+                        </HStack>
+                    </TabletAndAbove>
+                </Client>
                 <MapProgress pending={modalOpenPending} value={progress} />
             </Box>
         </>
