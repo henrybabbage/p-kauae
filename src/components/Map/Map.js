@@ -83,7 +83,7 @@ export default function Map({ data }) {
             'icon-size': 0.35,
             'icon-allow-overlap': true,
             'text-allow-overlap': true,
-            'text-ignore-placement': true,
+            'text-ignore-placement': false,
             'text-optional': true,
             'text-field': ['get', 'title'],
             'text-font': ['Arial Unicode MS Bold'],
@@ -272,7 +272,6 @@ export default function Map({ data }) {
                     onMove={(event) => setViewport(event.viewport)}
                     mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck?optimize=true"
                     terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
-                    // interactiveLayerIds={[]}
                     interactiveLayerIds={['wahine']}
                     onClick={onClick}
                     onLoad={(e) => {
