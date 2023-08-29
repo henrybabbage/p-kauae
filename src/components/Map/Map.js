@@ -342,7 +342,7 @@ export default function Map({ data }) {
                                     color="white"
                                     pb="2"
                                 >
-                                    {wahines[selectedWahineIndex].wahi.ingoa}
+                                    {wahines[selectedWahineIndex]?.wahi?.ingoa}
                                 </Text>
                                 <Text
                                     fontFamily="subheading"
@@ -362,7 +362,7 @@ export default function Map({ data }) {
                                     color="white"
                                     pb="2"
                                 >
-                                    {wahines[selectedWahineIndex].ingoa}
+                                    {wahines[selectedWahineIndex]?.ingoa}
                                 </Text>
                                 <Text
                                     fontFamily="subheading"
