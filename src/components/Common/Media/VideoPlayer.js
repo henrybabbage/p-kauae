@@ -38,7 +38,7 @@ export default function VideoPlayer({
     })
 
     return (
-        <Box position="relative" bg="black" w="100%" h="100%">
+        <Box position="relative" bg="black" w="100%" h="100%" userSelect="auto" cursor="auto">
             <MediaPlayer
                 title={title}
                 src={src}
