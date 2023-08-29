@@ -16,14 +16,12 @@ This project is built with [Next.js](https://nextjs.org/) bootstrapped with [`cr
 
 ### Getting Started
 
-First, run the development server:
+First, install dependencies and run the development server:
 
 ```bash
+npm i
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 A .env file will be required with a MapBox Studio API token:
