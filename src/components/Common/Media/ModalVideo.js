@@ -12,7 +12,10 @@ export default function ModalVideo({ playerRef, src, location, poster, alt }) {
                 maxH={['auto', 'auto', 'auto', '100%', '100%', '100%']}
                 maxW={['100%', '100%', '100%', '100%', '100%', '100%']}
                 ratio={16 / 9}
+                userSelect="all"
                 cursor="auto"
+                pointerEvents="auto"
+                touch-action="manipulation"
             >
                 <VideoPlayer
                     playerRef={playerRef}
@@ -27,6 +30,9 @@ export default function ModalVideo({ playerRef, src, location, poster, alt }) {
                 />
             </AspectRatio>
             <Heading
+                userSelect="all"
+                cursor="auto"
+                pointerEvents="auto"
                 fontSize={['16px', '16px', '16px', '36px', '36px', '36px']}
                 color="white"
                 fontWeight="regular"
@@ -37,6 +43,7 @@ export default function ModalVideo({ playerRef, src, location, poster, alt }) {
                 right={['18px', '18px', '18px', null, null, null]}
                 w="fit-content"
                 textAlign={['right', 'right', 'right', 'left', 'left', 'left']}
+                touch-action="manipulation"
             >
                 {location}
             </Heading>
