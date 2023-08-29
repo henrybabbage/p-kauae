@@ -1,5 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
-import { Box, Button, Center, HStack, Heading, IconButton, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Center, Flex, HStack, Heading, IconButton, Text, useDisclosure } from '@chakra-ui/react'
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
@@ -304,69 +304,15 @@ export default function Map({ data }) {
                 </ReactMapGL>
                 <Client>
                     <TabletAndAbove>
-                        <Box id="local-time" position="fixed" left="6" bottom={['6', '6', '6', '8', '8', '8']}>
-                            <DigitalClock />
-                        </Box>
-                        <HStack
-                            spacing="24px"
-                            position="fixed"
-                            z="20"
-                            bottom={['6', '6', '6', '8', '8', '8']}
-                            left="32"
-                        >
-                            <Text
-                                fontFamily="subheading"
-                                fontSize="14px"
-                                lineHeight="1"
-                                textAlign="left"
-                                color="white"
-                                pb="2"
+                        <Flex justifyContent="space-between">
+                            <HStack
+                                spacing="24px"
+                                position="fixed"
+                                z="20"
+                                bottom={['6', '6', '6', '8', '8', '8']}
+                                left="8"
                             >
-                                {' • '}
-                            </Text>
-                            <MonthDisplay />
-                            <Text
-                                fontFamily="subheading"
-                                fontSize="14px"
-                                lineHeight="1"
-                                textAlign="left"
-                                color="white"
-                                pb="2"
-                            >
-                                {' • '}
-                            </Text>
-                            <MoonPhaseDisplay />
-                            <Text
-                                fontFamily="subheading"
-                                fontSize="14px"
-                                lineHeight="1"
-                                textAlign="left"
-                                color="white"
-                                pb="2"
-                            >
-                                {' • '}
-                            </Text>
-                            <Text
-                                fontFamily="subheading"
-                                fontSize="14px"
-                                lineHeight="1"
-                                textAlign="left"
-                                color="white"
-                                pb="2"
-                            >
-                                {wahines[selectedWahineIndex].ingoa}
-                            </Text>
-                            <Text
-                                fontFamily="subheading"
-                                fontSize="14px"
-                                lineHeight="1"
-                                textAlign="left"
-                                color="white"
-                                pb="2"
-                            >
-                                {' • '}
-                            </Text>
-                            <Button variant="prompt" onClick={instructionsModal.onOpen}>
+                                <MonthDisplay />
                                 <Text
                                     fontFamily="subheading"
                                     fontSize="14px"
@@ -375,10 +321,84 @@ export default function Map({ data }) {
                                     color="white"
                                     pb="2"
                                 >
-                                    {'Guide'}
+                                    {' • '}
                                 </Text>
-                            </Button>
-                        </HStack>
+                                <MoonPhaseDisplay />
+                                <Text
+                                    fontFamily="subheading"
+                                    fontSize="14px"
+                                    lineHeight="1"
+                                    textAlign="left"
+                                    color="white"
+                                    pb="2"
+                                >
+                                    {' • '}
+                                </Text>
+                                <Text
+                                    fontFamily="subheading"
+                                    fontSize="14px"
+                                    lineHeight="1"
+                                    textAlign="left"
+                                    color="white"
+                                    pb="2"
+                                >
+                                    {wahines[selectedWahineIndex].wahi.ingoa}
+                                </Text>
+                                <Text
+                                    fontFamily="subheading"
+                                    fontSize="14px"
+                                    lineHeight="1"
+                                    textAlign="left"
+                                    color="white"
+                                    pb="2"
+                                >
+                                    {' • '}
+                                </Text>
+                                <Text
+                                    fontFamily="subheading"
+                                    fontSize="14px"
+                                    lineHeight="1"
+                                    textAlign="left"
+                                    color="white"
+                                    pb="2"
+                                >
+                                    {wahines[selectedWahineIndex].ingoa}
+                                </Text>
+                                <Text
+                                    fontFamily="subheading"
+                                    fontSize="14px"
+                                    lineHeight="1"
+                                    textAlign="left"
+                                    color="white"
+                                    pb="2"
+                                >
+                                    {' • '}
+                                </Text>
+                                <Button variant="prompt" onClick={instructionsModal.onOpen}>
+                                    <Text
+                                        fontFamily="subheading"
+                                        fontSize="14px"
+                                        lineHeight="1"
+                                        textAlign="left"
+                                        color="white"
+                                        pb="2"
+                                    >
+                                        {'Guide'}
+                                    </Text>
+                                </Button>
+                            </HStack>
+                            <HStack
+                                spacing="24px"
+                                position="fixed"
+                                z="20"
+                                bottom={['6', '6', '6', '8', '8', '8']}
+                                right="32"
+                            >
+                                <Box id="local-time" position="fixed" bottom={['6', '6', '6', '8', '8', '8']}>
+                                    <DigitalClock />
+                                </Box>
+                            </HStack>
+                        </Flex>
                     </TabletAndAbove>
                 </Client>
                 <MapProgress pending={modalOpenPending} value={progress} />
