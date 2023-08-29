@@ -117,8 +117,13 @@ export default function MapModal({
                                     loop={true}
                                 />
                             </Box>
-
-                            <Flex w="100%" maxW="100vw" gap="20px" pt={[2, 2, 2, 4, 4, 4]}>
+                            <Flex
+                                flexDirection={['column', 'column', 'column', 'row', 'row', 'row']}
+                                w="100%"
+                                maxW="100vw"
+                                gap="20px"
+                                pt={[0, 0, 0, 4, 4, 4]}
+                            >
                                 <Flex flexDirection="column" gap="10px" justifyContent="start" flex="1">
                                     <Heading
                                         fontSize={['28px', '28px', '28px', '36px', '36px', '36px']}
