@@ -94,7 +94,7 @@ export default function Map({ data }) {
             'icon-color': '#ffffff',
             'text-color': [
                 'case',
-                ['boolean', ['feature-state', 'hover'], false],
+                // ['boolean', ['feature-state', 'hover'], false],
                 '#f9abab',
                 ['case', ['==', ['get', 'id'], activeWahineId], '#f9abab', '#ffffff']
             ]
@@ -272,8 +272,8 @@ export default function Map({ data }) {
                     onMove={(event) => setViewport(event.viewport)}
                     mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck?optimize=true"
                     terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
-                    // interactiveLayerIds={[]}
-                    interactiveLayerIds={['wahine']}
+                    interactiveLayerIds={[]}
+                    // interactiveLayerIds={['wahine']}
                     onClick={onClick}
                     onLoad={(e) => {
                         setMapIsVisible(true), onMapLoad(e)
