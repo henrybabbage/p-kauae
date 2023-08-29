@@ -145,7 +145,7 @@ export default function HomePage({ data: korero, preview }) {
                                 textAlign="left"
                                 color="pink.200"
                                 w="100vw"
-                                pb={['2', '2', '2', '10', '10', '10']}
+                                pb={['6', '6', '6', '10', '10', '10']}
                             >
                                 A special thanks to
                             </Heading>
@@ -177,19 +177,21 @@ export default function HomePage({ data: korero, preview }) {
                             height={['auto', 'auto', 'auto', '100vh', '100vh', '100vh']}
                             lineHeight="1.36"
                         >
-                            <Heading
-                                as="h2"
-                                fontFamily="heading"
-                                fontSize={['24px', '24px', '24px', '46px', '84px', '84px']}
-                                lineHeight="1.36"
-                                textAlign="left"
-                                color="pink.200"
-                                w={['98vw', '98vw', '98vw', '100vw', '100vw', '100vw']}
-                                pb={['2', '2', '10', '10', '10']}
-                                visibility="hidden"
-                            >
-                                Heading space
-                            </Heading>
+                            <Box as="span" display={['none', 'none', 'none', 'block', 'block', 'block']}>
+                                <Heading
+                                    as="h2"
+                                    fontFamily="heading"
+                                    fontSize={['24px', '24px', '24px', '46px', '84px', '84px']}
+                                    lineHeight="1.36"
+                                    textAlign="left"
+                                    color="pink.200"
+                                    w={['98vw', '98vw', '98vw', '100vw', '100vw', '100vw']}
+                                    pb={['6', '6', '6', '10', '10', '10']}
+                                    visibility="hidden"
+                                >
+                                    Heading space
+                                </Heading>
+                            </Box>
                             {rightColumn.map((name, index) => (
                                 <Text
                                     fontSize={['24px', '24px', '24px', '32px', '32px', '32px']}
