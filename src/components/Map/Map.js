@@ -255,6 +255,17 @@ export default function Map({ data }) {
                 transition="opacity 0.5s ease-in"
                 transitionDelay="1s"
             >
+                {/* Drawer WIP */}
+                {/* <Client>
+                    <Box position="fixed" inset="0">
+                        <MapDrawer
+                            wahines={wahines}
+                            selectedWahineIndex={selectedWahineIndex}
+                            handleNextClick={handleNextClick}
+                            handlePrevClick={handlePrevClick}
+                        />
+                    </Box>
+                </Client> */}
                 <MapModal
                     isOpen={mapModal.isOpen}
                     onOpen={mapModal.onOpen}
