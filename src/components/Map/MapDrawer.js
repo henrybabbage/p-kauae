@@ -2,8 +2,8 @@ import { Drawer } from 'vaul'
 
 export default function MapDrawer() {
     return (
-        <Drawer.Root>
-            <Drawer.Trigger>Open</Drawer.Trigger>
+        <Drawer.Root shouldScaleBackground>
+            <Drawer.Trigger asChild>Open</Drawer.Trigger>
             <Drawer.Portal>
                 <Drawer.Content>
                     <p>Content</p>

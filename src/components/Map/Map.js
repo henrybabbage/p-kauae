@@ -1,5 +1,4 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
-import { Box, Button, Center, Flex, HStack, Heading, IconButton, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Center, Flex, HStack, Heading, Text, useDisclosure } from '@chakra-ui/react'
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
@@ -88,7 +87,18 @@ export default function Map({ data }) {
             'text-field': ['get', 'title'],
             'text-font': ['Arial Unicode MS Bold'],
             'text-offset': [0, 1.25],
-            'text-variable-anchor': ['top', 'bottom', 'left', 'right']
+            'text-variable-anchor': [
+                'top',
+                'bottom',
+                'left',
+                'right',
+                'center',
+                'top-left',
+                'top-right',
+                'bottom-left',
+                'bottom-right'
+            ],
+            'text-radial-offset': 1.25
         },
         paint: {
             'icon-color': '#ffffff',
