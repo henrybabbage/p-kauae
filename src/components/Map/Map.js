@@ -112,7 +112,7 @@ export default function Map({ data }) {
     }
 
     const mapModal = useDisclosure()
-    const instructionsModal = useDisclosure()
+    const instructionsModal = useDisclosure({ defaultIsOpen: true })
 
     function handleModalDelay() {
         setModalOpenPending(true)
@@ -224,12 +224,14 @@ export default function Map({ data }) {
 
     return (
         <>
+            {/* Instructions modal will be open by default when page mounts */}
             <MapOverlay
                 isOpen={instructionsModal.isOpen}
                 onOpen={instructionsModal.onOpen}
                 onClose={instructionsModal.onClose}
             />
-            <Center id="fallback" h="100vh" w="100vw" position="absolute">
+            {/* Fallback display before map mounts */}
+            <Center h="100vh" w="100vw" position="absolute">
                 <Heading
                     as="h1"
                     fontFamily="subheading"
