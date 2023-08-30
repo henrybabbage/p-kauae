@@ -14,6 +14,7 @@ import MapModal from './MapModal'
 import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
 import MoonPhaseDisplay from './MoonPhaseDisplay'
+import Image from 'next/image'
 
 let interval = undefined
 
@@ -112,7 +113,7 @@ export default function Map({ data }) {
     }
 
     const mapModal = useDisclosure()
-    const instructionsModal = useDisclosure()
+    const instructionsModal = useDisclosure({ defaultIsOpen: true })
 
     function handleModalDelay() {
         setModalOpenPending(true)
@@ -224,27 +225,26 @@ export default function Map({ data }) {
 
     return (
         <>
+            {/* Instructions modal will be open by default when page mounts */}
             <MapOverlay
                 isOpen={instructionsModal.isOpen}
                 onOpen={instructionsModal.onOpen}
                 onClose={instructionsModal.onClose}
             />
-            <Center id="fallback" h="100vh" w="100vw" position="absolute">
-                <Heading
-                    as="h1"
-                    fontFamily="subheading"
-                    fontSize={['14px', '14px', '14px', '18px', '18px', '18px']}
-                    color="white"
-                    lineHeight="1.3"
-                    textAlign="center"
-                    textColor="white"
-                    textTransform="uppercase"
-                    opacity={!mapIsVisible ? 1 : 0}
-                    transition="opacity 0.5s ease-in"
-                    transitionDelay="1s"
-                >
-                    {'Loading map'}
-                </Heading>
+            {/* Fallback display before map mounts */}
+            <Center h="100vh" w="100vw" position="absolute">
+                <Image
+                    src="/icons/pukauae.svg"
+                    alt="Pukauae logo"
+                    width="125"
+                    height="125"
+                    priority
+                    sizes="100vw"
+                    style={{
+                        objectFit: 'contain',
+                        objectPosition: 'center'
+                    }}
+                />
             </Center>
             <Box
                 h="100vh"
@@ -255,6 +255,17 @@ export default function Map({ data }) {
                 transition="opacity 0.5s ease-in"
                 transitionDelay="1s"
             >
+                {/* Drawer WIP */}
+                {/* <Client>
+                    <Box position="fixed" inset="0">
+                        <MapDrawer
+                            wahines={wahines}
+                            selectedWahineIndex={selectedWahineIndex}
+                            handleNextClick={handleNextClick}
+                            handlePrevClick={handlePrevClick}
+                        />
+                    </Box>
+                </Client> */}
                 <MapModal
                     isOpen={mapModal.isOpen}
                     onOpen={mapModal.onOpen}

@@ -3,6 +3,21 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { MotionBox } from '../Primitives/MotionBox'
 
+const steps = [
+    {
+        title: 'First',
+        description: 'This map highlights the relationship between each woman and the land they are connected to.'
+    },
+    {
+        title: 'Second',
+        description: 'Use the arrows to move around Taranaki and engage with stories of reclamation.'
+    },
+    {
+        title: 'Third',
+        description: 'Begin the journey around the map'
+    }
+]
+
 export default function StepsComponent() {
     let [step, setStep] = useState(1)
 

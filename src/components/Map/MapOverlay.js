@@ -32,9 +32,9 @@ export default function MapOverlay({ onClose, onOpen, isOpen }) {
             }}
         >
             <ModalOverlay />
-            <ModalContent m={0} p={0} bg="grey.900" overflow="hidden" maxW="100vw" maxH="100vh">
+            <ModalContent m={0} p={0} overflow="hidden" bg="rgba(0,0,0,0.8)" maxW="100vw" maxH="100vh">
                 <ModalHeader h="fit-content">
-                    <Flex justifyContent="space-between" alignContent="start">
+                    <Flex justifyContent="space-between" alignContent="start" p={['2', '2', '2', '2', '2', '2']}>
                         <Heading
                             as="h1"
                             fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
@@ -44,7 +44,7 @@ export default function MapOverlay({ onClose, onOpen, isOpen }) {
                         >
                             {'Nau mai ki Pūkauae'}
                         </Heading>
-                        <Button variant="prompt" onClick={onClose} zIndex="100">
+                        <Button variant="callToAction" onClick={onClose} zIndex="100">
                             <Text fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}>{'(Close)'}</Text>
                         </Button>
                     </Flex>
