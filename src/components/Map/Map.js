@@ -14,6 +14,7 @@ import MapModal from './MapModal'
 import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
 import MoonPhaseDisplay from './MoonPhaseDisplay'
+import Image from 'next/image'
 
 let interval = undefined
 
@@ -232,21 +233,18 @@ export default function Map({ data }) {
             />
             {/* Fallback display before map mounts */}
             <Center h="100vh" w="100vw" position="absolute">
-                <Heading
-                    as="h1"
-                    fontFamily="subheading"
-                    fontSize={['14px', '14px', '14px', '18px', '18px', '18px']}
-                    color="white"
-                    lineHeight="1.3"
-                    textAlign="center"
-                    textColor="white"
-                    textTransform="uppercase"
-                    opacity={!mapIsVisible ? 1 : 0}
-                    transition="opacity 0.5s ease-in"
-                    transitionDelay="1s"
-                >
-                    {'Loading map'}
-                </Heading>
+                <Image
+                    src="/icons/pukauae.svg"
+                    alt="Pukauae logo"
+                    width="125"
+                    height="125"
+                    priority
+                    sizes="100vw"
+                    style={{
+                        objectFit: 'contain',
+                        objectPosition: 'center'
+                    }}
+                />
             </Center>
             <Box
                 h="100vh"
