@@ -11,6 +11,7 @@ import { TabletAndAbove } from '@/utils/breakpoints'
 import Image from 'next/image'
 import { Client } from 'react-hydration-provider'
 import MapProgress from './MapProgress'
+import MapModal from './MapModal'
 import MoonPhaseDisplay from './MoonPhaseDisplay'
 
 let interval = undefined
@@ -32,7 +33,7 @@ export default function Map({ wahine }) {
     const [selectedWahine, setSelectedWahine] = useState(null)
     const [viewport, setViewport] = useState(() => {
         const randomIndex = Math.floor(Math.random() * wahine.features.length)
-        setSelectedWahineIndex(randomIndex)
+        setSelectedWahine(wahine.features[randomIndex].properties)
         const initialPoint = wahine.features[randomIndex].properties.wahi
         return {
             latitude: initialPoint.ahuahanga.lat,
@@ -47,7 +48,8 @@ export default function Map({ wahine }) {
 
     const [running, setRunning] = useState(false)
     const [progress, setProgress] = useState(0)
-
+    const [mapIsIdle, setMapIsIdle] = useState(false)
+    const [mapIsMoving, setMapIsMoving] = useState(false)
     const mapRef = useRef(null)
     const timeOutRef = useRef(null)
     const hoveredStateIdRef = useRef(null)
@@ -131,22 +133,19 @@ export default function Map({ wahine }) {
 
     const handlePrevClick = () => {
         setProgress(0)
-        setRunning(!running)
+        setRunning((r) => !r)
         const prevIndex = selectedWahineIndex === wahine.features.length - 1 ? 0 : selectedWahineIndex + 1
-        setSelectedWahineIndex(prevIndex)
+        setSelectedWahine(wahine.features[prevIndex].properties)
         handleModalDelay()
+        const previousCoords = [
+            wahine.features[prevIndex].properties.wahi.ahuahanga.lng,
+            wahine.features[prevIndex].properties.wahi.ahuahanga.lat
+        ]
         mapRef.current.flyTo({
-            // flyTo wants order: [Lng, Lat]
-            center: [
-                wahine.features[prevIndex].properties.wahi.ahuahanga.lng,
-                wahine.features[prevIndex].properties.wahi.ahuahanga.lat
-            ],
+            center: previousCoords,
             pitch: 70,
             duration: 3000,
-            bearing: handleMapBearing([
-                wahine.features[prevIndex].properties.wahi.ahuahanga.lng,
-                wahine.features[prevIndex].properties.wahi.ahuahanga.lat
-            ])
+            bearing: handleMapBearing(previousCoords)
         })
     }
 
@@ -154,32 +153,45 @@ export default function Map({ wahine }) {
         setProgress(0)
         setRunning(!running)
         const nextIndex = selectedWahineIndex === 0 ? wahine.features.length - 1 : selectedWahineIndex - 1
-        setSelectedWahineIndex(nextIndex)
+        setSelectedWahine(wahine.features[nextIndex].properties)
         handleModalDelay()
+        const nextCoords = [
+            wahine.features[nextIndex].properties.wahi.ahuahanga.lng,
+            wahine.features[nextIndex].properties.wahi.ahuahanga.lat
+        ]
         mapRef.current.flyTo({
-            center: [
-                wahine.features[nextIndex].properties.wahi.ahuahanga.lng,
-                wahine.features[nextIndex].properties.wahi.ahuahanga.lat
-            ],
+            center: nextCoords,
             pitch: 70,
             duration: 3000,
-            bearing: handleMapBearing([
-                wahine.features[nextIndex].properties.wahi.ahuahanga.lng,
-                wahine.features[nextIndex].properties.wahi.ahuahanga.lat
-            ])
+            bearing: handleMapBearing(nextCoords)
         })
+    }
+
+    // This converts the stringified object to JS object notion. Note: we need to handle any objects passed down here. Something to consider around the handling and storing of data.
+    const convertJSONProperties = (p) => {
+        if (p) {
+            return {
+                ...p,
+                kiriata: JSON.parse(p.kiriata),
+                korero_pukauae: JSON.parse(p.korero_pukauae),
+                korero_wahi: JSON.parse(p.korero_wahi),
+                wahi: JSON.parse(p.wahi),
+                whakaahua: JSON.parse(p.whakaahua)
+            }
+        }
     }
 
     const onClick = (e) => {
         if (e.features.length && e.features[0].properties) {
-            setSelectedWahine(e.features[0].properties)
+            const wahineProperties = convertJSONProperties(e.features[0].properties)
+            setSelectedWahine(wahineProperties)
             handleModalDelay()
-            const coords = JSON.parse(e.features[0].properties.wahi)
+            const clickedCoords = [wahineProperties.wahi.ahuahanga.lng, wahineProperties.wahi.ahuahanga.lat]
             mapRef.current.flyTo({
-                center: [coords.ahuahanga.lng, coords.ahuahanga.lat],
+                center: clickedCoords,
                 pitch: 70,
                 duration: 3000,
-                bearing: handleMapBearing([coords.ahuahanga.lng, coords.ahuahanga.lat])
+                bearing: handleMapBearing(clickedCoords)
             })
         }
     }
@@ -245,15 +257,18 @@ export default function Map({ wahine }) {
                 transition="opacity 0.5s ease-in"
                 transitionDelay="1s"
             >
-                {/* <MapModal
-                    isOpen={mapModal.isOpen}
-                    onOpen={mapModal.onOpen}
-                    onClose={mapModal.onClose}
-                    wahine={wahine.features}
-                    selectedWahineIndex={selectedWahineIndex}
-                    handleNextClick={handleNextClick}
-                    handlePrevClick={handlePrevClick}
-                /> */}
+                {selectedWahine && (
+                    <MapModal
+                        isOpen={mapModal.isOpen}
+                        onOpen={mapModal.onOpen}
+                        onClose={mapModal.onClose}
+                        wahine={wahine}
+                        selectedWahine={selectedWahine}
+                        selectedWahineIndex={selectedWahineIndex}
+                        handleNextClick={handleNextClick}
+                        handlePrevClick={handlePrevClick}
+                    />
+                )}
                 <ReactMapGL
                     {...viewport}
                     reuseMaps
@@ -277,6 +292,14 @@ export default function Map({ wahine }) {
                     onLoad={(e) => {
                         setMapIsVisible(true), onMapLoad(e)
                     }}
+                    onIdle={() => {
+                        setMapIsIdle(true)
+                        setMapIsMoving(false)
+                    }}
+                    onMoveStart={() => {
+                        setMapIsIdle(false)
+                        setMapIsMoving(true)
+                    }}
                 >
                     <Source id="taranaki-data" type="geojson" data={wahine} tolerance={0} generateId={true} />
                     <Layer source="taranaki-data" {...layerStyle} />
@@ -299,7 +322,7 @@ export default function Map({ wahine }) {
                                     color="#FFD233"
                                     pb="2"
                                 >
-                                    {/* {wahines[selectedWahineIndex]?.wahi?.ingoa} */}
+                                    {selectedWahine?.wahi?.ingoa}
                                 </Text>
                                 <Text
                                     fontFamily="subheading"
@@ -319,7 +342,7 @@ export default function Map({ wahine }) {
                                     color="#FFD233"
                                     pb="2"
                                 >
-                                    {/* {wahines[selectedWahineIndex]?.ingoa} */}
+                                    {selectedWahine?.ingoa}
                                 </Text>
                             </HStack>
                             <HStack

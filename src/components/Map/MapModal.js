@@ -26,26 +26,27 @@ export default function MapModal({
     onClose,
     isOpen,
     wahine,
+    selectedWahine,
     selectedWahineIndex,
     handleNextClick,
     handlePrevClick
 }) {
-    const captureDate = wahine.features[selectedWahineIndex].wa_tiki_whakaahua
+    const captureDate = selectedWahine.wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
 
-    const getPreviousWahine = (selectedWahineIndex) => {
-        if (selectedWahineIndex === wahines.length - 1) {
-            return wahine.features[0]?.ingoa || 'Previous'
+    const getPreviousWahine = () => {
+        if (selectedWahineIndex === wahine.features.length - 1) {
+            return wahine.features[0].properties?.ingoa || 'Previous'
         } else {
-            return wahine.features[selectedWahineIndex + 1]?.ingoa || 'Previous'
+            return wahine.features[selectedWahineIndex + 1].properties?.ingoa || 'Previous'
         }
     }
 
-    const getNextWahine = (selectedWahineIndex) => {
+    const getNextWahine = () => {
         if (selectedWahineIndex === 0) {
-            return wahine.features[wahine.features.length - 1]?.ingoa || 'Next'
+            return wahine.features[wahine.features.length - 1].properties?.ingoa || 'Next'
         } else {
-            return wahine.features[selectedWahineIndex - 1]?.ingoa || 'Next'
+            return wahine.features[selectedWahineIndex - 1].properties?.ingoa || 'Next'
         }
     }
 
@@ -109,9 +110,9 @@ export default function MapModal({
                             <Box w="100%" maxW="100vw" h="auto">
                                 <ModalVideo
                                     playerRef={playerRef}
-                                    src={wahine.features[selectedWahineIndex]?.kiriata?.droneFootage?.secure_url}
-                                    location={wahine.features[selectedWahineIndex].kiriata.ingoa}
-                                    poster={wahine.features[selectedWahineIndex].kiriata.poster?.asset?.url}
+                                    src={selectedWahine.kiriata.droneFootage.secure_url}
+                                    location={selectedWahine.kiriata.ingoa}
+                                    poster={selectedWahine.kiriata.poster?.asset?.url}
                                     autoplay={true}
                                     muted={true}
                                     loop={true}
@@ -131,7 +132,7 @@ export default function MapModal({
                                         fontWeight="regular"
                                         fontFamily="heading"
                                     >
-                                        {wahine.features[selectedWahineIndex].ingoa}
+                                        {selectedWahine.ingoa}
                                     </Heading>
                                     <Heading
                                         fontSize={['12px', '12px', '12px', '16px', '16px', '16px']}
@@ -139,7 +140,7 @@ export default function MapModal({
                                         fontWeight="regular"
                                         fontFamily="heading"
                                     >
-                                        {wahine.features[selectedWahineIndex].whakapapa}
+                                        {selectedWahine.whakapapa}
                                     </Heading>
                                     <Box
                                         display="block"
@@ -151,45 +152,29 @@ export default function MapModal({
                                         <Client>
                                             <TabletAndAbove>
                                                 <ZoomImage
-                                                    src={wahine.features[selectedWahineIndex]?.whakaahua?.asset?.url}
-                                                    alt={
-                                                        wahine.features[selectedWahineIndex]?.whakaahua
-                                                            ?.alternative_text
-                                                    }
+                                                    src={selectedWahine?.whakaahua?.asset?.url}
+                                                    alt={selectedWahine?.whakaahua?.alternative_text}
                                                     width={
-                                                        wahine.features[selectedWahineIndex]?.whakaahua?.asset?.metadata
-                                                            ?.dimensions?.width
+                                                        selectedWahine?.whakaahua?.asset?.metadata?.dimensions?.width
                                                     }
                                                     height={
-                                                        wahine.features[selectedWahineIndex]?.whakaahua?.asset?.metadata
-                                                            ?.dimensions?.height
+                                                        selectedWahine?.whakaahua?.asset?.metadata?.dimensions?.height
                                                     }
-                                                    blurhash={
-                                                        wahine.features[selectedWahineIndex]?.whakaahua?.asset?.metadata
-                                                            ?.blurHash
-                                                    }
-                                                    caption={wahine.features[selectedWahineIndex]?.ingoa}
+                                                    blurhash={selectedWahine?.whakaahua?.asset?.metadata?.blurHash}
+                                                    caption={selectedWahine?.ingoa}
                                                 />
                                             </TabletAndAbove>
                                             <Mobile>
                                                 <ChakraNextImage
-                                                    src={wahine.features[selectedWahineIndex]?.whakaahua?.asset?.url}
-                                                    alt={
-                                                        wahine.features[selectedWahineIndex]?.whakaahua
-                                                            ?.alternative_text
-                                                    }
+                                                    src={selectedWahine?.whakaahua?.asset?.url}
+                                                    alt={selectedWahine?.whakaahua?.alternative_text}
                                                     width={
-                                                        wahine.features[selectedWahineIndex]?.whakaahua?.asset?.metadata
-                                                            ?.dimensions?.width
+                                                        selectedWahine?.whakaahua?.asset?.metadata?.dimensions?.width
                                                     }
                                                     height={
-                                                        wahine.features[selectedWahineIndex]?.whakaahua?.asset?.metadata
-                                                            ?.dimensions?.height
+                                                        selectedWahine?.whakaahua?.asset?.metadata?.dimensions?.height
                                                     }
-                                                    blurhash={
-                                                        wahine.features[selectedWahineIndex]?.whakaahua?.asset?.metadata
-                                                            ?.blurHash
-                                                    }
+                                                    blurhash={selectedWahine?.whakaahua?.asset?.metadata?.blurHash}
                                                 />
                                             </Mobile>
                                         </Client>
@@ -208,7 +193,7 @@ export default function MapModal({
                                                 width: '100%',
                                                 maxWidth: '100%'
                                             }}
-                                            value={wahine.features[selectedWahineIndex].korero_pukauae}
+                                            value={selectedWahine.korero_pukauae}
                                         />
                                         <CustomPortableText
                                             as={'p'}
@@ -221,7 +206,7 @@ export default function MapModal({
                                                 width: '100%',
                                                 maxWidth: '100%'
                                             }}
-                                            value={wahine.features[selectedWahineIndex].korero_wahi}
+                                            value={selectedWahine.korero_wahi}
                                         />
                                         <HStack>
                                             <Text
@@ -236,7 +221,7 @@ export default function MapModal({
                                                 lineHeight="1.36"
                                                 color="white"
                                             >
-                                                {wahine.features[selectedWahineIndex].tohunga_ta_moko}
+                                                {selectedWahine.tohunga_ta_moko}
                                             </Text>
                                         </HStack>
                                         <HStack>
@@ -252,7 +237,7 @@ export default function MapModal({
                                                 lineHeight="1.36"
                                                 color="white"
                                             >
-                                                {wahine.features[selectedWahineIndex].wahi.ingoa}
+                                                {selectedWahine.wahi.ingoa}
                                             </Text>
                                         </HStack>
                                         <HStack>
@@ -288,7 +273,7 @@ export default function MapModal({
                                     handlePrevClick(selectedWahineIndex)
                                 }}
                             >
-                                {'←'} {getPreviousWahine(selectedWahineIndex)}
+                                {'←'} {getPreviousWahine()}
                             </Button>
                         </Box>
                         <Box>
@@ -300,7 +285,7 @@ export default function MapModal({
                                     handleNextClick(selectedWahineIndex)
                                 }}
                             >
-                                {getNextWahine(selectedWahineIndex)} {'→'}
+                                {getNextWahine()} {'→'}
                             </Button>
                         </Box>
                     </Flex>
