@@ -29,6 +29,7 @@ export default function Map({ wahine }) {
     const [modalOpenPending, setModalOpenPending] = useState(false)
     const [mapIsVisible, setMapIsVisible] = useState(false)
     const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
+    const [selectedWahine, setSelectedWahine] = useState(null)
     const [viewport, setViewport] = useState(() => {
         const randomIndex = Math.floor(Math.random() * wahine.features.length)
         setSelectedWahineIndex(randomIndex)
@@ -123,6 +124,11 @@ export default function Map({ wahine }) {
         }
     }, [progress])
 
+    useEffect(() => {
+        selectedWahine &&
+            setSelectedWahineIndex(wahine.features.findIndex((w) => w.properties.id === selectedWahine.id))
+    }, [selectedWahine])
+
     const handlePrevClick = () => {
         setProgress(0)
         setRunning(!running)
@@ -166,29 +172,15 @@ export default function Map({ wahine }) {
 
     const onClick = (e) => {
         if (e.features.length && e.features[0].properties) {
-            const { id } = e.features[0].properties
-            console.log('e.features[0].properties', e.features[0].properties)
-            console.log({ wahine })
-            console.log({ id })
-            const clickedWahine = wahine.features.find((w) => w.id === id)
-            console.log({ clickedWahine })
-            //TODO find index, do not subtract from id
-            if (clickedWahine) {
-                setSelectedWahineIndex(clickedWahine.id - 1)
-                handleModalDelay()
-                mapRef.current.flyTo({
-                    center: [
-                        wahine.features[clickedWahine.id - 1].properties.wahi.ahuahanga.lng,
-                        wahine.features[clickedWahine.id - 1].properties.wahi.ahuahanga.lat
-                    ],
-                    pitch: 70,
-                    duration: 3000,
-                    bearing: handleMapBearing([
-                        wahine.features[clickedWahine.id - 1].properties.wahi.ahuahanga.lng,
-                        wahine.features[clickedWahine.id - 1].properties.wahi.ahuahanga.lat
-                    ])
-                })
-            }
+            setSelectedWahine(e.features[0].properties)
+            handleModalDelay()
+            const coords = JSON.parse(e.features[0].properties.wahi)
+            mapRef.current.flyTo({
+                center: [coords.ahuahanga.lng, coords.ahuahanga.lat],
+                pitch: 70,
+                duration: 3000,
+                bearing: handleMapBearing([coords.ahuahanga.lng, coords.ahuahanga.lat])
+            })
         }
     }
 
