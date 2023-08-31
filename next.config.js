@@ -18,6 +18,7 @@ const nextConfig = {
         styledComponents: true
     },
     env: {
+        MAPBOX_API_TOKEN: process.env.MAPBOX_API_TOKEN,
         NEXT_PUBLIC_VISUALCROSSING_API_KEY: process.env.NEXT_PUBLIC_VISUALCROSSING_API_KEY,
         NEXT_PUBLIC_IMAGES_DOMAIN: process.env.NEXT_PUBLIC_IMAGES_DOMAIN,
         NEXT_PUBLIC_YOUTUBE_ASSET_DOMAIN: process.env.NEXT_PUBLIC_YOUTUBE_ASSET_DOMAIN,
