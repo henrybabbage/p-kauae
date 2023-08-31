@@ -10,10 +10,10 @@ const PreviewHomePage = dynamic(() => import('../components/Index/PreviewHomePag
 export default function Home({ preview, previewToken, korero }) {
     return preview ? (
         <PreviewProvider token={previewToken}>
-            <PreviewHomePage data={korero} koreroQuery={koreroQuery} />
+            <PreviewHomePage korero={korero} koreroQuery={koreroQuery} />
         </PreviewProvider>
     ) : (
-        <HomePage data={korero} />
+        <HomePage korero={korero} />
     )
 }
 
@@ -31,7 +31,7 @@ export async function getStaticProps(context) {
         props: {
             preview,
             previewToken,
-            korero: korero
+            korero
         },
         revalidate: 60
     }
