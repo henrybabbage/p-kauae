@@ -50,6 +50,7 @@ export default function Map({ wahine }) {
     const [progress, setProgress] = useState(0)
     const [mapIsIdle, setMapIsIdle] = useState(false)
     const [mapIsMoving, setMapIsMoving] = useState(false)
+    const [modalOpen, setModalOpen] = useState(false)
     const mapRef = useRef(null)
     const timeOutRef = useRef(null)
     const hoveredStateIdRef = useRef(null)
@@ -97,6 +98,14 @@ export default function Map({ wahine }) {
     const mapModal = useDisclosure()
     const instructionsModal = useDisclosure({ defaultIsOpen: true })
 
+    useEffect(() => {
+        if (!mapIsMoving && mapIsIdle && modalOpen) {
+            mapModal.onOpen()
+        } else if (mapModal.isOpen && !modalOpen) {
+            mapModal.onClose()
+        }
+    }, [mapIsMoving, mapIsIdle, modalOpen])
+
     function handleModalDelay() {
         setModalOpenPending(true)
         setRunning(true)
@@ -132,11 +141,11 @@ export default function Map({ wahine }) {
     }, [selectedWahine])
 
     const handlePrevClick = () => {
-        setProgress(0)
-        setRunning((r) => !r)
+        mapModal.isOpen && mapModal.onClose()
+        setMapIsMoving(true)
+        setModalOpen(true)
         const prevIndex = selectedWahineIndex === wahine.features.length - 1 ? 0 : selectedWahineIndex + 1
         setSelectedWahine(wahine.features[prevIndex].properties)
-        handleModalDelay()
         const previousCoords = [
             wahine.features[prevIndex].properties.wahi.ahuahanga.lng,
             wahine.features[prevIndex].properties.wahi.ahuahanga.lat
@@ -150,11 +159,11 @@ export default function Map({ wahine }) {
     }
 
     const handleNextClick = () => {
-        setProgress(0)
-        setRunning(!running)
+        mapModal.isOpen && mapModal.onClose()
+        setMapIsMoving(true)
+        setModalOpen(true)
         const nextIndex = selectedWahineIndex === 0 ? wahine.features.length - 1 : selectedWahineIndex - 1
         setSelectedWahine(wahine.features[nextIndex].properties)
-        handleModalDelay()
         const nextCoords = [
             wahine.features[nextIndex].properties.wahi.ahuahanga.lng,
             wahine.features[nextIndex].properties.wahi.ahuahanga.lat
@@ -184,15 +193,21 @@ export default function Map({ wahine }) {
     const onClick = (e) => {
         if (e.features.length && e.features[0].properties) {
             const wahineProperties = convertJSONProperties(e.features[0].properties)
-            setSelectedWahine(wahineProperties)
-            handleModalDelay()
-            const clickedCoords = [wahineProperties.wahi.ahuahanga.lng, wahineProperties.wahi.ahuahanga.lat]
-            mapRef.current.flyTo({
-                center: clickedCoords,
-                pitch: 70,
-                duration: 3000,
-                bearing: handleMapBearing(clickedCoords)
-            })
+            if (selectedWahine.id !== wahineProperties.id) {
+                setSelectedWahine(wahineProperties)
+                const clickedCoords = [wahineProperties.wahi.ahuahanga.lng, wahineProperties.wahi.ahuahanga.lat]
+                mapRef.current.flyTo({
+                    center: clickedCoords,
+                    pitch: 70,
+                    duration: 3000,
+                    bearing: handleMapBearing(clickedCoords)
+                })
+                setMapIsMoving(true)
+                setModalOpen(true)
+            } else if (selectedWahine.id == wahineProperties.id) {
+                setMapIsMoving(false)
+                setModalOpen(true)
+            }
         }
     }
 
@@ -261,7 +276,7 @@ export default function Map({ wahine }) {
                     <MapModal
                         isOpen={mapModal.isOpen}
                         onOpen={mapModal.onOpen}
-                        onClose={mapModal.onClose}
+                        onClose={() => setModalOpen(false)}
                         wahine={wahine}
                         selectedWahine={selectedWahine}
                         selectedWahineIndex={selectedWahineIndex}
