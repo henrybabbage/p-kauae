@@ -54,7 +54,7 @@ export default function Map({ wahine }) {
     const mapRef = useRef(null)
     const timeOutRef = useRef(null)
     const hoveredStateIdRef = useRef(null)
-
+    const touchRef = useRef(null)
     let activeWahineId = selectedWahineIndex + 1
 
     const layerStyle = {
@@ -300,6 +300,10 @@ export default function Map({ wahine }) {
                     localFontFamily={'SohneBreit_Buch'}
                     mapboxAccessToken={process.env.MAPBOX_API_TOKEN}
                     onMove={(event) => setViewport(event.viewport)}
+                    onTouchStart={(e) => {
+                        touchRef.current = e.point
+                    }}
+                    onTouchEnd={(e) => (touchRef.current.x > e.point.x ? handleNextClick() : handlePrevClick())}
                     mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck?optimize=true"
                     terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
                     interactiveLayerIds={['wahine']}
@@ -397,7 +401,7 @@ export default function Map({ wahine }) {
                         </Flex>
                     </TabletAndAbove>
                 </Client>
-                <MapProgress pending={modalOpenPending} value={progress} />
+                <MapProgress pending={mapIsMoving && !mapModal.isOpen} value={progress} />
             </Box>
         </>
     )
