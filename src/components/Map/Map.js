@@ -304,6 +304,10 @@ export default function Map({ wahine }) {
                         touchRef.current = e.point
                     }}
                     onTouchEnd={(e) => (touchRef.current.x > e.point.x ? handleNextClick() : handlePrevClick())}
+                    onMouseDown={(e) => {
+                        touchRef.current = e.point
+                    }}
+                    onMouseUp={(e) => (touchRef.current.x > e.point.x ? handleNextClick() : handlePrevClick())}
                     mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck?optimize=true"
                     terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
                     interactiveLayerIds={['wahine']}
