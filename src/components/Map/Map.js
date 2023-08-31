@@ -1,4 +1,4 @@
-import { Box, Center, Flex, HStack, Heading, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Center, Flex, HStack, Text, useDisclosure } from '@chakra-ui/react'
 import { rhumbBearing } from '@turf/turf'
 import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
@@ -9,12 +9,12 @@ import DigitalClock from './DigitalClock'
 import MonthDisplay from './MonthDisplay'
 
 import { TabletAndAbove } from '@/utils/breakpoints'
+import Image from 'next/image'
 import { Client } from 'react-hydration-provider'
 import MapModal from './MapModal'
 import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
 import MoonPhaseDisplay from './MoonPhaseDisplay'
-import Image from 'next/image'
 
 let interval = undefined
 
@@ -29,6 +29,19 @@ export default function Map({ data }) {
         return rhumbBearing(taranakiLatLng, newLatlng) - 180
     }
 
+    // Option to return mapData inside useState directly
+    // const [mapData, setMapData] = useState(() => {
+    //     const wahi = data.map((wahine) => {
+    //         return {
+    //             id: wahine.id,
+    //             title: wahine.ingoa,
+    //             lat: wahine.wahi.ahuahanga.lat,
+    //             lng: wahine.wahi.ahuahanga.lng,
+    //             centroid: wahine.wahi.ahuahanga
+    //         }
+    //     })
+    //     return GeoJSON.parse(wahi, { Point: ['lat', 'lng'] })
+    // })
     const [mapData, setMapData] = useState(null)
     const [modalOpenPending, setModalOpenPending] = useState(false)
     const [mapIsVisible, setMapIsVisible] = useState(false)
@@ -55,6 +68,7 @@ export default function Map({ data }) {
 
     const mapRef = useRef(null)
     const timeOutRef = useRef(null)
+    const hoveredStateIdRef = useRef(null)
 
     const wahines = data
 
@@ -197,29 +211,32 @@ export default function Map({ data }) {
         }
     }
 
-    let hoveredStateId = null
-
     const onMapLoad = useCallback(() => {
         mapRef &&
             mapRef.current.on('mousemove', 'wahine', (e) => {
                 if (e.features.length > 0) {
-                    if (hoveredStateId !== null) {
+                    if (hoveredStateIdRef.current !== null) {
                         mapRef?.current?.setFeatureState(
-                            { source: 'taranaki-data', id: hoveredStateId },
+                            { source: 'taranaki-data', id: hoveredStateIdRef.current },
                             { hover: false }
                         )
                     }
-                    // eslint-disable-next-line react-hooks/exhaustive-deps
-                    hoveredStateId = e.features[0].id
-                    mapRef?.current?.setFeatureState({ source: 'taranaki-data', id: hoveredStateId }, { hover: true })
+                    hoveredStateIdRef.current = e.features[0].id
+                    mapRef?.current?.setFeatureState(
+                        { source: 'taranaki-data', id: hoveredStateIdRef.current },
+                        { hover: true }
+                    )
                 }
             })
         mapRef &&
             mapRef.current.on('mouseleave', 'wahine', () => {
-                if (hoveredStateId !== null) {
-                    mapRef?.current?.setFeatureState({ source: 'taranaki-data', id: hoveredStateId }, { hover: false })
+                if (hoveredStateIdRef.current !== null) {
+                    mapRef?.current?.setFeatureState(
+                        { source: 'taranaki-data', id: hoveredStateIdRef.current },
+                        { hover: false }
+                    )
                 }
-                hoveredStateId = null
+                hoveredStateIdRef.current = null
             })
     }, [])
 
@@ -255,17 +272,6 @@ export default function Map({ data }) {
                 transition="opacity 0.5s ease-in"
                 transitionDelay="1s"
             >
-                {/* Drawer WIP */}
-                {/* <Client>
-                    <Box position="fixed" inset="0">
-                        <MapDrawer
-                            wahines={wahines}
-                            selectedWahineIndex={selectedWahineIndex}
-                            handleNextClick={handleNextClick}
-                            handlePrevClick={handlePrevClick}
-                        />
-                    </Box>
-                </Client> */}
                 <MapModal
                     isOpen={mapModal.isOpen}
                     onOpen={mapModal.onOpen}
@@ -275,55 +281,36 @@ export default function Map({ data }) {
                     handleNextClick={handleNextClick}
                     handlePrevClick={handlePrevClick}
                 />
-                <ReactMapGL
-                    {...viewport}
-                    reuseMaps
-                    ref={mapRef}
-                    width="100%"
-                    height="100%"
-                    cursor="pointer"
-                    position="relative"
-                    scrollZoom={false}
-                    boxZoom={false}
-                    doubleClickZoom={false}
-                    dragRotate={false}
-                    dragPan={false}
-                    localFontFamily={'SohneBreit_Buch'}
-                    mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
-                    onMove={(event) => setViewport(event.viewport)}
-                    mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck?optimize=true"
-                    terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
-                    interactiveLayerIds={['wahine']}
-                    onClick={onClick}
-                    onLoad={(e) => {
-                        setMapIsVisible(true), onMapLoad(e)
-                    }}
-                >
-                    {/* Arrow buttons */}
-                    {/* <Box position="absolute" left="1rem" top="50%" transform="translateY(-50%)">
-                        <IconButton
-                            aria-label="Previous Wahine"
-                            icon={<ChevronLeftIcon color="black" />}
-                            onClick={handlePrevClick}
-                            isRound
-                            mr={2}
-                        />
-                    </Box>
-                    <Box position="absolute" right="1rem" top="50%" transform="translateY(-50%)">
-                        <IconButton
-                            aria-label="Next Wahine"
-                            icon={<ChevronRightIcon color="black" />}
-                            onClick={handleNextClick}
-                            isRound
-                            ml={2}
-                        />
-                    </Box> */}
-                    {mapData && (
-                        <Source id="taranaki-data" type="geojson" data={mapData} tolerance={0} generateId={true} />
-                    )}
-                    <Layer source="taranaki-data" {...layerStyle} />
-                </ReactMapGL>
                 <Client>
+                    <ReactMapGL
+                        {...viewport}
+                        reuseMaps
+                        ref={mapRef}
+                        width="100%"
+                        height="100%"
+                        cursor="pointer"
+                        position="relative"
+                        scrollZoom={false}
+                        boxZoom={false}
+                        doubleClickZoom={false}
+                        dragRotate={false}
+                        dragPan={false}
+                        localFontFamily={'SohneBreit_Buch'}
+                        mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
+                        onMove={(event) => setViewport(event.viewport)}
+                        mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck?optimize=true"
+                        terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
+                        interactiveLayerIds={['wahine']}
+                        onClick={onClick}
+                        onLoad={(e) => {
+                            setMapIsVisible(true), onMapLoad(e)
+                        }}
+                    >
+                        {mapData && (
+                            <Source id="taranaki-data" type="geojson" data={mapData} tolerance={0} generateId={true} />
+                        )}
+                        <Layer source="taranaki-data" {...layerStyle} />
+                    </ReactMapGL>
                     <TabletAndAbove>
                         <Flex justifyContent="space-between">
                             <HStack
