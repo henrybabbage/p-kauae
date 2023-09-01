@@ -27,7 +27,6 @@ export default function Map({ wahine }) {
         return rhumbBearing(taranakiLatLng, newLatlng) - 180
     }
 
-    const [modalOpenPending, setModalOpenPending] = useState(false)
     const [mapIsVisible, setMapIsVisible] = useState(false)
     const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
     const [selectedWahine, setSelectedWahine] = useState(null)
@@ -46,13 +45,11 @@ export default function Map({ wahine }) {
         }
     }, [])
 
-    const [running, setRunning] = useState(false)
     const [progress, setProgress] = useState(0)
     const [mapIsIdle, setMapIsIdle] = useState(false)
     const [mapIsMoving, setMapIsMoving] = useState(false)
     const [modalOpen, setModalOpen] = useState(false)
     const mapRef = useRef(null)
-    const timeOutRef = useRef(null)
     const hoveredStateIdRef = useRef(null)
     const touchRef = useRef(null)
     let activeWahineId = selectedWahineIndex + 1
@@ -70,6 +67,7 @@ export default function Map({ wahine }) {
             'text-optional': true,
             'text-field': ['get', 'title'],
             'text-font': ['Arial Unicode MS Bold'],
+            'text-size': ['case', ['==', ['get', 'id'], activeWahineId], 18, 14],
             'text-offset': [0, 1.25],
             'text-variable-anchor': [
                 'top',
@@ -105,35 +103,6 @@ export default function Map({ wahine }) {
             mapModal.onClose()
         }
     }, [mapIsMoving, mapIsIdle, modalOpen])
-
-    function handleModalDelay() {
-        setModalOpenPending(true)
-        setRunning(true)
-        setProgress(0)
-        timeOutRef.current && clearTimeout(timeOutRef.current)
-        timeOutRef.current = setTimeout(() => {
-            setModalOpenPending(false)
-            mapModal.onOpen()
-        }, 3200)
-    }
-
-    // progress indicator
-    useEffect(() => {
-        if (running) {
-            interval = setInterval(() => {
-                setProgress((prev) => prev + 1)
-            }, 10)
-        } else {
-            clearInterval(interval)
-        }
-    }, [running])
-
-    useEffect(() => {
-        if (progress === 100) {
-            setRunning(false)
-            clearInterval(interval)
-        }
-    }, [progress])
 
     useEffect(() => {
         selectedWahine &&
@@ -190,26 +159,29 @@ export default function Map({ wahine }) {
         }
     }
 
-    const onClick = (e) => {
-        if (e.features.length && e.features[0].properties) {
-            const wahineProperties = convertJSONProperties(e.features[0].properties)
-            if (selectedWahine.id !== wahineProperties.id) {
-                setSelectedWahine(wahineProperties)
-                const clickedCoords = [wahineProperties.wahi.ahuahanga.lng, wahineProperties.wahi.ahuahanga.lat]
-                mapRef.current.flyTo({
-                    center: clickedCoords,
-                    pitch: 70,
-                    duration: 3000,
-                    bearing: handleMapBearing(clickedCoords)
-                })
-                setMapIsMoving(true)
-                setModalOpen(true)
-            } else if (selectedWahine.id == wahineProperties.id) {
-                setMapIsMoving(false)
-                setModalOpen(true)
+    const onClick = useCallback(
+        (e) => {
+            if (e.features.length && e.features[0].properties) {
+                const wahineProperties = convertJSONProperties(e.features[0].properties)
+                if (selectedWahine.id !== wahineProperties.id) {
+                    setSelectedWahine(wahineProperties)
+                    const clickedCoords = [wahineProperties.wahi.ahuahanga.lng, wahineProperties.wahi.ahuahanga.lat]
+                    mapRef.current.flyTo({
+                        center: clickedCoords,
+                        pitch: 70,
+                        duration: 3000,
+                        bearing: handleMapBearing(clickedCoords)
+                    })
+                    setMapIsMoving(true)
+                    setModalOpen(true)
+                } else if (selectedWahine.id == wahineProperties.id) {
+                    setMapIsMoving(false)
+                    setModalOpen(true)
+                }
             }
-        }
-    }
+        },
+        [selectedWahine]
+    )
 
     const onMapLoad = useCallback(() => {
         mapRef &&
@@ -303,11 +275,19 @@ export default function Map({ wahine }) {
                     onTouchStart={(e) => {
                         touchRef.current = e.point
                     }}
-                    onTouchEnd={(e) => (touchRef.current.x > e.point.x ? handleNextClick() : handlePrevClick())}
+                    onTouchEnd={(e) => {
+                        if (Math.abs(touchRef.current.x - e.point.x > 50)) {
+                            touchRef.current.x > e.point.x ? handleNextClick() : handlePrevClick()
+                        }
+                    }}
                     onMouseDown={(e) => {
                         touchRef.current = e.point
                     }}
-                    onMouseUp={(e) => (touchRef.current.x > e.point.x ? handleNextClick() : handlePrevClick())}
+                    onMouseUp={(e) => {
+                        if (Math.abs(touchRef.current.x - e.point.x > 50)) {
+                            touchRef.current.x > e.point.x ? handleNextClick() : handlePrevClick()
+                        }
+                    }}
                     mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck?optimize=true"
                     terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
                     interactiveLayerIds={['wahine']}
