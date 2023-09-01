@@ -2,15 +2,15 @@ import { Mobile, TabletAndAbove } from '@/utils/breakpoints'
 import {
     Box,
     Button,
+    Drawer,
+    DrawerBody,
+    DrawerContent,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
     Flex,
     HStack,
     Heading,
-    Modal,
-    ModalBody,
-    ModalContent,
-    ModalFooter,
-    ModalHeader,
-    ModalOverlay,
     Text
 } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
@@ -53,10 +53,11 @@ export default function MapModal({
     const playerRef = useRef(null)
 
     return (
-        <Modal
-            isOpen={isOpen}
+        <Drawer
             onClose={onClose}
+            isOpen={isOpen}
             onOpen={onOpen}
+            placement="bottom"
             size="full"
             scrollBehavior="inside"
             motionPreset="slideInBottom"
@@ -70,9 +71,9 @@ export default function MapModal({
                 scrollbarWidth: 'none'
             }}
         >
-            <ModalOverlay />
-            <ModalContent w="auto" maxW="100vw" p={[4, 4, 4, 6, 6, 6]} bg="grey.900" h="fit-content" overflow="hidden">
-                <ModalHeader p={0}>
+            <DrawerOverlay />
+            <DrawerContent w="auto" maxW="100vw" p={[4, 4, 4, 6, 6, 6]} bg="grey.900" h="fit-content" overflow="hidden">
+                <DrawerHeader p={0}>
                     <Flex justifyContent="space-between" alignContent="start">
                         <Heading
                             as="h1"
@@ -87,8 +88,8 @@ export default function MapModal({
                             <Text fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}>{'Back to map ↖'}</Text>
                         </Button>
                     </Flex>
-                </ModalHeader>
-                <ModalBody
+                </DrawerHeader>
+                <DrawerBody
                     width="auto"
                     maxW="100vw"
                     pt={[4, 4, 4, 2, 2, 2]}
@@ -263,8 +264,8 @@ export default function MapModal({
                             </Flex>
                         </Flex>
                     </Flex>
-                </ModalBody>
-                <ModalFooter p={0} mt="auto">
+                </DrawerBody>
+                <DrawerFooter p={0} mt="auto">
                     <Flex justifyContent="space-between" maxW="100vw" w="100vw">
                         <Box>
                             <Button
@@ -291,8 +292,8 @@ export default function MapModal({
                             </Button>
                         </Box>
                     </Flex>
-                </ModalFooter>
-            </ModalContent>
-        </Modal>
+                </DrawerFooter>
+            </DrawerContent>
+        </Drawer>
     )
 }
