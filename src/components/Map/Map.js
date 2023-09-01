@@ -14,8 +14,6 @@ import MapProgress from './MapProgress'
 import MapModal from './MapModal'
 import MoonPhaseDisplay from './MoonPhaseDisplay'
 
-let interval = undefined
-
 export default function Map({ wahine }) {
     // Taranaki, New Zealand [Longitude, Latitiude]
     // Negative values denote Southern Hemisphere
@@ -52,7 +50,6 @@ export default function Map({ wahine }) {
     const mapRef = useRef(null)
     const hoveredStateIdRef = useRef(null)
     const touchRef = useRef(null)
-    let activeWahineId = selectedWahineIndex + 1
 
     const layerStyle = {
         id: 'wahine',
@@ -67,7 +64,7 @@ export default function Map({ wahine }) {
             'text-optional': true,
             'text-field': ['get', 'title'],
             'text-font': ['Arial Unicode MS Bold'],
-            'text-size': ['case', ['==', ['get', 'id'], activeWahineId], 18, 14],
+            'text-size': ['case', ['==', ['get', 'id'], selectedWahine ? selectedWahine.id : null], 18, 14],
             'text-offset': [0, 1.25],
             'text-variable-anchor': [
                 'top',
@@ -88,7 +85,7 @@ export default function Map({ wahine }) {
                 'case',
                 ['boolean', ['feature-state', 'hover'], false],
                 '#f9abab',
-                ['case', ['==', ['get', 'id'], activeWahineId], '#f9abab', '#ffffff']
+                ['case', ['==', ['get', 'id'], selectedWahine ? selectedWahine.id : null], '#f9abab', '#ffffff']
             ]
         }
     }
