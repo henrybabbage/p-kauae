@@ -6,7 +6,7 @@ import ChakraNextImage from '@/components/Primitives/ChakraNextImage'
 import CloseButton from '../Buttons/CloseButton'
 
 export default function ZoomImage(props) {
-    const { caption, src, alt, width, height, sizes, blurhash, ...rest } = props
+    const { caption, src, alt, width, height, sizes, blurhash } = props
     const DynamicZoomContent = useCallback(
         (props) => {
             return <ZoomContent {...props} caption={caption} />
@@ -43,10 +43,10 @@ export default function ZoomImage(props) {
                             <ChakraNextImage
                                 src={src}
                                 alt={alt}
-                                width={4200}
-                                height={2800}
+                                width={width}
+                                height={height}
                                 blurhash={blurhash}
-                                sizes="100vw"
+                                sizes={sizes}
                             />
                         </Box>
                     </Tooltip>

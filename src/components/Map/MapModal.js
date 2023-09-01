@@ -162,6 +162,7 @@ export default function MapModal({
                                                     }
                                                     blurhash={selectedWahine?.whakaahua?.asset?.metadata?.blurHash}
                                                     caption={selectedWahine?.ingoa}
+                                                    sizes="100vw"
                                                 />
                                             </TabletAndAbove>
                                             <Mobile>
@@ -175,6 +176,7 @@ export default function MapModal({
                                                         selectedWahine?.whakaahua?.asset?.metadata?.dimensions?.height
                                                     }
                                                     blurhash={selectedWahine?.whakaahua?.asset?.metadata?.blurHash}
+                                                    sizes="100vw"
                                                 />
                                             </Mobile>
                                         </Client>

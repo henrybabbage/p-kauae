@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react'
-import NextImage from 'next/image'
+import Image from 'next/image'
 import { BlurhashCanvas } from 'react-blurhash'
 
 export default function ChakraNextImage(props) {
@@ -23,7 +23,7 @@ export default function ChakraNextImage(props) {
                 />
             )}
             <Box position="relative" overflow="hidden" {...rest}>
-                <NextImage
+                <Image
                     src={src}
                     alt={alt}
                     width={width}

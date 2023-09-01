@@ -13,6 +13,7 @@ import { Client } from 'react-hydration-provider'
 import MapProgress from './MapProgress'
 import MapModal from './MapModal'
 import MoonPhaseDisplay from './MoonPhaseDisplay'
+import MapOverlay from './MapOverlay'
 
 export default function Map({ wahine }) {
     // Taranaki, New Zealand [Longitude, Latitiude]
@@ -142,7 +143,7 @@ export default function Map({ wahine }) {
         })
     }
 
-    // This converts the stringified object to JS object notion. Note: we need to handle any objects passed down here. Something to consider around the handling and storing of data.
+    // This converts the stringified object to JS object notation. Note: we need to handle any objects passed down here. Something to consider around the handling and storing of data.
     const convertJSONProperties = (p) => {
         if (p) {
             return {
@@ -212,11 +213,11 @@ export default function Map({ wahine }) {
     return (
         <>
             {/* Instructions modal will be open by default when page mounts */}
-            {/* <MapOverlay
+            <MapOverlay
                 isOpen={instructionsModal.isOpen}
                 onOpen={instructionsModal.onOpen}
                 onClose={instructionsModal.onClose}
-            /> */}
+            />
             {/* Fallback display before map mounts */}
             <Center h="100vh" w="100vw" position="absolute">
                 <Image
