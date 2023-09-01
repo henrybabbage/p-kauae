@@ -11,6 +11,7 @@ import {
     Text
 } from '@chakra-ui/react'
 import Balancer from 'react-wrap-balancer'
+import Stepper from './Stepper'
 
 export default function MapOverlay({ onClose, onOpen, isOpen }) {
     return (
@@ -66,7 +67,8 @@ export default function MapOverlay({ onClose, onOpen, isOpen }) {
                         scrollbarWidth: 'none'
                     }}
                 >
-                    <Flex flexDir="column" justifyContent="center" alignItems="center" h="100vh" w="100vw">
+                    <Stepper onClose={onClose} />
+                    {/* <Flex flexDir="column" justifyContent="center" alignItems="center" h="100vh" w="100vw">
                         <Balancer>
                             <Text
                                 as="h1"
@@ -82,7 +84,7 @@ export default function MapOverlay({ onClose, onOpen, isOpen }) {
                                 }
                             </Text>
                         </Balancer>
-                    </Flex>
+                    </Flex> */}
                 </ModalBody>
                 <ModalFooter></ModalFooter>
             </ModalContent>

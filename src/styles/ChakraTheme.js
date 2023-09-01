@@ -37,7 +37,9 @@ const theme = extendTheme({
             600: '#2f2f2f',
             800: '#231F20',
             900: '#141414'
-        }
+        },
+        white: '#ffffff',
+        black: '#000000'
     },
     fonts: {
         body: `"Sohne_Buch", ${base.fonts.body}, sans-serif`,
