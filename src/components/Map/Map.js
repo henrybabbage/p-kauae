@@ -100,8 +100,10 @@ export default function Map({ wahine }) {
 
     useEffect(() => {
         const introduction = getItem('introductionShown')
-        if (!introduction) {
-            setItem('introductionShown', true, 'local')
+        const now = Date.now()
+        const expiry = now + 3 * 30 * 24 * 60 * 60 * 1000 // 3 months from now
+        if (!introduction || introduction.expiry < now) {
+            setItem('introductionShown', { shown: true, expiry }, 'local')
             setIntroductionShown(true)
         } else {
             setIntroductionShown(true)
