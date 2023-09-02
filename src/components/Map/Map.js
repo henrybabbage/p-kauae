@@ -97,8 +97,17 @@ export default function Map({ wahine }) {
     }
 
     const mapModal = useDisclosure()
-    // const instructionsModal = useDisclosure({ defaultIsOpen: true })
+    const instructionsModal = useDisclosure({ defaultIsOpen: true })
     const errorDrawer = useDisclosure()
+
+    useEffect(() => {
+        const intro = getItem('intro-shown')
+        if (!intro) {
+            setItem('intro-shown', true)
+        } else {
+            setIntroShown(true)
+        }
+    }, [getItem, setItem])
 
     useEffect(() => {
         if (!mapIsMoving && mapIsIdle && modalOpen) {
