@@ -28,6 +28,8 @@ export default function Map({ wahine }) {
         return rhumbBearing(taranakiLatLng, newLatlng) - 180
     }
 
+    const { getItem, setItem, removeItem } = useStorage()
+
     const [mapIsVisible, setMapIsVisible] = useState(false)
     const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
     const [selectedWahine, setSelectedWahine] = useState(null)
@@ -50,7 +52,7 @@ export default function Map({ wahine }) {
     const [mapIsIdle, setMapIsIdle] = useState(false)
     const [mapIsMoving, setMapIsMoving] = useState(false)
     const [modalOpen, setModalOpen] = useState(false)
-    const [introductionShown, setIntroductionShown] = useState(null)
+    const [introShown, setIntroShown] = useState(false)
     const mapRef = useRef(null)
     const hoveredStateIdRef = useRef(null)
     const touchRef = useRef(null)
@@ -95,22 +97,8 @@ export default function Map({ wahine }) {
     }
 
     const mapModal = useDisclosure()
-    const instructionsModal = useDisclosure({ defaultIsOpen: true })
+    // const instructionsModal = useDisclosure({ defaultIsOpen: true })
     const errorDrawer = useDisclosure()
-
-    const { getItem, setItem } = useStorage()
-
-    useEffect(() => {
-        const introduction = getItem('introductionShown')
-        const now = Date.now()
-        const expiry = now + 3 * 30 * 24 * 60 * 60 * 1000 // 3 months from now
-        if (!introduction || introduction.expiry < now) {
-            setItem('introductionShown', { shown: true, expiry }, 'local')
-            setIntroductionShown(true)
-        } else {
-            setIntroductionShown(true)
-        }
-    }, [getItem, setItem])
 
     useEffect(() => {
         if (!mapIsMoving && mapIsIdle && modalOpen) {
@@ -233,7 +221,7 @@ export default function Map({ wahine }) {
             {/* Appears when Mapbox error is thrown */}
             <MapErrorDrawer isOpen={errorDrawer.isOpen} onOpen={errorDrawer.onOpen} onClose={errorDrawer.onClose} />
             {/* Instructions modal will be open by default when page mounts */}
-            {!introductionShown && (
+            {!introShown && (
                 <MapOverlay
                     isOpen={instructionsModal.isOpen}
                     onOpen={instructionsModal.onOpen}
@@ -405,7 +393,7 @@ export default function Map({ wahine }) {
                         </Flex>
                     </TabletAndAbove>
                     <Mobile>
-                        <Box position="fixed" bottom="6" mx="20">
+                        <Box w="100%" display="flex" justifyContent="center" position="fixed" bottom="6" px="24">
                             <Text
                                 fontFamily="subheading"
                                 fontSize="14px"
