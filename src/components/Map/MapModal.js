@@ -59,8 +59,6 @@ export default function MapModal({
             onOpen={onOpen}
             placement="bottom"
             size="full"
-            scrollBehavior="inside"
-            motionPreset="slideInBottom"
             sx={{
                 '-webkit-scrollbar': {
                     display: 'none'
@@ -73,7 +71,7 @@ export default function MapModal({
             minH="100vh"
         >
             <DrawerOverlay />
-            <DrawerContent w="auto" maxW="100vw" p={[4, 4, 4, 6, 6, 6]} bg="grey.900" h="fit-content" overflow="hidden">
+            <DrawerContent w="auto" maxW="100vw" p={[4, 4, 4, 6, 6, 6]} bg="grey.900" h="100%" overflow="hidden">
                 <DrawerHeader p={0}>
                     <Flex justifyContent="space-between" alignContent="start">
                         <Heading
