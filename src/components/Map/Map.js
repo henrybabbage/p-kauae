@@ -7,13 +7,13 @@ import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
 import MonthDisplay from './MonthDisplay'
 
-import { TabletAndAbove } from '@/utils/breakpoints'
+import { Mobile, TabletAndAbove } from '@/utils/breakpoints'
 import Image from 'next/image'
 import { Client } from 'react-hydration-provider'
-import MapProgress from './MapProgress'
 import MapModal from './MapModal'
-import MoonPhaseDisplay from './MoonPhaseDisplay'
 import MapOverlay from './MapOverlay'
+import MapProgress from './MapProgress'
+import MoonPhaseDisplay from './MoonPhaseDisplay'
 
 export default function Map({ wahine }) {
     // Taranaki, New Zealand [Longitude, Latitiude]
@@ -353,7 +353,7 @@ export default function Map({ wahine }) {
                                 bottom={['6', '6', '8', '8', '8', '8']}
                                 right="8"
                             >
-                                <Box w="64px"></Box>
+                                <Box w="80px"></Box>
                                 <Box id="local-time" position="absolute">
                                     <DigitalClock />
                                 </Box>
@@ -382,6 +382,20 @@ export default function Map({ wahine }) {
                             </HStack>
                         </Flex>
                     </TabletAndAbove>
+                    <Mobile>
+                        <Box position="fixed" bottom="6" mx="20">
+                            <Text
+                                fontFamily="subheading"
+                                fontSize="14px"
+                                lineHeight="1"
+                                textAlign="center"
+                                color="#FFD233"
+                                pb="2"
+                            >
+                                {'Swipe left or right, or tap a name on the map to navigate'}
+                            </Text>
+                        </Box>
+                    </Mobile>
                 </Client>
                 <MapProgress pending={mapIsMoving && !mapModal.isOpen} value={progress} />
             </Box>
