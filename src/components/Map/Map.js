@@ -105,7 +105,7 @@ export default function Map({ wahine }) {
     }
 
     const mapModal = useDisclosure()
-    const instructionsModal = useDisclosure({ defaultIsOpen: introductionShown ? false : true })
+    const instructionsModal = useDisclosure({ defaultIsOpen: true })
 
     useEffect(() => {
         if (!mapIsMoving && mapIsIdle && modalOpen) {
@@ -226,11 +226,13 @@ export default function Map({ wahine }) {
     return (
         <>
             {/* Instructions modal will be open by default when page mounts */}
-            <MapOverlay
-                isOpen={instructionsModal.isOpen}
-                onOpen={instructionsModal.onOpen}
-                onClose={instructionsModal.onClose}
-            />
+            {!introductionShown && (
+                <MapOverlay
+                    isOpen={instructionsModal.isOpen}
+                    onOpen={instructionsModal.onOpen}
+                    onClose={instructionsModal.onClose}
+                />
+            )}
             {/* Fallback display before map mounts */}
             <Center h="100vh" w="100vw" position="absolute">
                 <Image
