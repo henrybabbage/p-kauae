@@ -7,6 +7,7 @@ import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
 import MonthDisplay from './MonthDisplay'
 
+import useStorage from '@/hooks/useStorage'
 import { Mobile, TabletAndAbove } from '@/utils/breakpoints'
 import Image from 'next/image'
 import { Client } from 'react-hydration-provider'
@@ -48,9 +49,21 @@ export default function Map({ wahine }) {
     const [mapIsIdle, setMapIsIdle] = useState(false)
     const [mapIsMoving, setMapIsMoving] = useState(false)
     const [modalOpen, setModalOpen] = useState(false)
+    const [introductionShown, setIntroductionShown] = useState(null)
     const mapRef = useRef(null)
     const hoveredStateIdRef = useRef(null)
     const touchRef = useRef(null)
+    const { getItem, setItem } = useStorage()
+
+    useEffect(() => {
+        const introduction = getItem('introductionShown')
+        if (!introduction) {
+            setItem('introductionShown', true, 'local')
+            setIntroductionShown(true)
+        } else {
+            setIntroductionShown(true)
+        }
+    }, [getItem, setItem])
 
     const layerStyle = {
         id: 'wahine',
@@ -92,7 +105,7 @@ export default function Map({ wahine }) {
     }
 
     const mapModal = useDisclosure()
-    const instructionsModal = useDisclosure({ defaultIsOpen: true })
+    const instructionsModal = useDisclosure({ defaultIsOpen: introductionShown ? false : true })
 
     useEffect(() => {
         if (!mapIsMoving && mapIsIdle && modalOpen) {
