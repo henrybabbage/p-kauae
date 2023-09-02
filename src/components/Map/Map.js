@@ -53,17 +53,6 @@ export default function Map({ wahine }) {
     const mapRef = useRef(null)
     const hoveredStateIdRef = useRef(null)
     const touchRef = useRef(null)
-    const { getItem, setItem } = useStorage()
-
-    useEffect(() => {
-        const introduction = getItem('introductionShown')
-        if (!introduction) {
-            setItem('introductionShown', true, 'local')
-            setIntroductionShown(true)
-        } else {
-            setIntroductionShown(true)
-        }
-    }, [getItem, setItem])
 
     const layerStyle = {
         id: 'wahine',
@@ -106,6 +95,18 @@ export default function Map({ wahine }) {
 
     const mapModal = useDisclosure()
     const instructionsModal = useDisclosure({ defaultIsOpen: true })
+
+    const { getItem, setItem } = useStorage()
+
+    useEffect(() => {
+        const introduction = getItem('introductionShown')
+        if (!introduction) {
+            setItem('introductionShown', true, 'local')
+            setIntroductionShown(true)
+        } else {
+            setIntroductionShown(true)
+        }
+    }, [getItem, setItem])
 
     useEffect(() => {
         if (!mapIsMoving && mapIsIdle && modalOpen) {
