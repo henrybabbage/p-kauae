@@ -5,7 +5,7 @@ export default function HoverableHeading({ hoverContent, defaultContent, ...prop
         <Heading
             {...props}
             as="h2"
-            fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
+            fontSize={['16px', '16px', '16px', '20px', '20px', '20px']}
             lineHeight="1.36"
             fontWeight="bold"
             fontFamily="subheading"
