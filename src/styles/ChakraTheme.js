@@ -38,6 +38,9 @@ const theme = extendTheme({
             800: '#231F20',
             900: '#141414'
         },
+        red: {
+            400: '#FF3333'
+        },
         white: '#ffffff',
         black: '#000000'
     },

@@ -11,6 +11,7 @@ import useStorage from '@/hooks/useStorage'
 import { Mobile, TabletAndAbove } from '@/utils/breakpoints'
 import Image from 'next/image'
 import { Client } from 'react-hydration-provider'
+import MapErrorDrawer from './MapErrorDrawer'
 import MapModal from './MapModal'
 import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
@@ -95,6 +96,7 @@ export default function Map({ wahine }) {
 
     const mapModal = useDisclosure()
     const instructionsModal = useDisclosure({ defaultIsOpen: true })
+    const errorDrawer = useDisclosure()
 
     const { getItem, setItem } = useStorage()
 
@@ -228,6 +230,8 @@ export default function Map({ wahine }) {
 
     return (
         <>
+            {/* Appears when Mapbox error is thrown */}
+            <MapErrorDrawer isOpen={errorDrawer.isOpen} onOpen={errorDrawer.onOpen} onClose={errorDrawer.onClose} />
             {/* Instructions modal will be open by default when page mounts */}
             {!introductionShown && (
                 <MapOverlay
