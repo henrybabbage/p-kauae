@@ -11,11 +11,7 @@ export default function HoverableHeading({ hoverContent, defaultContent, ...prop
             fontFamily="subheading"
             width="140px"
         >
-            <Box
-                _hover={{ _before: { content: `'${hoverContent}'` } }}
-                _before={{ content: `'${defaultContent}'` }}
-                as="span"
-            />
+            <Box _hover={{ _before: { content: `'${hoverContent}'` } }} _before={{ content: `'${defaultContent}'` }} />
         </Heading>
     )
 }
