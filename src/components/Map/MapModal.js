@@ -70,6 +70,7 @@ export default function MapModal({
                 },
                 scrollbarWidth: 'none'
             }}
+            minH="100vh"
         >
             <DrawerOverlay />
             <DrawerContent w="auto" maxW="100vw" p={[4, 4, 4, 6, 6, 6]} bg="grey.900" h="fit-content" overflow="hidden">
