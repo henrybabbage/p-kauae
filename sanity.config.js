@@ -13,6 +13,7 @@ import { defaultDocumentNode } from './sanity/utils/defaultDocumentNode'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { BlockContentIcon, CogIcon, UserIcon, UsersIcon } from '@sanity/icons'
+import { MapIcon } from 'lucide-react'
 import { apiVersion } from './sanity/env'
 import { schema } from './sanity/schema'
 
@@ -57,7 +58,16 @@ export default defineConfig({
                             // that we're editing the single instance of the document
                             S.document().schemaType('korero').documentId('korero')
                         ),
-                        S.listItem().title('Config').id('config').icon(CogIcon).child(S.document().schemaType('config').documentId('config'))
+                        S.listItem()
+                            .title('Haerenga')
+                            .id('haerenga')
+                            .icon(MapIcon)
+                            .child(S.document().schemaType('haerenga').documentId('haerenga')),
+                        S.listItem()
+                            .title('Config')
+                            .id('config')
+                            .icon(CogIcon)
+                            .child(S.document().schemaType('config').documentId('config'))
                     ])
         }),
         // Vision is a tool that lets you query your content with GROQ in the studio
@@ -69,6 +79,9 @@ export default defineConfig({
     document: {
         // For singleton types, filter out actions that are not explicitly included
         // in the `singletonActions` list defined above
-        actions: (input, context) => (singletonTypes.has(context.schemaType) ? input.filter(({ action }) => action && singletonActions.has(action)) : input)
+        actions: (input, context) =>
+            singletonTypes.has(context.schemaType)
+                ? input.filter(({ action }) => action && singletonActions.has(action))
+                : input
     }
 })
