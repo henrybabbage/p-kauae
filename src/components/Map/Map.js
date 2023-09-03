@@ -109,7 +109,7 @@ export default function Map({ wahine }) {
         } else {
             setIntroShown(true)
         }
-    }, [getItem, setItem])
+    }, [])
 
     useEffect(() => {
         if (!mapIsMoving && mapIsIdle && modalOpen) {
