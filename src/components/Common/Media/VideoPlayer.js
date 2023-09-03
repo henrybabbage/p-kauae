@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import 'vidstack/styles/community-skin/video.css'
 import 'vidstack/styles/defaults.css'
 import VideoOverlay from './VideoOverlay'
+import { useRouter } from 'next/router'
 
 export default function VideoPlayer({
     playerRef,
@@ -29,6 +30,8 @@ export default function VideoPlayer({
         }
     }, [])
 
+    const { pathname } = useRouter()
+
     return (
         <Box position="absolute" bg="black" w="100%" h="100%" userSelect="all" cursor="auto">
             <MediaPlayer
@@ -46,7 +49,7 @@ export default function VideoPlayer({
             >
                 <MediaOutlet>
                     <MediaPoster className="media-video-poster" data-loading alt={title} />
-                    {controls && (
+                    {pathname === '/' && (
                         <Box className="media-controls-container" role="group" aria-label="Media Controls">
                             <Box className="media-controls-group"></Box>
                             <Box className="media-controls-group">
