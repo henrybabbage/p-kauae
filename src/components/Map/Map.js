@@ -1,6 +1,5 @@
-import { Box, Center, Flex, HStack, Heading, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Center, Flex, HStack, Text, useDisclosure } from '@chakra-ui/react'
 import { rhumbBearing } from '@turf/turf'
-import GeoJSON from 'geojson'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import ReactMapGL, { Layer, Source } from 'react-map-gl'
@@ -8,17 +7,18 @@ import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
 import MonthDisplay from './MonthDisplay'
 
-import { TabletAndAbove } from '@/utils/breakpoints'
+import useStorage from '@/hooks/useStorage'
+import { Mobile, TabletAndAbove } from '@/utils/breakpoints'
+import { FocusIcon, MapPin } from 'lucide-react'
+import Image from 'next/image'
 import { Client } from 'react-hydration-provider'
+import MapErrorDrawer from './MapErrorDrawer'
 import MapModal from './MapModal'
 import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
 import MoonPhaseDisplay from './MoonPhaseDisplay'
-import Image from 'next/image'
 
-let interval = undefined
-
-export default function Map({ data }) {
+export default function Map({ wahine }) {
     // Taranaki, New Zealand [Longitude, Latitiude]
     // Negative values denote Southern Hemisphere
     // rhumbBearing function wants order: [Lng, Lat]
@@ -29,50 +29,34 @@ export default function Map({ data }) {
         return rhumbBearing(taranakiLatLng, newLatlng) - 180
     }
 
-    const [mapData, setMapData] = useState(null)
-    const [modalOpenPending, setModalOpenPending] = useState(false)
+    const { getItem, setItem, removeItem } = useStorage()
+
     const [mapIsVisible, setMapIsVisible] = useState(false)
     const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
+    const [selectedWahine, setSelectedWahine] = useState(null)
     const [viewport, setViewport] = useState(() => {
-        const wahines = data
-        const randomIndex = Math.floor(Math.random() * wahines.length)
-        setSelectedWahineIndex(randomIndex)
+        const randomIndex = Math.floor(Math.random() * wahine.features.length)
+        setSelectedWahine(wahine.features[randomIndex].properties)
+        const initialPoint = wahine.features[randomIndex].properties.wahi
         return {
-            latitude: wahines[randomIndex].wahi.ahuahanga.lat,
-            longitude: wahines[randomIndex].wahi.ahuahanga.lng,
-            activeId: wahines[randomIndex].id,
+            latitude: initialPoint.ahuahanga.lat,
+            longitude: initialPoint.ahuahanga.lng,
+            activeId: wahine.features[randomIndex].id,
             // bearing should be provided in [Lng, Lat] order
-            bearing: handleMapBearing([
-                wahines[randomIndex].wahi.ahuahanga.lng,
-                wahines[randomIndex].wahi.ahuahanga.lat
-            ]),
+            bearing: handleMapBearing([initialPoint.ahuahanga.lng, initialPoint.ahuahanga.lat]),
             pitch: 100,
             zoom: 11
         }
     }, [])
-    const [running, setRunning] = useState(false)
-    const [progress, setProgress] = useState(0)
 
+    const [mapIsIdle, setMapIsIdle] = useState(false)
+    const [mapIsMoving, setMapIsMoving] = useState(false)
+    const [modalOpen, setModalOpen] = useState(false)
+    const [introShown, setIntroShown] = useState(false)
+    const [mapError, setMapError] = useState(false)
     const mapRef = useRef(null)
-    const timeOutRef = useRef(null)
-
-    const wahines = data
-
-    useEffect(() => {
-        const wahi = wahines.map((wahine) => {
-            return {
-                id: wahine.id,
-                title: wahine.ingoa,
-                lat: wahine.wahi.ahuahanga.lat,
-                lng: wahine.wahi.ahuahanga.lng,
-                centroid: wahine.wahi.ahuahanga
-            }
-        })
-        const newMapData = GeoJSON.parse(wahi, { Point: ['lat', 'lng'] })
-        setMapData(newMapData)
-    }, [wahines])
-
-    let activeWahineId = selectedWahineIndex + 1
+    const hoveredStateIdRef = useRef(null)
+    const touchRef = useRef(null)
 
     const layerStyle = {
         id: 'wahine',
@@ -87,6 +71,7 @@ export default function Map({ data }) {
             'text-optional': true,
             'text-field': ['get', 'title'],
             'text-font': ['Arial Unicode MS Bold'],
+            'text-size': ['case', ['==', ['get', 'id'], selectedWahine ? selectedWahine.id : null], 18, 14],
             'text-offset': [0, 1.25],
             'text-variable-anchor': [
                 'top',
@@ -107,130 +92,164 @@ export default function Map({ data }) {
                 'case',
                 ['boolean', ['feature-state', 'hover'], false],
                 '#f9abab',
-                ['case', ['==', ['get', 'id'], activeWahineId], '#f9abab', '#ffffff']
+                ['case', ['==', ['get', 'id'], selectedWahine ? selectedWahine.id : null], '#f9abab', '#ffffff']
             ]
         }
     }
 
     const mapModal = useDisclosure()
     const instructionsModal = useDisclosure({ defaultIsOpen: true })
+    const errorDrawer = useDisclosure()
 
-    function handleModalDelay() {
-        setModalOpenPending(true)
-        setRunning(true)
-        setProgress(0)
-        timeOutRef.current && clearTimeout(timeOutRef.current)
-        timeOutRef.current = setTimeout(() => {
-            setModalOpenPending(false)
-            mapModal.onOpen()
-        }, 3200)
-    }
-
-    // progress indicator
     useEffect(() => {
-        if (running) {
-            interval = setInterval(() => {
-                setProgress((prev) => prev + 1)
-            }, 10)
+        const intro = getItem('intro-shown', 'local')
+        if (!intro) {
+            setTimeout(() => {
+                setIntroShown(true)
+                setItem('intro-shown', true, 'local')
+            }, 60000)
         } else {
-            clearInterval(interval)
+            setIntroShown(true)
         }
-    }, [running])
+    }, [getItem, setItem])
 
     useEffect(() => {
-        if (progress === 100) {
-            setRunning(false)
-            clearInterval(interval)
+        if (mapError) {
+            errorDrawer.onOpen()
+            setTimeout(() => {
+                location.reload()
+            }, 2000)
         }
-    }, [progress])
+    }, [mapError])
+
+    useEffect(() => {
+        if (!mapIsMoving && mapIsIdle && modalOpen) {
+            mapModal.onOpen()
+        } else if (mapModal.isOpen && !modalOpen) {
+            mapModal.onClose()
+        }
+    }, [mapIsMoving, mapIsIdle, modalOpen])
+
+    useEffect(() => {
+        selectedWahine &&
+            setSelectedWahineIndex(wahine.features.findIndex((w) => w.properties.id === selectedWahine.id))
+    }, [selectedWahine])
 
     const handlePrevClick = () => {
-        setProgress(0)
-        setRunning(!running)
-        const prevIndex = selectedWahineIndex === wahines.length - 1 ? 0 : selectedWahineIndex + 1
-        setSelectedWahineIndex(prevIndex)
-        handleModalDelay()
+        mapModal.isOpen && mapModal.onClose()
+        setMapIsMoving(true)
+        setModalOpen(true)
+        const prevIndex = selectedWahineIndex === wahine.features.length - 1 ? 0 : selectedWahineIndex + 1
+        setSelectedWahine(wahine.features[prevIndex].properties)
+        const previousCoords = [
+            wahine.features[prevIndex].properties.wahi.ahuahanga.lng,
+            wahine.features[prevIndex].properties.wahi.ahuahanga.lat
+        ]
         mapRef.current.flyTo({
-            // flyTo wants order: [Lng, Lat]
-            center: [wahines[prevIndex].wahi.ahuahanga.lng, wahines[prevIndex].wahi.ahuahanga.lat],
+            center: previousCoords,
             pitch: 70,
             duration: 3000,
-            bearing: handleMapBearing([wahines[prevIndex].wahi.ahuahanga.lng, wahines[prevIndex].wahi.ahuahanga.lat])
+            bearing: handleMapBearing(previousCoords)
         })
     }
 
     const handleNextClick = () => {
-        setProgress(0)
-        setRunning(!running)
-        const nextIndex = selectedWahineIndex === 0 ? wahines.length - 1 : selectedWahineIndex - 1
-        setSelectedWahineIndex(nextIndex)
-        handleModalDelay()
+        mapModal.isOpen && mapModal.onClose()
+        setMapIsMoving(true)
+        setModalOpen(true)
+        const nextIndex = selectedWahineIndex === 0 ? wahine.features.length - 1 : selectedWahineIndex - 1
+        setSelectedWahine(wahine.features[nextIndex].properties)
+        const nextCoords = [
+            wahine.features[nextIndex].properties.wahi.ahuahanga.lng,
+            wahine.features[nextIndex].properties.wahi.ahuahanga.lat
+        ]
         mapRef.current.flyTo({
-            center: [wahines[nextIndex].wahi.ahuahanga.lng, wahines[nextIndex].wahi.ahuahanga.lat],
+            center: nextCoords,
             pitch: 70,
             duration: 3000,
-            bearing: handleMapBearing([wahines[nextIndex].wahi.ahuahanga.lng, wahines[nextIndex].wahi.ahuahanga.lat])
+            bearing: handleMapBearing(nextCoords)
         })
     }
 
-    const onClick = (e) => {
-        if (e.features.length && e.features[0].properties) {
-            const { id } = e.features[0].properties
-            const clickedWahine = wahines.find((wahine) => wahine.id === id)
-            //TODO find index, do not subtract from id
-            if (clickedWahine) {
-                setSelectedWahineIndex(clickedWahine.id - 1)
-                handleModalDelay()
+    // This converts the stringified object to JS object notation. Note: we need to handle any objects passed down here. Something to consider around the handling and storing of data.
+    const convertJSONProperties = (p) => {
+        if (p) {
+            return {
+                ...p,
+                kiriata: JSON.parse(p.kiriata),
+                korero_pukauae: JSON.parse(p.korero_pukauae),
+                korero_wahi: JSON.parse(p.korero_wahi),
+                wahi: JSON.parse(p.wahi),
+                whakaahua: JSON.parse(p.whakaahua)
             }
-            mapRef.current.flyTo({
-                center: [
-                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lng,
-                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lat
-                ],
-                pitch: 70,
-                duration: 3000,
-                bearing: handleMapBearing([
-                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lng,
-                    wahines[clickedWahine.id - 1].wahi.ahuahanga.lat
-                ])
-            })
         }
     }
 
-    let hoveredStateId = null
+    const onClick = useCallback(
+        (e) => {
+            if (e.features.length && e.features[0].properties) {
+                const wahineProperties = convertJSONProperties(e.features[0].properties)
+                if (selectedWahine.id !== wahineProperties.id) {
+                    setSelectedWahine(wahineProperties)
+                    const clickedCoords = [wahineProperties.wahi.ahuahanga.lng, wahineProperties.wahi.ahuahanga.lat]
+                    mapRef.current.flyTo({
+                        center: clickedCoords,
+                        pitch: 70,
+                        duration: 3000,
+                        bearing: handleMapBearing(clickedCoords)
+                    })
+                    setMapIsMoving(true)
+                    setModalOpen(true)
+                } else if (selectedWahine.id == wahineProperties.id) {
+                    setMapIsMoving(false)
+                    setModalOpen(true)
+                }
+            }
+        },
+        [selectedWahine]
+    )
 
     const onMapLoad = useCallback(() => {
         mapRef &&
             mapRef.current.on('mousemove', 'wahine', (e) => {
                 if (e.features.length > 0) {
-                    if (hoveredStateId !== null) {
+                    if (hoveredStateIdRef.current !== null) {
                         mapRef?.current?.setFeatureState(
-                            { source: 'taranaki-data', id: hoveredStateId },
+                            { source: 'taranaki-data', id: hoveredStateIdRef.current },
                             { hover: false }
                         )
                     }
-                    // eslint-disable-next-line react-hooks/exhaustive-deps
-                    hoveredStateId = e.features[0].id
-                    mapRef?.current?.setFeatureState({ source: 'taranaki-data', id: hoveredStateId }, { hover: true })
+                    hoveredStateIdRef.current = e.features[0].id
+                    mapRef?.current?.setFeatureState(
+                        { source: 'taranaki-data', id: hoveredStateIdRef.current },
+                        { hover: true }
+                    )
                 }
             })
         mapRef &&
             mapRef.current.on('mouseleave', 'wahine', () => {
-                if (hoveredStateId !== null) {
-                    mapRef?.current?.setFeatureState({ source: 'taranaki-data', id: hoveredStateId }, { hover: false })
+                if (hoveredStateIdRef.current !== null) {
+                    mapRef?.current?.setFeatureState(
+                        { source: 'taranaki-data', id: hoveredStateIdRef.current },
+                        { hover: false }
+                    )
                 }
-                hoveredStateId = null
+                hoveredStateIdRef.current = null
             })
     }, [])
 
     return (
         <>
-            {/* Instructions modal will be open by default when page mounts */}
-            <MapOverlay
-                isOpen={instructionsModal.isOpen}
-                onOpen={instructionsModal.onOpen}
-                onClose={instructionsModal.onClose}
-            />
+            {/* Appears when Mapbox error is thrown */}
+            <MapErrorDrawer isOpen={errorDrawer.isOpen} onOpen={errorDrawer.onOpen} onClose={errorDrawer.onClose} />
+            {/* Instructions modal will be open by default when page mounts if local storage intro-shown key is null */}
+            {!introShown && (
+                <MapOverlay
+                    isOpen={instructionsModal.isOpen}
+                    onOpen={instructionsModal.onOpen}
+                    onClose={instructionsModal.onClose}
+                />
+            )}
             {/* Fallback display before map mounts */}
             <Center h="100vh" w="100vw" position="absolute">
                 <Image
@@ -255,26 +274,18 @@ export default function Map({ data }) {
                 transition="opacity 0.5s ease-in"
                 transitionDelay="1s"
             >
-                {/* Drawer WIP */}
-                {/* <Client>
-                    <Box position="fixed" inset="0">
-                        <MapDrawer
-                            wahines={wahines}
-                            selectedWahineIndex={selectedWahineIndex}
-                            handleNextClick={handleNextClick}
-                            handlePrevClick={handlePrevClick}
-                        />
-                    </Box>
-                </Client> */}
-                <MapModal
-                    isOpen={mapModal.isOpen}
-                    onOpen={mapModal.onOpen}
-                    onClose={mapModal.onClose}
-                    wahines={wahines}
-                    selectedWahineIndex={selectedWahineIndex}
-                    handleNextClick={handleNextClick}
-                    handlePrevClick={handlePrevClick}
-                />
+                {selectedWahine && (
+                    <MapModal
+                        isOpen={mapModal.isOpen}
+                        onOpen={mapModal.onOpen}
+                        onClose={() => setModalOpen(false)}
+                        wahine={wahine}
+                        selectedWahine={selectedWahine}
+                        selectedWahineIndex={selectedWahineIndex}
+                        handleNextClick={handleNextClick}
+                        handlePrevClick={handlePrevClick}
+                    />
+                )}
                 <ReactMapGL
                     {...viewport}
                     reuseMaps
@@ -289,8 +300,24 @@ export default function Map({ data }) {
                     dragRotate={false}
                     dragPan={false}
                     localFontFamily={'SohneBreit_Buch'}
-                    mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
+                    mapboxAccessToken={process.env.MAPBOX_API_TOKEN}
                     onMove={(event) => setViewport(event.viewport)}
+                    onTouchStart={(e) => {
+                        touchRef.current = e.point
+                    }}
+                    onTouchEnd={(e) => {
+                        if (Math.abs(touchRef.current.x - e.point.x > 50)) {
+                            touchRef.current.x > e.point.x ? handleNextClick() : handlePrevClick()
+                        }
+                    }}
+                    onMouseDown={(e) => {
+                        touchRef.current = e.point
+                    }}
+                    onMouseUp={(e) => {
+                        if (Math.abs(touchRef.current.x - e.point.x > 50)) {
+                            touchRef.current.x > e.point.x ? handleNextClick() : handlePrevClick()
+                        }
+                    }}
                     mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck?optimize=true"
                     terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
                     interactiveLayerIds={['wahine']}
@@ -298,29 +325,17 @@ export default function Map({ data }) {
                     onLoad={(e) => {
                         setMapIsVisible(true), onMapLoad(e)
                     }}
+                    onIdle={() => {
+                        setMapIsIdle(true)
+                        setMapIsMoving(false)
+                    }}
+                    onMoveStart={() => {
+                        setMapIsIdle(false)
+                        setMapIsMoving(true)
+                    }}
+                    onError={() => setMapError(true)}
                 >
-                    {/* Arrow buttons */}
-                    {/* <Box position="absolute" left="1rem" top="50%" transform="translateY(-50%)">
-                        <IconButton
-                            aria-label="Previous Wahine"
-                            icon={<ChevronLeftIcon color="black" />}
-                            onClick={handlePrevClick}
-                            isRound
-                            mr={2}
-                        />
-                    </Box>
-                    <Box position="absolute" right="1rem" top="50%" transform="translateY(-50%)">
-                        <IconButton
-                            aria-label="Next Wahine"
-                            icon={<ChevronRightIcon color="black" />}
-                            onClick={handleNextClick}
-                            isRound
-                            ml={2}
-                        />
-                    </Box> */}
-                    {mapData && (
-                        <Source id="taranaki-data" type="geojson" data={mapData} tolerance={0} generateId={true} />
-                    )}
+                    <Source id="taranaki-data" type="geojson" data={wahine} tolerance={0} generateId={true} />
                     <Layer source="taranaki-data" {...layerStyle} />
                 </ReactMapGL>
                 <Client>
@@ -333,36 +348,32 @@ export default function Map({ data }) {
                                 bottom={['6', '6', '8', '8', '8', '8']}
                                 left="8"
                             >
-                                <Text
-                                    fontFamily="subheading"
-                                    fontSize="14px"
-                                    lineHeight="1"
-                                    textAlign="left"
-                                    color="#FFD233"
-                                    pb="2"
-                                >
-                                    {wahines[selectedWahineIndex]?.wahi?.ingoa}
-                                </Text>
-                                <Text
-                                    fontFamily="subheading"
-                                    fontSize="14px"
-                                    lineHeight="1"
-                                    textAlign="left"
-                                    color="#FFD233"
-                                    pb="2"
-                                >
-                                    {' • '}
-                                </Text>
-                                <Text
-                                    fontFamily="subheading"
-                                    fontSize="14px"
-                                    lineHeight="1"
-                                    textAlign="left"
-                                    color="#FFD233"
-                                    pb="2"
-                                >
-                                    {wahines[selectedWahineIndex]?.ingoa}
-                                </Text>
+                                <Flex gap="12px">
+                                    <MapPin strokeWidth={2} color="#FFD233" size={20} />
+                                    <Text
+                                        fontFamily="subheading"
+                                        fontSize="14px"
+                                        lineHeight="1"
+                                        textAlign="left"
+                                        color="#FFD233"
+                                        pb="2"
+                                    >
+                                        {selectedWahine?.wahi?.ingoa}
+                                    </Text>
+                                </Flex>
+                                <Flex gap="12px">
+                                    <FocusIcon strokeWidth={2} color="#FFD233" size={20} />
+                                    <Text
+                                        fontFamily="subheading"
+                                        fontSize="14px"
+                                        lineHeight="1"
+                                        textAlign="left"
+                                        color="#FFD233"
+                                        pb="2"
+                                    >
+                                        {selectedWahine?.ingoa}
+                                    </Text>
+                                </Flex>
                             </HStack>
                             <HStack
                                 spacing="24px"
@@ -371,7 +382,7 @@ export default function Map({ data }) {
                                 bottom={['6', '6', '8', '8', '8', '8']}
                                 right="8"
                             >
-                                <Box w="64px"></Box>
+                                <Box w="80px"></Box>
                                 <Box id="local-time" position="absolute">
                                     <DigitalClock />
                                 </Box>
@@ -400,8 +411,22 @@ export default function Map({ data }) {
                             </HStack>
                         </Flex>
                     </TabletAndAbove>
+                    <Mobile>
+                        <Box w="100%" display="flex" justifyContent="center" position="fixed" bottom="6" px="24">
+                            <Text
+                                fontFamily="subheading"
+                                fontSize="14px"
+                                lineHeight="1"
+                                textAlign="center"
+                                color="#FFD233"
+                                pb="2"
+                            >
+                                {'Swipe left or right, or tap a name on the map to navigate'}
+                            </Text>
+                        </Box>
+                    </Mobile>
                 </Client>
-                <MapProgress pending={modalOpenPending} value={progress} />
+                <MapProgress pending={mapIsMoving && !mapModal.isOpen} />
             </Box>
         </>
     )

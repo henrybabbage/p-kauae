@@ -2,7 +2,7 @@ import { createClient } from 'next-sanity'
 
 import { apiVersion, dataset, projectId, readToken, studioUrl, useCdn } from '../env'
 
-export const client = createClient({
+export const sanityClient = createClient({
     apiVersion,
     dataset,
     projectId,

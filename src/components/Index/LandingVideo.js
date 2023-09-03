@@ -1,4 +1,4 @@
-import { AspectRatio, Box, Heading } from '@chakra-ui/react'
+import { AspectRatio, Box, Flex, Heading } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import { useRef, useState } from 'react'
 
@@ -65,20 +65,33 @@ export default function LandingVideo({
                     controls={controls}
                 />
             </AspectRatio>
-            {showTitle && (
-                <Heading
-                    fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
-                    color="white"
-                    fontWeight="regular"
-                    fontFamily="subheading"
-                    position="absolute"
-                    z="10"
-                    top={[4, 4, 4, 6, 6, 6]}
-                    left={[4, 4, 4, 6, 6, 6]}
-                >
-                    {videoTitle}
-                </Heading>
-            )}
+            <Flex
+                maxH={['auto', 'auto', 'auto', '75vh', '75vh', '75vh']}
+                maxW={['100vw', '100vw', '100vw', '100vw', '100vw', '100vw']}
+                display="flex"
+                justifyContent="end"
+                userSelect="all"
+                cursor="auto"
+                pointerEvents="auto"
+                touch-action="manipulation"
+            >
+                {showTitle && (
+                    <Heading
+                        fontSize={['16px', '16px', '16px', '24px', '24px', '24px']}
+                        color="white"
+                        fontWeight="regular"
+                        fontFamily="subheading"
+                        position="absolute"
+                        bottom={['4', '4', '4', '6', '6', '6']}
+                        left={['4', '4', '4', '6', '6', '6']}
+                        w="fit-content"
+                        textAlign={['left', 'left', 'left', 'left', 'left', 'left']}
+                        zIndex="500"
+                    >
+                        {videoTitle}
+                    </Heading>
+                )}
+            </Flex>
         </Box>
     )
 }

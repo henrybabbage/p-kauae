@@ -2,11 +2,11 @@ import { useLiveQuery } from '@sanity/preview-kit'
 import PreviewLoading from '../Preview/PreviewLoading'
 import MapPage from './MapPage'
 
-export default function PreviewMapPage({ data: initialData, wahineQuery }) {
-    const [data, loading] = useLiveQuery(initialData, wahineQuery)
+export default function PreviewMapPage({ wahine, wahineQuery }) {
+    const [data, loading] = useLiveQuery(wahine, wahineQuery)
 
     if (loading) {
         return <PreviewLoading />
     }
-    return <MapPage data={data} preview={true} />
+    return <MapPage wahine={data} preview={true} />
 }

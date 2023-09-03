@@ -15,6 +15,7 @@ export const wahineQuery = groq`*[_type == 'wahine']| order(id asc){
             ...,
             metadata{
                 blurHash,
+                dimensions,
                 ...,
             }
         }

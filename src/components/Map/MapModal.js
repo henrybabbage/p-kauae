@@ -2,15 +2,15 @@ import { Mobile, TabletAndAbove } from '@/utils/breakpoints'
 import {
     Box,
     Button,
+    Drawer,
+    DrawerBody,
+    DrawerContent,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
     Flex,
     HStack,
     Heading,
-    Modal,
-    ModalBody,
-    ModalContent,
-    ModalFooter,
-    ModalHeader,
-    ModalOverlay,
     Text
 } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
@@ -25,40 +25,40 @@ export default function MapModal({
     onOpen,
     onClose,
     isOpen,
-    wahines,
+    wahine,
+    selectedWahine,
     selectedWahineIndex,
     handleNextClick,
     handlePrevClick
 }) {
-    const captureDate = wahines[selectedWahineIndex].wa_tiki_whakaahua
+    const captureDate = selectedWahine.wa_tiki_whakaahua
     const formattedDate = format(parseISO(captureDate), 'do MMMM, yyyy')
 
-    const getPreviousWahine = (selectedWahineIndex) => {
-        if (selectedWahineIndex === wahines.length - 1) {
-            return wahines[0]?.ingoa || 'Previous'
+    const getPreviousWahine = () => {
+        if (selectedWahineIndex === wahine.features.length - 1) {
+            return wahine.features[0].properties?.ingoa || 'Previous'
         } else {
-            return wahines[selectedWahineIndex + 1]?.ingoa || 'Previous'
+            return wahine.features[selectedWahineIndex + 1].properties?.ingoa || 'Previous'
         }
     }
 
-    const getNextWahine = (selectedWahineIndex) => {
+    const getNextWahine = () => {
         if (selectedWahineIndex === 0) {
-            return wahines[wahines.length - 1]?.ingoa || 'Next'
+            return wahine.features[wahine.features.length - 1].properties?.ingoa || 'Next'
         } else {
-            return wahines[selectedWahineIndex - 1]?.ingoa || 'Next'
+            return wahine.features[selectedWahineIndex - 1].properties?.ingoa || 'Next'
         }
     }
 
     const playerRef = useRef(null)
 
     return (
-        <Modal
-            isOpen={isOpen}
+        <Drawer
             onClose={onClose}
+            isOpen={isOpen}
             onOpen={onOpen}
+            placement="bottom"
             size="full"
-            scrollBehavior="inside"
-            motionPreset="slideInBottom"
             sx={{
                 '-webkit-scrollbar': {
                     display: 'none'
@@ -68,10 +68,11 @@ export default function MapModal({
                 },
                 scrollbarWidth: 'none'
             }}
+            minH="100vh"
         >
-            <ModalOverlay />
-            <ModalContent w="auto" maxW="100vw" p={[4, 4, 4, 6, 6, 6]} bg="grey.900" h="fit-content" overflow="hidden">
-                <ModalHeader p={0}>
+            <DrawerOverlay />
+            <DrawerContent w="auto" maxW="100vw" p={[4, 4, 4, 6, 6, 6]} bg="grey.900" h="100%" overflow="hidden">
+                <DrawerHeader p={0}>
                     <Flex justifyContent="space-between" alignContent="start">
                         <Heading
                             as="h1"
@@ -86,8 +87,8 @@ export default function MapModal({
                             <Text fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}>{'Back to map ↖'}</Text>
                         </Button>
                     </Flex>
-                </ModalHeader>
-                <ModalBody
+                </DrawerHeader>
+                <DrawerBody
                     width="auto"
                     maxW="100vw"
                     pt={[4, 4, 4, 2, 2, 2]}
@@ -109,9 +110,9 @@ export default function MapModal({
                             <Box w="100%" maxW="100vw" h="auto">
                                 <ModalVideo
                                     playerRef={playerRef}
-                                    src={wahines[selectedWahineIndex]?.kiriata?.droneFootage?.secure_url}
-                                    location={wahines[selectedWahineIndex].kiriata.ingoa}
-                                    poster={wahines[selectedWahineIndex].kiriata.poster?.asset?.url}
+                                    src={selectedWahine.kiriata.droneFootage.secure_url}
+                                    location={selectedWahine.kiriata.ingoa}
+                                    poster={selectedWahine.kiriata.poster?.asset?.url}
                                     autoplay={true}
                                     muted={true}
                                     loop={true}
@@ -131,7 +132,7 @@ export default function MapModal({
                                         fontWeight="regular"
                                         fontFamily="heading"
                                     >
-                                        {wahines[selectedWahineIndex].ingoa}
+                                        {selectedWahine.ingoa}
                                     </Heading>
                                     <Heading
                                         fontSize={['12px', '12px', '12px', '16px', '16px', '16px']}
@@ -139,7 +140,7 @@ export default function MapModal({
                                         fontWeight="regular"
                                         fontFamily="heading"
                                     >
-                                        {wahines[selectedWahineIndex].whakapapa}
+                                        {selectedWahine.whakapapa}
                                     </Heading>
                                     <Box
                                         display="block"
@@ -151,39 +152,31 @@ export default function MapModal({
                                         <Client>
                                             <TabletAndAbove>
                                                 <ZoomImage
-                                                    src={wahines[selectedWahineIndex]?.whakaahua?.asset?.url}
-                                                    alt={wahines[selectedWahineIndex]?.whakaahua?.alternative_text}
+                                                    src={selectedWahine?.whakaahua?.asset?.url}
+                                                    alt={selectedWahine?.whakaahua?.alternative_text}
                                                     width={
-                                                        wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata
-                                                            ?.dimensions?.width
+                                                        selectedWahine?.whakaahua?.asset?.metadata?.dimensions?.width
                                                     }
                                                     height={
-                                                        wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata
-                                                            ?.dimensions?.height
+                                                        selectedWahine?.whakaahua?.asset?.metadata?.dimensions?.height
                                                     }
-                                                    blurhash={
-                                                        wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata
-                                                            ?.blurHash
-                                                    }
-                                                    caption={wahines[selectedWahineIndex]?.ingoa}
+                                                    blurhash={selectedWahine?.whakaahua?.asset?.metadata?.blurHash}
+                                                    caption={selectedWahine?.ingoa}
+                                                    sizes="100vw"
                                                 />
                                             </TabletAndAbove>
                                             <Mobile>
                                                 <ChakraNextImage
-                                                    src={wahines[selectedWahineIndex]?.whakaahua?.asset?.url}
-                                                    alt={wahines[selectedWahineIndex]?.whakaahua?.alternative_text}
+                                                    src={selectedWahine?.whakaahua?.asset?.url}
+                                                    alt={selectedWahine?.whakaahua?.alternative_text}
                                                     width={
-                                                        wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata
-                                                            ?.dimensions?.width
+                                                        selectedWahine?.whakaahua?.asset?.metadata?.dimensions?.width
                                                     }
                                                     height={
-                                                        wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata
-                                                            ?.dimensions?.height
+                                                        selectedWahine?.whakaahua?.asset?.metadata?.dimensions?.height
                                                     }
-                                                    blurhash={
-                                                        wahines[selectedWahineIndex]?.whakaahua?.asset?.metadata
-                                                            ?.blurHash
-                                                    }
+                                                    blurhash={selectedWahine?.whakaahua?.asset?.metadata?.blurHash}
+                                                    sizes="100vw"
                                                 />
                                             </Mobile>
                                         </Client>
@@ -202,7 +195,7 @@ export default function MapModal({
                                                 width: '100%',
                                                 maxWidth: '100%'
                                             }}
-                                            value={wahines[selectedWahineIndex].korero_pukauae}
+                                            value={selectedWahine.korero_pukauae}
                                         />
                                         <CustomPortableText
                                             as={'p'}
@@ -215,7 +208,7 @@ export default function MapModal({
                                                 width: '100%',
                                                 maxWidth: '100%'
                                             }}
-                                            value={wahines[selectedWahineIndex].korero_wahi}
+                                            value={selectedWahine.korero_wahi}
                                         />
                                         <HStack>
                                             <Text
@@ -230,7 +223,7 @@ export default function MapModal({
                                                 lineHeight="1.36"
                                                 color="white"
                                             >
-                                                {wahines[selectedWahineIndex].tohunga_ta_moko}
+                                                {selectedWahine.tohunga_ta_moko}
                                             </Text>
                                         </HStack>
                                         <HStack>
@@ -246,7 +239,7 @@ export default function MapModal({
                                                 lineHeight="1.36"
                                                 color="white"
                                             >
-                                                {wahines[selectedWahineIndex].wahi.ingoa}
+                                                {selectedWahine.wahi.ingoa}
                                             </Text>
                                         </HStack>
                                         <HStack>
@@ -270,8 +263,8 @@ export default function MapModal({
                             </Flex>
                         </Flex>
                     </Flex>
-                </ModalBody>
-                <ModalFooter p={0} mt="auto">
+                </DrawerBody>
+                <DrawerFooter p={0} mt="auto">
                     <Flex justifyContent="space-between" maxW="100vw" w="100vw">
                         <Box>
                             <Button
@@ -282,7 +275,7 @@ export default function MapModal({
                                     handlePrevClick(selectedWahineIndex)
                                 }}
                             >
-                                {'←'} {getPreviousWahine(selectedWahineIndex)}
+                                {'←'} {getPreviousWahine()}
                             </Button>
                         </Box>
                         <Box>
@@ -294,12 +287,12 @@ export default function MapModal({
                                     handleNextClick(selectedWahineIndex)
                                 }}
                             >
-                                {getNextWahine(selectedWahineIndex)} {'→'}
+                                {getNextWahine()} {'→'}
                             </Button>
                         </Box>
                     </Flex>
-                </ModalFooter>
-            </ModalContent>
-        </Modal>
+                </DrawerFooter>
+            </DrawerContent>
+        </Drawer>
     )
 }

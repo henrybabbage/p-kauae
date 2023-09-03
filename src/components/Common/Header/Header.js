@@ -1,18 +1,46 @@
 import { Box, Flex, Heading, useDisclosure } from '@chakra-ui/react'
 
 import { MotionBox } from '@/components/Primitives/MotionBox'
+import { useEffect, useState } from 'react'
 import MenuIcon from '../Icons/MenuIcon'
 import MobileMenu from '../Mobile/MobileMenu'
 import HoverableHeading from './HoverableHeading'
 import NavLink from './NavLink'
 
-export default function Header({ blurEffect }) {
+export default function Header({ blurEffect, opacity }) {
     const menu = useDisclosure()
 
+    const [isHovered, setIsHovered] = useState(false)
+    const [headerOpacity, setHeaderOpacity] = useState(1)
+
+    const handleHover = () => {
+        setIsHovered(true)
+    }
+
+    const handleUnhover = () => {
+        setIsHovered(false)
+    }
+
+    useEffect(() => {
+        setHeaderOpacity(opacity)
+    }, [opacity])
+
     return (
-        <>
+        <Box as="nav" onMouseEnter={handleHover} onMouseLeave={handleUnhover}>
             <MobileMenu isOpen={menu.isOpen} onClose={menu.onClose} />
-            <Box as="nav" position="absolute" w="100vw" top="6" px="6" zIndex={20}>
+            <MotionBox
+                initial={{ opacity: headerOpacity }}
+                animate={{ opacity: isHovered ? 1 : headerOpacity }}
+                transition={{
+                    type: 'easeInOut',
+                    duration: 0.2
+                }}
+                position="absolute"
+                w="100vw"
+                top="6"
+                px="6"
+                zIndex={20}
+            >
                 <Flex w="auto" justifyContent="start">
                     <NavLink href="/" isSiteTitle={true}>
                         <MotionBox
@@ -73,7 +101,7 @@ export default function Header({ blurEffect }) {
                 >
                     <MenuIcon openDrawer={menu.onOpen} />
                 </Flex>
-            </Box>
+            </MotionBox>
             <Box
                 display={blurEffect ? 'static' : 'none'}
                 pointerEvents="none"
@@ -88,6 +116,6 @@ export default function Header({ blurEffect }) {
                     maskImage: 'linear-gradient(to top, transparent 10%, black)'
                 }}
             ></Box>
-        </>
+        </Box>
     )
 }

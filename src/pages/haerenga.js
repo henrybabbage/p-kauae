@@ -1,4 +1,5 @@
 import MapPage from '@/components/Map/MapPage'
+import GeoJSON from 'geojson'
 import dynamic from 'next/dynamic'
 import { getClient } from '../../sanity/lib/sanity.client'
 import { wahineQuery } from '../../sanity/lib/sanity.queries'
@@ -6,13 +7,13 @@ import { wahineQuery } from '../../sanity/lib/sanity.queries'
 const PreviewProvider = dynamic(() => import('../components/Preview/PreviewProvider'))
 const PreviewMapPage = dynamic(() => import('../components/Map/PreviewMapPage'))
 
-export default function Haerenga({ wahines, preview = false, previewToken }) {
+export default function Haerenga({ wahine, preview = false, previewToken }) {
     return preview ? (
         <PreviewProvider token={previewToken}>
-            <PreviewMapPage data={wahines} wahineQuery={wahineQuery} />
+            <PreviewMapPage wahine={wahine} wahineQuery={wahineQuery} />
         </PreviewProvider>
     ) : (
-        <MapPage data={wahines} />
+        <MapPage wahine={wahine} />
     )
 }
 
@@ -24,13 +25,23 @@ export async function getStaticProps(context) {
     }
     const client = getClient(previewToken)
 
-    const wahines = await client.fetch(wahineQuery)
+    const wahine = await client.fetch(wahineQuery).then((res) => {
+        const wahi = res.map((w) => {
+            return {
+                ...w,
+                title: w.ingoa,
+                lat: w.wahi.ahuahanga.lat,
+                lng: w.wahi.ahuahanga.lng
+            }
+        })
+        return GeoJSON.parse(wahi, { Point: ['lat', 'lng'] })
+    })
 
     return {
         props: {
             preview,
             previewToken,
-            wahines: wahines
+            wahine
         },
         revalidate: 60
     }

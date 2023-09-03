@@ -34,11 +34,12 @@ export default function ModalVideo({ playerRef, src, location, poster, alt }) {
                 maxW={['100vw', '100vw', '100vw', '100vw', '100vw', '100vw']}
                 display="flex"
                 justifyContent="end"
+                userSelect="all"
+                cursor="auto"
+                pointerEvents="auto"
+                touch-action="manipulation"
             >
                 <Heading
-                    userSelect="all"
-                    cursor="auto"
-                    pointerEvents="auto"
                     fontSize={['16px', '16px', '16px', '36px', '36px', '36px']}
                     color="white"
                     fontWeight="regular"
@@ -48,7 +49,6 @@ export default function ModalVideo({ playerRef, src, location, poster, alt }) {
                     right={['6', '6', '6', '6', '6', '6']}
                     w="fit-content"
                     textAlign={['right', 'right', 'right', 'right', 'right', 'right']}
-                    touch-action="manipulation"
                     zIndex="500"
                 >
                     {location}

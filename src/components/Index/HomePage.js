@@ -11,7 +11,7 @@ import { CustomPortableText } from '../Primitives/CustomPortableText'
 import LandingVideo from './LandingVideo'
 import SmoothScroll from '../Primitives/SmoothScroll'
 
-export default function HomePage({ data: korero, preview }) {
+export default function HomePage({ korero, preview }) {
     const {
         whakataukii,
         tangata_mihia,
@@ -89,7 +89,7 @@ export default function HomePage({ data: korero, preview }) {
                                     poster={opening_video_poster.asset.url}
                                     alt="Pūkauae exhibition opening 11th December 2019"
                                     autoplay={false}
-                                    controls={true}
+                                    controls={false}
                                     muted={false}
                                     loop={false}
                                 />

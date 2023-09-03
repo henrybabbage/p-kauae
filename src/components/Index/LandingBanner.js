@@ -29,6 +29,17 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                     repeatDelay: 9
                 }}
             >
+                {/* <Balancer>
+                    <Heading
+                        textAlign="center"
+                        fontSize={['36px', '36px', '46px', '56px', '94px', '94px']}
+                        lineHeight="1.05"
+                        color="pink.200"
+                        fontFamily="heading"
+                    >
+                        {tuhinga_timatanga}
+                    </Heading>
+                </Balancer> */}
                 {englishLines.map((line, index) => (
                     <Heading
                         key={index}
@@ -58,6 +69,17 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                     repeatDelay: 9
                 }}
             >
+                {/* <Balancer>
+                    <Heading
+                        textAlign="center"
+                        fontSize={['36px', '36px', '46px', '56px', '94px', '94px']}
+                        lineHeight="1.05"
+                        color="pink.200"
+                        fontFamily="heading"
+                    >
+                        {tuhinga_timatanga_english}
+                    </Heading>
+                </Balancer> */}
                 {reoLines.map((line, index) => (
                     <Heading
                         key={index}
