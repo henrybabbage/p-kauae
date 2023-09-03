@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive'
 import Balancer from 'react-wrap-balancer'
 import { MotionBox } from '../Primitives/MotionBox'
 
-export default function Stepper({ onClose }) {
+export default function Stepper({ onClose, haerenga }) {
     let [step, setStep] = useState(1)
 
     const handleFinish = () => {
@@ -19,6 +19,8 @@ export default function Stepper({ onClose }) {
 
     const isDesktop = useMediaQuery({ minWidth: 992 })
     const isTabletOrMobile = useMediaQuery({ maxWidth: 991 })
+
+    const { slide_1, slide_2, slide_3, slide_1_mobile, slide_2_mobile, slide_3_mobile } = haerenga
 
     return (
         <>
@@ -34,21 +36,18 @@ export default function Stepper({ onClose }) {
                             textAlign="center"
                             textColor="white"
                         >
-                            {step === 1 &&
-                                'This map highlights the relationship between each woman and the land they are connected to.'}
-                            {step === 2 &&
-                                isDesktop &&
-                                'Click the names on the map to move around Taranaki and engage with stories of reclamation.'}
-                            {step === 2 &&
-                                isTabletOrMobile &&
-                                'Swipe left and right or tap on the names on the map to move around Taranaki and engage with stories of reclamation.'}
-                            {step === 3 &&
-                                'Each location features a film of the landscape as well as a portrait and statement from each woman.'}
+                            {step === 1 && isDesktop && slide_1}
+                            {step === 2 && isTabletOrMobile && slide_1_mobile}
+                            {step === 2 && isDesktop && slide_2}
+                            {step === 2 && isTabletOrMobile && slide_2_mobile}
+                            {step === 3 && isDesktop && slide_3}
+                            {step === 3 && isTabletOrMobile && slide_3_mobile}
                         </Text>
                     </Client>
                 </Balancer>
             </Flex>
             <Flex
+                mt={['4', '4', '4', '0', '0', '0']}
                 w="100%"
                 position="fixed"
                 bottom={['16', '16', '16', '20', '20', '20']}

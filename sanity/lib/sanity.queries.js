@@ -60,6 +60,16 @@ export const kaiwhakaahuaQuery = groq`*[_type == 'kaiwhakaahua'][0]{
     }
 }`
 
+export const haerengaQuery = groq`*[_type == 'haerenga'][0]{
+    _id,
+    slide_1,
+    slide_2,
+    slide_3,
+    slide_1_mobile,
+    slide_2_mobile,
+    slide_3_mobile,
+}`
+
 export const koreroQuery = groq`*[_type == 'korero'][0]{
     _id,
     tuhinga_matua,

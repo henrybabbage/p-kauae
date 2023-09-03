@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 import Stepper from './Stepper'
 
-export default function MapOverlay({ onClose, onOpen, isOpen }) {
+export default function MapOverlay({ haerenga, onClose, onOpen, isOpen }) {
     return (
         <Modal
             isOpen={isOpen}
@@ -65,7 +65,7 @@ export default function MapOverlay({ onClose, onOpen, isOpen }) {
                         scrollbarWidth: 'none'
                     }}
                 >
-                    <Stepper onClose={onClose} />
+                    <Stepper haerenga={haerenga} onClose={onClose} />
                 </ModalBody>
             </ModalContent>
         </Modal>

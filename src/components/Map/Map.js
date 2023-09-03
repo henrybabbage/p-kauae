@@ -18,7 +18,7 @@ import MapOverlay from './MapOverlay'
 import MapProgress from './MapProgress'
 import MoonPhaseDisplay from './MoonPhaseDisplay'
 
-export default function Map({ wahine }) {
+export default function Map({ wahine, haerenga }) {
     // Taranaki, New Zealand [Longitude, Latitiude]
     // Negative values denote Southern Hemisphere
     // rhumbBearing function wants order: [Lng, Lat]
@@ -245,6 +245,7 @@ export default function Map({ wahine }) {
             {/* Instructions modal will be open by default when page mounts if local storage intro-shown key is null */}
             {!introShown && (
                 <MapOverlay
+                    haerenga={haerenga}
                     isOpen={instructionsModal.isOpen}
                     onOpen={instructionsModal.onOpen}
                     onClose={instructionsModal.onClose}
