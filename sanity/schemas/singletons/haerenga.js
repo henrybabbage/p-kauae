@@ -14,7 +14,7 @@ export default {
         },
         {
             name: 'slide_1',
-            title: 'Slide_1',
+            title: 'Slide 1',
             type: 'text',
             description: 'Guide text for the first step'
         },
@@ -22,7 +22,7 @@ export default {
             name: 'slide_1_mobile',
             title: 'Slide 1 mobile',
             type: 'text',
-            description: 'Guide text for the first step'
+            description: 'Guide text for the first step on the mobile version'
         },
         {
             name: 'slide_2',
@@ -34,7 +34,7 @@ export default {
             name: 'slide_2_mobile',
             title: 'Slide 2 mobile',
             type: 'text',
-            description: 'Guide text for the second step'
+            description: 'Guide text for the second step on the mobile version'
         },
         {
             name: 'slide_3',
@@ -46,7 +46,7 @@ export default {
             name: 'slide_3_mobile',
             title: 'Slide 3 mobile',
             type: 'text',
-            description: 'Guide text for the third step'
+            description: 'Guide text for the third step on the mobile version'
         }
     ]
 }
