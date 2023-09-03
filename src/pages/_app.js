@@ -75,8 +75,16 @@ export default function App({ Component, pageProps }) {
                             window.scrollTo(0, 0)
                         }}
                     >
-                        <Header blurEffect={pathname === '/' ? true : false} />
-                        {loading ? <TransitionBanner /> : <Component layout {...pageProps} key={asPath} />}
+                        <Header
+                            key="header"
+                            blurEffect={pathname === '/' ? true : false}
+                            opacity={pathname === '/haeranga' ? 0.5 : 1}
+                        />
+                        {loading ? (
+                            <TransitionBanner key="transition" />
+                        ) : (
+                            <Component layout {...pageProps} key={asPath} />
+                        )}
                     </AnimatePresence>
                 </ChakraProvider>
             </HydrationProvider>

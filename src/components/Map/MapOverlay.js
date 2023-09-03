@@ -5,12 +5,11 @@ import {
     Modal,
     ModalBody,
     ModalContent,
-    ModalFooter,
     ModalHeader,
     ModalOverlay,
     Text
 } from '@chakra-ui/react'
-import Balancer from 'react-wrap-balancer'
+import Stepper from './Stepper'
 
 export default function MapOverlay({ onClose, onOpen, isOpen }) {
     return (
@@ -37,7 +36,7 @@ export default function MapOverlay({ onClose, onOpen, isOpen }) {
                     <Flex justifyContent="space-between" alignContent="start" p={['2', '2', '2', '2', '2', '2']}>
                         <Heading
                             as="h1"
-                            fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
+                            fontSize={['16px', '16px', '16px', '20px', '20px', '20px']}
                             color="white"
                             fontWeight="regular"
                             fontFamily="subheading"
@@ -45,7 +44,7 @@ export default function MapOverlay({ onClose, onOpen, isOpen }) {
                             {'Nau mai ki Pūkauae'}
                         </Heading>
                         <Button variant="callToAction" onClick={onClose} zIndex="100">
-                            <Text fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}>{'(Close)'}</Text>
+                            <Text fontSize={['16px', '16px', '16px', '20px', '20px', '20px']}>{'(Close)'}</Text>
                         </Button>
                     </Flex>
                 </ModalHeader>
@@ -66,25 +65,8 @@ export default function MapOverlay({ onClose, onOpen, isOpen }) {
                         scrollbarWidth: 'none'
                     }}
                 >
-                    <Flex flexDir="column" justifyContent="center" alignItems="center" h="100vh" w="100vw">
-                        <Balancer>
-                            <Text
-                                as="h1"
-                                fontFamily="subheading"
-                                fontSize={['14px', '14px', '14px', '36px', '36px', '36px']}
-                                color="white"
-                                lineHeight="1.3"
-                                textAlign="center"
-                                textColor="white"
-                            >
-                                {
-                                    'This map highlights the relationship between each woman and the land they are connected to.'
-                                }
-                            </Text>
-                        </Balancer>
-                    </Flex>
+                    <Stepper onClose={onClose} />
                 </ModalBody>
-                <ModalFooter></ModalFooter>
             </ModalContent>
         </Modal>
     )

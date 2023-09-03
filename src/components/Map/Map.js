@@ -7,13 +7,16 @@ import ReactMapGL, { Layer, Source } from 'react-map-gl'
 import DigitalClock from './DigitalClock'
 import MonthDisplay from './MonthDisplay'
 
-import { TabletAndAbove } from '@/utils/breakpoints'
+import useStorage from '@/hooks/useStorage'
+import { Mobile, TabletAndAbove } from '@/utils/breakpoints'
+import { FocusIcon, MapPin } from 'lucide-react'
 import Image from 'next/image'
 import { Client } from 'react-hydration-provider'
-import MapProgress from './MapProgress'
+import MapErrorDrawer from './MapErrorDrawer'
 import MapModal from './MapModal'
-import MoonPhaseDisplay from './MoonPhaseDisplay'
 import MapOverlay from './MapOverlay'
+import MapProgress from './MapProgress'
+import MoonPhaseDisplay from './MoonPhaseDisplay'
 
 export default function Map({ wahine }) {
     // Taranaki, New Zealand [Longitude, Latitiude]
@@ -25,6 +28,8 @@ export default function Map({ wahine }) {
     function handleMapBearing(newLatlng) {
         return rhumbBearing(taranakiLatLng, newLatlng) - 180
     }
+
+    const { getItem, setItem, removeItem } = useStorage()
 
     const [mapIsVisible, setMapIsVisible] = useState(false)
     const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
@@ -48,6 +53,7 @@ export default function Map({ wahine }) {
     const [mapIsIdle, setMapIsIdle] = useState(false)
     const [mapIsMoving, setMapIsMoving] = useState(false)
     const [modalOpen, setModalOpen] = useState(false)
+    const [introShown, setIntroShown] = useState(false)
     const mapRef = useRef(null)
     const hoveredStateIdRef = useRef(null)
     const touchRef = useRef(null)
@@ -93,6 +99,19 @@ export default function Map({ wahine }) {
 
     const mapModal = useDisclosure()
     const instructionsModal = useDisclosure({ defaultIsOpen: true })
+    const errorDrawer = useDisclosure()
+
+    useEffect(() => {
+        const intro = getItem('intro-shown', 'local')
+        if (!intro) {
+            setItem('intro-shown', true, 'local')
+            setTimeout(() => {
+                setIntroShown(true)
+            }, 60000)
+        } else {
+            setIntroShown(true)
+        }
+    }, [getItem, setItem])
 
     useEffect(() => {
         if (!mapIsMoving && mapIsIdle && modalOpen) {
@@ -212,12 +231,16 @@ export default function Map({ wahine }) {
 
     return (
         <>
+            {/* Appears when Mapbox error is thrown */}
+            <MapErrorDrawer isOpen={errorDrawer.isOpen} onOpen={errorDrawer.onOpen} onClose={errorDrawer.onClose} />
             {/* Instructions modal will be open by default when page mounts */}
-            <MapOverlay
-                isOpen={instructionsModal.isOpen}
-                onOpen={instructionsModal.onOpen}
-                onClose={instructionsModal.onClose}
-            />
+            {!introShown && (
+                <MapOverlay
+                    isOpen={instructionsModal.isOpen}
+                    onOpen={instructionsModal.onOpen}
+                    onClose={instructionsModal.onClose}
+                />
+            )}
             {/* Fallback display before map mounts */}
             <Center h="100vh" w="100vw" position="absolute">
                 <Image
@@ -315,36 +338,32 @@ export default function Map({ wahine }) {
                                 bottom={['6', '6', '8', '8', '8', '8']}
                                 left="8"
                             >
-                                <Text
-                                    fontFamily="subheading"
-                                    fontSize="14px"
-                                    lineHeight="1"
-                                    textAlign="left"
-                                    color="#FFD233"
-                                    pb="2"
-                                >
-                                    {selectedWahine?.wahi?.ingoa}
-                                </Text>
-                                <Text
-                                    fontFamily="subheading"
-                                    fontSize="14px"
-                                    lineHeight="1"
-                                    textAlign="left"
-                                    color="#FFD233"
-                                    pb="2"
-                                >
-                                    {' • '}
-                                </Text>
-                                <Text
-                                    fontFamily="subheading"
-                                    fontSize="14px"
-                                    lineHeight="1"
-                                    textAlign="left"
-                                    color="#FFD233"
-                                    pb="2"
-                                >
-                                    {selectedWahine?.ingoa}
-                                </Text>
+                                <Flex gap="12px">
+                                    <MapPin strokeWidth={2} color="#FFD233" size={20} />
+                                    <Text
+                                        fontFamily="subheading"
+                                        fontSize="14px"
+                                        lineHeight="1"
+                                        textAlign="left"
+                                        color="#FFD233"
+                                        pb="2"
+                                    >
+                                        {selectedWahine?.wahi?.ingoa}
+                                    </Text>
+                                </Flex>
+                                <Flex gap="12px">
+                                    <FocusIcon strokeWidth={2} color="#FFD233" size={20} />
+                                    <Text
+                                        fontFamily="subheading"
+                                        fontSize="14px"
+                                        lineHeight="1"
+                                        textAlign="left"
+                                        color="#FFD233"
+                                        pb="2"
+                                    >
+                                        {selectedWahine?.ingoa}
+                                    </Text>
+                                </Flex>
                             </HStack>
                             <HStack
                                 spacing="24px"
@@ -353,7 +372,7 @@ export default function Map({ wahine }) {
                                 bottom={['6', '6', '8', '8', '8', '8']}
                                 right="8"
                             >
-                                <Box w="64px"></Box>
+                                <Box w="80px"></Box>
                                 <Box id="local-time" position="absolute">
                                     <DigitalClock />
                                 </Box>
@@ -382,6 +401,20 @@ export default function Map({ wahine }) {
                             </HStack>
                         </Flex>
                     </TabletAndAbove>
+                    <Mobile>
+                        <Box w="100%" display="flex" justifyContent="center" position="fixed" bottom="6" px="24">
+                            <Text
+                                fontFamily="subheading"
+                                fontSize="14px"
+                                lineHeight="1"
+                                textAlign="center"
+                                color="#FFD233"
+                                pb="2"
+                            >
+                                {'Swipe left or right, or tap a name on the map to navigate'}
+                            </Text>
+                        </Box>
+                    </Mobile>
                 </Client>
                 <MapProgress pending={mapIsMoving && !mapModal.isOpen} value={progress} />
             </Box>

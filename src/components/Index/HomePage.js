@@ -89,7 +89,7 @@ export default function HomePage({ korero, preview }) {
                                     poster={opening_video_poster.asset.url}
                                     alt="Pūkauae exhibition opening 11th December 2019"
                                     autoplay={false}
-                                    controls={true}
+                                    controls={false}
                                     muted={false}
                                     loop={false}
                                 />
