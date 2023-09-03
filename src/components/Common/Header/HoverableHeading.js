@@ -18,7 +18,7 @@ export default function HoverableHeading({ hoverContent, defaultContent, ...prop
                 initial={{ opacity: 0 }}
                 animate={{ opacity: isHovered ? 1 : 0 }}
                 transition={{
-                    type: 'crossfade',
+                    type: 'easeInOut',
                     duration: 0.2
                 }}
                 position="absolute"
@@ -42,7 +42,7 @@ export default function HoverableHeading({ hoverContent, defaultContent, ...prop
                 initial={{ opacity: 0 }}
                 animate={{ opacity: isHovered ? 0 : 1 }}
                 transition={{
-                    type: 'crossfade',
+                    type: 'easeInOut',
                     duration: 0.2
                 }}
                 position="relative"
