@@ -101,13 +101,13 @@ export default function Map({ wahine }) {
     const errorDrawer = useDisclosure()
 
     useEffect(() => {
-        const intro = getItem('intro-shown')
+        const intro = getItem('intro-shown', 'local')
         if (!intro) {
-            setItem('intro-shown', true)
+            setItem('intro-shown', true, 'local')
         } else {
             setIntroShown(true)
         }
-    }, [getItem, setItem])
+    }, [getItem, setItem, introShown])
 
     useEffect(() => {
         if (!mapIsMoving && mapIsIdle && modalOpen) {
