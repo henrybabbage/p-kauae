@@ -6,6 +6,7 @@ const VideoPlayer = dynamic(() => import('./VideoPlayer'), {
 })
 
 export default function ModalVideo({ playerRef, src, location, poster, alt }) {
+  
     return (
         <Box position="relative" w="100%" maxWidth="100%">
             <AspectRatio

@@ -108,15 +108,15 @@ export default function MapModal({
                     <Flex flexDirection={['column', 'column', 'column', 'row', 'row', 'row']} wrap="nowrap" gap="24px">
                         <Flex flexDir="column" gap="10px">
                             <Box w="100%" maxW="100vw" h="auto">
-                                <ModalVideo
-                                    playerRef={playerRef}
-                                    src={selectedWahine.kiriata.droneFootage.secure_url}
-                                    location={selectedWahine.kiriata.ingoa}
-                                    poster={selectedWahine.kiriata.poster?.asset?.url}
-                                    autoplay={true}
-                                    muted={true}
-                                    loop={true}
-                                />
+                                    <ModalVideo
+                                        playerRef={playerRef}
+                                        src={selectedWahine.kiriata.droneFootage.secure_url}
+                                        location={selectedWahine.kiriata.ingoa}
+                                        poster={selectedWahine.kiriata.poster?.asset?.url}
+                                        autoplay={true}
+                                        muted={true}
+                                        loop={true}
+                                    />
                             </Box>
                             <Flex
                                 flexDirection={['column', 'column', 'column', 'row', 'row', 'row']}
