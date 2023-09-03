@@ -11,20 +11,6 @@ export default {
             hidden: true
         },
         {
-            name: 'tuhinga_timatanga',
-            title: 'Tuhinga timatanga in Te Reo Māori',
-            description: 'Text displayed when landing page loads',
-            type: 'text',
-            readOnly: true
-        },
-        {
-            name: 'tuhinga_timatanga_english',
-            title: 'Tuhinga timatanga in English',
-            description: 'Text displayed when landing page loads',
-            type: 'text',
-            readOnly: true
-        },
-        {
             name: 'mihi',
             title: 'Mihi',
             type: 'content',
@@ -91,6 +77,20 @@ export default {
             title: 'Video poster',
             type: 'whakaahua',
             description: 'Image displayed when video is paused'
+        },
+        {
+            name: 'tuhinga_timatanga',
+            title: 'Tuhinga timatanga in Te Reo Māori',
+            description: 'Text displayed when landing page loads',
+            type: 'text',
+            readOnly: true
+        },
+        {
+            name: 'tuhinga_timatanga_english',
+            title: 'Tuhinga timatanga in English',
+            description: 'Text displayed when landing page loads',
+            type: 'text',
+            readOnly: true
         },
         {
             name: 'haerenga_korero',
