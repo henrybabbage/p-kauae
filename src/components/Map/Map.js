@@ -105,10 +105,11 @@ export default function Map({ wahine }) {
         const intro = getItem('intro-shown', 'local')
         if (!intro) {
             setItem('intro-shown', true, 'local')
+            setIntroShown(true)
         } else {
             setIntroShown(true)
         }
-    }, [getItem, setItem, introShown])
+    }, [getItem, setItem])
 
     useEffect(() => {
         if (!mapIsMoving && mapIsIdle && modalOpen) {
