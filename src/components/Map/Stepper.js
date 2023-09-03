@@ -62,9 +62,9 @@ export default function Stepper({ onClose }) {
                     justifyContent="space-between"
                     p={['2', '2', '2', '6', '6', '6']}
                 >
+                    <Step step={0} currentStep={step} />
                     <Step step={1} currentStep={step} />
                     <Step step={2} currentStep={step} />
-                    <Step step={3} currentStep={step} />
                 </Flex>
 
                 <Flex

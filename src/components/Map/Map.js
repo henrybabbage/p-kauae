@@ -107,7 +107,7 @@ export default function Map({ wahine }) {
             setTimeout(() => {
                 setIntroShown(true)
                 setItem('intro-shown', true, 'local')
-            }, 60000)
+            }, 60000 * 5)
         } else {
             setIntroShown(true)
         }
@@ -241,13 +241,8 @@ export default function Map({ wahine }) {
     return (
         <>
             {/* Appears when Mapbox error is thrown */}
-            <MapErrorDrawer
-                isOpen={errorDrawer.isOpen}
-                onOpen={errorDrawer.onOpen}
-                onClose={errorDrawer.onClose}
-                onError={() => setMapError(true)}
-            />
-            {/* Instructions modal will be open by default when page mounts */}
+            <MapErrorDrawer isOpen={errorDrawer.isOpen} onOpen={errorDrawer.onOpen} onClose={errorDrawer.onClose} />
+            {/* Instructions modal will be open by default when page mounts if local storage intro-shown key is null */}
             {!introShown && (
                 <MapOverlay
                     isOpen={instructionsModal.isOpen}
@@ -338,6 +333,7 @@ export default function Map({ wahine }) {
                         setMapIsIdle(false)
                         setMapIsMoving(true)
                     }}
+                    onError={() => setMapError(true)}
                 >
                     <Source id="taranaki-data" type="geojson" data={wahine} tolerance={0} generateId={true} />
                     <Layer source="taranaki-data" {...layerStyle} />

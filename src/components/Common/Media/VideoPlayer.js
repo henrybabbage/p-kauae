@@ -1,11 +1,10 @@
-import { useEffect, useState, useRef } from 'react'
-import { isBrowser } from '@/utils/helpers'
 import { Box, Tooltip } from '@chakra-ui/react'
 import { MediaOutlet, MediaPlayButton, MediaPlayer, MediaPoster } from '@vidstack/react'
+import { useEffect, useRef, useState } from 'react'
 // import 'vidstack/styles/community-skin/video.css'
+import { useRouter } from 'next/router'
 import 'vidstack/styles/defaults.css'
 import VideoOverlay from './VideoOverlay'
-import { useRouter } from 'next/router'
 
 export default function VideoPlayer({
     playerRef,
@@ -19,18 +18,13 @@ export default function VideoPlayer({
     poster,
     controls
 }) {
-    const [hasWindow, setHasWindow] = useState(false)
     const [isBuffering, setIsBuffering] = useState(null)
     const [isReady, setIsReady] = useState(null)
     const [showInfo, setShowInfo] = useState(false)
     const [videoChanged, setVideoChanged] = useState(false)
-    const videoRef = useRef(null)
 
-    useEffect(() => {
-        if (isBrowser) {
-            setHasWindow(true)
-        }
-    }, [])
+    const videoRef = useRef(null)
+    const { pathname } = useRouter()
 
     useEffect(() => {
         if (videoRef.current !== src) {
@@ -41,8 +35,6 @@ export default function VideoPlayer({
             }, 50)
         }
     }, [src])
-
-    const { pathname } = useRouter()
 
     return (
         <Box position="absolute" bg="black" w="100%" h="100%" userSelect="all" cursor="auto">
