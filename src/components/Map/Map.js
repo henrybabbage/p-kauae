@@ -107,7 +107,7 @@ export default function Map({ wahine }) {
             setTimeout(() => {
                 setIntroShown(true)
                 setItem('intro-shown', true, 'local')
-            }, 60000 * 5)
+            }, 60000)
         } else {
             setIntroShown(true)
         }
