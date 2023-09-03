@@ -47,7 +47,11 @@ export default function Header({ blurEffect }) {
                                 duration: 0.5
                             }}
                         >
-                            <HoverableHeading hoverContent="About" defaultContent="Whakapapa" textAlign="center" />
+                            <HoverableHeading
+                                hoverContent="About"
+                                defaultContent="Whakapapa"
+                                textAlign="center"
+                            />
                         </MotionBox>
                     </NavLink>
                 </Flex>

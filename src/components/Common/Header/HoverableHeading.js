@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Box, Heading } from '@chakra-ui/react'
 
 export default function HoverableHeading({ hoverContent, defaultContent, ...props }) {
@@ -9,7 +10,6 @@ export default function HoverableHeading({ hoverContent, defaultContent, ...prop
             lineHeight="1.36"
             fontWeight="bold"
             fontFamily="subheading"
-            width="140px"
         >
             <Box
                 _hover={{ _before: { content: `'${hoverContent}'` } }}
