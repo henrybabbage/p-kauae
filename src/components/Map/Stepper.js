@@ -123,7 +123,7 @@ function Step({ step, currentStep }) {
                 initial={false}
                 variants={{
                     inactive: {
-                        backgroundColor: 'var(--chakra-colors-white)',
+                        backgroundColor: 'var(--chakra-colors-grey-400)',
                         borderColor: 'rgba(0, 0, 0, 0.36)'
                     },
                     active: {
