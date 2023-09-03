@@ -43,7 +43,7 @@ export default function Stepper({ onClose }) {
                                 isTabletOrMobile &&
                                 'Swipe left and right or tap on the names on the map to move around Taranaki and engage with stories of reclamation.'}
                             {step === 3 &&
-                                'Each location features a film of the whenua as well as a portrait and kōrero from each wahine.'}
+                                'Each location features a film of the landscape as well as a portrait and statement from each woman.'}
                         </Text>
                     </Client>
                 </Balancer>
