@@ -49,11 +49,11 @@ export default function Map({ wahine }) {
         }
     }, [])
 
-    const [progress, setProgress] = useState(0)
     const [mapIsIdle, setMapIsIdle] = useState(false)
     const [mapIsMoving, setMapIsMoving] = useState(false)
     const [modalOpen, setModalOpen] = useState(false)
     const [introShown, setIntroShown] = useState(false)
+    const [mapError, setMapError] = useState(false)
     const mapRef = useRef(null)
     const hoveredStateIdRef = useRef(null)
     const touchRef = useRef(null)
@@ -104,14 +104,23 @@ export default function Map({ wahine }) {
     useEffect(() => {
         const intro = getItem('intro-shown', 'local')
         if (!intro) {
-            setItem('intro-shown', true, 'local')
             setTimeout(() => {
                 setIntroShown(true)
+                setItem('intro-shown', true, 'local')
             }, 60000)
         } else {
             setIntroShown(true)
         }
     }, [getItem, setItem])
+
+    useEffect(() => {
+        if (mapError) {
+            errorDrawer.onOpen()
+            setTimeout(() => {
+                location.reload()
+            }, 2000)
+        }
+    }, [mapError])
 
     useEffect(() => {
         if (!mapIsMoving && mapIsIdle && modalOpen) {
@@ -232,7 +241,12 @@ export default function Map({ wahine }) {
     return (
         <>
             {/* Appears when Mapbox error is thrown */}
-            <MapErrorDrawer isOpen={errorDrawer.isOpen} onOpen={errorDrawer.onOpen} onClose={errorDrawer.onClose} />
+            <MapErrorDrawer
+                isOpen={errorDrawer.isOpen}
+                onOpen={errorDrawer.onOpen}
+                onClose={errorDrawer.onClose}
+                onError={() => setMapError(true)}
+            />
             {/* Instructions modal will be open by default when page mounts */}
             {!introShown && (
                 <MapOverlay
@@ -416,7 +430,7 @@ export default function Map({ wahine }) {
                         </Box>
                     </Mobile>
                 </Client>
-                <MapProgress pending={mapIsMoving && !mapModal.isOpen} value={progress} />
+                <MapProgress pending={mapIsMoving && !mapModal.isOpen} />
             </Box>
         </>
     )
