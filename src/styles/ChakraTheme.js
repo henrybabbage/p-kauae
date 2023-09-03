@@ -41,6 +41,9 @@ const theme = extendTheme({
         red: {
             400: '#FF3333'
         },
+        yellow: {
+            400: '#FFD233'
+        },
         white: '#ffffff',
         black: '#000000'
     },

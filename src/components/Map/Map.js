@@ -9,6 +9,7 @@ import MonthDisplay from './MonthDisplay'
 
 import useStorage from '@/hooks/useStorage'
 import { Mobile, TabletAndAbove } from '@/utils/breakpoints'
+import { FocusIcon, MapPin } from 'lucide-react'
 import Image from 'next/image'
 import { Client } from 'react-hydration-provider'
 import MapErrorDrawer from './MapErrorDrawer'
@@ -334,36 +335,32 @@ export default function Map({ wahine }) {
                                 bottom={['6', '6', '8', '8', '8', '8']}
                                 left="8"
                             >
-                                <Text
-                                    fontFamily="subheading"
-                                    fontSize="14px"
-                                    lineHeight="1"
-                                    textAlign="left"
-                                    color="#FFD233"
-                                    pb="2"
-                                >
-                                    {selectedWahine?.wahi?.ingoa}
-                                </Text>
-                                <Text
-                                    fontFamily="subheading"
-                                    fontSize="14px"
-                                    lineHeight="1"
-                                    textAlign="left"
-                                    color="#FFD233"
-                                    pb="2"
-                                >
-                                    {' • '}
-                                </Text>
-                                <Text
-                                    fontFamily="subheading"
-                                    fontSize="14px"
-                                    lineHeight="1"
-                                    textAlign="left"
-                                    color="#FFD233"
-                                    pb="2"
-                                >
-                                    {selectedWahine?.ingoa}
-                                </Text>
+                                <Flex gap="12px">
+                                    <MapPin strokeWidth={2} color="#FFD233" size={20} />
+                                    <Text
+                                        fontFamily="subheading"
+                                        fontSize="14px"
+                                        lineHeight="1"
+                                        textAlign="left"
+                                        color="#FFD233"
+                                        pb="2"
+                                    >
+                                        {selectedWahine?.wahi?.ingoa}
+                                    </Text>
+                                </Flex>
+                                <Flex gap="12px">
+                                    <FocusIcon strokeWidth={2} color="#FFD233" size={20} />
+                                    <Text
+                                        fontFamily="subheading"
+                                        fontSize="14px"
+                                        lineHeight="1"
+                                        textAlign="left"
+                                        color="#FFD233"
+                                        pb="2"
+                                    >
+                                        {selectedWahine?.ingoa}
+                                    </Text>
+                                </Flex>
                             </HStack>
                             <HStack
                                 spacing="24px"
