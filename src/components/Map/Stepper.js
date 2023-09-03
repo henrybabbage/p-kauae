@@ -127,7 +127,7 @@ function Step({ step, currentStep }) {
                         borderColor: 'rgba(0, 0, 0, 0.36)'
                     },
                     active: {
-                        backgroundColor: 'var(--chakra-colors-white)',
+                        backgroundColor: 'var(--chakra-colors-grey-400)',
                         borderColor: 'var(--chakra-colors-pink-200)'
                     },
                     complete: {
