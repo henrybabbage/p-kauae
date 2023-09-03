@@ -14,13 +14,15 @@ export default {
             name: 'tuhinga_timatanga',
             title: 'Tuhinga timatanga in Te Reo Māori',
             description: 'Text displayed when landing page loads',
-            type: 'text'
+            type: 'text',
+            readOnly: true
         },
         {
             name: 'tuhinga_timatanga_english',
             title: 'Tuhinga timatanga in English',
             description: 'Text displayed when landing page loads',
-            type: 'text'
+            type: 'text',
+            readOnly: true
         },
         {
             name: 'mihi',
