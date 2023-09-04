@@ -25,7 +25,7 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
 
 // Define the singleton document types
-const singletonTypes = new Set(['korero', 'kaiwhakaahua'])
+const singletonTypes = new Set(['korero', 'kaiwhakaahua', 'config', 'haerenga'])
 
 export default defineConfig({
     theme,
