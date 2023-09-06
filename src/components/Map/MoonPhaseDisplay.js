@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 
 export default function MoonPhaseDisplay() {
@@ -43,11 +43,11 @@ export default function MoonPhaseDisplay() {
 
     return (
         <>
-            {moonPhaseName !== null ? (
+            {moonPhaseName && (
                 <Text fontFamily="subheading" fontSize="14px" lineHeight="1" textAlign="left" color="#FFD233" pb="2">
                     {moonPhaseName}
                 </Text>
-            ) : null}
+            )}
         </>
     )
 }
