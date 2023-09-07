@@ -253,21 +253,26 @@ export default function Map({ wahine, haerenga }) {
             )}
             {/* Fallback display before map mounts */}
             <Center h="100vh" w="100vw" position="absolute">
-                <Image
-                    src="/icons/pukauae.svg"
-                    alt="Pukauae logo"
-                    width="125"
-                    height="125"
-                    priority
-                    sizes="100vw"
-                    style={{
-                        objectFit: 'contain',
-                        objectPosition: 'center'
-                    }}
-                />
+                <Box
+                    position="relative"
+                    h={['70px', '70px', '70px', '120px', '120px', '120px']}
+                    w={['70px', '70px', '70px', '120px', '120px', '120px']}
+                >
+                    <Image
+                        src="/icons/pukauae.svg"
+                        alt="Pukauae logo"
+                        fill
+                        priority
+                        sizes="100vw"
+                        style={{
+                            objectFit: 'contain',
+                            objectPosition: 'center'
+                        }}
+                    />
+                </Box>
             </Center>
             <Box
-                h="100vh"
+                h={['100dvh', '100dvh', '100dvh', '100vh', '100vh', '100vh']}
                 w="100vw"
                 cursor="auto"
                 position="relative"

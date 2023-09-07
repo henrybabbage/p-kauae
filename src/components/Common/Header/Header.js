@@ -6,6 +6,8 @@ import MenuIcon from '../Icons/MenuIcon'
 import MobileMenu from '../Mobile/MobileMenu'
 import HoverableHeading from './HoverableHeading'
 import NavLink from './NavLink'
+import { Mobile } from '@/utils/breakpoints'
+import { Client } from 'react-hydration-provider'
 
 export default function Header({ blurEffect, opacity }) {
     const menu = useDisclosure()
@@ -41,30 +43,34 @@ export default function Header({ blurEffect, opacity }) {
                 px="6"
                 zIndex={20}
             >
-                <Flex w="auto" justifyContent="start">
-                    <NavLink href="/" isSiteTitle={true}>
-                        <MotionBox
-                            zIndex={100}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{
-                                ease: 'easeIn',
-                                duration: 0.5
-                            }}
-                        >
-                            <Heading
-                                as="h2"
-                                fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
-                                lineHeight="1.36"
-                                fontWeight="bold"
-                                fontFamily="subheading"
-                            >
-                                Tū Tama Wāhine o Taranaki
-                            </Heading>
-                        </MotionBox>
-                    </NavLink>
-                </Flex>
-                <Flex w="auto" justifyContent="center" display={['none', 'none', 'none', 'flex', 'flex', 'flex']}>
+                <Client>
+                    <Mobile>
+                        <Flex w="auto" justifyContent="start">
+                            <NavLink href="/" isSiteTitle={true}>
+                                <MotionBox
+                                    zIndex={100}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{
+                                        ease: 'easeIn',
+                                        duration: 0.5
+                                    }}
+                                >
+                                    <Heading
+                                        as="h2"
+                                        fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
+                                        lineHeight="1.36"
+                                        fontWeight="bold"
+                                        fontFamily="subheading"
+                                    >
+                                        Tū Tama Wāhine o Taranaki
+                                    </Heading>
+                                </MotionBox>
+                            </NavLink>
+                        </Flex>
+                    </Mobile>
+                </Client>
+                <Flex w="auto" justifyContent="start" display={['none', 'none', 'none', 'flex', 'flex', 'flex']}>
                     <NavLink href="/">
                         <MotionBox
                             zIndex={100}
@@ -75,7 +81,11 @@ export default function Header({ blurEffect, opacity }) {
                                 duration: 0.5
                             }}
                         >
-                            <HoverableHeading hoverContent="About" defaultContent="Whakapapa" textAlign="center" />
+                            <HoverableHeading
+                                hoverContent="Whakapapa"
+                                defaultContent="Tū Tama Wāhine o Taranaki"
+                                textAlign="center"
+                            />
                         </MotionBox>
                     </NavLink>
                 </Flex>

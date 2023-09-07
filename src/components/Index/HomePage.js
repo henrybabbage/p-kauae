@@ -8,8 +8,8 @@ import { useRef } from 'react'
 import PreviewButton from '../Common/Buttons/PreviewButton'
 import SectionBreakIcon from '../Common/Icons/SectionBreakIcon'
 import { CustomPortableText } from '../Primitives/CustomPortableText'
-import LandingVideo from './LandingVideo'
 import SmoothScroll from '../Primitives/SmoothScroll'
+import LandingVideo from './LandingVideo'
 
 export default function HomePage({ korero, preview }) {
     const {
@@ -47,10 +47,19 @@ export default function HomePage({ korero, preview }) {
                 <Box id="about">
                     <Grid templateColumns="repeat(12, 1fr)" px={['6', '6', '6', '0', '0', '0']} w="100vw">
                         <GridItem colStart={1} colEnd={13} h="100vh" overflow="hidden" position="relative">
-                            <Flex position="relative" justify="center" flexDirection="column" height="80vh">
+                            <Flex
+                                position="relative"
+                                justify="center"
+                                flexDirection="column"
+                                height={['72vh', '72vh', '72vh', '80vh', '80vh', '80vh']}
+                                width="100%"
+                            >
                                 <LandingBanner reoText={tuhinga_timatanga} englishText={tuhinga_timatanga_english} />
                             </Flex>
-                            <MotionBox pt={['0', '0', '0', '4', '4', '4']}>
+                            <MotionBox
+                                pt={['0', '0', '0', '4', '4', '4']}
+                                height={['72vh', '72vh', '72vh', '80vh', '80vh', '80vh']}
+                            >
                                 <SectionBreakIcon />
                             </MotionBox>
                         </GridItem>

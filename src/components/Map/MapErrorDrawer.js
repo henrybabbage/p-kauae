@@ -42,7 +42,7 @@ export default function MapErrorDrawer({ isOpen, onClose }) {
                                 as="h1"
                                 fontFamily="subheading"
                                 fontWeight="regular"
-                                fontSize={['28px', '28px', '28px', '36px', '36px', '36px']}
+                                fontSize={['16px', '16px', '16px', '36px', '36px', '36px']}
                                 textColor="white"
                                 lineHeight="1.3"
                                 textAlign="center"

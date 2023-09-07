@@ -15,12 +15,15 @@ export default function TransitionBanner() {
             pointerEvents="none"
             overflow="hidden"
         >
-            <Box pb="12">
+            <Box
+                position="relative"
+                h={['70px', '70px', '70px', '120px', '120px', '120px']}
+                w={['70px', '70px', '70px', '120px', '120px', '120px']}
+            >
                 <Image
                     src="/icons/pukauae.svg"
                     alt="Pukauae logo"
-                    width="125"
-                    height="125"
+                    fill
                     priority
                     sizes="100vw"
                     style={{

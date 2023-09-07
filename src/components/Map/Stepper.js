@@ -24,14 +24,20 @@ export default function Stepper({ onClose, haerenga }) {
 
     return (
         <>
-            <Flex flexDirection="column" justifyContent="center" alignItems="center" h="90vh" w="100vw">
+            <Flex
+                flexDirection="column"
+                justifyContent={['end', 'end', 'end', 'center', 'center', 'center']}
+                alignItems="center"
+                h={['50vh', '50vh', '50vh', '90vh', '90vh', '90vh']}
+                w="100vw"
+            >
                 <Balancer ratio={0.5}>
                     <Client>
                         <Text
                             as="h1"
                             fontFamily="subheading"
                             fontWeight="regular"
-                            fontSize={['28px', '28px', '28px', '36px', '36px', '36px']}
+                            fontSize={['16px', '16px', '16px', '36px', '36px', '36px']}
                             color="white"
                             lineHeight="1.3"
                             textAlign="center"

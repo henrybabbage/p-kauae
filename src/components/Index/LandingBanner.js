@@ -44,7 +44,7 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                     <Heading
                         key={index}
                         textAlign="center"
-                        fontSize={['36px', '36px', '46px', '56px', '94px', '94px']}
+                        fontSize={['32px', '32px', '46px', '56px', '94px', '94px']}
                         lineHeight="1.05"
                         color="pink.200"
                         fontFamily="heading"
@@ -72,7 +72,7 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                 {/* <Balancer>
                     <Heading
                         textAlign="center"
-                        fontSize={['36px', '36px', '46px', '56px', '94px', '94px']}
+                        fontSize={['32px', '36px', '46px', '56px', '94px', '94px']}
                         lineHeight="1.05"
                         color="pink.200"
                         fontFamily="heading"

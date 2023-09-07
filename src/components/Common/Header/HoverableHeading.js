@@ -30,7 +30,7 @@ export default function HoverableHeading({ hoverContent, defaultContent, ...prop
                     lineHeight="1.36"
                     fontWeight="bold"
                     fontFamily="subheading"
-                    width="140px"
+                    width="fit-content"
                     zIndex="500"
                     onMouseEnter={handleHover}
                     onMouseLeave={handleUnhover}
@@ -54,7 +54,7 @@ export default function HoverableHeading({ hoverContent, defaultContent, ...prop
                     lineHeight="1.36"
                     fontWeight="bold"
                     fontFamily="subheading"
-                    width="140px"
+                    width="fit-content"
                     zIndex="500"
                     onMouseEnter={handleHover}
                     onMouseLeave={handleUnhover}

@@ -17,8 +17,8 @@ export default function SectionBreakIcon() {
                     alignSelf="center"
                     textAlign="center"
                     position="relative"
-                    width={['60px', '60px', '60px', '80px', '80px', '80px']}
-                    height={['60px', '60px', '60px', '80px', '80px', '80px']}
+                    width={['70px', '70px', '70px', '120px', '120px', '120px']}
+                    height={['70px', '70px', '70px', '120px', '120px', '120px']}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{
@@ -30,8 +30,8 @@ export default function SectionBreakIcon() {
                     <Image
                         src="/icons/pukauae.svg"
                         alt="Pūkauae icon"
-                        width="80"
-                        height="80"
+                        width="120"
+                        height="120"
                         priority
                         sizes="100vw"
                         style={{
