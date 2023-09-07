@@ -37,10 +37,11 @@ export default function MapErrorDrawer({ isOpen, onClose }) {
                     }}
                 >
                     <Flex flexDirection="column" justifyContent="center" alignItems="center" h="100vh" w="100vw">
-                        <Balancer>
+                        <Balancer ratio={0.5}>
                             <Heading
                                 as="h1"
                                 fontFamily="subheading"
+                                fontWeight="regular"
                                 fontSize={['28px', '28px', '28px', '36px', '36px', '36px']}
                                 textColor="white"
                                 lineHeight="1.3"

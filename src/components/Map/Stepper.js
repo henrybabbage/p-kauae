@@ -30,6 +30,7 @@ export default function Stepper({ onClose, haerenga }) {
                         <Text
                             as="h1"
                             fontFamily="subheading"
+                            fontWeight="regular"
                             fontSize={['28px', '28px', '28px', '36px', '36px', '36px']}
                             color="white"
                             lineHeight="1.3"
@@ -37,7 +38,7 @@ export default function Stepper({ onClose, haerenga }) {
                             textColor="white"
                         >
                             {step === 1 && isDesktop && slide_1}
-                            {step === 2 && isTabletOrMobile && slide_1_mobile}
+                            {step === 1 && isTabletOrMobile && slide_1_mobile}
                             {step === 2 && isDesktop && slide_2}
                             {step === 2 && isTabletOrMobile && slide_2_mobile}
                             {step === 3 && isDesktop && slide_3}
