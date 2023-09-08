@@ -114,7 +114,7 @@ const sizes = {
         fontSize: 'sm'
     }),
     xs: defineStyle({
-        fontSize: '12px'
+        fontSize: '10px'
     })
 }
 

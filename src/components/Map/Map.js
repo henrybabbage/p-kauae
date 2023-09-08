@@ -252,7 +252,7 @@ export default function Map({ wahine, haerenga }) {
                 />
             )}
             {/* Fallback display before map mounts */}
-            <Center h="100vh" w="100vw" position="absolute">
+            <Center h="100vh" w="100vw" position="absolute" overflow="hidden">
                 <Box
                     position="relative"
                     h={['70px', '70px', '70px', '120px', '120px', '120px']}
@@ -272,7 +272,8 @@ export default function Map({ wahine, haerenga }) {
                 </Box>
             </Center>
             <Box
-                h={['100dvh', '100dvh', '100dvh', '100vh', '100vh', '100vh']}
+                maxH="100vh"
+                h={['100vh', '100vh', '100vh', '100vh', '100vh', '100vh']}
                 w="100vw"
                 cursor="auto"
                 position="relative"
@@ -346,14 +347,13 @@ export default function Map({ wahine, haerenga }) {
                 </ReactMapGL>
                 <Client>
                     <TabletAndAbove>
-                        <Flex justifyContent="space-between">
-                            <HStack
-                                spacing="24px"
-                                position="fixed"
-                                z="20"
-                                bottom={['6', '6', '8', '8', '8', '8']}
-                                left="8"
-                            >
+                        <Flex
+                            justifyContent="space-between"
+                            position="fixed"
+                            bottom={['6', '6', '8', '8', '8', '8']}
+                            left="8"
+                        >
+                            <HStack spacing="24px" z="20">
                                 <Flex gap="12px">
                                     <MapPin strokeWidth={2} color="#FFD233" size={20} />
                                     <Text
@@ -418,7 +418,7 @@ export default function Map({ wahine, haerenga }) {
                         </Flex>
                     </TabletAndAbove>
                     <Mobile>
-                        <Box w="100%" display="flex" justifyContent="center" position="fixed" bottom="6" px="24">
+                        <Flex w="100%" justifyContent="center" position="fixed" bottom="6" px="24">
                             <Text
                                 fontFamily="subheading"
                                 fontSize="14px"
@@ -429,7 +429,7 @@ export default function Map({ wahine, haerenga }) {
                             >
                                 {'Swipe left or right, or tap a name on the map to navigate'}
                             </Text>
-                        </Box>
+                        </Flex>
                     </Mobile>
                 </Client>
                 <MapProgress pending={mapIsMoving && !mapModal.isOpen} />
