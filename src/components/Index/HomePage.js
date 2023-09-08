@@ -365,6 +365,14 @@ export default function HomePage({ korero, preview }) {
                                     alignItems="baseline"
                                 >
                                     <Heading
+                                        fontFamily={[
+                                            'subheading',
+                                            'subheading',
+                                            'subheading',
+                                            'heading',
+                                            'heading',
+                                            'heading'
+                                        ]}
                                         fontSize={['36px', '36px', '36px', '46px', '56px', '84px']}
                                         lineHeight="1"
                                         textAlign="left"
