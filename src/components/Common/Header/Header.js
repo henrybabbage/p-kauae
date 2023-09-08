@@ -1,13 +1,13 @@
 import { Box, Flex, Heading, useDisclosure } from '@chakra-ui/react'
 
 import { MotionBox } from '@/components/Primitives/MotionBox'
+import { Mobile } from '@/utils/breakpoints'
 import { useEffect, useState } from 'react'
+import { Client } from 'react-hydration-provider'
 import MenuIcon from '../Icons/MenuIcon'
 import MobileMenu from '../Mobile/MobileMenu'
 import HoverableHeading from './HoverableHeading'
 import NavLink from './NavLink'
-import { Mobile } from '@/utils/breakpoints'
-import { Client } from 'react-hydration-provider'
 
 export default function Header({ blurEffect, opacity }) {
     const menu = useDisclosure()
@@ -60,8 +60,8 @@ export default function Header({ blurEffect, opacity }) {
                                         as="h2"
                                         fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
                                         lineHeight="1.36"
-                                        fontWeight="bold"
-                                        fontFamily="subheading"
+                                        fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
+                                        textColor="white"
                                     >
                                         Tū Tama Wāhine o Taranaki
                                     </Heading>

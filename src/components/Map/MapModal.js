@@ -76,15 +76,22 @@ export default function MapModal({
                     <Flex justifyContent="space-between" alignContent="start">
                         <Heading
                             as="h1"
-                            fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
-                            color="white"
+                            textColor="white"
                             fontWeight="regular"
-                            fontFamily="subheading"
+                            fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
+                            fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
                         >
                             Tū Tama Wāhine o Taranaki
                         </Heading>
                         <Button variant="menu" onClick={onClose}>
-                            <Text fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}>{'Back to map ↖'}</Text>
+                            <Text
+                                textColor="white"
+                                fontWeight="regular"
+                                fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
+                                fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
+                            >
+                                {'Back to map ↖'}
+                            </Text>
                         </Button>
                     </Flex>
                 </DrawerHeader>
@@ -268,26 +275,40 @@ export default function MapModal({
                     <Flex justifyContent="space-between" maxW="100vw" w="100vw">
                         <Box>
                             <Button
-                                variant={'callToAction'}
+                                variant={'menu'}
                                 size={['xs', 'xs', 'xs', 'xl', 'xl', 'xl']}
                                 onClick={() => {
                                     onClose()
                                     handlePrevClick(selectedWahineIndex)
                                 }}
                             >
-                                {'←'} {getPreviousWahine()}
+                                <Text
+                                    textColor="white"
+                                    fontWeight="regular"
+                                    fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
+                                    fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
+                                >
+                                    {'←'} {getPreviousWahine()}
+                                </Text>
                             </Button>
                         </Box>
                         <Box>
                             <Button
-                                variant={'callToAction'}
+                                variant={'menu'}
                                 size={['xs', 'xs', 'xs', 'xl', 'xl', 'xl']}
                                 onClick={() => {
                                     onClose()
                                     handleNextClick(selectedWahineIndex)
                                 }}
                             >
-                                {getNextWahine()} {'→'}
+                                <Text
+                                    textColor="white"
+                                    fontWeight="regular"
+                                    fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
+                                    fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
+                                >
+                                    {getNextWahine()} {'→'}
+                                </Text>
                             </Button>
                         </Box>
                     </Flex>

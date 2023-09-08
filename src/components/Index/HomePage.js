@@ -117,7 +117,14 @@ export default function HomePage({ korero, preview }) {
                             >
                                 <Heading
                                     as="h2"
-                                    fontFamily="heading"
+                                    fontFamily={[
+                                        'subheading',
+                                        'subheading',
+                                        'subheading',
+                                        'heading',
+                                        'heading',
+                                        'heading'
+                                    ]}
                                     fontSize={['24px', '24px', '24px', '46px', '74px', '84px']}
                                     lineHeight="1.36"
                                     textAlign="left"
@@ -153,7 +160,14 @@ export default function HomePage({ korero, preview }) {
                             >
                                 <Heading
                                     as="h2"
-                                    fontFamily="heading"
+                                    fontFamily={[
+                                        'subheading',
+                                        'subheading',
+                                        'subheading',
+                                        'heading',
+                                        'heading',
+                                        'heading'
+                                    ]}
                                     fontSize={['24px', '24px', '24px', '46px', '74px', '84px']}
                                     lineHeight="1.36"
                                     textAlign="left"
@@ -194,7 +208,14 @@ export default function HomePage({ korero, preview }) {
                                 <Box as="span" display={['none', 'none', 'none', 'block', 'block', 'block']}>
                                     <Heading
                                         as="h2"
-                                        fontFamily="heading"
+                                        fontFamily={[
+                                            'subheading',
+                                            'subheading',
+                                            'subheading',
+                                            'heading',
+                                            'heading',
+                                            'heading'
+                                        ]}
                                         fontSize={['24px', '24px', '24px', '46px', '84px', '84px']}
                                         lineHeight="1.36"
                                         textAlign="left"
@@ -354,7 +375,14 @@ export default function HomePage({ korero, preview }) {
                                         <br />
                                     </Heading>
                                     <Text
-                                        fontFamily="heading"
+                                        fontFamily={[
+                                            'subheading',
+                                            'subheading',
+                                            'subheading',
+                                            'heading',
+                                            'heading',
+                                            'heading'
+                                        ]}
                                         fontSize={['16px', '16px', '16px', '24px', '24px', '24px']}
                                         lineHeight="1.36"
                                         textAlign="left"
@@ -384,7 +412,14 @@ export default function HomePage({ korero, preview }) {
                                 </Box>
                                 <Link href={kaiwhakaahua.paetukutuku} isExternal variant="menu">
                                     <Text
-                                        fontFamily="heading"
+                                        fontFamily={[
+                                            'subheading',
+                                            'subheading',
+                                            'subheading',
+                                            'heading',
+                                            'heading',
+                                            'heading'
+                                        ]}
                                         fontSize={['24px', '24px', '24px', '32px', '32px', '32px']}
                                         lineHeight="1.36"
                                         textAlign="left"
