@@ -4,6 +4,26 @@ const Fonts = () => (
     <Global
         styles={`
         @font-face {
+            font-family: 'SohneBreit_Halbfett';
+            src: url('fonts/SohneBreit/SohneBreit_Halbfett.woff2') format('woff2'),
+                url('fonts/SohneBreit/SohneBreit_Halbfett.woff') format('woff');
+            font-weight: 400;
+            font-style: italic;
+            font-display: block;
+            font-variant-numeric: tabular-nums;
+            unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
+        }
+        @font-face {
+            font-family: 'SohneBreit_Fett';
+            src: url('fonts/SohneBreit/SohneBreit_Fett.woff2') format('woff2'),
+                url('fonts/SohneBreit/SohneBreit_Fett.woff') format('woff');
+            font-weight: 400;
+            font-style: italic;
+            font-display: block;
+            font-variant-numeric: tabular-nums;
+            unicode-range: U+0000-024F, U+1E00-1EFF, U+2000-206F, U+2070-209F;
+        }
+        @font-face {
             font-family: 'SohneBreit_BuchKursiv';
             src: url('fonts/SohneBreit/SohneBreit_BuchKursiv.woff2') format('woff2'),
                 url('fonts/SohneBreit/SohneBreit_BuchKursiv.woff') format('woff');

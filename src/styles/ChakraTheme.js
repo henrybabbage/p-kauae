@@ -51,7 +51,7 @@ const theme = extendTheme({
         body: `"Sohne_Buch", ${base.fonts.body}, sans-serif`,
         subheading: `"SohneBreit_Buch", ${base.fonts.body}, sans-serif`,
         heading: `"SohneBreit_Dreiviertelfett", ${base.fonts.heading}, sans-serif`,
-        menu: `"Sohne_Halbfett", ${base.fonts.menu}, sans-serif`
+        hero: `"SohneBreit_Halbfett", ${base.fonts.menu}, sans-serif`
     },
     fontSizes: {
         sm: '18px',
@@ -63,23 +63,26 @@ const theme = extendTheme({
         heading: {
             fontFamily: 'var(--chakra-fonts-heading)',
             fontSize: ['24px', '24px', '24px', '36px', '36px', '36px'],
-            lineHeight: '1.36',
+            lineHeight: '1.2',
+            letterSpacing: '0.010',
             textAlign: 'left',
-            color: 'pink.200'
+            textColor: 'pink.200'
         },
         subheading: {
             fontFamily: 'var(--chakra-fonts-subheading)',
             fontSize: ['24px', '24px', '24px', '46px', '84px', '84px'],
-            lineHeight: '1.36',
+            lineHeight: ['1.2', '1.2', '1.2', '1.2', '1.1', '1.1'],
+            letterSpacing: '0.010',
             textAlign: 'left',
-            color: 'pink.200'
+            textColor: 'pink.200'
         },
         body: {
             fontFamily: 'var(--chakra-fonts-body)',
-            fontSize: ['24px', '24px', '24px', '36px', '36px', '36px'],
-            lineHeight: '1.36',
+            fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
+            lineHeight: '1.2',
+            letterSpacing: '0.010',
             textAlign: 'left',
-            color: 'white'
+            textColor: 'white'
         }
     },
     layerStyles: {
