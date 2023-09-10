@@ -34,7 +34,7 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                         textAlign="center"
                         fontSize={['36px', '36px', '46px', '56px', '94px', '94px']}
                         lineHeight="1.05"
-                        color="pink.200"
+                        textColor="pink.200"
                         fontFamily="heading"
                     >
                         {tuhinga_timatanga}
@@ -44,10 +44,11 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                     <Heading
                         key={index}
                         textAlign="center"
-                        fontSize={['36px', '36px', '46px', '56px', '94px', '94px']}
-                        lineHeight="1.05"
-                        color="pink.200"
-                        fontFamily="heading"
+                        fontSize={['32px', '32px', '46px', '56px', '94px', '94px']}
+                        lineHeight={['1.2', '1.2', '1.2', '1', '1', '1']}
+                        letterSpacing="0.016em"
+                        textColor="pink.200"
+                        fontFamily={['subheading', 'subheading', 'subheading', 'hero', 'hero', 'hero']}
                     >
                         {line}
                     </Heading>
@@ -72,9 +73,9 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                 {/* <Balancer>
                     <Heading
                         textAlign="center"
-                        fontSize={['36px', '36px', '46px', '56px', '94px', '94px']}
+                        fontSize={['32px', '36px', '46px', '56px', '94px', '94px']}
                         lineHeight="1.05"
-                        color="pink.200"
+                        textColor="pink.200"
                         fontFamily="heading"
                     >
                         {tuhinga_timatanga_english}
@@ -85,9 +86,10 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                         key={index}
                         textAlign="center"
                         fontSize={['36px', '36px', '46px', '56px', '94px', '94px']}
-                        lineHeight="1.05"
-                        color="pink.200"
-                        fontFamily="heading"
+                        lineHeight={['1.2', '1.2', '1.2', '1', '1', '1']}
+                        letterSpacing="0.016em"
+                        textColor="pink.200"
+                        fontFamily={['subheading', 'subheading', 'subheading', 'heading', 'heading', 'heading']}
                     >
                         {line}
                     </Heading>

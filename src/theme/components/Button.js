@@ -83,11 +83,11 @@ const menu = defineStyle({
     iconSpacing: 0,
     height: 'inherit',
     width: 'inherit',
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     // fontSize: 'xs',
+    // fontFamily: 'subheading',
     lineHeight: '1.36',
-    fontFamily: 'subheading',
-    color: 'white',
+    textColor: 'white',
     transition: 'transform 0.15s ease-out',
     _hover: {
         textDecoration: 'none',
@@ -114,7 +114,7 @@ const sizes = {
         fontSize: 'sm'
     }),
     xs: defineStyle({
-        fontSize: '12px'
+        fontSize: '10px'
     })
 }
 

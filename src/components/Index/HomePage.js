@@ -8,8 +8,8 @@ import { useRef } from 'react'
 import PreviewButton from '../Common/Buttons/PreviewButton'
 import SectionBreakIcon from '../Common/Icons/SectionBreakIcon'
 import { CustomPortableText } from '../Primitives/CustomPortableText'
-import LandingVideo from './LandingVideo'
 import SmoothScroll from '../Primitives/SmoothScroll'
+import LandingVideo from './LandingVideo'
 
 export default function HomePage({ korero, preview }) {
     const {
@@ -47,25 +47,29 @@ export default function HomePage({ korero, preview }) {
                 <Box id="about">
                     <Grid templateColumns="repeat(12, 1fr)" px={['6', '6', '6', '0', '0', '0']} w="100vw">
                         <GridItem colStart={1} colEnd={13} h="100vh" overflow="hidden" position="relative">
-                            <Flex position="relative" justify="center" flexDirection="column" height="80vh">
+                            <Flex
+                                position="relative"
+                                justify="center"
+                                flexDirection="column"
+                                height={['72vh', '72vh', '72vh', '80vh', '80vh', '80vh']}
+                                width="100%"
+                            >
                                 <LandingBanner reoText={tuhinga_timatanga} englishText={tuhinga_timatanga_english} />
                             </Flex>
-                            <MotionBox pt={['0', '0', '0', '4', '4', '4']}>
+                            <MotionBox
+                                pt={['0', '0', '0', '4', '4', '4']}
+                                height={['72vh', '72vh', '72vh', '80vh', '80vh', '80vh']}
+                            >
                                 <SectionBreakIcon />
                             </MotionBox>
                         </GridItem>
                         <GridItem
-                            colStart={[1, 1, 1, 1, 4, 4]}
+                            colStart={[1, 1, 1, 1, 1, 1]}
                             colEnd={[13, 13, 13, 12, 12, 12]}
                             pt={['0', '0', '6', '6', '6', '6']}
                             pb={['0', '0', '6', '6', '6', '6']}
                         >
-                            <Flex
-                                pt="12"
-                                justify="center"
-                                flexDirection={'column'}
-                                height={['10vh', '10vh', '10vh', '25vh', '25vh', '25vh']}
-                            ></Flex>
+                            <Box pt="12" height={['10vh', '10vh', '10vh', '25vh', '25vh', '25vh']} />
                         </GridItem>
                         <GridItem
                             colStart={[1, 1, 1, 2, 2, 2]}
@@ -108,11 +112,18 @@ export default function HomePage({ korero, preview }) {
                             >
                                 <Heading
                                     as="h2"
-                                    fontFamily="heading"
-                                    fontSize={['24px', '24px', '24px', '46px', '74px', '84px']}
-                                    lineHeight="1.36"
+                                    fontFamily={[
+                                        'subheading',
+                                        'subheading',
+                                        'subheading',
+                                        'heading',
+                                        'heading',
+                                        'heading'
+                                    ]}
+                                    fontSize={['24px', '24px', '24px', '46px', '84px', '84px']}
+                                    lineHeight={['1.2', '1.2', '1.2', '1.2', '1.1', '1.1']}
                                     textAlign="left"
-                                    color="pink.200"
+                                    textColor="pink.200"
                                     pb={['6', '6', '6', '10', '10', '10']}
                                 >
                                     Acknowledgements
@@ -121,8 +132,10 @@ export default function HomePage({ korero, preview }) {
                                     as={'p'}
                                     sx={{
                                         fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
-                                        lineHeight: ['1.36'],
-                                        color: 'white'
+                                        lineHeight: '1.2',
+                                        letterSpacing: '0.010em',
+                                        textAlign: 'left',
+                                        textColor: 'white'
                                     }}
                                     value={mihi}
                                 />
@@ -144,11 +157,18 @@ export default function HomePage({ korero, preview }) {
                             >
                                 <Heading
                                     as="h2"
-                                    fontFamily="heading"
-                                    fontSize={['24px', '24px', '24px', '46px', '74px', '84px']}
-                                    lineHeight="1.36"
+                                    fontFamily={[
+                                        'subheading',
+                                        'subheading',
+                                        'subheading',
+                                        'heading',
+                                        'heading',
+                                        'heading'
+                                    ]}
+                                    fontSize={['24px', '24px', '24px', '46px', '84px', '84px']}
+                                    lineHeight={['1.2', '1.2', '1.2', '1.2', '1.1', '1.1']}
                                     textAlign="left"
-                                    color="pink.200"
+                                    textColor="pink.200"
                                     w="100vw"
                                     pb={['6', '6', '6', '10', '10', '10']}
                                 >
@@ -157,9 +177,9 @@ export default function HomePage({ korero, preview }) {
                                 {leftColumn.map((name, index) => (
                                     <Text
                                         fontSize={['24px', '24px', '24px', '32px', '32px', '32px']}
-                                        lineHeight="1.36"
+                                        lineHeight="1.2"
                                         textAlign="left"
-                                        color="white"
+                                        textColor="white"
                                         key={index}
                                         height="auto"
                                     >
@@ -169,8 +189,8 @@ export default function HomePage({ korero, preview }) {
                             </Flex>
                         </GridItem>
                         <GridItem
-                            colStart={[1, 1, 1, 9, 9]}
-                            colEnd={[13, 13, 13, 13, 13]}
+                            colStart={[1, 1, 1, 9, 9, 9]}
+                            colEnd={[13, 13, 13, 12, 12, 12]}
                             pt={['0', '0', '0', '6', '6', '6']}
                             pb={['36', '36', '36', '6', '6']}
                             height="auto"
@@ -185,11 +205,18 @@ export default function HomePage({ korero, preview }) {
                                 <Box as="span" display={['none', 'none', 'none', 'block', 'block', 'block']}>
                                     <Heading
                                         as="h2"
-                                        fontFamily="heading"
+                                        fontFamily={[
+                                            'subheading',
+                                            'subheading',
+                                            'subheading',
+                                            'heading',
+                                            'heading',
+                                            'heading'
+                                        ]}
                                         fontSize={['24px', '24px', '24px', '46px', '84px', '84px']}
-                                        lineHeight="1.36"
+                                        lineHeight={['1.2', '1.2', '1.2', '1.2', '1.1', '1.1']}
                                         textAlign="left"
-                                        color="pink.200"
+                                        textColor="pink.200"
                                         w={['98vw', '98vw', '98vw', '100vw', '100vw', '100vw']}
                                         pb={['6', '6', '6', '10', '10', '10']}
                                         visibility="hidden"
@@ -200,9 +227,9 @@ export default function HomePage({ korero, preview }) {
                                 {rightColumn.map((name, index) => (
                                     <Text
                                         fontSize={['24px', '24px', '24px', '32px', '32px', '32px']}
-                                        lineHeight="1.36"
+                                        lineHeight="1.2"
                                         textAlign="left"
-                                        color="white"
+                                        textColor="white"
                                         key={index}
                                         height="auto"
                                     >
@@ -212,54 +239,60 @@ export default function HomePage({ korero, preview }) {
                             </Flex>
                         </GridItem>
                         <GridItem
-                            colStart={[1, 1, 1, 4, 4]}
-                            colEnd={[13, 13, 13, 12, 12]}
-                            pt={['16', '16', '16', '16', '16']}
+                            colStart={[1, 1, 1, 4, 4, 4]}
+                            colEnd={[13, 13, 13, 12, 12, 12]}
+                            pt={['16', '16', '16', '16', '16', '16']}
                         >
                             <CustomPortableText
                                 as={'p'}
                                 sx={{
                                     fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
-                                    lineHeight: ['1.36'],
-                                    color: 'white'
+                                    lineHeight: '1.2',
+                                    letterSpacing: '0.010em',
+                                    textAlign: 'left',
+                                    textColor: 'white'
                                 }}
                                 value={tuhinga_matua}
                             />
                         </GridItem>
                         <GridItem
-                            colStart={[1, 1, 1, 4, 4]}
-                            colEnd={[13, 13, 13, 12, 12]}
-                            pt={['6', '6', '6', '16', '16']}
+                            colStart={[1, 1, 1, 4, 4, 4]}
+                            colEnd={[13, 13, 13, 12, 12, 12]}
+                            pt={['6', '6', '6', '16', '16', '16']}
                         >
                             <CustomPortableText
                                 as={'p'}
                                 sx={{
                                     fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
-                                    lineHeight: ['1.36'],
-                                    color: 'white'
+                                    lineHeight: '1.2',
+                                    letterSpacing: '0.010em',
+                                    textAlign: 'left',
+                                    textColor: 'white'
                                 }}
                                 value={tuhinga_tauaakii_whakamaunga_atu}
                             />
                         </GridItem>
                         <GridItem
-                            colStart={[1, 1, 1, 4, 4]}
-                            colEnd={[13, 13, 13, 12, 12]}
-                            pt={['6', '6', '6', '16', '16']}
+                            colStart={[1, 1, 1, 4, 4, 4]}
+                            colEnd={[13, 13, 13, 12, 12, 12]}
+                            pt={['6', '6', '6', '16', '16', '16']}
                         >
                             <CustomPortableText
                                 as={'p'}
                                 sx={{
                                     fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
-                                    lineHeight: ['1.36'],
-                                    color: 'white'
+                                    lineHeight: '1.2',
+                                    letterSpacing: '0.010em',
+                                    textAlign: 'left',
+                                    textColor: 'white'
                                 }}
                                 value={ropu}
                             />
                         </GridItem>
                         <GridItem
-                            colStart={[1, 1, 1, 2, 2]}
-                            colEnd={[13, 13, 13, 12, 12]}
-                            pt={['6', '6', '6', '16', '16']}
+                            colStart={[1, 1, 1, 2, 2, 2]}
+                            colEnd={[13, 13, 13, 12, 12, 12]}
+                            pt={['6', '6', '6', '16', '16', '16']}
                         >
                             <Flex justifyContent="center">
                                 <CustomPortableText
@@ -267,7 +300,8 @@ export default function HomePage({ korero, preview }) {
                                     sx={{
                                         fontFamily: 'subheading',
                                         fontSize: ['36px', '36px', '36px', '56px', '62px', '72px'],
-                                        lineHeight: '1.10',
+                                        lineHeight: ['1.2', '1.2', '1.2', '1.2', '1.1', '1.1'],
+                                        letterSpacing: '0.016em',
                                         textAlign: 'left',
                                         color: 'pink.200',
                                         width: '100%',
@@ -278,17 +312,19 @@ export default function HomePage({ korero, preview }) {
                             </Flex>
                         </GridItem>
                         <GridItem
-                            colStart={[1, 1, 1, 4, 4]}
-                            colEnd={[13, 13, 13, 12, 12]}
-                            pt={['6', '6', '6', '16', '16']}
+                            colStart={[1, 1, 1, 4, 4, 4]}
+                            colEnd={[13, 13, 13, 12, 12, 12]}
+                            pt={['6', '6', '6', '16', '16', '16']}
                             whiteSpace="pre-line"
                         >
                             <CustomPortableText
                                 as={'p'}
                                 sx={{
                                     fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
-                                    lineHeight: ['1.36'],
-                                    color: 'white'
+                                    lineHeight: '1.2',
+                                    letterSpacing: '0.010em',
+                                    textAlign: 'left',
+                                    textColor: 'white'
                                 }}
                                 value={tuhinga_whakamutunga}
                             />
@@ -296,15 +332,17 @@ export default function HomePage({ korero, preview }) {
                         <GridItem
                             colStart={[1, 1, 1, 4, 4, 4]}
                             colEnd={[13, 13, 13, 12, 12, 12]}
-                            pt={['6', '6', '6', '16', '16']}
+                            pt={['6', '6', '6', '16', '16', '16']}
                             whiteSpace="pre-line"
                         >
                             <CustomPortableText
                                 as={'p'}
                                 sx={{
                                     fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
-                                    lineHeight: ['1.36'],
-                                    color: 'white'
+                                    lineHeight: '1.2',
+                                    letterSpacing: '0.010em',
+                                    textAlign: 'left',
+                                    textColor: 'white'
                                 }}
                                 value={tuhinga_whakaraapopoto}
                             />
@@ -335,19 +373,34 @@ export default function HomePage({ korero, preview }) {
                                     alignItems="baseline"
                                 >
                                     <Heading
+                                        fontFamily={[
+                                            'subheading',
+                                            'subheading',
+                                            'subheading',
+                                            'heading',
+                                            'heading',
+                                            'heading'
+                                        ]}
                                         fontSize={['36px', '36px', '36px', '46px', '56px', '84px']}
-                                        lineHeight="1"
+                                        lineHeight={['1.2', '1.2', '1.2', '1.2', '1.1', '1.1']}
                                         textAlign="left"
-                                        color="pink.200"
+                                        textColor="pink.200"
                                         pb={['2', '2', '2', '10', '10', '10']}
                                     >
                                         {kaiwhakaahua.ingoa}
                                         <br />
                                     </Heading>
                                     <Text
-                                        fontFamily="heading"
+                                        fontFamily={[
+                                            'subheading',
+                                            'subheading',
+                                            'subheading',
+                                            'heading',
+                                            'heading',
+                                            'heading'
+                                        ]}
                                         fontSize={['16px', '16px', '16px', '24px', '24px', '24px']}
-                                        lineHeight="1.36"
+                                        lineHeight="1.2"
                                         textAlign="left"
                                         color="pink.200"
                                         ml={['0', '0', '0', '4', '4', '4']}
@@ -356,29 +409,33 @@ export default function HomePage({ korero, preview }) {
                                         {kaiwhakaahua.whakapapa}
                                     </Text>
                                 </Flex>
-                                <Box
-                                    fontFamily="body"
-                                    fontSize={['24px', '24px', '24px', '30px', '30px', '30px']}
-                                    lineHeight="1.36"
-                                    textAlign="left"
-                                    color="white"
-                                >
+                                <Box>
                                     <CustomPortableText
                                         as={'p'}
                                         sx={{
                                             fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
-                                            lineHeight: ['1.36'],
-                                            color: 'white'
+                                            lineHeight: '1.2',
+                                            letterSpacing: '0.010em',
+                                            textAlign: 'left',
+                                            textColor: 'white'
                                         }}
                                         value={kaiwhakaahua.korero}
                                     />
                                 </Box>
                                 <Link href={kaiwhakaahua.paetukutuku} isExternal variant="menu">
                                     <Text
-                                        fontFamily="heading"
+                                        fontFamily={[
+                                            'subheading',
+                                            'subheading',
+                                            'subheading',
+                                            'heading',
+                                            'heading',
+                                            'heading'
+                                        ]}
                                         fontSize={['24px', '24px', '24px', '32px', '32px', '32px']}
-                                        lineHeight="1.36"
+                                        lineHeight="1.2"
                                         textAlign="left"
+                                        textColor="white"
                                     >
                                         <br />
                                         {photographerUrl}

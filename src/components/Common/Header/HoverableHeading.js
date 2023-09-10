@@ -28,9 +28,8 @@ export default function HoverableHeading({ hoverContent, defaultContent, ...prop
                     as="h2"
                     fontSize={['16px', '16px', '16px', '20px', '20px', '20px']}
                     lineHeight="1.36"
-                    fontWeight="bold"
                     fontFamily="subheading"
-                    width="140px"
+                    width="fit-content"
                     zIndex="500"
                     onMouseEnter={handleHover}
                     onMouseLeave={handleUnhover}
@@ -52,9 +51,8 @@ export default function HoverableHeading({ hoverContent, defaultContent, ...prop
                     as="h2"
                     fontSize={['16px', '16px', '16px', '20px', '20px', '20px']}
                     lineHeight="1.36"
-                    fontWeight="bold"
                     fontFamily="subheading"
-                    width="140px"
+                    width="fit-content"
                     zIndex="500"
                     onMouseEnter={handleHover}
                     onMouseLeave={handleUnhover}
