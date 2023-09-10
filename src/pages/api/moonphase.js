@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 export default async function handler(req, res) {
-    const apiKey = process.env.NEXT_PUBLIC_VISUALCROSSING_API_KEY
+    const apiKey = process.env.VISUALCROSSING_API_KEY
     const location = 'Taranaki'
 
     const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&key=${apiKey}&include=moonphase`
