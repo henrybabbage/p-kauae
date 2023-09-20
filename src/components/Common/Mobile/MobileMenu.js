@@ -38,7 +38,7 @@ export default function MobileMenu({ onOpen, isOpen, onClose }) {
             >
                 <DrawerOverlay />
                 <DrawerContent p={0} m={0} id="inner">
-                    <DrawerCloseButton isRound color="white" _focus={{ boxShadow: 'none' }} p="6" />
+                    <DrawerCloseButton color="white" _focus={{ boxShadow: 'none' }} p="6" />
                     <DrawerBody bg="grey.900" p={0} m={0} overflow="hidden" id="body">
                         <Box position="absolute" top="50%" left="50%" transform="translate(-50%, -50%)">
                             <Box pb="2">

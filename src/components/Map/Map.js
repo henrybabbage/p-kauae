@@ -107,7 +107,7 @@ export default function Map({ wahine, haerenga }) {
             setTimeout(() => {
                 setIntroShown(true)
                 setItem('intro-shown', true, 'local')
-            }, 60000)
+            }, 600000)
         } else {
             setIntroShown(true)
         }
@@ -272,14 +272,18 @@ export default function Map({ wahine, haerenga }) {
                 </Box>
             </Center>
             <Box
-                maxH="100vh"
-                h={['100vh', '100vh', '100vh', '100vh', '100vh', '100vh']}
+                id="map-container"
+                maxH="100dvh"
+                h={['100dvh', '100dvh', '100dvh', '100dvh', '100dvh', '100dvh']}
                 w="100vw"
                 cursor="auto"
                 position="relative"
                 opacity={mapIsVisible ? 1 : 0}
                 transition="opacity 0.5s ease-in"
                 transitionDelay="1s"
+                sx={{
+                    maxHeight: '-webkit-fill-available'
+                }}
             >
                 {selectedWahine && (
                     <MapModal
