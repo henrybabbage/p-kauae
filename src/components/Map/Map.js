@@ -107,7 +107,7 @@ export default function Map({ wahine, haerenga }) {
             setTimeout(() => {
                 setIntroShown(true)
                 setItem('intro-shown', true, 'local')
-            }, 600000)
+            }, 60000)
         } else {
             setIntroShown(true)
         }
