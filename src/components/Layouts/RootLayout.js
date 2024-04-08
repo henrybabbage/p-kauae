@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
                     content="Tū Tama Wāhine o Taranaki is a tangata whenua development and liberation organisation."
                 />
                 <meta name="author" content="Henry Babbage, Luke Enoka, Rere-No-A-Rangi Pope, Blaine Western" />
-                <meta name="keywords" content="art" />
+                <meta name="keywords" content="art, pukauae, photography, tangata, whenua, wahine, taranaki" />
             </Head>
             {children}
         </>

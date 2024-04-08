@@ -1,5 +1,9 @@
 import { Box } from '@chakra-ui/react'
 
-export default function StudioLayout() {
-    return <Box as="main"></Box>
+export default function StudioLayout({ children }) {
+    return (
+        <Box as="main" id="app">
+            {children}
+        </Box>
+    )
 }

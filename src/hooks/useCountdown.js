@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 export function useCountdown(mins, timerStarted) {
     const [secs, decrement] = useState(mins * 60)
     const [progress, increment] = useState(0)
