@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { getClient } from '../../sanity/lib/sanity.client'
 import { haerengaQuery, wahineQuery } from '../../sanity/lib/sanity.queries'
+import { siteTitle } from './_app'
 
 const PreviewProvider = dynamic(() => import('../components/Preview/PreviewProvider'))
 const PreviewMapPage = dynamic(() => import('../components/Map/PreviewMapPage'))
@@ -16,6 +17,12 @@ export default function Haerenga({ wahine, haerenga, preview = false, previewTok
     ) : (
         <>
             <Head>
+                <title>{siteTitle}</title>
+                <meta name="description" content="Website for the Pūkauae photographic exhibition" />
+                <meta name="author" content="Henry Babbage, Luke Enoka, Rere-No-A-Rangi Pope, Blaine Western" />
+                <meta name="keywords" content="pukauae, tu tama wahine o taranaki, tu tama wahine, art" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta charSet="utf-8" />
                 <link rel="canonical" href="https://www.pukauae.com/haerenga" />
             </Head>
             <MapPage wahine={wahine} haerenga={haerenga} />
