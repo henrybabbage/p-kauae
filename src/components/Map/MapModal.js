@@ -86,6 +86,9 @@ export default function MapModal({
                         <Button variant="menu" onClick={onClose}>
                             <Text
                                 textColor="white"
+                                _hover={{
+                                    color: 'pink.200'
+                                }}
                                 fontWeight="regular"
                                 fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
                                 fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
@@ -284,6 +287,9 @@ export default function MapModal({
                             >
                                 <Text
                                     textColor="white"
+                                    _hover={{
+                                        color: 'pink.200'
+                                    }}
                                     fontWeight="regular"
                                     fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
                                     fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
@@ -303,6 +309,9 @@ export default function MapModal({
                             >
                                 <Text
                                     textColor="white"
+                                    _hover={{
+                                        color: 'pink.200'
+                                    }}
                                     fontWeight="regular"
                                     fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
                                     fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
