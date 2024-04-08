@@ -1,6 +1,7 @@
 import MapPage from '@/components/Map/MapPage'
 import GeoJSON from 'geojson'
 import dynamic from 'next/dynamic'
+import Head from 'next/head'
 import { getClient } from '../../sanity/lib/sanity.client'
 import { haerengaQuery, wahineQuery } from '../../sanity/lib/sanity.queries'
 
@@ -13,7 +14,12 @@ export default function Haerenga({ wahine, haerenga, preview = false, previewTok
             <PreviewMapPage wahine={wahine} wahineQuery={wahineQuery} />
         </PreviewProvider>
     ) : (
-        <MapPage wahine={wahine} haerenga={haerenga} />
+        <>
+            <Head>
+                <link rel="canonical" href="https://www.pukauae.com/haerenga" />
+            </Head>
+            <MapPage wahine={wahine} haerenga={haerenga} />
+        </>
     )
 }
 

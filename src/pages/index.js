@@ -1,6 +1,7 @@
 import HomePage from '@/components/Index/HomePage'
 import dynamic from 'next/dynamic'
 
+import Head from 'next/head'
 import { getClient } from '../../sanity/lib/sanity.client'
 import { koreroQuery } from '../../sanity/lib/sanity.queries'
 
@@ -13,7 +14,12 @@ export default function Home({ preview, previewToken, korero }) {
             <PreviewHomePage korero={korero} koreroQuery={koreroQuery} />
         </PreviewProvider>
     ) : (
-        <HomePage korero={korero} />
+        <>
+            <Head>
+                <link rel="canonical" href="https://www.pukauae.com/" />
+            </Head>
+            <HomePage korero={korero} />
+        </>
     )
 }
 
