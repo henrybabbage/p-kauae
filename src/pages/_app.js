@@ -5,6 +5,7 @@ import Fonts from '@/styles/Fonts'
 import '@/styles/globals.css'
 import useFoucFix from '@/utils/useFoucFix'
 import { ChakraProvider } from '@chakra-ui/react'
+import { GoogleTagManager } from '@next/third-parties/google'
 import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'
 import { Router, useRouter } from 'next/router'
@@ -66,6 +67,7 @@ export default function App({ Component, pageProps }) {
                 <link rel="shortcut icon" href="/favicons/favicon.ico" />
                 <link rel="canonical" href="https://www.pukauae.com" />
             </Head>
+            <GoogleTagManager gtmId="G-XK1ZE2MSV0" />
             <HydrationProvider>
                 <ChakraProvider theme={theme}>
                     <Fonts />
