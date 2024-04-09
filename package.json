@@ -65,5 +65,8 @@
   },
   "devDependencies": {
     "json-loader": "^0.5.7"
+  },
+  "resolutions": {
+     "sanity-plugin-cloudinary": "^1.1.1"
   }
 }
