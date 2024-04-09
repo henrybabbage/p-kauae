@@ -59,7 +59,6 @@
     "sanity-plugin-cloudinary": "^1.1.1",
     "sanity-plugin-iframe-pane": "^2.3.1",
     "sanity-plugin-media": "^2.0.5",
-    "sharp": "^0.31.3",
     "styled-components": "^6.1.8",
     "vidstack": "^0.6.13"
   },
