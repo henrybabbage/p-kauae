@@ -65,7 +65,7 @@ export default function App({ Component, pageProps }) {
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
                 <link rel="manifest" href="/favicons/site.webmanifest" />
                 <link rel="shortcut icon" href="/favicons/favicon.ico" />
-                <link rel="canonical" href="https://www.pukauae.com" />
+                <link rel="canonical" href="https://www.xn--pkauae-bmb.com/" />
             </Head>
             <GoogleTagManager gtmId="G-XK1ZE2MSV0" />
             <HydrationProvider>
