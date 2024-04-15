@@ -62,6 +62,7 @@ export default function Map({ wahine, haerenga }) {
         id: 'wahine',
         type: 'symbol',
         source: 'taranaki-data',
+        // pitch: 60,
         tolerance: 0,
         layout: {
             'icon-size': 0.35,
@@ -210,6 +211,7 @@ export default function Map({ wahine, haerenga }) {
     )
 
     const onMapLoad = useCallback(() => {
+        console.log('on-load-called')
         mapRef &&
             mapRef.current.on('mousemove', 'wahine', (e) => {
                 if (e.features.length > 0) {
@@ -301,6 +303,7 @@ export default function Map({ wahine, haerenga }) {
                     {...viewport}
                     reuseMaps
                     ref={mapRef}
+                    pitch={60}
                     width="100%"
                     height="100%"
                     cursor="pointer"
