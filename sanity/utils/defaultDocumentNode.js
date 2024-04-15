@@ -9,7 +9,10 @@ export const defaultDocumentNode = (S, { schemaType }) => {
                 S.view
                     .component(Iframe)
                     .options({
-                        URL: (doc) => (doc?.slug?.current ? `http://localhost:3000/api/preview?slug=${doc.slug.current}` : `http://localhost:3000/api/preview`)
+                        URL: (doc) =>
+                            doc?.slug?.current
+                                ? `http://localhost:3000/api/preview?slug=${doc.slug.current}`
+                                : `http://localhost:3000/api/preview`
                     })
                     .title('Preview')
             ])

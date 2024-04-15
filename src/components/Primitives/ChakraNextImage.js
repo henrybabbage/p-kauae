@@ -5,7 +5,7 @@ import { BlurhashCanvas } from 'react-blurhash'
 export default function ChakraNextImage(props) {
     const { src, alt, width, height, sizes, blurhash, ...rest } = props
     return (
-        <Box position="relative">
+        <Box position="relative" height="100%" width="100%">
             {blurhash && (
                 <BlurhashCanvas
                     hash={blurhash}
@@ -23,18 +23,20 @@ export default function ChakraNextImage(props) {
                 />
             )}
             <Box position="relative" overflow="hidden" {...rest}>
-                <Image
-                    src={src}
-                    alt={alt}
-                    width={width}
-                    height={height}
-                    sizes={sizes}
-                    style={{
-                        objectFit: 'contain',
-                        height: '100%',
-                        width: '100%'
-                    }}
-                />
+                {src && (
+                    <Image
+                        src={src}
+                        alt={alt}
+                        width={width}
+                        height={height}
+                        sizes={sizes}
+                        style={{
+                            objectFit: 'contain',
+                            height: '100%',
+                            width: '100%'
+                        }}
+                    />
+                )}
             </Box>
         </Box>
     )

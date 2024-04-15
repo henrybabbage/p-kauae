@@ -120,9 +120,9 @@ export default function MapModal({
                             <Box w="100%" maxW="100vw" h="auto">
                                 <ModalVideo
                                     playerRef={playerRef}
-                                    src={selectedWahine.kiriata.droneFootage.secure_url}
-                                    location={selectedWahine.kiriata.ingoa}
-                                    poster={selectedWahine.kiriata.poster?.asset?.url}
+                                    src={selectedWahine?.kiriata?.droneFootage?.secure_url}
+                                    location={selectedWahine?.kiriata?.ingoa}
+                                    poster={selectedWahine?.kiriata.poster?.asset?.url ?? ''}
                                     autoplay={true}
                                     muted={true}
                                     loop={true}

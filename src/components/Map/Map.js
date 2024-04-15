@@ -180,7 +180,7 @@ export default function Map({ wahine, haerenga }) {
                 korero_pukauae: JSON.parse(p.korero_pukauae),
                 korero_wahi: JSON.parse(p.korero_wahi),
                 wahi: JSON.parse(p.wahi),
-                whakaahua: JSON.parse(p.whakaahua)
+                whakaahua: JSON.parse(p.whakaahua || '{}')
             }
         }
     }

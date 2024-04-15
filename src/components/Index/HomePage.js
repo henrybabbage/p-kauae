@@ -90,7 +90,7 @@ export default function HomePage({ korero, preview }) {
                                     src={opening_video}
                                     videoKorero={opening_video_korero}
                                     videoTitle={opening_video_title}
-                                    poster={opening_video_poster.asset.url}
+                                    poster={opening_video_poster?.asset?.url}
                                     alt="Pūkauae exhibition opening 11th December 2019"
                                     autoplay={false}
                                     controls={false}
@@ -454,12 +454,12 @@ export default function HomePage({ korero, preview }) {
                                 justifyContent={['flex-end', 'flex-end', 'flex-end', null, null, null]}
                             >
                                 <ChakraNextImage
-                                    src={kaiwhakaahua.whakaahua.asset.url}
+                                    src={kaiwhakaahua?.whakaahua?.asset?.url}
                                     alt="Tania Niwa"
                                     width={720}
                                     height={648}
                                     fill
-                                    blurhash={kaiwhakaahua.whakaahua.asset.metadata.blurHash}
+                                    blurhash={kaiwhakaahua?.whakaahua?.asset?.metadata?.blurHash}
                                     sizes={'(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'}
                                 />
                             </Flex>
