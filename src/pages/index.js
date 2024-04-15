@@ -23,7 +23,6 @@ export default function Home({ preview, previewToken, korero }) {
                 <meta name="keywords" content="pukauae, tu tama wahine o taranaki, tu tama wahine, art" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta charSet="utf-8" />
-                <link rel="canonical" href="https://www.pukauae.com/" />
             </Head>
             <HomePage korero={korero} />
         </>
