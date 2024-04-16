@@ -16,7 +16,7 @@ export default function Haerenga({ wahine, haerenga, preview = false, previewTok
     ) : (
         <>
             <Head>
-                <title>Pukauae | Haerenga</title>
+                <title>Pūkauae | Haerenga</title>
                 <meta name="description" content="Website for the Pūkauae photographic exhibition" />
                 <meta name="author" content="Henry Babbage, Luke Enoka, Rere-No-A-Rangi Pope, Blaine Western" />
                 <meta name="keywords" content="pukauae, tu tama wahine o taranaki, tu tama wahine, art" />
