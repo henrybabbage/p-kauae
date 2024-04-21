@@ -361,7 +361,7 @@ export default function HomePage({ korero, preview }) {
                         px={['6', '6', '6', '6', '6', '6']}
                         pb={['2', '2', '2', '2', '2', '2']}
                     >
-                        <Box w="84vw" pb={['10', '10', '10', '0', '0', '0']}>
+                        <Box w="84vw" pb={['10', '10', '10', '0', '0', '0']} pr={['0', '0', '0', '2', '2', '2']}>
                             <Flex
                                 flexDirection={['column', 'column', 'column', 'column', 'column', 'column']}
                                 alignItems="start"
