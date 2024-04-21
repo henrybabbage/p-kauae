@@ -24,6 +24,7 @@
         "@sanity/preview-kit": "^2.3.3",
         "@sanity/ui": "^2.1.0",
         "@sanity/vision": "^3.12.0",
+        "@studio-freight/react-lenis": "^0.0.47",
         "@turf/turf": "^6.5.0",
         "@types/react": "^18.2.79",
         "@types/react-dom": "^18.2.25",
