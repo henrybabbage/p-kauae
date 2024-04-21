@@ -36,8 +36,6 @@ const nextConfig = {
         NEXT_PUBLIC_WEBSITE_URL: process.env.NEXT_PUBLIC_WEBSITE_URL
     },
     images: {
-        domains: ['localhost', 'cdn.sanity.io', 'res.cloudinary.com'],
-        formats: ['image/avif', 'image/webp'],
         remotePatterns: [
             {
                 protocol: 'https',

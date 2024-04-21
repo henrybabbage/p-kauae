@@ -62,7 +62,6 @@ export default function Map({ wahine, haerenga }) {
         id: 'wahine',
         type: 'symbol',
         source: 'taranaki-data',
-        // pitch: 60,
         tolerance: 0,
         layout: {
             'icon-size': 0.35,
