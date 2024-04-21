@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react'
 import Image from 'next/image'
+import poster from 'public/images/poster.jpg'
 
 export default function VideoCover({ showCover }) {
     return (
@@ -11,7 +12,7 @@ export default function VideoCover({ showCover }) {
         >
             <Box z="10" w="100vw" h="75vh" position="relative" overflow="hidden">
                 <Image
-                    src="/images/duotone.jpg"
+                    src={poster}
                     alt="video preview image"
                     fill
                     sizes="100vw"

@@ -1,9 +1,13 @@
+/* eslint-disable no-console */
 import { Box } from '@chakra-ui/react'
 import Image from 'next/image'
 import { BlurhashCanvas } from 'react-blurhash'
 
 export default function ChakraNextImage(props) {
-    const { src, alt, width, height, sizes, blurhash, ...rest } = props
+    const { src, alt, width, height, sizes, blurhash, ...rest } = props ?? {}
+    const handleError = (error) => {
+        console.error(error)
+    }
     return (
         <Box position="relative" height="100%" width="100%">
             {blurhash && (
@@ -35,6 +39,7 @@ export default function ChakraNextImage(props) {
                             height: '100%',
                             width: '100%'
                         }}
+                        onError={(e) => handleError(e)}
                     />
                 )}
             </Box>

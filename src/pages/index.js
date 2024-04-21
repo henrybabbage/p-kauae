@@ -1,7 +1,7 @@
 import HomePage from '@/components/Index/HomePage'
 import dynamic from 'next/dynamic'
 
-import Head from 'next/head'
+import { NextSeo } from 'next-seo'
 import { getClient } from '../../sanity/lib/sanity.client'
 import { koreroQuery } from '../../sanity/lib/sanity.queries'
 
@@ -15,14 +15,30 @@ export default function Home({ preview, previewToken, korero }) {
         </PreviewProvider>
     ) : (
         <>
-            <Head>
-                <title>Pukauae | Whakapapa</title>
-                <meta name="description" content="Website for the Pūkauae photographic exhibition" />
-                <meta name="author" content="Henry Babbage, Luke Enoka, Rere-No-A-Rangi Pope, Blaine Western" />
-                <meta name="keywords" content="pukauae, tu tama wahine o taranaki, tu tama wahine, art" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <meta charSet="utf-8" />
-            </Head>
+            <NextSeo
+                title="Pukauae | Whakapapa"
+                description="Website for the Pūkauae photographic exhibition."
+                additionalMetaTags={[
+                    {
+                        name: 'viewport',
+                        content: 'width=device-width, initial-scale=1'
+                    },
+                    {
+                        name: 'author',
+                        content: 'Henry Babbage, Luke Enoka, Rere-No-A-Rangi Pope, Blaine Western'
+                    },
+                    {
+                        name: 'keywords',
+                        content: 'pukauae, tu tama wahine o taranaki, tu tama wahine, art'
+                    }
+                ]}
+                additionalLinkTags={[
+                    {
+                        rel: 'icon',
+                        href: '/public/favicons/favicon.ico'
+                    }
+                ]}
+            />
             <HomePage korero={korero} />
         </>
     )
@@ -35,7 +51,6 @@ export async function getStaticProps(context) {
         throw new Error(`Preview mode is active, but SANITY_API_READ_TOKEN is not set in environment variables`)
     }
     const client = getClient(previewToken)
-
     const korero = await client.fetch(koreroQuery)
 
     return {

@@ -20,7 +20,7 @@ export default function Stepper({ onClose, haerenga }) {
     const isDesktop = useMediaQuery({ minWidth: 992 })
     const isTabletOrMobile = useMediaQuery({ maxWidth: 991 })
 
-    const { slide_1, slide_2, slide_3, slide_1_mobile, slide_2_mobile, slide_3_mobile } = haerenga
+    const { slide_1, slide_2, slide_3, slide_1_mobile, slide_2_mobile, slide_3_mobile } = haerenga ?? {}
 
     return (
         <>

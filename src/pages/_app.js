@@ -7,7 +7,7 @@ import useFoucFix from '@/utils/useFoucFix'
 import { ChakraProvider } from '@chakra-ui/react'
 import { GoogleTagManager } from '@next/third-parties/google'
 import { AnimatePresence } from 'framer-motion'
-import Head from 'next/head'
+import { DefaultSeo } from 'next-seo'
 import { Router, useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { HydrationProvider } from 'react-hydration-provider'
@@ -50,21 +50,76 @@ export default function App({ Component, pageProps }) {
 
     return (
         <>
-            <Head>
-                <title>Pūkauae</title>
-                <meta name="description" content="Website for the Pūkauae photographic exhibition" />
-                <meta name="author" content="Henry Babbage, Luke Enoka, Rere-No-A-Rangi Pope, Blaine Western" />
-                <meta name="keywords" content="pukauae, tu tama wahine o taranaki, tu tama wahine, art" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <meta charSet="utf-8" />
-                <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
-                <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
-                <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
-                <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
-                <link rel="manifest" href="/favicons/site.webmanifest" />
-                <link rel="shortcut icon" href="/favicons/favicon.ico" />
-                <link rel="canonical" href="https://www.xn--pkauae-bmb.com/" />
-            </Head>
+            <DefaultSeo
+                title="Pukauae"
+                description="Website for the Pūkauae photographic exhibition."
+                canonical="https://www.xn--pkauae-bmb.com/"
+                additionalMetaTags={[
+                    {
+                        name: 'viewport',
+                        content: 'width=device-width, initial-scale=1'
+                    },
+                    {
+                        name: 'author',
+                        content: 'Henry Babbage, Luke Enoka, Rere-No-A-Rangi Pope, Blaine Western'
+                    },
+                    {
+                        name: 'keywords',
+                        content: 'pukauae, tu tama wahine o taranaki, tu tama wahine, art'
+                    },
+                    {
+                        name: 'msapplication-config',
+                        content: '/public/favicons/browserconfig.xml'
+                    }
+                ]}
+                additionalLinkTags={[
+                    {
+                        rel: 'icon',
+                        href: '/public/favicons/favicon.ico'
+                    },
+                    {
+                        rel: 'icon',
+                        href: '/public/favicons/favicon-32x32.png',
+                        sizes: '32x32'
+                    },
+                    {
+                        rel: 'icon',
+                        href: '/public/favicons/favicon-16x16.png',
+                        sizes: '16x16'
+                    },
+                    {
+                        rel: 'apple-touch-icon',
+                        href: 'public/favicons/apple-touch-icon.png',
+                        sizes: '180x180'
+                    },
+                    {
+                        rel: 'manifest',
+                        href: '/public/favicons/site.webmanifest'
+                    }
+                ]}
+                openGraph={{
+                    type: 'website',
+                    title: 'Pukauae',
+                    description: 'Website for the Pūkauae photographic exhibition.',
+                    locale: 'en_IE',
+                    url: 'https://www.xn--pkauae-bmb.com/',
+                    siteName: 'Pūkauae',
+                    images: [
+                        {
+                            url: '/public/images/og_800w.jpg',
+                            width: 800,
+                            height: 520,
+                            alt: 'Pūkauae | Tu Tama Wahine o Taranaki'
+                        },
+                        {
+                            url: '/public/images/og_1200w.jpg',
+                            width: 1200,
+                            height: 779,
+                            alt: 'Pūkauae | Tu Tama Wahine o Taranaki'
+                        }
+                    ]
+                }}
+            />
             <GoogleTagManager gtmId="G-XK1ZE2MSV0" />
             <HydrationProvider>
                 <ChakraProvider theme={theme}>

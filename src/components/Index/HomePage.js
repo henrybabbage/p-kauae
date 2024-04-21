@@ -28,17 +28,17 @@ export default function HomePage({ korero, preview }) {
         opening_video_poster,
         tuhinga_whakamutunga,
         kaiwhakaahua
-    } = korero
+    } = korero ?? {}
 
     const playerRef = useRef()
     const videoRef = useRef(null)
 
     // split array of items into two columns
     const acknowledgementsList = tangata_mihia
-    const leftColumn = acknowledgementsList.slice(0, 8)
-    const rightColumn = acknowledgementsList.slice(8, 16)
+    const leftColumn = acknowledgementsList?.slice(0, 8) || []
+    const rightColumn = acknowledgementsList?.slice(8, 16) || []
 
-    const photographerUrl = kaiwhakaahua.paetukutuku.replace(/^(https?:|)\/\//, '')
+    const photographerUrl = kaiwhakaahua?.paetukutuku?.replace(/^(https?:|)\/\//, '') || ''
 
     return (
         <Box as="main" bg="grey.900">
@@ -387,7 +387,7 @@ export default function HomePage({ korero, preview }) {
                                         textColor="pink.200"
                                         pb={['2', '2', '2', '10', '10', '10']}
                                     >
-                                        {kaiwhakaahua.ingoa}
+                                        {kaiwhakaahua?.ingoa}
                                         <br />
                                     </Heading>
                                     <Text
@@ -406,7 +406,7 @@ export default function HomePage({ korero, preview }) {
                                         ml={['0', '0', '0', '4', '4', '4']}
                                         pb={['2', '2', '2', '0', '0', '0']}
                                     >
-                                        {kaiwhakaahua.whakapapa}
+                                        {kaiwhakaahua?.whakapapa}
                                     </Text>
                                 </Flex>
                                 <Box>
@@ -419,10 +419,10 @@ export default function HomePage({ korero, preview }) {
                                             textAlign: 'left',
                                             textColor: 'white'
                                         }}
-                                        value={kaiwhakaahua.korero}
+                                        value={kaiwhakaahua?.korero}
                                     />
                                 </Box>
-                                <Link href={kaiwhakaahua.paetukutuku} isExternal variant="menu">
+                                <Link href={kaiwhakaahua?.paetukutuku} isExternal variant="menu">
                                     <Text
                                         fontFamily={[
                                             'subheading',

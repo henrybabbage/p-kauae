@@ -35,15 +35,15 @@ export default function Map({ wahine, haerenga }) {
     const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
     const [selectedWahine, setSelectedWahine] = useState(null)
     const [viewport, setViewport] = useState(() => {
-        const randomIndex = Math.floor(Math.random() * wahine.features.length)
-        setSelectedWahine(wahine.features[randomIndex].properties)
-        const initialPoint = wahine.features[randomIndex].properties.wahi
+        const randomIndex = Math.floor(Math.random() * wahine?.features?.length)
+        setSelectedWahine(wahine?.features[randomIndex]?.properties)
+        const initialPoint = wahine?.features[randomIndex]?.properties?.wahi
         return {
-            latitude: initialPoint.ahuahanga.lat,
-            longitude: initialPoint.ahuahanga.lng,
-            activeId: wahine.features[randomIndex].id,
+            latitude: initialPoint?.ahuahanga?.lat,
+            longitude: initialPoint?.ahuahanga?.lng,
+            activeId: wahine.features[randomIndex]?.id,
             // bearing should be provided in [Lng, Lat] order
-            bearing: handleMapBearing([initialPoint.ahuahanga.lng, initialPoint.ahuahanga.lat]),
+            bearing: handleMapBearing([initialPoint?.ahuahanga?.lng, initialPoint?.ahuahanga?.lat]),
             pitch: 100,
             zoom: 11
         }
@@ -72,7 +72,7 @@ export default function Map({ wahine, haerenga }) {
             'text-optional': true,
             'text-field': ['get', 'title'],
             'text-font': ['Arial Unicode MS Bold'],
-            'text-size': ['case', ['==', ['get', 'id'], selectedWahine ? selectedWahine.id : null], 18, 14],
+            'text-size': ['case', ['==', ['get', 'id'], selectedWahine ? selectedWahine?.id : null], 18, 14],
             'text-offset': [0, 1.25],
             'text-variable-anchor': [
                 'top',
@@ -93,7 +93,7 @@ export default function Map({ wahine, haerenga }) {
                 'case',
                 ['boolean', ['feature-state', 'hover'], false],
                 '#f9abab',
-                ['case', ['==', ['get', 'id'], selectedWahine ? selectedWahine.id : null], '#f9abab', '#ffffff']
+                ['case', ['==', ['get', 'id'], selectedWahine ? selectedWahine?.id : null], '#f9abab', '#ffffff']
             ]
         }
     }
@@ -211,7 +211,6 @@ export default function Map({ wahine, haerenga }) {
     )
 
     const onMapLoad = useCallback(() => {
-        console.log('on-load-called')
         mapRef &&
             mapRef.current.on('mousemove', 'wahine', (e) => {
                 if (e.features.length > 0) {
