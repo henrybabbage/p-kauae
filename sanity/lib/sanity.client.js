@@ -13,9 +13,9 @@ export const sanityClient = createClient({
 
 export function getClient(previewToken) {
     const client = createClient({
-        projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || projectId,
-        dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || dataset,
-        apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || apiVersion,
+        projectId: projectId,
+        dataset: dataset,
+        apiVersion: apiVersion,
         useCdn: false,
         studioUrl: '/studio',
         perspective: 'published'
