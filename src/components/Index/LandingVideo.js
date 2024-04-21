@@ -61,6 +61,7 @@ export default function LandingVideo({
                     info={true}
                     cover={true}
                     isPlaying={isPlaying}
+                    setIsPlaying={setIsPlaying}
                     videoKorero={videoKorero ?? ''}
                     poster={poster ?? posterFallback}
                     controls={controls}

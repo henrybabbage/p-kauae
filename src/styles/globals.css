@@ -54,36 +54,30 @@ a {
 /*  vidstack player
 /*  ------------------------------ */
 
-/* Do something while poster image is loading. */
-media-poster[data-loading] {
-}
-
-/* Do something if poster image fails to load. */
-media-poster[aria-hidden='true'] {
-}
-
-.media-player {
-    z-index: 500;
-    user-select: all;
+.vds-controls {
+    /* CSS variables available for customizing this component. */
+    /* Remove any you don't need, default values are shown below. */
+    --media-controls-padding: 0px;
+    --media-controls-in-transition: opacity 0.2s ease-in;
+    --media-controls-out-transition: opacity 0.2s ease-out;
 }
 
 .media-controls {
-    z-index: 500;
-}
-
-.media-controls-container {
-    position: absolute;
+    /* z-index: 500; */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    top: 0;
-    left: 0;
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    /* prevent blocking lower elements (e.g., gestures). */
-    pointer-events: none;
-    /** place above poster (optional). */
-    z-index: 1;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+.media-controls[data-visible] {
+    opacity: 1;
+    background-image: linear-gradient(to top, rgb(0 0 0 / 0.5), 10%, transparent, 95%, rgb(0 0 0 / 0.3));
 }
 
 .media-controls-group {
@@ -94,31 +88,37 @@ media-poster[aria-hidden='true'] {
     opacity: 1;
     padding: 8px;
     transition: opacity 200ms ease;
-    /** prevent clicks triggering lower elements. */
     pointer-events: auto;
 }
 
-.media-video-poster {
-    object-fit: cover;
+.media-controls-spacer {
+    flex: 1 1 0%;
+    pointer-events: none;
+}
+
+.media-poster {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
     width: 100%;
     height: 100%;
 }
 
-/* Avoid double controls on iOS when in fullscreen. */
-media-player[data-ios-controls] .media-controls-group,
-/* Hide controls if media is not ready for playback, or user is idle. */
-media-player[data-user-idle] .media-controls-group,
-media-player:not([data-can-play]) .media-controls-group {
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Show controls if autoplay fails. */
-media-player[data-autoplay-error] .media-controls {
+.media-poster[data-visible] {
     opacity: 1;
 }
 
-media-player[data-ios-controls] {
+.media-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Avoid double controls on iOS when in fullscreen. */
+.media-player[data-ios-controls] .media-controls-group,
+.media-player[data-ios-controls] {
 }
 
 /*  ------------------------------ */
