@@ -2,7 +2,7 @@ import { useCallback, useLayoutEffect } from 'react'
 
 //https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
 
-export function useRealViewport() {
+export function RealViewport() {
     const onWindowResize = useCallback(() => {
         document.documentElement.style.setProperty('--dvh', window.innerHeight * 0.01 + 'px')
 

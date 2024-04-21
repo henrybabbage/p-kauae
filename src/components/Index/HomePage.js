@@ -8,7 +8,7 @@ import { useRef } from 'react'
 import PreviewButton from '../Common/Buttons/PreviewButton'
 import SectionBreakIcon from '../Common/Icons/SectionBreakIcon'
 import { CustomPortableText } from '../Primitives/CustomPortableText'
-import SmoothScroll from '../Primitives/SmoothScroll'
+import LenisScroll from '../Primitives/LenisScroll'
 import LandingVideo from './LandingVideo'
 
 export default function HomePage({ korero, preview }) {
@@ -42,7 +42,7 @@ export default function HomePage({ korero, preview }) {
 
     return (
         <Box as="main" bg="grey.900">
-            <SmoothScroll>
+            <LenisScroll>
                 {preview && <PreviewButton />}
                 <Box id="about">
                     <Grid templateColumns="repeat(12, 1fr)" px={['6', '6', '6', '0', '0', '0']} w="100vw">
@@ -474,7 +474,7 @@ export default function HomePage({ korero, preview }) {
                 <Box pb={['4', '4', '4', '6', '6', '6']}>
                     <Footer />
                 </Box>
-            </SmoothScroll>
+            </LenisScroll>
         </Box>
     )
 }

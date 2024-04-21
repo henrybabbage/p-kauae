@@ -1,5 +1,6 @@
 import TransitionBanner from '@/components/Common/Banners/TransitionBanner'
 import Header from '@/components/Common/Header/Header'
+import { RealViewport } from '@/components/Primitives/RealViewport'
 import theme from '@/styles/ChakraTheme'
 import Fonts from '@/styles/Fonts'
 import '@/styles/globals.css'
@@ -106,15 +107,9 @@ export default function App({ Component, pageProps }) {
                     siteName: 'Pūkauae',
                     images: [
                         {
-                            url: '/public/images/og_800w.jpg',
-                            width: 800,
-                            height: 520,
-                            alt: 'Pūkauae | Tu Tama Wahine o Taranaki'
-                        },
-                        {
-                            url: '/public/images/og_1200w.jpg',
-                            width: 1200,
-                            height: 779,
+                            url: '/public/og_1200w.png',
+                            width: 2400,
+                            height: 1558,
                             alt: 'Pūkauae | Tu Tama Wahine o Taranaki'
                         }
                     ]
@@ -122,6 +117,7 @@ export default function App({ Component, pageProps }) {
             />
             <GoogleTagManager gtmId="G-XK1ZE2MSV0" />
             <HydrationProvider>
+                <RealViewport />
                 <ChakraProvider theme={theme}>
                     <Fonts />
                     <AnimatePresence
