@@ -60,17 +60,19 @@ export default function VideoPlayer({
                     className="media-player"
                 >
                     <MediaProvider>
-                        <Poster src={poster ?? fallbackPoster} alt={title} className="media-poster" />
                         {pathname === '/' && (
-                            <Controls.Root className="media-controls">
-                                <Controls.Group className="media-controls-group"></Controls.Group>
-                                <div className="media-controls-spacer" />
-                                <Controls.Group className="media-controls-group">
-                                    <PlayButton>{paused ? <PlayIcon /> : <PauseIcon />}</PlayButton>
-                                </Controls.Group>
-                                <div className="media-controls-spacer" />
-                                <Controls.Group className="media-controls-group"></Controls.Group>
-                            </Controls.Root>
+                            <>
+                                <Poster src="/images/poster.webp" alt={title} className="media-poster" sizes="80vw" />
+                                <Controls.Root className="media-controls">
+                                    <Controls.Group className="media-controls-group"></Controls.Group>
+                                    <div className="media-controls-spacer" />
+                                    <Controls.Group className="media-controls-group">
+                                        <PlayButton>{paused ? <PlayIcon /> : <PauseIcon />}</PlayButton>
+                                    </Controls.Group>
+                                    <div className="media-controls-spacer" />
+                                    <Controls.Group className="media-controls-group"></Controls.Group>
+                                </Controls.Root>
+                            </>
                         )}
                     </MediaProvider>
                 </MediaPlayer>

@@ -40,7 +40,6 @@ export default function HomePage({ korero, preview }) {
     const rightColumn = acknowledgementsList?.slice(8, 16) || []
 
     const photographerUrl = kaiwhakaahua?.paetukutuku?.replace(/^(https?:|)\/\//, '') || ''
-
     return (
         <Box as="main" bg="grey.900" minH="100%">
             {preview && <PreviewButton />}
@@ -464,7 +463,7 @@ export default function HomePage({ korero, preview }) {
                                         width={720}
                                         height={648}
                                         blurhash={kaiwhakaahua?.whakaahua?.asset?.metadata?.blurHash}
-                                        sizes={'(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 50vw'}
+                                        sizes={'(min-width: 1000px) 27vw, 50vw'}
                                     />
                                 </Flex>
                             </Box>

@@ -1,7 +1,6 @@
 import { AspectRatio, Box, Flex, Heading } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import { useRef, useState } from 'react'
-import posterFallback from 'public/images/poster.jpg'
 
 const VideoPlayer = dynamic(() => import('@/components/Common/Media/VideoPlayer'), {
     ssr: false
@@ -63,7 +62,7 @@ export default function LandingVideo({
                     isPlaying={isPlaying}
                     setIsPlaying={setIsPlaying}
                     videoKorero={videoKorero ?? ''}
-                    poster={poster ?? posterFallback}
+                    poster={poster}
                     controls={controls}
                 />
             </AspectRatio>
