@@ -304,7 +304,7 @@ export default function HomePage({ korero, preview }) {
                                         as={'h2'}
                                         sx={{
                                             fontFamily: 'subheading',
-                                            fontSize: ['36px', '36px', '36px', '56px', '62px', '72px'],
+                                            fontSize: ['32px', '32px', '32px', '56px', '62px', '72px'],
                                             lineHeight: ['1.2', '1.2', '1.2', '1.2', '1.1', '1.1'],
                                             letterSpacing: '0.016em',
                                             textAlign: 'left',
