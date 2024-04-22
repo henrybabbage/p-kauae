@@ -9,13 +9,13 @@ import { defineConfig } from 'sanity'
 import { cloudinarySchemaPlugin } from 'sanity-plugin-cloudinary'
 import { media } from 'sanity-plugin-media'
 import { structureTool } from 'sanity/structure'
-import { defaultDocumentNode } from './sanity/utils/defaultDocumentNode'
+import { defaultDocumentNode } from './src/sanity/utils/defaultDocumentNode'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { BlockContentIcon, CogIcon, UserIcon, UsersIcon } from '@sanity/icons'
 import { MapIcon } from 'lucide-react'
-import { apiVersion, dataset, projectId, title } from './sanity/env'
-import { schema } from './sanity/schema'
+import { apiVersion, dataset, projectId, title } from './src/sanity/env'
+import { schema } from './src/sanity/schema'
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
