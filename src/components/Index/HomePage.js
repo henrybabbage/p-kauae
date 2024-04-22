@@ -404,17 +404,17 @@ export default function HomePage({ korero, preview }) {
                                                 'heading',
                                                 'heading'
                                             ]}
-                                            fontSize={['16px', '16px', '16px', '24px', '24px', '24px']}
+                                            fontSize={['18px', '18px', '18px', '24px', '24px', '24px']}
                                             lineHeight="1.2"
                                             textAlign="left"
                                             color="pink.200"
                                             ml={['0', '0', '0', '4', '4', '4']}
-                                            pb={['2', '2', '2', '0', '0', '0']}
+                                            pb={['6', '6', '6', '0', '0', '0']}
                                         >
                                             {kaiwhakaahua?.whakapapa}
                                         </Text>
                                     </Flex>
-                                    <Box>
+                                    <Box pb={['6', '6', '6', '10', '10', '10']}>
                                         <CustomPortableText
                                             as={'p'}
                                             sx={{
@@ -429,20 +429,13 @@ export default function HomePage({ korero, preview }) {
                                     </Box>
                                     <Link href={kaiwhakaahua?.paetukutuku} isExternal variant="menu">
                                         <Text
-                                            fontFamily={[
-                                                'subheading',
-                                                'subheading',
-                                                'subheading',
-                                                'heading',
-                                                'heading',
-                                                'heading'
-                                            ]}
+                                            fontFamily={['body', 'body', 'body', 'heading', 'heading', 'heading']}
                                             fontSize={['24px', '24px', '24px', '32px', '32px', '32px']}
                                             lineHeight="1.2"
+                                            letterSpacing="0.010em"
                                             textAlign="left"
                                             textColor="white"
                                         >
-                                            <br />
                                             {photographerUrl}
                                         </Text>
                                     </Link>

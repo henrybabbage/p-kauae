@@ -3,7 +3,7 @@ import NextLink from 'next/link'
 
 export default function LinkPrompt() {
     return (
-        <ChakraLink variant="menu" as={NextLink} href="/haerenga" scroll={false}>
+        <ChakraLink variant="menu" as={NextLink} href="/haerenga" scroll={false} sx={{ zIndex: '1' }}>
             <Box position="relative" cursor="pointer" role="group">
                 <Box
                     position="absolute"
@@ -14,14 +14,14 @@ export default function LinkPrompt() {
                     transform="translate(-50%, -50%)"
                     borderRadius="50%"
                     filter="blur(50px)"
-                    zIndex="-1"
+                    zIndex="0"
                     backgroundColor="rgba(249, 171, 171, 0.3)"
                     opacity="0.75"
                 />
                 <Text
                     color="white"
                     fontFamily="subheading"
-                    fontSize={['8px', '8px', '8px', '14px', '14px', '14px']}
+                    fontSize={['14px', '14px', '14px', '16px', '16px', '16px']}
                     textTransform="uppercase"
                     textAlign="center"
                     _groupHover={{
@@ -35,7 +35,7 @@ export default function LinkPrompt() {
                 <Text
                     color="white"
                     fontFamily="subheading"
-                    fontSize={['8px', '8px', '8px', '14px', '14px', '14px']}
+                    fontSize={['14px', '14px', '14px', '16px', '16px', '16px']}
                     textTransform="uppercase"
                     textAlign="center"
                     _groupHover={{
