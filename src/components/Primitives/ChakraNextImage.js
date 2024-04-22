@@ -1,11 +1,15 @@
+/* eslint-disable no-console */
 import { Box } from '@chakra-ui/react'
 import Image from 'next/image'
 import { BlurhashCanvas } from 'react-blurhash'
 
 export default function ChakraNextImage(props) {
-    const { src, alt, width, height, sizes, blurhash, ...rest } = props
+    const { src, alt, width, height, sizes, blurhash, ...rest } = props ?? {}
+    const handleError = (error) => {
+        console.error(error)
+    }
     return (
-        <Box position="relative">
+        <Box position="relative" height="100%" width="100%">
             {blurhash && (
                 <BlurhashCanvas
                     hash={blurhash}
@@ -23,18 +27,21 @@ export default function ChakraNextImage(props) {
                 />
             )}
             <Box position="relative" overflow="hidden" {...rest}>
-                <Image
-                    src={src}
-                    alt={alt}
-                    width={width}
-                    height={height}
-                    sizes={sizes}
-                    style={{
-                        objectFit: 'contain',
-                        height: '100%',
-                        width: '100%'
-                    }}
-                />
+                {src && (
+                    <Image
+                        src={src}
+                        alt={alt}
+                        width={width}
+                        height={height}
+                        sizes={sizes}
+                        style={{
+                            objectFit: 'contain',
+                            height: '100%',
+                            width: '100%'
+                        }}
+                        onError={(e) => handleError(e)}
+                    />
+                )}
             </Box>
         </Box>
     )

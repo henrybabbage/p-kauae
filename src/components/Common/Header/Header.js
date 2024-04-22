@@ -58,7 +58,7 @@ export default function Header({ blurEffect, opacity }) {
                                 >
                                     <Heading
                                         as="h2"
-                                        fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
+                                        fontSize={['18px', '18px', '18px', '20px', '20px', '20px']}
                                         lineHeight="1.36"
                                         fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
                                         textColor="white"
@@ -70,7 +70,7 @@ export default function Header({ blurEffect, opacity }) {
                         </Flex>
                     </Mobile>
                 </Client>
-                <Flex w="auto" justifyContent="start" display={['none', 'none', 'none', 'flex', 'flex', 'flex']}>
+                <Flex w="auto" justifyContent="start" display={['none', 'none', 'flex', 'flex', 'flex', 'flex']}>
                     <NavLink href="/">
                         <MotionBox
                             zIndex={100}

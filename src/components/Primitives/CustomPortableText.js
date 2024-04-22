@@ -19,7 +19,12 @@ export function CustomPortableText({ sx, as, value }) {
                         {children}
                     </Box>
                 )
-            }
+            },
+            em: ({ children }) => (
+                <Box as={'span'} sx={sx} _before={{ content: "''" }} _after={{ content: "''" }}>
+                    {children}
+                </Box>
+            )
         }
     }
 

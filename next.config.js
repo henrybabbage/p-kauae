@@ -14,6 +14,11 @@ const nextConfig = {
         defaultLocale: 'en'
     },
     reactStrictMode: true,
+    logging: {
+        fetches: {
+            fullUrl: true
+        }
+    },
     compiler: {
         styledComponents: true
     },
@@ -24,14 +29,13 @@ const nextConfig = {
         NEXT_PUBLIC_YOUTUBE_ASSET_DOMAIN: process.env.NEXT_PUBLIC_YOUTUBE_ASSET_DOMAIN,
         NEXT_PUBLIC_SANITY_PROJECT_ID: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
         NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET,
+        NEXT_PUBLIC_SANITY_API_VERSION: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
         NEXT_PUBLIC_SANITY_PROJECT_TITLE: process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE,
         NEXT_PUBLIC_SANITY_API_WRITE_TOKEN: process.env.NEXT_PUBLIC_SANITY_API_WRITE_TOKEN,
         NEXT_PUBLIC_SANITY_API_READ_TOKEN: process.env.NEXT_PUBLIC_SANITY_API_READ_TOKEN,
         NEXT_PUBLIC_WEBSITE_URL: process.env.NEXT_PUBLIC_WEBSITE_URL
     },
     images: {
-        domains: ['localhost', 'cdn.sanity.io', 'res.cloudinary.com'],
-        formats: ['image/avif', 'image/webp'],
         remotePatterns: [
             {
                 protocol: 'https',

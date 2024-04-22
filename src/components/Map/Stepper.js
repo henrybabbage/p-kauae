@@ -1,3 +1,4 @@
+import useStorage from '@/hooks/useStorage'
 import { Button, Flex, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { Client } from 'react-hydration-provider'
@@ -8,19 +9,22 @@ import { MotionBox } from '../Primitives/MotionBox'
 export default function Stepper({ onClose, haerenga }) {
     let [step, setStep] = useState(1)
 
+    const { setItem } = useStorage()
+
     const handleFinish = () => {
         setStep(step > 3 ? step : step + 1)
         if (step === 3) {
             setTimeout(() => {
                 onClose()
             }, 300)
+            setItem('intro-shown', true, 'local')
         }
     }
 
     const isDesktop = useMediaQuery({ minWidth: 992 })
     const isTabletOrMobile = useMediaQuery({ maxWidth: 991 })
 
-    const { slide_1, slide_2, slide_3, slide_1_mobile, slide_2_mobile, slide_3_mobile } = haerenga
+    const { slide_1, slide_2, slide_3, slide_1_mobile, slide_2_mobile, slide_3_mobile } = haerenga ?? {}
 
     return (
         <>

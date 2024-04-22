@@ -6,6 +6,7 @@ const VideoPlayer = dynamic(() => import('./VideoPlayer'), {
 })
 
 export default function ModalVideo({ playerRef, src, location, poster, alt }) {
+    if (!src) return null
     return (
         <Box position="relative" w="100%" maxWidth="100%">
             <AspectRatio
@@ -20,7 +21,7 @@ export default function ModalVideo({ playerRef, src, location, poster, alt }) {
                 <VideoPlayer
                     playerRef={playerRef}
                     src={src}
-                    poster={poster}
+                    poster={poster || ''}
                     title={location || alt || ''}
                     autoplay={true}
                     controls={false}
@@ -45,7 +46,7 @@ export default function ModalVideo({ playerRef, src, location, poster, alt }) {
                     fontWeight="regular"
                     fontFamily="heading"
                     position="absolute"
-                    bottom={['6', '6', '6', '6', '6', '6']}
+                    bottom={['4', '4', '4', '6', '6', '6']}
                     right={['6', '6', '6', '6', '6', '6']}
                     w="fit-content"
                     textAlign={['right', 'right', 'right', 'right', 'right', 'right']}

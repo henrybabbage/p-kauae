@@ -11,7 +11,7 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
             justifyContent="center"
             alignItems="center"
             w="100%"
-            paddingTop={['0', '0', '0', '12', '12', '12']}
+            paddingTop={['12', '12', '24', '12', '12', '12']}
         >
             <MotionBox
                 position="absolute"
@@ -44,7 +44,7 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                     <Heading
                         key={index}
                         textAlign="center"
-                        fontSize={['32px', '32px', '46px', '56px', '94px', '94px']}
+                        fontSize={['32px', '32px', '32px', '56px', '94px', '94px']}
                         lineHeight={['1.2', '1.2', '1.2', '1', '1', '1']}
                         letterSpacing="0.016em"
                         textColor="pink.200"
@@ -85,7 +85,7 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                     <Heading
                         key={index}
                         textAlign="center"
-                        fontSize={['36px', '36px', '46px', '56px', '94px', '94px']}
+                        fontSize={['36px', '36px', '32px', '56px', '94px', '94px']}
                         lineHeight={['1.2', '1.2', '1.2', '1', '1', '1']}
                         letterSpacing="0.016em"
                         textColor="pink.200"

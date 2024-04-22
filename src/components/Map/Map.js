@@ -35,15 +35,15 @@ export default function Map({ wahine, haerenga }) {
     const [selectedWahineIndex, setSelectedWahineIndex] = useState(0)
     const [selectedWahine, setSelectedWahine] = useState(null)
     const [viewport, setViewport] = useState(() => {
-        const randomIndex = Math.floor(Math.random() * wahine.features.length)
-        setSelectedWahine(wahine.features[randomIndex].properties)
-        const initialPoint = wahine.features[randomIndex].properties.wahi
+        const randomIndex = Math.floor(Math.random() * wahine?.features?.length)
+        setSelectedWahine(wahine?.features[randomIndex]?.properties)
+        const initialPoint = wahine?.features[randomIndex]?.properties?.wahi
         return {
-            latitude: initialPoint.ahuahanga.lat,
-            longitude: initialPoint.ahuahanga.lng,
-            activeId: wahine.features[randomIndex].id,
+            latitude: initialPoint?.ahuahanga?.lat,
+            longitude: initialPoint?.ahuahanga?.lng,
+            activeId: wahine.features[randomIndex]?.id,
             // bearing should be provided in [Lng, Lat] order
-            bearing: handleMapBearing([initialPoint.ahuahanga.lng, initialPoint.ahuahanga.lat]),
+            bearing: handleMapBearing([initialPoint?.ahuahanga?.lng, initialPoint?.ahuahanga?.lat]),
             pitch: 100,
             zoom: 11
         }
@@ -71,7 +71,7 @@ export default function Map({ wahine, haerenga }) {
             'text-optional': true,
             'text-field': ['get', 'title'],
             'text-font': ['Arial Unicode MS Bold'],
-            'text-size': ['case', ['==', ['get', 'id'], selectedWahine ? selectedWahine.id : null], 18, 14],
+            'text-size': ['case', ['==', ['get', 'id'], selectedWahine ? selectedWahine?.id : null], 18, 14],
             'text-offset': [0, 1.25],
             'text-variable-anchor': [
                 'top',
@@ -92,18 +92,19 @@ export default function Map({ wahine, haerenga }) {
                 'case',
                 ['boolean', ['feature-state', 'hover'], false],
                 '#f9abab',
-                ['case', ['==', ['get', 'id'], selectedWahine ? selectedWahine.id : null], '#f9abab', '#ffffff']
+                ['case', ['==', ['get', 'id'], selectedWahine ? selectedWahine?.id : null], '#f9abab', '#ffffff']
             ]
         }
     }
 
     const mapModal = useDisclosure()
-    const instructionsModal = useDisclosure({ defaultIsOpen: true })
+    const instructionsModal = useDisclosure()
     const errorDrawer = useDisclosure()
 
     useEffect(() => {
         const intro = getItem('intro-shown', 'local')
         if (!intro) {
+            instructionsModal.onOpen()
             setTimeout(() => {
                 setIntroShown(true)
                 setItem('intro-shown', true, 'local')
@@ -111,14 +112,14 @@ export default function Map({ wahine, haerenga }) {
         } else {
             setIntroShown(true)
         }
-    }, [getItem, setItem])
+    }, [])
 
     useEffect(() => {
         if (mapError) {
             errorDrawer.onOpen()
             setTimeout(() => {
                 location.reload()
-            }, 2000)
+            }, 2500)
         }
     }, [mapError])
 
@@ -180,7 +181,7 @@ export default function Map({ wahine, haerenga }) {
                 korero_pukauae: JSON.parse(p.korero_pukauae),
                 korero_wahi: JSON.parse(p.korero_wahi),
                 wahi: JSON.parse(p.wahi),
-                whakaahua: JSON.parse(p.whakaahua)
+                whakaahua: JSON.parse(p.whakaahua || '{}')
             }
         }
     }
@@ -211,6 +212,7 @@ export default function Map({ wahine, haerenga }) {
 
     const onMapLoad = useCallback(() => {
         mapRef &&
+            mapRef.current &&
             mapRef.current.on('mousemove', 'wahine', (e) => {
                 if (e.features.length > 0) {
                     if (hoveredStateIdRef.current !== null) {
@@ -227,6 +229,7 @@ export default function Map({ wahine, haerenga }) {
                 }
             })
         mapRef &&
+            mapRef.current &&
             mapRef.current.on('mouseleave', 'wahine', () => {
                 if (hoveredStateIdRef.current !== null) {
                     mapRef?.current?.setFeatureState(
@@ -252,7 +255,7 @@ export default function Map({ wahine, haerenga }) {
                 />
             )}
             {/* Fallback display before map mounts */}
-            <Center h="100vh" w="100vw" position="absolute" overflow="hidden">
+            <Center h="100vh" w="100vw" position="absolute" overflow="hidden" bg="grey.900">
                 <Box
                     position="relative"
                     h={['70px', '70px', '70px', '120px', '120px', '120px']}
@@ -301,6 +304,7 @@ export default function Map({ wahine, haerenga }) {
                     {...viewport}
                     reuseMaps
                     ref={mapRef}
+                    pitch={60}
                     width="100%"
                     height="100%"
                     cursor="pointer"

@@ -8,18 +8,14 @@ import { theme } from 'https://themer.sanity.build/api/hues?default=c3918f&prima
 import { defineConfig } from 'sanity'
 import { cloudinarySchemaPlugin } from 'sanity-plugin-cloudinary'
 import { media } from 'sanity-plugin-media'
-import { deskTool } from 'sanity/desk'
+import { structureTool } from 'sanity/structure'
 import { defaultDocumentNode } from './sanity/utils/defaultDocumentNode'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { BlockContentIcon, CogIcon, UserIcon, UsersIcon } from '@sanity/icons'
 import { MapIcon } from 'lucide-react'
-import { apiVersion } from './sanity/env'
+import { apiVersion, dataset, projectId, title } from './sanity/env'
 import { schema } from './sanity/schema'
-
-const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Pūkauae'
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'l5wjxg7c'
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
@@ -39,7 +35,7 @@ export default defineConfig({
         templates: (templates) => templates.filter(({ schemaType }) => !singletonTypes.has(schemaType))
     },
     plugins: [
-        deskTool({
+        structureTool({
             defaultDocumentNode,
             structure: (S) =>
                 S.list()

@@ -6,14 +6,14 @@ import ChakraNextImage from '@/components/Primitives/ChakraNextImage'
 import CloseButton from '../Buttons/CloseButton'
 
 export default function ZoomImage(props) {
-    const { caption, src, alt, width, height, sizes, blurhash } = props
+    const { caption, src, alt, width, height, sizes, blurhash } = props ?? {}
     const DynamicZoomContent = useCallback(
         (props) => {
             return <ZoomContent {...props} caption={caption} />
         },
         [caption]
     )
-
+    if (!src) return null
     return (
         <Flex flexDir="column" alignItems="center" justifyContent="center" bg="grey.900" w="100%" h="100%">
             <Box position="relative" w="100%" h="100%">

@@ -1,9 +1,10 @@
-import { Box, Tooltip } from '@chakra-ui/react'
-import { MediaOutlet, MediaPlayButton, MediaPlayer, MediaPoster } from '@vidstack/react'
-import { useEffect, useRef, useState } from 'react'
-// import 'vidstack/styles/community-skin/video.css'
+import { Box } from '@chakra-ui/react'
+import { Controls, MediaPlayer, MediaProvider, PlayButton, Poster, useMediaState } from '@vidstack/react'
+import '@vidstack/react/player/styles/base.css'
 import { useRouter } from 'next/router'
-import 'vidstack/styles/defaults.css'
+import { useEffect, useRef, useState } from 'react'
+import { PauseIcon } from '../Icons/PauseIcon'
+import { PlayIcon } from '../Icons/PlayIcon'
 import VideoOverlay from './VideoOverlay'
 
 export default function VideoPlayer({
@@ -23,6 +24,7 @@ export default function VideoPlayer({
     const [showInfo, setShowInfo] = useState(false)
     const [videoChanged, setVideoChanged] = useState(false)
 
+    const player = useRef(null)
     const videoRef = useRef(null)
     const { pathname } = useRouter()
 
@@ -36,41 +38,43 @@ export default function VideoPlayer({
         }
     }, [src])
 
+    const paused = useMediaState('paused', player)
+
     return (
         <Box position="absolute" bg="black" w="100%" h="100%" userSelect="all" cursor="auto">
             {!videoChanged && (
                 <MediaPlayer
+                    ref={player}
                     title={title}
                     src={src}
-                    poster={poster}
-                    aspectRatio={16 / 9}
-                    autoplay={autoplay}
                     loop={loop}
                     muted={muted}
                     controls={controls}
-                    playsinline
+                    autoPlay={autoplay}
+                    posterLoad="idle"
+                    viewType="video"
+                    aspectRatio={'16/9'}
+                    playsInline
                     eager
+                    crossOrigin
                     className="media-player"
                 >
-                    <MediaOutlet>
-                        <MediaPoster className="media-video-poster" data-loading alt={title} />
+                    <MediaProvider>
                         {pathname === '/' && (
-                            <Box className="media-controls-container" role="group" aria-label="Media Controls">
-                                <Box className="media-controls-group"></Box>
-                                <Box className="media-controls-group">
-                                    <Tooltip
-                                        label={!isPlaying ? 'Click to play video' : 'Click to pause video'}
-                                        placement="top"
-                                        variant="video"
-                                    >
-                                        <MediaPlayButton aria-keyshortcuts="k Space" className="media-controls" />
-                                    </Tooltip>
-                                </Box>
-                                <Box className="media-controls-group"></Box>
-                            </Box>
+                            <>
+                                <Poster src="/images/poster.webp" alt={title} className="media-poster" sizes="80vw" />
+                                <Controls.Root className="media-controls">
+                                    <Controls.Group className="media-controls-group"></Controls.Group>
+                                    <div className="media-controls-spacer" />
+                                    <Controls.Group className="media-controls-group">
+                                        <PlayButton>{paused ? <PlayIcon /> : <PauseIcon />}</PlayButton>
+                                    </Controls.Group>
+                                    <div className="media-controls-spacer" />
+                                    <Controls.Group className="media-controls-group"></Controls.Group>
+                                </Controls.Root>
+                            </>
                         )}
-                    </MediaOutlet>
-                    {/* <MediaCommunitySkin /> */}
+                    </MediaProvider>
                 </MediaPlayer>
             )}
             {showInfo && <VideoOverlay showInfo={showInfo} videoKorero={videoKorero} />}

@@ -10,7 +10,7 @@ import { theme as base, extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
     config: {
-        initialColorMode: 'light',
+        initialColorMode: 'dark',
         useSystemColorMode: false
     },
     global: {
@@ -53,7 +53,7 @@ const theme = extendTheme({
         body: `"Sohne_Buch", ${base.fonts.body}, sans-serif`,
         subheading: `"SohneBreit_Buch", ${base.fonts.body}, sans-serif`,
         heading: `"SohneBreit_Dreiviertelfett", ${base.fonts.heading}, sans-serif`,
-        hero: `"SohneBreit_Halbfett", ${base.fonts.menu}, sans-serif`
+        hero: `"SohneBreit_Dreiviertelfett", ${base.fonts.heading}, sans-serif`
     },
     fontSizes: {
         sm: '18px',

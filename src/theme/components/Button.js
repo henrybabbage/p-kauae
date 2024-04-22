@@ -12,7 +12,6 @@ const callToAction = defineStyle({
     height: 'inherit',
     width: 'inherit',
     fontWeight: 'regular',
-    // fontSize: 'xl',
     fontFamily: 'subheading',
     color: 'white',
     transition: 'transform 0.15s ease-out',
@@ -36,7 +35,6 @@ const mapLabel = defineStyle({
     height: 'inherit',
     width: 'inherit',
     fontWeight: 'regular',
-    // fontSize: 'xs',
     fontFamily: 'body',
     color: 'white',
     transition: 'transform 0.15s ease-out',
@@ -60,7 +58,6 @@ const prompt = defineStyle({
     height: 'inherit',
     width: 'inherit',
     fontWeight: 'regular',
-    // fontSize: 'sm',
     fontFamily: 'body',
     color: 'white',
     transition: 'transform 0.15s ease-out',
@@ -82,10 +79,7 @@ const menu = defineStyle({
     margin: 0,
     iconSpacing: 0,
     height: 'inherit',
-    width: 'inherit',
-    // fontWeight: 'bold',
-    // fontSize: 'xs',
-    // fontFamily: 'subheading',
+    width: 'max-content',
     lineHeight: '1.36',
     textColor: 'white',
     transition: 'transform 0.15s ease-out',
@@ -102,22 +96,33 @@ const menu = defineStyle({
 
 const sizes = {
     xl: defineStyle({
-        fontSize: 'xl'
+        fontSize: 'xl',
+        px: '0',
+        mx: '0'
     }),
     lg: defineStyle({
-        fontSize: 'lg'
+        fontSize: 'lg',
+        px: '0',
+        mx: '0'
     }),
     md: defineStyle({
-        fontSize: 'md'
+        fontSize: 'md',
+        px: '0',
+        mx: '0'
     }),
     sm: defineStyle({
-        fontSize: 'sm'
+        fontSize: 'sm',
+        px: '0',
+        mx: '0'
     }),
     xs: defineStyle({
-        fontSize: '10px'
+        fontSize: '10px',
+        px: '0',
+        mx: '0'
     })
 }
 
 export const buttonTheme = defineStyleConfig({
-    variants: { callToAction, mapLabel, prompt, menu, sizes }
+    variants: { callToAction, mapLabel, prompt, menu },
+    sizes: sizes
 })
