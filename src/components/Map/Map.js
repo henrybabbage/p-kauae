@@ -98,12 +98,13 @@ export default function Map({ wahine, haerenga }) {
     }
 
     const mapModal = useDisclosure()
-    const instructionsModal = useDisclosure({ defaultIsOpen: true })
+    const instructionsModal = useDisclosure()
     const errorDrawer = useDisclosure()
 
     useEffect(() => {
         const intro = getItem('intro-shown', 'local')
         if (!intro) {
+            instructionsModal.onOpen()
             setTimeout(() => {
                 setIntroShown(true)
                 setItem('intro-shown', true, 'local')
@@ -111,7 +112,7 @@ export default function Map({ wahine, haerenga }) {
         } else {
             setIntroShown(true)
         }
-    }, [getItem, setItem])
+    }, [])
 
     useEffect(() => {
         if (mapError) {
@@ -211,6 +212,7 @@ export default function Map({ wahine, haerenga }) {
 
     const onMapLoad = useCallback(() => {
         mapRef &&
+            mapRef.current &&
             mapRef.current.on('mousemove', 'wahine', (e) => {
                 if (e.features.length > 0) {
                     if (hoveredStateIdRef.current !== null) {
@@ -227,6 +229,7 @@ export default function Map({ wahine, haerenga }) {
                 }
             })
         mapRef &&
+            mapRef.current &&
             mapRef.current.on('mouseleave', 'wahine', () => {
                 if (hoveredStateIdRef.current !== null) {
                     mapRef?.current?.setFeatureState(
