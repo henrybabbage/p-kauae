@@ -42,11 +42,11 @@ export default function HomePage({ korero, preview }) {
     const photographerUrl = kaiwhakaahua?.paetukutuku?.replace(/^(https?:|)\/\//, '') || ''
 
     return (
-        <Box as="main" bg="grey.900">
+        <Box as="main" bg="grey.900" minH="100%">
+            {preview && <PreviewButton />}
             <PageTransition>
                 <LenisScroll>
-                    {preview && <PreviewButton />}
-                    <Box id="about">
+                    <Box id="about" h="100%">
                         <Grid templateColumns="repeat(12, 1fr)" px={['6', '6', '6', '0', '0', '0']} w="100vw">
                             <GridItem colStart={1} colEnd={13} h="100vh" overflow="hidden" position="relative">
                                 <Flex
@@ -121,6 +121,7 @@ export default function HomePage({ korero, preview }) {
                                             'subheading',
                                             'subheading',
                                             'subheading',
+                                            'heading',
                                             'heading',
                                             'heading',
                                             'heading'
@@ -211,6 +212,7 @@ export default function HomePage({ korero, preview }) {
                                         <Heading
                                             as="h2"
                                             fontFamily={[
+                                                'subheading',
                                                 'subheading',
                                                 'subheading',
                                                 'subheading',
@@ -359,7 +361,12 @@ export default function HomePage({ korero, preview }) {
                         pt={['24', '24', '24', null, null, null]}
                         h={[null, null, null, '50vh', '50vh', '50vh']}
                     />
-                    <Box id="photographer" h={[null, null, null, '50vh', '50vh', '50vh']}>
+                    <Box
+                        id="photographer"
+                        position="relative"
+                        h={['fit-content', 'fit-content', 'fit-content', '50vh', '50vh', '50vh']}
+                        mb={['36', '36', '36', '36', '12', '2']}
+                    >
                         <Flex
                             direction={['column', 'column', 'column', 'row', 'row', 'row']}
                             justifyContent={[null, null, null, 'space-between', 'space-between', 'space-between']}
@@ -397,6 +404,7 @@ export default function HomePage({ korero, preview }) {
                                         </Heading>
                                         <Text
                                             fontFamily={[
+                                                'subheading',
                                                 'subheading',
                                                 'subheading',
                                                 'subheading',
@@ -443,12 +451,12 @@ export default function HomePage({ korero, preview }) {
                             </Box>
                             <Box
                                 pb={['10', '10', '10', '0', '0', '0']}
-                                h={['50vh', '50vh', '50vh', '50vh', '50vh', '50vh']}
-                                w={['66vw', '66vw', '66vw', '32vw', '32vw', '32vw']}
+                                h={['auto', 'auto', 'auto', 'auto', 'auto', 'auto']}
+                                w={['50vw', '50vw', '50vw', '32vw', '32vw', '32vw']}
                             >
                                 <Flex
                                     direction="column"
-                                    alignItems="baseline"
+                                    alignItems={[null, null, null, 'baseline', 'baseline', 'baseline']}
                                     justifyContent={['flex-end', 'flex-end', 'flex-end', null, null, null]}
                                 >
                                     <ChakraNextImage
@@ -456,21 +464,28 @@ export default function HomePage({ korero, preview }) {
                                         alt="Tania Niwa"
                                         width={720}
                                         height={648}
-                                        fill
                                         blurhash={kaiwhakaahua?.whakaahua?.asset?.metadata?.blurHash}
-                                        sizes={'(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'}
+                                        sizes={'(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 50vw'}
                                     />
                                 </Flex>
                             </Box>
                         </Flex>
                     </Box>
-                    <Box h="100vh" w="100vw" position="relative">
-                        <Flex direction="column" justifyContent="center" alignItems="center" h="100%" w="100%">
+                    <Box position="sticky" bottom="0" h="100%">
+                        <Box
+                            h="100vh"
+                            w="100vw"
+                            position="relative"
+                            display="flex"
+                            flexDir="column"
+                            justifyContent="center"
+                            alignItems="center"
+                        >
                             <LinkPrompt />
-                        </Flex>
-                    </Box>
-                    <Box pb={['4', '4', '4', '6', '6', '6']}>
-                        <Footer />
+                        </Box>
+                        <Box pb={['4', '4', '4', '6', '6', '6']}>
+                            <Footer />
+                        </Box>
                     </Box>
                 </LenisScroll>
             </PageTransition>

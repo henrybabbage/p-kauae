@@ -3,7 +3,13 @@ import NextLink from 'next/link'
 
 export default function LinkPrompt() {
     return (
-        <ChakraLink variant="menu" as={NextLink} href="/haerenga" scroll={false} sx={{ zIndex: '1' }}>
+        <ChakraLink
+            variant="menu"
+            as={NextLink}
+            href="/haerenga"
+            scroll={false}
+            sx={{ zIndex: '1', position: 'relative' }}
+        >
             <Box position="relative" cursor="pointer" role="group">
                 <Box
                     position="absolute"
