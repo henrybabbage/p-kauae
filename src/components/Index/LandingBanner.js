@@ -48,7 +48,7 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                         lineHeight={['1.2', '1.2', '1.2', '1', '1', '1']}
                         letterSpacing="0.016em"
                         textColor="pink.200"
-                        fontFamily={['subheading', 'subheading', 'subheading', 'hero', 'hero', 'hero']}
+                        fontFamily={['hero', 'hero', 'hero', 'hero', 'hero', 'hero']}
                     >
                         {line}
                     </Heading>
@@ -89,7 +89,7 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                         lineHeight={['1.2', '1.2', '1.2', '1', '1', '1']}
                         letterSpacing="0.016em"
                         textColor="pink.200"
-                        fontFamily={['subheading', 'subheading', 'subheading', 'heading', 'heading', 'heading']}
+                        fontFamily={['hero', 'hero', 'hero', 'hero', 'hero', 'hero']}
                     >
                         {line}
                     </Heading>

@@ -113,15 +113,7 @@ export default function HomePage({ korero, preview }) {
                                 >
                                     <Heading
                                         as="h2"
-                                        fontFamily={[
-                                            'subheading',
-                                            'subheading',
-                                            'subheading',
-                                            'heading',
-                                            'heading',
-                                            'heading',
-                                            'heading'
-                                        ]}
+                                        fontFamily={['heading', 'heading', 'heading', 'heading', 'heading', 'heading']}
                                         fontSize={['24px', '24px', '24px', '46px', '84px', '84px']}
                                         lineHeight={['1.2', '1.2', '1.2', '1.2', '1.1', '1.1']}
                                         textAlign="left"
@@ -159,14 +151,7 @@ export default function HomePage({ korero, preview }) {
                                 >
                                     <Heading
                                         as="h2"
-                                        fontFamily={[
-                                            'subheading',
-                                            'subheading',
-                                            'subheading',
-                                            'heading',
-                                            'heading',
-                                            'heading'
-                                        ]}
+                                        fontFamily={['heading', 'heading', 'heading', 'heading', 'heading', 'heading']}
                                         fontSize={['24px', '24px', '24px', '46px', '84px', '84px']}
                                         lineHeight={['1.2', '1.2', '1.2', '1.2', '1.1', '1.1']}
                                         textAlign="left"
@@ -208,10 +193,9 @@ export default function HomePage({ korero, preview }) {
                                         <Heading
                                             as="h2"
                                             fontFamily={[
-                                                'subheading',
-                                                'subheading',
-                                                'subheading',
-                                                'subheading',
+                                                'heading',
+                                                'heading',
+                                                'heading',
                                                 'heading',
                                                 'heading',
                                                 'heading'
@@ -382,9 +366,9 @@ export default function HomePage({ korero, preview }) {
                                     >
                                         <Heading
                                             fontFamily={[
-                                                'subheading',
-                                                'subheading',
-                                                'subheading',
+                                                'heading',
+                                                'heading',
+                                                'heading',
                                                 'heading',
                                                 'heading',
                                                 'heading'
