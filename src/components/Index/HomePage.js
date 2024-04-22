@@ -404,10 +404,9 @@ export default function HomePage({ korero, preview }) {
                                         </Heading>
                                         <Text
                                             fontFamily={[
-                                                'subheading',
-                                                'subheading',
-                                                'subheading',
-                                                'subheading',
+                                                'heading',
+                                                'heading',
+                                                'heading',
                                                 'heading',
                                                 'heading',
                                                 'heading'

@@ -157,7 +157,7 @@ export default function MapModal({
                                         max-width="100%"
                                         width="100%"
                                         height="auto"
-                                        pt={[2, 2, 2, 4, 4, 4]}
+                                        pt={[2, 2, 2, 0, 0, 0]}
                                     >
                                         <Client>
                                             <TabletAndAbove>
