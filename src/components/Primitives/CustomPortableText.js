@@ -19,7 +19,12 @@ export function CustomPortableText({ sx, as, value }) {
                         {children}
                     </Box>
                 )
-            }
+            },
+            em: ({ children }) => (
+                <Box as={'span'} sx={sx} bg="pink.200/0.1" position="absolute">
+                    {children}
+                </Box>
+            )
         }
     }
 

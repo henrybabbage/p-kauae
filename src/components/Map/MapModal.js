@@ -72,13 +72,13 @@ export default function MapModal({
         >
             <DrawerOverlay />
             <DrawerContent w="auto" maxW="100vw" p={[4, 4, 4, 6, 6, 6]} bg="grey.900" h="100%" overflow="hidden">
-                <DrawerHeader p={0}>
-                    <Flex justifyContent="space-between" alignContent="start">
+                <DrawerHeader pt={0} px={0} pb={2} bg="grey.900">
+                    <Flex justifyContent="space-between" alignContent="start" h="max-content" bg="grey.900">
                         <Heading
                             as="h1"
                             textColor="white"
                             fontWeight="regular"
-                            fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
+                            fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
                             fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
                         >
                             Tū Tama Wāhine o Taranaki
@@ -90,10 +90,10 @@ export default function MapModal({
                                     color: 'pink.200'
                                 }}
                                 fontWeight="regular"
-                                fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
+                                fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
                                 fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
                             >
-                                {'Back to map ↖'}
+                                {'Back to map ↗'}
                             </Text>
                         </Button>
                     </Flex>
@@ -101,7 +101,7 @@ export default function MapModal({
                 <DrawerBody
                     width="auto"
                     maxW="100vw"
-                    pt={[4, 4, 4, 2, 2, 2]}
+                    pt={0}
                     px={0}
                     pb={[4, 4, 4, 0, 0, 0]}
                     overflow="scroll"
@@ -145,7 +145,7 @@ export default function MapModal({
                                         {selectedWahine.ingoa}
                                     </Heading>
                                     <Heading
-                                        fontSize={['12px', '12px', '12px', '16px', '16px', '16px']}
+                                        fontSize={['14px', '14px', '14px', '16px', '16px', '16px']}
                                         color="pink.200"
                                         fontWeight="regular"
                                         fontFamily="heading"
@@ -197,7 +197,7 @@ export default function MapModal({
                                         <CustomPortableText
                                             as={'p'}
                                             sx={{
-                                                fontSize: ['12px', '12px', '12px', '20px', '20px', '20px'],
+                                                fontSize: ['14px', '14px', '14px', '20px', '20px', '20px'],
                                                 lineHeight: ['1.36'],
                                                 color: 'white',
                                                 wordWrap: 'break-word',
@@ -210,7 +210,7 @@ export default function MapModal({
                                         <CustomPortableText
                                             as={'p'}
                                             sx={{
-                                                fontSize: ['12px', '12px', '12px', '20px', '20px', '20px'],
+                                                fontSize: ['14px', '14px', '14px', '20px', '20px', '20px'],
                                                 lineHeight: ['1.36'],
                                                 color: 'white',
                                                 wordWrap: 'break-word',
@@ -222,14 +222,14 @@ export default function MapModal({
                                         />
                                         <HStack>
                                             <Text
-                                                fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
+                                                fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
                                                 lineHeight="1.36"
                                                 color="pink.200"
                                             >
                                                 Tohunga ta moko:{' '}
                                             </Text>
                                             <Text
-                                                fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
+                                                fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
                                                 lineHeight="1.36"
                                                 color="white"
                                             >
@@ -238,14 +238,14 @@ export default function MapModal({
                                         </HStack>
                                         <HStack>
                                             <Text
-                                                fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
+                                                fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
                                                 lineHeight="1.36"
                                                 color="pink.200"
                                             >
                                                 Photograph location:{' '}
                                             </Text>
                                             <Text
-                                                fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
+                                                fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
                                                 lineHeight="1.36"
                                                 color="white"
                                             >
@@ -254,14 +254,14 @@ export default function MapModal({
                                         </HStack>
                                         <HStack>
                                             <Text
-                                                fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
+                                                fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
                                                 lineHeight="1.36"
                                                 color="pink.200"
                                             >
                                                 Capture date:{' '}
                                             </Text>
                                             <Text
-                                                fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
+                                                fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
                                                 lineHeight="1.36"
                                                 color="white"
                                             >
@@ -274,9 +274,9 @@ export default function MapModal({
                         </Flex>
                     </Flex>
                 </DrawerBody>
-                <DrawerFooter p={0} mt="auto">
-                    <Flex justifyContent="space-between" maxW="100vw" w="100vw">
-                        <Box>
+                <DrawerFooter px={0} pb={0} pt={1} mt="auto" mx={0}>
+                    <Flex justifyContent="space-between" maxW="100vw" w="100vw" px={0} mx={0}>
+                        <Box position="relative" p={0} m={0}>
                             <Button
                                 variant={'menu'}
                                 size={['xs', 'xs', 'xs', 'xl', 'xl', 'xl']}
@@ -286,20 +286,24 @@ export default function MapModal({
                                 }}
                             >
                                 <Text
+                                    px={0}
+                                    mx={0}
                                     textColor="white"
                                     _hover={{
                                         color: 'pink.200'
                                     }}
                                     fontWeight="regular"
-                                    fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
+                                    fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
                                     fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
                                 >
                                     {'←'} {getPreviousWahine()}
                                 </Text>
                             </Button>
                         </Box>
-                        <Box>
+                        <Box position="relative" p={0} m={0}>
                             <Button
+                                px={0}
+                                mx={0}
                                 variant={'menu'}
                                 size={['xs', 'xs', 'xs', 'xl', 'xl', 'xl']}
                                 onClick={() => {
@@ -308,12 +312,14 @@ export default function MapModal({
                                 }}
                             >
                                 <Text
+                                    px={0}
+                                    mx={0}
                                     textColor="white"
                                     _hover={{
                                         color: 'pink.200'
                                     }}
                                     fontWeight="regular"
-                                    fontSize={['10px', '10px', '10px', '20px', '20px', '20px']}
+                                    fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
                                     fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
                                 >
                                     {getNextWahine()} {'→'}

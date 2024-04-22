@@ -5,7 +5,7 @@ export default function LoadingMessage({ mapIsVisible }) {
         <Heading
             as="h1"
             fontFamily="subheading"
-            fontSize={['14px', '14px', '14px', '18px', '18px', '18px']}
+            fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
             color="white"
             lineHeight="1.3"
             textAlign="center"

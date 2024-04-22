@@ -11,7 +11,7 @@ export default function MapErrorDrawer({ isOpen, onClose }) {
                         <Heading
                             as="h1"
                             fontSize={['16px', '16px', '16px', '20px', '20px', '20px']}
-                            textColor="red.400"
+                            textColor="pink.200"
                             fontWeight="regular"
                             fontFamily="subheading"
                         >
@@ -42,7 +42,7 @@ export default function MapErrorDrawer({ isOpen, onClose }) {
                                 as="h1"
                                 fontFamily="subheading"
                                 fontWeight="regular"
-                                fontSize={['16px', '16px', '16px', '36px', '36px', '36px']}
+                                fontSize={['16px', '16px', '16px', '20px', '20px', '20px']}
                                 textColor="white"
                                 lineHeight="1.3"
                                 textAlign="center"

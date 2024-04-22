@@ -46,7 +46,7 @@ export default function ModalVideo({ playerRef, src, location, poster, alt }) {
                     fontWeight="regular"
                     fontFamily="heading"
                     position="absolute"
-                    bottom={['6', '6', '6', '6', '6', '6']}
+                    bottom={['4', '4', '4', '6', '6', '6']}
                     right={['6', '6', '6', '6', '6', '6']}
                     w="fit-content"
                     textAlign={['right', 'right', 'right', 'right', 'right', 'right']}

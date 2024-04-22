@@ -252,7 +252,7 @@ export default function Map({ wahine, haerenga }) {
                 />
             )}
             {/* Fallback display before map mounts */}
-            <Center h="100vh" w="100vw" position="absolute" overflow="hidden">
+            <Center h="100vh" w="100vw" position="absolute" overflow="hidden" bg="grey.900">
                 <Box
                     position="relative"
                     h={['70px', '70px', '70px', '120px', '120px', '120px']}
