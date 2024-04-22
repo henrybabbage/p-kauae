@@ -17,8 +17,8 @@ export default function SectionBreakIcon() {
                     alignSelf="center"
                     textAlign="center"
                     position="relative"
-                    width={['70px', '70px', '70px', '120px', '120px', '120px']}
-                    height={['70px', '70px', '70px', '120px', '120px', '120px']}
+                    width={['70px', '70px', '50px', '120px', '120px', '120px']}
+                    height={['70px', '70px', '50px', '120px', '120px', '120px']}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{

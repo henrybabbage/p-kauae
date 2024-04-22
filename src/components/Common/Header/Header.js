@@ -70,7 +70,7 @@ export default function Header({ blurEffect, opacity }) {
                         </Flex>
                     </Mobile>
                 </Client>
-                <Flex w="auto" justifyContent="start" display={['none', 'none', 'none', 'flex', 'flex', 'flex']}>
+                <Flex w="auto" justifyContent="start" display={['none', 'none', 'flex', 'flex', 'flex', 'flex']}>
                     <NavLink href="/">
                         <MotionBox
                             zIndex={100}
