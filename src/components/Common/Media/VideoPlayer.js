@@ -1,7 +1,6 @@
 import { Box } from '@chakra-ui/react'
 import { Controls, MediaPlayer, MediaProvider, PlayButton, Poster, useMediaState } from '@vidstack/react'
 import '@vidstack/react/player/styles/base.css'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 import { PauseIcon } from '../Icons/PauseIcon'
@@ -52,24 +51,16 @@ export default function VideoPlayer({
                     muted={muted}
                     controls={controls}
                     autoPlay={autoplay}
-                    poster={poster}
-                    posterLoad="eager"
+                    posterLoad="idle"
                     viewType="video"
                     aspectRatio={'16/9'}
                     playsInline
                     eager
+                    crossOrigin
                     className="media-player"
                 >
                     <MediaProvider>
-                        <Poster asChild className="media-poster">
-                            <Image
-                                src={poster ?? '/public/images/poster.jpg'}
-                                alt={title}
-                                width={1920}
-                                height={1080}
-                                style={{ objectFit: 'cover' }}
-                            />
-                        </Poster>
+                        <Poster src={poster ?? fallbackPoster} alt={title} className="media-poster" />
                         {pathname === '/' && (
                             <Controls.Root className="media-controls">
                                 <Controls.Group className="media-controls-group"></Controls.Group>
