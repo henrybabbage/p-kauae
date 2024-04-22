@@ -6,7 +6,7 @@ export default function Footer() {
             <HStack spacing="6">
                 <Text
                     fontFamily="body"
-                    fontSize={['9px', '9px', '9px', '12px', '12px', '12px']}
+                    fontSize={['10px', '10px', '10px', '12px', '12px', '12px']}
                     lineHeight={['1.36']}
                     color="white"
                 >
@@ -14,7 +14,7 @@ export default function Footer() {
                 </Text>
                 <Text
                     fontFamily="body"
-                    fontSize={['9px', '9px', '9px', '12px', '12px', '12px']}
+                    fontSize={['10px', '10px', '10px', '12px', '12px', '12px']}
                     lineHeight={['1.36']}
                     color="white"
                 >

@@ -2,8 +2,8 @@ import HomePage from '@/components/Index/HomePage'
 import dynamic from 'next/dynamic'
 
 import { NextSeo } from 'next-seo'
-import { getClient } from '../../sanity/lib/sanity.client'
-import { koreroQuery } from '../../sanity/lib/sanity.queries'
+import { getClient } from '../sanity/lib/sanity.client'
+import { koreroQuery } from '../sanity/lib/sanity.queries'
 
 const PreviewProvider = dynamic(() => import('../components/Preview/PreviewProvider'))
 const PreviewHomePage = dynamic(() => import('../components/Index/PreviewHomePage'))

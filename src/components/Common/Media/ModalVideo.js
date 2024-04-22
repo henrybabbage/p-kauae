@@ -5,7 +5,7 @@ const VideoPlayer = dynamic(() => import('./VideoPlayer'), {
     ssr: false
 })
 
-export default function ModalVideo({ playerRef, src, location, poster, alt }) {
+export default function ModalVideo({ src, location, poster, alt }) {
     if (!src) return null
     return (
         <Box position="relative" w="100%" maxWidth="100%">
@@ -19,7 +19,6 @@ export default function ModalVideo({ playerRef, src, location, poster, alt }) {
                 touch-action="manipulation"
             >
                 <VideoPlayer
-                    playerRef={playerRef}
                     src={src}
                     poster={poster || ''}
                     title={location || alt || ''}
@@ -27,7 +26,6 @@ export default function ModalVideo({ playerRef, src, location, poster, alt }) {
                     controls={false}
                     muted={true}
                     loop={true}
-                    isPlaying={true}
                 />
             </AspectRatio>
             <Flex

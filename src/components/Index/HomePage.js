@@ -31,7 +31,6 @@ export default function HomePage({ korero, preview }) {
         kaiwhakaahua
     } = korero ?? {}
 
-    const playerRef = useRef()
     const videoRef = useRef(null)
 
     // split array of items into two columns
@@ -90,12 +89,10 @@ export default function HomePage({ korero, preview }) {
                                     w={['100%', '100%', '100%', '100%', '100%', '100%']}
                                 >
                                     <LandingVideo
-                                        playerRef={playerRef}
                                         src={opening_video}
                                         videoKorero={opening_video_korero}
                                         videoTitle={opening_video_title}
-                                        poster={opening_video_poster?.asset?.url}
-                                        alt="Pūkauae exhibition opening 11th December 2019"
+                                        poster={opening_video_poster}
                                         autoplay={false}
                                         controls={false}
                                         muted={false}
@@ -116,15 +113,7 @@ export default function HomePage({ korero, preview }) {
                                 >
                                     <Heading
                                         as="h2"
-                                        fontFamily={[
-                                            'subheading',
-                                            'subheading',
-                                            'subheading',
-                                            'heading',
-                                            'heading',
-                                            'heading',
-                                            'heading'
-                                        ]}
+                                        fontFamily={['heading', 'heading', 'heading', 'heading', 'heading', 'heading']}
                                         fontSize={['24px', '24px', '24px', '46px', '84px', '84px']}
                                         lineHeight={['1.2', '1.2', '1.2', '1.2', '1.1', '1.1']}
                                         textAlign="left"
@@ -162,14 +151,7 @@ export default function HomePage({ korero, preview }) {
                                 >
                                     <Heading
                                         as="h2"
-                                        fontFamily={[
-                                            'subheading',
-                                            'subheading',
-                                            'subheading',
-                                            'heading',
-                                            'heading',
-                                            'heading'
-                                        ]}
+                                        fontFamily={['heading', 'heading', 'heading', 'heading', 'heading', 'heading']}
                                         fontSize={['24px', '24px', '24px', '46px', '84px', '84px']}
                                         lineHeight={['1.2', '1.2', '1.2', '1.2', '1.1', '1.1']}
                                         textAlign="left"
@@ -211,10 +193,9 @@ export default function HomePage({ korero, preview }) {
                                         <Heading
                                             as="h2"
                                             fontFamily={[
-                                                'subheading',
-                                                'subheading',
-                                                'subheading',
-                                                'subheading',
+                                                'heading',
+                                                'heading',
+                                                'heading',
                                                 'heading',
                                                 'heading',
                                                 'heading'
@@ -385,9 +366,9 @@ export default function HomePage({ korero, preview }) {
                                     >
                                         <Heading
                                             fontFamily={[
-                                                'subheading',
-                                                'subheading',
-                                                'subheading',
+                                                'heading',
+                                                'heading',
+                                                'heading',
                                                 'heading',
                                                 'heading',
                                                 'heading'

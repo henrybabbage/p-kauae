@@ -2,8 +2,8 @@ import MapPage from '@/components/Map/MapPage'
 import GeoJSON from 'geojson'
 import { NextSeo } from 'next-seo'
 import dynamic from 'next/dynamic'
-import { getClient } from '../../sanity/lib/sanity.client'
-import { haerengaQuery, wahineQuery } from '../../sanity/lib/sanity.queries'
+import { getClient } from '../sanity/lib/sanity.client'
+import { haerengaQuery, wahineQuery } from '../sanity/lib/sanity.queries'
 
 const PreviewProvider = dynamic(() => import('../components/Preview/PreviewProvider'))
 const PreviewMapPage = dynamic(() => import('../components/Map/PreviewMapPage'))
