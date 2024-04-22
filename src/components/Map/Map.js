@@ -118,7 +118,7 @@ export default function Map({ wahine, haerenga }) {
             errorDrawer.onOpen()
             setTimeout(() => {
                 location.reload()
-            }, 2000)
+            }, 2500)
         }
     }, [mapError])
 
