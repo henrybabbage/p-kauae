@@ -7,13 +7,11 @@ const VideoPlayer = dynamic(() => import('@/components/Common/Media/VideoPlayer'
 })
 
 export default function LandingVideo({
-    playerRef,
     src,
     baseUrlVideo,
     videoKorero,
     videoTitle,
     poster,
-    alt,
     autoplay,
     controls,
     muted,
@@ -21,7 +19,6 @@ export default function LandingVideo({
 }) {
     const videoSrc = src?.secure_url || ''
 
-    const [isPlaying, setIsPlaying] = useState(false)
     const [isHovering, setIsHovering] = useState(false)
     const [showTitle, setShowTitle] = useState(false)
 
@@ -52,15 +49,12 @@ export default function LandingVideo({
                 position="relative"
             >
                 <VideoPlayer
-                    playerRef={playerRef}
                     src={videoSrc}
                     autoplay={autoplay}
                     muted={muted}
                     loop={loop}
                     info={true}
                     cover={true}
-                    isPlaying={isPlaying}
-                    setIsPlaying={setIsPlaying}
                     videoKorero={videoKorero ?? ''}
                     poster={poster}
                     controls={controls}

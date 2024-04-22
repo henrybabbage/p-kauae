@@ -50,8 +50,6 @@ export default function MapModal({
         }
     }
 
-    const playerRef = useRef(null)
-
     return (
         <Drawer
             onClose={onClose}
@@ -119,7 +117,6 @@ export default function MapModal({
                         <Flex flexDir="column" gap="10px">
                             <Box w="100%" maxW="100vw" h="auto">
                                 <ModalVideo
-                                    playerRef={playerRef}
                                     src={selectedWahine?.kiriata?.droneFootage?.secure_url}
                                     location={selectedWahine?.kiriata?.ingoa}
                                     poster={selectedWahine?.kiriata.poster?.asset?.url ?? ''}
