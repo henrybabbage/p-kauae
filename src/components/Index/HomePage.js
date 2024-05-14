@@ -78,7 +78,8 @@ export default function HomePage({ korero, preview }) {
                                         lineHeight: '1.2',
                                         letterSpacing: '0.010em',
                                         textAlign: 'left',
-                                        textColor: 'white'
+                                        textColor: 'white',
+                                        maxWidth: '65ch'
                                     }}
                                     value={mihi}
                                 />
@@ -139,35 +140,38 @@ export default function HomePage({ korero, preview }) {
                                 maxW={['100%', '100%', '100%', '84vw', '84vw', '84vw']}
                             >
                                 <CustomPortableText
-                                    as={'p'}
+                                    as="p"
                                     sx={{
                                         fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
                                         lineHeight: '1.2',
                                         letterSpacing: '0.010em',
                                         textAlign: 'left',
-                                        textColor: 'white'
+                                        textColor: 'white',
+                                        maxWidth: '65ch'
                                     }}
                                     value={tuhinga_matua}
                                 />
                                 <CustomPortableText
-                                    as={'p'}
+                                    as="p"
                                     sx={{
                                         fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
                                         lineHeight: '1.2',
                                         letterSpacing: '0.010em',
                                         textAlign: 'left',
-                                        textColor: 'white'
+                                        textColor: 'white',
+                                        maxWidth: '65ch'
                                     }}
                                     value={tuhinga_tauaakii_whakamaunga_atu}
                                 />
                                 <CustomPortableText
-                                    as={'p'}
+                                    as="p"
                                     sx={{
                                         fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
                                         lineHeight: '1.2',
                                         letterSpacing: '0.010em',
                                         textAlign: 'left',
-                                        textColor: 'white'
+                                        textColor: 'white',
+                                        maxWidth: '65ch'
                                     }}
                                     value={ropu}
                                 />
@@ -179,7 +183,7 @@ export default function HomePage({ korero, preview }) {
                                 px={['16px', '16px', '16px', '16px', '16px', '16px']}
                             >
                                 <CustomPortableText
-                                    as={'h2'}
+                                    as="h2"
                                     sx={{
                                         fontFamily: 'heading',
                                         fontSize: ['32px', '32px', '32px', '56px', '62px', '72px'],
@@ -187,7 +191,8 @@ export default function HomePage({ korero, preview }) {
                                         letterSpacing: '0.016em',
                                         textAlign: 'left',
                                         color: 'pink.200',
-                                        width: '100%'
+                                        width: '100%',
+                                        maxWidth: '65ch'
                                     }}
                                     value={whakataukii}
                                 />
@@ -198,24 +203,26 @@ export default function HomePage({ korero, preview }) {
                                 maxW={['100%', '100%', '100%', '84vw', '84vw', '84vw']}
                             >
                                 <CustomPortableText
-                                    as={'p'}
+                                    as="p"
                                     sx={{
                                         fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
                                         lineHeight: '1.2',
                                         letterSpacing: '0.010em',
                                         textAlign: 'left',
-                                        textColor: 'white'
+                                        textColor: 'white',
+                                        maxWidth: '65ch'
                                     }}
                                     value={tuhinga_whakamutunga}
                                 />
                                 <CustomPortableText
-                                    as={'p'}
+                                    as="p"
                                     sx={{
                                         fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
                                         lineHeight: '1.2',
                                         letterSpacing: '0.010em',
                                         textAlign: 'left',
-                                        textColor: 'white'
+                                        textColor: 'white',
+                                        maxWidth: '65ch'
                                     }}
                                     value={tuhinga_whakaraapopoto}
                                 />
@@ -284,13 +291,14 @@ export default function HomePage({ korero, preview }) {
                                                 align="start"
                                             >
                                                 <CustomPortableText
-                                                    as={'p'}
+                                                    as="p"
                                                     sx={{
                                                         fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
                                                         lineHeight: '1.2',
                                                         letterSpacing: '0.010em',
                                                         textAlign: 'left',
-                                                        textColor: 'white'
+                                                        textColor: 'white',
+                                                        maxWidth: '65ch'
                                                     }}
                                                     value={kaiwhakaahua?.korero}
                                                 />
