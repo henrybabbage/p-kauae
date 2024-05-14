@@ -63,7 +63,7 @@ export default function Header({ blurEffect, opacity }) {
                                         fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
                                         textColor="white"
                                     >
-                                        Tū Tama Wāhine o Taranaki
+                                        Pūkauae
                                     </Heading>
                                 </MotionBox>
                             </NavLink>
@@ -71,7 +71,7 @@ export default function Header({ blurEffect, opacity }) {
                     </Mobile>
                 </Client>
                 <Flex w="auto" justifyContent="start" display={['none', 'none', 'flex', 'flex', 'flex', 'flex']}>
-                    <NavLink href="/">
+                    <NavLink href="/" w="auto">
                         <MotionBox
                             zIndex={100}
                             initial={{ opacity: 0 }}
@@ -81,16 +81,12 @@ export default function Header({ blurEffect, opacity }) {
                                 duration: 0.5
                             }}
                         >
-                            <HoverableHeading
-                                hoverContent="Whakapapa"
-                                defaultContent="Tū Tama Wāhine o Taranaki"
-                                textAlign="center"
-                            />
+                            <HoverableHeading hoverContent="Pūkauae" defaultContent="Whakapapa" textAlign="left" />
                         </MotionBox>
                     </NavLink>
                 </Flex>
                 <Flex w="auto" justifyContent="end" display={['none', 'none', 'none', 'flex', 'flex', 'flex']}>
-                    <NavLink href="/haerenga">
+                    <NavLink href="/haerenga" w="auto">
                         <MotionBox
                             zIndex={100}
                             initial={{ opacity: 0 }}

@@ -38,14 +38,19 @@ export default function LandingVideo({
     }
 
     return (
-        <Box position="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <Box
+            position="relative"
+            w="100%"
+            h="100%"
+            maxW={['100%', '100%', '100%', '84vw', '84vw', '84vw']}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+        >
             <AspectRatio
                 maxH={['auto', 'auto', 'auto', '75vh', '75vh', '75vh']}
-                maxW="100vw"
+                maxW={['100%', '100%', '100%', '100%', '100%', '100%']}
                 ratio={16 / 9}
                 cursor="auto"
-                display="flex"
-                justifyContent="center"
                 position="relative"
             >
                 <VideoPlayer
@@ -62,7 +67,7 @@ export default function LandingVideo({
             </AspectRatio>
             <Flex
                 maxH={['auto', 'auto', 'auto', '75vh', '75vh', '75vh']}
-                maxW={['100vw', '100vw', '100vw', '100vw', '100vw', '100vw']}
+                maxW={['100vw', '100vw', '100vw', '100%', '100%', '100%']}
                 display="flex"
                 justifyContent="end"
                 userSelect="all"

@@ -6,15 +6,8 @@ const reoLines = ['Tū tama wāhine', 'i te wā o te kore']
 
 export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_english }) {
     return (
-        <Flex
-            flexDir="column"
-            justifyContent="center"
-            alignItems="center"
-            w="100%"
-            paddingTop={['12', '12', '24', '12', '12', '12']}
-        >
+        <Flex flexDir="column" justifyContent="center" alignItems="center" w="100%" h="100vh">
             <MotionBox
-                position="absolute"
                 initial={{ opacity: 0 }}
                 animate={{
                     opacity: [0, 1, 1, 1, 0]
@@ -29,17 +22,6 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                     repeatDelay: 9
                 }}
             >
-                {/* <Balancer>
-                    <Heading
-                        textAlign="center"
-                        fontSize={['36px', '36px', '46px', '56px', '94px', '94px']}
-                        lineHeight="1.05"
-                        textColor="pink.200"
-                        fontFamily="heading"
-                    >
-                        {tuhinga_timatanga}
-                    </Heading>
-                </Balancer> */}
                 {englishLines.map((line, index) => (
                     <Heading
                         key={index}
@@ -70,17 +52,6 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                     repeatDelay: 9
                 }}
             >
-                {/* <Balancer>
-                    <Heading
-                        textAlign="center"
-                        fontSize={['32px', '36px', '46px', '56px', '94px', '94px']}
-                        lineHeight="1.05"
-                        textColor="pink.200"
-                        fontFamily="heading"
-                    >
-                        {tuhinga_timatanga_english}
-                    </Heading>
-                </Balancer> */}
                 {reoLines.map((line, index) => (
                     <Heading
                         key={index}
