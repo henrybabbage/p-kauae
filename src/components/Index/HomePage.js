@@ -2,6 +2,7 @@ import LandingBanner from '@/components/Index/LandingBanner'
 import { Box, Flex, Heading, Link, Text, VStack } from '@chakra-ui/react'
 import PreviewButton from '../Common/Buttons/PreviewButton'
 import Footer from '../Common/Footer/Footer'
+import SectionBreakIcon from '../Common/Icons/SectionBreakIcon'
 import ChakraNextImage from '../Primitives/ChakraNextImage'
 import { CustomPortableText } from '../Primitives/CustomPortableText'
 import LenisScroll from '../Primitives/LenisScroll'
@@ -29,11 +30,6 @@ export default function HomePage({ korero, preview }) {
         kaiwhakaahua
     } = korero ?? {}
 
-    // split array of items into two columns
-    const acknowledgementsList = tangata_mihia
-    const leftColumn = acknowledgementsList?.slice(0, 8) || []
-    const rightColumn = acknowledgementsList?.slice(8, 16) || []
-
     const photographerUrl = kaiwhakaahua?.paetukutuku?.replace(/^(https?:|)\/\//, '') || ''
     return (
         <Box as="main" bg="grey.900" minH="100%">
@@ -41,7 +37,7 @@ export default function HomePage({ korero, preview }) {
             <PageTransition>
                 <LenisScroll>
                     <Box id="about" h="100%" minH="100vh" w="100vw" px={['6', '6', '6', '0', '0', '0']}>
-                        <Flex flexDir="column" justifyContent="center" alignItems="center" w="100%" h="100%" gap="12">
+                        <Flex flexDir="column" w="100%" h="100%" gap="12">
                             <LandingBanner reoText={tuhinga_timatanga} englishText={tuhinga_timatanga_english} />
 
                             <LandingVideo
@@ -59,7 +55,9 @@ export default function HomePage({ korero, preview }) {
 
                             <VStack
                                 spacing={['6', '6', '6', '10', '10', '10']}
-                                maxW={['100%', '100%', '100%', '84vw', '84vw', '84vw']}
+                                maxW={['100%', '100%', '100%', '70%', '70%', '70%']}
+                                align="start"
+                                ml={['0', '0', '0', '20%', '20%', '20%']}
                             >
                                 <Heading
                                     as="h2"
@@ -85,11 +83,15 @@ export default function HomePage({ korero, preview }) {
                                 />
                             </VStack>
 
-                            <VerticalSpacer height={['100%', '100%', '100%', '20vh', '20vh', '20vh']} />
+                            <VerticalSpacer height={['100%', '100%', '100%', '10vh', '10vh', '10vh']} />
+                            <SectionBreakIcon />
+                            <VerticalSpacer height={['100%', '100%', '100%', '10vh', '10vh', '10vh']} />
 
                             <VStack
                                 spacing={['6', '6', '6', '10', '10', '10']}
-                                maxW={['100%', '100%', '100%', '84vw', '84vw', '84vw']}
+                                maxW={['100%', '100%', '100%', '70%', '70%', '70%']}
+                                align="start"
+                                ml={['0', '0', '0', '20%', '20%', '20%']}
                             >
                                 <Heading
                                     as="h2"
@@ -98,12 +100,17 @@ export default function HomePage({ korero, preview }) {
                                     lineHeight="1.2"
                                     textAlign="left"
                                     textColor="pink.200"
+                                    whiteSpace="no-wrap"
                                 >
                                     A special thanks to
                                 </Heading>
-                                <Box display="flex" gap="12">
-                                    <Box display="flex" flexDir="column" flexWrap="nowrap" flexBasis="100%">
-                                        {leftColumn.map((name, index) => (
+                                <Box display="flex" justifyContent="space-between" w="100%" gap="8">
+                                    <Box
+                                        display="flex"
+                                        flexDir={['column', 'row', 'row', 'row', 'row', 'row']}
+                                        flexWrap="wrap"
+                                    >
+                                        {tangata_mihia.map((name, index) => (
                                             <Text
                                                 fontSize={['24px', '24px', '24px', '32px', '32px', '32px']}
                                                 lineHeight="1.2"
@@ -111,20 +118,7 @@ export default function HomePage({ korero, preview }) {
                                                 textColor="white"
                                                 key={index}
                                                 height="auto"
-                                            >
-                                                {name}
-                                            </Text>
-                                        ))}
-                                    </Box>
-                                    <Box display="flex" flexDir="column" flexWrap="nowrap" flexBasis="100%">
-                                        {rightColumn.map((name, index) => (
-                                            <Text
-                                                fontSize={['24px', '24px', '24px', '32px', '32px', '32px']}
-                                                lineHeight="1.2"
-                                                textAlign="left"
-                                                textColor="white"
-                                                key={index}
-                                                height="auto"
+                                                width={['100%', '50%', '50%', '50%', '50%', '50%']}
                                             >
                                                 {name}
                                             </Text>
@@ -133,11 +127,15 @@ export default function HomePage({ korero, preview }) {
                                 </Box>
                             </VStack>
 
-                            <VerticalSpacer height={['100%', '100%', '100%', '20vh', '20vh', '20vh']} />
+                            <VerticalSpacer height={['100%', '100%', '100%', '10vh', '10vh', '10vh']} />
+                            <SectionBreakIcon />
+                            <VerticalSpacer height={['100%', '100%', '100%', '10vh', '10vh', '10vh']} />
 
                             <VStack
                                 spacing={['6', '6', '6', '10', '10', '10']}
-                                maxW={['100%', '100%', '100%', '84vw', '84vw', '84vw']}
+                                maxW={['100%', '100%', '100%', '70%', '70%', '70%']}
+                                align="start"
+                                ml={['0', '0', '0', '20%', '20%', '20%']}
                             >
                                 <CustomPortableText
                                     as="p"
@@ -180,7 +178,8 @@ export default function HomePage({ korero, preview }) {
                             <Flex
                                 justifyContent="center"
                                 w="100%"
-                                px={['16px', '16px', '16px', '16px', '16px', '16px']}
+                                px={['0', '0', '0', '8%', '8%', '8%']}
+                                py={['0', '0', '0', '16', '16', '16']}
                             >
                                 <CustomPortableText
                                     as="h2"
@@ -200,7 +199,9 @@ export default function HomePage({ korero, preview }) {
 
                             <VStack
                                 spacing={['6', '6', '6', '10', '10', '10']}
-                                maxW={['100%', '100%', '100%', '84vw', '84vw', '84vw']}
+                                maxW={['100%', '100%', '100%', '70%', '70%', '70%']}
+                                align="start"
+                                ml={['0', '0', '0', '20%', '20%', '20%']}
                             >
                                 <CustomPortableText
                                     as="p"
@@ -228,12 +229,14 @@ export default function HomePage({ korero, preview }) {
                                 />
                             </VStack>
 
-                            <VerticalSpacer height={['100%', '100%', '100%', '20vh', '20vh', '20vh']} />
+                            <VerticalSpacer height={['100%', '100%', '100%', '10vh', '10vh', '10vh']} />
+                            <SectionBreakIcon />
+                            <VerticalSpacer height={['100%', '100%', '100%', '10vh', '10vh', '10vh']} />
 
                             <Box
                                 h={['fit-content', 'fit-content', 'fit-content', '50vh', '50vh', '50vh']}
                                 maxW={['100%', '100%', '100%', '100vw', '100vw', '100vw']}
-                                px={['16px', '16px', '16px', '16px', '16px', '16px']}
+                                px={['24px', '24px', '24px', '24px', '24px', '24px']}
                             >
                                 <Flex direction={['column', 'column', 'column', 'row', 'row', 'row']}>
                                     <Flex
@@ -241,7 +244,7 @@ export default function HomePage({ korero, preview }) {
                                         alignItems="start"
                                         textAlign="left"
                                         color="white"
-                                        gap={['6', '6', '6', '10', '10', '10']}
+                                        gap={['10', '10', '10', '10', '10', '10']}
                                     >
                                         <Flex direction="column" basis="70%" gap={['6', '6', '6', '10', '10', '10']}>
                                             <Flex
@@ -323,7 +326,7 @@ export default function HomePage({ korero, preview }) {
                                                 </Link>
                                             </VStack>
                                         </Flex>
-                                        <Flex basis="30%">
+                                        <Flex basis="30%" maxW="50%">
                                             <ChakraNextImage
                                                 src={kaiwhakaahua?.whakaahua?.asset?.url}
                                                 alt="Tania Niwa"
