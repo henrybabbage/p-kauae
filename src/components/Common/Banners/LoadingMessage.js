@@ -6,6 +6,7 @@ export default function LoadingMessage({ mapIsVisible }) {
             as="h1"
             fontFamily="subheading"
             fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
+            fontWeight="normal"
             color="white"
             lineHeight="1.3"
             textAlign="center"
@@ -15,7 +16,7 @@ export default function LoadingMessage({ mapIsVisible }) {
             transition="opacity 0.5s ease-in"
             transitionDelay="1s"
         >
-            {'Loading map'}
+            Loading map
         </Heading>
     )
 }

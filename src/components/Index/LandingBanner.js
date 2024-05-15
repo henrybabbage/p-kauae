@@ -26,11 +26,12 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                     <Heading
                         key={index}
                         textAlign="center"
+                        fontFamily={['hero', 'hero', 'hero', 'hero', 'hero', 'hero']}
                         fontSize={['32px', '32px', '32px', '56px', '94px', '94px']}
+                        fontWeight="normal"
                         lineHeight={['1.2', '1.2', '1.2', '1', '1', '1']}
                         letterSpacing="0.016em"
                         textColor="pink.200"
-                        fontFamily={['hero', 'hero', 'hero', 'hero', 'hero', 'hero']}
                     >
                         {line}
                     </Heading>
@@ -56,11 +57,12 @@ export default function LandingBanner({ tuhinga_timatanga, tuhinga_timatanga_eng
                     <Heading
                         key={index}
                         textAlign="center"
+                        fontFamily={['hero', 'hero', 'hero', 'hero', 'hero', 'hero']}
                         fontSize={['36px', '36px', '32px', '56px', '94px', '94px']}
+                        fontWeight="normal"
                         lineHeight={['1.2', '1.2', '1.2', '1', '1', '1']}
                         letterSpacing="0.016em"
                         textColor="pink.200"
-                        fontFamily={['hero', 'hero', 'hero', 'hero', 'hero', 'hero']}
                     >
                         {line}
                     </Heading>
