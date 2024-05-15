@@ -67,7 +67,8 @@ export default function App({ Component, pageProps }) {
                     },
                     {
                         name: 'keywords',
-                        content: 'pukauae, tu tama wahine o taranaki, tu tama wahine, art'
+                        content:
+                            'pukauae, tu tama wahine o taranaki, tu tama wahine, wahine, art, puke ariki, maori, tattoo, taranaki, aotearoa, new zealand'
                     },
                     {
                         name: 'msapplication-config',
