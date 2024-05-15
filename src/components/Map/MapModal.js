@@ -14,7 +14,6 @@ import {
     Text
 } from '@chakra-ui/react'
 import { format, parseISO } from 'date-fns'
-import { useRef } from 'react'
 import { Client } from 'react-hydration-provider'
 import ModalVideo from '../Common/Media/ModalVideo'
 import ZoomImage from '../Common/Media/ZoomImage'
@@ -75,7 +74,7 @@ export default function MapModal({
                         <Heading
                             as="h1"
                             textColor="white"
-                            fontWeight="regular"
+                            fontWeight="normal"
                             fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
                             fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
                         >
@@ -87,7 +86,7 @@ export default function MapModal({
                                 _hover={{
                                     color: 'pink.200'
                                 }}
-                                fontWeight="regular"
+                                fontWeight="normal"
                                 fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
                                 fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
                             >
@@ -136,7 +135,7 @@ export default function MapModal({
                                     <Heading
                                         fontSize={['28px', '28px', '28px', '36px', '36px', '36px']}
                                         color="pink.200"
-                                        fontWeight="regular"
+                                        fontWeight="normal"
                                         fontFamily="heading"
                                     >
                                         {selectedWahine.ingoa}
@@ -144,7 +143,7 @@ export default function MapModal({
                                     <Heading
                                         fontSize={['14px', '14px', '14px', '16px', '16px', '16px']}
                                         color="pink.200"
-                                        fontWeight="regular"
+                                        fontWeight="normal"
                                         fontFamily="heading"
                                     >
                                         {selectedWahine.whakapapa}
@@ -289,7 +288,7 @@ export default function MapModal({
                                     _hover={{
                                         color: 'pink.200'
                                     }}
-                                    fontWeight="regular"
+                                    fontWeight="normal"
                                     fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
                                     fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
                                 >
@@ -315,7 +314,7 @@ export default function MapModal({
                                     _hover={{
                                         color: 'pink.200'
                                     }}
-                                    fontWeight="regular"
+                                    fontWeight="normal"
                                     fontSize={['12px', '12px', '12px', '20px', '20px', '20px']}
                                     fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
                                 >
