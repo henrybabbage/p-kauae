@@ -4,7 +4,7 @@ import { MotionBox } from '../../Primitives/MotionBox'
 
 export default function SectionBreakIcon() {
     return (
-        <Flex position="relative" cursor="auto" justify="center">
+        <Flex justifyContent="center" alignItems="center" w="100%" userSelect="none" pointerEvents="none">
             <Box
                 h={['80px', '80px', '80px', '100px', '100px', '100px']}
                 w={['80px', '80px', '80px', '100px', '100px', '100px']}
@@ -12,20 +12,12 @@ export default function SectionBreakIcon() {
                 position="relative"
                 display="flex"
                 justifyContent="center"
+                alignItems="center"
             >
                 <MotionBox
-                    alignSelf="center"
-                    textAlign="center"
                     position="relative"
                     width={['70px', '70px', '50px', '120px', '120px', '120px']}
                     height={['70px', '70px', '50px', '120px', '120px', '120px']}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{
-                        ease: 'easeInOut',
-                        duration: 1,
-                        delay: 2
-                    }}
                 >
                     <Image
                         src="/icons/pukauae.svg"
@@ -36,7 +28,9 @@ export default function SectionBreakIcon() {
                         sizes="100vw"
                         style={{
                             objectFit: 'contain',
-                            objectPosition: 'center'
+                            objectPosition: 'center',
+                            userSelect: 'none',
+                            pointerEvents: 'none'
                         }}
                     />
                 </MotionBox>

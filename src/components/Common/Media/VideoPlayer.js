@@ -12,7 +12,7 @@ export default function VideoPlayer({ src, autoplay, muted, loop, videoKorero, t
     const [isBuffering, setIsBuffering] = useState(null)
     const [isReady, setIsReady] = useState(null)
     const [showInfo, setShowInfo] = useState(false)
-    const [videoChanged, setVideoChanged] = useState(false)
+    const [videoSourceChanged, setVideoSourceChanged] = useState(false)
 
     const player = useRef(null)
     const videoRef = useRef(null)
@@ -20,10 +20,10 @@ export default function VideoPlayer({ src, autoplay, muted, loop, videoKorero, t
 
     useEffect(() => {
         if (videoRef.current !== src) {
-            setVideoChanged(true)
+            setVideoSourceChanged(true)
             videoRef.current === src
             setTimeout(() => {
-                setVideoChanged(false)
+                setVideoSourceChanged(false)
             }, 50)
         }
     }, [src])
@@ -32,7 +32,7 @@ export default function VideoPlayer({ src, autoplay, muted, loop, videoKorero, t
     const sanityImage = urlFor(poster).width(1920).url()
     return (
         <Box position="absolute" bg="black" w="100%" h="100%" userSelect="all" cursor="auto">
-            {!videoChanged && (
+            {!videoSourceChanged && (
                 <MediaPlayer
                     ref={player}
                     title={title}

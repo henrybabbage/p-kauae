@@ -9,7 +9,7 @@ export default function ChakraNextImage(props) {
         console.error(error)
     }
     return (
-        <Box position="relative" height="100%" width="100%">
+        <Box position="relative" height="100%" width="100%" pointerEvents="none">
             {blurhash && (
                 <BlurhashCanvas
                     hash={blurhash}
@@ -37,7 +37,9 @@ export default function ChakraNextImage(props) {
                         style={{
                             objectFit: 'contain',
                             height: '100%',
-                            width: '100%'
+                            width: '100%',
+                            userSelect: 'none',
+                            pointerEvents: 'none'
                         }}
                         onError={(e) => handleError(e)}
                     />
