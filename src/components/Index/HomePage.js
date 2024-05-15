@@ -341,8 +341,7 @@ export default function HomePage({ korero, preview }) {
                             </Box>
                             <Box
                                 h="100vh"
-                                w="100vw"
-                                position="relative"
+                                w="100%"
                                 display="flex"
                                 flexDir="column"
                                 justifyContent="center"
