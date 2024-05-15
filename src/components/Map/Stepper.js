@@ -40,7 +40,7 @@ export default function Stepper({ onClose, haerenga }) {
                         <Text
                             as="h1"
                             fontFamily="subheading"
-                            fontWeight="regular"
+                            fontWeight="normal"
                             fontSize={['16px', '16px', '16px', '36px', '36px', '36px']}
                             color="white"
                             lineHeight="1.3"

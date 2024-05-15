@@ -80,7 +80,7 @@ export default function LandingVideo({
                         <Heading
                             fontSize={['16px', '16px', '16px', '24px', '24px', '24px']}
                             color="white"
-                            fontWeight="regular"
+                            fontWeight="normal"
                             fontFamily="subheading"
                             position="absolute"
                             bottom={['4', '4', '4', '6', '6', '6']}

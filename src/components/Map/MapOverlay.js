@@ -38,7 +38,7 @@ export default function MapOverlay({ haerenga, onClose, onOpen, isOpen }) {
                             as="h1"
                             fontSize={['16px', '16px', '16px', '20px', '20px', '20px']}
                             color="white"
-                            fontWeight="regular"
+                            fontWeight="normal"
                             fontFamily="subheading"
                         >
                             {'Nau mai ki Pūkauae'}

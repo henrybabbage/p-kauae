@@ -41,7 +41,7 @@ export default function ModalVideo({ src, location, poster, alt }) {
                 <Heading
                     fontSize={['16px', '16px', '16px', '36px', '36px', '36px']}
                     color="white"
-                    fontWeight="regular"
+                    fontWeight="normal"
                     fontFamily="heading"
                     position="absolute"
                     bottom={['4', '4', '4', '6', '6', '6']}

@@ -326,7 +326,7 @@ export default function HomePage({ korero, preview }) {
                                                 </Link>
                                             </VStack>
                                         </Flex>
-                                        <Flex basis="30%" maxW="50%">
+                                        <Flex basis="30%" maxW="50%" userSelect="none" pointerEvents="none">
                                             <ChakraNextImage
                                                 src={kaiwhakaahua?.whakaahua?.asset?.url}
                                                 alt="Tania Niwa"
