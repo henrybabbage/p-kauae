@@ -9,6 +9,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { GoogleTagManager } from '@next/third-parties/google'
 import { AnimatePresence } from 'framer-motion'
 import { DefaultSeo } from 'next-seo'
+import Head from 'next/head'
 import { Router, useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { HydrationProvider } from 'react-hydration-provider'
@@ -70,32 +71,32 @@ export default function App({ Component, pageProps }) {
                     },
                     {
                         name: 'msapplication-config',
-                        content: '/public/favicons/browserconfig.xml'
+                        content: 'https://www.xn--pkauae-bmb.com/favicons/browserconfig.xml'
                     }
                 ]}
                 additionalLinkTags={[
                     {
                         rel: 'icon',
-                        href: '/public/favicons/favicon.ico'
+                        href: 'https://www.xn--pkauae-bmb.com/favicons/favicon.ico'
                     },
                     {
                         rel: 'icon',
-                        href: '/public/favicons/favicon-32x32.png',
+                        href: 'https://www.xn--pkauae-bmb.com/favicons/favicon-32x32.png',
                         sizes: '32x32'
                     },
                     {
                         rel: 'icon',
-                        href: '/public/favicons/favicon-16x16.png',
+                        href: 'https://www.xn--pkauae-bmb.com/favicons/favicon-16x16.png',
                         sizes: '16x16'
                     },
                     {
                         rel: 'apple-touch-icon',
-                        href: 'public/favicons/apple-touch-icon.png',
+                        href: 'https://www.xn--pkauae-bmb.com/favicons/apple-touch-icon.png',
                         sizes: '180x180'
                     },
                     {
                         rel: 'manifest',
-                        href: '/public/favicons/site.webmanifest'
+                        href: 'https://www.xn--pkauae-bmb.com/favicons/site.webmanifest'
                     }
                 ]}
                 openGraph={{
@@ -107,7 +108,7 @@ export default function App({ Component, pageProps }) {
                     siteName: 'Pūkauae',
                     images: [
                         {
-                            url: '/public/og_1200w.png',
+                            url: 'https://www.xn--pkauae-bmb.com/og_1200w.png',
                             width: 2400,
                             height: 1558,
                             alt: 'Pūkauae | Tu Tama Wahine o Taranaki'
@@ -115,6 +116,14 @@ export default function App({ Component, pageProps }) {
                     ]
                 }}
             />
+            <Head>
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta
+                    property="twitter:title"
+                    content="The Pūkauae photographic exhibition captures personal symbols of cultural resistance whilst celebrating the recovery of the art of Pūkauae as a ritual for indigenous healing and regeneration."
+                />
+                <meta property="twitter:image" content="https://www.xn--pkauae-bmb.com/og_1200w.png" />
+            </Head>
             <GoogleTagManager gtmId="G-XK1ZE2MSV0" />
             <HydrationProvider>
                 <RealViewport />

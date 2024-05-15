@@ -16,7 +16,7 @@ export default function Home({ preview, previewToken, korero }) {
     ) : (
         <>
             <NextSeo
-                title="Pukauae | Whakapapa"
+                title="Pukauae"
                 description="Website for the Pūkauae photographic exhibition."
                 additionalMetaTags={[
                     {
