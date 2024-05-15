@@ -47,6 +47,7 @@ export default function MobileMenu({ onOpen, isOpen, onClose }) {
                                         as="h1"
                                         fontFamily="subheading"
                                         fontSize={['24px', '36px', '36px', '36px', '36px', '36px']}
+                                        fontWeight="normal"
                                         color="white"
                                         lineHeight="1.3"
                                         textAlign="center"
@@ -62,6 +63,7 @@ export default function MobileMenu({ onOpen, isOpen, onClose }) {
                                         as="h1"
                                         fontFamily="subheading"
                                         fontSize={['24px', '36px', '36px', '36px', '36px', '36px']}
+                                        fontWeight="normal"
                                         color="white"
                                         lineHeight="1.3"
                                         textAlign="center"

@@ -236,7 +236,7 @@ export default function HomePage({ korero, preview }) {
                             <Box
                                 h={['fit-content', 'fit-content', 'fit-content', '50vh', '50vh', '50vh']}
                                 maxW={['100%', '100%', '100%', '100vw', '100vw', '100vw']}
-                                px={['24px', '24px', '24px', '24px', '24px', '24px']}
+                                px={['0', '0', '0', '24px', '24px', '24px']}
                             >
                                 <Flex direction={['column', 'column', 'column', 'row', 'row', 'row']}>
                                     <Flex
