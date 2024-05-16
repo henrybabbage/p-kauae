@@ -37,7 +37,7 @@ export default function Header({ blurEffect, opacity }) {
                     type: 'easeInOut',
                     duration: 0.2
                 }}
-                position="absolute"
+                position="fixed"
                 w="100vw"
                 top="6"
                 px="6"

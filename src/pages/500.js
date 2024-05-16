@@ -28,12 +28,12 @@ export default function Custom500() {
                     }
                 ]}
             />
-            <Box as="main" bg="grey.900" h="100vh" w="100%" maxW="100vw" maxH="100vh">
+            <Box as="main" bg="grey.900" h="100vh" w="100%" maxW="100vw" maxH="100vh" p="6">
                 <Flex justifyContent="center" alignItems="center" h="100%" w="100%">
                     <Heading
                         fontFamily={['subheading', 'subheading', 'subheading', 'heading', 'heading', 'heading']}
                         fontWeight="normal"
-                        fontSize={['36px', '36px', '36px', '46px', '56px', '84px']}
+                        fontSize={['20px', '20px', '36px', '46px', '56px', '84px']}
                         lineHeight={['1.2', '1.2', '1.2', '1.2', '1.1', '1.1']}
                         textAlign="center"
                         textColor="pink.200"
