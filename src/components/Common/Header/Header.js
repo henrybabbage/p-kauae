@@ -63,6 +63,8 @@ export default function Header({ blurEffect, opacity }) {
                                         fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
                                         fontWeight="normal"
                                         textColor="white"
+                                        whiteSpace="nowrap"
+                                        width="fit-content"
                                     >
                                         Pūkauae
                                     </Heading>
