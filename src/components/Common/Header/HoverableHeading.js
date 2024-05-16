@@ -1,67 +1,56 @@
-import { MotionBox } from '@/components/Primitives/MotionBox'
-import { Heading } from '@chakra-ui/react'
+import { MotionSpan } from '@/components/Primitives/MotionSpan'
+import { Box, Heading } from '@chakra-ui/react'
+import { AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 
 export default function HoverableHeading({ hoverContent, defaultContent, ...props }) {
-    const [isHovered, setIsHovered] = useState(false)
+    const [buttonState, setButtonState] = useState('default')
 
-    const handleHover = () => {
-        setIsHovered(true)
+    const handleMouseEnter = () => {
+        setButtonState('hovered')
     }
 
-    const handleUnhover = () => {
-        setIsHovered(false)
+    const handleMouseLeave = () => {
+        setButtonState('default')
     }
+
+    const buttonCopy = {
+        default: defaultContent,
+        hovered: hoverContent
+    }
+
     return (
-        <>
-            <MotionBox
-                initial={{ opacity: 0 }}
-                animate={{ opacity: isHovered ? 1 : 0 }}
-                transition={{
-                    type: 'easeInOut',
-                    duration: 0.2
-                }}
-                position="absolute"
+        <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            zIndex="500"
+            width="200px"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+        >
+            <Heading
+                {...props}
+                as="h2"
+                fontSize={['24px', '24px', '24px', '20px', '20px', '20px']}
+                lineHeight="1.36"
+                fontFamily="subheading"
+                fontWeight="normal"
+                w="100%"
             >
-                <Heading
-                    {...props}
-                    as="h2"
-                    fontSize={['24px', '24px', '24px', '20px', '20px', '20px']}
-                    lineHeight="1.36"
-                    fontFamily="subheading"
-                    fontWeight="normal"
-                    width="fit-content"
-                    zIndex="500"
-                    onMouseEnter={handleHover}
-                    onMouseLeave={handleUnhover}
-                >
-                    {hoverContent}
-                </Heading>
-            </MotionBox>
-            <MotionBox
-                initial={{ opacity: 0 }}
-                animate={{ opacity: isHovered ? 0 : 1 }}
-                transition={{
-                    type: 'easeInOut',
-                    duration: 0.2
-                }}
-                position="relative"
-            >
-                <Heading
-                    {...props}
-                    as="h2"
-                    fontSize={['24px', '24px', '24px', '20px', '20px', '20px']}
-                    lineHeight="1.36"
-                    fontFamily="subheading"
-                    fontWeight="normal"
-                    width="fit-content"
-                    zIndex="500"
-                    onMouseEnter={handleHover}
-                    onMouseLeave={handleUnhover}
-                >
-                    {defaultContent}
-                </Heading>
-            </MotionBox>
-        </>
+                <AnimatePresence mode="wait" initial={false}>
+                    <MotionSpan
+                        transition={{ type: 'linear', duration: 0.2 }}
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        key={buttonState}
+                        w="100%"
+                    >
+                        {buttonCopy[buttonState]}
+                    </MotionSpan>
+                </AnimatePresence>
+            </Heading>
+        </Box>
     )
 }
