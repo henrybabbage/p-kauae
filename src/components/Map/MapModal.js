@@ -216,11 +216,12 @@ export default function MapModal({
                                             }}
                                             value={selectedWahine.korero_wahi}
                                         />
-                                        <HStack>
+                                        <HStack align="start">
                                             <Text
                                                 fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
                                                 lineHeight="1.36"
                                                 color="pink.200"
+                                                whiteSpace="nowrap"
                                             >
                                                 Tohunga ta moko:{' '}
                                             </Text>
@@ -232,11 +233,12 @@ export default function MapModal({
                                                 {selectedWahine.tohunga_ta_moko}
                                             </Text>
                                         </HStack>
-                                        <HStack>
+                                        <HStack align="start">
                                             <Text
                                                 fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
                                                 lineHeight="1.36"
                                                 color="pink.200"
+                                                whiteSpace="nowrap"
                                             >
                                                 Photograph location:{' '}
                                             </Text>
@@ -248,11 +250,12 @@ export default function MapModal({
                                                 {selectedWahine.wahi.ingoa}
                                             </Text>
                                         </HStack>
-                                        <HStack>
+                                        <HStack align="start">
                                             <Text
                                                 fontSize={['14px', '14px', '14px', '20px', '20px', '20px']}
                                                 lineHeight="1.36"
                                                 color="pink.200"
+                                                whiteSpace="nowrap"
                                             >
                                                 Capture date:{' '}
                                             </Text>
