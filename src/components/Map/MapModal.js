@@ -95,9 +95,11 @@ export default function MapModal({
                     overflow="scroll"
                     sx={{
                         '-webkit-scrollbar': {
+                            zIndex: 1000,
                             display: 'none'
                         },
                         '::-ms-overflow-style': {
+                            zIndex: 1000,
                             display: 'none'
                         },
                         scrollbarWidth: 'none'
