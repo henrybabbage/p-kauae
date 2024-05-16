@@ -61,7 +61,14 @@ export default function HomePage({ korero, preview }) {
                             >
                                 <Heading
                                     as="h2"
-                                    fontFamily={['heading', 'heading', 'heading', 'heading', 'heading', 'heading']}
+                                    fontFamily={[
+                                        'subheading',
+                                        'subheading',
+                                        'subheading',
+                                        'heading',
+                                        'heading',
+                                        'heading'
+                                    ]}
                                     fontSize={['24px', '24px', '24px', '46px', '84px', '84px']}
                                     lineHeight="1.2"
                                     textAlign="left"
@@ -95,7 +102,14 @@ export default function HomePage({ korero, preview }) {
                             >
                                 <Heading
                                     as="h2"
-                                    fontFamily={['heading', 'heading', 'heading', 'heading', 'heading', 'heading']}
+                                    fontFamily={[
+                                        'subheading',
+                                        'subheading',
+                                        'subheading',
+                                        'heading',
+                                        'heading',
+                                        'heading'
+                                    ]}
                                     fontSize={['24px', '24px', '24px', '46px', '84px', '84px']}
                                     lineHeight="1.2"
                                     textAlign="left"
@@ -184,7 +198,14 @@ export default function HomePage({ korero, preview }) {
                                 <CustomPortableText
                                     as="h2"
                                     sx={{
-                                        fontFamily: 'heading',
+                                        fontFamily: [
+                                            'subheading',
+                                            'subheading',
+                                            'subheading',
+                                            'heading',
+                                            'heading',
+                                            'heading'
+                                        ],
                                         fontSize: ['32px', '32px', '32px', '56px', '62px', '72px'],
                                         lineHeight: ['1.2', '1.2', '1.2', '1.2', '1.1', '1.1'],
                                         letterSpacing: '0.016em',
@@ -254,9 +275,9 @@ export default function HomePage({ korero, preview }) {
                                             >
                                                 <Heading
                                                     fontFamily={[
-                                                        'heading',
-                                                        'heading',
-                                                        'heading',
+                                                        'subheading',
+                                                        'subheading',
+                                                        'subheading',
                                                         'heading',
                                                         'heading',
                                                         'heading'
@@ -272,9 +293,9 @@ export default function HomePage({ korero, preview }) {
                                                 </Heading>
                                                 <Text
                                                     fontFamily={[
-                                                        'heading',
-                                                        'heading',
-                                                        'heading',
+                                                        'subheading',
+                                                        'subheading',
+                                                        'subheading',
                                                         'heading',
                                                         'heading',
                                                         'heading'

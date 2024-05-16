@@ -42,13 +42,13 @@ export default function ModalVideo({ src, location, poster, alt }) {
                     fontSize={['16px', '16px', '16px', '36px', '36px', '36px']}
                     color="white"
                     fontWeight="normal"
-                    fontFamily="heading"
+                    fontFamily={['subheading', 'subheading', 'subheading', 'heading', 'heading', 'heading']}
                     position="absolute"
                     bottom={['4', '4', '4', '6', '6', '6']}
                     right={['6', '6', '6', '6', '6', '6']}
                     w="fit-content"
                     textAlign={['right', 'right', 'right', 'right', 'right', 'right']}
-                    zIndex="500"
+                    zIndex="100"
                 >
                     {location}
                 </Heading>

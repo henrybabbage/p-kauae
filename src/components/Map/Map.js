@@ -256,7 +256,7 @@ export default function Map({ wahine, haerenga }) {
                 />
             )}
             {/* Fallback display before map mounts */}
-            <Center h="100vh" w="100vw" position="absolute" overflow="hidden" bg="grey.900">
+            <Center h="100vh" w="100vw" position="fixed" inset="0" overflow="hidden" bg="grey.900">
                 <Box
                     position="relative"
                     h={['70px', '70px', '70px', '120px', '120px', '120px']}
@@ -278,7 +278,7 @@ export default function Map({ wahine, haerenga }) {
             <Box
                 id="map-container"
                 maxH="100dvh"
-                h={['100dvh', '100dvh', '100dvh', '100dvh', '100dvh', '100dvh']}
+                h="100vh"
                 w="100vw"
                 cursor="auto"
                 position="relative"
