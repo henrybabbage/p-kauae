@@ -11,7 +11,6 @@ export default function MenuIcon({ openDrawer }) {
                     fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
                     fontWeight="normal"
                     textColor="white"
-                    position="fixed"
                 >
                     Menu
                 </Heading>

@@ -2,11 +2,12 @@ import { Flex, HStack, Text } from '@chakra-ui/react'
 
 export default function Footer() {
     return (
-        <Flex w="100vw" justifyContent="center" pt={['10px', '10px', '10px', '0px', '0px', '0px']}>
+        <Flex w="100%" justifyContent="center" pt={['10px', '10px', '10px', '0px', '0px', '0px']}>
             <HStack spacing="6">
                 <Text
                     fontFamily="body"
                     fontSize={['10px', '10px', '10px', '12px', '12px', '12px']}
+                    fontWeight="normal"
                     lineHeight={['1.36']}
                     color="white"
                 >
@@ -15,6 +16,7 @@ export default function Footer() {
                 <Text
                     fontFamily="body"
                     fontSize={['10px', '10px', '10px', '12px', '12px', '12px']}
+                    fontWeight="normal"
                     lineHeight={['1.36']}
                     color="white"
                 >

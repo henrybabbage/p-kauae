@@ -1,4 +1,4 @@
-import LandingBanner from '@/components/Index/LandingBanner'
+import LandingBanner from '@/components/Home/LandingBanner'
 import { Box, Flex, Heading, Link, Text, VStack } from '@chakra-ui/react'
 import PreviewButton from '../Common/Buttons/PreviewButton'
 import Footer from '../Common/Footer/Footer'
@@ -32,11 +32,11 @@ export default function HomePage({ korero, preview }) {
 
     const photographerUrl = kaiwhakaahua?.paetukutuku?.replace(/^(https?:|)\/\//, '') || ''
     return (
-        <Box as="main" bg="grey.900" minH="100%">
+        <Box as="main" bg="grey.900" minH="100%" w="100vw">
             {preview && <PreviewButton />}
             <PageTransition>
                 <LenisScroll>
-                    <Box id="about" h="100%" minH="100vh" w="100vw" px={['6', '6', '6', '0', '0', '0']}>
+                    <Box id="about" h="100%" minH="100vh" w="100%" px={['6', '6', '6', '0', '0', '0']}>
                         <Flex flexDir="column" w="100%" h="100%" gap="12">
                             <LandingBanner reoText={tuhinga_timatanga} englishText={tuhinga_timatanga_english} />
 

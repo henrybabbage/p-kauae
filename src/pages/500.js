@@ -1,4 +1,4 @@
-import { Box, Heading } from '@chakra-ui/react'
+import { Box, Flex, Heading } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 
 export default function Custom500() {
@@ -24,20 +24,23 @@ export default function Custom500() {
                 additionalLinkTags={[
                     {
                         rel: 'icon',
-                        href: '/public/favicons/favicon.ico'
+                        href: 'https://www.xn--pkauae-bmb.com/favicons/favicon.ico'
                     }
                 ]}
             />
             <Box as="main" bg="grey.900" h="100vh" w="100%" maxW="100vw" maxH="100vh">
-                <Heading
-                    fontFamily={['subheading', 'subheading', 'subheading', 'heading', 'heading', 'heading']}
-                    fontSize={['36px', '36px', '36px', '46px', '56px', '84px']}
-                    lineHeight={['1.2', '1.2', '1.2', '1.2', '1.1', '1.1']}
-                    textAlign="center"
-                    textColor="pink.200"
-                >
-                    500 - Server-side error occurred
-                </Heading>
+                <Flex justifyContent="center" alignItems="center" h="100%" w="100%">
+                    <Heading
+                        fontFamily={['subheading', 'subheading', 'subheading', 'heading', 'heading', 'heading']}
+                        fontWeight="normal"
+                        fontSize={['36px', '36px', '36px', '46px', '56px', '84px']}
+                        lineHeight={['1.2', '1.2', '1.2', '1.2', '1.1', '1.1']}
+                        textAlign="center"
+                        textColor="pink.200"
+                    >
+                        500 - Server-side error occurred
+                    </Heading>
+                </Flex>
             </Box>
         </>
     )
