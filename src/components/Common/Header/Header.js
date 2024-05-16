@@ -58,7 +58,7 @@ export default function Header({ blurEffect, opacity }) {
                                 >
                                     <Heading
                                         as="h2"
-                                        fontSize={['18px', '18px', '18px', '20px', '20px', '20px']}
+                                        fontSize={['24px', '24px', '24px', '32px', '32px', '32px']}
                                         lineHeight="1.36"
                                         fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
                                         fontWeight="normal"

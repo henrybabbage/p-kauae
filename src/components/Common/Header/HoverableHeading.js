@@ -26,7 +26,7 @@ export default function HoverableHeading({ hoverContent, defaultContent, ...prop
                 <Heading
                     {...props}
                     as="h2"
-                    fontSize={['16px', '16px', '16px', '20px', '20px', '20px']}
+                    fontSize={['24px', '24px', '24px', '20px', '20px', '20px']}
                     lineHeight="1.36"
                     fontFamily="subheading"
                     fontWeight="normal"
@@ -50,7 +50,7 @@ export default function HoverableHeading({ hoverContent, defaultContent, ...prop
                 <Heading
                     {...props}
                     as="h2"
-                    fontSize={['16px', '16px', '16px', '20px', '20px', '20px']}
+                    fontSize={['24px', '24px', '24px', '20px', '20px', '20px']}
                     lineHeight="1.36"
                     fontFamily="subheading"
                     fontWeight="normal"
