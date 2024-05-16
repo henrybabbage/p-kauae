@@ -4,9 +4,9 @@ import PreviewButton from '../Common/Buttons/PreviewButton'
 
 export default function MapPage({ wahine, haerenga, preview = false }) {
     return (
-        <Box as="main" maxH="100dvh" maxW="100vw" bg="black">
+        <Box as="main" maxH="100vh" maxW="100vw" bg="black">
             {preview && <PreviewButton />}
-            <Flex alignItems="center" justifyContent="center">
+            <Flex alignItems="center" justifyContent="center" h="100%" w="100%">
                 <Map wahine={wahine} haerenga={haerenga} />
             </Flex>
         </Box>

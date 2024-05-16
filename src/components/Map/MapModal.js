@@ -50,40 +50,15 @@ export default function MapModal({
     }
 
     return (
-        <Drawer
-            onClose={onClose}
-            isOpen={isOpen}
-            onOpen={onOpen}
-            placement="bottom"
-            size="full"
-            sx={{
-                '-webkit-scrollbar': {
-                    display: 'none'
-                },
-                '::-ms-overflow-style': {
-                    display: 'none'
-                },
-                scrollbarWidth: 'none'
-            }}
-            minH="100vh"
-        >
+        <Drawer onClose={onClose} isOpen={isOpen} onOpen={onOpen} placement="bottom" size="full" minH="100vh">
             <DrawerOverlay />
             <DrawerContent
                 w="auto"
                 maxW="100vw"
-                p={[4, 4, 4, 6, 6, 6]}
+                p={['4', '4', '4', '6', '6', '6']}
                 bg="grey.900"
                 h="100%"
                 overflow="hidden"
-                sx={{
-                    '-webkit-scrollbar': {
-                        display: 'none'
-                    },
-                    '::-ms-overflow-style': {
-                        display: 'none'
-                    },
-                    scrollbarWidth: 'none'
-                }}
             >
                 <DrawerHeader pt={0} px={0} pb={2} bg="grey.900">
                     <Flex justifyContent="space-between" alignContent="start" h="max-content" bg="grey.900">
@@ -152,7 +127,14 @@ export default function MapModal({
                                         fontSize={['28px', '28px', '28px', '36px', '36px', '36px']}
                                         color="pink.200"
                                         fontWeight="normal"
-                                        fontFamily="heading"
+                                        fontFamily={[
+                                            'subheading',
+                                            'subheading',
+                                            'subheading',
+                                            'heading',
+                                            'heading',
+                                            'heading'
+                                        ]}
                                     >
                                         {selectedWahine.ingoa}
                                     </Heading>
@@ -160,7 +142,14 @@ export default function MapModal({
                                         fontSize={['14px', '14px', '14px', '16px', '16px', '16px']}
                                         color="pink.200"
                                         fontWeight="normal"
-                                        fontFamily="heading"
+                                        fontFamily={[
+                                            'subheading',
+                                            'subheading',
+                                            'subheading',
+                                            'heading',
+                                            'heading',
+                                            'heading'
+                                        ]}
                                     >
                                         {selectedWahine.whakapapa}
                                     </Heading>

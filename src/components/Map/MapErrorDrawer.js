@@ -6,8 +6,8 @@ export default function MapErrorDrawer({ isOpen, onClose }) {
         <Drawer isOpen={isOpen} onClose={onClose} size="full" placement="top">
             <DrawerOverlay />
             <DrawerContent m={0} p={0} overflow="hidden" bg="rgba(0,0,0,0.8)" maxW="100vw" maxH="100vh">
-                <DrawerHeader>
-                    <Flex justifyContent="space-between" alignContent="start" p={['2', '2', '2', '2', '2', '2']}>
+                <DrawerHeader p={['6', '6', '6', '6', '6', '6']}>
+                    <Flex justifyContent="space-between" alignContent="start">
                         <Heading
                             as="h1"
                             fontSize={['16px', '16px', '16px', '20px', '20px', '20px']}

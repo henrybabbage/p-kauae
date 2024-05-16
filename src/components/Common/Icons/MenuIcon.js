@@ -8,7 +8,7 @@ export default function MenuIcon({ openDrawer }) {
                     as="h2"
                     fontSize={['24px', '24px', '24px', '32px', '32px', '32px']}
                     lineHeight="1.36"
-                    fontFamily={['body', 'body', 'body', 'subheading', 'subheading', 'subheading']}
+                    fontFamily={['subheading', 'subheading', 'subheading', 'subheading', 'subheading', 'subheading']}
                     fontWeight="normal"
                     textColor="white"
                 >
