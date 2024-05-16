@@ -28,6 +28,7 @@ export default function LinkPrompt() {
                     color="white"
                     fontFamily="subheading"
                     fontSize={['14px', '14px', '14px', '16px', '16px', '16px']}
+                    fontWeight="normal"
                     textTransform="uppercase"
                     textAlign="center"
                     _groupHover={{
@@ -42,6 +43,7 @@ export default function LinkPrompt() {
                     color="white"
                     fontFamily="subheading"
                     fontSize={['14px', '14px', '14px', '16px', '16px', '16px']}
+                    fontWeight="normal"
                     textTransform="uppercase"
                     textAlign="center"
                     _groupHover={{
