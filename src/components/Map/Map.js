@@ -241,6 +241,7 @@ export default function Map({ wahine, haerenga }) {
             })
     }, [])
 
+    // NB: ?optimize=true removed from mapbox style url to prevent mapbox error
     return (
         <>
             {/* Appears when Mapbox error is thrown */}
@@ -333,7 +334,7 @@ export default function Map({ wahine, haerenga }) {
                             touchRef.current.x > e.point.x ? handleNextClick() : handlePrevClick()
                         }
                     }}
-                    mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck?optimize=true"
+                    mapStyle="mapbox://styles/henrybabbage/clfr4mju3000301mopx95pkck"
                     terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
                     interactiveLayerIds={['wahine']}
                     onClick={onClick}
