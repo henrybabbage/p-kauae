@@ -68,7 +68,23 @@ export default function MapModal({
             minH="100vh"
         >
             <DrawerOverlay />
-            <DrawerContent w="auto" maxW="100vw" p={[4, 4, 4, 6, 6, 6]} bg="grey.900" h="100%" overflow="hidden">
+            <DrawerContent
+                w="auto"
+                maxW="100vw"
+                p={[4, 4, 4, 6, 6, 6]}
+                bg="grey.900"
+                h="100%"
+                overflow="hidden"
+                sx={{
+                    '-webkit-scrollbar': {
+                        display: 'none'
+                    },
+                    '::-ms-overflow-style': {
+                        display: 'none'
+                    },
+                    scrollbarWidth: 'none'
+                }}
+            >
                 <DrawerHeader pt={0} px={0} pb={2} bg="grey.900">
                     <Flex justifyContent="space-between" alignContent="start" h="max-content" bg="grey.900">
                         <Heading
