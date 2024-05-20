@@ -63,7 +63,7 @@ const theme = extendTheme({
     textStyles: {
         heading: {
             fontFamily: 'var(--chakra-fonts-heading)',
-            fontSize: ['24px', '24px', '24px', '36px', '36px', '36px'],
+            // fontSize: ['24px', '24px', '24px', '36px', '36px', '36px'],
             lineHeight: '1.2',
             letterSpacing: '0.010',
             textAlign: 'left',
@@ -71,7 +71,8 @@ const theme = extendTheme({
         },
         subheading: {
             fontFamily: 'var(--chakra-fonts-subheading)',
-            fontSize: ['24px', '24px', '24px', '46px', '84px', '84px'],
+            // fontSize: ['24px', '24px', '24px', '46px', '84px', '84px'],
+            fontWeight: 'normal',
             lineHeight: ['1.2', '1.2', '1.2', '1.2', '1.1', '1.1'],
             letterSpacing: '0.010',
             textAlign: 'left',
@@ -79,7 +80,8 @@ const theme = extendTheme({
         },
         body: {
             fontFamily: 'var(--chakra-fonts-body)',
-            fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
+            // fontSize: ['24px', '24px', '24px', '32px', '32px', '32px'],
+            fontWeight: 'normal',
             lineHeight: '1.2',
             letterSpacing: '0.010',
             textAlign: 'left',

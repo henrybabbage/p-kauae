@@ -350,6 +350,7 @@ export default function Map({ wahine, haerenga }) {
                         setMapIsMoving(true)
                     }}
                     onError={() => setMapError(true)}
+                    style={{ fontWeight: 'normal' }}
                 >
                     <Source id="taranaki-data" type="geojson" data={wahine} tolerance={0} generateId={true} />
                     <Layer source="taranaki-data" {...layerStyle} />
