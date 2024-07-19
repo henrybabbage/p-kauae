@@ -17,8 +17,7 @@ export function getClient(previewToken) {
         dataset: dataset,
         apiVersion: apiVersion,
         useCdn: false,
-        studioUrl: '/studio',
-        perspective: 'published'
+        studioUrl: '/studio'
     })
     if (previewToken) {
         if (!previewToken) {
@@ -27,8 +26,7 @@ export function getClient(previewToken) {
         return client.withConfig({
             token: previewToken,
             useCdn: false,
-            ignoreBrowserTokenWarning: true,
-            perspective: 'previewDrafts'
+            ignoreBrowserTokenWarning: true
         })
     }
     return client
